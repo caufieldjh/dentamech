@@ -85,7 +85,7 @@ https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=K
 https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3200
 ```
 
-The block is a `User-Agent` *blocklist on automated clients*, not a desktop-browser requirement. Sending **no** `User-Agent` header works; sending a recognisable tool's own header does not. Measured on 2026-10-30, `?id=KLE` with `-L`:
+On `accessdata.fda.gov` the block is a `User-Agent` *blocklist on automated clients*, not a desktop-browser requirement. Sending **no** `User-Agent` header works; sending a recognisable tool's own header does not. Measured on 2026-10-30 and re-measured unchanged on 2026-10-31, `?id=KLE` with `-L`:
 
 | `User-Agent` sent | Result |
 |---|---|
@@ -95,6 +95,8 @@ The block is a `User-Agent` *blocklist on automated clients*, not a desktop-brow
 | `Wget/1.21.3`, `python-urllib3/2.0.7` | `404` abuse-detection apology |
 
 The distinction matters because **"no `User-Agent`" and "no `-A` flag" are opposites here**: plain `curl` without `-A` still sends `User-Agent: curl/8.18.0`, which is exactly what is refused. Earlier versions of this note read that failure as "a desktop `User-Agent` is required"; it is not required, it is merely one string that is not on the blocklist. Either `-A ''` or a browser string works.
+
+**The rule is host-specific and does not generalise.** It governs `accessdata.fda.gov`, which serves the classification, 510(k) and registration databases. `www.fda.gov`, which serves the guidance documents, accepts the *opposite* set of headers: re-measured 2026-10-31, `https://www.fda.gov/media/182280/download` returns the 541 kB PDF under curl's own default header (3 of 3) and a bare `404` with a 10-byte body under both `-A ''` and a desktop browser string (3 of 3 each). Choose the header per host, and do not carry one host's recipe to the other. Note also that the two failures do not look alike: only `accessdata` serves the abuse-detection apology page, which is the one that can be misread as *the record does not exist*; the `www.fda.gov` 404 has no body to misread.
 
 Two further pitfalls, so do not treat the header as the only variable:
 
