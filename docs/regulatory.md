@@ -59,7 +59,7 @@ products:
 
 The product example above is illustrative; check the record before curating it.
 
-## Fetching the primary sources
+## Fetch routes for the FDA databases
 
 Every regulation number, class, and product code is re-verified from the CFR text *and* the
 classification database on each curation run, so the fetch route is part of the method. Routes
@@ -72,21 +72,31 @@ tested from CI on 2026-10-22:
 | eCFR section HTML | `curl https://www.ecfr.gov/current/title-21/section-872.NNNN` | blocked, `302` |
 | Product classification | `curl -L -H 'User-Agent: Mozilla/5.0' '…/cfpcd/classification.cfm?start_search=1&productcode=CODE'` | works, returns the record page |
 | Product classification | the same URL with curl's default `User-Agent` | blocked, `302` to `abuse-detection-apology.html` |
-| Product classification | a browser `User-Agent` but no `-L` | useless: `302` to a 215-byte `Object Moved` stub |
+| Product classification | an accepted `User-Agent` but no `-L` | useless: `302` to a 217-byte `Document Moved` stub |
 | Product classification | the agent's `WebFetch` tool on the same URL | works, returns the result rows |
 | Product classification, by regulation | `curl -L -H 'User-Agent: Mozilla/5.0' '…/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN'` | works, and is the route that proves code *completeness*; but a regulation carrying a single code answers `302` to `classification.cfm?id=NNNN` - a successful single-match redirect, **not** the abuse block the rows above describe |
 | Product classification | any of its routes, intermittently | a ~2 kB "Your request is being processed. Please be patient…" queue page whose only logic is a 60-second `setInterval` reload, served with `HTTP 400` as readily as `200`. It contains no record, so a grep for your product code returns nothing: read as *no answer yet*, never as *the value is absent*. Sleep a few seconds and refetch |
 | Product classification | `curl 'https://api.fda.gov/device/classification.json?search=regulation_number:"872.NNNN"&limit=50'` | works |
 
-`classification.cfm` is reachable from plain `curl`, but it needs **both** a browser `User-Agent`
-**and** `-L`, and each missing piece fails in a different way. Earlier runs of this file recorded the
-page as blocked outright; that was an artefact of testing the two halves separately. With curl's
-default `User-Agent` the site really does refuse, redirecting to an abuse-detection page. With a
-browser `User-Agent` and no `-L` you get a 215-byte `Object Moved` stub, which looks like a block but
-is only an unfollowed redirect. Supply both and the full record page comes back; `Mozilla/5.0` on its
-own is a sufficient `User-Agent`. Cite the `classification.cfm` URL either way - it is the
-human-readable record, and it renders device names in lower case, which is what a `snippet` quoting it
-has to match.
+`classification.cfm` is reachable from plain `curl`, but it needs `-L` **and** a `User-Agent` that
+is not curl's own, and each missing piece fails in a different way. Earlier runs of this file recorded
+the page as blocked outright; that was an artefact of testing the two halves separately. Re-measured
+on 2026-11-01, one product code, with `-L` throughout:
+
+| `User-Agent` sent | Result |
+|---|---|
+| curl's default (`curl/8.x`, i.e. no `-A`) | refused: one `302` to `abuse-detection-apology.html`, which answers `404`, 420 bytes |
+| none at all (`-A ''`) | the record, `200`, 36 kB |
+| `Mozilla/5.0` | the record, `200`, 36 kB - byte-identical to the row above |
+
+So a browser `User-Agent` is **sufficient but not required**: what the site refuses is specifically
+curl's self-identification, and suppressing the header entirely does just as well. Do not read the
+recipes' `-A "$UA"` as meaning the string has to look like a browser. Dropping `-L` is the separate
+failure: with any accepted `User-Agent` you then get a `302` to a 217-byte `Document Moved` stub,
+which looks like a block but is only an unfollowed redirect. Both accepted routes land on the
+single-match redirect `classification.cfm?id=NNNN`. Cite the `classification.cfm` URL either way - it
+is the human-readable record, and it renders device names in lower case, which is what a `snippet`
+quoting it has to match.
 
 **`classification.cfm` was down on 2026-10-24.** All three of its routes above - plain `curl`,
 `curl -L` with a browser `User-Agent`, and `WebFetch` - returned `HTTP 503` with accessdata's
