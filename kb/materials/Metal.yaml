@@ -1206,7 +1206,12 @@ notes: >-
   cached record can hold the publisher's rendition of the whole paper, and a quote taken from the body of
   a paper passes the cached check while failing the abstract. Three snippets in earlier passes of this
   entry were body text of that kind - two from PMID:38702521 and one from PMID:34204569 - and were
-  replaced with abstract-sourced quotes. The pass-by-pass account of the automation that produced this
-  entry lives in the git history and the pull request thread, not here.
+  replaced with abstract-sourced quotes. Every cached record this entry cites is therefore committed as
+  content_type abstract_only, and no snippet here depends on text outside the abstract PubMed serves.
+  That state is not self-sustaining: just validate-references fetches full text by default, so merely
+  running it rewrites those records back into full-text supersets - and for PMID:25935732 it refills the
+  record with the Geneva repository's page furniture rather than the article. Run it with --no-full-text,
+  or discard the references_cache/ rewrite instead of staging it. The pass-by-pass account of the
+  automation that produced this entry lives in the git history and the pull request thread, not here.
 see_also:
 - https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44253
