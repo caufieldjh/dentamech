@@ -465,7 +465,7 @@ regulatory_status:
     snippet: crown, preformed
     explanation: Device name for ELZ, class 1, regulation 872.3330, submission type 510(K) Exempt, on
       2026-09-09.
-  - reference: url:https://api.fda.gov/device/registrationlisting.json?search=products.product_code:ELZ+AND+proprietary_name:%22stainless+steel+crowns%22
+  - reference: url:https://api.fda.gov/device/registrationlisting.json?search=products.product_code:ELZ+AND+proprietary_name:%22stainless+steel+crowns%22&limit=4
     reference_title: FDA Establishment Registration and Device Listing, product code ELZ
     supports: SUPPORT
     evidence_source: REGULATORY_DOCUMENT
