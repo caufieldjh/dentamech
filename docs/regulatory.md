@@ -129,8 +129,14 @@ off that history instead of re-deriving them:
   regulation" claims on the last three are therefore complete, not merely unrefuted.
 - EIT stays excluded from 872.3060: it is a rapid wax applicator, a laboratory accessory rather than
   an alloy.
-- `872.3330` is the route by which preformed stainless steel crowns reach the market, since
-  austenitic alloys are the stainless steels.
+- `872.3330` is the route by which preformed stainless steel crowns reach the market, established from
+  the device listings under ELZ - NuSmile, Hu-Friedy and Cargus all list preformed stainless steel
+  crowns with ELZ as their only product code - and not from the identification paragraph, which names
+  plastic, austenitic alloys and high-gold platinum-group alloys without naming stainless steel. Do not
+  infer it from the austenitic clause alone: 872.3350 enumerates austenitic alloys and stainless steel
+  as distinct materials in one sentence, so FDA's drafting does not treat them as synonyms. The
+  `(stainless steel)` gloss on the 872.3330 row below is shorthand for that listing practice, not for
+  the regulation's wording.
 
 The audit trail below has one row per run that verified the mapping-table rows that follow it,
 oldest first. The verdict on every row is the same - nothing had changed - so only the scope and

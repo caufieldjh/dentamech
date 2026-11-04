@@ -441,11 +441,15 @@ regulatory_status:
   - name: Functional restoration for a badly decayed deciduous tooth until the adult tooth erupts
     use_context: TEMPORARY
   source_url: https://www.ecfr.gov/current/title-21/section-872.3330
-  notes: The route by which the stainless steel child reaches the market, since austenitic alloys are the
-    stainless steels. The first of the two class I device types the class spans, and the only one of the
-    five not confined to metals - the identification also covers plastic preformed crowns - so it is
-    recorded as a device type the class spans rather than a device type of the class. ELZ is the only
-    product code under the regulation.
+  notes: The route by which the stainless steel child reaches the market, established from the device
+    listings under ELZ rather than from the identification, which names plastic, austenitic alloys and
+    high-gold platinum-group alloys without naming stainless steel. The austenitic clause does not
+    establish it on its own, because 872.3350 enumerates austenitic alloys and stainless steel as distinct
+    materials in one sentence, so FDA's own drafting does not treat the two as synonyms. The first of
+    the two class I device types the class spans, and the only one of the five not confined to metals -
+    the identification also covers plastic preformed crowns - so it is recorded as a device type the
+    class spans rather than a device type of the class. ELZ is the only product code under the
+    regulation.
   evidence:
   - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3330
     reference_title: 21 CFR 872.3330 Preformed crown
@@ -461,6 +465,15 @@ regulatory_status:
     snippet: crown, preformed
     explanation: Device name for ELZ, class 1, regulation 872.3330, submission type 510(K) Exempt, on
       2026-09-09.
+  - reference: url:https://api.fda.gov/device/registrationlisting.json?search=products.product_code:ELZ+AND+proprietary_name:%22stainless+steel+crowns%22
+    reference_title: FDA Establishment Registration and Device Listing, product code ELZ
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: NuSmile Pre-Contoured Stainless Steel Crowns (SSC)
+    explanation: Four establishment listings answer this query on 2026-11-04 - NuSmile, two Hu-Friedy
+      establishments and Cargus - and each carries ELZ as its only product code. Preformed stainless
+      steel crowns are therefore listed under 872.3330, which is what makes it the stainless steel
+      route, since the identification paragraph never names the material.
 - agency: FDA
   status: EXEMPT
   regulation_number: '872.3710'
