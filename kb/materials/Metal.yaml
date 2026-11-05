@@ -1224,7 +1224,12 @@ notes: >-
   That state is not self-sustaining: just validate-references fetches full text by default, so merely
   running it rewrites those records back into full-text supersets - and for PMID:25935732 it refills the
   record with the Geneva repository's page furniture rather than the article. Run it with --no-full-text,
-  or discard the references_cache/ rewrite instead of staging it. The pass-by-pass account of the
+  or discard the references_cache/ rewrite instead of staging it. One cached record is cited by no
+  snippet - PMID:30661882, which the research report weighs and the entry deliberately omits - and it
+  was committed as a scrape of a repository landing page until it was refetched as an abstract. The
+  tool can do that: cache reference honours fetch_full_text: false in the config file, which is how
+  that record was regenerated, while validate data ignores the same key because its own --full-text
+  default overrides it. The pass-by-pass account of the
   automation that produced this entry lives in the git history and the pull request thread, not here.
 see_also:
 - https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44253
