@@ -1,105 +1,70 @@
-[build-system]
-requires = ["hatchling", "uv-dynamic-versioning"]
-build-backend = "hatchling.build"
-
 [project]
 name = "dentamech"
-description = "A Dental Materials Knowledge Base"
-authors = [
-  {name = "Harry Caufield", email = "jhc@lbl.gov"},
-]
-license = "BSD-3-Clause"
-license-files = ["LICENSE"]
-readme = "README.md"
-requires-python = ">=3.12,<4.0"
+# The version comes from the latest git tag (v1.2.3); see [tool.uv-dynamic-versioning].
 dynamic = ["version"]
+description = "DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source."
+authors = [{ name = "J. Harry Caufield", email = "jhc@lbl.gov" }]
+readme = "README.md"
+license = { text = "BSD-3-Clause" }
+requires-python = ">=3.11"
+keywords = ["mech", "knowledge base", "linkml", "ontology", "curation"]
 
 dependencies = [
-  "linkml-runtime >=1.9.4",
-  "linkml-term-validator>=0.4.4",
-  "linkml-reference-validator>=0.2.1",
-  "oaklib>=0.7.4",
-  "typer>=0.9.0",
-  "jinja2>=3.1",
-  "pyyaml>=6.0",
-  "markdown>=3.5",
+    "linkml>=1.11.1",
+    "linkml-runtime>=1.9.4",
+    # Checks that every bound CURIE exists, sits under its enum root, and
+    # carries the ontology's own label.
+    "linkml-term-validator>=0.4.5",
+    # Checks that every snippet appears verbatim in its cited source.
+    "linkml-reference-validator>=0.3.0",
+    "oaklib>=0.7.3",
+    # oaklib imports eutils, which still imports pkg_resources.
+    "setuptools<82",
+    "pyyaml>=6.0",
+    # Edits records in place with their layout kept (just add-evidence).
+    "ruamel.yaml>=0.18",
+    "jinja2>=3.1",
 ]
 
-[project.scripts]
-dentamech = "dentamech.cli:main"
-
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
-    "linkml>=1.9.3",
     "pytest>=8.0",
-    "ruff>=0.11",
-    # Deep research providers behind `just research-material`; [validation]
-    # resolves a report's citations with linkml-reference-validator.
-    "deep-research-client[validation]>=0.2.10",
-    "mkdocs-material>=8.2.8",
-    "mkdocs-mermaid2-plugin>=1.1.1",
-    "mkdocs-pymdownx-material-extras>=2.5.6",
-    "jupyter>=1.0.0",
-    "mknotebooks>= 0.8.0",
+    "ruff>=0.6",
+    # The documentation site. MkDocs 2 drops the plugin and theme system
+    # Material relies on, so stay on 1.x.
+    "mkdocs>=1.6,<2",
+    "mkdocs-material>=9.7",
 ]
 
-# See https://hatch.pypa.io/latest/config/build/#file-selection for how to
-# explicitly include files other than default into the build distributions.
+[project.urls]
+Homepage = "https://github.com/caufieldjh/dentamech"
+Repository = "https://github.com/caufieldjh/dentamech"
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning>=0.8"]
+build-backend = "hatchling.build"
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
 
-# Ref.: https://github.com/ninoseki/uv-dynamic-versioning/
 [tool.uv-dynamic-versioning]
-vcs = "git"
-style = "pep440"
+# Without a tag, or outside a git checkout, the version is this.
 fallback-version = "0.0.0"
 
-# Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
+[tool.uv]
+# Rebuild the installed package when a commit or tag changes its version.
+cache-keys = [{ file = "pyproject.toml" }, { git = { commit = true, tags = true } }]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dentamech"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "."]
 
-# https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
-exclude = [
-    "src/dentamech/_version.py",
-    "src/dentamech/datamodel/dentamech.py",
-    "src/dentamech/datamodel/dentamech_pydantic.py",
-]
-# Set oldest supported Python version
-target-version = "py312"
+line-length = 110
+target-version = "py311"
 
 [tool.ruff.lint]
-ignore = [
-  "B008",   # function-call-in-default-argument: idiomatic Typer defaults
-]
-
-# Ref.: https://github.com/codespell-project/codespell
-[tool.codespell]
-skip = [
-  "LICENSE",
-  "pyproject.toml",
-  "uv.lock",
-  "project/*",
-  "src/dentamech/datamodel/dentamech_pydantic.py",
-  "src/dentamech/datamodel/dentamech.py",
-]
-
-# Reminder: words have to be lowercased for the ignore-words-list
-# amalgam-literature words codespell misreads
-ignore-words-list = "linke,ans"
-quiet-level = 3
-
-# Ref.: https://github.com/crate-ci/typos (spell checker)
-[tool.typos.default.extend-words]
-linke = "linke"
-
-[tool.typos.files]
-extend-exclude = [
-  "LICENSE",
-  "uv.lock",
-  "pyproject.toml",
-  "project/*",
-  "src/dentamech/datamodel/dentamech_pydantic.py",
-  "src/dentamech/datamodel/dentamech.py",
-]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]

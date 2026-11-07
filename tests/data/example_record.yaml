@@ -1,0 +1,53 @@
+# A schema-shaped example for the tests. It is not a curated record and
+# carries no citations. Real records live under kb/materials/.
+id: dentamech:example
+name: Example dental material
+description: A placeholder that exercises the record structure.
+status: DRAFT
+category: OTHER
+setting_mechanisms:
+  - HYDRATION
+composition:
+  - name: chemical entity
+    role: FILLER
+    chemical:
+      preferred_term: "chemical entity"
+      term:
+        id: CHEBI:24431
+        label: "chemical entity"
+properties:
+  - name: quality
+    property_type: COMPRESSIVE_STRENGTH
+    quality_term:
+      preferred_term: "quality"
+      term:
+        id: PATO:0000001
+        label: "quality"
+clinical_uses:
+  - name: example use
+    use_context: DIRECT_RESTORATION
+    anatomical_site:
+      preferred_term: "anatomical entity"
+      term:
+        id: UBERON:0001062
+        label: "anatomical entity"
+adverse_effects:
+  - name: example effect
+    effect_category: ALLERGIC_OR_HYPERSENSITIVITY
+    effect_term:
+      preferred_term: "Phenotypic abnormality"
+      term:
+        id: HP:0000118
+        label: "Phenotypic abnormality"
+discussions:
+  - discussion_id: example-gap-1
+    prompt: Which sources should seed this record?
+    kind: CURATION_TODO
+    status: OPEN
+creation_date: 2026-01-01
+curation_history:
+  - timestamp: "2026-01-01T00:00:00Z"
+    curator: mechmaker
+    llm_assisted: false
+    action: CREATE
+    description: Written by the template.

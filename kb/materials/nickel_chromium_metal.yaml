@@ -1,0 +1,19 @@
+id: OHD:0001084
+name: Nickel chromium metal
+description: A predominantly base metal dental restoration material that is primarily composed of nickel chromium.
+record_term:
+  id: OHD:0001084
+  label: nickel chromium metal dental restoration material
+category: METAL
+parents:
+  - OHD:0000156
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Nickel_Chromium_Metal.
+updated_date: '2026-11-07'

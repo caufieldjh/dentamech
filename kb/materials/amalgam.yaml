@@ -1,0 +1,170 @@
+id: OHD:0000001
+name: Amalgam
+description: A metal dental restoration material that consists of alloy that is formed by reacting mercury with silver, copper, tin and sometimes palladium, zinc and other elements to improve handling characteristics and clinical performance.
+record_term:
+  id: OHD:0000001
+  label: amalgam dental restoration material
+category: METAL
+synonyms:
+  - dental amalgam
+  - silver filling
+  - silver amalgam
+setting_mechanisms:
+  - AMALGAMATION
+composition:
+  - name: Mercury
+    role: LIQUID
+    chemical:
+      preferred_term: elemental mercury
+      term:
+        id: CHEBI:25195
+        label: mercury atom
+    proportion: roughly half by weight of the set material
+    description: Supplied as a liquid in bulk, sachet, or predosed capsule form; reacts with the alloy powder.
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3070
+        reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper
+        explanation: The FDA identification paragraph names the two components and their forms.
+  - name: Silver
+    role: ALLOYING_ELEMENT
+    chemical:
+      preferred_term: silver
+      term:
+        id: CHEBI:30512
+        label: silver atom
+    description: Principal element of the alloy powder.
+  - name: Tin
+    role: ALLOYING_ELEMENT
+    chemical:
+      preferred_term: tin
+      term:
+        id: CHEBI:27007
+        label: tin atom
+  - name: Copper
+    role: ALLOYING_ELEMENT
+    chemical:
+      preferred_term: copper
+      term:
+        id: CHEBI:28694
+        label: copper atom
+    description: High-copper alloys suppress the corrosion-prone tin-mercury (gamma-2) phase.
+clinical_uses:
+  - name: Direct posterior restoration
+    use_context: DIRECT_RESTORATION
+    procedure:
+      preferred_term: amalgam filling
+      term:
+        id: OHD:0000041
+        label: amalgam filling restoration procedure
+    anatomical_site:
+      preferred_term: tooth
+      term:
+        id: UBERON:0001091
+        label: calcareous tooth
+    indications:
+      - Class I and Class II cavities in posterior teeth where esthetics are not the priority
+      - Economic direct restoration of posterior teeth
+    contraindications:
+      - Documented mercury allergy
+      - Situations where esthetics are paramount
+    evidence:
+      - reference: PMID:21217947
+        reference_title: 'Dental amalgam: An update.'
+        supports: SUPPORT
+        evidence_source: TEXTBOOK
+        snippet: For the present, amalgam should remain the material of choice for economic direct restoration of posterior teeth.
+        explanation: Positions amalgam as the economic direct posterior restorative.
+clinical_performance:
+  - name: Failure risk relative to resin composite, posterior permanent teeth
+    measure_type: SURVIVAL_RATE
+    value: resin composite RR 1.89 (95% CI 1.52 to 2.35) for failure vs amalgam
+    follow_up_years: 3
+    population: Children and adults, permanent posterior teeth, randomized trials with at least three years of follow-up
+    comparator: Direct resin composite
+    description: Amalgam is the reference arm; composite showed a higher failure risk in the parallel-group trials, on low-quality evidence.
+    evidence:
+      - reference: PMID:24683067
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent or adult posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The parallel group trials indicated that resin restorations had a significantly higher risk of failure than amalgam restorations (risk ratio (RR) 1.89, 95% confidence interval (CI) 1.52 to 2.35, P value < 0.001 (fixed-effect model) (low-quality evidence))
+        explanation: Cochrane pooled estimate of failure risk with amalgam as the comparator.
+adverse_effects:
+  - name: Mercury release and environmental disposal concerns
+    effect_category: ENVIRONMENTAL
+    description: Concerns over mercury release in the body and environmental impact after disposal have driven a global phase-down under the Minamata Convention.
+    evidence:
+      - reference: PMID:24683067
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent or adult posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: there have been concerns over the use of amalgam restorations (fillings), relating to the mercury release in the body and the environmental impact following its disposal
+        explanation: States the two concerns directly.
+  - name: Oral lichenoid reaction adjacent to amalgam
+    effect_category: ALLERGIC_OR_HYPERSENSITIVITY
+    effect_term:
+      preferred_term: oral lichenoid lesion
+      term:
+        id: HP:0031453
+        label: Oral lichenoid lesion
+    frequency: rare
+    description: Contact hypersensitivity presenting as a lichenoid lesion of the mucosa in contact with the restoration. Evidence not yet attached.
+regulatory_status:
+  - agency: FDA
+    status: CLEARED
+    regulation_number: '872.3070'
+    regulation_title: Dental amalgam, mercury, and amalgam alloy
+    device_class: CLASS_II
+    product_codes:
+      - EJJ
+      - ELY
+      - OIV
+    pathways:
+      - PREMARKET_NOTIFICATION_510K
+    special_controls:
+      - 'Class II Special Controls Guidance Document: Dental Amalgam, Mercury, and Amalgam Alloy'
+    identification: Dental amalgam is a device that consists of a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form, for the direct filling of carious lesions or structural defects in teeth.
+    approved_uses:
+      - name: Direct filling of carious lesions or structural defects in teeth
+        use_context: DIRECT_RESTORATION
+        procedure:
+          preferred_term: amalgam filling
+          term:
+            id: OHD:0000041
+            label: amalgam filling restoration procedure
+    source_url: https://www.ecfr.gov/current/title-21/section-872.3070
+    notes: Product codes EJJ (alloy, amalgam), ELY (mercury), and OIV (dental amalgam) all sit under this regulation. FDA issued updated recommendations in 2020 advising certain high-risk groups to avoid amalgam where appropriate; those are not yet captured here.
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3070
+        reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: 'Class II (special controls). The special control for this device is FDA''s ''Class II Special Controls Guidance Document: Dental Amalgam, Mercury, and Amalgam Alloy.'''
+        explanation: Classification paragraph.
+      - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3070
+        reference_title: FDA Product Classification Database, regulation 872.3070
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: EJJ alloy, amalgam; ELY mercury; OIV dental amalgam
+        explanation: Product codes listed under the regulation on 2026-09-04.
+standards:
+  - identifier: ISO 24234
+    title: Dentistry - Dental amalgam
+    organization: ISO
+see_also:
+  - https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+parents:
+  - OHD:0000048
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Amalgam.
+updated_date: '2026-11-07'

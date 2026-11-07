@@ -1,13 +1,12 @@
 name: Curate a material
 description: Request curation of one dental material entry
 title: "Curate <material name> (<OHD id>)"
-labels: ["curation"]
 body:
   - type: input
     id: material
     attributes:
       label: Material
-      description: Name as it appears in kb/materials/ (run `uv run dentamech list`), or the OHD term if no stub exists yet
+      description: Name as it appears in kb/materials/ (run `just records`), or the OHD term if no stub exists yet
       placeholder: Glass ionomer cement (OHD:0001006)
     validations:
       required: true

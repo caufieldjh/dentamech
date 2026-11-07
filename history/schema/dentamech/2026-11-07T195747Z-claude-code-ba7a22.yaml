@@ -1,0 +1,23 @@
+history_version: 1
+target:
+  kind: schema
+  slug: dentamech
+  path: src/dentamech/schema/dentamech.yaml
+session:
+  id: 2026-11-07T195747Z-claude-code-ba7a22
+  timestamp: '2026-11-07T19:57:47Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/21
+events:
+- type: EDIT
+  outcome: changed
+  summary: Merged the dental schema with mechmaker's record contract
+  details: Kept every domain section. Added id, record_term, status, evidence, description_evidence, datasets,
+    discussions, updated_date and curation_history. Parents now hold record ids, and creation_date is
+    a date. Issue 21.

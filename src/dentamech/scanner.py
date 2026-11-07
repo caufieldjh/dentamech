@@ -4,8 +4,11 @@ The scanner tends the same few open items run after run. This counts the
 agent comments on each item since a person last responded, so the workflow can
 tell the scanner which items have reached the limit.
 
-Run as ``python -m dentamech.scanner OWNER/REPO``. It prints the result and,
-under GitHub Actions, sets the ``paused`` and ``final_comment`` step outputs.
+Run as ``PYTHONPATH=src python3 -m dentamech.scanner OWNER/REPO``. It uses only
+the standard library, because the scanner workflow runs it before installing the
+project. It prints the result and, under GitHub Actions, sets the ``paused`` and
+``final_comment`` step outputs. ``curation_queue.py`` leaves paused items out of
+the queue, so the agent never sees them.
 """
 
 from __future__ import annotations

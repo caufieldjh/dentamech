@@ -1,0 +1,21 @@
+id: OHD:0000034
+name: Gold foil
+description: A metal dental restoration material in which the principal ingredient is gold.
+record_term:
+  id: OHD:0000034
+  label: gold foil dental restoration material
+category: METAL
+setting_mechanisms:
+  - COLD_WORKING
+parents:
+  - OHD:0000048
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Gold_Foil.
+updated_date: '2026-11-07'

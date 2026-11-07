@@ -1,0 +1,196 @@
+# Review every same-repository pull request with the review-record skill and
+# post a formal review: approve, or request changes. Comment `/review` on a
+# PR to run it again, or start it by hand with a PR number. A PR from a fork
+# is never reviewed here, however it is started: review it by hand.
+#
+# The PR is data, never code. The review job runs the default branch's tools
+# with a read-only token; the PR's files sit in pr/, and nothing runs them.
+# The agent returns its review as JSON. A second job with no model checks it
+# against the PR, still at the commit that was reviewed, and posts it.
+#
+# Needs ANTHROPIC_API_KEY or CLAUDE_CODE_OAUTH_TOKEN. To have its approvals
+# count toward branch protection, either set MECH_REVIEWER_APP_ID and
+# MECH_REVIEWER_PRIVATE_KEY (a GitHub App used only for reviews), or allow
+# GitHub Actions to approve pull requests in Settings > Actions > General.
+# Adapted from DisMech's claude-code-review.
+name: Review
+run-name: "Review PR #${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}"
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull request to review
+        required: true
+        type: number
+
+permissions: {}
+
+jobs:
+  review:
+    # Concurrency sits on the job, not the workflow: a comment that is not
+    # `/review` starts a run whose job is skipped, and a skipped job joins no
+    # group, so it cannot cancel a review in progress.
+    concurrency:
+      group: review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+      cancel-in-progress: true
+    if: |
+      (github.event_name == 'pull_request' && !github.event.pull_request.draft &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        github.event.pull_request.user.login != 'dependabot[bot]') ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request &&
+        github.event.comment.body == '/review' &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+    outputs:
+      review: ${{ steps.run.outputs.structured_output }}
+      pr: ${{ env.PR_NUMBER }}
+      sha: ${{ steps.pr.outputs.sha }}
+    steps:
+      # Forks are refused before anything else: an agent's approval of a
+      # stranger's PR is worth too little to automate.
+      - name: Refuse pull requests from forks, and pin the commit
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          read -r fork sha < <(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" \
+            --json isCrossRepository,headRefOid -q '"\(.isCrossRepository) \(.headRefOid)"')
+          if [ "$fork" != "false" ]; then
+            echo "::error title=Review refused::PR #$PR_NUMBER comes from a fork. Review it by hand."
+            exit 1
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      # The tools, the prompt, the skills and the helper scripts come from the
+      # default branch, so a PR cannot change what reviews it.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      # The PR's files, as data. Nothing runs from pr/.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.pr.outputs.sha }}
+          path: pr
+          persist-credentials: false
+      # The PR that first adds these tools can't be reviewed by them, because they
+      # aren't on the default branch yet. Skip loudly, and never fall back to the
+      # PR's own copy: that would let a PR change what reviews it.
+      - name: Check the default branch has the review tools
+        id: tools
+        run: |
+          if [ -f .github/scripts/render_prompt.py ] && [ -f .github/actions/setup-agent/action.yml ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=Review skipped::The default branch has no review tools yet. PR #$PR_NUMBER needs a human review."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build prompt
+        if: steps.tools.outputs.ready == 'true'
+        id: prompt
+        env:
+          PROMPT_REPO: ${{ github.repository }}
+          PROMPT_PR_NUMBER: ${{ env.PR_NUMBER }}
+        run: python3 .github/scripts/render_prompt.py review
+      - id: agent
+        if: steps.tools.outputs.ready == 'true'
+        uses: ./.github/actions/setup-agent
+        with:
+          workflow: review
+      # GitHub's API returns no file list for very large diffs, and the review
+      # action fails on that. Skip loudly instead. Any other probe result runs
+      # the review.
+      - name: Check the diff is small enough to fetch
+        if: steps.tools.outputs.ready == 'true'
+        id: size
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -uo pipefail
+          # shellcheck disable=SC2016  # $owner etc. are GraphQL variables, not shell
+          verdict=$(gh api graphql -F owner="${REPO%/*}" -F name="${REPO#*/}" -F pr="$PR_NUMBER" \
+            -f query='query($owner:String!,$name:String!,$pr:Int!){repository(owner:$owner,name:$name){pullRequest(number:$pr){files(first:100){nodes{path}}}}}' \
+            --jq 'if .data.repository.pullRequest == null then "PR_NULL" elif .data.repository.pullRequest.files == null then "FILES_NULL" else "FILES_OK" end' || true)
+          if [ "$verdict" = "FILES_NULL" ]; then
+            echo "::notice title=Review skipped::The diff of PR #$PR_NUMBER is too large for the API to list. It needs a human review."
+            echo "oversized=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "oversized=false" >> "$GITHUB_OUTPUT"
+          fi
+      - id: run
+        if: steps.tools.outputs.ready == 'true' && steps.size.outputs.oversized != 'true'
+        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          # The API key is preferred: it has no weekly cap. The subscription
+          # token is used only when no API key is set.
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.ANTHROPIC_API_KEY == '' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          path_to_claude_code_executable: ${{ steps.agent.outputs.executable }}
+          github_token: ${{ github.token }}
+          prompt: ${{ steps.prompt.outputs.prompt }}
+          # PRs opened by the agent App or the Claude App are reviewed too.
+          allowed_bots: "*"
+          claude_args: |
+            --model ${{ steps.agent.outputs.model }}
+            --max-turns ${{ steps.agent.outputs.max-turns }}
+            --allowedTools "Bash(gh pr diff:*),Bash(gh pr view:*),Bash(just validate:*),Bash(just validate-schema:*),Bash(just fetch-reference:*),Bash(just term-info:*),Bash(just search-term:*),Bash(just term-ancestors:*),Bash(just term-parents:*),Bash(just term-under:*),Read,Glob,Grep"
+            --json-schema '{"type":"object","properties":{"verdict":{"enum":["approve","request_changes"]},"checklist":{"type":"object","properties":{"qc":{"type":"boolean"},"quotes":{"type":"boolean"},"terms":{"type":"boolean"},"scope":{"type":"boolean"},"history":{"type":"boolean"}},"required":["qc","quotes","terms","scope","history"],"additionalProperties":false},"summary":{"type":"string","minLength":1,"maxLength":6000},"findings":{"type":"array","maxItems":50,"items":{"type":"object","properties":{"severity":{"enum":["error","warning","note"]},"path":{"type":"string","maxLength":300},"line":{"type":"integer","minimum":1},"body":{"type":"string","minLength":1,"maxLength":3000}},"required":["severity","body"],"additionalProperties":false}}},"required":["verdict","checklist","summary","findings"],"additionalProperties":false}'
+      - name: Check the agent run
+        if: always() && steps.agent.outcome == 'success' && steps.size.outputs.oversized != 'true'
+        env:
+          EXECUTION_FILE: ${{ steps.run.outputs.execution_file }}
+        run: python3 .github/scripts/check_agent_run.py "$EXECUTION_FILE" "Review"
+
+  # No model and no PR code run here. The review is checked against the PR as
+  # it is now: still open, still same-repository, still at the reviewed commit.
+  publish:
+    needs: review
+    if: needs.review.outputs.review != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+      - name: Reviewer App token
+        id: reviewer
+        continue-on-error: true
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.MECH_REVIEWER_APP_ID }}
+          private-key: ${{ secrets.MECH_REVIEWER_PRIVATE_KEY }}
+          permission-pull-requests: write
+      - uses: actions/github-script@v9
+        env:
+          REVIEW: ${{ needs.review.outputs.review }}
+          PR: ${{ needs.review.outputs.pr }}
+          SHA: ${{ needs.review.outputs.sha }}
+        with:
+          github-token: ${{ steps.reviewer.outputs.token || github.token }}
+          script: |
+            const { publish } = require('./.github/scripts/review-publish.js');
+            await publish(github, context.repo, JSON.parse(process.env.REVIEW), {
+              pr: Number(process.env.PR), sha: process.env.SHA, log: core.info, warn: core.warning,
+            });
+
