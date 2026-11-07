@@ -1,5 +1,5 @@
 ---
-site_name: "dentmatmech"
+site_name: "dentamech"
 theme:
   # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
@@ -57,7 +57,7 @@ markdown_extensions:
   - md_in_html
 
 watch:
-  - src/dentmatmech/schema
+  - src/dentamech/schema
 
 nav:
   - Home: index.md
@@ -72,8 +72,8 @@ nav:
 exclude_docs: |
   /templates-linkml/
 
-site_url: https://caufieldjh.github.io/dentmatmech
-repo_url: https://github.com/caufieldjh/dentmatmech
+site_url: https://caufieldjh.github.io/dentamech
+repo_url: https://github.com/caufieldjh/dentamech
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

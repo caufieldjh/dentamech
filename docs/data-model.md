@@ -1,6 +1,6 @@
 # Data model
 
-Every file in `kb/materials/` is one `DentalMaterial`. The schema lives in `src/dentmatmech/schema/dentmatmech.yaml`; the generated reference is under [Schema](elements/index.md). This page walks the sections in the order they appear in a file.
+Every file in `kb/materials/` is one `DentalMaterial`. The schema lives in `src/dentamech/schema/dentamech.yaml`; the generated reference is under [Schema](elements/index.md). This page walks the sections in the order they appear in a file.
 
 ## Identity
 

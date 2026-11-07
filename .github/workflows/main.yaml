@@ -59,7 +59,7 @@ jobs:
         run: just gen-python
 
       - name: Schema generation smoke test
-        run: uv run gen-project -d tmp src/dentmatmech/schema/dentmatmech.yaml
+        run: uv run gen-project -d tmp src/dentamech/schema/dentamech.yaml
 
       - name: Validate every material file (schema + ontology terms + links)
         run: just validate-all

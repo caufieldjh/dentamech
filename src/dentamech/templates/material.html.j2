@@ -1,7 +1,7 @@
 {% extends "_base.html.j2" %}
 {% from "_evidence.html.j2" import evidence, descriptor with context %}
 {% set root = "../../" %}
-{% block title %}{{ m.name }} · dentmatmech{% endblock %}
+{% block title %}{{ m.name }} · dentamech{% endblock %}
 {% block body %}
 <h1>{{ m.name }}</h1>
 <div class="pills">
@@ -151,5 +151,5 @@
 
 {% if m.see_also %}<h2>See also</h2><ul class="plain">{% for u in m.see_also %}<li><a href="{{ u }}">{{ u }}</a></li>{% endfor %}</ul>{% endif %}
 {% if m.notes %}<h2>Curator notes</h2>{{ m.notes|md|safe }}{% endif %}
-<p class="muted" style="margin-top:2rem">Source file: <a href="https://github.com/caufieldjh/dentmatmech/blob/main/kb/materials/{{ slug }}.yaml">kb/materials/{{ slug }}.yaml</a></p>
+<p class="muted" style="margin-top:2rem">Source file: <a href="https://github.com/caufieldjh/dentamech/blob/main/kb/materials/{{ slug }}.yaml">kb/materials/{{ slug }}.yaml</a></p>
 {% endblock %}

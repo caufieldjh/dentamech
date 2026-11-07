@@ -5,9 +5,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from dentmatmech.export import build_records, export_browser_data
-from dentmatmech.render import reference_url, render_all, submission_url, term_url
-from dentmatmech.yaml_io import load_kb, slugify
+from dentamech.export import build_records, export_browser_data
+from dentamech.render import reference_url, render_all, submission_url, term_url
+from dentamech.yaml_io import load_kb, slugify
 
 
 def test_url_helpers():

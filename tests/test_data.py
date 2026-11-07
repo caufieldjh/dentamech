@@ -15,7 +15,7 @@ import pytest
 from linkml.validator import Validator
 from linkml.validator.plugins import JsonschemaValidationPlugin
 
-from dentmatmech.yaml_io import KB_DIR, SCHEMA_PATH, safe_load_path, slugify
+from dentamech.yaml_io import KB_DIR, SCHEMA_PATH, safe_load_path, slugify
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID_DIR = ROOT / "tests" / "data" / "valid"

@@ -6,10 +6,10 @@
 
 # Note:
 # - just works fine with quoted variables of dot-env files like this one
-LINKML_SCHEMA_NAME="dentmatmech"
+LINKML_SCHEMA_NAME="dentamech"
 LINKML_SCHEMA_AUTHOR="Harry Caufield <jhc@lbl.gov>"
 LINKML_SCHEMA_DESCRIPTION="A Dental Materials Knowledge Base"
-LINKML_SCHEMA_SOURCE_DIR="src/dentmatmech/schema"
+LINKML_SCHEMA_SOURCE_DIR="src/dentamech/schema"
 
 ###### linkml generator variables, used by justfile
 

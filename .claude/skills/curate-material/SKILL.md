@@ -20,7 +20,7 @@ Materials are seeded from OHD, so the file almost always exists already:
 
 ```bash
 ls kb/materials/ | grep -i "<name fragment>"
-uv run dentmatmech list | grep -i "<name fragment>"
+uv run dentamech list | grep -i "<name fragment>"
 ```
 
 If it does not exist, the material is not in OHD's `dental restoration material`
@@ -42,8 +42,8 @@ Create a worktree or branch off `origin/main`. Confirm with `pwd` that you are
 in it before writing anything. Root every file operation there.
 
 ```bash
-git worktree add ../dentmatmech-<slug> -b curate/<slug> origin/main
-cd ../dentmatmech-<slug>
+git worktree add ../dentamech-<slug> -b curate/<slug> origin/main
+cd ../dentamech-<slug>
 ```
 
 ## Step 3. Deep research (REQUIRED)
@@ -217,7 +217,7 @@ gh pr create --draft --title "Curate <Material name>" --body "<what was filled, 
 ```
 
 Link the issue with `Closes #N` in the body when one exists. Then run the
-`dentmatmech-pr-review` skill in a fresh subagent as a first review before
+`dentamech-pr-review` skill in a fresh subagent as a first review before
 marking the PR ready.
 
 ## Common mistakes

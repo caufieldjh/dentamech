@@ -1,9 +1,9 @@
-# Auto generated from dentmatmech.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-04T16:39:35
-# Schema: dentmatmech
+# Auto generated from dentamech.yaml by pythongen.py version: 0.0.1
+# Generation date: 2026-11-07T13:42:29
+# Schema: dentamech
 #
-# id: https://w3id.org/caufieldjh/dentmatmech
-# description: Schema for the Dental Materials Knowledge Base (dentmatmech). One YAML file per material, anchored to the Oral Health and Disease Ontology (OHD) branch under OHD:0000000 "dental restoration material". Each entry records what the material is made of, how it sets, what it is used for clinically, how it performs, what can go wrong, and how regulators (FDA first) classify it and what they permit it to be used for. Every claim can carry literature or regulatory-document evidence with an exact quoted snippet, following the DisMech evidence model.
+# id: https://w3id.org/caufieldjh/dentamech
+# description: Schema for the Dental Materials Knowledge Base (dentamech). One YAML file per material, anchored to the Oral Health and Disease Ontology (OHD) branch under OHD:0000000 "dental restoration material". Each entry records what the material is made of, how it sets, what it is used for clinically, how it performs, what can go wrong, and how regulators (FDA first) classify it and what they permit it to be used for. Every claim can carry literature or regulatory-document evidence with an exact quoted snippet, following the DisMech evidence model.
 # license: BSD-3-Clause
 
 import dataclasses
@@ -76,11 +76,11 @@ OHD = CurieNamespace('OHD', 'http://purl.obolibrary.org/obo/OHD_')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 PMID = CurieNamespace('PMID', 'http://www.ncbi.nlm.nih.gov/pubmed/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
-DENTMATMECH = CurieNamespace('dentmatmech', 'https://w3id.org/caufieldjh/dentmatmech/')
+DENTAMECH = CurieNamespace('dentamech', 'https://w3id.org/caufieldjh/dentamech/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = DENTMATMECH
+DEFAULT_ = DENTAMECH
 
 
 # Types
@@ -89,7 +89,7 @@ class ReferenceIdentifier(String):
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "ReferenceIdentifier"
-    type_model_uri = DENTMATMECH.ReferenceIdentifier
+    type_model_uri = DENTAMECH.ReferenceIdentifier
 
 
 # Class references
@@ -132,10 +132,10 @@ class Term(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["Term"]
-    class_class_curie: ClassVar[str] = "dentmatmech:Term"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["Term"]
+    class_class_curie: ClassVar[str] = "dentamech:Term"
     class_name: ClassVar[str] = "Term"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.Term
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.Term
 
     id: Union[str, URIorCURIE] = None
     label: str = None
@@ -161,10 +161,10 @@ class Descriptor(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["Descriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:Descriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["Descriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:Descriptor"
     class_name: ClassVar[str] = "Descriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.Descriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.Descriptor
 
     preferred_term: Optional[str] = None
     description: Optional[str] = None
@@ -190,10 +190,10 @@ class DentalMaterialDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["DentalMaterialDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:DentalMaterialDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["DentalMaterialDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:DentalMaterialDescriptor"
     class_name: ClassVar[str] = "DentalMaterialDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.DentalMaterialDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.DentalMaterialDescriptor
 
     term: Union[dict, Term] = None
 
@@ -213,10 +213,10 @@ class DentalProcedureDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["DentalProcedureDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:DentalProcedureDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["DentalProcedureDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:DentalProcedureDescriptor"
     class_name: ClassVar[str] = "DentalProcedureDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.DentalProcedureDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.DentalProcedureDescriptor
 
     term: Optional[Union[dict, Term]] = None
 
@@ -234,10 +234,10 @@ class ChemicalEntityDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["ChemicalEntityDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:ChemicalEntityDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["ChemicalEntityDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:ChemicalEntityDescriptor"
     class_name: ClassVar[str] = "ChemicalEntityDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.ChemicalEntityDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.ChemicalEntityDescriptor
 
     term: Optional[Union[dict, Term]] = None
 
@@ -255,10 +255,10 @@ class AnatomicalEntityDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["AnatomicalEntityDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:AnatomicalEntityDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["AnatomicalEntityDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:AnatomicalEntityDescriptor"
     class_name: ClassVar[str] = "AnatomicalEntityDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.AnatomicalEntityDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.AnatomicalEntityDescriptor
 
     term: Optional[Union[dict, Term]] = None
 
@@ -276,10 +276,10 @@ class PhenotypeDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["PhenotypeDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:PhenotypeDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["PhenotypeDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:PhenotypeDescriptor"
     class_name: ClassVar[str] = "PhenotypeDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.PhenotypeDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.PhenotypeDescriptor
 
     term: Optional[Union[dict, Term]] = None
 
@@ -297,10 +297,10 @@ class QualityDescriptor(Descriptor):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["QualityDescriptor"]
-    class_class_curie: ClassVar[str] = "dentmatmech:QualityDescriptor"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["QualityDescriptor"]
+    class_class_curie: ClassVar[str] = "dentamech:QualityDescriptor"
     class_name: ClassVar[str] = "QualityDescriptor"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.QualityDescriptor
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.QualityDescriptor
 
     term: Optional[Union[dict, Term]] = None
 
@@ -318,10 +318,10 @@ class EvidenceItem(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["EvidenceItem"]
-    class_class_curie: ClassVar[str] = "dentmatmech:EvidenceItem"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["EvidenceItem"]
+    class_class_curie: ClassVar[str] = "dentamech:EvidenceItem"
     class_name: ClassVar[str] = "EvidenceItem"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.EvidenceItem
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.EvidenceItem
 
     reference: Union[str, ReferenceIdentifier] = None
     supports: Union[str, "EvidenceItemSupportEnum"] = None
@@ -363,10 +363,10 @@ class Mapping(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["Mapping"]
-    class_class_curie: ClassVar[str] = "dentmatmech:Mapping"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["Mapping"]
+    class_class_curie: ClassVar[str] = "dentamech:Mapping"
     class_name: ClassVar[str] = "Mapping"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.Mapping
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.Mapping
 
     id: Union[str, URIorCURIE] = None
     label: str = None
@@ -402,10 +402,10 @@ class Component(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["Component"]
-    class_class_curie: ClassVar[str] = "dentmatmech:Component"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["Component"]
+    class_class_curie: ClassVar[str] = "dentamech:Component"
     class_name: ClassVar[str] = "Component"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.Component
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.Component
 
     name: Union[str, ComponentName] = None
     description: Optional[str] = None
@@ -444,10 +444,10 @@ class MaterialProperty(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["MaterialProperty"]
-    class_class_curie: ClassVar[str] = "dentmatmech:MaterialProperty"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["MaterialProperty"]
+    class_class_curie: ClassVar[str] = "dentamech:MaterialProperty"
     class_name: ClassVar[str] = "MaterialProperty"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.MaterialProperty
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.MaterialProperty
 
     name: Union[str, MaterialPropertyName] = None
     property_type: Union[str, "PropertyTypeEnum"] = None
@@ -500,10 +500,10 @@ class ClinicalUse(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["ClinicalUse"]
-    class_class_curie: ClassVar[str] = "dentmatmech:ClinicalUse"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["ClinicalUse"]
+    class_class_curie: ClassVar[str] = "dentamech:ClinicalUse"
     class_name: ClassVar[str] = "ClinicalUse"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.ClinicalUse
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.ClinicalUse
 
     name: Union[str, ClinicalUseName] = None
     use_context: Union[str, "ClinicalUseContextEnum"] = None
@@ -554,10 +554,10 @@ class ClinicalPerformance(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["ClinicalPerformance"]
-    class_class_curie: ClassVar[str] = "dentmatmech:ClinicalPerformance"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["ClinicalPerformance"]
+    class_class_curie: ClassVar[str] = "dentamech:ClinicalPerformance"
     class_name: ClassVar[str] = "ClinicalPerformance"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.ClinicalPerformance
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.ClinicalPerformance
 
     name: Union[str, ClinicalPerformanceName] = None
     measure_type: Union[str, "PerformanceMeasureEnum"] = None
@@ -610,10 +610,10 @@ class AdverseEffect(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["AdverseEffect"]
-    class_class_curie: ClassVar[str] = "dentmatmech:AdverseEffect"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["AdverseEffect"]
+    class_class_curie: ClassVar[str] = "dentamech:AdverseEffect"
     class_name: ClassVar[str] = "AdverseEffect"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.AdverseEffect
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.AdverseEffect
 
     name: Union[str, AdverseEffectName] = None
     effect_category: Union[str, "AdverseEffectCategoryEnum"] = None
@@ -654,10 +654,10 @@ class ApprovedUse(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["ApprovedUse"]
-    class_class_curie: ClassVar[str] = "dentmatmech:ApprovedUse"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["ApprovedUse"]
+    class_class_curie: ClassVar[str] = "dentamech:ApprovedUse"
     class_name: ClassVar[str] = "ApprovedUse"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.ApprovedUse
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.ApprovedUse
 
     name: Union[str, ApprovedUseName] = None
     use_context: Union[str, "ClinicalUseContextEnum"] = None
@@ -698,10 +698,10 @@ class RegulatoryStatus(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["RegulatoryStatus"]
-    class_class_curie: ClassVar[str] = "dentmatmech:RegulatoryStatus"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["RegulatoryStatus"]
+    class_class_curie: ClassVar[str] = "dentamech:RegulatoryStatus"
     class_name: ClassVar[str] = "RegulatoryStatus"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.RegulatoryStatus
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.RegulatoryStatus
 
     agency: Union[str, "RegulatoryAgencyEnum"] = None
     status: Union[str, "RegulatoryStatusEnum"] = None
@@ -785,10 +785,10 @@ class RegulatorySubmission(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["RegulatorySubmission"]
-    class_class_curie: ClassVar[str] = "dentmatmech:RegulatorySubmission"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["RegulatorySubmission"]
+    class_class_curie: ClassVar[str] = "dentamech:RegulatorySubmission"
     class_name: ClassVar[str] = "RegulatorySubmission"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.RegulatorySubmission
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.RegulatorySubmission
 
     agency: Union[str, "RegulatoryAgencyEnum"] = None
     submission_number: Optional[str] = None
@@ -843,10 +843,10 @@ class CommercialProduct(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["CommercialProduct"]
-    class_class_curie: ClassVar[str] = "dentmatmech:CommercialProduct"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["CommercialProduct"]
+    class_class_curie: ClassVar[str] = "dentamech:CommercialProduct"
     class_name: ClassVar[str] = "CommercialProduct"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.CommercialProduct
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.CommercialProduct
 
     name: Union[str, CommercialProductName] = None
     manufacturer: Optional[str] = None
@@ -882,10 +882,10 @@ class Standard(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["Standard"]
-    class_class_curie: ClassVar[str] = "dentmatmech:Standard"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["Standard"]
+    class_class_curie: ClassVar[str] = "dentamech:Standard"
     class_name: ClassVar[str] = "Standard"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.Standard
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.Standard
 
     identifier: str = None
     title: Optional[str] = None
@@ -917,10 +917,10 @@ class DentalMaterial(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DENTMATMECH["DentalMaterial"]
-    class_class_curie: ClassVar[str] = "dentmatmech:DentalMaterial"
+    class_class_uri: ClassVar[URIRef] = DENTAMECH["DentalMaterial"]
+    class_class_curie: ClassVar[str] = "dentamech:DentalMaterial"
     class_name: ClassVar[str] = "DentalMaterial"
-    class_model_uri: ClassVar[URIRef] = DENTMATMECH.DentalMaterial
+    class_model_uri: ClassVar[URIRef] = DENTAMECH.DentalMaterial
 
     name: Union[str, DentalMaterialName] = None
     material_term: Union[dict, DentalMaterialDescriptor] = None
@@ -1730,289 +1730,289 @@ class QualityTerm(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.name = Slot(uri=DENTMATMECH.name, name="name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.name, domain=None, range=URIRef)
+slots.name = Slot(uri=DENTAMECH.name, name="name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.name, domain=None, range=URIRef)
 
-slots.description = Slot(uri=DENTMATMECH.description, name="description", curie=DENTMATMECH.curie('description'),
-                   model_uri=DENTMATMECH.description, domain=None, range=Optional[str])
+slots.description = Slot(uri=DENTAMECH.description, name="description", curie=DENTAMECH.curie('description'),
+                   model_uri=DENTAMECH.description, domain=None, range=Optional[str])
 
-slots.synonyms = Slot(uri=DENTMATMECH.synonyms, name="synonyms", curie=DENTMATMECH.curie('synonyms'),
-                   model_uri=DENTMATMECH.synonyms, domain=None, range=Optional[Union[str, list[str]]])
+slots.synonyms = Slot(uri=DENTAMECH.synonyms, name="synonyms", curie=DENTAMECH.curie('synonyms'),
+                   model_uri=DENTAMECH.synonyms, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.creation_date = Slot(uri=DENTMATMECH.creation_date, name="creation_date", curie=DENTMATMECH.curie('creation_date'),
-                   model_uri=DENTMATMECH.creation_date, domain=None, range=Optional[str],
+slots.creation_date = Slot(uri=DENTAMECH.creation_date, name="creation_date", curie=DENTAMECH.curie('creation_date'),
+                   model_uri=DENTAMECH.creation_date, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+\-]\d{2}:\d{2})$'))
 
-slots.curation_status = Slot(uri=DENTMATMECH.curation_status, name="curation_status", curie=DENTMATMECH.curie('curation_status'),
-                   model_uri=DENTMATMECH.curation_status, domain=None, range=Optional[Union[str, "CurationStatusEnum"]])
+slots.curation_status = Slot(uri=DENTAMECH.curation_status, name="curation_status", curie=DENTAMECH.curie('curation_status'),
+                   model_uri=DENTAMECH.curation_status, domain=None, range=Optional[Union[str, "CurationStatusEnum"]])
 
-slots.notes = Slot(uri=DENTMATMECH.notes, name="notes", curie=DENTMATMECH.curie('notes'),
-                   model_uri=DENTMATMECH.notes, domain=None, range=Optional[str])
+slots.notes = Slot(uri=DENTAMECH.notes, name="notes", curie=DENTAMECH.curie('notes'),
+                   model_uri=DENTAMECH.notes, domain=None, range=Optional[str])
 
-slots.id = Slot(uri=DENTMATMECH.id, name="id", curie=DENTMATMECH.curie('id'),
-                   model_uri=DENTMATMECH.id, domain=None, range=Union[str, URIorCURIE])
+slots.id = Slot(uri=DENTAMECH.id, name="id", curie=DENTAMECH.curie('id'),
+                   model_uri=DENTAMECH.id, domain=None, range=Union[str, URIorCURIE])
 
-slots.label = Slot(uri=DENTMATMECH.label, name="label", curie=DENTMATMECH.curie('label'),
-                   model_uri=DENTMATMECH.label, domain=None, range=str)
+slots.label = Slot(uri=DENTAMECH.label, name="label", curie=DENTAMECH.curie('label'),
+                   model_uri=DENTAMECH.label, domain=None, range=str)
 
-slots.preferred_term = Slot(uri=DENTMATMECH.preferred_term, name="preferred_term", curie=DENTMATMECH.curie('preferred_term'),
-                   model_uri=DENTMATMECH.preferred_term, domain=None, range=Optional[str])
+slots.preferred_term = Slot(uri=DENTAMECH.preferred_term, name="preferred_term", curie=DENTAMECH.curie('preferred_term'),
+                   model_uri=DENTAMECH.preferred_term, domain=None, range=Optional[str])
 
-slots.term = Slot(uri=DENTMATMECH.term, name="term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.term, domain=None, range=Optional[Union[dict, Term]])
+slots.term = Slot(uri=DENTAMECH.term, name="term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.term, domain=None, range=Optional[Union[dict, Term]])
 
-slots.material_term = Slot(uri=DENTMATMECH.material_term, name="material_term", curie=DENTMATMECH.curie('material_term'),
-                   model_uri=DENTMATMECH.material_term, domain=None, range=Union[dict, DentalMaterialDescriptor])
+slots.material_term = Slot(uri=DENTAMECH.material_term, name="material_term", curie=DENTAMECH.curie('material_term'),
+                   model_uri=DENTAMECH.material_term, domain=None, range=Union[dict, DentalMaterialDescriptor])
 
-slots.category = Slot(uri=DENTMATMECH.category, name="category", curie=DENTMATMECH.curie('category'),
-                   model_uri=DENTMATMECH.category, domain=None, range=Union[str, "MaterialCategoryEnum"])
+slots.category = Slot(uri=DENTAMECH.category, name="category", curie=DENTAMECH.curie('category'),
+                   model_uri=DENTAMECH.category, domain=None, range=Union[str, "MaterialCategoryEnum"])
 
-slots.parents = Slot(uri=DENTMATMECH.parents, name="parents", curie=DENTMATMECH.curie('parents'),
-                   model_uri=DENTMATMECH.parents, domain=None, range=Optional[Union[str, list[str]]])
+slots.parents = Slot(uri=DENTAMECH.parents, name="parents", curie=DENTAMECH.curie('parents'),
+                   model_uri=DENTAMECH.parents, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.setting_mechanisms = Slot(uri=DENTMATMECH.setting_mechanisms, name="setting_mechanisms", curie=DENTMATMECH.curie('setting_mechanisms'),
-                   model_uri=DENTMATMECH.setting_mechanisms, domain=None, range=Optional[Union[Union[str, "SettingMechanismEnum"], list[Union[str, "SettingMechanismEnum"]]]])
+slots.setting_mechanisms = Slot(uri=DENTAMECH.setting_mechanisms, name="setting_mechanisms", curie=DENTAMECH.curie('setting_mechanisms'),
+                   model_uri=DENTAMECH.setting_mechanisms, domain=None, range=Optional[Union[Union[str, "SettingMechanismEnum"], list[Union[str, "SettingMechanismEnum"]]]])
 
-slots.mappings = Slot(uri=DENTMATMECH.mappings, name="mappings", curie=DENTMATMECH.curie('mappings'),
-                   model_uri=DENTMATMECH.mappings, domain=None, range=Optional[Union[Union[dict, Mapping], list[Union[dict, Mapping]]]])
+slots.mappings = Slot(uri=DENTAMECH.mappings, name="mappings", curie=DENTAMECH.curie('mappings'),
+                   model_uri=DENTAMECH.mappings, domain=None, range=Optional[Union[Union[dict, Mapping], list[Union[dict, Mapping]]]])
 
-slots.predicate = Slot(uri=DENTMATMECH.predicate, name="predicate", curie=DENTMATMECH.curie('predicate'),
-                   model_uri=DENTMATMECH.predicate, domain=None, range=Union[str, "MappingPredicateEnum"])
+slots.predicate = Slot(uri=DENTAMECH.predicate, name="predicate", curie=DENTAMECH.curie('predicate'),
+                   model_uri=DENTAMECH.predicate, domain=None, range=Union[str, "MappingPredicateEnum"])
 
-slots.source = Slot(uri=DENTMATMECH.source, name="source", curie=DENTMATMECH.curie('source'),
-                   model_uri=DENTMATMECH.source, domain=None, range=Optional[str])
+slots.source = Slot(uri=DENTAMECH.source, name="source", curie=DENTAMECH.curie('source'),
+                   model_uri=DENTAMECH.source, domain=None, range=Optional[str])
 
-slots.see_also = Slot(uri=DENTMATMECH.see_also, name="see_also", curie=DENTMATMECH.curie('see_also'),
-                   model_uri=DENTMATMECH.see_also, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
+slots.see_also = Slot(uri=DENTAMECH.see_also, name="see_also", curie=DENTAMECH.curie('see_also'),
+                   model_uri=DENTAMECH.see_also, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
 
-slots.composition = Slot(uri=DENTMATMECH.composition, name="composition", curie=DENTMATMECH.curie('composition'),
-                   model_uri=DENTMATMECH.composition, domain=None, range=Optional[Union[dict[Union[str, ComponentName], Union[dict, Component]], list[Union[dict, Component]]]])
+slots.composition = Slot(uri=DENTAMECH.composition, name="composition", curie=DENTAMECH.curie('composition'),
+                   model_uri=DENTAMECH.composition, domain=None, range=Optional[Union[dict[Union[str, ComponentName], Union[dict, Component]], list[Union[dict, Component]]]])
 
-slots.role = Slot(uri=DENTMATMECH.role, name="role", curie=DENTMATMECH.curie('role'),
-                   model_uri=DENTMATMECH.role, domain=None, range=Optional[Union[str, "ComponentRoleEnum"]])
+slots.role = Slot(uri=DENTAMECH.role, name="role", curie=DENTAMECH.curie('role'),
+                   model_uri=DENTAMECH.role, domain=None, range=Optional[Union[str, "ComponentRoleEnum"]])
 
-slots.chemical = Slot(uri=DENTMATMECH.chemical, name="chemical", curie=DENTMATMECH.curie('chemical'),
-                   model_uri=DENTMATMECH.chemical, domain=None, range=Optional[Union[dict, ChemicalEntityDescriptor]])
+slots.chemical = Slot(uri=DENTAMECH.chemical, name="chemical", curie=DENTAMECH.curie('chemical'),
+                   model_uri=DENTAMECH.chemical, domain=None, range=Optional[Union[dict, ChemicalEntityDescriptor]])
 
-slots.proportion = Slot(uri=DENTMATMECH.proportion, name="proportion", curie=DENTMATMECH.curie('proportion'),
-                   model_uri=DENTMATMECH.proportion, domain=None, range=Optional[str])
+slots.proportion = Slot(uri=DENTAMECH.proportion, name="proportion", curie=DENTAMECH.curie('proportion'),
+                   model_uri=DENTAMECH.proportion, domain=None, range=Optional[str])
 
-slots.properties = Slot(uri=DENTMATMECH.properties, name="properties", curie=DENTMATMECH.curie('properties'),
-                   model_uri=DENTMATMECH.properties, domain=None, range=Optional[Union[dict[Union[str, MaterialPropertyName], Union[dict, MaterialProperty]], list[Union[dict, MaterialProperty]]]])
+slots.properties = Slot(uri=DENTAMECH.properties, name="properties", curie=DENTAMECH.curie('properties'),
+                   model_uri=DENTAMECH.properties, domain=None, range=Optional[Union[dict[Union[str, MaterialPropertyName], Union[dict, MaterialProperty]], list[Union[dict, MaterialProperty]]]])
 
-slots.property_type = Slot(uri=DENTMATMECH.property_type, name="property_type", curie=DENTMATMECH.curie('property_type'),
-                   model_uri=DENTMATMECH.property_type, domain=None, range=Union[str, "PropertyTypeEnum"])
+slots.property_type = Slot(uri=DENTAMECH.property_type, name="property_type", curie=DENTAMECH.curie('property_type'),
+                   model_uri=DENTAMECH.property_type, domain=None, range=Union[str, "PropertyTypeEnum"])
 
-slots.quality_term = Slot(uri=DENTMATMECH.quality_term, name="quality_term", curie=DENTMATMECH.curie('quality_term'),
-                   model_uri=DENTMATMECH.quality_term, domain=None, range=Optional[Union[dict, QualityDescriptor]])
+slots.quality_term = Slot(uri=DENTAMECH.quality_term, name="quality_term", curie=DENTAMECH.curie('quality_term'),
+                   model_uri=DENTAMECH.quality_term, domain=None, range=Optional[Union[dict, QualityDescriptor]])
 
-slots.value = Slot(uri=DENTMATMECH.value, name="value", curie=DENTMATMECH.curie('value'),
-                   model_uri=DENTMATMECH.value, domain=None, range=Optional[str])
+slots.value = Slot(uri=DENTAMECH.value, name="value", curie=DENTAMECH.curie('value'),
+                   model_uri=DENTAMECH.value, domain=None, range=Optional[str])
 
-slots.unit = Slot(uri=DENTMATMECH.unit, name="unit", curie=DENTMATMECH.curie('unit'),
-                   model_uri=DENTMATMECH.unit, domain=None, range=Optional[str])
+slots.unit = Slot(uri=DENTAMECH.unit, name="unit", curie=DENTAMECH.curie('unit'),
+                   model_uri=DENTAMECH.unit, domain=None, range=Optional[str])
 
-slots.test_method = Slot(uri=DENTMATMECH.test_method, name="test_method", curie=DENTMATMECH.curie('test_method'),
-                   model_uri=DENTMATMECH.test_method, domain=None, range=Optional[str])
+slots.test_method = Slot(uri=DENTAMECH.test_method, name="test_method", curie=DENTAMECH.curie('test_method'),
+                   model_uri=DENTAMECH.test_method, domain=None, range=Optional[str])
 
-slots.conditions = Slot(uri=DENTMATMECH.conditions, name="conditions", curie=DENTMATMECH.curie('conditions'),
-                   model_uri=DENTMATMECH.conditions, domain=None, range=Optional[str])
+slots.conditions = Slot(uri=DENTAMECH.conditions, name="conditions", curie=DENTAMECH.curie('conditions'),
+                   model_uri=DENTAMECH.conditions, domain=None, range=Optional[str])
 
-slots.clinical_uses = Slot(uri=DENTMATMECH.clinical_uses, name="clinical_uses", curie=DENTMATMECH.curie('clinical_uses'),
-                   model_uri=DENTMATMECH.clinical_uses, domain=None, range=Optional[Union[dict[Union[str, ClinicalUseName], Union[dict, ClinicalUse]], list[Union[dict, ClinicalUse]]]])
+slots.clinical_uses = Slot(uri=DENTAMECH.clinical_uses, name="clinical_uses", curie=DENTAMECH.curie('clinical_uses'),
+                   model_uri=DENTAMECH.clinical_uses, domain=None, range=Optional[Union[dict[Union[str, ClinicalUseName], Union[dict, ClinicalUse]], list[Union[dict, ClinicalUse]]]])
 
-slots.use_context = Slot(uri=DENTMATMECH.use_context, name="use_context", curie=DENTMATMECH.curie('use_context'),
-                   model_uri=DENTMATMECH.use_context, domain=None, range=Union[str, "ClinicalUseContextEnum"])
+slots.use_context = Slot(uri=DENTAMECH.use_context, name="use_context", curie=DENTAMECH.curie('use_context'),
+                   model_uri=DENTAMECH.use_context, domain=None, range=Union[str, "ClinicalUseContextEnum"])
 
-slots.procedure = Slot(uri=DENTMATMECH.procedure, name="procedure", curie=DENTMATMECH.curie('procedure'),
-                   model_uri=DENTMATMECH.procedure, domain=None, range=Optional[Union[dict, DentalProcedureDescriptor]])
+slots.procedure = Slot(uri=DENTAMECH.procedure, name="procedure", curie=DENTAMECH.curie('procedure'),
+                   model_uri=DENTAMECH.procedure, domain=None, range=Optional[Union[dict, DentalProcedureDescriptor]])
 
-slots.anatomical_site = Slot(uri=DENTMATMECH.anatomical_site, name="anatomical_site", curie=DENTMATMECH.curie('anatomical_site'),
-                   model_uri=DENTMATMECH.anatomical_site, domain=None, range=Optional[Union[dict, AnatomicalEntityDescriptor]])
+slots.anatomical_site = Slot(uri=DENTAMECH.anatomical_site, name="anatomical_site", curie=DENTAMECH.curie('anatomical_site'),
+                   model_uri=DENTAMECH.anatomical_site, domain=None, range=Optional[Union[dict, AnatomicalEntityDescriptor]])
 
-slots.indications = Slot(uri=DENTMATMECH.indications, name="indications", curie=DENTMATMECH.curie('indications'),
-                   model_uri=DENTMATMECH.indications, domain=None, range=Optional[Union[str, list[str]]])
+slots.indications = Slot(uri=DENTAMECH.indications, name="indications", curie=DENTAMECH.curie('indications'),
+                   model_uri=DENTAMECH.indications, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.contraindications = Slot(uri=DENTMATMECH.contraindications, name="contraindications", curie=DENTMATMECH.curie('contraindications'),
-                   model_uri=DENTMATMECH.contraindications, domain=None, range=Optional[Union[str, list[str]]])
+slots.contraindications = Slot(uri=DENTAMECH.contraindications, name="contraindications", curie=DENTAMECH.curie('contraindications'),
+                   model_uri=DENTAMECH.contraindications, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.clinical_performance = Slot(uri=DENTMATMECH.clinical_performance, name="clinical_performance", curie=DENTMATMECH.curie('clinical_performance'),
-                   model_uri=DENTMATMECH.clinical_performance, domain=None, range=Optional[Union[dict[Union[str, ClinicalPerformanceName], Union[dict, ClinicalPerformance]], list[Union[dict, ClinicalPerformance]]]])
+slots.clinical_performance = Slot(uri=DENTAMECH.clinical_performance, name="clinical_performance", curie=DENTAMECH.curie('clinical_performance'),
+                   model_uri=DENTAMECH.clinical_performance, domain=None, range=Optional[Union[dict[Union[str, ClinicalPerformanceName], Union[dict, ClinicalPerformance]], list[Union[dict, ClinicalPerformance]]]])
 
-slots.measure_type = Slot(uri=DENTMATMECH.measure_type, name="measure_type", curie=DENTMATMECH.curie('measure_type'),
-                   model_uri=DENTMATMECH.measure_type, domain=None, range=Union[str, "PerformanceMeasureEnum"])
+slots.measure_type = Slot(uri=DENTAMECH.measure_type, name="measure_type", curie=DENTAMECH.curie('measure_type'),
+                   model_uri=DENTAMECH.measure_type, domain=None, range=Union[str, "PerformanceMeasureEnum"])
 
-slots.follow_up_years = Slot(uri=DENTMATMECH.follow_up_years, name="follow_up_years", curie=DENTMATMECH.curie('follow_up_years'),
-                   model_uri=DENTMATMECH.follow_up_years, domain=None, range=Optional[float])
+slots.follow_up_years = Slot(uri=DENTAMECH.follow_up_years, name="follow_up_years", curie=DENTAMECH.curie('follow_up_years'),
+                   model_uri=DENTAMECH.follow_up_years, domain=None, range=Optional[float])
 
-slots.population = Slot(uri=DENTMATMECH.population, name="population", curie=DENTMATMECH.curie('population'),
-                   model_uri=DENTMATMECH.population, domain=None, range=Optional[str])
+slots.population = Slot(uri=DENTAMECH.population, name="population", curie=DENTAMECH.curie('population'),
+                   model_uri=DENTAMECH.population, domain=None, range=Optional[str])
 
-slots.comparator = Slot(uri=DENTMATMECH.comparator, name="comparator", curie=DENTMATMECH.curie('comparator'),
-                   model_uri=DENTMATMECH.comparator, domain=None, range=Optional[str])
+slots.comparator = Slot(uri=DENTAMECH.comparator, name="comparator", curie=DENTAMECH.curie('comparator'),
+                   model_uri=DENTAMECH.comparator, domain=None, range=Optional[str])
 
-slots.adverse_effects = Slot(uri=DENTMATMECH.adverse_effects, name="adverse_effects", curie=DENTMATMECH.curie('adverse_effects'),
-                   model_uri=DENTMATMECH.adverse_effects, domain=None, range=Optional[Union[dict[Union[str, AdverseEffectName], Union[dict, AdverseEffect]], list[Union[dict, AdverseEffect]]]])
+slots.adverse_effects = Slot(uri=DENTAMECH.adverse_effects, name="adverse_effects", curie=DENTAMECH.curie('adverse_effects'),
+                   model_uri=DENTAMECH.adverse_effects, domain=None, range=Optional[Union[dict[Union[str, AdverseEffectName], Union[dict, AdverseEffect]], list[Union[dict, AdverseEffect]]]])
 
-slots.effect_category = Slot(uri=DENTMATMECH.effect_category, name="effect_category", curie=DENTMATMECH.curie('effect_category'),
-                   model_uri=DENTMATMECH.effect_category, domain=None, range=Union[str, "AdverseEffectCategoryEnum"])
+slots.effect_category = Slot(uri=DENTAMECH.effect_category, name="effect_category", curie=DENTAMECH.curie('effect_category'),
+                   model_uri=DENTAMECH.effect_category, domain=None, range=Union[str, "AdverseEffectCategoryEnum"])
 
-slots.effect_term = Slot(uri=DENTMATMECH.effect_term, name="effect_term", curie=DENTMATMECH.curie('effect_term'),
-                   model_uri=DENTMATMECH.effect_term, domain=None, range=Optional[Union[dict, PhenotypeDescriptor]])
+slots.effect_term = Slot(uri=DENTAMECH.effect_term, name="effect_term", curie=DENTAMECH.curie('effect_term'),
+                   model_uri=DENTAMECH.effect_term, domain=None, range=Optional[Union[dict, PhenotypeDescriptor]])
 
-slots.frequency = Slot(uri=DENTMATMECH.frequency, name="frequency", curie=DENTMATMECH.curie('frequency'),
-                   model_uri=DENTMATMECH.frequency, domain=None, range=Optional[str])
+slots.frequency = Slot(uri=DENTAMECH.frequency, name="frequency", curie=DENTAMECH.curie('frequency'),
+                   model_uri=DENTAMECH.frequency, domain=None, range=Optional[str])
 
-slots.regulatory_status = Slot(uri=DENTMATMECH.regulatory_status, name="regulatory_status", curie=DENTMATMECH.curie('regulatory_status'),
-                   model_uri=DENTMATMECH.regulatory_status, domain=None, range=Optional[Union[Union[dict, RegulatoryStatus], list[Union[dict, RegulatoryStatus]]]])
+slots.regulatory_status = Slot(uri=DENTAMECH.regulatory_status, name="regulatory_status", curie=DENTAMECH.curie('regulatory_status'),
+                   model_uri=DENTAMECH.regulatory_status, domain=None, range=Optional[Union[Union[dict, RegulatoryStatus], list[Union[dict, RegulatoryStatus]]]])
 
-slots.agency = Slot(uri=DENTMATMECH.agency, name="agency", curie=DENTMATMECH.curie('agency'),
-                   model_uri=DENTMATMECH.agency, domain=None, range=Union[str, "RegulatoryAgencyEnum"])
+slots.agency = Slot(uri=DENTAMECH.agency, name="agency", curie=DENTAMECH.curie('agency'),
+                   model_uri=DENTAMECH.agency, domain=None, range=Union[str, "RegulatoryAgencyEnum"])
 
-slots.jurisdiction = Slot(uri=DENTMATMECH.jurisdiction, name="jurisdiction", curie=DENTMATMECH.curie('jurisdiction'),
-                   model_uri=DENTMATMECH.jurisdiction, domain=None, range=Optional[str])
+slots.jurisdiction = Slot(uri=DENTAMECH.jurisdiction, name="jurisdiction", curie=DENTAMECH.curie('jurisdiction'),
+                   model_uri=DENTAMECH.jurisdiction, domain=None, range=Optional[str])
 
-slots.status = Slot(uri=DENTMATMECH.status, name="status", curie=DENTMATMECH.curie('status'),
-                   model_uri=DENTMATMECH.status, domain=None, range=Union[str, "RegulatoryStatusEnum"])
+slots.status = Slot(uri=DENTAMECH.status, name="status", curie=DENTAMECH.curie('status'),
+                   model_uri=DENTAMECH.status, domain=None, range=Union[str, "RegulatoryStatusEnum"])
 
-slots.regulation_number = Slot(uri=DENTMATMECH.regulation_number, name="regulation_number", curie=DENTMATMECH.curie('regulation_number'),
-                   model_uri=DENTMATMECH.regulation_number, domain=None, range=Optional[str],
+slots.regulation_number = Slot(uri=DENTAMECH.regulation_number, name="regulation_number", curie=DENTAMECH.curie('regulation_number'),
+                   model_uri=DENTAMECH.regulation_number, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d{3}\.\d{4}$'))
 
-slots.regulation_title = Slot(uri=DENTMATMECH.regulation_title, name="regulation_title", curie=DENTMATMECH.curie('regulation_title'),
-                   model_uri=DENTMATMECH.regulation_title, domain=None, range=Optional[str])
+slots.regulation_title = Slot(uri=DENTAMECH.regulation_title, name="regulation_title", curie=DENTAMECH.curie('regulation_title'),
+                   model_uri=DENTAMECH.regulation_title, domain=None, range=Optional[str])
 
-slots.device_class = Slot(uri=DENTMATMECH.device_class, name="device_class", curie=DENTMATMECH.curie('device_class'),
-                   model_uri=DENTMATMECH.device_class, domain=None, range=Optional[Union[str, "DeviceClassEnum"]])
+slots.device_class = Slot(uri=DENTAMECH.device_class, name="device_class", curie=DENTAMECH.curie('device_class'),
+                   model_uri=DENTAMECH.device_class, domain=None, range=Optional[Union[str, "DeviceClassEnum"]])
 
-slots.product_codes = Slot(uri=DENTMATMECH.product_codes, name="product_codes", curie=DENTMATMECH.curie('product_codes'),
-                   model_uri=DENTMATMECH.product_codes, domain=None, range=Optional[Union[str, list[str]]],
+slots.product_codes = Slot(uri=DENTAMECH.product_codes, name="product_codes", curie=DENTAMECH.curie('product_codes'),
+                   model_uri=DENTAMECH.product_codes, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^[A-Z]{3}$'))
 
-slots.pathways = Slot(uri=DENTMATMECH.pathways, name="pathways", curie=DENTMATMECH.curie('pathways'),
-                   model_uri=DENTMATMECH.pathways, domain=None, range=Optional[Union[Union[str, "RegulatoryPathwayEnum"], list[Union[str, "RegulatoryPathwayEnum"]]]])
+slots.pathways = Slot(uri=DENTAMECH.pathways, name="pathways", curie=DENTAMECH.curie('pathways'),
+                   model_uri=DENTAMECH.pathways, domain=None, range=Optional[Union[Union[str, "RegulatoryPathwayEnum"], list[Union[str, "RegulatoryPathwayEnum"]]]])
 
-slots.special_controls = Slot(uri=DENTMATMECH.special_controls, name="special_controls", curie=DENTMATMECH.curie('special_controls'),
-                   model_uri=DENTMATMECH.special_controls, domain=None, range=Optional[Union[str, list[str]]])
+slots.special_controls = Slot(uri=DENTAMECH.special_controls, name="special_controls", curie=DENTAMECH.curie('special_controls'),
+                   model_uri=DENTAMECH.special_controls, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.identification = Slot(uri=DENTMATMECH.identification, name="identification", curie=DENTMATMECH.curie('identification'),
-                   model_uri=DENTMATMECH.identification, domain=None, range=Optional[str])
+slots.identification = Slot(uri=DENTAMECH.identification, name="identification", curie=DENTAMECH.curie('identification'),
+                   model_uri=DENTAMECH.identification, domain=None, range=Optional[str])
 
-slots.approved_uses = Slot(uri=DENTMATMECH.approved_uses, name="approved_uses", curie=DENTMATMECH.curie('approved_uses'),
-                   model_uri=DENTMATMECH.approved_uses, domain=None, range=Optional[Union[dict[Union[str, ApprovedUseName], Union[dict, ApprovedUse]], list[Union[dict, ApprovedUse]]]])
+slots.approved_uses = Slot(uri=DENTAMECH.approved_uses, name="approved_uses", curie=DENTAMECH.curie('approved_uses'),
+                   model_uri=DENTAMECH.approved_uses, domain=None, range=Optional[Union[dict[Union[str, ApprovedUseName], Union[dict, ApprovedUse]], list[Union[dict, ApprovedUse]]]])
 
-slots.restrictions = Slot(uri=DENTMATMECH.restrictions, name="restrictions", curie=DENTMATMECH.curie('restrictions'),
-                   model_uri=DENTMATMECH.restrictions, domain=None, range=Optional[Union[str, list[str]]])
+slots.restrictions = Slot(uri=DENTAMECH.restrictions, name="restrictions", curie=DENTAMECH.curie('restrictions'),
+                   model_uri=DENTAMECH.restrictions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.effective_date = Slot(uri=DENTMATMECH.effective_date, name="effective_date", curie=DENTMATMECH.curie('effective_date'),
-                   model_uri=DENTMATMECH.effective_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.effective_date = Slot(uri=DENTAMECH.effective_date, name="effective_date", curie=DENTAMECH.curie('effective_date'),
+                   model_uri=DENTAMECH.effective_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.source_url = Slot(uri=DENTMATMECH.source_url, name="source_url", curie=DENTMATMECH.curie('source_url'),
-                   model_uri=DENTMATMECH.source_url, domain=None, range=Optional[Union[str, URI]])
+slots.source_url = Slot(uri=DENTAMECH.source_url, name="source_url", curie=DENTAMECH.curie('source_url'),
+                   model_uri=DENTAMECH.source_url, domain=None, range=Optional[Union[str, URI]])
 
-slots.products = Slot(uri=DENTMATMECH.products, name="products", curie=DENTMATMECH.curie('products'),
-                   model_uri=DENTMATMECH.products, domain=None, range=Optional[Union[dict[Union[str, CommercialProductName], Union[dict, CommercialProduct]], list[Union[dict, CommercialProduct]]]])
+slots.products = Slot(uri=DENTAMECH.products, name="products", curie=DENTAMECH.curie('products'),
+                   model_uri=DENTAMECH.products, domain=None, range=Optional[Union[dict[Union[str, CommercialProductName], Union[dict, CommercialProduct]], list[Union[dict, CommercialProduct]]]])
 
-slots.manufacturer = Slot(uri=DENTMATMECH.manufacturer, name="manufacturer", curie=DENTMATMECH.curie('manufacturer'),
-                   model_uri=DENTMATMECH.manufacturer, domain=None, range=Optional[str])
+slots.manufacturer = Slot(uri=DENTAMECH.manufacturer, name="manufacturer", curie=DENTAMECH.curie('manufacturer'),
+                   model_uri=DENTAMECH.manufacturer, domain=None, range=Optional[str])
 
-slots.submissions = Slot(uri=DENTMATMECH.submissions, name="submissions", curie=DENTMATMECH.curie('submissions'),
-                   model_uri=DENTMATMECH.submissions, domain=None, range=Optional[Union[Union[dict, RegulatorySubmission], list[Union[dict, RegulatorySubmission]]]])
+slots.submissions = Slot(uri=DENTAMECH.submissions, name="submissions", curie=DENTAMECH.curie('submissions'),
+                   model_uri=DENTAMECH.submissions, domain=None, range=Optional[Union[Union[dict, RegulatorySubmission], list[Union[dict, RegulatorySubmission]]]])
 
-slots.submission_number = Slot(uri=DENTMATMECH.submission_number, name="submission_number", curie=DENTMATMECH.curie('submission_number'),
-                   model_uri=DENTMATMECH.submission_number, domain=None, range=Optional[str],
+slots.submission_number = Slot(uri=DENTAMECH.submission_number, name="submission_number", curie=DENTAMECH.curie('submission_number'),
+                   model_uri=DENTAMECH.submission_number, domain=None, range=Optional[str],
                    pattern=re.compile(r'^(K|P|DEN|N|H|BK)\d{6}(?:/S\d{3})?$'))
 
-slots.pathway = Slot(uri=DENTMATMECH.pathway, name="pathway", curie=DENTMATMECH.curie('pathway'),
-                   model_uri=DENTMATMECH.pathway, domain=None, range=Optional[Union[str, "RegulatoryPathwayEnum"]])
+slots.pathway = Slot(uri=DENTAMECH.pathway, name="pathway", curie=DENTAMECH.curie('pathway'),
+                   model_uri=DENTAMECH.pathway, domain=None, range=Optional[Union[str, "RegulatoryPathwayEnum"]])
 
-slots.decision = Slot(uri=DENTMATMECH.decision, name="decision", curie=DENTMATMECH.curie('decision'),
-                   model_uri=DENTMATMECH.decision, domain=None, range=Optional[Union[str, "RegulatoryStatusEnum"]])
+slots.decision = Slot(uri=DENTAMECH.decision, name="decision", curie=DENTAMECH.curie('decision'),
+                   model_uri=DENTAMECH.decision, domain=None, range=Optional[Union[str, "RegulatoryStatusEnum"]])
 
-slots.decision_date = Slot(uri=DENTMATMECH.decision_date, name="decision_date", curie=DENTMATMECH.curie('decision_date'),
-                   model_uri=DENTMATMECH.decision_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.decision_date = Slot(uri=DENTAMECH.decision_date, name="decision_date", curie=DENTAMECH.curie('decision_date'),
+                   model_uri=DENTAMECH.decision_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.product_code = Slot(uri=DENTMATMECH.product_code, name="product_code", curie=DENTMATMECH.curie('product_code'),
-                   model_uri=DENTMATMECH.product_code, domain=None, range=Optional[str],
+slots.product_code = Slot(uri=DENTAMECH.product_code, name="product_code", curie=DENTAMECH.curie('product_code'),
+                   model_uri=DENTAMECH.product_code, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-Z]{3}$'))
 
-slots.indications_for_use = Slot(uri=DENTMATMECH.indications_for_use, name="indications_for_use", curie=DENTMATMECH.curie('indications_for_use'),
-                   model_uri=DENTMATMECH.indications_for_use, domain=None, range=Optional[str])
+slots.indications_for_use = Slot(uri=DENTAMECH.indications_for_use, name="indications_for_use", curie=DENTAMECH.curie('indications_for_use'),
+                   model_uri=DENTAMECH.indications_for_use, domain=None, range=Optional[str])
 
-slots.standards = Slot(uri=DENTMATMECH.standards, name="standards", curie=DENTMATMECH.curie('standards'),
-                   model_uri=DENTMATMECH.standards, domain=None, range=Optional[Union[Union[dict, Standard], list[Union[dict, Standard]]]])
+slots.standards = Slot(uri=DENTAMECH.standards, name="standards", curie=DENTAMECH.curie('standards'),
+                   model_uri=DENTAMECH.standards, domain=None, range=Optional[Union[Union[dict, Standard], list[Union[dict, Standard]]]])
 
-slots.identifier = Slot(uri=DENTMATMECH.identifier, name="identifier", curie=DENTMATMECH.curie('identifier'),
-                   model_uri=DENTMATMECH.identifier, domain=None, range=str)
+slots.identifier = Slot(uri=DENTAMECH.identifier, name="identifier", curie=DENTAMECH.curie('identifier'),
+                   model_uri=DENTAMECH.identifier, domain=None, range=str)
 
-slots.title = Slot(uri=DENTMATMECH.title, name="title", curie=DENTMATMECH.curie('title'),
-                   model_uri=DENTMATMECH.title, domain=None, range=Optional[str])
+slots.title = Slot(uri=DENTAMECH.title, name="title", curie=DENTAMECH.curie('title'),
+                   model_uri=DENTAMECH.title, domain=None, range=Optional[str])
 
-slots.organization = Slot(uri=DENTMATMECH.organization, name="organization", curie=DENTMATMECH.curie('organization'),
-                   model_uri=DENTMATMECH.organization, domain=None, range=Optional[str])
+slots.organization = Slot(uri=DENTAMECH.organization, name="organization", curie=DENTAMECH.curie('organization'),
+                   model_uri=DENTAMECH.organization, domain=None, range=Optional[str])
 
-slots.url = Slot(uri=DENTMATMECH.url, name="url", curie=DENTMATMECH.curie('url'),
-                   model_uri=DENTMATMECH.url, domain=None, range=Optional[Union[str, URI]])
+slots.url = Slot(uri=DENTAMECH.url, name="url", curie=DENTAMECH.curie('url'),
+                   model_uri=DENTAMECH.url, domain=None, range=Optional[Union[str, URI]])
 
-slots.evidence = Slot(uri=DENTMATMECH.evidence, name="evidence", curie=DENTMATMECH.curie('evidence'),
-                   model_uri=DENTMATMECH.evidence, domain=None, range=Optional[Union[Union[dict, EvidenceItem], list[Union[dict, EvidenceItem]]]])
+slots.evidence = Slot(uri=DENTAMECH.evidence, name="evidence", curie=DENTAMECH.curie('evidence'),
+                   model_uri=DENTAMECH.evidence, domain=None, range=Optional[Union[Union[dict, EvidenceItem], list[Union[dict, EvidenceItem]]]])
 
-slots.reference = Slot(uri=DENTMATMECH.reference, name="reference", curie=DENTMATMECH.curie('reference'),
-                   model_uri=DENTMATMECH.reference, domain=None, range=Union[str, ReferenceIdentifier])
+slots.reference = Slot(uri=DENTAMECH.reference, name="reference", curie=DENTAMECH.curie('reference'),
+                   model_uri=DENTAMECH.reference, domain=None, range=Union[str, ReferenceIdentifier])
 
-slots.reference_title = Slot(uri=DENTMATMECH.reference_title, name="reference_title", curie=DENTMATMECH.curie('reference_title'),
-                   model_uri=DENTMATMECH.reference_title, domain=None, range=Optional[str])
+slots.reference_title = Slot(uri=DENTAMECH.reference_title, name="reference_title", curie=DENTAMECH.curie('reference_title'),
+                   model_uri=DENTAMECH.reference_title, domain=None, range=Optional[str])
 
-slots.supports = Slot(uri=DENTMATMECH.supports, name="supports", curie=DENTMATMECH.curie('supports'),
-                   model_uri=DENTMATMECH.supports, domain=None, range=Union[str, "EvidenceItemSupportEnum"])
+slots.supports = Slot(uri=DENTAMECH.supports, name="supports", curie=DENTAMECH.curie('supports'),
+                   model_uri=DENTAMECH.supports, domain=None, range=Union[str, "EvidenceItemSupportEnum"])
 
-slots.evidence_source = Slot(uri=DENTMATMECH.evidence_source, name="evidence_source", curie=DENTMATMECH.curie('evidence_source'),
-                   model_uri=DENTMATMECH.evidence_source, domain=None, range=Optional[Union[str, "EvidenceSourceEnum"]])
+slots.evidence_source = Slot(uri=DENTAMECH.evidence_source, name="evidence_source", curie=DENTAMECH.curie('evidence_source'),
+                   model_uri=DENTAMECH.evidence_source, domain=None, range=Optional[Union[str, "EvidenceSourceEnum"]])
 
-slots.snippet = Slot(uri=DENTMATMECH.snippet, name="snippet", curie=DENTMATMECH.curie('snippet'),
-                   model_uri=DENTMATMECH.snippet, domain=None, range=Optional[str])
+slots.snippet = Slot(uri=DENTAMECH.snippet, name="snippet", curie=DENTAMECH.curie('snippet'),
+                   model_uri=DENTAMECH.snippet, domain=None, range=Optional[str])
 
-slots.explanation = Slot(uri=DENTMATMECH.explanation, name="explanation", curie=DENTMATMECH.curie('explanation'),
-                   model_uri=DENTMATMECH.explanation, domain=None, range=Optional[str])
+slots.explanation = Slot(uri=DENTAMECH.explanation, name="explanation", curie=DENTAMECH.curie('explanation'),
+                   model_uri=DENTAMECH.explanation, domain=None, range=Optional[str])
 
-slots.DentalMaterialDescriptor_term = Slot(uri=DENTMATMECH.term, name="DentalMaterialDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.DentalMaterialDescriptor_term, domain=DentalMaterialDescriptor, range=Union[dict, Term])
+slots.DentalMaterialDescriptor_term = Slot(uri=DENTAMECH.term, name="DentalMaterialDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.DentalMaterialDescriptor_term, domain=DentalMaterialDescriptor, range=Union[dict, Term])
 
-slots.DentalProcedureDescriptor_term = Slot(uri=DENTMATMECH.term, name="DentalProcedureDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.DentalProcedureDescriptor_term, domain=DentalProcedureDescriptor, range=Optional[Union[dict, Term]])
+slots.DentalProcedureDescriptor_term = Slot(uri=DENTAMECH.term, name="DentalProcedureDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.DentalProcedureDescriptor_term, domain=DentalProcedureDescriptor, range=Optional[Union[dict, Term]])
 
-slots.ChemicalEntityDescriptor_term = Slot(uri=DENTMATMECH.term, name="ChemicalEntityDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.ChemicalEntityDescriptor_term, domain=ChemicalEntityDescriptor, range=Optional[Union[dict, Term]])
+slots.ChemicalEntityDescriptor_term = Slot(uri=DENTAMECH.term, name="ChemicalEntityDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.ChemicalEntityDescriptor_term, domain=ChemicalEntityDescriptor, range=Optional[Union[dict, Term]])
 
-slots.AnatomicalEntityDescriptor_term = Slot(uri=DENTMATMECH.term, name="AnatomicalEntityDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.AnatomicalEntityDescriptor_term, domain=AnatomicalEntityDescriptor, range=Optional[Union[dict, Term]])
+slots.AnatomicalEntityDescriptor_term = Slot(uri=DENTAMECH.term, name="AnatomicalEntityDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.AnatomicalEntityDescriptor_term, domain=AnatomicalEntityDescriptor, range=Optional[Union[dict, Term]])
 
-slots.PhenotypeDescriptor_term = Slot(uri=DENTMATMECH.term, name="PhenotypeDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.PhenotypeDescriptor_term, domain=PhenotypeDescriptor, range=Optional[Union[dict, Term]])
+slots.PhenotypeDescriptor_term = Slot(uri=DENTAMECH.term, name="PhenotypeDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.PhenotypeDescriptor_term, domain=PhenotypeDescriptor, range=Optional[Union[dict, Term]])
 
-slots.QualityDescriptor_term = Slot(uri=DENTMATMECH.term, name="QualityDescriptor_term", curie=DENTMATMECH.curie('term'),
-                   model_uri=DENTMATMECH.QualityDescriptor_term, domain=QualityDescriptor, range=Optional[Union[dict, Term]])
+slots.QualityDescriptor_term = Slot(uri=DENTAMECH.term, name="QualityDescriptor_term", curie=DENTAMECH.curie('term'),
+                   model_uri=DENTAMECH.QualityDescriptor_term, domain=QualityDescriptor, range=Optional[Union[dict, Term]])
 
-slots.Component_name = Slot(uri=DENTMATMECH.name, name="Component_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.Component_name, domain=Component, range=Union[str, ComponentName])
+slots.Component_name = Slot(uri=DENTAMECH.name, name="Component_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.Component_name, domain=Component, range=Union[str, ComponentName])
 
-slots.MaterialProperty_name = Slot(uri=DENTMATMECH.name, name="MaterialProperty_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.MaterialProperty_name, domain=MaterialProperty, range=Union[str, MaterialPropertyName])
+slots.MaterialProperty_name = Slot(uri=DENTAMECH.name, name="MaterialProperty_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.MaterialProperty_name, domain=MaterialProperty, range=Union[str, MaterialPropertyName])
 
-slots.ClinicalUse_name = Slot(uri=DENTMATMECH.name, name="ClinicalUse_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.ClinicalUse_name, domain=ClinicalUse, range=Union[str, ClinicalUseName])
+slots.ClinicalUse_name = Slot(uri=DENTAMECH.name, name="ClinicalUse_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.ClinicalUse_name, domain=ClinicalUse, range=Union[str, ClinicalUseName])
 
-slots.ClinicalPerformance_name = Slot(uri=DENTMATMECH.name, name="ClinicalPerformance_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.ClinicalPerformance_name, domain=ClinicalPerformance, range=Union[str, ClinicalPerformanceName])
+slots.ClinicalPerformance_name = Slot(uri=DENTAMECH.name, name="ClinicalPerformance_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.ClinicalPerformance_name, domain=ClinicalPerformance, range=Union[str, ClinicalPerformanceName])
 
-slots.AdverseEffect_name = Slot(uri=DENTMATMECH.name, name="AdverseEffect_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.AdverseEffect_name, domain=AdverseEffect, range=Union[str, AdverseEffectName])
+slots.AdverseEffect_name = Slot(uri=DENTAMECH.name, name="AdverseEffect_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.AdverseEffect_name, domain=AdverseEffect, range=Union[str, AdverseEffectName])
 
-slots.ApprovedUse_name = Slot(uri=DENTMATMECH.name, name="ApprovedUse_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.ApprovedUse_name, domain=ApprovedUse, range=Union[str, ApprovedUseName])
+slots.ApprovedUse_name = Slot(uri=DENTAMECH.name, name="ApprovedUse_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.ApprovedUse_name, domain=ApprovedUse, range=Union[str, ApprovedUseName])
 
-slots.ApprovedUse_use_context = Slot(uri=DENTMATMECH.use_context, name="ApprovedUse_use_context", curie=DENTMATMECH.curie('use_context'),
-                   model_uri=DENTMATMECH.ApprovedUse_use_context, domain=ApprovedUse, range=Union[str, "ClinicalUseContextEnum"])
+slots.ApprovedUse_use_context = Slot(uri=DENTAMECH.use_context, name="ApprovedUse_use_context", curie=DENTAMECH.curie('use_context'),
+                   model_uri=DENTAMECH.ApprovedUse_use_context, domain=ApprovedUse, range=Union[str, "ClinicalUseContextEnum"])
 
-slots.CommercialProduct_name = Slot(uri=DENTMATMECH.name, name="CommercialProduct_name", curie=DENTMATMECH.curie('name'),
-                   model_uri=DENTMATMECH.CommercialProduct_name, domain=CommercialProduct, range=Union[str, CommercialProductName])
+slots.CommercialProduct_name = Slot(uri=DENTAMECH.name, name="CommercialProduct_name", curie=DENTAMECH.curie('name'),
+                   model_uri=DENTAMECH.CommercialProduct_name, domain=CommercialProduct, range=Union[str, CommercialProductName])

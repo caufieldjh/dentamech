@@ -9,7 +9,7 @@ DisMech's. Each workflow does one thing.
 | `deploy-docs.yaml` | push to main | Renders pages and the browser, builds mkdocs, deploys to GitHub Pages |
 | `generate-pages.yaml` | push to main touching `kb/` or the renderer | Re-renders `pages/` and `app/data.js` and commits them |
 | `claude.yml` | `@claude` in an issue, comment, or review by a collaborator | General-purpose agent with repo access |
-| `claude-code-review.yml` | PR touching `kb/`, schema, or cache | Reviews with the `dentmatmech-pr-review` skill and approves or requests changes |
+| `claude-code-review.yml` | PR touching `kb/`, schema, or cache | Reviews with the `dentamech-pr-review` skill and approves or requests changes |
 | `claude-issue-triage.yml` | issue opened | Labels the issue and posts an assessment |
 | `curation-scanner.yml` | every 6 hours, or by hand | Picks one `curation` issue or stalled PR and advances it; files a new issue when the queue is empty |
 
@@ -25,7 +25,7 @@ DisMech's. Each workflow does one thing.
 Set one with:
 
 ```bash
-gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo caufieldjh/dentmatmech
+gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo caufieldjh/dentamech
 ```
 
 The `claude_code` research provider needs no extra secret. It reuses the

@@ -217,7 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# ---- dentmatmech ----
+# ---- dentamech ----
 # LinkML generated project artifacts (regenerate with `just gen-project`)
 project/*
 !project/README.md

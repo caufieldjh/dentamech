@@ -1,6 +1,6 @@
 ## Project-specific recipes, imported by the main justfile.
 
-schema_path := "src/dentmatmech/schema/dentmatmech.yaml"
+schema_path := "src/dentamech/schema/dentamech.yaml"
 kb_dir := "kb/materials"
 oak_config := "conf/oak_config.yaml"
 ref_validator_config := "conf/reference_validator_config.yaml"
@@ -15,12 +15,12 @@ dr_validation := "--validate-references --validation-cache-dir references_cache"
 # Seed one stub per OHD dental restoration material term (never overwrites)
 [group('curation')]
 seed *args:
-    uv run dentmatmech seed {{args}}
+    uv run dentamech seed {{args}}
 
 # List materials with category and curation status
 [group('curation')]
 list-materials *args:
-    uv run dentmatmech list {{args}}
+    uv run dentamech list {{args}}
 
 # Schema + term validation of every material file
 [group('QC')]
@@ -33,7 +33,7 @@ validate-all:
     echo "Term validation..."
     {{term_validator}} validate-data "${files[@]}" -s {{schema_path}} -t DentalMaterial --labels -c {{oak_config}}
     echo "Parent links..."
-    uv run dentmatmech check-links
+    uv run dentamech check-links
     echo "✓ All files validated"
 
 # Schema + term validation of one material file
@@ -65,17 +65,17 @@ qc: validate-all
 # Render every material page plus the index
 [group('site')]
 render:
-    uv run dentmatmech render
+    uv run dentamech render
 
 # Render a single material page
 [group('site')]
 render-one file:
-    uv run dentmatmech render {{file}}
+    uv run dentamech render {{file}}
 
 # Regenerate app/data.js for the faceted browser
 [group('site')]
 export-browser:
-    uv run dentmatmech export-browser
+    uv run dentamech export-browser
 
 # Build everything the static site needs: pages, browser data, schema docs
 [group('site')]
@@ -107,7 +107,7 @@ research-material provider material *args="":
     fi
     eval "$(uv run python -c "
     import shlex
-    from dentmatmech.yaml_io import safe_load_path
+    from dentamech.yaml_io import safe_load_path
     d = safe_load_path('$yaml_file')
     t = d['material_term']['term']
     print('material_name=' + shlex.quote(d['name']))

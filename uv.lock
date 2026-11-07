@@ -913,7 +913,7 @@ wheels = [
 ]
 
 [[package]]
-name = "dentmatmech"
+name = "dentamech"
 source = { editable = "." }
 dependencies = [
     { name = "jinja2" },

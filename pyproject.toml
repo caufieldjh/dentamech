@@ -3,7 +3,7 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dentmatmech"
+name = "dentamech"
 description = "A Dental Materials Knowledge Base"
 authors = [
   {name = "Harry Caufield", email = "jhc@lbl.gov"},
@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.scripts]
-dentmatmech = "dentmatmech.cli:main"
+dentamech = "dentamech.cli:main"
 
 [dependency-groups]
 dev = [
@@ -62,9 +62,9 @@ testpaths = ["tests"]
 # https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
 exclude = [
-    "src/dentmatmech/_version.py",
-    "src/dentmatmech/datamodel/dentmatmech.py",
-    "src/dentmatmech/datamodel/dentmatmech_pydantic.py",
+    "src/dentamech/_version.py",
+    "src/dentamech/datamodel/dentamech.py",
+    "src/dentamech/datamodel/dentamech_pydantic.py",
 ]
 # Set oldest supported Python version
 target-version = "py312"
@@ -81,8 +81,8 @@ skip = [
   "pyproject.toml",
   "uv.lock",
   "project/*",
-  "src/dentmatmech/datamodel/dentmatmech_pydantic.py",
-  "src/dentmatmech/datamodel/dentmatmech.py",
+  "src/dentamech/datamodel/dentamech_pydantic.py",
+  "src/dentamech/datamodel/dentamech.py",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -100,6 +100,6 @@ extend-exclude = [
   "uv.lock",
   "pyproject.toml",
   "project/*",
-  "src/dentmatmech/datamodel/dentmatmech_pydantic.py",
-  "src/dentmatmech/datamodel/dentmatmech.py",
+  "src/dentamech/datamodel/dentamech_pydantic.py",
+  "src/dentamech/datamodel/dentamech.py",
 ]
