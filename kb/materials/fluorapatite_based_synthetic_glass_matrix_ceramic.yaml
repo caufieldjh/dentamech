@@ -1,0 +1,19 @@
+id: OHD:0001055
+name: Fluorapatite based synthetic glass matrix ceramic
+description: A synthetic glass matrix ceramic in which the glass phases may be combined with apatite crystals, in addition to leucite, for thermal expansion compatibility with metals and for improved strength.
+record_term:
+  id: OHD:0001055
+  label: fluorapatite based synthetic glass matrix ceramic dental restoration material
+category: CERAMIC
+parents:
+  - OHD:0001052
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Fluorapatite_Based_Synthetic_Glass_Matrix_Ceramic.
+updated_date: '2026-11-07'

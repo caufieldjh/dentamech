@@ -1,27 +1,49 @@
-# Dental Materials Knowledge Base (dentmatmech)
+# DentaMech
 
-A curated, schema-validated knowledge base of dental restoration materials: what they are made of, how they set, what they are used for, how they perform, what can go wrong, and how regulators classify them.
+DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source.
 
-It is built the way [DisMech](https://github.com/monarch-initiative/dismech) is built: one YAML file per entry, a [LinkML](https://linkml.io) schema, ontology-bound terms validated against their source ontologies, and evidence items that quote their sources verbatim. Where DisMech anchors on Mondo, this project anchors on the [Oral Health and Disease Ontology (OHD)](https://obofoundry.org/ontology/ohd.html) branch under `OHD:0000000` *dental restoration material*.
+DentaMech is a **Mech**: a knowledge base where AI agents do most of
+the curation and people review their work. It keeps one record per
+dental material, and every record follows the same rules.
 
-## Where things live
+- **One file per dental material**, validated against a
+  [LinkML schema](elements/index.md).
+- **Standard vocabulary.** Records bind terms from established ontologies,
+  and each term's identifier and label are checked against the ontology.
+- **Every claim has a source.** Each claim cites a paper and quotes it word
+  for word, and a program checks that the quote is really in the paper.
+- **A full history.** Every change records who made it, human or AI, and why.
+- **People review.** Changes arrive as pull requests, and people accept them.
 
-| Path | What |
+## Explore
+
+| | |
 |---|---|
-| `kb/materials/*.yaml` | The knowledge base. One file per material. |
-| `src/dentmatmech/schema/dentmatmech.yaml` | The LinkML schema. |
-| `pages/materials/*.html` | Rendered material pages (`just render`). |
-| `app/index.html` | Faceted browser over `app/data.js` (`just export-browser`). |
-| `conf/oak_config.yaml` | Which ontologies back which prefixes for term validation. |
+| [Records](records/index.html) | Browse every dental material record |
+| [The domain](DOMAIN.md) | What a record is, how records are keyed, what they contain |
+| [Curation](CURATION.md) | How records are written and checked |
+| [Schema](elements/index.md) | Every class, slot and enum, with diagrams |
+| [Record structure](structure.md) | Everything a record can contain, in one diagram |
+| [Corpus](corpus.md) | How many records there are, and in what state |
+| [Downloads](downloads.md) | The records in every format this Mech exports |
+| [Workflows](WORKFLOWS.md) | The automation that checks and curates the records |
 
-## Reading on
+## Download
 
-- [Data model](data-model.md): the sections of a material entry and what goes in each.
-- [Regulatory status](regulatory.md): how FDA classification, product codes, and clearances are recorded.
-- [Curation](curation.md): the workflow, the validation gates, and the evidence rules.
-- [Design decisions](explanation/design-decisions.md): why it is built this way.
-- [Schema reference](elements/index.md): generated from the LinkML schema.
+- Records: the [repository](https://github.com/caufieldjh/dentamech/tree/main/kb/materials), or [downloads](downloads.md) in every format DentaMech exports.
+- Schema: [dentamech.yaml](schema/dentamech.yaml) with its imports merged, and [JSON Schema](schema/dentamech.schema.json).
 
-## Status
+## What the checks do not check
 
-The knowledge base was seeded from OHD on 2026-09-04. Every OHD material term has a stub entry. A handful of entries carry curated composition, use, and FDA regulatory content as worked examples; the rest await curation.
+Validation checks that citations exist, quotes are exact, and ontology
+terms are real. It does not check that the science is right. Treat
+DentaMech as a curated draft reviewed by people, not as an authority.
+
+## Contribute and cite
+
+Issues and reviews are welcome on
+[GitHub](https://github.com/caufieldjh/dentamech). See
+[CONTRIBUTING.md](https://github.com/caufieldjh/dentamech/blob/main/CONTRIBUTING.md).
+
+Records are released under CC-BY-4.0. Code is released under
+BSD-3-Clause.

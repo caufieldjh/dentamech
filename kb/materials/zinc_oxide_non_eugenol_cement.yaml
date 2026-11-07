@@ -1,0 +1,21 @@
+id: OHD:0001010
+name: Zinc oxide non-eugenol cement
+description: A zinc-oxide cement dental restoration material containing aliphatic acid or butyric acid to substitute the eugenol as a liquid component to complete the acid-base reaction.
+record_term:
+  id: OHD:0001010
+  label: zinc oxide non-eugenol cement dental restoration material
+category: CEMENT
+setting_mechanisms:
+  - ACID_BASE_REACTION
+parents:
+  - OHD:0001022
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Zinc_Oxide_Non-eugenol_Cement.
+updated_date: '2026-11-07'

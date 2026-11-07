@@ -1,0 +1,19 @@
+id: OHD:0001086
+name: Commercially pure titanium
+description: A titanium dental restoration material that contain pure titanium with minimum impurities.
+record_term:
+  id: OHD:0001086
+  label: commercially pure titanium dental restoration material
+category: METAL
+parents:
+  - OHD:0000136
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Commercially_Pure_Titanium.
+updated_date: '2026-11-07'

@@ -52,7 +52,24 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 
 **Rationale.** The browser needs it without an ontology in the loop, and some materials (compomers, resin-modified glass ionomers) belong to a category the ontology's tree does not express as a single branch.
 
-## 8. Open questions
+## 8. Built on mechmaker
+
+**Decision.** The project was converted to a [mechmaker](https://github.com/monarch-initiative/mechmaker) Mech. It started from `linkml-project-copier`, so `sync-mech` could not follow it. The domain schema, the OHD seeder, and the FDA rules were kept; mechmaker supplies the record contract, the gates, the site, and the workflows.
+
+**Consequences.**
+
+- Records are keyed by `id` and named in `record_term`. `curation_status` became `status`, and all 57 records converted as `DRAFT`. `just compliance` now shows how complete a record is.
+- Filenames are lowercase, derived from `name`, and `parents` hold ids.
+- `pages/` is no longer committed, and the faceted `app/` browser is replaced by the filterable table on the site's Records page.
+- `.copier-answers.yml` names mechmaker, so `sync-mech` works from here on.
+
+## 9. Abstract-only quote checks
+
+**Decision.** `linkml-reference-validator` runs with full-text fetching off and with cached entries trusted.
+
+**Rationale.** Evidence quotes are checked against abstracts. By default the validator fetches publisher full text and rewrites the committed cache, so a quote from outside the abstract could pass.
+
+## 10. Open questions
 
 - Whether product records should live in their own files once there are many.
 - Whether to model *material systems* (a bonding agent plus its composite) as a separate class.

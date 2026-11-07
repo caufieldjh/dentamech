@@ -1,72 +1,146 @@
 # CLAUDE.md
 
-Guidance for Claude Code when working in this repository.
+Operational guidance for Claude Code and other agents in this repository.
+`AGENTS.md` points here.
 
 ## What this is
 
-The **Dental Materials Knowledge Base (dentmatmech)**: a LinkML-based knowledge base of dental restoration materials, modeled on [DisMech](https://github.com/monarch-initiative/dismech). It combines:
+DentaMech (Dental Materials Knowledge Base) is a Mech: an AI agent-curated,
+ontology-grounded, evidence-backed knowledge base. DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source.
 
-1. A LinkML schema (`src/dentmatmech/schema/dentmatmech.yaml`)
-2. One YAML file per material in `kb/materials/`, each bound to one OHD term under `OHD:0000000`
-3. Rendered pages (`pages/materials/`) and a faceted browser (`app/`)
+One record is one dental material. One record is one YAML file under
+`kb/materials/`, validated against the `DentalMaterial` class in
+`src/dentamech/schema/dentamech.yaml`.
 
-Read `docs/explanation/design-decisions.md` before changing scope, the ontology set, or the evidence policy.
+The pattern comes from [DisMech](https://github.com/monarch-initiative/dismech).
+The registry of Mechs is [MechRegistry](https://github.com/monarch-initiative/mechregistry).
+
+Read before changing domain content:
+
+- `docs/DOMAIN.md`: what a record is, what it is not, identity, granularity.
+- `docs/CURATION.md`: evidence rules, the curation loop, review.
+- `curation/source_queue.tsv`: the sources that feed curation, ranked.
 
 ## Commands
 
 ```bash
-just install                     # uv sync --group dev
-just seed                        # stub every OHD material term (never overwrites)
-just validate kb/materials/X.yaml   # schema + ontology terms for one file
-just validate-all                # every file: schema + terms + parent links
-just validate-references kb/materials/X.yaml   # snippet check against PubMed
-just qc                          # validate-all + pytest
-just render                      # pages/materials/*.html
-just export-browser              # app/data.js
-just gen-python                  # regenerate src/dentmatmech/datamodel after a schema edit
-uv run pytest -q
-
-# Deep research and references
-just research-material claude_code Amalgam   # report -> research/Amalgam-deep-research-claude_code.md
-just research-material falcon Amalgam        # needs EDISON_API_KEY; slow and thorough
-just research-status                         # which materials have reports
-just fetch-reference PMID:24683067           # cache an abstract; never hand-write references_cache/
+just                   # list every recipe
+just install           # uv sync
+just qc                # the offline gate CI blocks on
+just qc-full           # qc plus terms and quotes for every record (network)
+just validate FILE     # closed schema, ontology terms, verbatim quotes
+just new-record ...    # scaffold a record (dry-run unless --apply); an id with the OHD prefix needs --term-label
+just import-schema SRC --record-class C   # start the schema from an existing one (dry-run unless --apply)
+just new-history ...   # scaffold a history record (dry-run unless --apply)
+just add-evidence FILE --at PLACE --ref REF --snippet "..."   # checked evidence (dry-run unless --apply)
+just convert scripts/convert_X.py --limit 5   # convert an existing knowledge base (dry-run unless --apply)
+just fetch-reference PMID:NNN   # fetch and cache a source; read it before quoting it
+just fill-titles [FILE...]      # fill missing reference_title from the cache (dry-run unless --apply)
+just search-term PREFIX "text"  # search an ontology through its configured adapter, e.g. GO
+just term-ancestors CURIE       # where a term sits; use when an enum root rejects it
+just term-parents CURIE         # direct is-a parents
+just check-identity [FILE...]   # record ids follow the identity enum's rule (network, in qc-full)
+just report            # corpus statistics
+just compliance        # completeness per record, lowest first
+just export            # every format in conf/export.yaml, into build/export/, each read back
+just load TARGET       # fill a database in conf/load.yaml (MongoDB, Neo4j); --replace to overwrite
+just labels            # create the GitHub labels the workflows use
+just docs-serve        # the documentation site at http://127.0.0.1:8000
+just site-check        # check conf/site.yaml: colors, theme, contrast
+just research-providers         # which deep-research providers are ready here
+just research PROVIDER TARGET   # a deep-research report on one record (costs a run)
 ```
 
-## Skills and commands
+Quote counts from `just report` or a live command, never from prose.
 
-- `.claude/skills/curate-material/SKILL.md`: the curation workflow, research first, regulatory verification, validation, PR. Follow it step by step.
-- `.claude/skills/dentmatmech-pr-review/SKILL.md`: review checklist for KB pull requests.
-- `/curate <File_Stem> [using <provider>]`: runs the curation skill end to end.
+## Rules that matter most
 
-## Automation
+- **Never guess a CURIE.** Look it up with `just search-term` and
+  `just term-info`. An unverified ontology term, PMID or accession is worse
+  than none. Leave `term` unset, keep `preferred_term`, and open a
+  `CURATION_TODO` discussion.
+- **A label is the ontology's label.** `term.label` must match the ontology
+  exactly. Put nuance in `preferred_term`, never in `label`.
+- **A snippet is a verbatim quote.** Fetch the source with
+  `just fetch-reference`, copy the text, and add it with `just add-evidence`,
+  which checks the quote before writing. Paraphrase goes in `explanation`.
+  `just validate-references` fails a paraphrase, and it should.
+- **Bind the most specific accurate term.** If only a broad term fits, bind
+  it and say so in `notes`. Do not bind a narrow term because it exists.
+- **A deep-research report is a lead, never a source.** Never cite one in a
+  record. Fetch the primary source it points to and quote that.
+- **Declare every prefix.** Each CURIE prefix a record uses has its full
+  URI in the schema's `prefixes`. The RDF exports depend on it, and
+  `just export` fails on a prefix with no URI.
+- **Closed schema.** An unknown field is an error. If the schema lacks a
+  place for something real, use the `extend-schema` skill. Do not stuff it
+  into `notes`.
+- **An agent takes a record no further than `PROPOSED`.** It starts `DRAFT`
+  and becomes `PROPOSED` when complete and valid. Promotion to `REVIEWED`
+  is a human decision, recorded as a human `REVIEW` event.
+- **Record what you did.** Every change appends a `curation_history` event
+  to the record, and every session adds a history record with
+  `just new-history ... --apply`. Fill `--details`.
 
-Workflows in `.github/workflows/` run the curation loop: triage labels new issues, the scanner picks one `curation` issue or stalled PR every six hours and advances it, the review workflow approves or requests changes, and the pages workflow re-renders after merge. Details and required secrets are in `docs/workflows.md`. The deep research prompt is `templates/dental_material_research.md`.
+## Files not to edit here
 
-## Curation rules
+- `src/dentamech/schema/mech_shared.yaml` and
+  `src/dentamech/schema/history.yaml` are vendored byte-identical from
+  the Mech fleet canon. A test checks their hashes. Change them upstream.
+- `pages/` is generated by `just render`, for a local look, and not
+  committed. Edit `src/dentamech/templates/` instead. A Mech made
+  from an older template may still track it: `git rm -r --cached pages`.
+- `docs/elements/`, `docs/schema/`, `docs/records/`, `docs/structure.md`,
+  `docs/corpus.md`, `docs/downloads.md` and `.mkdocs.site.yml` are generated
+  by `just docs-build` and not committed. Colors and layout settings live in
+  `conf/site.yaml`. Improve a schema page by improving the schema's
+  descriptions. The Downloads page follows `conf/export.yaml`.
+- `cache/` and `references_cache/` are written by the validators. Commit
+  them. Never hand-edit a row.
+- `.copier-answers.yml` is written by Copier. To take newer template
+  changes from mechmaker, follow mechmaker's `sync-mech` skill
+  (`npx skills add monarch-initiative/mechmaker`): it shows each change,
+  lets the person choose, and migrates records where a change needs it.
+  `just update-template` takes every change at once.
 
-- **One OHD term per file.** `material_term.term.label` must match OHD exactly. Put friendlier names in `preferred_term` and `synonyms`.
-- **`parents` are names of other files.** They mirror OHD's `is_a` links. Tests fail on a dangling parent.
-- **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are machine-checked against PubMed abstracts.
-- **Regulatory text is quoted from the regulation.** Cite as `url:` to the eCFR section or FDA database record. Verified regulation numbers, classes, and product codes are tabulated in `docs/regulatory.md`; do not guess a product code or a regulation number from memory. Look it up:
+## Skills
+
+Project skills live in `.claude/skills/`. Use them.
+
+| Skill | Use it to |
+|---|---|
+| `curate-record` | create or improve one record end to end |
+| `ontology-terms` | choose, bind, check or repair a term |
+| `evidence-references` | find a source, quote it, validate the quote |
+| `review-record` | audit one record without editing it |
+| `extend-schema` | change the data model and migrate records |
+| `source-queue` | triage the sources that feed curation |
+| `github-workflows` | turn on, configure, adapt or debug the GitHub workflows |
+| `site-design` | change how the documentation site and record browser look |
+| `deep-research` | run deep research on a record, and turn its leads into evidence |
+
+
+## Workflows
+
+`docs/WORKFLOWS.md` lists every GitHub workflow, on or off. Agent workflows
+read their prompts from `.github/prompts/` and their models from
+`.github/agent-config.yaml`. When you run inside one, the prompt is your
+task; this file and the skills still apply. Turn workflows on or off through Copier, never by copying
+files; see the `github-workflows` skill.
+
+## Git
+
+Branch before the first edit. One pull request per coherent change. The pull
+request is the human review gate. Do not merge without approval.
+
+## Dental rules
+
+- **One OHD term per record.** `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
+- **`parents` are record ids.** They mirror OHD's `is_a` links. Tests fail on a dangling parent.
+- **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are checked against PubMed abstracts.
+- **Regulatory text is quoted from the regulation.** Cite as `url:` to the CFR section or FDA database record. Verified regulation numbers, classes and product codes are in `docs/regulatory.md`. Do not guess a product code or a regulation number from memory. Look it up:
   - CFR text: `https://www.law.cornell.edu/cfr/text/21/872.NNNN` (eCFR itself blocks automated fetches)
   - Product codes: `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN`
 - **Device type vs product.** Classification of the material as a device type goes in `regulatory_status`. A specific brand's 510(k) goes in `products[].submissions`.
-- **Ontology lookups** use OAK: `uv run runoak -i sqlite:obo:ohd search <text>` for OHD, `ols:chebi`, `ols:uberon`, `ols:hp`, `ols:pato` for the rest.
-- **Bump `curation_status`** as sections fill in. Anything past `STUB` must carry evidence.
-- After a schema change: `just gen-python`, then `uv run pytest -q`, then `just validate-all`.
-
-## Layout
-
-```
-kb/materials/            knowledge base (source of truth)
-src/dentmatmech/schema/  LinkML schema
-src/dentmatmech/seed.py  OHD -> stub files
-src/dentmatmech/cli.py   `dentmatmech` CLI (seed, list, render, export-browser, check-links)
-src/dentmatmech/render.py + templates/   HTML pages
-src/dentmatmech/export.py                app/data.js
-conf/oak_config.yaml     prefix -> OAK adapter
-conf/reference_validator_config.yaml
-tests/                   schema conformance + KB consistency + render smoke tests
-docs/                    mkdocs narrative + generated schema docs
-```
+- `just seed` stubs each OHD material term that has no record. `/curate <file_stem>` runs the `curate-record` skill end to end.
+- Read `docs/explanation/design-decisions.md` before changing scope, the ontology set, or the evidence policy.

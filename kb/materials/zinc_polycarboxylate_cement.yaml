@@ -1,0 +1,21 @@
+id: OHD:0001043
+name: Zinc polycarboxylate cement
+description: An acid-base cement dental restoration material containing zinc-oxide and magnesium oxide as a powder component with polyacrylic acid and water as liquid component to complete the acid-base reaction.
+record_term:
+  id: OHD:0001043
+  label: zinc polycarboxylate cement dental restoration material
+category: CEMENT
+setting_mechanisms:
+  - ACID_BASE_REACTION
+parents:
+  - OHD:0001021
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Zinc_Polycarboxylate_Cement.
+updated_date: '2026-11-07'
