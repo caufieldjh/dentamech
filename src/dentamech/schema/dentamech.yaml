@@ -10,16 +10,20 @@ description: >-
   and what they permit it to be used for. Every claim can carry literature or
   regulatory-document evidence with an exact quoted snippet, following the
   DisMech evidence model.
-license: BSD-3-Clause
+license: CC-BY-4.0
 see_also:
   - https://github.com/caufieldjh/dentamech
   - https://github.com/monarch-initiative/dismech
 
 imports:
   - linkml:types
+  - mech_shared
 
 prefixes:
   linkml: https://w3id.org/linkml/
+  dcterms: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
   dentamech: https://w3id.org/caufieldjh/dentamech/
   OHD: http://purl.obolibrary.org/obo/OHD_
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
@@ -469,16 +473,24 @@ enums:
         description: Status not yet curated
 
   CurationStatusEnum:
-    description: How far along this entry is
+    description: Review state of a record.
     permissible_values:
-      STUB:
-        description: Seeded from the ontology only; no curated content beyond name, definition, and term
-      IN_PROGRESS:
-        description: Some sections curated
-      CURATED:
-        description: All recommended sections populated with evidence
+      DRAFT:
+        description: Incomplete. Not ready for review.
+      PROPOSED:
+        description: Complete and validated, awaiting human review.
       REVIEWED:
-        description: Curated and reviewed by a domain expert
+        description: A person reviewed and accepted it. Only a person sets this.
+      DEPRECATED:
+        description: Kept for provenance. Not current.
+
+  CurationActionEnum:
+    description: Kind of change recorded in a CurationEvent.
+    permissible_values:
+      CREATE:
+      EDIT:
+      REVIEW:
+      DEPRECATE:
 
   MappingPredicateEnum:
     description: SKOS mapping relation between this material and a term in another vocabulary
@@ -497,7 +509,7 @@ enums:
   # ---- dynamic (ontology-backed) enums ------------------------------------
   # These are validated by linkml-term-validator against the adapters in
   # conf/oak_config.yaml.
-  DentalMaterialTerm:
+  IdentityTerm:
     description: >-
       A dental restoration material term from OHD. The root itself is
       included so the top-of-tree entry validates.
@@ -555,8 +567,8 @@ enums:
 # ---------------------------------------------------------------------------
 slots:
   name:
-    description: Human-readable name; the identifier for top-level entries
-    identifier: true
+    description: Preferred human-readable name. The filename stem derives from it.
+    slot_uri: schema:name
     range: string
     examples:
       - value: Resin-based composite
@@ -570,23 +582,62 @@ slots:
     examples:
       - value: GIC
   creation_date:
-    description: ISO 8601 timestamp for when this entry was first created
-    range: string
-    pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+\-]\d{2}:\d{2})$'
-    recommended: true
-  curation_status:
-    description: How far along this entry is
+    description: Date the record was created. Stable after first set.
+    range: date
+  updated_date:
+    description: Date of the last substantive change.
+    range: date
+  status:
+    description: Review state. DRAFT, then PROPOSED when complete and valid; only a person sets REVIEWED.
     range: CurationStatusEnum
+  curation_history:
+    description: Append-only list of changes to this record.
+    range: CurationEvent
+    multivalued: true
+    inlined_as_list: true
+  timestamp:
+    description: ISO-8601 time of the change.
+    range: datetime
+    required: true
+  curator:
+    description: GitHub login of the person, or harness name of the agent.
+    required: true
+  llm_assisted:
+    description: True when a model produced or edited the content.
+    range: boolean
+  model:
+    description: Model identifier when llm_assisted is true.
+  action:
+    description: What kind of change this was.
+    range: CurationActionEnum
+    required: true
+  description_evidence:
+    description: >-
+      Quotes for the facts stated in the record's description. Every fact
+      there needs one, here or in the section that states it with evidence.
+    range: EvidenceItem
+    multivalued: true
+    inlined_as_list: true
     recommended: true
+  datasets:
+    description: Public datasets relevant to this record (mech_shared).
+    range: Dataset
+    multivalued: true
+    inlined_as_list: true
+  discussions:
+    description: Open questions, knowledge gaps and curation to-dos (mech_shared).
+    range: Discussion
+    multivalued: true
+    inlined_as_list: true
   notes:
     description: Curator notes that do not belong in any structured section
     range: string
 
   # ---- term binding -------------------------------------------------------
   id:
-    description: A CURIE identifying an ontology term
+    description: A CURIE identifying a record or an ontology term
+    identifier: true
     range: uriorcurie
-    required: true
     examples:
       - value: OHD:0000036
   label:
@@ -604,21 +655,24 @@ slots:
     inlined: true
     recommended: true
 
-  material_term:
-    description: The OHD term this material entry is anchored to
-    range: DentalMaterialDescriptor
+  record_term:
+    description: The OHD term this record is grounded to, with its label.
+    range: Term
     inlined: true
-    required: true
+    recommended: true
+    bindings:
+      - binds_value_of: id
+        range: IdentityTerm
+        obligation_level: REQUIRED
   category:
     description: Broad material class
     range: MaterialCategoryEnum
     required: true
   parents:
     description: >-
-      Names of the parent material entries in this knowledge base. Mirrors
-      the OHD subclass hierarchy. Each value must match the `name` of another
-      file in kb/materials/.
-    range: string
+      Ids of the parent records in this knowledge base. Mirrors the OHD
+      subclass hierarchy. Each value must be the `id` of another record.
+    range: uriorcurie
     multivalued: true
   setting_mechanisms:
     description: How the material hardens or is formed
@@ -779,10 +833,6 @@ slots:
   jurisdiction:
     description: Country or region, when the agency slot alone is ambiguous
     range: string
-  status:
-    description: Current standing with the regulator
-    range: RegulatoryStatusEnum
-    required: true
   regulation_number:
     description: >-
       The classification regulation. For FDA this is a section of 21 CFR part
@@ -960,17 +1010,6 @@ classes:
       - description
       - term
 
-  DentalMaterialDescriptor:
-    is_a: Descriptor
-    description: A descriptor bindable to the OHD dental restoration material branch
-    slot_usage:
-      term:
-        required: true
-        bindings:
-          - binds_value_of: id
-            range: DentalMaterialTerm
-            obligation_level: REQUIRED
-
   DentalProcedureDescriptor:
     is_a: Descriptor
     description: A descriptor bindable to the OHD dental procedure branch
@@ -1050,7 +1089,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         required: true
 
   MaterialProperty:
@@ -1067,7 +1105,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         description: Short label for the property row (e.g. "Flexural strength, 24 h water storage")
 
   ClinicalUse:
@@ -1083,7 +1120,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         required: true
 
   ClinicalPerformance:
@@ -1100,7 +1136,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         required: true
 
   AdverseEffect:
@@ -1114,7 +1149,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         required: true
 
   ApprovedUse:
@@ -1128,7 +1162,6 @@ classes:
       - evidence
     slot_usage:
       name:
-        identifier: false
         required: true
       use_context:
         required: false
@@ -1154,6 +1187,11 @@ classes:
       - source_url
       - notes
       - evidence
+    slot_usage:
+      status:
+        description: Current standing with the regulator
+        range: RegulatoryStatusEnum
+        required: true
 
   RegulatorySubmission:
     description: One premarket submission for a commercial product and its outcome
@@ -1179,7 +1217,6 @@ classes:
       - see_also
     slot_usage:
       name:
-        identifier: false
         required: true
 
   Standard:
@@ -1193,14 +1230,15 @@ classes:
   DentalMaterial:
     tree_root: true
     description: >-
-      A dental material entry. One file per material in kb/materials/,
-      anchored to an OHD term.
+      One dental material. The unit of curation, review and history. One
+      record lives in one YAML file under kb/materials/.
     slots:
+      - id
       - name
       - description
-      - creation_date
-      - curation_status
-      - material_term
+      - description_evidence
+      - record_term
+      - status
       - category
       - parents
       - synonyms
@@ -1215,4 +1253,33 @@ classes:
       - products
       - standards
       - see_also
+      - evidence
+      - datasets
+      - discussions
       - notes
+      - creation_date
+      - updated_date
+      - curation_history
+    slot_usage:
+      id:
+        description: >-
+          The OHD CURIE for this dental material where a term exists.
+          Otherwise a minted dentamech:<uuid> CURIE, which can be re-grounded
+          later.
+        required: true
+        pattern: "^[A-Za-z][A-Za-z0-9_]*:[^\\s]+$"
+      name:
+        required: true
+
+  CurationEvent:
+    description: >-
+      One change to this record, appended and never edited. The repository
+      level history/ layer records the session; this records the change on the
+      record itself.
+    slots:
+      - timestamp
+      - curator
+      - llm_assisted
+      - model
+      - action
+      - description

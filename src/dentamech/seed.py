@@ -1,27 +1,31 @@
-"""Seed material stubs from the OHD dental restoration material branch.
+"""Seed records from the OHD dental restoration material branch.
 
-Every non-obsolete descendant of OHD:0000000 becomes one file in
-kb/materials/. A stub carries only what the ontology knows: name, definition,
-the bound term, its parents, and a broad category derived from ancestry.
-Existing files are never overwritten unless --force is given, so curated
-content survives a reseed.
+Every non-obsolete descendant of OHD:0000000 gets one record in kb/materials/.
+A stub carries only what the ontology knows: name, definition, the bound term,
+its parents, and a broad category derived from ancestry. An existing record is
+never overwritten, so curated content survives a reseed.
+
+    just seed            # dry run
+    just seed --apply
 """
 
 from __future__ import annotations
 
-import datetime
-from pathlib import Path
+import argparse
+import datetime as dt
 from typing import Any
 
 from oaklib import get_adapter
 from oaklib.datamodels.vocabulary import IS_A
 
-from dentamech.yaml_io import KB_DIR, dump_path, slugify
+from .paths import RECORDS_DIR
+from .records import append_curation_event, write_validated_record
+from .validate import slugify
 
 ROOT_TERM = "OHD:0000000"
 SUFFIX = " dental restoration material"
-# OHD has one typo'd label; keep the ontology label in `term.label` (the
-# validator checks it verbatim) but give the entry a clean name.
+# OHD has one typo'd label; keep the ontology label in `record_term.label` (the
+# validator checks it verbatim) but give the record a clean name.
 NAME_FIXES = {"cobalt chromium metal dental resotration material": "cobalt chromium metal"}
 
 # Category is decided by the nearest matching ancestor, checked in this
@@ -65,58 +69,62 @@ def _first_match(ancestors: set[str], rules: list[tuple[str, Any]], default: Any
     return default
 
 
-def build_stub(adapter, curie: str, now: str) -> dict[str, Any]:
+def build_stub(adapter, curie: str, members: set[str]) -> dict[str, Any]:
     label = adapter.label(curie)
-    definition = adapter.definition(curie) or ""
     ancestors = set(adapter.ancestors([curie], predicates=[IS_A], reflexive=True))
-    parents = [
-        clean_name(adapter.label(p))
-        for _, _, p in adapter.relationships([curie], predicates=[IS_A])
-        if p != curie and (p == ROOT_TERM or p in set(adapter.descendants([ROOT_TERM], predicates=[IS_A])))
-    ]
-    parents = sorted(set(parents))
-    category = _first_match(ancestors, CATEGORY_RULES, "OTHER")
-    if curie == ROOT_TERM:
-        category = "OTHER"
-    setting = _first_match(ancestors, SETTING_RULES, None)
-
+    parents = sorted({p for _, _, p in adapter.relationships([curie], predicates=[IS_A])
+                      if p != curie and p in members})
     stub: dict[str, Any] = {
+        "id": curie,
         "name": clean_name(label),
-        "creation_date": now,
-        "curation_status": "STUB",
-        "description": " ".join(definition.split()),
-        "material_term": {
-            "preferred_term": clean_name(label),
-            "term": {"id": curie, "label": label},
-        },
-        "category": category,
+        "description": " ".join((adapter.definition(curie) or "").split()),
+        "record_term": {"id": curie, "label": label},
+        "status": "DRAFT",
+        "category": "OTHER" if curie == ROOT_TERM else _first_match(ancestors, CATEGORY_RULES, "OTHER"),
+        "creation_date": dt.date.today().isoformat(),
     }
     if parents:
         stub["parents"] = parents
+    setting = _first_match(ancestors, SETTING_RULES, None)
     if setting:
         stub["setting_mechanisms"] = setting
-    syns = sorted({a for a in adapter.entity_aliases(curie) if a != label})
-    if syns:
-        stub["synonyms"] = syns
+    synonyms = sorted({a for a in adapter.entity_aliases(curie) if a != label})
+    if synonyms:
+        stub["synonyms"] = synonyms
     return stub
 
 
-def seed(kb_dir: Path = KB_DIR, force: bool = False, include_root: bool = True) -> list[Path]:
+def seed(apply: bool = False, curator: str = "dentamech-seed") -> list[str]:
+    """Write a stub for each OHD term with no record. Returns the names of new stubs."""
     adapter = get_adapter("sqlite:obo:ohd")
-    now = datetime.datetime.now(datetime.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    kb_dir.mkdir(parents=True, exist_ok=True)
-    written: list[Path] = []
+    members = set(adapter.descendants([ROOT_TERM], predicates=[IS_A], reflexive=True))
     obsoletes = set(adapter.obsoletes())
-    for curie in sorted(adapter.descendants([ROOT_TERM], predicates=[IS_A], reflexive=include_root)):
-        if curie == ROOT_TERM and not include_root:
-            continue
+    written = []
+    for curie in sorted(members):
         label = adapter.label(curie) or ""
         if label.startswith("obsolete") or curie in obsoletes:
             continue
-        stub = build_stub(adapter, curie, now)
-        path = kb_dir / f"{slugify(stub['name'])}.yaml"
-        if path.exists() and not force:
+        stub = build_stub(adapter, curie, members)
+        path = RECORDS_DIR / f"{slugify(stub['name'])}.yaml"
+        if path.exists():
             continue
-        dump_path(stub, path)
-        written.append(path)
+        append_curation_event(stub, action="CREATE", curator=curator, llm_assisted=False,
+                              description=f"Seeded from OHD term {curie}.")
+        write_validated_record(stub, path, dry_run=not apply)
+        written.append(stub["name"])
     return written
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--apply", action="store_true", help="write the stubs")
+    args = parser.parse_args(argv)
+    written = seed(apply=args.apply)
+    print(f"{'Wrote' if args.apply else 'Would write'} {len(written)} stub(s).")
+    for name in written:
+        print(f"  {name}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,145 +1,453 @@
-"""Render material YAML files to static HTML pages."""
+"""Render the static record browser into pages/.
+
+    python -m <slug>.render           # write pages/, to look at locally
+
+pages/ is not committed. `just docs-build` renders the same pages into the
+site under /records/, so the published browser always matches the records.
+Edit the templates in src/<slug>/templates/ or the layout rules below, never
+the files in pages/. Colors, title, columns and hidden sections come from
+conf/site.yaml.
+
+A record page is laid out from the shape of the data, with names and help
+text from the schema:
+
+  - simple values (text, numbers, dates, links) go in an overview table;
+  - a list of small, uniform objects is a table, one row per item, with
+    its quotes folded into the last column;
+  - any other object is a card, titled by its preferred term or name, with
+    its quotes in view; so is every curated mention (a preferred_term);
+  - evidence is a quote card: source, title, support, snippet; the
+    description's own evidence folds under the description;
+  - discussions are cards with their kind and status;
+  - curation history is a table, folded away;
+  - every bounding box in the record (an object with west, south, east and
+    north, in decimal degrees) is drawn on a map above the sections, with
+    OpenStreetMap tiles through Leaflet. conf/site.yaml `map: false` turns
+    it off; a record with no box has no map.
+
+A field's label is its schema `title` if it has one, else its name with
+underscores as spaces. Its schema description is shown as help. URLs and
+CURIEs are links.
+"""
 
 from __future__ import annotations
 
-import datetime
+import argparse
+import json
 import re
+import sys
+from functools import cache
 from pathlib import Path
-from typing import Any
 
-import markdown as markdown_lib
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup, escape
 
-from dentamech.yaml_io import PAGES_DIR, SCHEMA_PATH, load_kb, safe_load_path, slugify
+from . import site
+from .paths import MECH_NAME, PACKAGE_DIR, PAGES_DIR, RECORD_NOUN, REPO_ROOT, REPO_URL, SCHEMA_PATH, SLUG
+from .validate import box_errors, boxes, iter_records, load
 
-TEMPLATE_DIR = Path(__file__).parent / "templates"
-
-OLS_BASE = "https://www.ebi.ac.uk/ols4/ontologies/{ont}/classes?obo_id={curie}"
-ECFR_BASE = "https://www.ecfr.gov/current/title-21/section-{reg}"
-FDA_PCD_BASE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPCD/classification.cfm?start_search=1&productcode={code}"
-FDA_510K_BASE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID={num}"
-FDA_PMA_BASE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id={num}"
-FDA_DENOVO_BASE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm?id={num}"
-
-
-def term_url(curie: str) -> str:
-    prefix = curie.split(":", 1)[0].lower()
-    return OLS_BASE.format(ont=prefix, curie=curie)
-
-
-def reference_url(ref: str) -> str | None:
-    if ref.startswith("PMID:"):
-        return f"https://pubmed.ncbi.nlm.nih.gov/{ref[5:]}/"
-    if ref.startswith("PMC:"):
-        return f"https://www.ncbi.nlm.nih.gov/pmc/articles/{ref[4:]}/"
-    if ref.startswith("DOI:"):
-        return f"https://doi.org/{ref[4:]}"
-    if ref.startswith("PPR:"):
-        return f"https://europepmc.org/article/PPR/{ref[4:]}"
-    if ref.lower().startswith("url:"):
-        return ref[4:]
-    return None
+CURIE_BASES = {
+    "PMID": "https://pubmed.ncbi.nlm.nih.gov/",
+    "DOI": "https://doi.org/",
+    "PMC": "https://www.ncbi.nlm.nih.gov/pmc/articles/",
+    "WIKIPEDIA": "https://en.wikipedia.org/wiki/",
+}
+CURIE = re.compile(r"^[A-Za-z][A-Za-z0-9_.]*:[^\s]+$")
+URL = re.compile(r"^https?://\S+$")
+# Keys whose CURIE values are identifiers to link, not text.
+ID_KEYS = {"id", "reference", "accession", "infores", "category", "predicates"}
+# Keys that name an object, in the order tried for a card's title.
+TITLE_KEYS = ("preferred_term", "name", "title", "label", "category", "infores", "relation", "id")
+# Most columns a list of objects may have and still show as a table.
+MAX_TABLE_COLUMNS = 6
+# Longest text a table cell may hold before the list shows as cards.
+MAX_CELL_TEXT = 90
 
 
-def submission_url(num: str) -> str | None:
-    if num.startswith("K"):
-        return FDA_510K_BASE.format(num=num)
-    if num.startswith("P"):
-        return FDA_PMA_BASE.format(num=num)
-    if num.startswith("DEN"):
-        return FDA_DENOVO_BASE.format(num=num)
-    return None
+def curie_url(curie: str) -> str:
+    prefix, _, local = str(curie).partition(":")
+    if prefix == "url":
+        return local if local.startswith(("http://", "https://")) else "#"
+    if prefix == SLUG:
+        return ""  # a minted id: no page outside this site
+    if prefix in CURIE_BASES:
+        return CURIE_BASES[prefix] + local
+    return f"https://bioregistry.io/{curie}"
 
 
-def enum_title(value: str) -> str:
-    return value.replace("_", " ").capitalize() if value else ""
+@cache
+def schema_info() -> tuple[dict[str, tuple[str | None, str | None]], dict[str, str]]:
+    """({slot: (title, description)}, {enum value: its description, or itself}) from the schema."""
+    try:
+        from linkml_runtime.utils.schemaview import SchemaView
+
+        sv = SchemaView(str(SCHEMA_PATH))
+    except Exception:  # a schema that does not load still gets a browser, with plain labels
+        return {}, {}
+    slots = {name: (s.title, s.description) for name, s in sv.all_slots().items()}
+    values: dict[str, str] = {}
+    for enum in sv.all_enums().values():
+        for value, pv in (enum.permissible_values or {}).items():
+            values.setdefault(value, pv.description or value)
+    return slots, values
 
 
-def md(text: str) -> str:
-    return markdown_lib.markdown(text or "", extensions=["tables"])
+def label(key: str) -> str:
+    title = schema_info()[0].get(key, (None, None))[0]
+    if title:
+        return title
+    text = str(key).replace("_", " ")
+    return text[:1].upper() + text[1:]
 
 
-def _env() -> Environment:
-    env = Environment(
-        loader=FileSystemLoader(str(TEMPLATE_DIR)),
-        autoescape=select_autoescape(["html", "j2"]),
-    )
-    env.filters["term_url"] = term_url
-    env.filters["reference_url"] = reference_url
-    env.filters["submission_url"] = submission_url
-    env.filters["enum_title"] = enum_title
-    env.filters["slugify"] = slugify
-    env.filters["md"] = md
-    env.filters["ecfr"] = lambda reg: ECFR_BASE.format(reg=reg)
-    env.filters["fda_pcd"] = lambda code: FDA_PCD_BASE.format(code=code)
-    return env
+def help_text(key: str) -> str | None:
+    return schema_info()[0].get(key, (None, None))[1]
 
 
-def _enum_titles(schema: dict[str, Any]) -> dict[str, dict[str, str]]:
-    """{enum_name: {VALUE: title}} for nicer labels in templates."""
-    out: dict[str, dict[str, str]] = {}
-    for ename, edef in (schema.get("enums") or {}).items():
-        pvs = edef.get("permissible_values") or {}
-        out[ename] = {k: (v or {}).get("title") or enum_title(k) for k, v in pvs.items()}
+# ---------------------------------------------------------------- values
+
+
+def is_evidence(v) -> bool:
+    return isinstance(v, dict) and "reference" in v and "supports" in v
+
+
+def is_term(v) -> bool:
+    return isinstance(v, dict) and set(v) == {"id", "label"}
+
+
+def is_scalar(v) -> bool:
+    return v is None or isinstance(v, (str, int, float, bool))
+
+
+def link(href: str, text: str) -> Markup:
+    return Markup('<a href="{}">{}</a>').format(href, text)
+
+
+def ref_text(ref: str, keep: int = 64) -> str:
+    """A reference as link text: a url: reference without its scheme, shortened in the middle."""
+    text = re.sub(r"^url:https?://", "", ref)
+    if len(text) <= keep:
+        return text
+    head = keep * 2 // 5
+    return text[:head] + "…" + text[-(keep - head - 1):]
+
+
+def badge(value: str, kind: str = "") -> Markup:
+    text = str(value).replace("_", " ").lower()
+    tip = schema_info()[1].get(str(value)) or str(value)
+    cls = f"badge {kind} v-{str(value).lower()}".strip()
+    return Markup('<span class="{}" title="{}">{}</span>').format(cls, tip, text)
+
+
+def scalar(v, key: str = "") -> Markup:
+    if v is None:
+        return Markup("")
+    if isinstance(v, bool):
+        return Markup("yes" if v else "no")
+    text = str(v)
+    if URL.match(text):
+        return link(text, text)
+    if key in ID_KEYS and CURIE.match(text) and curie_url(text):
+        return link(curie_url(text), text)
+    if text in schema_info()[1]:
+        return badge(text)
+    return escape(text)
+
+
+def term(v: dict) -> Markup:
+    anchor = link(curie_url(v["id"]), v["label"])
+    return Markup('<span class="term">{} <code>{}</code></span>').format(anchor, v["id"])
+
+
+def value(v, key: str = "") -> Markup:
+    """Any value, inline: for table cells and overview rows."""
+    if is_term(v):
+        return term(v)
+    if is_evidence(v):
+        return evidence_list([v])
+    if isinstance(v, dict):
+        return card(v)
+    if isinstance(v, list):
+        if all(is_scalar(x) for x in v):
+            return Markup(" ").join(Markup('<span class="chip">{}</span>').format(scalar(x, key)) for x in v)
+        return items(key, v)
+    return scalar(v, key)
+
+
+# ---------------------------------------------------------------- blocks
+
+
+def evidence_list(items_: list) -> Markup:
+    out = []
+    for e in items_:
+        ref = str(e.get("reference", ""))
+        head = [Markup('<a href="{}" title="{}">{}</a>').format(curie_url(ref), ref, ref_text(ref))]
+        if e.get("reference_title"):
+            head.append(Markup('<span class="src-title">{}</span>').format(e["reference_title"]))
+        tags = [badge(e["supports"], "support")]
+        if e.get("evidence_source"):
+            tags.append(badge(e["evidence_source"], "source"))
+        body = []
+        if e.get("snippet"):
+            body.append(Markup("<blockquote>{}</blockquote>").format(e["snippet"]))
+        if e.get("explanation"):
+            body.append(Markup('<p class="explanation">{}</p>').format(e["explanation"]))
+        out.append(Markup('<div class="quote"><div class="quote-head">{} {}</div>{}</div>').format(
+            Markup(" ").join(head), Markup(" ").join(tags), Markup("").join(body)))
+    return Markup('<div class="quotes">{}</div>').format(Markup("").join(out))
+
+
+def card_title(v: dict) -> tuple[str | None, str | None]:
+    for k in TITLE_KEYS:
+        if is_scalar(v.get(k)) and v.get(k) not in (None, ""):
+            return k, str(v[k])
+    return None, None
+
+
+def card(v: dict, skip: tuple = ()) -> Markup:
+    title_key, title = card_title(v)
+    parts = []
+    if title:
+        parts.append(Markup('<h3 class="card-title">{}</h3>').format(scalar(title, title_key)))
+    if is_term(v.get("term")):
+        parts.append(Markup('<p class="card-term">{}</p>').format(term(v["term"])))
+    if v.get("description") and is_scalar(v["description"]):
+        parts.append(Markup('<p class="card-desc">{}</p>').format(scalar(v["description"])))
+    rows, blocks = [], []
+    for k, x in v.items():
+        if k in (title_key, "description", "evidence", *skip) or (k == "term" and is_term(x)):
+            continue
+        if x in (None, "", []):
+            continue
+        if is_scalar(x) or is_term(x) or (isinstance(x, list) and all(is_scalar(i) for i in x)):
+            rows.append(Markup("<tr><th>{}</th><td>{}</td></tr>").format(label(k), value(x, k)))
+        else:
+            blocks.append(Markup('<div class="sub"><h4>{}</h4>{}</div>').format(label(k), value(x, k)))
+    if rows:
+        parts.append(Markup('<table class="kv">{}</table>').format(Markup("").join(rows)))
+    parts.extend(blocks)
+    if v.get("evidence"):
+        parts.append(evidence_list(v["evidence"]))
+    # A card holding its own sections (files, a license) gets the full row.
+    cls = "card wide" if blocks else "card"
+    return Markup('<div class="{}">{}</div>').format(cls, Markup("").join(parts))
+
+
+def tabular(rows: list) -> list[str] | None:
+    """The columns, if a list of objects reads best as a table; else None."""
+    if not rows or not all(isinstance(r, dict) for r in rows):
+        return None
+    # Curated mentions read best as cards, with their quotes in view.
+    if any("preferred_term" in r for r in rows):
+        return None
+    cols: list[str] = []
+    for r in rows:
+        for k, x in r.items():
+            if k == "evidence":
+                continue
+            if not (is_scalar(x) or is_term(x)):
+                return None
+            if isinstance(x, str) and len(x) > MAX_CELL_TEXT:
+                return None
+            if k not in cols:
+                cols.append(k)
+    return cols if 1 < len(cols) <= MAX_TABLE_COLUMNS else None
+
+
+def table(key: str, rows: list, cols: list[str]) -> Markup:
+    has_ev = any(r.get("evidence") for r in rows)
+    head = Markup("").join(Markup("<th>{}</th>").format(label(c)) for c in cols)
+    if has_ev:
+        head += Markup("<th>Evidence</th>")
+    body = []
+    for r in rows:
+        cells = Markup("").join(Markup('<td data-label="{}">{}</td>').format(label(c), value(r.get(c), c))
+                                for c in cols)
+        if has_ev:
+            ev = r.get("evidence") or []
+            cells += Markup('<td data-label="Evidence">{}</td>').format(Markup(
+                '<details><summary>{} quote{}</summary>{}</details>').format(
+                len(ev), "" if len(ev) == 1 else "s", evidence_list(ev)) if ev else "")
+        body.append(Markup("<tr>{}</tr>").format(cells))
+    return Markup('<div class="table-wrap"><table class="data"><thead><tr>{}</tr></thead>'
+                  '<tbody>{}</tbody></table></div>').format(head, Markup("").join(body))
+
+
+def plain_card(x) -> Markup:
+    return card(x) if isinstance(x, dict) else Markup('<div class="card">{}</div>').format(value(x))
+
+
+def items(key: str, v: list) -> Markup:
+    if all(is_evidence(x) for x in v):
+        return evidence_list(v)
+    if all(is_term(x) for x in v):
+        return Markup(" ").join(term(x) for x in v)
+    cols = tabular(v)
+    if cols:
+        return table(key, v, cols)
+    return Markup('<div class="cards">{}</div>').format(
+        Markup("").join(plain_card(x) for x in v))
+
+
+def discussions(v: list) -> Markup:
+    out = []
+    for d in v:
+        tags = Markup(" ").join(badge(d[k], k) for k in ("kind", "status") if d.get(k))
+        body = [Markup('<p class="prompt">{}</p>').format(d.get("prompt", ""))]
+        for k in ("rationale", "resolution_note", "notes"):
+            if d.get(k):
+                body.append(Markup('<p><strong>{}.</strong> {}</p>').format(label(k), d[k]))
+        if d.get("attaches_to"):
+            about = ", ".join(map(str, d["attaches_to"]))
+            body.append(Markup('<p class="muted">About: {}</p>').format(about))
+        if d.get("evidence"):
+            body.append(evidence_list(d["evidence"]))
+        out.append(Markup('<div class="card discussion"><div class="card-tags">{}</div>{}</div>').format(
+            tags, Markup("").join(body)))
+    return Markup('<div class="cards">{}</div>').format(Markup("").join(out))
+
+
+def history(v: list) -> Markup:
+    rows = Markup("").join(
+        Markup('<tr><td data-label="Date">{}</td><td data-label="Curator">{}</td>'
+               '<td data-label="Action">{}</td><td data-label="What changed">{}</td></tr>').format(
+            str(e.get("timestamp", ""))[:10], e.get("curator", ""),
+            badge(e["action"]) if e.get("action") else "", e.get("description", ""))
+        for e in v)
+    return Markup('<details class="history"><summary>{} change{}</summary><div class="table-wrap">'
+                  '<table class="data"><thead><tr><th>Date</th><th>Curator</th><th>Action</th>'
+                  '<th>What changed</th></tr></thead><tbody>{}</tbody></table></div></details>').format(
+        len(v), "" if len(v) == 1 else "s", rows)
+
+
+def map_boxes(data: dict, hidden: list[str] = ()) -> list[dict]:
+    """The record's bounding boxes, for the map: a name from what holds each, its section, its bounds.
+    A box that box_errors rejects is left off; `just validate` reports it."""
+    out, groups = [], []
+    for _, parents, box in boxes(data):
+        if box_errors({"box": box}):
+            continue
+        section = parents[0][0] if parents else None
+        if section in hidden:
+            continue
+        holder = parents[-1][1] if parents else data
+        _, title = card_title(box)
+        if not title and holder is not data:
+            _, title = card_title(holder)
+        group = label(section) if section else MECH_NAME
+        if group not in groups:
+            groups.append(group)
+        name = f"{group}: {title}" if title else group
+        taken = sum(b["text"] == name for b in out)
+        out.append({"text": name, "name": str(escape(name if not taken else f"{name} ({taken + 1})")),
+                    "group": groups.index(group),
+                    "bounds": [[box["south"], box["west"]], [box["north"], box["east"]]]})
+    for b in out:
+        del b["text"]
     return out
 
 
-def render_all(out_dir: Path = PAGES_DIR, only: list[Path] | None = None) -> int:
-    kb = load_kb()
-    schema = safe_load_path(SCHEMA_PATH)
-    titles = _enum_titles(schema)
-    children: dict[str, list[str]] = {}
-    for name, data in kb.items():
-        for parent in data.get("parents", []) or []:
-            children.setdefault(parent, []).append(name)
+def map_data(data: dict, hidden: list[str] = ()) -> Markup | None:
+    """The map's boxes as JSON to embed in the page, or None when the record has none."""
+    found = map_boxes(data, hidden)
+    # "</" would end the script element the JSON sits in.
+    return Markup(json.dumps(found).replace("</", "<\\/")) if found else None
 
-    env = _env()
-    page_tpl = env.get_template("material.html.j2")
-    index_tpl = env.get_template("index.html.j2")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    built = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
 
-    selected = set()
-    if only:
-        for p in only:
-            selected.add(safe_load_path(p)["name"])
+HEADER_KEYS = ("id", "name", "description", "description_evidence", "status", "record_term", "synonyms")
 
-    n = 0
-    for name, data in kb.items():
-        if selected and name not in selected:
+
+def record_body(data: dict, hidden: list[str], show_map: bool = True) -> dict:
+    """The parts of a record page: overview rows, then sections."""
+    overview, sections = [], []
+    for k, v in data.items():
+        if k in HEADER_KEYS or k in hidden or v in (None, "", [], {}):
             continue
-        html = page_tpl.render(
-            m=data,
-            slug=slugify(name),
-            children=sorted(children.get(name, [])),
-            kb=kb,
-            titles=titles,
-            built=built,
-        )
-        (out_dir / f"{slugify(name)}.html").write_text(html, encoding="utf-8")
-        n += 1
+        if is_scalar(v) or is_term(v):
+            overview.append((label(k), help_text(k), value(v, k)))
+            continue
+        if k == "discussions":
+            html = discussions(v)
+        elif k == "curation_history":
+            html = history(v)
+        elif isinstance(v, list):
+            html = items(k, v)
+        elif isinstance(v, dict):
+            html = card(v)
+        else:
+            html = value(v, k)
+        sections.append({"key": k, "label": label(k), "help": help_text(k), "html": html,
+                         "count": len(v) if isinstance(v, list) else None})
+    ev = data.get("description_evidence") or []
+    lead = evidence_list(ev) if ev else None
+    return {"overview": overview, "sections": sections, "map": map_data(data, hidden) if show_map else None,
+            "description_evidence": lead, "description_quotes": len(ev)}
 
-    # Index: group by category, then a tree from the roots.
-    by_cat: dict[str, list[dict[str, Any]]] = {}
-    for name, data in kb.items():
-        by_cat.setdefault(data.get("category", "OTHER"), []).append(data)
-    roots = sorted(name for name, data in kb.items() if not any(p in kb for p in data.get("parents", []) or []))
-    n_fda = sum(1 for d in kb.values() if any(r.get("agency") == "FDA" and r.get("regulation_number") for r in d.get("regulatory_status", []) or []))
-    n_stub = sum(1 for d in kb.values() if d.get("curation_status", "STUB") == "STUB")
-    (out_dir / "index.html").write_text(
-        index_tpl.render(
-            kb=kb,
-            by_cat=dict(sorted(by_cat.items())),
-            roots=roots,
-            children=children,
-            titles=titles,
-            built=built,
-            n_fda=n_fda,
-            n_stub=n_stub,
-        ),
-        encoding="utf-8",
+
+def cell(v) -> str:
+    """How a record field shows in the front-page table, as plain text."""
+    if isinstance(v, dict):
+        named = v.get("label") or v.get("preferred_term") or v.get("id")
+        if named:
+            return str(named)
+        # A small statement such as {"purpose": "DAIRY"}: show its first plain value.
+        plain = [x for x in v.values() if isinstance(x, (str, int, float))]
+        return cell(plain[0]) if plain else ""
+    if isinstance(v, list):
+        return ", ".join(cell(x) for x in v)
+    if isinstance(v, str) and v in schema_info()[1]:
+        return v.replace("_", " ").lower()
+    return "" if v is None else str(v)
+
+
+def build() -> dict[Path, str]:
+    settings = site.load()
+    errors = site.problems(settings)
+    if errors:
+        raise SystemExit("conf/site.yaml: " + "; ".join(errors))
+    env = Environment(
+        loader=FileSystemLoader(PACKAGE_DIR / "templates"),
+        autoescape=select_autoescape(["html"]),
+        keep_trailing_newline=True,
     )
-    return n
+    env.filters.update(curie_url=curie_url, cell=cell, label=label, scalar=scalar, badge=badge, term=term)
+    records = []
+    for path in iter_records():
+        data = load(path) or {}
+        if not isinstance(data, dict):  # not a record; just validate reports it
+            continue
+        records.append({"stem": path.stem, "data": data})
+    records.sort(key=lambda r: str(r["data"].get("name", r["stem"])).lower())
+    statuses: dict[str, int] = {}
+    for r in records:
+        s = str(r["data"].get("status") or "")
+        if s:
+            statuses[s] = statuses.get(s, 0) + 1
+    ctx = {"mech_name": MECH_NAME, "record_noun": RECORD_NOUN, "repo_url": REPO_URL, "site": settings}
+    out = {PAGES_DIR / "index.html": env.get_template("index.html").render(
+        records=records, statuses=sorted(statuses.items()), **ctx)}
+    tmpl = env.get_template("record.html")
+    for r in records:
+        body = record_body(r["data"], settings["hidden_sections"], settings["map"])
+        out[PAGES_DIR / "records" / f"{r['stem']}.html"] = tmpl.render(record=r, body=body, **ctx)
+    css = env.get_template("style.css").render(theme=settings["theme"], **site.colors(settings))
+    out[PAGES_DIR / "style.css"] = css
+    return out
 
 
-_STRIP = re.compile(r"\s+")
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.parse_args(argv)
+    wanted = build()
+    existing = set(PAGES_DIR.rglob("*.html")) | set(PAGES_DIR.rglob("*.css")) if PAGES_DIR.exists() else set()
+    for p in existing - set(wanted):
+        p.unlink()
+    for p, text in wanted.items():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text, encoding="utf-8")
+    print(f"Wrote {len(wanted)} files to {PAGES_DIR.relative_to(REPO_ROOT)}/.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

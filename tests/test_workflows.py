@@ -1,5 +1,4 @@
-"""Keep the automation honest: workflows parse, skills they name exist, and
-the research template carries every variable the just recipe passes."""
+"""Keep the automation honest: workflows parse and the comment limit stays wired in."""
 
 from __future__ import annotations
 
@@ -11,46 +10,37 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = sorted((ROOT / ".github" / "workflows").glob("*.y*ml"))
 SKILLS = ROOT / ".claude" / "skills"
-TEMPLATE = ROOT / "templates" / "dental_material_research.md"
-JUSTFILE = ROOT / "project.justfile"
 
 
 def test_workflows_parse():
+    assert WORKFLOWS
     for wf in WORKFLOWS:
-        data = yaml.safe_load(wf.read_text(encoding="utf-8"))
-        assert "jobs" in data, wf.name
+        assert "jobs" in yaml.safe_load(wf.read_text(encoding="utf-8")), wf.name
 
 
-def test_workflows_reference_existing_skills():
-    text = "\n".join(wf.read_text(encoding="utf-8") for wf in WORKFLOWS)
-    for name in re.findall(r"\.claude/skills/([a-z0-9-]+)/SKILL\.md", text):
+def test_skills_named_in_prompts_exist():
+    prompts = (ROOT / ".github" / "prompts").glob("*.md")
+    text = "\n".join(p.read_text(encoding="utf-8") for p in prompts)
+    for name in set(re.findall(r"`([a-z]+-record)` skill", text)):
         assert (SKILLS / name / "SKILL.md").exists(), name
 
 
-def test_claude_workflows_use_oauth_fallback():
-    for wf in WORKFLOWS:
-        text = wf.read_text(encoding="utf-8")
-        if "claude-code-action" in text:
-            assert "CLAUDE_CODE_OAUTH_TOKEN" in text, wf.name
-            assert "--model" in text, wf.name
+def test_scanner_applies_the_comment_limit():
+    text = (ROOT / ".github" / "workflows" / "curation-scanner.yaml").read_text(encoding="utf-8")
+    assert "python3 -m dentamech.scanner" in text
+    assert "QUEUE_PAUSED: ${{ steps.limits.outputs.paused }}" in text
+    assert "PROMPT_FINAL_COMMENT: ${{ steps.limits.outputs.final_comment }}" in text
+    queue = (ROOT / ".github" / "scripts" / "curation_queue.py").read_text(encoding="utf-8")
+    assert "QUEUE_PAUSED" in queue
 
 
-def test_research_template_variables_match_recipe():
-    template_vars = set(re.findall(r"\{([a-z_]+)\}", TEMPLATE.read_text(encoding="utf-8")))
-    recipe = JUSTFILE.read_text(encoding="utf-8")
-    recipe_vars = set(re.findall(r'--var "([a-z_]+)=', recipe))
-    assert template_vars == recipe_vars, (template_vars ^ recipe_vars)
+def test_issue_template_does_not_apply_the_curation_label():
+    """The label hands an item to an agent with write access, so a person adds it."""
+    template = ROOT / ".github" / "ISSUE_TEMPLATE" / "curate-material.yml"
+    assert "curation" not in (yaml.safe_load(template.read_text(encoding="utf-8")).get("labels") or [])
 
 
-def test_research_template_has_regulatory_section():
-    text = TEMPLATE.read_text(encoding="utf-8")
-    assert "21 CFR" in text
-    assert "product code" in text.lower()
-    assert "verbatim" in text
-
-
-def test_scanner_receives_comment_limit_results():
-    text = (ROOT / ".github" / "workflows" / "curation-scanner.yml").read_text(encoding="utf-8")
-    assert "python -m dentamech.scanner" in text
-    assert "steps.limits.outputs.paused" in text
-    assert "steps.limits.outputs.final_comment" in text
+def test_comment_guard_reads_its_gate_from_the_default_branch():
+    text = (ROOT / ".github" / "workflows" / "comment-guard.yaml").read_text(encoding="utf-8")
+    assert "ref: ${{ github.event.repository.default_branch }}" in text
+    assert (ROOT / ".github" / "scripts" / "trust-gate.js").exists()
