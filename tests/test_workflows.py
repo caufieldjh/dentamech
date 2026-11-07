@@ -47,3 +47,10 @@ def test_research_template_has_regulatory_section():
     assert "21 CFR" in text
     assert "product code" in text.lower()
     assert "verbatim" in text
+
+
+def test_scanner_receives_comment_limit_results():
+    text = (ROOT / ".github" / "workflows" / "curation-scanner.yml").read_text(encoding="utf-8")
+    assert "python -m dentamech.scanner" in text
+    assert "steps.limits.outputs.paused" in text
+    assert "steps.limits.outputs.final_comment" in text

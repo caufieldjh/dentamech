@@ -38,8 +38,14 @@ scanner's default.
 2. Triage labels it `curation`.
 3. The scanner picks it up, runs `just research-material`, fills the entry following the `curate-material` skill, verifies regulatory facts against the CFR and FDA database, validates, and opens a draft PR.
 4. The review workflow checks the PR and approves or requests changes.
-5. The scanner tends stalled PRs on later runs.
+5. The scanner tends stalled PRs on later runs, up to the comment limit below.
 6. A human merges. The pages workflow re-renders; the deploy workflow publishes.
+
+## Comment limit
+
+The scanner stops working on a `curation` issue or PR after three consecutive agent comments. Before each run, `python -m dentamech.scanner` counts agent comments since the latest comment, review, or commit from a person, and the workflow passes the results to the scanner. Agent commits don't count toward the limit, and comments from all agent accounts do, including the review workflow's.
+
+An item returns to selection once a person responds. While any item is paused, the scanner files no new issues, so unreviewed work doesn't pile up. Naming a material in the manual trigger still curates it directly.
 
 ## Running the pieces by hand
 

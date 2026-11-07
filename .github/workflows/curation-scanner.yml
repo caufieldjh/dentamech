@@ -3,7 +3,9 @@ name: Curation Scanner
 # On a schedule, pick exactly one unassigned open `curation` issue or PR and
 # advance it: research and curate a material, or tend a stalled PR. When the
 # queue is empty, pick the next STUB material and open a curation issue for it
-# so the queue never runs dry.
+# so the queue never runs dry. Items with three consecutive agent comments are
+# left alone until a person responds, and no new issue is filed while any item
+# is paused.
 
 on:  # yamllint disable-line rule:truthy
   schedule:
@@ -69,6 +71,12 @@ jobs:
           path: ~/.data/oaklib
           key: oak-ohd-${{ hashFiles('conf/oak_config.yaml') }}
 
+      - name: Find items at the comment limit
+        id: limits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run python -m dentamech.scanner "$GITHUB_REPOSITORY"
+
       - name: Run curation scanner
         id: scanner
         uses: anthropics/claude-code-action@v1
@@ -91,6 +99,8 @@ jobs:
             TRIGGER: ${{ github.event_name }}
             DIRECT MATERIAL: ${{ inputs.material || '' }}
             DEEP RESEARCH PROVIDER: ${{ env.PROVIDER }}
+            PAUSED ITEMS: ${{ steps.limits.outputs.paused }}
+            FINAL-COMMENT ITEMS: ${{ steps.limits.outputs.final_comment }}
 
             You are the automated curation scanner for the dental materials
             knowledge base. Follow CLAUDE.md and the `curate-material` skill in
@@ -98,7 +108,7 @@ jobs:
 
             If DIRECT MATERIAL is set, curate that material and skip selection.
 
-            Otherwise select exactly one item:
+            Otherwise select exactly one item, never a PAUSED ITEM:
 
             1. Open, unassigned pull requests labelled `curation` that are
                stalled: failing checks, unresolved review comments, or
@@ -107,13 +117,16 @@ jobs:
                with what you did. Never rebase locally to resolve conflicts;
                use `gh api` update-branch. If the next step is unclear, comment
                asking for guidance and stop.
-            2. Else, open, unassigned issues labelled `curation`. Prefer
-               `high-priority`, then oldest. Curate the material it names on a
+            2. Else, open, unassigned issues labelled `curation` that no open
+               PR already addresses. Prefer `high-priority`, then oldest.
+               Curate the material it names on a
                branch `curate/<slug>` and open a draft PR that says
                `Closes #<issue>`. Use DEEP RESEARCH PROVIDER for the research
                step. Comment on the issue with one sentence saying why this
                item was chosen.
-            3. Else, the queue is empty. Run `uv run dentamech list --status
+            3. Else, the queue is empty. If PAUSED ITEMS is not `none`, stop
+               here and change nothing: finished work is waiting on a person.
+               Otherwise run `uv run dentamech list --status
                STUB`, pick the material with the most children (a parent class
                is more useful than a leaf) or, on a tie, the first
                alphabetically, and open ONE issue titled
@@ -122,6 +135,12 @@ jobs:
 
             Rules:
             - One item per run. Touch nothing else.
+            - PAUSED ITEMS have three or more consecutive agent comments with
+              no comment, review, or commit from a person since. Do not comment
+              on them, push to them, or announce that they are paused. They
+              return to selection on their own once a person responds.
+            - A comment on a FINAL-COMMENT ITEM is the last one allowed. End it
+              by saying the scanner will not return until a person responds.
             - Verify every regulation number, device class, and product code
               against the CFR text and the FDA product classification database
               as the skill describes. Never carry a value from memory or from

@@ -65,6 +65,7 @@ src/dentamech/seed.py    OHD -> stub files
 src/dentamech/cli.py     `dentamech` CLI (seed, list, render, export-browser, check-links)
 src/dentamech/render.py + templates/     HTML pages
 src/dentamech/export.py                  app/data.js
+src/dentamech/scanner.py                 scanner comment limit
 conf/oak_config.yaml     prefix -> OAK adapter
 conf/reference_validator_config.yaml
 tests/                   schema conformance + KB consistency + render smoke tests
