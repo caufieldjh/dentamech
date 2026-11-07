@@ -1,0 +1,249 @@
+"""Write the curation queue for one effort tier, keeping only trusted text.
+
+    python .github/scripts/curation_queue.py <out_dir>
+
+Reads QUEUE_REPO and QUEUE_SELECTOR from the environment, QUEUE_TRUSTED_BOTS
+(the logins of the Mech's own Apps, space-separated, such as
+`mech-agent[bot]`), QUEUE_PAUSED (item numbers at the comment limit, such as
+`#2 #4`, or `none`), and GH_TOKEN for `gh api`. Writes <out_dir>/README.md,
+the candidate items, and one <out_dir>/<number>.md per item: its title and
+body, then the comments, reviews and review comments written by people with
+write access (OWNER, MEMBER, COLLABORATOR) or by one of those Apps. Every
+other comment is left out and only counted.
+
+The curation scanner can push, so it reads the thread from here instead of
+from GitHub. A stranger can comment on any open issue, so only comments from
+people with write access are kept. Other bots are not trusted: pr-shepherd,
+dedupe and post-review post as `github-actions[bot]`, and their words can
+carry a stranger's. The one exception is the review workflow when it has no
+App of its own: a `github-actions[bot]` review that approves, requests
+changes or carries the review marker is kept, with its inline comments.
+
+A person puts the `curation` label on an item after reading it (triage adds
+it only for authors with write access, and a label a bot adds does not count). When the author cannot write, a
+title or body changed after the latest `curation` label is withheld: nobody
+has read the new text. Adding the label again accepts it.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+WRITERS = {"OWNER", "MEMBER", "COLLABORATOR"}
+EFFORTS = {"low_effort", "medium_effort", "high_effort"}
+VERDICTS = {"APPROVED", "CHANGES_REQUESTED"}
+ACTIONS_BOT = "github-actions[bot]"
+REVIEW_MARKER = "<!-- mech-review:v1 -->"  # review-publish.js ends every review with it
+LABEL = "curation"
+LIMIT = 50
+UNKNOWN = "unknown"  # last_edited could not be read
+
+EDITED_QUERY = """query($owner: String!, $name: String!, $n: Int!) {
+  repository(owner: $owner, name: $name) {
+    issueOrPullRequest(number: $n) { ... on Issue { lastEditedAt } ... on PullRequest { lastEditedAt } }
+  }
+}"""
+
+
+def gh_api(path: str, *fields: str, paginate: bool = False):
+    args = ["gh", "api", "-X", "GET", path]
+    for f in fields:
+        args += ["-f", f]
+    if paginate:
+        args += ["--paginate", "--slurp"]
+    out = json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
+    return [x for page in out for x in page] if paginate else out  # --slurp wraps each page
+
+
+def last_edited(repo: str, n: int) -> str | None:
+    """When the item's body was last edited, None if never, or UNKNOWN if GitHub did not say (a
+    rate limit, an item moved): one item's failure withholds its body, not the whole queue."""
+    owner, name = repo.split("/", 1)
+    args = ["gh", "api", "graphql", "-f", f"query={EDITED_QUERY}",
+            "-f", f"owner={owner}", "-f", f"name={name}", "-F", f"n={n}"]
+    try:
+        out = json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
+    except (subprocess.CalledProcessError, json.JSONDecodeError):
+        return UNKNOWN
+    item = ((out.get("data") or {}).get("repository") or {}).get("issueOrPullRequest") or {}
+    return item.get("lastEditedAt")
+
+
+def trusted(entry: dict, bots: frozenset[str] = frozenset()) -> bool:
+    """Written by someone with write access, or by one of the Mech's own Apps."""
+    user = entry.get("user") or {}
+    return entry.get("author_association") in WRITERS or (
+        user.get("type") == "Bot" and user.get("login") in bots)
+
+
+def fallback_review(entry: dict) -> bool:
+    """A review the review workflow posted with the built-in token, for want of its App."""
+    user = entry.get("user") or {}
+    return user.get("login") == ACTIONS_BOT and (
+        entry.get("state") in VERDICTS or REVIEW_MARKER in (entry.get("body") or ""))
+
+
+def withheld(item: dict, events: list[dict], edited_at: str | None) -> dict[str, str]:
+    """The title and body a person has not read: changed after the latest `curation` label."""
+    if item.get("author_association") in WRITERS:
+        return {}
+    # Only a person's label says someone read it: a bot (triage, an App, another
+    # workflow) adds labels without reading.
+    labelled = [e.get("created_at", "") for e in events
+                if e.get("event") == "labeled" and (e.get("label") or {}).get("name") == LABEL
+                and (e.get("actor") or {}).get("type") != "Bot"]
+    if not labelled:
+        why = f"withheld: the `{LABEL}` label was not found, so nobody is known to have read it"
+        return {"title": why, "body": why}
+    last = max(labelled)
+    late = {}
+    renamed = [e["created_at"] for e in events
+               if e.get("event") == "renamed" and e.get("created_at", "") > last]
+    if renamed:
+        late["title"] = (f"withheld: the title changed at {max(renamed)}, after the `{LABEL}` label "
+                         f"at {last}. Adding the label again accepts it")
+    if edited_at == UNKNOWN:
+        late["body"] = "withheld: GitHub did not say when the body was last edited"
+    elif edited_at and edited_at > last:
+        late["body"] = (f"withheld: the body was edited at {edited_at}, after the `{LABEL}` label "
+                        f"at {last}. Adding the label again accepts it")
+    return late
+
+
+def who(entry: dict) -> str:
+    user = (entry.get("user") or {}).get("login", "ghost")
+    return f"@{user} ({entry.get('author_association', 'NONE')})"
+
+
+def quote(text: str | None, empty: str) -> str:
+    """Each text as a block quote, so a heading inside it cannot pass for one of ours."""
+    lines = (text or "").strip().splitlines() or [empty]
+    return "\n".join(f"> {line}" if line else ">" for line in lines)
+
+
+def labels(item: dict) -> list[str]:
+    return [lb["name"] for lb in item.get("labels") or []]
+
+
+def skip_reason(item: dict) -> str:
+    names = labels(item)
+    if "needs-human" in names:
+        return "labelled needs-human"
+    if len(EFFORTS & set(names)) > 1:
+        return "more than one effort label"
+    return ""
+
+
+def section(title: str, entries: list[dict], head, keep) -> list[str]:
+    # A review with no text still says approved or changes requested.
+    kept = [e for e in entries
+            if keep(e) and ((e.get("body") or "").strip() or e.get("state") in VERDICTS)]
+    dropped = sum(1 for e in entries if not keep(e))
+    out = [f"## {title}: {len(kept)} kept, {dropped} left out", ""]
+    if dropped:
+        out += [f"{dropped} written by people without write access, or by other bots, are not shown.", ""]
+    for e in kept:
+        out += [f"### {head(e)}", "", quote(e.get("body"), "(no text)"), ""]
+    return out
+
+
+def title_of(item: dict, held: dict[str, str]) -> str:
+    return "(title withheld)" if "title" in held else item["title"]
+
+
+def render_item(repo: str, item: dict, comments: list[dict], pr: dict | None = None,
+                reviews: list[dict] | None = None, review_comments: list[dict] | None = None,
+                bots: frozenset[str] = frozenset(), held: dict[str, str] | None = None) -> str:
+    held = held or {}
+    kind = "pull request" if pr is not None else "issue"
+    thumbs = (item.get("reactions") or {}).get("+1", 0)
+    out = [f"# #{item['number']} ({kind}): {title_of(item, held)}", "",
+           f"- URL: {item['html_url']}",
+           f"- Author: {who(item)}",
+           f"- Labels: {', '.join(labels(item)) or 'none'}",
+           f"- Created: {item['created_at']}; updated: {item['updated_at']}",
+           f"- Thumbs up: {thumbs}"]
+    if pr is not None:
+        fork = ((pr["head"].get("repo") or {}).get("full_name")) != repo
+        # A fork's branch name is anyone's to write, like its title and body.
+        branch = "from a fork (name not shown): you cannot push to it" if fork else f"`{pr['head']['ref']}`"
+        out += [f"- Branch: {branch}",
+                f"- Draft: {'yes' if pr.get('draft') else 'no'}"]
+    if "title" in held:
+        out += [f"- Title: {held['title']}."]
+    body = f"({held['body']}.)" if "body" in held else quote(item.get("body"), "(empty)")
+    out += ["", "## Body", "", body, ""]
+
+    def keep(e: dict) -> bool:
+        return trusted(e, bots)
+
+    out += section("Comments", comments, lambda e: f"{who(e)}, {e['created_at']}", keep)
+    if pr is not None:
+        reviews = reviews or []
+        fallback = {r.get("id") for r in reviews if fallback_review(r)}
+        out += section("Reviews", reviews,
+                       lambda e: f"{who(e)}, {e.get('state', '').lower()}, {e.get('submitted_at')}",
+                       lambda e: keep(e) or e.get("id") in fallback)
+        out += section("Review comments", review_comments or [],
+                       lambda e: f"{who(e)} on `{e.get('path')}` line "
+                                 f"{e.get('line') or e.get('original_line')}, {e['created_at']}",
+                       lambda e: keep(e) or ((e.get("user") or {}).get("login") == ACTIONS_BOT
+                                             and e.get("pull_request_review_id") in fallback))
+    return "\n".join(out)
+
+
+def main() -> int:
+    out = Path(sys.argv[1])
+    out.mkdir(parents=True, exist_ok=True)
+    repo, selector = os.environ["QUEUE_REPO"], os.environ["QUEUE_SELECTOR"]
+    bots = frozenset(os.environ.get("QUEUE_TRUSTED_BOTS", "").split())
+    paused = {int(n.lstrip("#")) for n in os.environ.get("QUEUE_PAUSED", "").split() if n != "none"}
+    query = f"repo:{repo} is:open no:assignee {selector}"
+    found = gh_api("search/issues", f"q={query}", "sort=created", "order=asc", f"per_page={LIMIT}")
+    rows, skipped = [], []
+    for item in found["items"]:
+        n = item["number"]
+        reason = "paused at the comment limit" if n in paused else skip_reason(item)
+        if reason:
+            skipped.append(f"- #{n}: {reason}")
+            continue
+        comments = gh_api(f"repos/{repo}/issues/{n}/comments", paginate=True)
+        held = {}
+        if item.get("author_association") not in WRITERS:
+            held = withheld(item, gh_api(f"repos/{repo}/issues/{n}/events", paginate=True),
+                            last_edited(repo, n))
+        if "pull_request" in item:
+            text = render_item(repo, item, comments, gh_api(f"repos/{repo}/pulls/{n}"),
+                               gh_api(f"repos/{repo}/pulls/{n}/reviews", paginate=True),
+                               gh_api(f"repos/{repo}/pulls/{n}/comments", paginate=True), bots, held)
+        else:
+            text = render_item(repo, item, comments, bots=bots, held=held)
+        (out / f"{n}.md").write_text(text)
+        kind = "PR" if "pull_request" in item else "issue"
+        thumbs = (item.get("reactions") or {}).get("+1", 0)
+        rows.append(f"| [#{n}]({n}.md) | {kind} | {title_of(item, held).replace('|', '/')} | "
+                    f"{', '.join(labels(item))} | {thumbs} | {item['updated_at'][:10]} |")
+    index = [f"# Curation queue: `{selector}`", "",
+             f"{len(rows)} open, unassigned items, oldest first. Each file holds the item's",
+             "title and body, unless changed after the label, and only the comments",
+             "written by people with write access or by this Mech's own Apps.", ""]
+    if rows:
+        index += ["| Item | Kind | Title | Labels | Thumbs up | Updated |",
+                  "|---|---|---|---|---|---|", *rows, ""]
+    if skipped:
+        index += ["Left out of the queue:", "", *skipped, ""]
+    (out / "README.md").write_text("\n".join(index))
+    gh_out = os.environ.get("GITHUB_OUTPUT")
+    if gh_out:
+        with open(gh_out, "a", encoding="utf-8") as fh:
+            fh.write(f"count={len(rows)}\n")
+    print(f"{len(rows)} items in the queue, {len(skipped)} left out.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

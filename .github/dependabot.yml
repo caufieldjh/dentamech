@@ -1,13 +1,11 @@
-# Please see the documentation for all configuration options:
-# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
-
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: "/"
+    # The workflows, and the composite actions under .github/actions/ (such as
+    # setup-agent), whose pins Dependabot does not find from "/" alone.
+    directories: ["/", "/.github/actions/*"]
     schedule:
       interval: monthly
     groups:
-      github-actions:
-        patterns:
-          - "*"
+      actions:
+        patterns: ["*"]

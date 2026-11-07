@@ -1,0 +1,19 @@
+id: OHD:0001012
+name: Flowable resin-based composite
+description: A resin-based composite dental restoration material that has low-viscosity and is recommended for cervical lesions, restorations in deciduous teeth, and other small, low- or non-stress bearing restorations.
+record_term:
+  id: OHD:0001012
+  label: flowable resin-based composite dental restoration material
+category: RESIN_COMPOSITE
+parents:
+  - OHD:0000036
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Flowable_Resin-based_Composite.
+updated_date: '2026-11-07'
