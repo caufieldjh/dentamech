@@ -556,6 +556,14 @@ clinical_performance:
     evidence_source: SYSTEMATIC_REVIEW
     snippet: "Monolithic lithium-disilicate and monolithic zirconia crowns showed significantly fewer ceramic fractures and chipping compared to veneered alternatives."
     explanation: Identifies design, not only material, as a determinant of survival.
+  - reference: PMID:41489982
+    reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+    supports: SUPPORT
+    evidence_source: SYSTEMATIC_REVIEW
+    snippet: "Sixty-four studies met inclusion, reporting on 3,509 metal-ceramic and 8,051 all-ceramic SCs."
+    explanation: Source of the population counts, which no other snippet on this row carries. The
+      study count is spelled out in the abstract, so a numeric search of the snippets does not find
+      it; the same is true of the matching row below.
 - name: Five-year survival of single crowns, earlier evidence round
   measure_type: SURVIVAL_RATE
   value: 92.1-96.6
