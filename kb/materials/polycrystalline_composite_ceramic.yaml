@@ -1,0 +1,22 @@
+id: OHD:0001040
+name: Polycrystalline composite ceramic
+description: A polycrystalline ceramic dental restoration material that combines different cryatalline phases to improve specific properties.
+record_term:
+  id: OHD:0001040
+  label: polycrystalline composite ceramic dental restoration material
+category: CERAMIC
+setting_mechanisms:
+  - SINTERING
+  - MILLING
+parents:
+  - OHD:0001033
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Polycrystalline_Composite_Ceramic.
+updated_date: '2026-11-07'

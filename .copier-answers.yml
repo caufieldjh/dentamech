@@ -1,16 +1,72 @@
-# Changes here will be overwritten by Copier
-_commit: v0.5.0
-_src_path: https://github.com/linkml/linkml-project-copier
-add_example: true
+# Changes here will be overwritten by Copier. Do not edit by hand.
+_commit: 0.2.1
+_src_path: gh:monarch-initiative/mechmaker
+agent_schedules: false
+author_email: jhc@lbl.gov
+author_name: J. Harry Caufield
+author_orcid: 0000-0001-5705-7831
+causal_graphs: false
+code_license: BSD-3-Clause
+collection: none
 copyright_year: '2026'
-email: jhc@lbl.gov
-existing_license_file: ''
-full_name: Harry Caufield
-gh_action_docs_preview: true
-gh_action_pypi: true
+data_license: CC-BY-4.0
+deep_research: true
+description: 'DentaMech records dental restoration materials: composition, setting,
+    clinical use, performance, adverse effects, regulatory status and standards, one
+    record per OHD term, with every claim quoted from its source.'
+domains:
+- biomedical
+- clinical
+extra_ontologies: []
+fleet_name: ''
+full_title: Dental Materials Knowledge Base
 github_org: caufieldjh
-license: BSD-3-Clause
-project_description: A Dental Materials Knowledge Base
-project_name: dentmatmech
-project_slug: dentmatmech
-
+github_user: caufieldjh
+identity_adapter: sqlite:obo:ohd
+identity_direct_only: false
+identity_prefix: OHD
+identity_root: OHD:0000000
+identity_uri: http://purl.obolibrary.org/obo/OHD_
+include_claude_hook: true
+include_site: true
+kind: mech
+langfuse: false
+load_targets: []
+mech_name: DentaMech
+mech_slug: dentamech
+news_leads: false
+ontologies:
+- UBERON
+- CHEBI
+- HP
+- MONDO
+- PATO
+output_formats:
+- yaml
+- json
+- jsonld
+- ttl
+- sqlite
+- sql
+- csv
+python_min: '3.11'
+record_class: DentalMaterial
+record_noun: dental material
+records_dir: kb/materials
+repo_name: dentamech
+site_accent: indigo
+site_palette: indigo
+site_theme: auto
+tabular_layout: per_class
+taxon_scope: ''
+term_backend: ols
+workflows:
+- sweep
+- docs
+- comment-guard
+- close-fork-prs
+- pypi-publish
+- claude
+- review
+- triage
+- curation-scanner

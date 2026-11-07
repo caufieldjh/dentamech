@@ -1,295 +1,281 @@
-# ============ Shell configuration for Windows ============
+# DentaMech: Dental Materials Knowledge Base
+#
+# These recipes are the repository's real interface. CI calls recipes, not
+# inlined shell. `just qc` is the one executable definition of green.
 
-# On Windows the "bash" shell from Git for Windows is used.
-# If Git is installed in a non-standard location, edit the path below.
-set windows-shell := ["C:/Program Files/Git/bin/bash", "-cu"]
+set positional-arguments := true
 
-# ============ Variables used in recipes ============
+slug := "dentamech"
+schema := "src/dentamech/schema/dentamech.yaml"
+history_schema := "src/dentamech/schema/history.yaml"
+record_class := "DentalMaterial"
+records := "kb/materials"
+oak_config := "conf/oak_config.yaml"
+ref_config := ".linkml-reference-validator.yaml"
 
-# Detect WSL2 variable
-_wsl2_check := `[ -n "${WSL_INTEROP:-}" ] && [ -z "${JUST_TEMPDIR:-}" ] && echo "ERROR" || echo "OK"`
+default:
+    @just --list --unsorted
 
-# Load environment variables from config.public.mk or specified file
-set dotenv-load := true
-# set dotenv-filename := env_var_or_default("LINKML_ENVIRONMENT_FILENAME", "config.public.mk")
-set dotenv-filename := x'${LINKML_ENVIRONMENT_FILENAME:-config.public.mk}'
-
-# Set shebang line for cross-platform Python recipes (assumes presence of launcher on Windows)
-shebang := if os() == 'windows' {
-  'py'
-} else {
-  '/usr/bin/env python3'
-}
-
-# Environment variables with defaults
-schema_name := env_var_or_default("LINKML_SCHEMA_NAME", "_no_schema_given_")
-source_schema_dir := env_var_or_default("LINKML_SCHEMA_SOURCE_DIR", "")
-config_yaml := if env_var_or_default("LINKML_GENERATORS_CONFIG_YAML", "") != "" {
-  "--config-file " + env_var_or_default("LINKML_GENERATORS_CONFIG_YAML", "")
-} else {
-  ""
-}
-gen_doc_args := env_var_or_default("LINKML_GENERATORS_DOC_ARGS", "")
-gen_java_args := env_var_or_default("LINKML_GENERATORS_JAVA_ARGS", "")
-gen_owl_args := env_var_or_default("LINKML_GENERATORS_OWL_ARGS", "")
-gen_pydantic_args := env_var_or_default("LINKML_GENERATORS_PYDANTIC_ARGS", "")
-gen_ts_args := env_var_or_default("LINKML_GENERATORS_TYPESCRIPT_ARGS", "")
-
-# Directory variables
-src := "src"
-dest := "project"
-pymodel := src / schema_name / "datamodel"
-source_schema_path := source_schema_dir / schema_name + ".yaml"
-docdir := "docs/elements"  # Directory for generated documentation
-distrib_schema_path := "docs/schema"  # Directory for publishing schema artifacts
-
-# ============== Project recipes ==============
-
-# List all commands as default command. The prefix "_" hides the command.
-_default: _status
-    @{{ if _wsl2_check == "ERROR" { "echo 'WSL2 detected: run export JUST_TEMPDIR=/tmp'" } else { "" } }}
-    @just --list
-
-# WSL2 status check - warns but does not abort (safe to use in _status/_default)
-[private]
-_wsl2_status_check:
-    @if [ -n "${WSL_INTEROP:-}" ] && [ -z "${JUST_TEMPDIR:-}" ]; then \
-      echo "WARNING: WSL2 detected but JUST_TEMPDIR is not set."; \
-      echo "Shebang recipes will fail with 'Permission denied' errors."; \
-      echo "Fix: run 'export JUST_TEMPDIR=/tmp'"; \
-    fi
-
-# WSL2 compatibility check - fails early with helpful message
-[private]
-_wsl2_compat_check:
-    @if [ -n "${WSL_INTEROP:-}" ] && [ -z "${JUST_TEMPDIR:-}" ]; then \
-      echo "ERROR: WSL2 detected but JUST_TEMPDIR is not set."; \
-      echo "Shebang recipes will fail with 'Permission denied' errors."; \
-      echo ""; \
-      echo "Fix: run this command:"; \
-      echo ""; \
-      echo "  export JUST_TEMPDIR=/tmp"; \
-      echo ""; \
-      echo "Or add it to your ~/.bashrc for persistence."; \
-      exit 1; \
-    fi
-
-# Initialize a new project (use this for projects not yet under version control)
-[group('project management')]
-setup: _wsl2_compat_check _check-config _git-init install _git-add && _setup_part2
-  git commit -m "Initialise git with minimal project" -a || true
-
-_setup_part2: gen-project gen-doc
-  @echo
-  @echo '=== Setup completed! ==='
-  @echo 'Various model representations have been created under directory "project". By default'
-  @echo 'they are ignored by git. You decide whether you want to add them to git tracking or'
-  @echo 'continue to git-ignore them as they can be regenerated if needed.'
-  @echo 'For tracking specific subfolders, add !project/[foldername]/* line(s) to ".gitignore".'
-
-# Install project dependencies
-[group('project management')]
+# Install the package and dev tools
 install:
-  uv sync --group dev
+    uv sync --extra dev
 
-# Updates project template and LinkML package
-[group('project management')]
-update: _update-template _update-linkml
+# ---------------------------------------------------------------- validation
 
-# Clean all generated files
-[group('project management')]
-clean: _wsl2_compat_check _clean_project
-  rm -rf tmp
-  rm -rf {{docdir}}/*.md
+# Full validation of one record: closed schema, ontology terms, identity,
+# verbatim quotes. Network on first use of a term or reference; cached after.
+validate file:
+    uv run python -m {{slug}}.validate "$1"
+    @just validate-terms "$1"
+    @just check-identity "$1"
+    @just validate-references "$1"
 
-# (Re-)Generate project and documentation locally
-[group('model development')]
-site: gen-project gen-doc
+# Closed-schema validation of one record. Unknown fields are errors.
+validate-schema file:
+    uv run python -m {{slug}}.validate "$1"
 
-# Deploy documentation site to Github Pages
-[group('deployment')]
-deploy: site
-  mkd-gh-deploy
+# Every bound CURIE exists, sits under its enum root, and carries its real label.
+validate-terms *files:
+    uv run python -m {{slug}}.termcheck validate-data "$@" -s {{schema}} -t {{record_class}} --labels -c {{oak_config}}
 
-# Run all tests
-[group('model development')]
-test: _test-schema _test-python _test-examples
+# Same, from the term cache only. Never touches the network.
+validate-terms-offline *files:
+    uv run python -m {{slug}}.termcheck validate-data "$@" -s {{schema}} -t {{record_class}} --labels -c {{oak_config}} --offline
 
-# Run linting
-[group('model development')]
+# Every snippet appears verbatim in its cited source.
+validate-references *files:
+    uv run linkml-reference-validator validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
+
+# Closed-schema validation of every record.
+validate-all:
+    uv run python -m {{slug}}.validate
+
+# Term validation of every record (network on first run).
+validate-terms-all:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # find, not the ** glob: globstar needs bash 4, and macOS ships bash 3.2.
+    files=()
+    while IFS= read -r f; do files+=("$f"); done < <(find {{records}} -name '*.yaml' | sort)
+    if [ ${#files[@]} -eq 0 ]; then echo "No records under {{records}}."; exit 0; fi
+    uv run python -m {{slug}}.termcheck validate-data "${files[@]}" -s {{schema}} -t {{record_class}} --labels -c {{oak_config}}
+
+# Record ids follow the identity enum's rule: direct children only, or not
+# the root itself, when the schema says so. linkml-term-validator ignores
+# is_direct, so this asks the ontology for each id's parents (network).
+check-identity *files:
+    uv run python -m {{slug}}.terms check-identity "$@"
+
+# Reference validation of every record (network on first run).
+validate-references-all:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # find, not the ** glob: globstar needs bash 4, and macOS ships bash 3.2.
+    files=()
+    while IFS= read -r f; do files+=("$f"); done < <(find {{records}} -name '*.yaml' | sort)
+    if [ ${#files[@]} -eq 0 ]; then echo "No records under {{records}}."; exit 0; fi
+    uv run linkml-reference-validator validate data "${files[@]}" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
+
+# Terms and quotes for some records, for CI on the records a PR changed.
+# Cache-first; does not download full text. If the ontology service does not
+# answer (exit 2), the terms are checked against the committed cache instead.
+validate-changed *files:
+    #!/usr/bin/env bash
+    set -uo pipefail
+    uv run python -m {{slug}}.termcheck validate-data "$@" -s {{schema}} -t {{record_class}} --labels -c {{oak_config}}
+    rc=$?
+    if [ "$rc" -eq 2 ]; then
+        echo "::warning title=Ontology service unreachable::Checking terms against the committed cache only."
+        uv run python -m {{slug}}.termcheck validate-data "$@" -s {{schema}} -t {{record_class}} --labels -c {{oak_config}} --offline
+        rc=$?
+        if [ "$rc" -ne 0 ]; then
+            echo "::error title=Terms not checked::The ontology service is down and some terms are not in cache/. Run 'just validate FILE' locally and commit cache/, or re-run this job later."
+        fi
+    fi
+    [ "$rc" -eq 0 ] || exit "$rc"
+    uv run python -m {{slug}}.terms check-identity "$@"
+    rc=$?
+    if [ "$rc" -eq 2 ]; then
+        echo "::warning title=Identity not checked::The ontology service did not answer. Run 'just check-identity' locally."
+    elif [ "$rc" -ne 0 ]; then
+        exit "$rc"
+    fi
+    uv run linkml-reference-validator validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}} --no-full-text
+
+# Fetch a reference into references_cache/ and print it. Read it before quoting it.
+fetch-reference ref:
+    uv run linkml-reference-validator lookup "$1" --config {{ref_config}}
+
+# Search an ontology. Give an OAK adapter, or a prefix to use the one
+# conf/oak_config.yaml gives it: `just search-term GO "cell wall organization"`
+search-term adapter query:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    a="$1"; [[ "$a" == *:* ]] || a="$(uv run python -m {{slug}}.terms adapter "$a")"
+    # A failed BioPortal request prints its URL, which holds the API key.
+    uv run runoak -i "$a" search "$2" 2>&1 | sed -E 's/(apikey=)[^&[:space:]]+/\1***/g'
+
+# Show one term: `just term-info GO GO:0071555` (a prefix or an OAK adapter)
+term-info adapter curie:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    a="$1"; [[ "$a" == *:* ]] || a="$(uv run python -m {{slug}}.terms adapter "$a")"
+    # A failed BioPortal request prints its URL, which holds the API key.
+    uv run runoak -i "$a" info "$2" 2>&1 | sed -E 's/(apikey=)[^&[:space:]]+/\1***/g'
+
+# is-a ancestors of a term, through its prefix's adapter: `just term-ancestors ENVO:00000051`
+term-ancestors curie:
+    uv run python -m {{slug}}.terms ancestors "$1"
+
+# Direct is-a parents of a term: `just term-parents VBO:0009093`
+term-parents curie:
+    uv run python -m {{slug}}.terms parents "$1"
+
+# Does a term sit under a root? `just term-under GO:0015979 GO:0008150`
+term-under curie root:
+    uv run python -m {{slug}}.terms check "$1" --root "$2"
+
+# ---------------------------------------------------------------- curation
+
+# Scaffold a record. Dry-run by default; --apply writes it. Without --id the
+# id is minted, {{slug}}:<uuid>. `just new-record --name "Example" --apply`
+new-record *args:
+    uv run python -m {{slug}}.records new "$@"
+
+# Add an evidence item to a record: fetches the source, checks the quote,
+# fills the title, logs the change. Dry run unless --apply.
+# `just add-evidence data/.../x.yaml --at measurements[0] --ref PMID:123 --snippet "..." --apply`
+add-evidence file *args:
+    uv run python -m {{slug}}.evidence "$@"
+
+# Fill missing reference_title values from references_cache/. No network.
+# Dry run unless --apply. `just fill-titles` for every record, or name files.
+fill-titles *args:
+    uv run python -m {{slug}}.titles "$@"
+
+# Start the schema from an existing one: a LinkML schema, or another format
+# through schema-automator (--from json-schema, owl, xsd, ...). Copy mode by
+# default; --mode reference imports it unchanged. Dry run unless --apply.
+# `just import-schema https://.../schema.yaml --record-class Sample`
+import-schema *args:
+    uv run python -m {{slug}}.schema_import "$@"
+
+# Run a conversion script, which reads an existing knowledge base and writes
+# DRAFT records through validation. Dry run unless --apply; --limit 5 for a trial.
+# `just convert scripts/convert_old_kb.py --limit 5`
+convert script *args:
+    uv run python "$@"
+
+# Stub every OHD dental restoration material that has no record. Never overwrites.
+seed *args:
+    uv run python -m {{slug}}.seed "$@"
+
+# Scaffold a repository-level history record under history/. Dry-run unless --apply.
+# `just new-history --kind record --slug example --event CREATE --outcome changed --summary "..." --details "..."`
+new-history *args:
+    uv run python -m {{slug}}.history new "$@"
+
+# Validate history records against the vendored history schema.
+validate-history target="history":
+    uv run python -m {{slug}}.history validate "$1"
+
+# Corpus statistics.
+report *args:
+    uv run python -m {{slug}}.report "$@"
+
+# Completeness score per record, lowest first; or what one record lacks.
+compliance *files:
+    uv run python -m {{slug}}.compliance "$@"
+
+# Load the records into a running database named in conf/load.yaml, through
+# linkml-store, and count them back. `just load mongodb`, `just load neo4j --replace`.
+load *args:
+    uv run python -m {{slug}}.load "$@"
+
+# Export the records in the formats conf/export.yaml names, into build/export/,
+# and read each file back. `just export --list` shows the formats.
+export *args:
+    uv run python -m {{slug}}.export "$@"
+
+# Create or update the GitHub labels listed in .github/labels.yaml.
+labels *args:
+    uv run --no-project --with pyyaml python .github/scripts/sync_labels.py "$@"
+
+# ---------------------------------------------------------------- research
+
+# Which deep-research providers this machine can use.
+research-providers:
+    uv run python -m {{slug}}.research providers
+
+# Research one record (its filename stem) or a new name. Costs a provider run.
+# `just research claude_code <record stem>`, or `just research falcon <record stem> -- --fallback`
+research provider target *args:
+    uv run python -m {{slug}}.research run "$@"
+
+# Redo a report's reference and term checks, into the report.
+research-validate report:
+    uv run python -m {{slug}}.research validate "$1"
+
+# Which records have research, and from which providers.
+research-status:
+    uv run python -m {{slug}}.research status
+
+# The research prompt's placeholders can be filled; warns if it is still generic.
+research-check:
+    uv run python -m {{slug}}.research check-template
+
+# ---------------------------------------------------------------- docs
+
+# Build the documentation site into site/ (strict: a broken link fails).
+docs-build:
+    uv run python -m {{slug}}.docs build
+
+# Serve the documentation at http://127.0.0.1:8000 while you edit.
+docs-serve:
+    uv run python -m {{slug}}.docs serve
+
+# Check conf/site.yaml and report the text contrast of the chosen colors.
+site-check:
+    uv run python -m {{slug}}.site check
+
+# ---------------------------------------------------------------- site
+
+# Render the record browser into pages/ to look at locally. Not committed:
+# `just docs-build` renders it fresh into the site.
+render:
+    uv run python -m {{slug}}.render
+
+# ---------------------------------------------------------------- code
+
+# Run the test suite
+test *args:
+    uv run pytest "$@"
+
+# Lint. Schema warnings print but do not fail; the vendored module carries some.
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+    uv run ruff check .
+    uv run linkml-lint --config .linkmllint.yaml --ignore-warnings {{schema}}
 
-# Generate md documentation for the schema and add artifacts
-[group('model development')]
-gen-doc: _gen-yaml && _add-artifacts
-  uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
+# Auto-fix lint findings
+lint-fix:
+    uv run ruff check --fix .
 
-# Build docs and run test server
-[group('model development')]
-testdoc: gen-doc _serve
-
-# Generate the Python data models (dataclasses & pydantic)
+# Generate Pydantic classes from the schema into build/
 gen-python:
-  uv run gen-project -d  {{pymodel}} -I python {{source_schema_path}}
-  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+    mkdir -p build
+    uv run gen-pydantic {{schema}} > build/{{slug}}_pydantic.py
 
-# Generate project files including Python data model
-[group('model development')]
-gen-project:
-  uv run gen-project {{config_yaml}} -d {{dest}} {{source_schema_path}}
-  mkdir -p {{pymodel}}
-  mv {{dest}}/*.py {{pymodel}}/
-  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+# ---------------------------------------------------------------- gates
 
-  @# Some generators ignore config_yaml or cannot create directories, so we run them separately.
-  uv run gen-java {{gen_java_args}} --output-directory {{dest}}/java/ {{source_schema_path}}
+# The authoritative offline gate. CI runs the same script.
+qc:
+    uv run python -m {{slug}}.qc
 
-  @if [ ! -d "{{dest}}/typescript" ]; then \
-    mkdir -p {{dest}}/typescript ; \
-  fi
-  uv run gen-typescript {{gen_ts_args}} {{source_schema_path}} > {{dest}}/typescript/{{schema_name}}.ts
+# qc plus the network gates: terms and references for every record.
+qc-full:
+    uv run python -m {{slug}}.qc --network
 
-  @if [ ! -d "{{dest}}/owl" ]; then \
-    mkdir -p {{dest}}/owl ; \
-  fi
-  uv run gen-owl {{gen_owl_args}} {{source_schema_path}} > "{{dest}}/owl/{{schema_name}}.owl.ttl"
-
-# ============== Migrations recipes for Copier ==============
-
-# Hidden command to adjust the directory layout on upgrading a project
-# created with linkml-project-copier v0.1.x to v0.2.0 or newer.
-# Use with care! - It may not work for customized projects.
-_post_upgrade_v020: _wsl2_compat_check && _post_upgrade_v020py
-  mv docs/*.md docs/elements
-
-_post_upgrade_v020py:
-    #!{{shebang}}
-    import subprocess
-    from pathlib import Path
-    # Git move files from folder src to folder dest
-    tasks = [
-        (Path("src/docs/files"), Path("docs")),
-        (Path("src/docs/templates"), Path("docs/templates-linkml")),
-        (Path("src/data/examples"), Path("tests/data/")),
-    ]
-    for src, dest in tasks:
-        for path_obj in src.rglob("*"):
-            if not path_obj.is_file():
-                continue
-            file_dest = dest / path_obj.relative_to(src)
-            if not file_dest.parent.exists():
-                file_dest.parent.mkdir(parents=True)
-            print(f"Moving {path_obj} --> {file_dest}")
-            subprocess.run(["git", "mv", str(path_obj), str(file_dest)])
-    print(
-        "Migration to v0.2.x completed! Check the changes carefully before committing."
-    )
-
-# ============== Hidden internal recipes ==============
-
-# Show current project status
-_status: _wsl2_status_check _check-config
-  @echo "Project: {{schema_name}}"
-  @echo "Source: {{source_schema_path}}"
-
-# Check project configuration
-_check-config:
-    #!{{shebang}}
-    import os
-    schema_name = os.getenv('LINKML_SCHEMA_NAME')
-    if not schema_name:
-        print('**Project not configured**:\n - See \'.env.public\'')
-        exit(1)
-    print('Project-status: Ok')
-
-# Update project template
-_update-template:
-  copier update --trust --skip-answered
-
-# Update LinkML runtime and LinkML to latest versions
-_update-linkml:
-  uv lock --upgrade-package linkml-runtime --upgrade-package linkml
-
-# Test schema generation
-_test-schema:
-  uv run gen-project {{config_yaml}} -d tmp {{source_schema_path}}
-
-# Run Python unit tests with pytest
-_test-python: gen-python
-  uv run python -m pytest
-
-# Run example tests
-_test-examples: _ensure_examples_output
-  uv run linkml-run-examples \
-    --input-formats json \
-    --input-formats yaml \
-    --output-formats json \
-    --output-formats yaml \
-    --counter-example-input-directory tests/data/invalid \
-    --input-directory tests/data/valid \
-    --output-directory examples/output \
-    --schema {{source_schema_path}} > examples/output/README.md
-
-# Add the merged model to docs/schema.
-_gen-yaml:
-  -mkdir -p {{distrib_schema_path}}
-  uv run gen-yaml {{source_schema_path}} > {{distrib_schema_path}}/{{schema_name}}.yaml
-
-# Overridable recipe to add project-specific artifacts to the distribution schema path
-_add-artifacts:
-
-# Run documentation server
-_serve:
-  uv run mkdocs serve
-
-# Initialize git repository
-_git-init:
-  git init
-
-# Add files to git
-_git-add:
-  git add .
-
-# Commit files to git
-_git-commit:
-  git commit -m 'chore: just setup was run' -a
-
-# Show git status
-_git-status:
-  git status
-
-_clean_project:
-    #!{{shebang}}
-    import shutil, pathlib
-    # remove the generated project files
-    for d in pathlib.Path("{{dest}}").iterdir():
-        if d.is_dir():
-            print(f'removing "{d}"')
-            shutil.rmtree(d, ignore_errors=True)
-    # remove the generated python data model
-    for d in pathlib.Path("{{pymodel}}").iterdir():
-        if d.name == "__init__.py":
-            continue
-        print(f'removing "{d}"')
-        if d.is_dir():
-            shutil.rmtree(d, ignore_errors=True)
-        else:
-            d.unlink()
-
-_ensure_examples_output:  # Ensure a clean examples/output directory exists
-  -mkdir -p examples/output
-  -rm -rf examples/output/*.*
-
-# ============== Include project-specific recipes ==============
-
-import "project.justfile"
-
-# ====== Override recipes from above with custom versions =======
-
-# Uncomment the following line to allow duplicate recipe names
-#set allow-duplicate-recipes
-
-# Overriding recipes from the root justfile by adding a recipe with the same
-# name in an imported file is not possible until a known issue in just is fixed,
-# https://github.com/casey/just/issues/2540 - So we need to override them here.
+# Pull every template change from mechmaker into this repository at once.
+# To see each change and choose, use mechmaker's sync-mech skill instead.
+update-template:
+    uvx copier update --skip-answered

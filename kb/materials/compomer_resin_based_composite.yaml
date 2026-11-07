@@ -1,0 +1,19 @@
+id: OHD:0001019
+name: Compomer resin-based composite
+description: A resin-based composite dental restoration material that contains fluoride-releasing silicate glass filler phase and a methacrylate based matrix with carboxylic acid functional groups.
+record_term:
+  id: OHD:0001019
+  label: compomer resin-based composite dental restoration material
+category: HYBRID
+parents:
+  - OHD:0000036
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Compomer_Resin-based_Composite.
+updated_date: '2026-11-07'
