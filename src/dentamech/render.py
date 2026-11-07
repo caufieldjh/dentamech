@@ -10,7 +10,7 @@ from typing import Any
 import markdown as markdown_lib
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from dentmatmech.yaml_io import PAGES_DIR, SCHEMA_PATH, load_kb, safe_load_path, slugify
+from dentamech.yaml_io import PAGES_DIR, SCHEMA_PATH, load_kb, safe_load_path, slugify
 
 TEMPLATE_DIR = Path(__file__).parent / "templates"
 

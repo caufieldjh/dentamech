@@ -16,7 +16,7 @@ from typing import Any
 from oaklib import get_adapter
 from oaklib.datamodels.vocabulary import IS_A
 
-from dentmatmech.yaml_io import KB_DIR, dump_path, slugify
+from dentamech.yaml_io import KB_DIR, dump_path, slugify
 
 ROOT_TERM = "OHD:0000000"
 SUFFIX = " dental restoration material"

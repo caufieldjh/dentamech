@@ -1,5 +1,5 @@
 ---
-name: dentmatmech-pr-review
+name: dentamech-pr-review
 description: >
   Review a pull request that changes kb/materials/ entries for scientific
   validity, regulatory accuracy, ontology term correctness, evidence quality,
@@ -7,7 +7,7 @@ description: >
   before opening a curation PR.
 ---
 
-# dentmatmech-pr-review
+# dentamech-pr-review
 
 ## Gather
 

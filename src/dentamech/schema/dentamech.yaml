@@ -1,8 +1,8 @@
-id: https://w3id.org/caufieldjh/dentmatmech
-name: dentmatmech
+id: https://w3id.org/caufieldjh/dentamech
+name: dentamech
 title: Dental Materials Knowledge Base Schema
 description: >-
-  Schema for the Dental Materials Knowledge Base (dentmatmech). One YAML file
+  Schema for the Dental Materials Knowledge Base (dentamech). One YAML file
   per material, anchored to the Oral Health and Disease Ontology (OHD) branch
   under OHD:0000000 "dental restoration material". Each entry records what
   the material is made of, how it sets, what it is used for clinically, how
@@ -12,7 +12,7 @@ description: >-
   DisMech evidence model.
 license: BSD-3-Clause
 see_also:
-  - https://github.com/caufieldjh/dentmatmech
+  - https://github.com/caufieldjh/dentamech
   - https://github.com/monarch-initiative/dismech
 
 imports:
@@ -20,7 +20,7 @@ imports:
 
 prefixes:
   linkml: https://w3id.org/linkml/
-  dentmatmech: https://w3id.org/caufieldjh/dentmatmech/
+  dentamech: https://w3id.org/caufieldjh/dentamech/
   OHD: http://purl.obolibrary.org/obo/OHD_
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   UBERON: http://purl.obolibrary.org/obo/UBERON_
@@ -39,7 +39,7 @@ prefixes:
   FDA_PRODUCT_CODE: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPCD/classification.cfm?start_search=1&productcode=
   CFR: https://www.ecfr.gov/current/title-21/section-
 
-default_prefix: dentmatmech
+default_prefix: dentamech
 default_range: string
 
 # ---------------------------------------------------------------------------

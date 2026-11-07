@@ -40,7 +40,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           claude_args: |
             --model ${{ env.AGENT_MODEL }}
-            --allowedTools "Bash(gh issue view:*),Bash(gh issue edit:*),Bash(gh issue comment:*),Bash(gh label list:*),Bash(uv run dentmatmech list:*),Bash(ls:*),Bash(grep:*),Read,Glob,Grep"
+            --allowedTools "Bash(gh issue view:*),Bash(gh issue edit:*),Bash(gh issue comment:*),Bash(gh label list:*),Bash(uv run dentamech list:*),Bash(ls:*),Bash(grep:*),Read,Glob,Grep"
           prompt: |
             REPO: ${{ github.repository }}
             ISSUE: ${{ github.event.issue.number }}
@@ -55,7 +55,7 @@ jobs:
                and says so). Create a label with `gh label create` only if it
                does not exist.
             3. If it is a curation request, check whether the material exists
-               in kb/materials/ (`uv run dentmatmech list`) and whether it is a
+               in kb/materials/ (`uv run dentamech list`) and whether it is a
                STUB or already curated. Say which in your comment.
             4. Post one short comment: what the issue asks for, whether the
                material exists, and the likely scope. Do not start the work.

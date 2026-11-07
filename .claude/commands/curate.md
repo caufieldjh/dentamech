@@ -9,5 +9,5 @@ You MUST follow the `curate-material` skill step by step. If the user names a
 deep research provider, use at least that provider; otherwise default to
 `claude_code`.
 
-Before opening the PR, run the `dentmatmech-pr-review` skill in a fresh
+Before opening the PR, run the `dentamech-pr-review` skill in a fresh
 subagent and fix what it finds.

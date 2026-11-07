@@ -4,9 +4,9 @@ Guidance for Claude Code when working in this repository.
 
 ## What this is
 
-The **Dental Materials Knowledge Base (dentmatmech)**: a LinkML-based knowledge base of dental restoration materials, modeled on [DisMech](https://github.com/monarch-initiative/dismech). It combines:
+The **Dental Materials Knowledge Base (dentamech)**: a LinkML-based knowledge base of dental restoration materials, modeled on [DisMech](https://github.com/monarch-initiative/dismech). It combines:
 
-1. A LinkML schema (`src/dentmatmech/schema/dentmatmech.yaml`)
+1. A LinkML schema (`src/dentamech/schema/dentamech.yaml`)
 2. One YAML file per material in `kb/materials/`, each bound to one OHD term under `OHD:0000000`
 3. Rendered pages (`pages/materials/`) and a faceted browser (`app/`)
 
@@ -23,7 +23,7 @@ just validate-references kb/materials/X.yaml   # snippet check against PubMed
 just qc                          # validate-all + pytest
 just render                      # pages/materials/*.html
 just export-browser              # app/data.js
-just gen-python                  # regenerate src/dentmatmech/datamodel after a schema edit
+just gen-python                  # regenerate src/dentamech/datamodel after a schema edit
 uv run pytest -q
 
 # Deep research and references
@@ -36,7 +36,7 @@ just fetch-reference PMID:24683067           # cache an abstract; never hand-wri
 ## Skills and commands
 
 - `.claude/skills/curate-material/SKILL.md`: the curation workflow, research first, regulatory verification, validation, PR. Follow it step by step.
-- `.claude/skills/dentmatmech-pr-review/SKILL.md`: review checklist for KB pull requests.
+- `.claude/skills/dentamech-pr-review/SKILL.md`: review checklist for KB pull requests.
 - `/curate <File_Stem> [using <provider>]`: runs the curation skill end to end.
 
 ## Automation
@@ -60,11 +60,11 @@ Workflows in `.github/workflows/` run the curation loop: triage labels new issue
 
 ```
 kb/materials/            knowledge base (source of truth)
-src/dentmatmech/schema/  LinkML schema
-src/dentmatmech/seed.py  OHD -> stub files
-src/dentmatmech/cli.py   `dentmatmech` CLI (seed, list, render, export-browser, check-links)
-src/dentmatmech/render.py + templates/   HTML pages
-src/dentmatmech/export.py                app/data.js
+src/dentamech/schema/    LinkML schema
+src/dentamech/seed.py    OHD -> stub files
+src/dentamech/cli.py     `dentamech` CLI (seed, list, render, export-browser, check-links)
+src/dentamech/render.py + templates/     HTML pages
+src/dentamech/export.py                  app/data.js
 conf/oak_config.yaml     prefix -> OAK adapter
 conf/reference_validator_config.yaml
 tests/                   schema conformance + KB consistency + render smoke tests

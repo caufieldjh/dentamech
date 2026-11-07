@@ -113,7 +113,7 @@ jobs:
                `Closes #<issue>`. Use DEEP RESEARCH PROVIDER for the research
                step. Comment on the issue with one sentence saying why this
                item was chosen.
-            3. Else, the queue is empty. Run `uv run dentmatmech list --status
+            3. Else, the queue is empty. Run `uv run dentamech list --status
                STUB`, pick the material with the most children (a parent class
                is more useful than a leaf) or, on a tie, the first
                alphabetically, and open ONE issue titled

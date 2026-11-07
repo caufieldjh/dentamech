@@ -1,6 +1,6 @@
 {% extends "_base.html.j2" %}
 {% set root = "../../" %}
-{% block title %}Dental materials · dentmatmech{% endblock %}
+{% block title %}Dental materials · dentamech{% endblock %}
 {% macro node(name) -%}
 <li><a href="{{ name|slugify }}.html">{{ name }}</a>
   <span class="pill status-{{ kb[name].curation_status or 'STUB' }}">{{ titles.CurationStatusEnum.get(kb[name].curation_status or 'STUB') }}</span>

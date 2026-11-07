@@ -1,1 +1,1 @@
-"""Tests for dentmatmech."""
+"""Tests for dentamech."""

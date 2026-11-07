@@ -1,4 +1,4 @@
-# Dental Materials Knowledge Base (dentmatmech)
+# Dental Materials Knowledge Base (dentamech)
 
 A curated, schema-validated knowledge base of dental restoration materials: what they are made of, how they set, what they are used for, how they perform, what can go wrong, and how regulators classify them.
 
@@ -9,7 +9,7 @@ It is built the way [DisMech](https://github.com/monarch-initiative/dismech) is 
 | Path | What |
 |---|---|
 | `kb/materials/*.yaml` | The knowledge base. One file per material. |
-| `src/dentmatmech/schema/dentmatmech.yaml` | The LinkML schema. |
+| `src/dentamech/schema/dentamech.yaml` | The LinkML schema. |
 | `pages/materials/*.html` | Rendered material pages (`just render`). |
 | `app/index.html` | Faceted browser over `app/data.js` (`just export-browser`). |
 | `conf/oak_config.yaml` | Which ontologies back which prefixes for term validation. |

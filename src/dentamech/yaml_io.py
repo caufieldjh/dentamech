@@ -62,7 +62,7 @@ def dump_path(data: Any, path: str | Path) -> None:
 # Repository layout
 # ---------------------------------------------------------------------------
 ROOT_DIR = Path(__file__).resolve().parents[2]
-SCHEMA_PATH = ROOT_DIR / "src" / "dentmatmech" / "schema" / "dentmatmech.yaml"
+SCHEMA_PATH = ROOT_DIR / "src" / "dentamech" / "schema" / "dentamech.yaml"
 KB_DIR = ROOT_DIR / "kb" / "materials"
 PAGES_DIR = ROOT_DIR / "pages" / "materials"
 APP_DIR = ROOT_DIR / "app"

@@ -1,7 +1,7 @@
 name: Claude Code Review
 
 # Reviews every PR that touches the knowledge base, using the
-# dentmatmech-pr-review skill, and submits an approve or request-changes
+# dentamech-pr-review skill, and submits an approve or request-changes
 # review. Can also be pointed at a PR by hand.
 
 on:  # yamllint disable-line rule:truthy
@@ -10,7 +10,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - 'kb/materials/**'
       - 'references_cache/**'
-      - 'src/dentmatmech/schema/**'
+      - 'src/dentamech/schema/**'
       - 'docs/regulatory.md'
   workflow_dispatch:
     inputs:
@@ -74,8 +74,8 @@ jobs:
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ env.PR_NUMBER }}
 
-            Review this pull request using the dentmatmech-pr-review skill in
-            .claude/skills/dentmatmech-pr-review/SKILL.md. Run the validators
+            Review this pull request using the dentamech-pr-review skill in
+            .claude/skills/dentamech-pr-review/SKILL.md. Run the validators
             named there rather than reasoning about what they would say.
 
             Regulatory facts get the most scrutiny. A regulation number, device

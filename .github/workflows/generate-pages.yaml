@@ -11,10 +11,10 @@ on:  # yamllint disable-line rule:truthy
     branches: [main]
     paths:
       - 'kb/materials/*.yaml'
-      - 'src/dentmatmech/render.py'
-      - 'src/dentmatmech/export.py'
-      - 'src/dentmatmech/templates/**'
-      - 'src/dentmatmech/schema/**'
+      - 'src/dentamech/render.py'
+      - 'src/dentamech/export.py'
+      - 'src/dentamech/templates/**'
+      - 'src/dentamech/schema/**'
   workflow_dispatch:
 
 concurrency:

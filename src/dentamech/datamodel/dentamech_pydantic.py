@@ -66,9 +66,9 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'dentmatmech',
+linkml_meta = LinkMLMeta({'default_prefix': 'dentamech',
      'default_range': 'string',
-     'description': 'Schema for the Dental Materials Knowledge Base (dentmatmech). '
+     'description': 'Schema for the Dental Materials Knowledge Base (dentamech). '
                     'One YAML file per material, anchored to the Oral Health and '
                     'Disease Ontology (OHD) branch under OHD:0000000 "dental '
                     'restoration material". Each entry records what the material '
@@ -78,10 +78,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'dentmatmech',
                     'Every claim can carry literature or regulatory-document '
                     'evidence with an exact quoted snippet, following the DisMech '
                     'evidence model.',
-     'id': 'https://w3id.org/caufieldjh/dentmatmech',
+     'id': 'https://w3id.org/caufieldjh/dentamech',
      'imports': ['linkml:types'],
      'license': 'BSD-3-Clause',
-     'name': 'dentmatmech',
+     'name': 'dentamech',
      'prefixes': {'BFO': {'prefix_prefix': 'BFO',
                           'prefix_reference': 'http://purl.obolibrary.org/obo/BFO_'},
                   'CFR': {'prefix_prefix': 'CFR',
@@ -108,17 +108,17 @@ linkml_meta = LinkMLMeta({'default_prefix': 'dentmatmech',
                            'prefix_reference': 'http://www.ncbi.nlm.nih.gov/pubmed/'},
                   'UBERON': {'prefix_prefix': 'UBERON',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/UBERON_'},
-                  'dentmatmech': {'prefix_prefix': 'dentmatmech',
-                                  'prefix_reference': 'https://w3id.org/caufieldjh/dentmatmech/'},
+                  'dentamech': {'prefix_prefix': 'dentamech',
+                                'prefix_reference': 'https://w3id.org/caufieldjh/dentamech/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'skos': {'prefix_prefix': 'skos',
                            'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
                   'xsd': {'prefix_prefix': 'xsd',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
-     'see_also': ['https://github.com/caufieldjh/dentmatmech',
+     'see_also': ['https://github.com/caufieldjh/dentamech',
                   'https://github.com/monarch-initiative/dismech'],
-     'source_file': 'src/dentmatmech/schema/dentmatmech.yaml',
+     'source_file': 'src/dentamech/schema/dentamech.yaml',
      'title': 'Dental Materials Knowledge Base Schema',
      'types': {'ReferenceIdentifier': {'base': 'str',
                                        'description': 'A CURIE-style identifier '
@@ -133,7 +133,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'dentmatmech',
                                                       'FDA 510(k)/PMA database '
                                                       'record, or the guidance '
                                                       'document.',
-                                       'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+                                       'from_schema': 'https://w3id.org/caufieldjh/dentamech',
                                        'name': 'ReferenceIdentifier',
                                        'typeof': 'string',
                                        'uri': 'xsd:string'}}} )
@@ -869,7 +869,7 @@ class Term(ConfiguredBaseModel):
     """
     A structured reference to an ontology term
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     id: str = Field(default=..., description="""A CURIE identifying an ontology term""", json_schema_extra = { "linkml_meta": {'domain_of': ['Term', 'Mapping'], 'examples': [{'value': 'OHD:0000036'}]} })
     label: str = Field(default=..., description="""The canonical label of the ontology term, as validated against the source ontology""", json_schema_extra = { "linkml_meta": {'domain_of': ['Term', 'Mapping']} })
@@ -879,7 +879,7 @@ class Descriptor(ConfiguredBaseModel):
     """
     Base class for a thing described by a preferred term, an optional description, and an optional bound ontology term
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     preferred_term: Optional[str] = Field(default=None, description="""The preferred human-readable term for this descriptor. May be more specific than the bound ontology term's label.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Descriptor']} })
     description: Optional[str] = Field(default=None, description="""Free-text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Descriptor',
@@ -898,7 +898,7 @@ class DentalMaterialDescriptor(Descriptor):
     """
     A descriptor bindable to the OHD dental restoration material branch
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'DentalMaterialTerm'}],
@@ -926,7 +926,7 @@ class DentalProcedureDescriptor(Descriptor):
     """
     A descriptor bindable to the OHD dental procedure branch
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'DentalProcedureTerm'}],
@@ -953,7 +953,7 @@ class ChemicalEntityDescriptor(Descriptor):
     """
     A descriptor bindable to CHEBI
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'ChemicalEntityTerm'}],
@@ -980,7 +980,7 @@ class AnatomicalEntityDescriptor(Descriptor):
     """
     A descriptor bindable to UBERON
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'AnatomicalEntityTerm'}],
@@ -1007,7 +1007,7 @@ class PhenotypeDescriptor(Descriptor):
     """
     A descriptor bindable to HP or MONDO
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'PhenotypeTerm'}],
@@ -1034,7 +1034,7 @@ class QualityDescriptor(Descriptor):
     """
     A descriptor bindable to PATO
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'term': {'bindings': [{'binds_value_of': 'id',
                                                'obligation_level': 'REQUIRED',
                                                'range': 'QualityTerm'}],
@@ -1061,7 +1061,7 @@ class EvidenceItem(ConfiguredBaseModel):
     """
     A citation plus an exact quote, tied to the claim it sits under
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     reference: str = Field(default=..., description="""The citable source for this evidence item""", json_schema_extra = { "linkml_meta": {'domain_of': ['EvidenceItem'],
          'examples': [{'value': 'PMID:24560216'},
@@ -1078,7 +1078,7 @@ class Mapping(ConfiguredBaseModel):
     """
     A mapping to a term in another vocabulary
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     id: str = Field(default=..., description="""A CURIE identifying an ontology term""", json_schema_extra = { "linkml_meta": {'domain_of': ['Term', 'Mapping'], 'examples': [{'value': 'OHD:0000036'}]} })
     label: str = Field(default=..., description="""The canonical label of the ontology term, as validated against the source ontology""", json_schema_extra = { "linkml_meta": {'domain_of': ['Term', 'Mapping']} })
@@ -1090,7 +1090,7 @@ class Component(ConfiguredBaseModel):
     """
     A constituent of the material
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False,
                                  'name': 'name',
                                  'required': True}}})
@@ -1131,7 +1131,7 @@ class MaterialProperty(ConfiguredBaseModel):
     """
     A reported property value
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'description': 'Short label for the property row '
                                                 '(e.g. "Flexural strength, 24 h water '
                                                 'storage")',
@@ -1179,7 +1179,7 @@ class ClinicalUse(ConfiguredBaseModel):
     """
     A clinical application of the material
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False,
                                  'name': 'name',
                                  'required': True}}})
@@ -1222,7 +1222,7 @@ class ClinicalPerformance(ConfiguredBaseModel):
     """
     A longevity or outcome statistic
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False,
                                  'name': 'name',
                                  'required': True}}})
@@ -1267,7 +1267,7 @@ class AdverseEffect(ConfiguredBaseModel):
     """
     An adverse effect, safety concern, or failure mode
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False,
                                  'name': 'name',
                                  'required': True}}})
@@ -1308,7 +1308,7 @@ class ApprovedUse(ConfiguredBaseModel):
     """
     A use the regulator permits for this device type or product
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False, 'name': 'name', 'required': True},
                         'use_context': {'name': 'use_context', 'required': False}}})
 
@@ -1348,7 +1348,7 @@ class RegulatoryStatus(ConfiguredBaseModel):
     """
     Regulatory classification of the material as a device type, under one agency and one regulation
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     agency: RegulatoryAgencyEnum = Field(default=..., description="""The regulator""", json_schema_extra = { "linkml_meta": {'domain_of': ['RegulatoryStatus', 'RegulatorySubmission']} })
     jurisdiction: Optional[str] = Field(default=None, description="""Country or region, when the agency slot alone is ambiguous""", json_schema_extra = { "linkml_meta": {'domain_of': ['RegulatoryStatus']} })
@@ -1408,7 +1408,7 @@ class RegulatorySubmission(ConfiguredBaseModel):
     """
     One premarket submission for a commercial product and its outcome
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     agency: RegulatoryAgencyEnum = Field(default=..., description="""The regulator""", json_schema_extra = { "linkml_meta": {'domain_of': ['RegulatoryStatus', 'RegulatorySubmission']} })
     submission_number: Optional[str] = Field(default=None, description="""Submission identifier. FDA 510(k) numbers start with K, PMAs with P, De Novo requests with DEN.""", json_schema_extra = { "linkml_meta": {'domain_of': ['RegulatorySubmission'], 'examples': [{'value': 'K123456'}]} })
@@ -1474,7 +1474,7 @@ class CommercialProduct(ConfiguredBaseModel):
     """
     A branded product that is an instance of this material type
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech',
          'slot_usage': {'name': {'identifier': False,
                                  'name': 'name',
                                  'required': True}}})
@@ -1506,7 +1506,7 @@ class Standard(ConfiguredBaseModel):
     """
     A technical standard or specification
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech'})
 
     identifier: str = Field(default=..., description="""Standard designation""", json_schema_extra = { "linkml_meta": {'domain_of': ['Standard'], 'examples': [{'value': 'ISO 4049:2019'}]} })
     title: Optional[str] = Field(default=None, description="""Title of the standard""", json_schema_extra = { "linkml_meta": {'domain_of': ['Standard']} })
@@ -1518,7 +1518,7 @@ class DentalMaterial(ConfiguredBaseModel):
     """
     A dental material entry. One file per material in kb/materials/, anchored to an OHD term.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentmatmech', 'tree_root': True})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/caufieldjh/dentamech', 'tree_root': True})
 
     name: str = Field(default=..., description="""Human-readable name; the identifier for top-level entries""", json_schema_extra = { "linkml_meta": {'domain_of': ['Component',
                        'MaterialProperty',

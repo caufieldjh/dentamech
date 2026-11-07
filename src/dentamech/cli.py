@@ -1,4 +1,4 @@
-"""dentmatmech command line tools."""
+"""dentamech command line tools."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from pathlib import Path
 
 import typer
 
-from dentmatmech.yaml_io import APP_DIR, KB_DIR, PAGES_DIR, kb_files, load_kb
+from dentamech.yaml_io import APP_DIR, KB_DIR, PAGES_DIR, kb_files, load_kb
 
 app = typer.Typer(help="Dental Materials Knowledge Base tools.", no_args_is_help=True)
 
@@ -17,7 +17,7 @@ def seed_command(
     include_root: bool = typer.Option(True, help="Also write the OHD root term as an entry."),
 ) -> None:
     """Create one stub file per OHD dental restoration material term."""
-    from dentmatmech.seed import seed
+    from dentamech.seed import seed
 
     written = seed(force=force, include_root=include_root)
     for p in written:
@@ -43,7 +43,7 @@ def render_command(
     out: Path = typer.Option(PAGES_DIR, help="Output directory for pages."),
 ) -> None:
     """Render HTML pages for materials, plus the index page."""
-    from dentmatmech.render import render_all
+    from dentamech.render import render_all
 
     n = render_all(out_dir=out, only=files or None)
     typer.echo(f"rendered {n} page(s) into {out}")
@@ -54,7 +54,7 @@ def export_browser_command(
     out: Path = typer.Option(APP_DIR / "data.js", help="Output JS file for the browser."),
 ) -> None:
     """Write app/data.js for the faceted browser."""
-    from dentmatmech.export import export_browser_data
+    from dentamech.export import export_browser_data
 
     n = export_browser_data(out)
     typer.echo(f"exported {n} record(s) to {out}")
