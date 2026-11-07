@@ -1,0 +1,2697 @@
+name: dentamech
+description: Schema for the Dental Materials Knowledge Base (dentamech). One YAML
+  file per material, anchored to the Oral Health and Disease Ontology (OHD) branch
+  under OHD:0000000 "dental restoration material". Each entry records what the material
+  is made of, how it sets, what it is used for clinically, how it performs, what can
+  go wrong, and how regulators (FDA first) classify it and what they permit it to
+  be used for. Every claim can carry literature or regulatory-document evidence with
+  an exact quoted snippet, following the DisMech evidence model.
+title: Dental Materials Knowledge Base Schema
+see_also:
+- https://github.com/caufieldjh/dentamech
+- https://github.com/monarch-initiative/dismech
+id: https://w3id.org/caufieldjh/dentamech
+imports:
+- linkml:types
+license: BSD-3-Clause
+prefixes:
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  dentamech:
+    prefix_prefix: dentamech
+    prefix_reference: https://w3id.org/caufieldjh/dentamech/
+  OHD:
+    prefix_prefix: OHD
+    prefix_reference: http://purl.obolibrary.org/obo/OHD_
+  CHEBI:
+    prefix_prefix: CHEBI
+    prefix_reference: http://purl.obolibrary.org/obo/CHEBI_
+  UBERON:
+    prefix_prefix: UBERON
+    prefix_reference: http://purl.obolibrary.org/obo/UBERON_
+  HP:
+    prefix_prefix: HP
+    prefix_reference: http://purl.obolibrary.org/obo/HP_
+  MONDO:
+    prefix_prefix: MONDO
+    prefix_reference: http://purl.obolibrary.org/obo/MONDO_
+  NCIT:
+    prefix_prefix: NCIT
+    prefix_reference: http://purl.obolibrary.org/obo/NCIT_
+  PATO:
+    prefix_prefix: PATO
+    prefix_reference: http://purl.obolibrary.org/obo/PATO_
+  OBI:
+    prefix_prefix: OBI
+    prefix_reference: http://purl.obolibrary.org/obo/OBI_
+  BFO:
+    prefix_prefix: BFO
+    prefix_reference: http://purl.obolibrary.org/obo/BFO_
+  skos:
+    prefix_prefix: skos
+    prefix_reference: http://www.w3.org/2004/02/skos/core#
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+  PMID:
+    prefix_prefix: PMID
+    prefix_reference: http://www.ncbi.nlm.nih.gov/pubmed/
+  DOI:
+    prefix_prefix: DOI
+    prefix_reference: https://doi.org/
+  FDA_PRODUCT_CODE:
+    prefix_prefix: FDA_PRODUCT_CODE
+    prefix_reference: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPCD/classification.cfm?start_search=1&productcode=
+  CFR:
+    prefix_prefix: CFR
+    prefix_reference: https://www.ecfr.gov/current/title-21/section-
+default_prefix: dentamech
+default_range: string
+types:
+  ReferenceIdentifier:
+    name: ReferenceIdentifier
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ReferenceIdentifier
+    description: 'A CURIE-style identifier for a citable source. Literature references
+      use PMID:, PMC:, DOI:, or PPR: (Europe PMC preprints). Web sources use url:.
+      Regulatory documents should be cited by url: pointing at the eCFR section, the
+      FDA 510(k)/PMA database record, or the guidance document.'
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    typeof: string
+    base: str
+    uri: xsd:string
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  EvidenceItemSupportEnum:
+    name: EvidenceItemSupportEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/EvidenceItemSupportEnum
+    description: How the cited source relates to the claim it is attached to
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      SUPPORT:
+        text: SUPPORT
+        description: The cited evidence directly supports the claim
+        title: Supports
+      PARTIAL:
+        text: PARTIAL
+        description: The cited evidence partially or indirectly supports the claim
+        title: Partially supports
+      REFUTE:
+        text: REFUTE
+        description: The cited evidence directly contradicts the claim
+        title: Refutes
+      NO_EVIDENCE:
+        text: NO_EVIDENCE
+        description: The cited reference does not contain evidence relevant to the
+          claim
+        title: No evidence
+      WRONG_STATEMENT:
+        text: WRONG_STATEMENT
+        description: The claim contains a demonstrable factual error and the cited
+          source documents the correct information
+        title: Wrong statement
+  EvidenceSourceEnum:
+    name: EvidenceSourceEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/EvidenceSourceEnum
+    description: The kind of source an evidence item comes from
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      HUMAN_CLINICAL:
+        text: HUMAN_CLINICAL
+        description: Clinical trials, cohort studies, case series, or practice-based
+          research in patients
+        title: Human clinical
+      IN_VITRO:
+        text: IN_VITRO
+        description: Bench testing of the material (mechanical, physical, chemical,
+          cytotoxicity, wear simulation)
+        title: In vitro / laboratory
+      IN_SILICO:
+        text: IN_SILICO
+        description: Finite element analysis, simulation, or other modeling
+        title: Computational
+      SYSTEMATIC_REVIEW:
+        text: SYSTEMATIC_REVIEW
+        description: Pooled or systematically reviewed evidence
+        title: Systematic review or meta-analysis
+      REGULATORY_DOCUMENT:
+        text: REGULATORY_DOCUMENT
+        description: A regulation (e.g. 21 CFR 872), a classification database record,
+          a 510(k) summary, a PMA approval order, a guidance document, or an equivalent
+          from another jurisdiction
+        title: Regulatory document
+      STANDARD:
+        text: STANDARD
+        description: An ISO, ADA/ANSI, or ASTM standard or specification
+        title: Technical standard
+      MANUFACTURER:
+        text: MANUFACTURER
+        description: Instructions for use, safety data sheet, technical profile, or
+          product literature
+        title: Manufacturer document
+      TEXTBOOK:
+        text: TEXTBOOK
+        description: A textbook, monograph, or reference work
+        title: Textbook or monograph
+      OTHER:
+        text: OTHER
+        description: Evidence not fitting the above
+        title: Other
+  MaterialCategoryEnum:
+    name: MaterialCategoryEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/MaterialCategoryEnum
+    description: Broad material class. Derived from the OHD ancestry of the bound
+      term when seeding, and kept as an explicit slot so the browser can facet on
+      it without walking the ontology.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      METAL:
+        text: METAL
+        description: Metals and alloys (amalgam, noble and base metal alloys, titanium,
+          stainless steel)
+        meaning: OHD:0000048
+      CERAMIC:
+        text: CERAMIC
+        description: Glass-matrix, polycrystalline, and resin-matrix ceramics
+        meaning: OHD:0000135
+      RESIN_COMPOSITE:
+        text: RESIN_COMPOSITE
+        description: Resin-based composites (polymer matrix reinforced with filler)
+        meaning: OHD:0000036
+      CEMENT:
+        text: CEMENT
+        description: Luting, lining, base, and endodontic cements, whether acid-base,
+          resin, or hydraulic
+      POLYMER:
+        text: POLYMER
+        description: Unfilled or lightly filled polymers (denture base resins, impression
+          materials, sealants)
+      ADHESIVE:
+        text: ADHESIVE
+        description: Bonding agents, primers, and their monomers
+      HYBRID:
+        text: HYBRID
+        description: Materials that deliberately combine two categories (e.g. compomers,
+          resin-modified glass ionomers)
+      OTHER:
+        text: OTHER
+        description: Does not fit the other categories
+  SettingMechanismEnum:
+    name: SettingMechanismEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/SettingMechanismEnum
+    description: How the material hardens or is formed into its final state
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      LIGHT_CURED:
+        text: LIGHT_CURED
+        description: Photopolymerization initiated by visible (typically blue) light
+      SELF_CURED:
+        text: SELF_CURED
+        description: Chemically initiated polymerization (two-paste or powder-liquid)
+      DUAL_CURED:
+        text: DUAL_CURED
+        description: Both light-initiated and chemically initiated polymerization
+      ACID_BASE_REACTION:
+        text: ACID_BASE_REACTION
+        description: Acid-base setting reaction between a basic powder and an acidic
+          liquid
+      AMALGAMATION:
+        text: AMALGAMATION
+        description: Reaction of mercury with alloy particles
+      HYDRATION:
+        text: HYDRATION
+        description: Hydraulic setting on contact with water (e.g. calcium silicate
+          cements)
+      SINTERING:
+        text: SINTERING
+        description: Densification of a powder compact or milled blank at high temperature
+      HEAT_PRESSING:
+        text: HEAT_PRESSING
+        description: Pressing of a heated glass ceramic ingot into a mold
+      CASTING:
+        text: CASTING
+        description: Lost-wax casting of a molten alloy
+      MILLING:
+        text: MILLING
+        description: Subtractive CAD/CAM machining of a prefabricated block or disc
+      ADDITIVE_MANUFACTURING:
+        text: ADDITIVE_MANUFACTURING
+        description: 3D printing (stereolithography, selective laser melting, etc.)
+      COLD_WORKING:
+        text: COLD_WORKING
+        description: Condensation or burnishing without a chemical set (e.g. gold
+          foil)
+      NONE:
+        text: NONE
+        description: Supplied in final form; no setting step
+  ComponentRoleEnum:
+    name: ComponentRoleEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ComponentRoleEnum
+    description: The functional role a component plays in the material's formulation
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      MATRIX:
+        text: MATRIX
+        description: Continuous phase (polymer matrix, glass phase, metal matrix)
+      FILLER:
+        text: FILLER
+        description: Dispersed reinforcing or bulking particles or fibers
+      COUPLING_AGENT:
+        text: COUPLING_AGENT
+        description: Agent bonding filler to matrix (e.g. silane)
+      INITIATOR:
+        text: INITIATOR
+        description: Initiates polymerization (e.g. camphorquinone, benzoyl peroxide)
+      ACTIVATOR:
+        text: ACTIVATOR
+        description: Co-initiator or accelerator (e.g. tertiary amine)
+      INHIBITOR:
+        text: INHIBITOR
+        description: Stabilizer that prevents premature polymerization
+      POWDER:
+        text: POWDER
+        description: Powder component of a powder-liquid system
+      LIQUID:
+        text: LIQUID
+        description: Liquid component of a powder-liquid system
+      ALLOYING_ELEMENT:
+        text: ALLOYING_ELEMENT
+        description: Element present in an alloy
+      CRYSTALLINE_PHASE:
+        text: CRYSTALLINE_PHASE
+        description: Crystalline phase in a ceramic
+      STABILIZER:
+        text: STABILIZER
+        description: Phase stabilizer (e.g. yttria in zirconia)
+      RADIOPACIFIER:
+        text: RADIOPACIFIER
+        description: Added to make the material radiopaque
+      PIGMENT:
+        text: PIGMENT
+        description: Colorant or opacifier
+      SOLVENT:
+        text: SOLVENT
+        description: Carrier or solvent
+      FLUORIDE_SOURCE:
+        text: FLUORIDE_SOURCE
+        description: Component that releases fluoride
+      OTHER:
+        text: OTHER
+        description: Other role
+  PropertyTypeEnum:
+    name: PropertyTypeEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/PropertyTypeEnum
+    description: Physical, mechanical, chemical, optical, and biological properties
+      commonly reported for dental materials. Units are recorded on the property itself;
+      this enum only names the quantity.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      FLEXURAL_STRENGTH:
+        text: FLEXURAL_STRENGTH
+        description: Flexural (bending) strength, typically MPa
+      COMPRESSIVE_STRENGTH:
+        text: COMPRESSIVE_STRENGTH
+        description: Compressive strength, typically MPa
+      TENSILE_STRENGTH:
+        text: TENSILE_STRENGTH
+        description: Tensile or diametral tensile strength, typically MPa
+      ELASTIC_MODULUS:
+        text: ELASTIC_MODULUS
+        description: Elastic (Young's) modulus, typically GPa
+      FRACTURE_TOUGHNESS:
+        text: FRACTURE_TOUGHNESS
+        description: "Fracture toughness, typically MPa\xB7m^0.5"
+      HARDNESS:
+        text: HARDNESS
+        description: Surface hardness (Vickers, Knoop)
+      WEAR_RESISTANCE:
+        text: WEAR_RESISTANCE
+        description: Wear or abrasion resistance
+      BOND_STRENGTH:
+        text: BOND_STRENGTH
+        description: Bond strength to tooth structure or another substrate, typically
+          MPa
+      POLYMERIZATION_SHRINKAGE:
+        text: POLYMERIZATION_SHRINKAGE
+        description: Volumetric or linear shrinkage on setting, typically percent
+      SHRINKAGE_STRESS:
+        text: SHRINKAGE_STRESS
+        description: Stress generated during setting
+      DEGREE_OF_CONVERSION:
+        text: DEGREE_OF_CONVERSION
+        description: Fraction of monomer converted to polymer, typically percent
+      DEPTH_OF_CURE:
+        text: DEPTH_OF_CURE
+        description: Depth to which a light-cured material polymerizes adequately,
+          typically mm
+      WATER_SORPTION:
+        text: WATER_SORPTION
+        description: "Water sorption, typically \xB5g/mm^3"
+      SOLUBILITY:
+        text: SOLUBILITY
+        description: Solubility or disintegration in water or acid
+      THERMAL_EXPANSION:
+        text: THERMAL_EXPANSION
+        description: Coefficient of thermal expansion
+      THERMAL_CONDUCTIVITY:
+        text: THERMAL_CONDUCTIVITY
+        description: Thermal conductivity
+      RADIOPACITY:
+        text: RADIOPACITY
+        description: Radiopacity, typically relative to aluminum thickness
+      TRANSLUCENCY:
+        text: TRANSLUCENCY
+        description: Translucency or contrast ratio
+      COLOR_STABILITY:
+        text: COLOR_STABILITY
+        description: Resistance to discoloration
+      FLUORIDE_RELEASE:
+        text: FLUORIDE_RELEASE
+        description: Fluoride release or recharge
+      SETTING_TIME:
+        text: SETTING_TIME
+        description: Time to set, typically minutes
+      WORKING_TIME:
+        text: WORKING_TIME
+        description: Time available for manipulation, typically minutes
+      FILM_THICKNESS:
+        text: FILM_THICKNESS
+        description: "Film thickness of a luting agent, typically \xB5m"
+      CORROSION_RESISTANCE:
+        text: CORROSION_RESISTANCE
+        description: Resistance to corrosion or tarnish
+      BIOCOMPATIBILITY:
+        text: BIOCOMPATIBILITY
+        description: Biological response (cytotoxicity, sensitization, irritation)
+      ANTIBACTERIAL_ACTIVITY:
+        text: ANTIBACTERIAL_ACTIVITY
+        description: Antibacterial or antimicrobial effect
+      DENSITY:
+        text: DENSITY
+        description: Density
+      MELTING_RANGE:
+        text: MELTING_RANGE
+        description: Melting or fusion temperature range
+      OTHER:
+        text: OTHER
+        description: Other property
+  ClinicalUseContextEnum:
+    name: ClinicalUseContextEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ClinicalUseContextEnum
+    description: The broad clinical context in which the material is used
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      DIRECT_RESTORATION:
+        text: DIRECT_RESTORATION
+        description: Placed and shaped directly in the prepared tooth (fillings)
+      INDIRECT_RESTORATION:
+        text: INDIRECT_RESTORATION
+        description: Fabricated outside the mouth and cemented (inlays, onlays, crowns,
+          bridges, veneers)
+      LUTING:
+        text: LUTING
+        description: Cementing an indirect restoration, post, or orthodontic appliance
+      LINER_OR_BASE:
+        text: LINER_OR_BASE
+        description: Cavity liner or base under a restoration
+      PULP_THERAPY:
+        text: PULP_THERAPY
+        description: Pulp capping, pulpotomy, or other vital pulp therapy
+      ENDODONTIC:
+        text: ENDODONTIC
+        description: Root canal filling, sealing, perforation repair, apexification
+      IMPLANT:
+        text: IMPLANT
+        description: Endosseous implant fixture or abutment
+      PROSTHODONTIC:
+        text: PROSTHODONTIC
+        description: Denture base, denture teeth, or framework
+      ORTHODONTIC:
+        text: ORTHODONTIC
+        description: Brackets, wires, or bonding of appliances
+      PREVENTIVE:
+        text: PREVENTIVE
+        description: Pit and fissure sealant or protective coating
+      ADHESIVE:
+        text: ADHESIVE
+        description: Bonding agent or primer
+      IMPRESSION:
+        text: IMPRESSION
+        description: Impression or bite registration
+      TEMPORARY:
+        text: TEMPORARY
+        description: Provisional restoration or temporary filling
+      SURGICAL:
+        text: SURGICAL
+        description: Bone graft, membrane, or other surgical use
+      OTHER:
+        text: OTHER
+        description: Other context
+  PerformanceMeasureEnum:
+    name: PerformanceMeasureEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/PerformanceMeasureEnum
+    description: Kind of clinical performance statistic being reported
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      SURVIVAL_RATE:
+        text: SURVIVAL_RATE
+        description: Proportion of restorations surviving at a given follow-up
+      SUCCESS_RATE:
+        text: SUCCESS_RATE
+        description: Proportion meeting a stricter success criterion (survival without
+          repair or complication)
+      ANNUAL_FAILURE_RATE:
+        text: ANNUAL_FAILURE_RATE
+        description: Annual failure rate, percent per year
+      MEDIAN_SURVIVAL_TIME:
+        text: MEDIAN_SURVIVAL_TIME
+        description: Median time to failure or replacement
+      RETENTION_RATE:
+        text: RETENTION_RATE
+        description: Proportion retained (sealants, veneers, cervical restorations)
+      COMPLICATION_RATE:
+        text: COMPLICATION_RATE
+        description: Proportion experiencing a named complication (chipping, secondary
+          caries, fracture)
+      OTHER:
+        text: OTHER
+        description: Other measure
+  AdverseEffectCategoryEnum:
+    name: AdverseEffectCategoryEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/AdverseEffectCategoryEnum
+    description: Broad category of an adverse effect or safety concern
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      ALLERGIC_OR_HYPERSENSITIVITY:
+        text: ALLERGIC_OR_HYPERSENSITIVITY
+        description: Contact allergy, lichenoid reaction, or systemic hypersensitivity
+      TOXICITY:
+        text: TOXICITY
+        description: Local or systemic toxicity, including cytotoxicity and leachables
+      MECHANICAL_FAILURE:
+        text: MECHANICAL_FAILURE
+        description: Fracture, chipping, debonding, or wear of the restoration
+      SECONDARY_CARIES:
+        text: SECONDARY_CARIES
+        description: Recurrent caries at the restoration margin
+      PULPAL_RESPONSE:
+        text: PULPAL_RESPONSE
+        description: Pulpal irritation, sensitivity, or necrosis
+      PERIODONTAL_RESPONSE:
+        text: PERIODONTAL_RESPONSE
+        description: Gingival or periodontal inflammation adjacent to the material
+      ANTAGONIST_WEAR:
+        text: ANTAGONIST_WEAR
+        description: Wear of opposing natural teeth or restorations
+      ESTHETIC:
+        text: ESTHETIC
+        description: Discoloration, staining, or shade mismatch
+      OCCUPATIONAL:
+        text: OCCUPATIONAL
+        description: Hazard to dental personnel during handling
+      ENVIRONMENTAL:
+        text: ENVIRONMENTAL
+        description: Environmental release (e.g. mercury in wastewater)
+      OTHER:
+        text: OTHER
+        description: Other
+  RegulatoryAgencyEnum:
+    name: RegulatoryAgencyEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/RegulatoryAgencyEnum
+    description: The regulator whose decision or classification is being recorded.
+      FDA is the first target; the others are listed so the model does not have to
+      change when they are curated.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      FDA:
+        text: FDA
+        description: United States. Dental devices are regulated under 21 CFR part
+          872 by CDRH.
+        title: US Food and Drug Administration
+      EU_MDR:
+        text: EU_MDR
+        description: CE marking under the Medical Device Regulation, via a notified
+          body for class IIa and above.
+        title: European Union (MDR 2017/745)
+      HEALTH_CANADA:
+        text: HEALTH_CANADA
+        title: Health Canada
+      MHRA:
+        text: MHRA
+        title: UK Medicines and Healthcare products Regulatory Agency
+      TGA:
+        text: TGA
+        title: Australian Therapeutic Goods Administration
+      PMDA:
+        text: PMDA
+        title: Japan Pharmaceuticals and Medical Devices Agency
+      NMPA:
+        text: NMPA
+        title: China National Medical Products Administration
+      ANVISA:
+        text: ANVISA
+        title: "Brazil Ag\xEAncia Nacional de Vigil\xE2ncia Sanit\xE1ria"
+      OTHER:
+        text: OTHER
+        title: Other regulator
+  DeviceClassEnum:
+    name: DeviceClassEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DeviceClassEnum
+    description: Risk-based device class. FDA uses I, II, III. The EU MDR uses I,
+      IIa, IIb, III. Record the class as the regulator states it; the agency slot
+      disambiguates the scheme.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      CLASS_I:
+        text: CLASS_I
+        description: Lowest risk; general controls (FDA) or self-certification (EU)
+        title: Class I
+      CLASS_IIA:
+        text: CLASS_IIA
+        description: EU MDR medium-low risk
+        title: Class IIa
+      CLASS_II:
+        text: CLASS_II
+        description: FDA moderate risk; general and special controls
+        title: Class II
+      CLASS_IIB:
+        text: CLASS_IIB
+        description: EU MDR medium-high risk
+        title: Class IIb
+      CLASS_III:
+        text: CLASS_III
+        description: Highest risk; premarket approval (FDA) or full conformity assessment
+          (EU)
+        title: Class III
+      UNCLASSIFIED:
+        text: UNCLASSIFIED
+        description: No classification regulation applies or classification not yet
+          determined
+        title: Unclassified
+      NOT_A_DEVICE:
+        text: NOT_A_DEVICE
+        description: The material is not regulated as a medical device in this jurisdiction
+        title: Not regulated as a device
+  RegulatoryPathwayEnum:
+    name: RegulatoryPathwayEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/RegulatoryPathwayEnum
+    description: The premarket route by which the material or product reached the
+      market
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      PREMARKET_NOTIFICATION_510K:
+        text: PREMARKET_NOTIFICATION_510K
+        description: FDA clearance by demonstrating substantial equivalence to a predicate
+          device
+        title: 510(k) premarket notification
+      PREMARKET_APPROVAL_PMA:
+        text: PREMARKET_APPROVAL_PMA
+        description: FDA approval of a class III device on its own safety and effectiveness
+          data
+        title: Premarket approval (PMA)
+      DE_NOVO:
+        text: DE_NOVO
+        description: FDA pathway for novel low-to-moderate risk devices without a
+          predicate
+        title: De Novo classification
+      EXEMPT_510K:
+        text: EXEMPT_510K
+        description: Marketed without premarket notification, subject to the limitations
+          of 21 CFR 872.9, but still subject to registration, listing, and general
+          controls
+        title: 510(k) exempt
+      HUMANITARIAN_DEVICE_EXEMPTION:
+        text: HUMANITARIAN_DEVICE_EXEMPTION
+        title: Humanitarian device exemption
+      PRE_AMENDMENT:
+        text: PRE_AMENDMENT
+        description: Marketed before the 1976 Medical Device Amendments and grandfathered
+        title: Pre-amendment device
+      CE_MARK:
+        text: CE_MARK
+        description: EU conformity assessment under MDR or the earlier MDD
+        title: CE marking
+      OTHER:
+        text: OTHER
+        title: Other
+  RegulatoryStatusEnum:
+    name: RegulatoryStatusEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/RegulatoryStatusEnum
+    description: The current standing of the material or product with the regulator
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      CLEARED:
+        text: CLEARED
+        description: Cleared for marketing (FDA 510(k))
+      APPROVED:
+        text: APPROVED
+        description: Approved for marketing (FDA PMA, or equivalent)
+      GRANTED:
+        text: GRANTED
+        description: De Novo request granted
+      EXEMPT:
+        text: EXEMPT
+        description: Exempt from premarket notification; may be marketed under general
+          controls
+      CE_MARKED:
+        text: CE_MARKED
+        description: Carries a CE mark under EU device law
+      REGISTERED:
+        text: REGISTERED
+        description: Registered or listed with the regulator without a specific marketing
+          decision
+      PENDING:
+        text: PENDING
+        description: Submission under review
+      RESTRICTED:
+        text: RESTRICTED
+        description: Marketed with use restrictions imposed by the regulator (e.g.
+          population-specific recommendations)
+      WITHDRAWN:
+        text: WITHDRAWN
+        description: Withdrawn from the market by the manufacturer
+      RECALLED:
+        text: RECALLED
+        description: Subject to a recall
+      BANNED:
+        text: BANNED
+        description: Prohibited by the regulator
+      NOT_REGULATED:
+        text: NOT_REGULATED
+        description: Not regulated as a device in this jurisdiction
+      UNKNOWN:
+        text: UNKNOWN
+        description: Status not yet curated
+  CurationStatusEnum:
+    name: CurationStatusEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/CurationStatusEnum
+    description: How far along this entry is
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      STUB:
+        text: STUB
+        description: Seeded from the ontology only; no curated content beyond name,
+          definition, and term
+      IN_PROGRESS:
+        text: IN_PROGRESS
+        description: Some sections curated
+      CURATED:
+        text: CURATED
+        description: All recommended sections populated with evidence
+      REVIEWED:
+        text: REVIEWED
+        description: Curated and reviewed by a domain expert
+  MappingPredicateEnum:
+    name: MappingPredicateEnum
+    definition_uri: https://w3id.org/caufieldjh/dentamech/MappingPredicateEnum
+    description: SKOS mapping relation between this material and a term in another
+      vocabulary
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    permissible_values:
+      EXACT_MATCH:
+        text: EXACT_MATCH
+        meaning: skos:exactMatch
+      CLOSE_MATCH:
+        text: CLOSE_MATCH
+        meaning: skos:closeMatch
+      BROAD_MATCH:
+        text: BROAD_MATCH
+        meaning: skos:broadMatch
+      NARROW_MATCH:
+        text: NARROW_MATCH
+        meaning: skos:narrowMatch
+      RELATED_MATCH:
+        text: RELATED_MATCH
+        meaning: skos:relatedMatch
+  DentalMaterialTerm:
+    name: DentalMaterialTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DentalMaterialTerm
+    description: A dental restoration material term from OHD. The root itself is included
+      so the top-of-tree entry validates.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - OHD:0000000
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+      include_self: true
+  DentalProcedureTerm:
+    name: DentalProcedureTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DentalProcedureTerm
+    description: A dental procedure term from OHD
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - OHD:0000002
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+  ChemicalEntityTerm:
+    name: ChemicalEntityTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ChemicalEntityTerm
+    description: A chemical entity from CHEBI
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - CHEBI:24431
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+  AnatomicalEntityTerm:
+    name: AnatomicalEntityTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/AnatomicalEntityTerm
+    description: An anatomical entity from UBERON
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - UBERON:0001062
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+  PhenotypeTerm:
+    name: PhenotypeTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/PhenotypeTerm
+    description: A phenotype (HP) or disease (MONDO) term, for adverse effects
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - HP:0000118
+      - MONDO:0000001
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+  QualityTerm:
+    name: QualityTerm
+    definition_uri: https://w3id.org/caufieldjh/dentamech/QualityTerm
+    description: A quality from PATO, for typed material properties
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    reachable_from:
+      source_nodes:
+      - PATO:0000001
+      relationship_types:
+      - rdfs:subClassOf
+      is_direct: false
+slots:
+  name:
+    name: name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:name
+    identifier: true
+    owner: DentalMaterial
+    domain_of:
+    - Component
+    - MaterialProperty
+    - ClinicalUse
+    - ClinicalPerformance
+    - AdverseEffect
+    - ApprovedUse
+    - CommercialProduct
+    - DentalMaterial
+    range: string
+    required: true
+  description:
+    name: description
+    definition_uri: https://w3id.org/caufieldjh/dentamech/description
+    description: Free-text description
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:description
+    owner: DentalMaterial
+    domain_of:
+    - Descriptor
+    - Component
+    - MaterialProperty
+    - ClinicalUse
+    - ClinicalPerformance
+    - AdverseEffect
+    - ApprovedUse
+    - CommercialProduct
+    - DentalMaterial
+    range: string
+  synonyms:
+    name: synonyms
+    definition_uri: https://w3id.org/caufieldjh/dentamech/synonyms
+    description: Alternative names, including common clinical shorthand
+    examples:
+    - value: GIC
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:synonyms
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: string
+    multivalued: true
+  creation_date:
+    name: creation_date
+    definition_uri: https://w3id.org/caufieldjh/dentamech/creation_date
+    description: ISO 8601 timestamp for when this entry was first created
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:creation_date
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: string
+    recommended: true
+    pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+\-]\d{2}:\d{2})$
+  curation_status:
+    name: curation_status
+    definition_uri: https://w3id.org/caufieldjh/dentamech/curation_status
+    description: How far along this entry is
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:curation_status
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: CurationStatusEnum
+    recommended: true
+  notes:
+    name: notes
+    definition_uri: https://w3id.org/caufieldjh/dentamech/notes
+    description: Curator notes that do not belong in any structured section
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:notes
+    owner: DentalMaterial
+    domain_of:
+    - RegulatoryStatus
+    - DentalMaterial
+    range: string
+  id:
+    name: id
+    definition_uri: https://w3id.org/caufieldjh/dentamech/id
+    description: A CURIE identifying an ontology term
+    examples:
+    - value: OHD:0000036
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:id
+    owner: Mapping
+    domain_of:
+    - Term
+    - Mapping
+    range: uriorcurie
+    required: true
+  label:
+    name: label
+    definition_uri: https://w3id.org/caufieldjh/dentamech/label
+    description: The canonical label of the ontology term, as validated against the
+      source ontology
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:label
+    owner: Mapping
+    domain_of:
+    - Term
+    - Mapping
+    range: string
+    required: true
+  preferred_term:
+    name: preferred_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/preferred_term
+    description: The preferred human-readable term for this descriptor. May be more
+      specific than the bound ontology term's label.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:preferred_term
+    owner: Descriptor
+    domain_of:
+    - Descriptor
+    range: string
+  term:
+    name: term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:term
+    owner: Descriptor
+    domain_of:
+    - Descriptor
+    range: Term
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  material_term:
+    name: material_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/material_term
+    description: The OHD term this material entry is anchored to
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:material_term
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: DentalMaterialDescriptor
+    required: true
+    inlined: true
+    inlined_as_list: true
+  category:
+    name: category
+    definition_uri: https://w3id.org/caufieldjh/dentamech/category
+    description: Broad material class
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:category
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: MaterialCategoryEnum
+    required: true
+  parents:
+    name: parents
+    definition_uri: https://w3id.org/caufieldjh/dentamech/parents
+    description: Names of the parent material entries in this knowledge base. Mirrors
+      the OHD subclass hierarchy. Each value must match the `name` of another file
+      in kb/materials/.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:parents
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: string
+    multivalued: true
+  setting_mechanisms:
+    name: setting_mechanisms
+    definition_uri: https://w3id.org/caufieldjh/dentamech/setting_mechanisms
+    description: How the material hardens or is formed
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:setting_mechanisms
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: SettingMechanismEnum
+    recommended: true
+    multivalued: true
+  mappings:
+    name: mappings
+    definition_uri: https://w3id.org/caufieldjh/dentamech/mappings
+    description: Mappings to terms in other vocabularies (NCIT, SNOMED CT, MeSH, CDT)
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:mappings
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: Mapping
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  predicate:
+    name: predicate
+    definition_uri: https://w3id.org/caufieldjh/dentamech/predicate
+    description: SKOS mapping relation
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:predicate
+    owner: Mapping
+    domain_of:
+    - Mapping
+    range: MappingPredicateEnum
+    required: true
+  source:
+    name: source
+    definition_uri: https://w3id.org/caufieldjh/dentamech/source
+    description: Where the mapping or record came from
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:source
+    owner: Mapping
+    domain_of:
+    - Mapping
+    range: string
+  see_also:
+    name: see_also
+    definition_uri: https://w3id.org/caufieldjh/dentamech/see_also
+    description: URLs for further reading
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:see_also
+    owner: DentalMaterial
+    domain_of:
+    - CommercialProduct
+    - DentalMaterial
+    range: uri
+    multivalued: true
+  composition:
+    name: composition
+    definition_uri: https://w3id.org/caufieldjh/dentamech/composition
+    description: Components of the material and their roles
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:composition
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: Component
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  role:
+    name: role
+    definition_uri: https://w3id.org/caufieldjh/dentamech/role
+    description: Functional role of the component in the formulation
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:role
+    owner: Component
+    domain_of:
+    - Component
+    range: ComponentRoleEnum
+  chemical:
+    name: chemical
+    definition_uri: https://w3id.org/caufieldjh/dentamech/chemical
+    description: Chemical identity of the component, bound to CHEBI where possible
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:chemical
+    owner: Component
+    domain_of:
+    - Component
+    range: ChemicalEntityDescriptor
+    inlined: true
+    inlined_as_list: true
+  proportion:
+    name: proportion
+    definition_uri: https://w3id.org/caufieldjh/dentamech/proportion
+    description: Typical proportion of this component, as free text so ranges and
+      bases (weight or volume percent) can be stated as the source states them
+    examples:
+    - value: 60-80 wt%
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:proportion
+    owner: Component
+    domain_of:
+    - Component
+    range: string
+  properties:
+    name: properties
+    definition_uri: https://w3id.org/caufieldjh/dentamech/properties
+    description: Measured or typical physical, mechanical, chemical, and biological
+      properties
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:properties
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: MaterialProperty
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  property_type:
+    name: property_type
+    definition_uri: https://w3id.org/caufieldjh/dentamech/property_type
+    description: Which property is being reported
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:property_type
+    owner: MaterialProperty
+    domain_of:
+    - MaterialProperty
+    range: PropertyTypeEnum
+    required: true
+  quality_term:
+    name: quality_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/quality_term
+    description: Optional PATO quality term for the property
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:quality_term
+    owner: MaterialProperty
+    domain_of:
+    - MaterialProperty
+    range: QualityDescriptor
+    inlined: true
+    inlined_as_list: true
+  value:
+    name: value
+    definition_uri: https://w3id.org/caufieldjh/dentamech/value
+    description: Reported value, as a number or a free-text range
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:value
+    owner: ClinicalPerformance
+    domain_of:
+    - MaterialProperty
+    - ClinicalPerformance
+    range: string
+  unit:
+    name: unit
+    definition_uri: https://w3id.org/caufieldjh/dentamech/unit
+    description: Unit for the value
+    examples:
+    - value: MPa
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:unit
+    owner: ClinicalPerformance
+    domain_of:
+    - MaterialProperty
+    - ClinicalPerformance
+    range: string
+  test_method:
+    name: test_method
+    definition_uri: https://w3id.org/caufieldjh/dentamech/test_method
+    description: Standard or method used to measure the property
+    examples:
+    - value: ISO 4049:2019 three-point bending
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:test_method
+    owner: MaterialProperty
+    domain_of:
+    - MaterialProperty
+    range: string
+  conditions:
+    name: conditions
+    definition_uri: https://w3id.org/caufieldjh/dentamech/conditions
+    description: Test or storage conditions that qualify the value
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:conditions
+    owner: MaterialProperty
+    domain_of:
+    - MaterialProperty
+    range: string
+  clinical_uses:
+    name: clinical_uses
+    definition_uri: https://w3id.org/caufieldjh/dentamech/clinical_uses
+    description: What the material is used for clinically
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:clinical_uses
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: ClinicalUse
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  use_context:
+    name: use_context
+    definition_uri: https://w3id.org/caufieldjh/dentamech/use_context
+    description: Broad clinical context
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:use_context
+    owner: ApprovedUse
+    domain_of:
+    - ClinicalUse
+    - ApprovedUse
+    range: ClinicalUseContextEnum
+    required: true
+  procedure:
+    name: procedure
+    definition_uri: https://w3id.org/caufieldjh/dentamech/procedure
+    description: The OHD dental procedure this use corresponds to
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:procedure
+    owner: ApprovedUse
+    domain_of:
+    - ClinicalUse
+    - ApprovedUse
+    range: DentalProcedureDescriptor
+    inlined: true
+    inlined_as_list: true
+  anatomical_site:
+    name: anatomical_site
+    definition_uri: https://w3id.org/caufieldjh/dentamech/anatomical_site
+    description: Where in the mouth the material is placed
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:anatomical_site
+    owner: ApprovedUse
+    domain_of:
+    - ClinicalUse
+    - ApprovedUse
+    range: AnatomicalEntityDescriptor
+    inlined: true
+    inlined_as_list: true
+  indications:
+    name: indications
+    definition_uri: https://w3id.org/caufieldjh/dentamech/indications
+    description: Situations in which this use is indicated
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:indications
+    owner: ClinicalUse
+    domain_of:
+    - ClinicalUse
+    range: string
+    multivalued: true
+  contraindications:
+    name: contraindications
+    definition_uri: https://w3id.org/caufieldjh/dentamech/contraindications
+    description: Situations in which this use is contraindicated
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:contraindications
+    owner: ClinicalUse
+    domain_of:
+    - ClinicalUse
+    range: string
+    multivalued: true
+  clinical_performance:
+    name: clinical_performance
+    definition_uri: https://w3id.org/caufieldjh/dentamech/clinical_performance
+    description: Longevity and outcome statistics from clinical studies
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:clinical_performance
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: ClinicalPerformance
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  measure_type:
+    name: measure_type
+    definition_uri: https://w3id.org/caufieldjh/dentamech/measure_type
+    description: Which performance statistic is being reported
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:measure_type
+    owner: ClinicalPerformance
+    domain_of:
+    - ClinicalPerformance
+    range: PerformanceMeasureEnum
+    required: true
+  follow_up_years:
+    name: follow_up_years
+    definition_uri: https://w3id.org/caufieldjh/dentamech/follow_up_years
+    description: Follow-up duration in years
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:follow_up_years
+    owner: ClinicalPerformance
+    domain_of:
+    - ClinicalPerformance
+    range: float
+  population:
+    name: population
+    definition_uri: https://w3id.org/caufieldjh/dentamech/population
+    description: The population or setting the statistic applies to
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:population
+    owner: ClinicalPerformance
+    domain_of:
+    - ClinicalPerformance
+    range: string
+  comparator:
+    name: comparator
+    definition_uri: https://w3id.org/caufieldjh/dentamech/comparator
+    description: The material or treatment it was compared against, if any
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:comparator
+    owner: ClinicalPerformance
+    domain_of:
+    - ClinicalPerformance
+    range: string
+  adverse_effects:
+    name: adverse_effects
+    definition_uri: https://w3id.org/caufieldjh/dentamech/adverse_effects
+    description: Adverse effects, safety concerns, and failure modes
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:adverse_effects
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: AdverseEffect
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  effect_category:
+    name: effect_category
+    definition_uri: https://w3id.org/caufieldjh/dentamech/effect_category
+    description: Broad category of the adverse effect
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:effect_category
+    owner: AdverseEffect
+    domain_of:
+    - AdverseEffect
+    range: AdverseEffectCategoryEnum
+    required: true
+  effect_term:
+    name: effect_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/effect_term
+    description: The phenotype or disease the effect corresponds to
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:effect_term
+    owner: AdverseEffect
+    domain_of:
+    - AdverseEffect
+    range: PhenotypeDescriptor
+    inlined: true
+    inlined_as_list: true
+  frequency:
+    name: frequency
+    definition_uri: https://w3id.org/caufieldjh/dentamech/frequency
+    description: How often the effect occurs, as stated by the source
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:frequency
+    owner: AdverseEffect
+    domain_of:
+    - AdverseEffect
+    range: string
+  regulatory_status:
+    name: regulatory_status
+    definition_uri: https://w3id.org/caufieldjh/dentamech/regulatory_status
+    description: Regulatory classification and permitted uses at the level of the
+      material or device type. One entry per agency (and per regulation when a material
+      falls under more than one). Product-level decisions (a specific 510(k) for a
+      specific brand) go under `products`.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:regulatory_status
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: RegulatoryStatus
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  agency:
+    name: agency
+    definition_uri: https://w3id.org/caufieldjh/dentamech/agency
+    description: The regulator
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:agency
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatoryStatus
+    - RegulatorySubmission
+    range: RegulatoryAgencyEnum
+    required: true
+  jurisdiction:
+    name: jurisdiction
+    definition_uri: https://w3id.org/caufieldjh/dentamech/jurisdiction
+    description: Country or region, when the agency slot alone is ambiguous
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:jurisdiction
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+  status:
+    name: status
+    definition_uri: https://w3id.org/caufieldjh/dentamech/status
+    description: Current standing with the regulator
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:status
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: RegulatoryStatusEnum
+    required: true
+  regulation_number:
+    name: regulation_number
+    definition_uri: https://w3id.org/caufieldjh/dentamech/regulation_number
+    description: The classification regulation. For FDA this is a section of 21 CFR
+      part 872, written as e.g. 872.3690.
+    examples:
+    - value: '872.3690'
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:regulation_number
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatoryStatus
+    - RegulatorySubmission
+    range: string
+    pattern: ^\d{3}\.\d{4}$
+  regulation_title:
+    name: regulation_title
+    definition_uri: https://w3id.org/caufieldjh/dentamech/regulation_title
+    description: Device name as given in the classification regulation
+    examples:
+    - value: Tooth shade resin material
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:regulation_title
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+  device_class:
+    name: device_class
+    definition_uri: https://w3id.org/caufieldjh/dentamech/device_class
+    description: Risk class assigned by the regulator
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:device_class
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: DeviceClassEnum
+  product_codes:
+    name: product_codes
+    definition_uri: https://w3id.org/caufieldjh/dentamech/product_codes
+    description: FDA three-letter product codes (or the equivalent classification
+      codes of another agency) that fall under this regulation for this material
+    examples:
+    - value: EBF
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:product_codes
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+    multivalued: true
+    pattern: ^[A-Z]{3}$
+  pathways:
+    name: pathways
+    definition_uri: https://w3id.org/caufieldjh/dentamech/pathways
+    description: Premarket routes available or used for this device type
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:pathways
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: RegulatoryPathwayEnum
+    multivalued: true
+  special_controls:
+    name: special_controls
+    definition_uri: https://w3id.org/caufieldjh/dentamech/special_controls
+    description: Special controls or guidance documents named in the regulation
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:special_controls
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+    multivalued: true
+  identification:
+    name: identification
+    definition_uri: https://w3id.org/caufieldjh/dentamech/identification
+    description: The regulator's own identification text for the device type, quoted
+      verbatim. For FDA this is paragraph (a) of the regulation.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:identification
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+  approved_uses:
+    name: approved_uses
+    definition_uri: https://w3id.org/caufieldjh/dentamech/approved_uses
+    description: Uses the regulator permits, as stated in the regulation, clearance,
+      or approval
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:approved_uses
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: ApprovedUse
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  restrictions:
+    name: restrictions
+    definition_uri: https://w3id.org/caufieldjh/dentamech/restrictions
+    description: Population, labeling, or use restrictions imposed by the regulator
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:restrictions
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: string
+    multivalued: true
+  effective_date:
+    name: effective_date
+    definition_uri: https://w3id.org/caufieldjh/dentamech/effective_date
+    description: Date the classification or decision took effect (YYYY-MM-DD)
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:effective_date
+    owner: RegulatoryStatus
+    domain_of:
+    - RegulatoryStatus
+    range: date
+  source_url:
+    name: source_url
+    definition_uri: https://w3id.org/caufieldjh/dentamech/source_url
+    description: URL of the regulation, database record, or decision document
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:source_url
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatoryStatus
+    - RegulatorySubmission
+    range: uri
+  products:
+    name: products
+    definition_uri: https://w3id.org/caufieldjh/dentamech/products
+    description: Specific commercial products of this material type, with their regulatory
+      submissions
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:products
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: CommercialProduct
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  manufacturer:
+    name: manufacturer
+    definition_uri: https://w3id.org/caufieldjh/dentamech/manufacturer
+    description: Manufacturer or applicant
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:manufacturer
+    owner: CommercialProduct
+    domain_of:
+    - CommercialProduct
+    range: string
+  submissions:
+    name: submissions
+    definition_uri: https://w3id.org/caufieldjh/dentamech/submissions
+    description: Regulatory submissions and decisions for the product
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:submissions
+    owner: CommercialProduct
+    domain_of:
+    - CommercialProduct
+    range: RegulatorySubmission
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  submission_number:
+    name: submission_number
+    definition_uri: https://w3id.org/caufieldjh/dentamech/submission_number
+    description: Submission identifier. FDA 510(k) numbers start with K, PMAs with
+      P, De Novo requests with DEN.
+    examples:
+    - value: K123456
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:submission_number
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: string
+    pattern: ^(K|P|DEN|N|H|BK)\d{6}(?:/S\d{3})?$
+  pathway:
+    name: pathway
+    definition_uri: https://w3id.org/caufieldjh/dentamech/pathway
+    description: Premarket route for this submission
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:pathway
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: RegulatoryPathwayEnum
+  decision:
+    name: decision
+    definition_uri: https://w3id.org/caufieldjh/dentamech/decision
+    description: Outcome of the submission
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:decision
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: RegulatoryStatusEnum
+  decision_date:
+    name: decision_date
+    definition_uri: https://w3id.org/caufieldjh/dentamech/decision_date
+    description: Date of the decision (YYYY-MM-DD)
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:decision_date
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: date
+  product_code:
+    name: product_code
+    definition_uri: https://w3id.org/caufieldjh/dentamech/product_code
+    description: FDA product code assigned to this submission
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:product_code
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: string
+    pattern: ^[A-Z]{3}$
+  indications_for_use:
+    name: indications_for_use
+    definition_uri: https://w3id.org/caufieldjh/dentamech/indications_for_use
+    description: Indications for use statement, quoted from the decision document
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:indications_for_use
+    owner: RegulatorySubmission
+    domain_of:
+    - RegulatorySubmission
+    range: string
+  standards:
+    name: standards
+    definition_uri: https://w3id.org/caufieldjh/dentamech/standards
+    description: Technical standards the material is tested or specified against
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:standards
+    owner: DentalMaterial
+    domain_of:
+    - DentalMaterial
+    range: Standard
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  identifier:
+    name: identifier
+    definition_uri: https://w3id.org/caufieldjh/dentamech/identifier
+    description: Standard designation
+    examples:
+    - value: ISO 4049:2019
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:identifier
+    owner: Standard
+    domain_of:
+    - Standard
+    range: string
+    required: true
+  title:
+    name: title
+    definition_uri: https://w3id.org/caufieldjh/dentamech/title
+    description: Title of the standard
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:title
+    owner: Standard
+    domain_of:
+    - Standard
+    range: string
+  organization:
+    name: organization
+    definition_uri: https://w3id.org/caufieldjh/dentamech/organization
+    description: Standards body
+    examples:
+    - value: ISO
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:organization
+    owner: Standard
+    domain_of:
+    - Standard
+    range: string
+  url:
+    name: url
+    definition_uri: https://w3id.org/caufieldjh/dentamech/url
+    description: URL
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:url
+    owner: Standard
+    domain_of:
+    - Standard
+    range: uri
+  evidence:
+    name: evidence
+    definition_uri: https://w3id.org/caufieldjh/dentamech/evidence
+    description: Evidence items supporting or refuting the enclosing claim
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:evidence
+    owner: RegulatorySubmission
+    domain_of:
+    - Component
+    - MaterialProperty
+    - ClinicalUse
+    - ClinicalPerformance
+    - AdverseEffect
+    - ApprovedUse
+    - RegulatoryStatus
+    - RegulatorySubmission
+    range: EvidenceItem
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  reference:
+    name: reference
+    definition_uri: https://w3id.org/caufieldjh/dentamech/reference
+    implements:
+    - linkml:authoritative_reference
+    description: The citable source for this evidence item
+    examples:
+    - value: PMID:24560216
+    - value: url:https://www.ecfr.gov/current/title-21/section-872.3690
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:reference
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: ReferenceIdentifier
+    required: true
+  reference_title:
+    name: reference_title
+    definition_uri: https://w3id.org/caufieldjh/dentamech/reference_title
+    description: Title of the referenced source
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:reference_title
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: string
+    recommended: true
+  supports:
+    name: supports
+    definition_uri: https://w3id.org/caufieldjh/dentamech/supports
+    description: How the source relates to the claim
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:supports
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: EvidenceItemSupportEnum
+    required: true
+  evidence_source:
+    name: evidence_source
+    definition_uri: https://w3id.org/caufieldjh/dentamech/evidence_source
+    description: The kind of source
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:evidence_source
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: EvidenceSourceEnum
+    recommended: true
+  snippet:
+    name: snippet
+    definition_uri: https://w3id.org/caufieldjh/dentamech/snippet
+    implements:
+    - linkml:excerpt
+    description: An exact quote from the referenced source that supports or refutes
+      the claim. Validated verbatim against the fetched abstract or document by linkml-reference-validator
+      where the source can be fetched.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:snippet
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: string
+  explanation:
+    name: explanation
+    definition_uri: https://w3id.org/caufieldjh/dentamech/explanation
+    description: Why this snippet bears on the claim
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slot_uri: dentamech:explanation
+    owner: EvidenceItem
+    domain_of:
+    - EvidenceItem
+    range: string
+  DentalMaterialDescriptor_term:
+    name: DentalMaterialDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: DentalMaterialDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: DentalMaterialDescriptor
+    domain_of:
+    - DentalMaterialDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: DentalMaterialTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    required: true
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  DentalProcedureDescriptor_term:
+    name: DentalProcedureDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: DentalProcedureDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: DentalProcedureDescriptor
+    domain_of:
+    - DentalProcedureDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: DentalProcedureTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  ChemicalEntityDescriptor_term:
+    name: ChemicalEntityDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: ChemicalEntityDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: ChemicalEntityDescriptor
+    domain_of:
+    - ChemicalEntityDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: ChemicalEntityTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  AnatomicalEntityDescriptor_term:
+    name: AnatomicalEntityDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: AnatomicalEntityDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: AnatomicalEntityDescriptor
+    domain_of:
+    - AnatomicalEntityDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: AnatomicalEntityTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  PhenotypeDescriptor_term:
+    name: PhenotypeDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: PhenotypeDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: PhenotypeDescriptor
+    domain_of:
+    - PhenotypeDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: PhenotypeTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  QualityDescriptor_term:
+    name: QualityDescriptor_term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/term
+    description: Structured ontology term reference
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: term
+    domain: QualityDescriptor
+    slot_uri: dentamech:term
+    alias: term
+    owner: QualityDescriptor
+    domain_of:
+    - QualityDescriptor
+    is_usage_slot: true
+    usage_slot_name: term
+    range: Term
+    bindings:
+    - range: QualityTerm
+      obligation_level: REQUIRED
+      binds_value_of: id
+    recommended: true
+    inlined: true
+    inlined_as_list: true
+  Component_name:
+    name: Component_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: Component
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: Component
+    domain_of:
+    - Component
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  MaterialProperty_name:
+    name: MaterialProperty_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Short label for the property row (e.g. "Flexural strength, 24 h water
+      storage")
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: MaterialProperty
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: MaterialProperty
+    domain_of:
+    - MaterialProperty
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  ClinicalUse_name:
+    name: ClinicalUse_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: ClinicalUse
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: ClinicalUse
+    domain_of:
+    - ClinicalUse
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  ClinicalPerformance_name:
+    name: ClinicalPerformance_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: ClinicalPerformance
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: ClinicalPerformance
+    domain_of:
+    - ClinicalPerformance
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  AdverseEffect_name:
+    name: AdverseEffect_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: AdverseEffect
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: AdverseEffect
+    domain_of:
+    - AdverseEffect
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  ApprovedUse_name:
+    name: ApprovedUse_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: ApprovedUse
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: ApprovedUse
+    domain_of:
+    - ApprovedUse
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  ApprovedUse_use_context:
+    name: ApprovedUse_use_context
+    definition_uri: https://w3id.org/caufieldjh/dentamech/use_context
+    description: Broad clinical context
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: use_context
+    domain: ApprovedUse
+    slot_uri: dentamech:use_context
+    alias: use_context
+    owner: ApprovedUse
+    domain_of:
+    - ApprovedUse
+    is_usage_slot: true
+    usage_slot_name: use_context
+    range: ClinicalUseContextEnum
+    required: true
+  CommercialProduct_name:
+    name: CommercialProduct_name
+    definition_uri: https://w3id.org/caufieldjh/dentamech/name
+    description: Human-readable name; the identifier for top-level entries
+    examples:
+    - value: Resin-based composite
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: name
+    domain: CommercialProduct
+    slot_uri: dentamech:name
+    identifier: true
+    alias: name
+    owner: CommercialProduct
+    domain_of:
+    - CommercialProduct
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+classes:
+  Term:
+    name: Term
+    definition_uri: https://w3id.org/caufieldjh/dentamech/Term
+    description: A structured reference to an ontology term
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - id
+    - label
+    class_uri: dentamech:Term
+  Descriptor:
+    name: Descriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/Descriptor
+    description: Base class for a thing described by a preferred term, an optional
+      description, and an optional bound ontology term
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    abstract: true
+    slots:
+    - preferred_term
+    - description
+    - term
+    class_uri: dentamech:Descriptor
+  DentalMaterialDescriptor:
+    name: DentalMaterialDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DentalMaterialDescriptor
+    description: A descriptor bindable to the OHD dental restoration material branch
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - DentalMaterialDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: DentalMaterialTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+        required: true
+    class_uri: dentamech:DentalMaterialDescriptor
+  DentalProcedureDescriptor:
+    name: DentalProcedureDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DentalProcedureDescriptor
+    description: A descriptor bindable to the OHD dental procedure branch
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - DentalProcedureDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: DentalProcedureTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+    class_uri: dentamech:DentalProcedureDescriptor
+  ChemicalEntityDescriptor:
+    name: ChemicalEntityDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ChemicalEntityDescriptor
+    description: A descriptor bindable to CHEBI
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - ChemicalEntityDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: ChemicalEntityTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+    class_uri: dentamech:ChemicalEntityDescriptor
+  AnatomicalEntityDescriptor:
+    name: AnatomicalEntityDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/AnatomicalEntityDescriptor
+    description: A descriptor bindable to UBERON
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - AnatomicalEntityDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: AnatomicalEntityTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+    class_uri: dentamech:AnatomicalEntityDescriptor
+  PhenotypeDescriptor:
+    name: PhenotypeDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/PhenotypeDescriptor
+    description: A descriptor bindable to HP or MONDO
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - PhenotypeDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: PhenotypeTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+    class_uri: dentamech:PhenotypeDescriptor
+  QualityDescriptor:
+    name: QualityDescriptor
+    definition_uri: https://w3id.org/caufieldjh/dentamech/QualityDescriptor
+    description: A descriptor bindable to PATO
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    is_a: Descriptor
+    slots:
+    - preferred_term
+    - description
+    - QualityDescriptor_term
+    slot_usage:
+      term:
+        name: term
+        bindings:
+        - range: QualityTerm
+          obligation_level: REQUIRED
+          binds_value_of: id
+    class_uri: dentamech:QualityDescriptor
+  EvidenceItem:
+    name: EvidenceItem
+    definition_uri: https://w3id.org/caufieldjh/dentamech/EvidenceItem
+    description: A citation plus an exact quote, tied to the claim it sits under
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - reference
+    - reference_title
+    - supports
+    - evidence_source
+    - snippet
+    - explanation
+    class_uri: dentamech:EvidenceItem
+  Mapping:
+    name: Mapping
+    definition_uri: https://w3id.org/caufieldjh/dentamech/Mapping
+    description: A mapping to a term in another vocabulary
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - id
+    - label
+    - predicate
+    - source
+    class_uri: dentamech:Mapping
+  Component:
+    name: Component
+    definition_uri: https://w3id.org/caufieldjh/dentamech/Component
+    description: A constituent of the material
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - Component_name
+    - description
+    - role
+    - chemical
+    - proportion
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+    class_uri: dentamech:Component
+  MaterialProperty:
+    name: MaterialProperty
+    definition_uri: https://w3id.org/caufieldjh/dentamech/MaterialProperty
+    description: A reported property value
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - MaterialProperty_name
+    - property_type
+    - quality_term
+    - value
+    - unit
+    - test_method
+    - conditions
+    - description
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        description: Short label for the property row (e.g. "Flexural strength, 24
+          h water storage")
+        identifier: false
+    class_uri: dentamech:MaterialProperty
+  ClinicalUse:
+    name: ClinicalUse
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ClinicalUse
+    description: A clinical application of the material
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - ClinicalUse_name
+    - description
+    - use_context
+    - procedure
+    - anatomical_site
+    - indications
+    - contraindications
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+    class_uri: dentamech:ClinicalUse
+  ClinicalPerformance:
+    name: ClinicalPerformance
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ClinicalPerformance
+    description: A longevity or outcome statistic
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - ClinicalPerformance_name
+    - measure_type
+    - value
+    - unit
+    - follow_up_years
+    - population
+    - comparator
+    - description
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+    class_uri: dentamech:ClinicalPerformance
+  AdverseEffect:
+    name: AdverseEffect
+    definition_uri: https://w3id.org/caufieldjh/dentamech/AdverseEffect
+    description: An adverse effect, safety concern, or failure mode
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - AdverseEffect_name
+    - description
+    - effect_category
+    - effect_term
+    - frequency
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+    class_uri: dentamech:AdverseEffect
+  ApprovedUse:
+    name: ApprovedUse
+    definition_uri: https://w3id.org/caufieldjh/dentamech/ApprovedUse
+    description: A use the regulator permits for this device type or product
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - ApprovedUse_name
+    - description
+    - ApprovedUse_use_context
+    - procedure
+    - anatomical_site
+    - evidence
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+      use_context:
+        name: use_context
+        required: false
+    class_uri: dentamech:ApprovedUse
+  RegulatoryStatus:
+    name: RegulatoryStatus
+    definition_uri: https://w3id.org/caufieldjh/dentamech/RegulatoryStatus
+    description: Regulatory classification of the material as a device type, under
+      one agency and one regulation
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - agency
+    - jurisdiction
+    - status
+    - regulation_number
+    - regulation_title
+    - device_class
+    - product_codes
+    - pathways
+    - special_controls
+    - identification
+    - approved_uses
+    - restrictions
+    - effective_date
+    - source_url
+    - notes
+    - evidence
+    class_uri: dentamech:RegulatoryStatus
+  RegulatorySubmission:
+    name: RegulatorySubmission
+    definition_uri: https://w3id.org/caufieldjh/dentamech/RegulatorySubmission
+    description: One premarket submission for a commercial product and its outcome
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - agency
+    - submission_number
+    - pathway
+    - decision
+    - decision_date
+    - product_code
+    - regulation_number
+    - indications_for_use
+    - source_url
+    - evidence
+    class_uri: dentamech:RegulatorySubmission
+  CommercialProduct:
+    name: CommercialProduct
+    definition_uri: https://w3id.org/caufieldjh/dentamech/CommercialProduct
+    description: A branded product that is an instance of this material type
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - CommercialProduct_name
+    - manufacturer
+    - description
+    - submissions
+    - see_also
+    slot_usage:
+      name:
+        name: name
+        identifier: false
+        required: true
+    class_uri: dentamech:CommercialProduct
+  Standard:
+    name: Standard
+    definition_uri: https://w3id.org/caufieldjh/dentamech/Standard
+    description: A technical standard or specification
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - identifier
+    - title
+    - organization
+    - url
+    class_uri: dentamech:Standard
+  DentalMaterial:
+    name: DentalMaterial
+    definition_uri: https://w3id.org/caufieldjh/dentamech/DentalMaterial
+    description: A dental material entry. One file per material in kb/materials/,
+      anchored to an OHD term.
+    from_schema: https://w3id.org/caufieldjh/dentamech
+    slots:
+    - name
+    - description
+    - creation_date
+    - curation_status
+    - material_term
+    - category
+    - parents
+    - synonyms
+    - mappings
+    - setting_mechanisms
+    - composition
+    - properties
+    - clinical_uses
+    - clinical_performance
+    - adverse_effects
+    - regulatory_status
+    - products
+    - standards
+    - see_also
+    - notes
+    class_uri: dentamech:DentalMaterial
+    tree_root: true
+metamodel_version: 1.11.0
+source_file: dentamech.yaml
+source_file_date: '2026-11-07T19:13:07'
+source_file_size: 40875
+generation_date: '2026-11-07T19:13:17'
+
