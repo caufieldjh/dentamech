@@ -1,36 +1,28 @@
-# OAK adapter configuration for linkml-term-validator.
-# Maps ontology prefixes to OAK adapter strings. Only prefixes listed here
-# are validated; unlisted prefixes are skipped with a warning.
+# OAK adapters for linkml-term-validator, keyed by CURIE prefix.
 #
-#   sqlite:obo:<name>  pre-built SQLite build, downloaded once and cached
-#   ols:<name>         EBI Ontology Lookup Service (no download, needs network)
-#   ""                 skip this prefix without a warning
+# Any adapter OAK accepts works here:
+#
+#   ols:<name>                   EBI Ontology Lookup Service. Online, nothing to download.
+#   sqlite:obo:<name>            Prebuilt SQLite from OBO Foundry sources. Offline after one download.
+#   bioportal:<name>             BioPortal. Needs BIOPORTAL_API_KEY in the environment.
+#   simpleobo:ontologies/x.obo   A local OBO file in the repository. Also pronto:<file>
+#                                (OBO or OWL) and sqlite:<file>.db.
+#   ""                           Skip this prefix on purpose.
+#
+# One prefix, one adapter. If two sections bind the same prefix, they share it.
+#
+# Only prefixes listed here are checked. An unlisted prefix is skipped with a
+# warning, which means its CURIEs are never checked at all. Add every prefix a
+# record can carry. Lookups are cached under cache/ and the cache is committed,
+# so routine validation stays offline.
+
 ontology_adapters:
-  # Oral Health and Disease Ontology: the anchor ontology. Small (~3 MB), so
-  # the local build is the right call.
-  OHD: sqlite:obo:ohd
-
-  # Chemistry for composition. CHEBI's local build is ~3.7 GB, so use OLS.
-  CHEBI: ols:chebi
-
-  # Anatomy for placement sites.
-  UBERON: ols:uberon
-
-  # Phenotype and disease for adverse effects.
-  HP: ols:hp
-  MONDO: ols:mondo
-
-  # Qualities for typed properties.
-  PATO: ols:pato
-
-  # Cross-reference targets that appear only in `mappings`, not in bound slots.
-  NCIT: ols:ncit
-
-  # Not ontology terms; skip silently.
-  linkml: ""
-  schema: ""
-  xsd: ""
-  rdf: ""
-  rdfs: ""
-  owl: ""
-  skos: ""
+  CHEBI: "ols:chebi"
+  HP: "ols:hp"
+  MONDO: "ols:mondo"
+  OHD: "sqlite:obo:ohd"
+  PATO: "ols:pato"
+  UBERON: "ols:uberon"
+  # Appears only in `mappings`.
+  NCIT: "ols:ncit"
+  dentamech: ""

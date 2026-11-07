@@ -1,0 +1,24 @@
+# linkml-reference-validator settings. Fetched sources are cached under
+# references_cache/ and the cache is committed, so a quote stays checkable
+# after the source moves.
+validation:
+  cache_dir: references_cache
+  # An unrecognized reference prefix is an error, not a silent pass.
+  unknown_prefix_severity: ERROR
+  # Abstracts only: snippets are checked against PubMed abstracts, and a fetch of
+  # publisher full text would rewrite the committed cache and weaken that check.
+  fetch_full_text: false
+  # The committed cache is reviewed; never re-fetch an entry to migrate it.
+  trust_cached_entries: true
+  # Keep all-caps abbreviations and anything with a percent sign as source text.
+  literal_bracket_patterns:
+    - "^[A-Z]{2,}$"
+    - "%"
+  # Regulatory and standards pages block automated fetches, so a url: quote is
+  # checked by people, not here. See docs/regulatory.md.
+  skip_prefixes:
+    - url
+    - URL
+    - ISO
+    - CFR
+    - FDA_PRODUCT_CODE

@@ -1,0 +1,22 @@
+id: OHD:0001035
+name: 3Y-TZP zirconia ceramic
+description: 'A zirconia polycrystalline ceramic dental restoration material that contains the first generation of dental zirconia fully stabilized with yttria (Y2O3) which are chiefly composed of the tetragonal phase (tetragonal zirconia polycrystals : TZPs) and are stabilized at room temperature with the addition of 3 mol% of yttrium oxide (3Y-TZP).'
+record_term:
+  id: OHD:0001035
+  label: 3Y-TZP zirconia ceramic dental restoration material
+category: CERAMIC
+setting_mechanisms:
+  - SINTERING
+  - MILLING
+parents:
+  - OHD:0001034
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:24+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry 3Y-TZP_Zirconia_Ceramic.
+updated_date: '2026-11-07'

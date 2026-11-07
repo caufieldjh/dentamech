@@ -1,0 +1,90 @@
+id: OHD:0001034
+name: Zirconia polycrystalline ceramic
+description: A polycrystalline ceramic dental restoration material that contains Zirconia which is partially stabilized zirconium oxide usually in the tetragonal phase.
+record_term:
+  id: OHD:0001034
+  label: zirconia polycrystalline ceramic dental restoration material
+category: CERAMIC
+synonyms:
+  - zirconia
+  - yttria-stabilized zirconia
+  - YSZ
+setting_mechanisms:
+  - MILLING
+  - SINTERING
+composition:
+  - name: Zirconium dioxide
+    role: CRYSTALLINE_PHASE
+    chemical:
+      preferred_term: zirconia
+      term:
+        id: CHEBI:747200
+        label: zirconium dioxide
+    description: Partially stabilized in the tetragonal phase at room temperature.
+  - name: Yttrium oxide
+    role: STABILIZER
+    proportion: 3-5 mol% depending on generation
+    description: Stabilizes the tetragonal (3Y) or increasingly cubic (4Y, 5Y) phase; higher yttria trades toughness for translucency.
+clinical_uses:
+  - name: Crowns and fixed partial dentures, CAD/CAM
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: ceramic crown
+      term:
+        id: OHD:0000155
+        label: ceramic crown restoration procedure
+    anatomical_site:
+      preferred_term: tooth crown
+      term:
+        id: UBERON:0003675
+        label: tooth crown
+    evidence:
+      - reference: PMID:17659331
+        reference_title: State of the art of zirconia for dental applications.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Zirconia has been recently introduced in prosthetic dentistry for the fabrication of crowns and fixed partial dentures, in combination with CAD/CAM techniques.
+        explanation: Establishes the primary prosthetic use and the fabrication route.
+  - name: Fixed partial denture frameworks
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: fixed partial denture
+      term:
+        id: OHD:0000313
+        label: fixed partial denture restoration procedure
+  - name: Implant abutments
+    use_context: IMPLANT
+properties:
+  - name: Processing route (soft vs hard machining)
+    property_type: OTHER
+    description: Soft machining of pre-sintered blanks followed by sintering, or hard machining of fully sintered blocks; the choice has implications for long-term performance.
+    evidence:
+      - reference: PMID:17659331
+        reference_title: State of the art of zirconia for dental applications.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The two main processing techniques, soft and hard machining, are assessed in the light of their possible clinical implications and consequences on the long-term performance of zirconia.
+        explanation: Names the two processing routes and ties them to performance.
+regulatory_status:
+  - agency: FDA
+    status: UNKNOWN
+    notes: Zirconia blocks and discs for CAD/CAM are typically cleared by 510(k) under 872.3690 (tooth shade resin material, product code EBF) or as porcelain/ceramic for clinical use; representative product records have not yet been verified, so no class is recorded here.
+standards:
+  - identifier: ISO 6872
+    title: Dentistry - Ceramic materials
+    organization: ISO
+  - identifier: ISO 13356
+    title: Implants for surgery - Ceramic materials based on yttria-stabilized tetragonal zirconia (Y-TZP)
+    organization: ISO
+parents:
+  - OHD:0001033
+creation_date: '2026-09-04'
+status: DRAFT
+curation_history:
+  - timestamp: '2026-11-07T19:51:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Converted from dentamech at cddf481, entry Zirconia_Polycrystalline_Ceramic.
+updated_date: '2026-11-07'

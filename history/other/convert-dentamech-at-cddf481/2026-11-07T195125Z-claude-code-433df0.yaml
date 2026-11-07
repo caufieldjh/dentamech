@@ -1,0 +1,34 @@
+history_version: 1
+target:
+  kind: other
+  slug: convert-dentamech-at-cddf481
+  path: scripts/convert_legacy.py
+session:
+  id: 2026-11-07T195125Z-claude-code-433df0
+  timestamp: '2026-11-07T19:51:25Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: CREATE
+  outcome: changed
+  summary: Converted 57 record(s) from dentamech at cddf481.
+  details: 'Converted 57 entries of dentamech at cddf481 with scripts/convert_legacy.py: 3Y-TZP_Zirconia_Ceramic,
+    4Y-PSZ_Zirconia_Ceramic, 5Y-PSZ_Zirconia_Ceramic, Acid-base_Cement, Alumina_Toughened_Zirconia_Ceramic,
+    Amalgam, Bulk-filled_Resin-based_Composite, Calcium_Aluminate_Glass_Ionomer_Hybrid_Cement, Calcium_Hydroxide_Cement,
+    Ceramic, Cobalt_Chromium_Metal, Commercially_Pure_Titanium, Compomer_Resin-based_Composite, Dental_Restoration_Material,
+    Feldspathic_Glass_Matrix_Ceramic, Flowable_Resin-based_Composite, Fluorapatite_Based_Synthetic_Glass_Matrix_Ceramic,
+    Glass_Ionomer_Cement, Glass_Matrix_Ceramic, Gold_Foil, High_Noble_Metal, Hydroxyethyl_Methacrylate,
+    Leucite_Based_Synthetic_Glass_Matrix_Ceramic, Lithia_Based_Synthetic_Glass_Matrix_Ceramic, Macrofilled_Resin-based_Composite,
+    Metal, Metal_Modified_Glass_Ionomer, Microfilled_Resin-based_Composite, Mineral_Trioxide_Aggregate_Cement,
+    Multichromatic_Zirconia_Ceramic, Multilayered_Zirconia_Ceramic, Nano_Filled_Resin-based_Composite,
+    Nano_Hybrid_Resin-based_Composite, Nickel_Chromium_Metal, Noble_Metal, Polycrystalline_Ceramic, Polycrystalline_Composite_Ceramic,
+    Predominantly_Base_Metal, Resin-based_Cement, Resin-based_Composite, Resin-modified_Glass_Ionomer,
+    Resin_Matrix_Ceramic, Resin_Matrix_Glass_Ceramic, Resin_Matrix_Zirconia_Silica_Ceramic, Resin_Nano_Ceramic,
+    Silver-palladium_Alloy_Metal, Stainless_Steel, Synthetic_Glass_Matrix_Ceramic, Titanium, Titanium_Alloy,
+    Zinc_Oxide_Cement, Zinc_Oxide_Eugenol_Cement, Zinc_Oxide_Non-eugenol_Cement, Zinc_Phosphate_Cement,
+    Zinc_Polycarboxylate_Cement, Zirconia_Polycrystalline_Ceramic, Zirconia_Toughened_Alumina_Ceramic.
+    Every record is DRAFT and passed closed-schema validation and the record rules. 0 already existed
+    and were left alone. 0 could not be converted. Evidence carried over from the source still needs review.'
