@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
@@ -34,7 +34,7 @@ jobs:
           cache-dependency-glob: "uv.lock"
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -47,7 +47,7 @@ jobs:
       # OHD is small (~3 MB). Cache the OAK SQLite build so term validation
       # does not re-download it on every run.
       - name: Cache OAK ontology databases
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.data/oaklib
           key: oak-ohd-${{ hashFiles('conf/oak_config.yaml') }}

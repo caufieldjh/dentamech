@@ -36,7 +36,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
@@ -56,7 +56,7 @@ jobs:
         run: uv sync --group dev
 
       - name: Cache OAK ontology databases
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.data/oaklib
           key: oak-ohd-${{ hashFiles('conf/oak_config.yaml') }}
