@@ -86,13 +86,27 @@ jobs:
           ref: ${{ steps.pr.outputs.sha }}
           path: pr
           persist-credentials: false
+      # The PR that first adds these tools can't be reviewed by them, because they
+      # aren't on the default branch yet. Skip loudly, and never fall back to the
+      # PR's own copy: that would let a PR change what reviews it.
+      - name: Check the default branch has the review tools
+        id: tools
+        run: |
+          if [ -f .github/scripts/render_prompt.py ] && [ -f .github/actions/setup-agent/action.yml ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=Review skipped::The default branch has no review tools yet. PR #$PR_NUMBER needs a human review."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Build prompt
+        if: steps.tools.outputs.ready == 'true'
         id: prompt
         env:
           PROMPT_REPO: ${{ github.repository }}
           PROMPT_PR_NUMBER: ${{ env.PR_NUMBER }}
         run: python3 .github/scripts/render_prompt.py review
       - id: agent
+        if: steps.tools.outputs.ready == 'true'
         uses: ./.github/actions/setup-agent
         with:
           workflow: review
@@ -100,6 +114,7 @@ jobs:
       # action fails on that. Skip loudly instead. Any other probe result runs
       # the review.
       - name: Check the diff is small enough to fetch
+        if: steps.tools.outputs.ready == 'true'
         id: size
         env:
           GH_TOKEN: ${{ github.token }}
@@ -117,7 +132,7 @@ jobs:
             echo "oversized=false" >> "$GITHUB_OUTPUT"
           fi
       - id: run
-        if: steps.size.outputs.oversized != 'true'
+        if: steps.tools.outputs.ready == 'true' && steps.size.outputs.oversized != 'true'
         uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
         env:
           GH_TOKEN: ${{ github.token }}

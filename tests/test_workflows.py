@@ -44,3 +44,13 @@ def test_comment_guard_reads_its_gate_from_the_default_branch():
     text = (ROOT / ".github" / "workflows" / "comment-guard.yaml").read_text(encoding="utf-8")
     assert "ref: ${{ github.event.repository.default_branch }}" in text
     assert (ROOT / ".github" / "scripts" / "trust-gate.js").exists()
+
+
+def test_review_never_runs_tools_from_the_pull_request():
+    """Missing tools skip the review; they are never taken from the PR's checkout in pr/."""
+    text = (ROOT / ".github" / "workflows" / "review.yaml").read_text(encoding="utf-8")
+    steps = yaml.safe_load(text)["jobs"]["review"]["steps"]
+    guarded = [s for s in steps if s.get("id") in ("prompt", "agent", "size", "run")]
+    assert len(guarded) == 4
+    assert all("steps.tools.outputs.ready == 'true'" in s["if"] for s in guarded)
+    assert "pr/.github" not in text
