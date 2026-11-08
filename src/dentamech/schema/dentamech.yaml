@@ -1077,6 +1077,11 @@ classes:
       - label
       - predicate
       - source
+    slot_usage:
+      id:
+        identifier: false
+        required: true
+        description: The CURIE of the term mapped to. Not an identifier of the mapping, since several records can map to the same term.
 
   Component:
     description: A constituent of the material
