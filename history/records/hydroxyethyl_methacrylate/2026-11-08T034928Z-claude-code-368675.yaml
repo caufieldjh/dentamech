@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: hydroxyethyl_methacrylate
+  path: kb/materials/hydroxyethyl_methacrylate.yaml
+session:
+  id: 2026-11-08T034928Z-claude-code-368675
+  timestamp: '2026-11-08T03:49:28Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/2
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the fourth automated review of PR #2.'
+  details: 'Two warnings fixed. Reduced biocompatibility of resin-modified glass ionomer hosts: added
+    the PMID:18539324 sentence naming HEMA as the most damaging substance these materials release, and
+    reworded the description from a causal claim to what the quotes say. Deep-research provenance, which
+    research/README.md asks for and no earlier history record gave: research/hydroxyethyl_methacrylate-deep-research-claude_code.md,
+    provider claude_code, models claude-fable-5-1 and claude-haiku-4-5-20251001, run 2026-09-04. It was
+    used as a lead only and is not cited in the record. Also added the missing model to the actor of history
+    record 2026-11-08T033136Z-claude-code-5bd926.'

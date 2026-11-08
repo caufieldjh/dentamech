@@ -854,7 +854,7 @@ adverse_effects:
         explanation: Ties the hydrophilicity argument to HEMA.
   - name: Reduced biocompatibility of resin-modified glass ionomer hosts
     effect_category: TOXICITY
-    description: The HEMA in resin-modified glass ionomer cements is the reason these cements are held to be less biocompatible than conventional glass ionomers.
+    description: Resin-modified glass ionomer cements are held to be less biocompatible than conventional glass ionomers, and the review that says so names HEMA as the most damaging substance they release.
     evidence:
       - reference: PMID:18539324
         reference_title: The biocompatibility of resin-modified glass-ionomer cements for dentistry.
@@ -862,6 +862,12 @@ adverse_effects:
         evidence_source: OTHER
         snippet: Resin-modified glass-ionomers cannot be considered biocompatible to nearly the same extent as conventional glass-ionomers.
         explanation: Conclusion of the review; narrative review.
+      - reference: PMID:18539324
+        reference_title: The biocompatibility of resin-modified glass-ionomer cements for dentistry.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Information on resin-modified glass-ionomers and on 2-hydroxyethyl methacrylate (HEMA), the most damaging substance released by these materials, has been collected from over 50 published papers.
+        explanation: Names HEMA as the most damaging substance these cements release.
 standards:
   - identifier: ISO 29022
     title: Dentistry - Adhesion - Notched-edge shear bond strength test
@@ -932,4 +938,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the third review of PR #2. Dropped primers from the description, the first use and the regulatory notes, since no quote puts HEMA in a primer. Quoted glutathione depletion (PMID:16998124), the systematic review''s scope (PMID:39838443), light activation of RMGIC (PMID:26916063), methacrylate respiratory disease (PMID:37778325), HEMA in reformulated adhesives (PMID:14653938) and HEMA glove breakthrough (PMID:14632691). Cut the unquoted RMGIC uses and the Gluma lineage sentence. Unset the luting procedure term. Kept only LIGHT_CURED in setting_mechanisms.'
+  - timestamp: '2026-11-08T03:48:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the fourth review of PR #2. Quoted PMID:18539324 naming HEMA as the most damaging substance released by resin-modified glass ionomers, and reworded that row to what the quotes say. Recorded the deep-research report''s provenance in the session history record.'
 updated_date: '2026-11-08'
