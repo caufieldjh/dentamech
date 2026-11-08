@@ -85,23 +85,10 @@ https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=K
 https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3200
 ```
 
-On `accessdata.fda.gov` the block is a `User-Agent` *blocklist on automated clients*, not a desktop-browser requirement. Sending **no** `User-Agent` header works; sending a recognisable tool's own header does not. Measured on 2026-10-30 and re-measured unchanged on 2026-10-31, `?id=KLE` with `-L`:
+Two pitfalls:
 
-| `User-Agent` sent | Result |
-|---|---|
-| none (`-A ''`) | `200`, the real KLE record (5 of 5 attempts) |
-| a desktop browser string | `200`, the real KLE record (5 of 5) |
-| `curl/8.18.0` (curl's default, i.e. no `-A` flag) | `404` abuse-detection apology (11 of 11) |
-| `Wget/1.21.3`, `python-urllib3/2.0.7` | `404` abuse-detection apology |
-
-The distinction matters because **"no `User-Agent`" and "no `-A` flag" are opposites here**: plain `curl` without `-A` still sends `User-Agent: curl/8.18.0`, which is exactly what is refused. Earlier versions of this note read that failure as "a desktop `User-Agent` is required"; it is not required, it is merely one string that is not on the blocklist. Either `-A ''` or a browser string works.
-
-**The rule is host-specific and does not generalise.** It governs `accessdata.fda.gov`, which serves the classification, 510(k) and registration databases. `www.fda.gov`, which serves the guidance documents, accepts the *opposite* set of headers: re-measured 2026-10-31, `https://www.fda.gov/media/182280/download` returns the 541 kB PDF under curl's own default header (3 of 3) and a bare `404` with a 10-byte body under both `-A ''` and a desktop browser string (3 of 3 each). Choose the header per host, and do not carry one host's recipe to the other. Note also that the two failures do not look alike: only `accessdata` serves the abuse-detection apology page, which is the one that can be misread as *the record does not exist*; the `www.fda.gov` 404 has no body to misread.
-
-Two further pitfalls, so do not treat the header as the only variable:
-
-- Without `-L` you see only the `302` redirect stub, not the apology page it leads to. The `404` above is the followed redirect.
-- Intermittently, and *with* an accepted header, the site answers a ~2 kB queue page reading *"Your request is being processed. Please be patient and wait for this page to refresh in a few seconds"*, served as readily with `400` as with `200`. It carries no record and is not the apology page. Read it as *no answer yet*, never as *the value is absent*, and retry.
+- Without `-L` you see only the `302` redirect stub, not the page it leads to.
+- Intermittently, and the site answers a ~2 kB queue page reading *"Your request is being processed. Please be patient and wait for this page to refresh in a few seconds"*, served as readily with `400` as with `200`. It carries no record. Read it as *no answer yet*, never as *the value is absent*, and retry.
 
 So confirm a response actually contains a record before concluding that a product code is absent from the database.
 
