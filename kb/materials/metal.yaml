@@ -6,23 +6,16 @@ record_term:
   label: metal dental restoration material
 category: METAL
 synonyms:
-  - dental alloy
   - metallic restorative material
-mappings:
-  - id: MESH:D003722
-    label: Dental Alloys
-    predicate: CLOSE_MATCH
-    source: MeSH
 setting_mechanisms:
   - CASTING
   - MILLING
   - ADDITIVE_MANUFACTURING
   - AMALGAMATION
-  - COLD_WORKING
 composition:
   - name: Gold
     role: ALLOYING_ELEMENT
-    description: Noble constituent of noble and high noble casting alloys, and the whole of gold foil.
+    description: Noble constituent of noble metal alloys.
     chemical:
       preferred_term: gold
       term:
@@ -37,7 +30,7 @@ composition:
         explanation: The regulation names gold as a noble constituent of the device type.
   - name: Palladium
     role: ALLOYING_ELEMENT
-    description: Noble constituent; silver-palladium and gold-palladium alloys reach nobility through palladium.
+    description: Noble constituent of noble metal alloys.
     chemical:
       preferred_term: palladium
       term:
@@ -52,7 +45,7 @@ composition:
         explanation: The regulation names palladium as a noble constituent of the device type.
   - name: Platinum
     role: ALLOYING_ELEMENT
-    description: Minor noble constituent that raises the melting range of gold-based casting alloys.
+    description: Noble constituent of noble metal alloys.
     chemical:
       preferred_term: platinum
       term:
@@ -67,7 +60,7 @@ composition:
         explanation: The regulation names platinum as a noble constituent of the device type.
   - name: Silver
     role: ALLOYING_ELEMENT
-    description: Noble constituent of casting alloys and the principal metal of amalgam alloy powder.
+    description: Noble constituent of noble metal alloys, and a principal constituent of amalgam alloy powder.
     chemical:
       preferred_term: silver
       term:
@@ -88,7 +81,7 @@ composition:
         explanation: Silver is also the principal constituent of amalgam alloy powder.
   - name: Nickel
     role: ALLOYING_ELEMENT
-    description: Base metal constituent of nickel-chromium casting alloys; the element of greatest allergic concern in the class.
+    description: Base metal constituent of base metal alloys.
     chemical:
       preferred_term: nickel
       term:
@@ -103,7 +96,7 @@ composition:
         explanation: The regulation names nickel as a base metal constituent of the device type.
   - name: Chromium
     role: ALLOYING_ELEMENT
-    description: Base metal constituent that forms the passivating oxide film of nickel-chromium, cobalt-chromium, and stainless steel restorations.
+    description: Base metal constituent of base metal alloys.
     chemical:
       preferred_term: chromium
       term:
@@ -118,7 +111,7 @@ composition:
         explanation: The regulation names chromium as a base metal constituent of the device type.
   - name: Cobalt
     role: ALLOYING_ELEMENT
-    description: Base metal constituent of cobalt-chromium casting and removable framework alloys.
+    description: Base metal constituent of base metal alloys.
     chemical:
       preferred_term: cobalt
       term:
@@ -133,7 +126,7 @@ composition:
         explanation: The regulation names cobalt as a base metal constituent of the device type.
   - name: Titanium
     role: ALLOYING_ELEMENT
-    description: Base metal used commercially pure and as Ti-6Al-4V or Ti-6Al-7Nb alloy for cast and milled restorations.
+    description: Used as titanium and as titanium alloys. The specific alloys and fabrication routes belong on the Titanium and Titanium alloy entries.
     chemical:
       preferred_term: titanium
       term:
@@ -148,7 +141,7 @@ composition:
         explanation: Narrative review establishing titanium as a metallic restorative material of the class. No FDA regulation in 21 CFR 872 subpart D names titanium as a crown and bridge material.
   - name: Tin
     role: ALLOYING_ELEMENT
-    description: Constituent of amalgam alloy powder; reacts with mercury to form the gamma-2 phase in conventional amalgams.
+    description: Constituent of amalgam alloy powder.
     chemical:
       preferred_term: tin
       term:
@@ -163,7 +156,7 @@ composition:
         explanation: The regulation names tin as a constituent of amalgam alloy.
   - name: Copper
     role: ALLOYING_ELEMENT
-    description: Constituent of amalgam alloy powder and a hardener in gold casting alloys.
+    description: Constituent of amalgam alloy powder.
     chemical:
       preferred_term: copper
       term:
@@ -177,8 +170,8 @@ composition:
         snippet: amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form, for the direct filling of carious lesions or structural defects in teeth
         explanation: The regulation names copper as a constituent of amalgam alloy.
   - name: Mercury
-    role: ALLOYING_ELEMENT
-    description: Liquid component supplied separately and combined with amalgam alloy powder to form dental amalgam. Confined to the amalgam branch of the class.
+    role: LIQUID
+    description: Elemental mercury, supplied as a liquid and combined with amalgam alloy powder to form dental amalgam.
     chemical:
       preferred_term: mercury
       term:
@@ -194,7 +187,7 @@ composition:
 clinical_uses:
   - name: Direct filling of carious lesions or structural defects in teeth
     use_context: DIRECT_RESTORATION
-    description: Placed and condensed directly in the prepared cavity. Within this class only dental amalgam and gold foil are used this way.
+    description: Direct filling of the tooth, the intended use of the dental amalgam device type.
     procedure:
       preferred_term: direct restoration
       term:
@@ -256,6 +249,12 @@ clinical_uses:
         evidence_source: STANDARD
         snippet: This document specifies requirements and test methods for metallic materials that are suitable for the fabrication of dental restorations and appliances.
         explanation: The standard covers metallic restorations generally; it does not name onlays. The onlay procedure itself is a named OHD class.
+      - reference: PMID:38702521
+        reference_title: Long-term performance of ceramic in/-onlays vs. cast gold partial crowns - a retrospective clinical study.
+        supports: PARTIAL
+        evidence_source: HUMAN_CLINICAL
+        snippet: CIOs and CGPCs made by supervised undergraduate students are proper restoration types in posterior teeth in the long-term.
+        explanation: Cast gold partial crowns, a cusp-covering indirect restoration close to the onlay, performed well over the long term. PARTIAL because a partial crown is not named an onlay.
   - name: Porcelain-fused-to-metal implant-supported single crowns
     use_context: IMPLANT
     procedure:
@@ -272,7 +271,7 @@ clinical_uses:
         explanation: Metal-ceramic implant-supported single crowns are an established use with a pooled evidence base.
   - name: Fixed dental prostheses
     use_context: INDIRECT_RESTORATION
-    description: Multiple-unit tooth- and implant-supported bridges with a cast or milled metal framework.
+    description: Multiple-unit tooth- and implant-supported fixed dental prostheses with a metal framework.
     procedure:
       preferred_term: fixed partial denture restoration
       term:
@@ -285,9 +284,15 @@ clinical_uses:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: Hence, metal ceramics seems to stay the golden standard for implant-supported multiple-unit FDPs.
         explanation: States the standing of metal-ceramic multiple-unit prostheses against the ceramic comparator.
+      - reference: PMID:25935732
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part II: Multiple-unit FDPs.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Meta-analysis of the included studies indicated an estimated 5-year survival rate of metal-ceramic FDPs of 94.4% (95% CI: 91.2-96.5%).'
+        explanation: Tooth-supported metal-ceramic FDPs, the tooth-supported half of this use.
   - name: Removable prosthodontic frameworks
     use_context: PROSTHODONTIC
-    description: Cast or milled cobalt-chromium and titanium frameworks for removable partial dentures.
+    description: Metallic materials for removable restorations and appliances. Which alloys and fabrication routes are used belongs on the children.
     procedure:
       preferred_term: removable prosthodontics
       term:
@@ -296,10 +301,10 @@ clinical_uses:
     evidence:
       - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44253
         reference_title: FDA Recognized Consensus Standards, ISO 22674 Third edition 2022-08
-        supports: SUPPORT
+        supports: PARTIAL
         evidence_source: STANDARD
         snippet: Dentistry - Metallic materials for fixed and removable restorations and appliances
-        explanation: The title of the standard FDA recognizes for this class names removable restorations and appliances alongside fixed ones.
+        explanation: The title of the standard FDA recognizes for this class names removable restorations and appliances alongside fixed ones. A title is partial support for the use, and names no alloy.
   - name: Preformed crowns as functional restorations
     use_context: TEMPORARY
     procedure:
@@ -351,13 +356,13 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: alloy, other noble metal
-        explanation: Device name for EJS, class 2, regulation 872.3060, submission type 510(K) Exempt, re-verified on 2026-09-09.
+        explanation: Device name for EJS, class 2, regulation 872.3060, submission type 510(K) Exempt.
       - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&productcode=EJT
         reference_title: FDA Product Classification Database, product code EJT
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: alloy, gold-based noble metal
-        explanation: Device name for EJT, class 2, regulation 872.3060, submission type 510(K) Exempt, re-verified on 2026-09-09.
+        explanation: Device name for EJT, class 2, regulation 872.3060, submission type 510(K) Exempt.
   - agency: FDA
     status: CLEARED
     regulation_number: '872.3070'
@@ -394,19 +399,19 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: alloy, amalgam
-        explanation: Device name for EJJ, class 2, regulation 872.3070, submission type 510(k), re-verified on 2026-09-09.
+        explanation: Device name for EJJ, class 2, regulation 872.3070, submission type 510(k).
       - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&productcode=ELY
         reference_title: FDA Product Classification Database, product code ELY
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: mercury
-        explanation: Device name for ELY, class 2, regulation 872.3070, submission type 510(k), re-verified on 2026-09-09.
+        explanation: Device name for ELY, class 2, regulation 872.3070, submission type 510(k).
       - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&productcode=OIV
         reference_title: FDA Product Classification Database, product code OIV
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: dental amalgam
-        explanation: Device name for OIV, class 2, regulation 872.3070, submission type 510(k), re-verified on 2026-09-09.
+        explanation: Device name for OIV, class 2, regulation 872.3070, submission type 510(k).
   - agency: FDA
     status: EXEMPT
     regulation_number: '872.3330'
@@ -437,13 +442,13 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: crown, preformed
-        explanation: Device name for ELZ, class 1, regulation 872.3330, submission type 510(K) Exempt, on 2026-09-09.
+        explanation: Device name for ELZ, class 1, regulation 872.3330, submission type 510(K) Exempt.
       - reference: url:https://api.fda.gov/device/registrationlisting.json?search=products.product_code:ELZ+AND+proprietary_name:%22stainless+steel+crowns%22&limit=4
         reference_title: FDA Establishment Registration and Device Listing, product code ELZ
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: NuSmile Pre-Contoured Stainless Steel Crowns (SSC)
-        explanation: Four establishment listings answer this query on 2026-11-04 - NuSmile, two Hu-Friedy establishments and Cargus - and each carries ELZ as its only product code. Preformed stainless steel crowns are therefore listed under 872.3330, which is what makes it the stainless steel route, since the identification paragraph never names the material.
+        explanation: Four establishment listings answer this query - NuSmile, two Hu-Friedy establishments and Cargus - and each carries ELZ as its only product code. Preformed stainless steel crowns are therefore listed under 872.3330, which is what makes it the stainless steel route, since the identification paragraph never names the material.
   - agency: FDA
     status: EXEMPT
     regulation_number: '872.3710'
@@ -475,7 +480,7 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: alloy, metal, base
-        explanation: Device name for EJH, class 2, regulation 872.3710, submission type 510(K) Exempt, on 2026-09-06.
+        explanation: Device name for EJH, class 2, regulation 872.3710, submission type 510(K) Exempt.
   - agency: FDA
     status: EXEMPT
     regulation_number: '872.3350'
@@ -504,7 +509,7 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: Cusp, Gold And Stainless Steel
-        explanation: Device name for ELO, class 1, regulation 872.3350, submission type 4 (510(k) exempt), medical specialty Dental, on 2026-09-10. Cited through the openFDA endpoint because the classification.cfm HTML form was rate-limiting requests during this run; it is the same database.
+        explanation: Device name for ELO, class 1, regulation 872.3350, submission type 4 (510(k) exempt), medical specialty Dental,. Cited through openFDA, which serves the same database as the classification.cfm form.
 properties:
   - name: Corrosion in the oral environment
     property_type: CORROSION_RESISTANCE
@@ -540,28 +545,34 @@ properties:
         evidence_source: OTHER
         snippet: All dental cast alloys release metal ions into the oral environment which have the potential to interact with the oral tissues. Amount and type of metal elements released are varying and not directly related to the composition of the alloy.
         explanation: Literature survey. Establishes ion release as universal across the cast members, and states the reason this entry records no class-level release figure - release does not track composition, so a number measured on one alloy would not generalise to the class.
-  - name: Plastic deformation rather than brittle fracture
-    property_type: OTHER
-    description: The failure behaviour that separates this class from the ceramics, recorded as the clinical observation the cited abstracts carry rather than as a mechanism. Fracture of the restorative material limits the ceramic comparator in long-term series and does not appear among the complications recorded for the cast metal restorations, which is why bulk fracture of the metal is not a clinically relevant failure mode for the class. Recorded qualitatively and deliberately without a number - strength, hardness, and modulus vary by more than an order of magnitude across the families and belong on the children.
-    evidence:
-      - reference: PMID:38702521
-        reference_title: Long-term performance of ceramic in/-onlays vs. cast gold partial crowns - a retrospective clinical study.
-        supports: SUPPORT
-        evidence_source: HUMAN_CLINICAL
-        snippet: Complications in CIOs (n = 149) were ceramic fracture (6.7%), secondary caries (4.7%), endodontic complication (2.7%) and tooth fracture (1.3%) compared to CGPCs (n = 147) with endodontic complication (8.8%), secondary caries (4.8%) and decementation (2.0%).
-        explanation: The recorded complications of 147 cast gold partial crowns followed for a mean 14.5 years. Fracture of the metal does not appear in the list at all, while fracture of the restorative material is the leading complication of the ceramic comparator in the same cohort. All four spaces around the two equals signs are U+2009 thin spaces, as in the source abstract; ordinary spaces there still pass validation because the validator normalizes whitespace, so the match has to be checked byte for byte.
-      - reference: PMID:38702521
-        reference_title: Long-term performance of ceramic in/-onlays vs. cast gold partial crowns - a retrospective clinical study.
-        supports: SUPPORT
-        evidence_source: HUMAN_CLINICAL
-        snippet: The clinical long-term performance was mostly limited by ceramic fractures in CIOs and endodontic complications in CGPCs.
-        explanation: The authors' own summary of what limits each material. What limits the metal restorations is biological rather than fracture of the restorative material, which is the contrast this row records.
       - reference: PMID:32490402
         reference_title: Ion release from three different dental alloys - effect of dynamic loading and toxicity of released elements.
         supports: PARTIAL
         evidence_source: IN_VITRO
         snippet: According to the threshold defined in ISO 22674, only low concentrations of released elements were observed for both corrosion tests.
-        explanation: The counterweight the row otherwise lacks. One Pd-Ag and two Co-Cr alloys, so the result spans the noble and base families, and both stayed under the standard's threshold under static and dynamic loading. Recorded as PARTIAL because three alloys cannot bound the class.
+        explanation: One Pd-Ag and two Co-Cr alloys, spanning the noble and base families, released only low concentrations of elements under static and dynamic corrosion testing, judged against the ISO 22674 threshold. PARTIAL because three alloys cannot bound the class.
+  - name: Fracture of the metal is uncommon compared with ceramics
+    property_type: OTHER
+    description: In the cited clinical series, fracture of the restorative material limits the ceramic comparators far more than it limits the metal restorations. In one long-term cohort, ceramic fracture was the leading complication of ceramic in- and onlays and did not appear among the complications of cast gold partial crowns. Metal-ceramic fixed dental prosthesis frameworks do fracture, but rarely; the five-year rate is recorded under clinical_performance. Recorded qualitatively, without a strength or toughness value, because those vary widely across the families and belong on the children.
+    evidence:
+      - reference: PMID:38702521
+        reference_title: Long-term performance of ceramic in/-onlays vs. cast gold partial crowns - a retrospective clinical study.
+        supports: PARTIAL
+        evidence_source: HUMAN_CLINICAL
+        snippet: Complications in CIOs (n = 149) were ceramic fracture (6.7%), secondary caries (4.7%), endodontic complication (2.7%) and tooth fracture (1.3%) compared to CGPCs (n = 147) with endodontic complication (8.8%), secondary caries (4.8%) and decementation (2.0%).
+        explanation: One cohort of cast gold partial crowns. Fracture of the metal does not appear among their complications, while ceramic fracture leads for the ceramic comparator. PARTIAL because one gold cohort cannot speak for every family.
+      - reference: PMID:38702521
+        reference_title: Long-term performance of ceramic in/-onlays vs. cast gold partial crowns - a retrospective clinical study.
+        supports: PARTIAL
+        evidence_source: HUMAN_CLINICAL
+        snippet: The clinical long-term performance was mostly limited by ceramic fractures in CIOs and endodontic complications in CGPCs.
+        explanation: The authors' summary of what limited each material in the same cohort.
+      - reference: PMID:25935732
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part II: Multiple-unit FDPs.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Significantly more framework fractures were reported for reinforced glass ceramic FDPs (8.0%) and glass-infiltrated alumina FDPs (12.9%) compared to metal-ceramic FDPs (0.6%) and densely sintered zirconia FDPs (1.9%) in 5 years in function.
+        explanation: Metal frameworks fracture, at 0.6% in five years, less often than the glass ceramic and alumina frameworks.
   - name: ISO 22674 mechanical type classification
     property_type: OTHER
     test_method: ISO 22674
@@ -589,7 +600,7 @@ properties:
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: The mechanical properties and microstructures of Co-Cr dental alloys were significantly influenced by the fabrication method used.
-        explanation: Establishes that fabrication route, not composition alone, determines the mechanical properties of a dental alloy. The three routes it compares - casting, CNC milling and direct laser metal sintering - are the CASTING, MILLING and ADDITIVE_MANUFACTURING members of the five mechanisms recorded in setting_mechanisms; AMALGAMATION and COLD_WORKING are not in its scope.
+        explanation: Establishes that fabrication route, not composition alone, determines the mechanical properties of a dental alloy. The three routes it compares - casting, CNC milling and direct laser metal sintering - are the CASTING, MILLING and ADDITIVE_MANUFACTURING members of setting_mechanisms; AMALGAMATION is not in its scope.
   - name: Marginal and internal fit of additively manufactured restorations
     property_type: OTHER
     test_method: Marginal and internal gap measurement on SLM-fabricated tooth-supported fixed dental prostheses
@@ -802,7 +813,7 @@ adverse_effects:
       term:
         id: MONDO:0005481
         label: contact dermatitis due to nickel
-    description: The element of greatest allergic concern in the class, confined to the nickel-chromium family.
+    description: Allergic and inflammatory risk from nickel-containing alloys. Nickel is a constituent of the nickel-chromium base metal alloys and of the austenitic stainless steels used for preformed crowns.
     evidence:
       - reference: PMID:23895079
         reference_title: Nickel alloys in the oral environment.
@@ -990,12 +1001,11 @@ standards:
     url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=40211
 notes: |-
   Abstract parent class. Every claim here is meant to hold for metallic restorative materials as a group; family-specific numbers belong on the children (Amalgam, Gold foil, Noble metal, High noble metal, Predominantly base metal, Stainless steel, Titanium and its subclasses).
-  Regulatory. The class does not map to one regulation. Five device types in 21 CFR 872 subpart D span it (872.3060, 872.3070, 872.3330, 872.3350 and 872.3710), and they differ in a way worth keeping straight: 872.3060 and 872.3710 are class II special controls and 510(k)-exempt subject to 872.9; 872.3330 and 872.3350 are class I and 510(k)-exempt subject to 872.9; and 872.3070 alone is class II special controls and not exempt. All five regulation numbers, titles, identification paragraphs, classes, and product codes were re-verified against the CFR text at law.cornell.edu and the FDA product classification database on 2026-09-11; nothing was carried over from docs/regulatory.md or from memory. No regulation in subpart D names titanium as a crown and bridge material, so titanium restorations are not covered by a sixth row here.
-  Standards. Five are recorded, each as FDA recognizes it, and all were verified in the Recognized Consensus Standards database. ISO 22674, Third edition 2022-08, recognition number 4-300, extent Complete, date of entry 05/29/2023, identically adopted as ANSI ADA Standard No. 134-2023. ISO 9693, Third edition 2019-10, recognition number 4-263, extent Complete, identically adopted as ANSI ADA Standard No. 38-2020, which covers the metal-ceramic use this entry records. ISO 24234, Third edition 2021-08, recognition number 4-315, extent Complete, which covers the amalgam member. Three are needed rather than one because ISO 22674 states that it "does not apply to alloys for dental amalgam (see ISO 24234)", so no single standard spans the class. ISO 10271, Third edition 2020-08, recognition number 4-265, extent Complete, identically adopted as ANSI ADA Standard No. 97-2022, and ISO 7405, Third edition 2018-10 Corrected version 2018-12, recognition number 4-261, extent Complete, were added in the fourth pass and cover the corrosion and biocompatibility test methods respectively. The Standard class has no slot for edition or recognition number, so they are recorded here.
-  Properties. Deliberately no numbers. Strength, hardness, elastic modulus, melting range, and density are all real for a given alloy but vary by more than an order of magnitude across the families, so a class- level number would be an invention. The five rows that are here carry no value: corrosion, which the literature treats as the property governing the whole class; plastic deformation rather than brittle fracture, which is what the metallic bond buys and what separates this class from the ceramics; the dependence of any measured property on the fabrication route, which is a caution that applies to every number recorded on the children; and the ISO 22674 type classification, which states the same point positively - the governing standard sets mechanical requirements by numbered type rather than one class-level requirement, so an alloy is qualified against a type. The fifth, added in a later pass, is the marginal and internal fit of additively manufactured restorations, which is governed by build parameters and preparation design rather than by the alloy, and which is the only evidence on this entry for the ADDITIVE_MANUFACTURING setting mechanism.
-  Left out. Products, because brands belong on the children. Amalgam-associated oral lichenoid lesions, because that evidence base is amalgam-specific and belongs on the Amalgam entry; the class-level lichenoid row added in the eighth pass rests on a series in which the patch-test positives were led by palladium and gold rather than by amalgam, which is what makes it class-level. EU MDR, Health Canada, and other regulators, because none were verified against a primary source.
-  Provider. The deep research step could not run through the normal shim: the claude_code provider reports UNREACHABLE (not logged in) and the EDISON, FUTUREHOUSE and OPENAI keys are present in the environment but empty, so no provider is callable. Because the curating agent is itself Claude Code, the research pass was run directly instead and is recorded in research/Metal-deep-research-claude_code.md; PubMed was searched through the E-utilities API and every abstract quoted was cached through just fetch-reference, so all snippets are checkable against references_cache/ rather than against a model's recollection.
-  Curation. This entry was built over several passes and every regulation, class, product code and standards recognition record in it has been re-derived from the CFR text at law.cornell.edu and the FDA product classification and Recognized Consensus Standards databases more than once, by passes starting from the primary sources rather than from this file, always reaching the values recorded here. Two things future editors should know. A report of zero total checks from the reference validator means every snippet was checked and passed, not that nothing was checked; this was confirmed by running it against a deliberately corrupted quote. And every literature snippet in this entry has been checked against the abstract as PubMed serves it, with the reference cache bypassed, not only against references_cache/. That distinction matters here: linkml-reference-validator fetches article full text by default, so a cached record can hold the publisher's rendition of the whole paper, and a quote taken from the body of a paper passes the cached check while failing the abstract. Three snippets in earlier passes of this entry were body text of that kind - two from PMID:38702521 and one from PMID:34204569 - and were replaced with abstract-sourced quotes. Every cached record this entry cites is therefore committed as content_type abstract_only, and no snippet here depends on text outside the abstract PubMed serves. That state is not self-sustaining: just validate-references fetches full text by default, so merely running it rewrites those records back into full-text supersets - and for PMID:25935732 it refills the record with the Geneva repository's page furniture rather than the article. Run it with --no-full-text, or discard the references_cache/ rewrite instead of staging it. One cached record is cited by no snippet - PMID:30661882, which the research report weighs and the entry deliberately omits - and it was committed as a scrape of a repository landing page until it was refetched as an abstract. The tool can do that: cache reference honours fetch_full_text: false in the config file, which is how that record was regenerated, while validate data ignores the same key because its own --full-text default overrides it. The pass-by-pass account of the automation that produced this entry lives in the git history and the pull request thread, not here.
+  Regulatory. The class does not map to one regulation. Five device types in 21 CFR 872 subpart D span it (872.3060, 872.3070, 872.3330, 872.3350 and 872.3710): 872.3060 and 872.3710 are class II special controls and 510(k)-exempt subject to 872.9; 872.3330 and 872.3350 are class I and 510(k)-exempt subject to 872.9; and 872.3070 alone is class II special controls and not exempt. No regulation in subpart D names titanium as a crown and bridge material, so titanium restorations have no row here.
+  Standards. Editions and FDA recognition numbers are listed in docs/regulatory.md, because the Standard class has no slot for them.
+  Properties. Deliberately no numbers. Strength, hardness, elastic modulus, melting range and density vary widely across the families, so a class-level number would be an invention; per-family values belong on the children.
+  Terms. Dental metal allergy is bound to MONDO:0006525 allergic contact dermatitis, a broad term, on purpose: the presentation the sources discuss is oral contact stomatitis, and no more specific oral allergy term was found in MONDO.
+  Left out. Products, because brands belong on the children. Amalgam-associated oral lichenoid lesions, because that evidence is amalgam-specific and belongs on the Amalgam entry. EU MDR, Health Canada and other regulators, because none were verified against a primary source. A MeSH mapping (Dental Alloys) was removed because the schema does not declare the MESH prefix; restore it once it does.
 see_also:
   - https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44253
 parents:
@@ -1014,5 +1024,17 @@ curation_history:
     llm_assisted: true
     model: claude-opus-5-5
     action: EDIT
-    description: Carried over the curation from branch curate/metal (43 commits, 2026-09-06 to 2026-11-07) into the mechmaker layout.
-updated_date: '2026-11-07'
+    description: 'Carried over the curation from branch curate/metal (43 commits, 2026-09-06 to 2026-11-07) into the mechmaker layout. That work built the class record from the stub: eleven elemental components quoted from the CFR, eight clinical uses, five FDA device types (872.3060, 872.3070, 872.3330, 872.3350, 872.3710) with product codes checked against the classification database and openFDA, five ISO standards checked against the FDA recognition database, the corrosion, fabrication-route, ISO 22674 type and additive-manufacturing fit property rows, survival and complication rows from systematic reviews and a cast gold cohort, and the allergy, lichenoid lesion, CBCT artifact and other adverse-effect rows. Later passes replaced full-text snippets with abstract quotes, made several snippets verbatim, fixed two ChEBI labels and re-verified the regulatory rows several times.'
+  - timestamp: '2026-11-08T02:30:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Restored the CREATE event from main that the migration had replaced, and removed User-Agent fetch guidance for the FDA sites from docs/regulatory.md.
+  - timestamp: '2026-11-08T02:58:17+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Fixed the PR #12 review findings. Cut composition descriptions to what the CFR and review quotes say; set mercury to LIQUID, as on Amalgam; corrected the nickel allergy row, which had confined nickel to the nickel-chromium family although austenitic stainless steel also contains it; replaced the plastic deformation property with a row on metal fracture being uncommon compared with ceramics, adding the framework fracture quote; moved the PMID:32490402 ion-release quote to the corrosion row; cut the gold foil claim from the direct filling use; marked the removable framework evidence PARTIAL and dropped the unquoted alloys; quoted PMID:38702521 for onlays and PMID:25935732 for tooth-supported FDPs; dropped the unsupported COLD_WORKING mechanism, the narrower dental alloy synonym and the MeSH mapping whose prefix the schema does not declare; removed process logs and verification dates from notes and explanations.'
+updated_date: '2026-11-08'

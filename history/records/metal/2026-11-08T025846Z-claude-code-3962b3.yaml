@@ -1,0 +1,41 @@
+history_version: 1
+target:
+  kind: record
+  slug: metal
+  path: kb/materials/metal.yaml
+session:
+  id: 2026-11-08T025846Z-claude-code-3962b3
+  timestamp: '2026-11-08T02:58:46Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Fixed the PR #12 review findings on Metal and restored its curation history.'
+  details: 'Two sessions on 2026-11-08. First (commit 9a83694): restored main''s CREATE event, which the
+    migration had replaced, appended an EDIT event for the curation carried over from curate/metal, and
+    removed User-Agent fetch guidance for the FDA sites from docs/regulatory.md. Second: answered the
+    review. Composition descriptions cut to what the quoted CFR sentences and PMID:31147298 say (the gamma-2
+    phase, platinum melting range, copper hardener, chromium passivation, titanium alloy designations
+    and gold foil were unquoted). Mercury role ALLOYING_ELEMENT -> LIQUID, matching kb/materials/amalgam.yaml
+    and the regulation. Nickel allergy row no longer says nickel is confined to the nickel-chromium family;
+    austenitic stainless steel also contains nickel. The plastic deformation property, which inferred
+    ductile failure from the absence of metal fracture in one cohort, was replaced by a row stating that
+    metal fracture is uncommon compared with ceramics, with PMID:38702521 marked PARTIAL and the PMID:25935732
+    framework fracture quote (0.6% in five years). The PMID:32490402 ion-release quote moved to the corrosion
+    row. Gold foil cut from the direct filling use. Removable frameworks evidence marked PARTIAL, alloy
+    names cut. New quotes: PMID:38702521 for onlays (PARTIAL), PMID:25935732 for tooth-supported FDPs.
+    COLD_WORKING dropped from setting_mechanisms for lack of evidence. Synonym ''dental alloy'' dropped
+    as narrower than the class. MeSH mapping MESH:D003722 Dental Alloys removed because the schema does
+    not declare the MESH prefix and the RDF export fails on it. Dental metal allergy keeps the broad MONDO:0006525
+    binding, stated in notes; no oral allergy term was found in MONDO. docs/regulatory.md: removed the
+    run-by-run audit log, the dated outage notes and the PR-date correction; reverted the 872.3275 row
+    to main''s. Provenance moved out of notes: the regulatory rows were re-verified from the CFR text
+    at law.cornell.edu, the FDA classification database and openFDA on many dates from 2026-09-06 to 2026-11-07,
+    unchanged throughout; the five standards were verified in the FDA Recognized Consensus Standards database
+    (ISO 22674 4-300, ISO 9693 4-263, ISO 24234 4-315, ISO 10271 4-265, ISO 7405 4-261), now tabulated
+    in docs/regulatory.md; no deep-research provider was callable, so the curating agent searched PubMed
+    directly and its notes are in research/metal-deep-research-claude_code.md, which is a lead and not
+    cited; every PMID snippet was checked against the abstract PubMed serves and the cached records are
+    abstract_only. just validate: 57 snippets, 0 issues.'
