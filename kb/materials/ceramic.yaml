@@ -122,14 +122,14 @@ composition:
         explanation: Names leucite reinforcement as one of the subfamilies of the class.
   - name: Lithium disilicate
     role: CRYSTALLINE_PHASE
-    description: Reinforcing crystalline phase of the toughest glass-matrix subfamily. No ChEBI term exists, so no chemical term is bound.
+    description: Crystalline phase of the lithium disilicate glass-ceramics. In the cited comparison their fracture toughness is below that of glass-infused alumina and zirconia. No ChEBI term exists, so no chemical term is bound.
     evidence:
       - reference: PMID:12901984
         reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: The third group KIc values were 2.8 MPa m(1/2) for a lithium disilicate glass-ceramic, 3.1 MPa m(1/2) for a glass-infused alumina, and 4.9 MPa m(1/2) for zirconia.
-        explanation: Names lithium disilicate as a crystalline phase of the class and places its toughness.
+        explanation: Names lithium disilicate as a crystalline phase of the class and gives its toughness beside two others.
   - name: Aluminium oxide
     role: CRYSTALLINE_PHASE
     chemical:
@@ -152,7 +152,7 @@ composition:
       term:
         id: CHEBI:747200
         label: zirconium dioxide
-    description: The polycrystalline phase of the toughest subfamily of the class.
+    description: The polycrystalline phase of zirconia, the toughest of the three ceramics in the cited comparison.
     evidence:
       - reference: PMID:12901984
         reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
@@ -299,6 +299,12 @@ clinical_uses:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: Zirconia-ceramic implant-supported SCs are a valid treatment alternative to metal-ceramic SCs, with similar incidence of biological complications and less aesthetic problems.
         explanation: Establishes the implant-supported indication, for zirconia rather than for the whole class.
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: No studies on newer types of monolithic zirconia SCs fulfilled the simple inclusion criteria of 3 years follow-up time and clinical examination of the present systematic review.
+        explanation: Source of the statement that no monolithic zirconia implant crown study met the review's criteria.
   - name: Implant abutment
     use_context: IMPLANT
     description: Evidenced here for zirconia only, and in vitro only. Ceramic abutments reach market under the abutment device type, not under the material's own regulation; see notes.
@@ -1003,4 +1009,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the third review of PR #13. Added description_evidence for each processing fact in the description: high-temperature processing (21 CFR 872.6660 and PMID:29721230), pressing (PMID:25489158), polishing (PMID:33581910) and milling (PMID:31943720, newly fetched), all PARTIAL because each covers one family. Added the MeSH mapping MESH:D003776 Dental Porcelain (CLOSE_MATCH), now that the schema declares MESH. Made the evidence_source of PMID:40245384 OTHER in every place. Reworded the ISO 6872 edition note, since the standards row records no edition.'
+  - timestamp: '2026-11-08T03:48:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the fourth review of PR #13. Quoted PMID:30328190 for the absence of monolithic zirconia implant crown studies, and replaced the toughest-subfamily wording on lithium disilicate and zirconia with what the PMID:12901984 comparison shows.'
 updated_date: '2026-11-08'

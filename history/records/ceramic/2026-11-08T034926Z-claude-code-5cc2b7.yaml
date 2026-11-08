@@ -1,0 +1,25 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-08T034926Z-claude-code-5cc2b7
+  timestamp: '2026-11-08T03:49:26Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/13
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the fourth automated review of PR #13.'
+  details: 'Two warnings fixed. Implant-supported crown use: added the PMID:30328190 sentence that no
+    monolithic zirconia single-crown study met the review''s inclusion criteria. Lithium disilicate and
+    zirconia components: replaced ''toughest glass-matrix subfamily'' and ''toughest subfamily of the
+    class'' with what the PMID:12901984 comparison shows (lithium disilicate 2.8, glass-infused alumina
+    3.1, zirconia 4.9 MPa m1/2). Notes in the review were not acted on this round.'
