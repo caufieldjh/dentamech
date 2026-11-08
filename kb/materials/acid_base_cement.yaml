@@ -65,14 +65,14 @@ composition:
       term:
         id: CHEBI:36560
         label: zinc oxide
-    description: The basic powder of the zinc-based members of the class (zinc phosphate, zinc polycarboxylate, zinc oxide and zinc oxide-eugenol cements).
+    description: A constituent of the zinc phosphate and zinc polycarboxylate members, where it is the phase that dissolves under acid attack.
     evidence:
       - reference: PMID:12628437
         reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
-        explanation: Identifies zinc oxide as the dissolvable powder phase of the zinc-based members of the class.
+        explanation: The study covers zinc phosphate, polycarboxylate and glass ionomer cements; in the zinc-based ones, zinc oxide is the phase that dissolves.
   - name: Acidic liquid
     role: LIQUID
     description: The acidic half of the pair. Phosphoric acid in zinc phosphate cement, and polyacrylic acid, with tartaric acid in some formulations, in the glass polyalkenoate cements.
@@ -239,22 +239,6 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: Zinc oxide-eugenol cements under 21 CFR 872.3275 (product code EMB)
         explanation: Section III lists this among the things outside the scope of the guidance, so the film thickness criterion does not reach the zinc oxide-eugenol member of the class. Recorded as PARTIAL because it limits the row it sits on.
-  - name: Fluoride release
-    property_type: FLUORIDE_RELEASE
-    description: Not recorded as a class-level property. The glass polyalkenoate (glass ionomer) members release fluoride, in a two-step process.
-    evidence:
-      - reference: PMID:37615013
-        reference_title: 'Fluoride exchange by glass-ionomer dental cements and its clinical effects: a review.'
-        supports: SUPPORT
-        evidence_source: OTHER
-        snippet: Fluoride release has been shown to be a two-step process. In neutral solutions, the steps can be divided into early wash-out and long-term diffusion.
-        explanation: Establishes the release kinetics for the glass polyalkenoate members only; the review is confined to glass-ionomer cements. Narrative review rather than a systematic review, so the source is recorded as OTHER. The abstract states that papers were selected from an initial PubMed search and that other relevant papers were cited where they added useful and relevant data, with no systematic protocol and no pooling.
-      - reference: PMID:27367737
-        reference_title: A Review of Glass-Ionomer Cements for Clinical Dentistry.
-        supports: SUPPORT
-        evidence_source: OTHER
-        snippet: They release fluoride and are bioactive
-        explanation: Fluoride release by the glass ionomer members.
 clinical_uses:
   - name: Luting of cast and ceramic restorations
     use_context: LUTING
@@ -285,14 +269,14 @@ clinical_uses:
       term:
         id: UBERON:0001751
         label: dentine
-    description: Used as a base cement, and applied to a tooth to protect the pulp.
+    description: Used as a base cement to affix a temporary tooth filling, and applied to a tooth to protect the pulp.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
         reference_title: 21 CFR 872.3275 Dental cement
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp
-        explanation: The base and pulp-protection uses named in the identification paragraph.
+        explanation: The base and pulp-protection uses named in the identification paragraph. The regulation names no site; dentine as the anatomical site is the curator's choice, since a base or liner covers the dentine of the cavity floor to protect the pulp beneath it.
   - name: Temporary filling
     use_context: TEMPORARY
     anatomical_site:
@@ -366,7 +350,7 @@ adverse_effects:
         snippet: The tartrate of Ketac-Cem causes long-lasting hyperaemia, whereas the acryl-maleinate-copolymer has no discernible effects.
         explanation: The response is acid-specific, so pulpal irritation cannot be asserted uniformly across the class.
   - name: Dissolution and disintegration at exposed margins
-    effect_category: MECHANICAL_FAILURE
+    effect_category: OTHER
     description: Acid erosion of the set cement. Ranking across the class follows the compositional family.
     evidence:
       - reference: PMID:11124414
@@ -403,7 +387,7 @@ regulatory_status:
         use_context: LUTING
       - name: Application to a tooth to protect the tooth pulp
         use_context: LINER_OR_BASE
-    source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+    source_url: https://www.law.cornell.edu/cfr/text/21/872.3275
     notes: Paragraph (b) of the regulation. Its device is every dental cement other than zinc oxide-eugenol, so by its wording it covers the zinc phosphate, zinc polycarboxylate, glass polyalkenoate and resin-modified members of the class. A tooth-coloured member, resin-modified ones included, may instead be cleared under 872.3690 (tooth shade resin material, EBF/OFW); that route is recorded on the child entries. The same regulation also carries MZW (dental cement without zinc oxide-eugenol as an ulcer covering for pain relief, class 2) and NEA (cement, ear, nose and throat, class 2); neither is a dental restorative use, so neither is listed here.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
@@ -445,7 +429,7 @@ regulatory_status:
         use_context: LUTING
       - name: Application to a tooth to protect the tooth pulp
         use_context: LINER_OR_BASE
-    source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+    source_url: https://www.law.cornell.edu/cfr/text/21/872.3275
     notes: Paragraph (a) of the regulation. Applies to the zinc oxide-eugenol member of the class, which sits under Zinc oxide cement in this knowledge base. The class split within 872.3275 is the reason two entries are recorded for one regulation number.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
@@ -477,6 +461,7 @@ standards:
     url: https://www.iso.org/standard/69901.html
 notes: |-
   Class-level entry. Composition, properties and uses are stated for the class; subtype specifics belong in the child entries (Glass ionomer cement, Metal modified glass ionomer, Resin-modified glass ionomer, Zinc oxide cement, Zinc phosphate cement, Zinc polycarboxylate cement).
+  Fluoride release is not recorded at class level: it belongs to the glass polyalkenoate (glass ionomer) members, and is for the Glass ionomer cement entry.
   Standards. ISO 9917-1 covers the powder/liquid acid-base cements and ISO 9917-2 the resin-modified cements, which sit inside this class: OHD:0001026 resin-modified glass ionomer is a direct is_a child of OHD:0001021. The two parts divide the class by setting chemistry; they do not bound it. FDA recognises ISO 9917-1 third edition 2025-05 (recognition 4-348) and ISO 9917-2 third edition 2017-09 (4-311).
   Not filled. No products are listed: this is an abstract class, so branded products and their 510(k) records belong on the child entries. Working time and flexural strength are not recorded: the FDA guidance marks both "(as applicable, resin-modified cements only)", so they belong on the Resin-modified glass ionomer entry. For the same reason setting_mechanisms records only ACID_BASE_REACTION, the reaction that defines the class.
   Scope of the FDA criteria. Every criterion taken from the guidance sits inside its section III scope (EMA, KLE, DYH), which excludes zinc oxide-eugenol (EMB), a member of this class through Zinc oxide cement (OHD:0001022). No property row sourced from the guidance is therefore stated for every member of the class. Within that scope, compressive strength and acid erosion are limited to the powder/liquid acid-base cements; net setting time and film thickness reach the resin-modified members too.
@@ -503,4 +488,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Fixed the PR #4 review findings. Cut claims no quote supported (powder residual core, phosphoric acid buffering, zinc members having no fluoride source, definitive restorative use, water loss or gain, base/lining limits). Added 11 quotes from cached PubMed abstracts to the description, the powder, the acidic liquid, water, fluoride release and luting. Rescoped the filling use to temporary filling (TEMPORARY). Rebound the base/liner site from dental pulp to dentine (UBERON:0001751). Scoped film thickness to the guidance, excluding EMB. Stated that 872.3275(b) covers the resin-modified members. Moved verification provenance out of notes.'
+  - timestamp: '2026-11-08T03:33:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the third review of PR #4. Removed the Fluoride release property row, which described only the glass ionomer members, and said so in notes. Trimmed the zinc oxide component to the zinc phosphate and polycarboxylate members its source covers. Said in the base/liner explanation that dentine is the curator''s choice. Set the dissolution effect_category to OTHER. Pointed both 872.3275 source_url fields at the Cornell CFR text the evidence quotes.'
 updated_date: '2026-11-08'
