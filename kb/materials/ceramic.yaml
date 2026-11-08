@@ -1,6 +1,37 @@
 id: OHD:0000135
 name: Ceramic
 description: A dental restoration material that has a nonmetallic inorganic structure consisting primarily of compounds containing oxygen combined with one or more metallic or semi-metallic elements that are processed at high temperatures, pressed, and polished or milled.
+description_evidence:
+  - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+    reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+    supports: PARTIAL
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: The device is used in prosthetic dentistry by heating the powder mixture to a high temperature in an oven to produce a hard prosthesis with a glass-like finish.
+    explanation: High-temperature processing, stated for porcelain powder, the 872.6660 device type.
+  - reference: PMID:29721230
+    reference_title: Role of coefficient of thermal expansion on bond strength of ceramic veneered yttrium-stabilized zirconia.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: sintered at 1350°C for 6 hours
+    explanation: High-temperature sintering of a polycrystalline (Y-TZP) ceramic.
+  - reference: PMID:25489158
+    reference_title: 'Evaluating the fracture toughness and flexural strength of pressable dental ceramics: an in vitro study.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: three commonly used pressable all ceramic core materials
+    explanation: Pressing, for leucite-based glass ceramics.
+  - reference: PMID:33581910
+    reference_title: 'Flexural strength and translucency characterization of aesthetic monolithic zirconia and relevance to clinical indications: A systematic review.'
+    supports: PARTIAL
+    evidence_source: SYSTEMATIC_REVIEW
+    snippet: Smooth surface polish was found to significantly enhance strength while coarse grinding and mechanical fatigue was found to do the reverse.
+    explanation: Polishing, for monolithic zirconia.
+  - reference: PMID:31943720
+    reference_title: Materials in digital dentistry-A review.
+    supports: PARTIAL
+    evidence_source: OTHER
+    snippet: laboratory/chairside milling units to manufacture dental restorations and appliances from multiple materials including wax, metals, composite resins, and ceramics
+    explanation: Milling of ceramics with CAD/CAM units.
 record_term:
   id: OHD:0000135
   label: ceramic dental restoration material
@@ -15,6 +46,10 @@ mappings:
     label: Dental Material
     predicate: BROAD_MATCH
     source: NCI Thesaurus via OLS
+  - id: MESH:D003776
+    label: Dental Porcelain
+    predicate: CLOSE_MATCH
+    source: MeSH
 setting_mechanisms:
   - SINTERING
   - HEAT_PRESSING
@@ -698,7 +733,7 @@ clinical_performance:
       - reference: PMID:40245384
         reference_title: Survival and Complication Rates of Ceramic Partial Coverage Restorations (PCRs) and Ceramic Laminate Veneers Made of Different Types of Ceramics. Consensus Statement From SSRD, SEPES, and PROSEC Conference on Minimally Invasive Restorations.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: A systematic screening of the literature identified 35 publications, which were critically reviewed based on PRISMA guidelines, resulting in two systematic reviews.
         explanation: Source of the publication count.
   - name: Ten-year survival of zirconia-framework fixed dental prostheses
@@ -924,13 +959,13 @@ notes: |-
 
   Child entry. The FDA status of kb/materials/zirconia_polycrystalline_ceramic.yaml is tracked in https://github.com/caufieldjh/dentamech/issues/35.
 
-  Standards. All six were read from their own FDA recognition detail pages rather than from the per-product-code query, so no row implies that the set is complete; the EIH recognition list is longer and includes furnace, investment and die-material standards that are not properties of the ceramic. One transition is worth knowing: the 45644 page states that recognition of ISO 6872 Fourth edition 2015-06-01 [Rec# 4-251] "will be superseded by recognition of ISO 6872 Fifth edition 2024-08 [Rec# 4-329]", with declarations of conformity to 4-251 accepted until December 20, 2026. The edition recorded here is therefore the Fifth.
+  Standards. All six were read from their own FDA recognition detail pages rather than from the per-product-code query, so no row implies that the set is complete; the EIH recognition list is longer and includes furnace, investment and die-material standards that are not properties of the ceramic. One transition is worth knowing: the 45644 page states that recognition of ISO 6872 Fourth edition 2015-06-01 [Rec# 4-251] "will be superseded by recognition of ISO 6872 Fifth edition 2024-08 [Rec# 4-329]", with declarations of conformity to 4-251 accepted until December 20, 2026. The Fifth edition is therefore the one FDA recognises going forward; the standards row names ISO 6872 without an edition, as the schema's Standard class has no edition field.
 
   Products. Only K211916 filed a 510(k) Summary; K051705 and K131534 filed a Statement, so the database carries no indications-for-use text for them and none is recorded.
 
   Synonyms. "dental porcelain" is imprecise as a class synonym, since porcelain proper is the feldspathic subtype. It is kept because it is FDA's own term for the device type in both regulations recorded above, so a reader arriving from the regulatory side needs it to find this entry.
 
-  Gaps. No EU MDR, Health Canada, TGA or other non-FDA status is recorded, because none was verified. No hypersensitivity or allergy adverse effect is recorded: no source in this entry's reference set documents one for ceramic, and the absence of evidence is not evidence of absence. Hardness, elastic modulus, radiopacity and wear resistance are not populated, since no cached source gave class-level values for them. No mapping to MeSH is recorded even though MeSH has "Dental Porcelain", because MeSH is not in conf/oak_config.yaml; NCIT has no dental-ceramic material concept, so the only mapping is the broad NCIT:C42634 Dental Material.
+  Gaps. No EU MDR, Health Canada, TGA or other non-FDA status is recorded, because none was verified. No hypersensitivity or allergy adverse effect is recorded: no source in this entry's reference set documents one for ceramic, and the absence of evidence is not evidence of absence. Hardness, elastic modulus, radiopacity and wear resistance are not populated, since no cached source gave class-level values for them. NCIT has no dental-ceramic material concept, so its mapping is the broad NCIT:C42634 Dental Material. The MeSH mapping is CLOSE_MATCH, not EXACT_MATCH, because MeSH indexes dental ceramics under "Dental Porcelain", whose name is narrower than this class; the descriptor id was confirmed from the NLM MeSH lookup service.
 
   Status. The record stays DRAFT: no full texts were read beyond the cached abstracts, and no non-US regulator was verified.
 parents:
@@ -962,4 +997,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the second review of PR #13. Quoted the study counts, test methods, populations, the yttria stabiliser role and the 134 degree autoclave ageing from the cached abstracts (12 quotes). Cut the alumina history claim, the unverified 872.3630/NHA and 872.3661/NOF numbers, and the corrigendum sourcing narrative. Bound HP:4000181 to antagonist enamel wear with a note on breadth. Changed strongest to toughest for lithium disilicate. Replaced the zirconia child-entry paragraph with a pointer to issue #35.'
+  - timestamp: '2026-11-08T03:32:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the third review of PR #13. Added description_evidence for each processing fact in the description: high-temperature processing (21 CFR 872.6660 and PMID:29721230), pressing (PMID:25489158), polishing (PMID:33581910) and milling (PMID:31943720, newly fetched), all PARTIAL because each covers one family. Added the MeSH mapping MESH:D003776 Dental Porcelain (CLOSE_MATCH), now that the schema declares MESH. Made the evidence_source of PMID:40245384 OTHER in every place. Reworded the ISO 6872 edition note, since the standards row records no edition.'
 updated_date: '2026-11-08'
