@@ -31,6 +31,7 @@ prefixes:
   HP: http://purl.obolibrary.org/obo/HP_
   MONDO: http://purl.obolibrary.org/obo/MONDO_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
+  MESH: http://id.nlm.nih.gov/mesh/
   PATO: http://purl.obolibrary.org/obo/PATO_
   OBI: http://purl.obolibrary.org/obo/OBI_
   BFO: http://purl.obolibrary.org/obo/BFO_
