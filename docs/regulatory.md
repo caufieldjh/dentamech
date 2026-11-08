@@ -59,56 +59,24 @@ products:
 
 The product example above is illustrative; check the record before curating it.
 
-## Fetch routes for the FDA databases
+## Sources for the FDA databases
 
 Every regulation number, class, and product code is re-verified from the CFR text *and* the
-classification database on each curation run, so the fetch route is part of the method. Routes
-tested from CI on 2026-10-22:
+classification database on each curation run. The sources:
 
-| Source | Route | Result |
-|---|---|---|
-| CFR text | `curl https://www.law.cornell.edu/cfr/text/21/872.NNNN` | works |
-| CFR text, character-exact | `curl --compressed 'https://www.ecfr.gov/api/versioner/v1/full/YYYY-MM-DD/title-21.xml?part=872&section=872.NNNN'` | works, but **only with compression** - without `--compressed` it answers `406` and tells you so |
-| eCFR section HTML | `curl https://www.ecfr.gov/current/title-21/section-872.NNNN` | blocked, `302` |
-| Product classification | `curl -L -H 'User-Agent: Mozilla/5.0' '…/cfpcd/classification.cfm?start_search=1&productcode=CODE'` | works, returns the record page |
-| Product classification | the same URL with curl's default `User-Agent` | blocked, `302` to `abuse-detection-apology.html` |
-| Product classification | an accepted `User-Agent` but no `-L` | useless: `302` to a 217-byte `Document Moved` stub |
-| Product classification | the agent's `WebFetch` tool on the same URL | works, returns the result rows |
-| Product classification, by regulation | `curl -L -H 'User-Agent: Mozilla/5.0' '…/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN'` | works, and is the route that proves code *completeness*; but a regulation carrying a single code answers `302` to `classification.cfm?id=NNNN` - a successful single-match redirect, **not** the abuse block the rows above describe |
-| Product classification | any of its routes, intermittently | a ~2 kB "Your request is being processed. Please be patient…" queue page whose only logic is a 60-second `setInterval` reload, served with `HTTP 400` as readily as `200`. It contains no record, so a grep for your product code returns nothing: read as *no answer yet*, never as *the value is absent*. Sleep a few seconds and refetch |
-| Product classification | `curl 'https://api.fda.gov/device/classification.json?search=regulation_number:"872.NNNN"&limit=50'` | works |
-
-`classification.cfm` is reachable from plain `curl`, but it needs `-L` **and** a `User-Agent` that
-is not curl's own, and each missing piece fails in a different way. Earlier runs of this file recorded
-the page as blocked outright; that was an artefact of testing the two halves separately. Re-measured
-on 2026-11-01, one product code, with `-L` throughout:
-
-| `User-Agent` sent | Result |
+| Source | Where |
 |---|---|
-| curl's default (`curl/8.x`, i.e. no `-A`) | refused: one `302` to `abuse-detection-apology.html`, which answers `404`, 420 bytes |
-| none at all (`-A ''`) | the record, `200`, 36 kB |
-| `Mozilla/5.0` | the record, `200`, 36 kB - byte-identical to the row above |
+| CFR text | `https://www.law.cornell.edu/cfr/text/21/872.NNNN` |
+| Product classification, human-readable record | `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN` |
+| Product classification, JSON | `https://api.fda.gov/device/classification.json?search=regulation_number:"872.NNNN"&limit=50` (openFDA) |
 
-So a browser `User-Agent` is **sufficient but not required**: what the site refuses is specifically
-curl's self-identification, and suppressing the header entirely does just as well. Do not read the
-recipes' `-A "$UA"` as meaning the string has to look like a browser. Dropping `-L` is the separate
-failure: with any accepted `User-Agent` you then get a `302` to a 217-byte `Document Moved` stub,
-which looks like a block but is only an unfollowed redirect. Both accepted routes land on the
-single-match redirect `classification.cfm?id=NNNN`. Cite the `classification.cfm` URL either way - it
-is the human-readable record, and it renders device names in lower case, which is what a `snippet`
-quoting it has to match.
+Cite the `classification.cfm` URL: it is the human-readable record, and it renders device names in
+lower case, which is what a `snippet` quoting it has to match.
 
-**`classification.cfm` was down on 2026-10-24.** All three of its routes above - plain `curl`,
-`curl -L` with a browser `User-Agent`, and `WebFetch` - returned `HTTP 503` with accessdata's
-"The page you are requesting is currently unavailable" body, repeatedly and across product codes.
-That is an FDA-side outage, not the `User-Agent`/`-L` pitfall described above: the failure mode is a
-503 with a 17 KB error page, not a `302`. Do not "fix" your curl invocation in response to it, and do
-not conclude that a lower-case device-name `snippet` is wrong because only openFDA answers - the
-casing claim above was recorded from the live page and still stands. Use openFDA to cross-check codes
-while the HTML form is down, and leave the `classification.cfm` citations in place.
-**It recovered by 2026-10-25**, when all eight codes were read back from it directly, so treat
-the 503 as a transient outage rather than a standing block: retry the HTML form before falling
-back to openFDA.
+`classification.cfm` sometimes answers with a ~2 kB "Your request is being processed. Please be
+patient…" queue page, and was down with `HTTP 503` on 2026-10-24 (recovered by 2026-10-25). Neither
+contains a record, so a search for a product code finds nothing. Read either as *no answer yet*,
+never as *the value is absent*: retry later, and cross-check with openFDA meanwhile.
 
 openFDA serves the same database as JSON with `product_code`, `device_name`, `device_class`, and
 `submission_type_id`; across the eight codes in this file `submission_type_id` is `1` for the 510(k)
@@ -152,19 +120,18 @@ the route differ.
 | 2026-10-19 | five identification and classification paragraphs; eight product codes through both routes; the EIT exclusion | CFR text + `classification.cfm` + openFDA |
 | 2026-10-22 | as above, plus the per-regulation code counts read rather than assumed | openFDA |
 | 2026-10-23 | five identification paragraphs diffed character for character; five regulation titles against the section heads; eight product codes with submission type and code counts on each | eCFR versioner XML + `classification.cfm` + openFDA |
-| 2026-10-24 | five regulation numbers, titles, classes, special-controls clauses and 510(k)-exemption clauses; five identification and five classification snippets confirmed verbatim; eight product codes on `device_name`, `device_class`, `submission_type_id`, `medical_specialty_description`, `regulation_number` | CFR text + openFDA only, `classification.cfm` returning HTTP 503 through every route (see the outage note above) |
+| 2026-10-24 | five regulation numbers, titles, classes, special-controls clauses and 510(k)-exemption clauses; five identification and five classification snippets confirmed verbatim; eight product codes on `device_name`, `device_class`, `submission_type_id`, `medical_specialty_description`, `regulation_number` | CFR text + openFDA only, `classification.cfm` returning HTTP 503 through every route |
 | 2026-10-25 | five regulation numbers, titles, classes and exemption clauses; eight product codes including submission type on EJS and EJJ | CFR text + `classification.cfm`, recovered |
 | 2026-10-26 | five regulation titles, identification paragraphs and classification clauses confirmed verbatim; eight product codes on device name, class, regulation number and submission type, plus the per-regulation code counts | CFR text + `classification.cfm` + openFDA |
 | 2026-10-27 | five regulation numbers, titles, classes, identification paragraphs and 510(k)-exemption clauses re-read from the CFR text and diffed against the entry; eight product codes on device name, class, regulation number and submission type; per-regulation code completeness read from the `regulationnumber` result tables, including the EIT exclusion | CFR text + `classification.cfm` (both the `id` and `regulationnumber` routes) |
-| 2026-10-28 | 872.3275, 872.3330 and 872.3350 titles, identification paragraphs and classification clauses re-read from the CFR text; the code sets and submission types under 872.3060, 872.3275, 872.3330 and 872.3350 read from openFDA, including the per-regulation code counts behind the EIT exclusion and the four codes under 872.3275 | CFR text + openFDA only, `classification.cfm` serving the queue page through every route (see below) |
+| 2026-10-28 | 872.3275, 872.3330 and 872.3350 titles, identification paragraphs and classification clauses re-read from the CFR text; the code sets and submission types under 872.3060, 872.3275, 872.3330 and 872.3350 read from openFDA, including the per-regulation code counts behind the EIT exclusion and the four codes under 872.3275 | CFR text + openFDA only, `classification.cfm` serving the queue page through every route |
 | 2026-11-02 | five regulation numbers, titles, classes, identification paragraphs and 510(k)-exemption clauses re-read from the CFR text, with all five `identification` fields and all five classification snippets confirmed verbatim against it by programmatic substring check (10 of 10, 0 mismatched); eight product codes with per-regulation code completeness and submission type, including the EIT exclusion; ISO 22674, 9693 and 24234 recognition numbers, editions and extents re-read from the Recognized Consensus Standards database | CFR text + openFDA by `regulation_number` + `cfStandards/detail.cfm` |
 | 2026-11-07 | five regulation numbers, titles, classes, identification paragraphs and 510(k)-exemption clauses re-read from the CFR text and confirmed verbatim by programmatic substring check (10 of 10, 0 mismatched); eight product codes on device name, class, regulation number and submission type, with per-regulation code counts read rather than assumed (872.3060 three including the excluded EIT, 872.3070 three, the other three one each); the four ELZ device listings behind the 872.3330 stainless steel claim; all 54 PMID-backed snippets re-checked against the abstracts PubMed serves, with the reference cache bypassed (54 of 54 verbatim) | CFR text + openFDA `classification.json` by `product_code` and `regulation_number` + openFDA `registrationlisting.json` + PubMed E-utilities |
 
 **`classification.cfm` answered nothing but the queue page on 2026-10-28.** Both the `id=CODE` and
 the `start_search=1&regulationnumber=` routes returned the same 1,986-byte "Your request is being
 processed" page described above, on six consecutive attempts per route and across all six codes
-tried. This is the third-outcome trap, not the 503 outage of 2026-10-24 and not the `User-Agent`
-pitfall: the header was correct and the status was `200`. Treat it as *no answer yet*. openFDA
+tried. The status was `200`. Treat it as *no answer yet*. openFDA
 answered normally throughout and was used to cross-check the codes instead.
 
 One correction to the record: the 2026-10-22 and 2026-10-23 rows were originally written as though a
