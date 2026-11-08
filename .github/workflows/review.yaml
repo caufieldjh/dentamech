@@ -133,7 +133,7 @@ jobs:
           fi
       - id: run
         if: steps.tools.outputs.ready == 'true' && steps.size.outputs.oversized != 'true'
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@c0949c50a78c1ec8ce2647db36629b870e715d0c # v1.0.268
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -176,7 +176,7 @@ jobs:
       - name: Reviewer App token
         id: reviewer
         continue-on-error: true
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           app-id: ${{ secrets.MECH_REVIEWER_APP_ID }}
           private-key: ${{ secrets.MECH_REVIEWER_PRIVATE_KEY }}
