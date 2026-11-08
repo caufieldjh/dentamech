@@ -55,7 +55,7 @@ jobs:
           workflow: triage
           install-project: "false"
       - id: run
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@c0949c50a78c1ec8ce2647db36629b870e715d0c # v1.0.268
         env:
           GH_TOKEN: ${{ github.token }}
         with:
