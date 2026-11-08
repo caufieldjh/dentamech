@@ -36,6 +36,6 @@ events:
     unchanged throughout; the five standards were verified in the FDA Recognized Consensus Standards database
     (ISO 22674 4-300, ISO 9693 4-263, ISO 24234 4-315, ISO 10271 4-265, ISO 7405 4-261), now tabulated
     in docs/regulatory.md; no deep-research provider was callable, so the curating agent searched PubMed
-    directly and its notes are in research/metal-deep-research-claude_code.md, which is a lead and not
+    directly and its notes are in research/metal-curation-notes.md, which is a lead and not
     cited; every PMID snippet was checked against the abstract PubMed serves and the cached records are
     abstract_only. just validate: 57 snippets, 0 issues.'

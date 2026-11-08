@@ -1,10 +1,12 @@
-# Deep research: Metal (OHD:0000048)
+# Curation notes: Metal (OHD:0000048)
+
+> Hand-written notes by the curating agent, kept as a lead. They are not the output of a deep-research provider, and the record does not cite them. The record is now `kb/materials/metal.yaml`; references below to `Metal.yaml` and `IN_PROGRESS` describe the old layout.
 
 - **Material name:** Metal
 - **OHD term:** OHD:0000048 (metal dental restoration material)
 - **Category:** METAL
 - **OHD definition:** A dental restoration material that consists mostly of metal and metal alloys.
-- **Provider:** `claude_code`
+- **Written by:** the curating agent (Claude Code), because no deep-research provider could run
 - **Date:** 2026-09-14
 
 ## How this report was produced, and what that means for its authority

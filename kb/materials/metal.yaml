@@ -7,6 +7,11 @@ record_term:
 category: METAL
 synonyms:
   - metallic restorative material
+mappings:
+  - id: MESH:D003722
+    label: Dental Alloys
+    predicate: CLOSE_MATCH
+    source: MeSH
 setting_mechanisms:
   - CASTING
   - MILLING
@@ -267,8 +272,8 @@ clinical_uses:
         reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
         supports: SUPPORT
         evidence_source: SYSTEMATIC_REVIEW
-        snippet: The aim of the present systematic review was to analyze the survival and complication rates of zirconia-based and metal-ceramic implant-supported single crowns (SCs).
-        explanation: Metal-ceramic implant-supported single crowns are an established use with a pooled evidence base.
+        snippet: 'Meta-analysis revealed an estimated 5-year survival rate of 98.3% (95% CI: 96.8-99.1) for metal-ceramic implant supported SCs (n = 4,363)'
+        explanation: Pooled survival of metal-ceramic implant-supported single crowns, over 4,363 crowns.
   - name: Fixed dental prostheses
     use_context: INDIRECT_RESTORATION
     description: Multiple-unit tooth- and implant-supported fixed dental prostheses with a metal framework.
@@ -312,7 +317,7 @@ clinical_uses:
       term:
         id: OHD:0000163
         label: stainless steel crown restoration procedure
-    description: How the class reaches the primary dentition. The regulation frames the device as interim; clinically a preformed metal crown on a primary molar is often definitive for the life of the tooth, so the use_context follows the regulation rather than practice.
+    description: Preformed stainless steel crowns, used to restore carious primary molars. The use_context follows the regulation, which frames the device as interim.
     indications:
       - Functional restoration until a permanent crown is constructed
       - Functional restoration for a badly decayed deciduous tooth until the adult tooth erupts
@@ -323,6 +328,18 @@ clinical_uses:
         evidence_source: REGULATORY_DOCUMENT
         snippet: It is intended for use as a functional restoration until a permanent crown is constructed.
         explanation: The intended use stated for the preformed crown device type.
+      - reference: PMID:26718872
+        reference_title: Preformed crowns for decayed primary molar teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: They can be made completely of stainless steel (know as 'preformed metal crowns' or PMCs), or to give better aesthetics, may be made of stainless steel with a white veneer cover or made wholly of a white ceramic material.
+        explanation: Preformed crowns for decayed primary molars made wholly of stainless steel are the preformed metal crowns, which is what the stainless steel crown procedure term names.
+      - reference: PMID:36151937
+        reference_title: 'Outcomes of preformed metal crowns placed with the conventional and Hall techniques: A systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Preformed metal crowns (PMCs) have been used to restore carious primary molars and have a high success and survival rate.
+        explanation: The clinical use on primary molars.
 regulatory_status:
   - agency: FDA
     status: EXEMPT
@@ -509,11 +526,11 @@ regulatory_status:
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
         snippet: Cusp, Gold And Stainless Steel
-        explanation: Device name for ELO, class 1, regulation 872.3350, submission type 4 (510(k) exempt), medical specialty Dental,. Cited through openFDA, which serves the same database as the classification.cfm form.
+        explanation: Device name for ELO, class 1, regulation 872.3350, submission type 4 (510(k) exempt), medical specialty Dental. Cited through openFDA, which serves the same database as the classification.cfm form.
 properties:
   - name: Corrosion in the oral environment
     property_type: CORROSION_RESISTANCE
-    description: The one property that is genuinely class-level. It is qualitative here because the rate depends on the family and the microstructure, not on membership of the class; per-family values belong on the children.
+    description: A class-level property of metals in the mouth. It is qualitative here because the rate depends on the family and the microstructure, not on membership of the class; per-family values belong on the children.
     evidence:
       - reference: PMID:10668036
         reference_title: 'Biocompatibility of dental casting alloys: a review.'
@@ -593,7 +610,7 @@ properties:
   - name: Dependence of mechanical properties on fabrication route
     property_type: OTHER
     test_method: Tensile, 3-point bend, and microhardness testing
-    description: A methodological caution that applies to every property recorded on the children. Casting, subtractive milling, and laser sintering of the same alloy give significantly different mechanical properties, so a property value for a metal is only meaningful with its fabrication route attached. Demonstrated for cobalt-chromium; the numbers belong on the Cobalt chromium metal entry.
+    description: A methodological caution that applies to every property recorded on the children. Casting, subtractive milling, and laser sintering of the same alloy significantly influence several mechanical properties, so a property value for a metal is only meaningful with its fabrication route attached. Demonstrated for cobalt-chromium; the numbers belong on the Cobalt chromium metal entry.
     evidence:
       - reference: PMID:39741083
         reference_title: Assessment of mechanical properties and microstructure of Co-Cr dental alloys manufactured by casting, milling, and 3D printing.
@@ -813,7 +830,7 @@ adverse_effects:
       term:
         id: MONDO:0005481
         label: contact dermatitis due to nickel
-    description: Allergic and inflammatory risk from nickel-containing alloys. Nickel is a constituent of the nickel-chromium base metal alloys and of the austenitic stainless steels used for preformed crowns.
+    description: Allergic and inflammatory risk from nickel-containing alloys, which corrode in the oral environment. Which members of the class contain nickel belongs on the children.
     evidence:
       - reference: PMID:23895079
         reference_title: Nickel alloys in the oral environment.
@@ -827,6 +844,12 @@ adverse_effects:
         evidence_source: OTHER
         snippet: Several elements such as nickel and cobalt have relatively high potential to cause allergy, but the true risk of using alloys containing these elements remains undefined.
         explanation: Names nickel and cobalt as the high-potential allergens while stating that the true risk is undefined.
+      - reference: PMID:23895079
+        reference_title: Nickel alloys in the oral environment.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: nickel-casting alloys have low costs and favorable physical properties, but are corrosion-prone in the oral environment
+        explanation: Nickel casting alloys corrode in the mouth, the source of the released nickel.
   - name: Oral lichenoid contact lesions
     effect_category: ALLERGIC_OR_HYPERSENSITIVITY
     effect_term:
@@ -870,6 +893,12 @@ adverse_effects:
         evidence_source: OTHER
         snippet: Despite these facts, carcinogenic effects from dental casting alloys have not been demonstrated.
         explanation: Bounds the carcinogenicity arm the same way. Certain elements are known mutagens or carcinogens, but no clinical effect from dental alloys has been shown.
+      - reference: PMID:10668036
+        reference_title: 'Biocompatibility of dental casting alloys: a review.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: The occurrence of local toxic effects (adjacent to the alloy) is not well documented, but is a higher risk, primarily because local tissues are exposed to much higher concentrations of released metal ions.
+        explanation: Local exposure as the higher risk, bounded by the source's own note that it is not well documented.
   - name: Galvanic current between contacting dissimilar metallic restorations
     effect_category: OTHER
     description: Two dissimilar metallic restorations in contact can generate a current that the patient feels as pain. Reported as generally short-lived.
@@ -1005,13 +1034,13 @@ notes: |-
   Standards. Editions and FDA recognition numbers are listed in docs/regulatory.md, because the Standard class has no slot for them.
   Properties. Deliberately no numbers. Strength, hardness, elastic modulus, melting range and density vary widely across the families, so a class-level number would be an invention; per-family values belong on the children.
   Terms. Dental metal allergy is bound to MONDO:0006525 allergic contact dermatitis, a broad term, on purpose: the presentation the sources discuss is oral contact stomatitis, and no more specific oral allergy term was found in MONDO.
-  Left out. Products, because brands belong on the children. Amalgam-associated oral lichenoid lesions, because that evidence is amalgam-specific and belongs on the Amalgam entry. EU MDR, Health Canada and other regulators, because none were verified against a primary source. A MeSH mapping (Dental Alloys) was removed because the schema does not declare the MESH prefix; restore it once it does.
+  Left out. Products, because brands belong on the children. Amalgam-associated oral lichenoid lesions, because that evidence is amalgam-specific and belongs on the Amalgam entry. EU MDR, Health Canada and other regulators, because none were verified against a primary source.
 see_also:
   - https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44253
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
-status: DRAFT
+status: PROPOSED
 curation_history:
   - timestamp: '2026-11-07T19:51:25+00:00'
     curator: claude-code
@@ -1037,4 +1066,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Fixed the PR #12 review findings. Cut composition descriptions to what the CFR and review quotes say; set mercury to LIQUID, as on Amalgam; corrected the nickel allergy row, which had confined nickel to the nickel-chromium family although austenitic stainless steel also contains it; replaced the plastic deformation property with a row on metal fracture being uncommon compared with ceramics, adding the framework fracture quote; moved the PMID:32490402 ion-release quote to the corrosion row; cut the gold foil claim from the direct filling use; marked the removable framework evidence PARTIAL and dropped the unquoted alloys; quoted PMID:38702521 for onlays and PMID:25935732 for tooth-supported FDPs; dropped the unsupported COLD_WORKING mechanism, the narrower dental alloy synonym and the MeSH mapping whose prefix the schema does not declare; removed process logs and verification dates from notes and explanations.'
+  - timestamp: '2026-11-08T03:40:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the third review of PR #12. Quoted PMID:26718872 and PMID:36151937 for preformed stainless steel crowns on primary molars, which supports the stainless steel crown procedure binding, and cut the unquoted claim that such crowns are often definitive. Replaced the aim-statement evidence on implant-supported metal-ceramic single crowns with the pooled survival sentence. Quoted PMID:10668036 for local exposure as the higher risk, and PMID:23895079 for nickel alloys corroding in the mouth; the nickel row no longer names unquoted alloys. Reworded the corrosion and fabrication-route rows to match their sources, fixed a typo, and restored the MeSH mapping D003722 Dental Alloys now that the schema declares MESH. Confirmed all 20 CFR snippets and the five identification paragraphs verbatim against law.cornell.edu. Moved status to PROPOSED: complete and valid.'
 updated_date: '2026-11-08'
