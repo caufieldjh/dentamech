@@ -657,6 +657,12 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: 'Meta-analysis of the included studies indicated an estimated 5-year survival rate of metal-ceramic FDPs of 94.4% (95% CI: 91.2-96.5%).'
         explanation: Pooled five-year survival for the metal-ceramic arm.
+      - reference: PMID:25935732
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part II: Multiple-unit FDPs.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Even though the survival rate of all-ceramic FDPs was lower than for metal-ceramic FDPs, the differences did not reach statistical significance except for the glass-infiltrated alumina FDPs (p=0.05).
+        explanation: Source of the comparison with all-ceramic FDPs in the description.
   - name: Five-year framework fracture rate of metal-ceramic tooth-supported fixed dental prostheses
     measure_type: COMPLICATION_RATE
     value: '0.6'
@@ -923,7 +929,7 @@ adverse_effects:
         explanation: Links the raised release to cytotoxicity. In vitro only, and the tissue effect is the authors' inference rather than an observed clinical outcome, so this is recorded as PARTIAL.
   - name: Metal artifacts degrading cone-beam CT image quality
     effect_category: OTHER
-    description: Metallic restorations scatter and attenuate the beam, producing streak and shadow artifacts that reduce the diagnostic accuracy of cone-beam CT. Class-level because it follows from the material being metallic rather than from any formulation, but graded across the families in the same way corrosion is - amalgam is the worst offender and cobalt-chromium the most variable. The per-family figures belong on the children. Recorded as OTHER because the category enum has no diagnostic-imaging value, and with no effect_term because the effect is a property of the radiograph rather than a phenotype of the patient.
+    description: Metallic restorations introduce severe artifacts that compromise the diagnostic accuracy of cone-beam CT, and the metal's composition is one of the factors that drive them. Class-level because it follows from the material being metallic rather than from any formulation, but graded across the families in the same way corrosion is - amalgam is the worst offender and cobalt-chromium the most variable. The per-family figures belong on the children. Recorded as OTHER because the category enum has no diagnostic-imaging value, and with no effect_term because the effect is a property of the radiograph rather than a phenotype of the patient.
     evidence:
       - reference: PMID:42203681
         reference_title: 'Artificial intelligence for reducing metal artifacts in dental CBCT images: a systematic review.'
@@ -1072,4 +1078,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the third review of PR #12. Quoted PMID:26718872 and PMID:36151937 for preformed stainless steel crowns on primary molars, which supports the stainless steel crown procedure binding, and cut the unquoted claim that such crowns are often definitive. Replaced the aim-statement evidence on implant-supported metal-ceramic single crowns with the pooled survival sentence. Quoted PMID:10668036 for local exposure as the higher risk, and PMID:23895079 for nickel alloys corroding in the mouth; the nickel row no longer names unquoted alloys. Reworded the corrosion and fabrication-route rows to match their sources, fixed a typo, and restored the MeSH mapping D003722 Dental Alloys now that the schema declares MESH. Confirmed all 20 CFR snippets and the five identification paragraphs verbatim against law.cornell.edu. Moved status to PROPOSED: complete and valid.'
+  - timestamp: '2026-11-08T03:47:28+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the fourth review of PR #12. Quoted PMID:25935732 for the comparison with all-ceramic FDPs, and cut the unquoted scatter-and-attenuation mechanism from the CBCT artifact row.'
 updated_date: '2026-11-08'
