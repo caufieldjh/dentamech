@@ -5,6 +5,10 @@ name: Example dental material
 description: A placeholder that exercises the record structure.
 status: DRAFT
 category: OTHER
+mappings:
+  - id: NCIT:C42634
+    label: Dental Material
+    predicate: BROAD_MATCH
 setting_mechanisms:
   - HYDRATION
 composition:
