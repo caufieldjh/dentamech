@@ -230,7 +230,7 @@ clinical_uses:
         explanation: Establishes the veneer indication across three of the glass-matrix subfamilies.
   - name: Fixed partial denture
     use_context: PROSTHODONTIC
-    description: Evidenced here only for zirconia frameworks; the glass-matrix subfamilies are not indicated for multi-unit spans at the low end of the class's strength range.
+    description: Evidenced here only for zirconia frameworks.
     procedure:
       preferred_term: fixed partial denture
       term:
@@ -483,6 +483,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: The GL-zirconia group demonstrated lower HGFs viability and higher S. mutans adhesion compared to the other three groups.
         explanation: The finding. GL is the glazed group.
+      - reference: PMID:40551320
+        reference_title: Surface Properties, Biocompatibility, and Bacterial Adherence of Four Zirconia Variants for Aesthetic Zone Abutments.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: GL-zirconia exhibited significantly higher surface roughness than Tra-, HT-, and UT-zirconia (p < 0.0001)
+        explanation: The roughness result the description states.
 clinical_performance:
   - name: Five-year survival of tooth-supported single crowns, by ceramic family
     measure_type: SURVIVAL_RATE
@@ -678,7 +684,7 @@ clinical_performance:
 adverse_effects:
   - name: Ceramic fracture and chipping
     effect_category: MECHANICAL_FAILURE
-    description: The dominant failure mode of the class in every indication. Bilayered designs fail by veneer chipping, monolithic designs less so.
+    description: The most frequently reported failure mode in the indications evidenced here. Bilayered designs fail by veneer chipping, monolithic designs less so.
     evidence:
       - reference: PMID:27287305
         reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
@@ -749,7 +755,7 @@ adverse_effects:
         explanation: Identifies which antagonist was worst; the certainty of this evidence was rated moderate.
   - name: Low-temperature degradation of zirconia
     effect_category: OTHER
-    description: An ageing mechanism of the polycrystalline family only, not of the class. A moist environment drives the tetragonal-to-monoclinic transformation, roughening the surface and lowering fatigue strength, and resistance rises with yttria content. The cited study induced it by accelerated autoclave ageing at 134 degC, not at mouth temperature, so the rate under clinical conditions is not evidenced here.
+    description: An ageing mechanism of the polycrystalline family only, not of the class. The tetragonal-to-monoclinic transformation roughens the surface and lowers fatigue strength, and resistance rises with yttria content. The cited study induced it by accelerated autoclave ageing at 134 degC, not at mouth temperature, so the rate under clinical conditions is not evidenced here.
     evidence:
       - reference: PMID:38281620
         reference_title: Effect of low-temperature degradation on the fatigue performance of dental strength-gradient multilayered zirconia restorations.
@@ -837,9 +843,9 @@ products:
 notes: |-
   Scope. OHD:0000135 is a class with 20 descendants, so every claim here is pitched at the level of ceramic as a restorative device type. Where the only measured values are subtype-specific they are recorded as bounds on the class with the subtype named in the property name or value, and the family-specific numbers are left to the children.
 
-  Regulatory. The material-level FDA device type is 872.6660 "Porcelain powder for clinical use" (product code EIH, Class II, 510(k)), and 872.3920 "Porcelain tooth" (ELL) is the downstream prefabricated-component device type that the regulation itself defines as being made of the 872.6660 material. Both regulation texts, both classes and both product codes were read from the eCFR renderer API and the FDA product classification database on 2026-09-27; 872.6660 has exactly one product code. The regulation's wording predates CAD/CAM and names only kaolin, felspar and quartz, but EIH is empirically the code modern ceramic blanks carry, which is why the three verified products below are all EIH. Two neighbouring device types are deliberately not recorded as this material's own status: 872.3630 endosseous dental implant abutment (NHA), where ceramic abutments clear but whose identification names no material, and 872.3661 (NOF), which is the CAD/CAM system rather than the ceramic.
+  Regulatory. The material-level FDA device type is 872.6660 "Porcelain powder for clinical use" (product code EIH, Class II, 510(k)), and 872.3920 "Porcelain tooth" (ELL) is the downstream prefabricated-component device type that the regulation itself defines as being made of the 872.6660 material. 872.6660 has exactly one product code. The regulation's wording predates CAD/CAM and names only kaolin, felspar and quartz, but EIH is empirically the code modern ceramic blanks carry, which is why the three verified products below are all EIH. Two neighbouring device types are deliberately not recorded as this material's own status: 872.3630 endosseous dental implant abutment (NHA), where ceramic abutments clear but whose identification names no material, and 872.3661 (NOF), which is the CAD/CAM system rather than the ceramic.
 
-  Unfinished business in a child entry. kb/materials/Zirconia_Polycrystalline_Ceramic.yaml records status UNKNOWN with a note saying zirconia CAD/CAM blanks are "typically cleared by 510(k) under 872.3690 (tooth shade resin material, product code EBF) or as porcelain/ceramic for clinical use". The second disjunct is the right answer and this run has now verified it (EIH under 872.6660); the 872.3690/EBF alternative is wrong, and that note already says the records "have not yet been verified". So the child is incomplete rather than contradicted. Correcting it was out of scope for a one-material run and is flagged for a later one.
+  Unfinished business in a child entry. kb/materials/zirconia_polycrystalline_ceramic.yaml records status UNKNOWN with a note saying zirconia CAD/CAM blanks are "typically cleared by 510(k) under 872.3690 (tooth shade resin material, product code EBF) or as porcelain/ceramic for clinical use". The second disjunct is the right answer and this run has now verified it (EIH under 872.6660); the 872.3690/EBF alternative is wrong, and that note already says the records "have not yet been verified". So the child is incomplete rather than contradicted. Correcting it is out of scope for this record.
 
   Standards. All six were read from their own FDA recognition detail pages rather than from the per-product-code query, so no row implies that the set is complete; the EIH recognition list is longer and includes furnace, investment and die-material standards that are not properties of the ceramic. One transition is worth knowing: the 45644 page states that recognition of ISO 6872 Fourth edition 2015-06-01 [Rec# 4-251] "will be superseded by recognition of ISO 6872 Fifth edition 2024-08 [Rec# 4-329]", with declarations of conformity to 4-251 accepted until December 20, 2026. The edition recorded here is therefore the Fifth.
 
@@ -849,11 +855,7 @@ notes: |-
 
   Gaps. No EU MDR, Health Canada, TGA or other non-FDA status is recorded, because none was verified. No hypersensitivity or allergy adverse effect is recorded: no source in this entry's reference set documents one for ceramic, and the absence of evidence is not evidence of absence. Hardness, elastic modulus, radiopacity and wear resistance are not populated, since no cached source gave class-level values for them. No mapping to MeSH is recorded even though MeSH has "Dental Porcelain", because MeSH is not in conf/oak_config.yaml; NCIT has no dental-ceramic material concept, so the only mapping is the broad NCIT:C42634 Dental Material.
 
-  Research provenance. The deep-research shim could not run in this environment (no provider credentials reach the subprocess), and PubMed esearch was returning HTTP 500 throughout the run, so discovery used the Europe PMC REST API and every cited abstract was then cached through just fetch-reference. See research/Ceramic-deep-research-claude_code.md for the full account. Curation status is IN_PROGRESS rather than CURATED because no full texts were read beyond the cached records and no non-US regulator was verified.
-
-  How the snippets were checked. just validate-references passes on this file. "Total checks: 0" counts issues found, not checks performed, so zero is a clean result and not a no-op: the same command reports "Total checks: 1" as soon as a single snippet is altered, which was confirmed deliberately on a scratch copy. The check was also re-run against a fresh cache directory with full-text fetching disabled, so that every record was a newly fetched PubMed abstract (21 records, all content_type abstract_only), and every snippet still matched. That second run matters because linkml-reference-validator fetches full text by default and will rewrite an abstract_only record into a full-text superset, which can let a snippet pass against publisher text that the abstract does not contain. Seven records cached for this entry had been rewritten that way; all seven are now replaced by freshly fetched abstracts, so every one of the 21 records committed here is content_type abstract_only and no snippet can pass against publisher text. The rewrite was not harmless furniture: the discarded "full text" of PMID:40738693 was an Anubis anti-scraping challenge page, not the article. Re-running just validate-references without --no-full-text will rewrite them again, because --full-text is that tool's default; the durable fix is outside this entry. All 63 literature snippets are byte-exact substrings of their own cached records and of abstracts refetched live from PubMed efetch with the repo cache bypassed, and all 63 lie inside the abstract, so no snippet depends on full text; the 5 regulatory snippets were checked against the live CFR text.
-
-  Why this file contains non-ASCII spaces. Byte-exactness has to be asserted separately from just validate-references, which normalizes whitespace before matching and therefore accepts an ordinary space where the source serves U+00A0 or U+2009. Eight snippets passed that way until they were corrected, and the earlier claim here that all 63 matched their cached records by substring was wrong for exactly those eight: PubMed serves a no-break space before MPa and before the percent sign in PMID:25489158, before "vitro" in PMID:40551320, around the equals signs in PMID:30328190, and a thin space before "years" in PMID:39523553. Those characters are now embedded as the sources serve them. A whitespace-insensitive check cannot see this defect class, so a byte-level comparison against freshly fetched abstracts is the only check that catches it.
+  Status. The record stays DRAFT: no full texts were read beyond the cached abstracts, and no non-US regulator was verified.
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
@@ -870,5 +872,11 @@ curation_history:
     llm_assisted: true
     model: claude-opus-5-5
     action: EDIT
-    description: Carried over the curation from branch curate/ceramic (11 commits, 2026-09-27 to 2026-11-07) into the mechmaker layout.
+    description: 'Carried over the curation from branch curate/ceramic (10 curation commits, 2026-09-27 to 2026-11-07) into the mechmaker layout. That work curated the record from the stub: composition, seven clinical uses, the 872.6660 (EIH) and 872.3920 (ELL) device types, properties and performance rows, adverse effects, six standards and three products with 510(k)s; applied a self-review; quoted the figures of the five-year single-crown row; replaced full-text cache records with fetched abstracts; made eight snippets byte-exact; recorded the corrigendum to PMID:25842099 and what it revises; and evidenced the population counts of the headline survival row.'
+  - timestamp: '2026-11-08T02:55:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the review of PR #13. Quoted the glazing roughness result from PMID:40551320; cut the unquoted claims that glass-matrix ceramics are not indicated for multi-unit spans and that moisture drives low-temperature degradation; narrowed fracture to the most frequently reported failure mode in the indications evidenced here; removed stale counts, paths and the IN_PROGRESS status from notes, and moved the validation narrative to the session history record.'
 updated_date: '2026-11-07'
