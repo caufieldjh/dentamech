@@ -597,6 +597,12 @@ clinical_performance:
         evidence_source: HUMAN_CLINICAL
         snippet: Unacceptable marginal deterioration was the main reason for failure, followed by loss of retention.
         explanation: Failure modes.
+      - reference: PMID:18028061
+        reference_title: Dentin diffusion of HEMA released from etch-and-rinse and self-etch bonding systems.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The highest mean HEMA concentration was found in the 0.25 mm RDT group treated with OptiBond FL (13.3 microg)
+        explanation: OptiBond FL releases HEMA, which is the basis for calling it the HEMA-containing arm.
 adverse_effects:
   - name: Allergic contact dermatitis in patients and dental personnel
     effect_category: ALLERGIC_OR_HYPERSENSITIVITY
@@ -845,7 +851,6 @@ products:
     see_also:
       - https://pubmed.ncbi.nlm.nih.gov/34013195/
   - name: Vitremer
-    manufacturer: 3M
     description: Resin-modified glass ionomer restorative; showed the highest HEMA release of three RMGICs tested.
     see_also:
       - https://pubmed.ncbi.nlm.nih.gov/19826597/
@@ -875,4 +880,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the review of PR #2. Cut the unquoted chemistry from the description and quoted the rest; replaced the composition quote that did not name HEMA; quoted the numbers in the composition, desensitizer, HEMA-release, clinical performance and adverse-effect sections; removed the two FDA 510(k) submissions and the ADH19 product, whose product identities could not be confirmed from an FDA record; pointed source_url at the CFR text quoted; dropped ISO/TS 11405 and gave ISO 4049 a reason; moved verification provenance out of notes.'
-updated_date: '2026-11-08'
+  - timestamp: '2026-11-08T02:54:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Quoted PMID:18028061 for OptiBond FL releasing HEMA, which supports calling it the HEMA-containing arm of the 14-year trial. Dropped the unsourced manufacturer on Vitremer.
+updated_date: '2026-11-07'
