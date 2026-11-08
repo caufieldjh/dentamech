@@ -54,3 +54,9 @@ def test_review_never_runs_tools_from_the_pull_request():
     assert len(guarded) == 4
     assert all("steps.tools.outputs.ready == 'true'" in s["if"] for s in guarded)
     assert "pr/.github" not in text
+
+
+def test_curation_prs_may_update_the_regulatory_table():
+    """The curate-record skill adds a row to this table for each regulation it verifies."""
+    text = (ROOT / ".github" / "workflows" / "qc.yaml").read_text(encoding="utf-8")
+    assert "|docs/regulatory\\.md$)" in text
