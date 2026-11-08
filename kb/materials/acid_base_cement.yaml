@@ -1,6 +1,31 @@
 id: OHD:0001021
 name: Acid-base cement
-description: A dental restoration material that sets by the neutralisation of an acidic liquid by a basic, acid-reactive powder, in water, to give a salt matrix binding the unreacted powder core. The class covers zinc phosphate, zinc polycarboxylate, zinc oxide and glass polyalkenoate (glass ionomer) cements, the metal-modified (cermet) cements, and also the resin-modified members, in which a polymerisation reaction accompanies the acid-base set; OHD places both metal modified glass ionomer and resin-modified glass ionomer directly under this class, as siblings of glass ionomer cement rather than as its subtypes. It is distinguished from the resin cements, which set by polymerisation alone rather than by an acid-base reaction.
+description: A dental restoration material that sets by an acid-base reaction between an acidic liquid and a basic, acid-reactive powder, in water. The class covers zinc phosphate, zinc polycarboxylate, zinc oxide and glass polyalkenoate (glass ionomer) cements, the metal-modified (cermet) cements, and the resin-modified glass ionomers; OHD places both metal modified glass ionomer and resin-modified glass ionomer directly under this class, as siblings of glass ionomer cement rather than as its subtypes. Water-based cements are one of the two main groups of dental cements, the other being the polymerizing cements.
+description_evidence:
+  - reference: PMID:27367737
+    reference_title: A Review of Glass-Ionomer Cements for Clinical Dentistry.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: Glass-ionomers are shown to set by an acid-base reaction within 2-3 min
+    explanation: The acid-base set, for the glass polyalkenoate members. The Raman study cited on Poly(acrylic acid) shows the salt-forming neutralisation itself.
+  - reference: PMID:27367737
+    reference_title: A Review of Glass-Ionomer Cements for Clinical Dentistry.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: Modified forms of glass-ionomers, namely resin-modified glass-ionomers and glass carbomer, are also described
+    explanation: Resin-modified glass ionomers as a modified form of glass ionomer, consistent with OHD placing them in this class.
+  - reference: PMID:11641841
+    reference_title: Laboratory strength of glass ionomer and zinc phosphate cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Ketac Silver, a glass ionomer cement reinforced with sintered glass-silver particles
+    explanation: A metal-modified (cermet) glass ionomer, the abstract's own description of one of the two cermet cements it tested.
+  - reference: PMID:17594382
+    reference_title: 'To what extent does the longevity of fixed dental prostheses depend on the function of the cement? Working Group 4 materials: cementation.'
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: 'The various types of cements used in dentistry could be mainly divided into two groups: Water-based cements and polymerizing cements.'
+    explanation: The contrast with the polymerizing (resin) cements that the description draws.
 record_term:
   id: OHD:0001021
   label: acid-base cement dental restoration material
@@ -13,14 +38,26 @@ setting_mechanisms:
 composition:
   - name: Acid-reactive basic powder
     role: POWDER
-    description: The basic half of the acid-base pair. A metal oxide in the zinc-based members and an ion-leachable aluminosilicate glass in the glass polyalkenoate members. Only partly consumed by the reaction; the residual core acts as the reinforcing filler.
+    description: The basic half of the acid-base pair. Zinc oxide in the zinc-based members, and an acid-degradable glass in the glass polyalkenoate members.
     evidence:
       - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
         reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
-        supports: SUPPORT
+        supports: PARTIAL
         evidence_source: REGULATORY_DOCUMENT
         snippet: 'dental cements are categorized on the basis of their chemical composition as follows: · Zinc phosphate cement · Zinc polycarboxylate cement · Glass polyalkenoate cement'
-        explanation: FDA, describing the scope of ISO 9917-1, enumerates the three compositional families that make up the powder/liquid acid-base class.
+        explanation: FDA, describing the scope of ISO 9917-1, enumerates the three compositional families of the powder/liquid acid-base class. It names the families, not their powders; the powders are quoted in the next two items.
+      - reference: PMID:10941918
+        reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The components consisted of a fast-setting acid-degradable dental glass (containing, inter alia, oxides of Si, Al, Ca, Ba and Na), polyacrylic acid (PAA) and/or tartaric acid (TA).
+        explanation: The basic powder of a glass polyalkenoate cement is an acid-degradable glass.
+      - reference: PMID:12628437
+        reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
+        explanation: Zinc oxide is the powder phase of the zinc phosphate and polycarboxylate cements tested.
   - name: Zinc oxide
     role: POWDER
     chemical:
@@ -38,7 +75,20 @@ composition:
         explanation: Identifies zinc oxide as the dissolvable powder phase of the zinc-based members of the class.
   - name: Acidic liquid
     role: LIQUID
-    description: The acidic half of the pair. An aqueous inorganic acid in zinc phosphate cement and an aqueous polyalkenoic (polycarboxylic) acid in polycarboxylate and glass polyalkenoate cements. It is the component responsible for the class-level concern about pulpal irritation.
+    description: The acidic half of the pair. Phosphoric acid in zinc phosphate cement, and polyacrylic acid, with tartaric acid in some formulations, in the glass polyalkenoate cements.
+    evidence:
+      - reference: PMID:10941918
+        reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The components consisted of a fast-setting acid-degradable dental glass (containing, inter alia, oxides of Si, Al, Ca, Ba and Na), polyacrylic acid (PAA) and/or tartaric acid (TA).
+        explanation: Polyacrylic acid, with or without tartaric acid, is the acid of a glass polyalkenoate cement.
+      - reference: PMID:2269210
+        reference_title: '[Pulp toxicity of the acid components of acid-base reaction cements].'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: The phosphoric acid of Tenet causes an almost complete collapse of the incisal microcirculation just a short time after its application.
+        explanation: Phosphoric acid as the acid component of a member of the class.
   - name: Phosphoric acid
     role: LIQUID
     chemical:
@@ -46,7 +96,7 @@ composition:
       term:
         id: CHEBI:26078
         label: phosphoric acid
-    description: The acidic liquid of zinc phosphate cement, buffered with aluminium and zinc salts.
+    description: The acidic liquid of zinc phosphate cement.
     evidence:
       - reference: PMID:2269210
         reference_title: '[Pulp toxicity of the acid components of acid-base reaction cements].'
@@ -76,7 +126,7 @@ composition:
       term:
         id: CHEBI:15377
         label: water
-    description: The reaction medium in which the neutralisation proceeds, and the reason the class is also called the water-based cements. Loss or gain of water during setting changes the properties of the set cement.
+    description: The reaction medium in which the neutralisation proceeds. In glass ionomer cement, the fraction of polyacrylic acid left unreacted falls as the initial water ratio rises.
     evidence:
       - reference: PMID:10941918
         reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
@@ -84,6 +134,12 @@ composition:
         evidence_source: IN_VITRO
         snippet: The data are consistent with 5.6 moles of water being required when each mole of acidic groups is neutralised.
         explanation: Quantifies the stoichiometric role of water in the setting neutralisation.
+      - reference: PMID:10941918
+        reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The maximum fraction of unreacted PAA was found to decrease linearly with initial water/PAA mass ratio to a minimum of approximately 20% when this ratio exceeds 1.5.
+        explanation: The effect of the initial water ratio on how much polyacrylic acid reacts.
 properties:
   - name: Net setting time
     property_type: SETTING_TIME
@@ -111,7 +167,7 @@ properties:
     unit: MPa
     test_method: ISO 9917-1
     conditions: FDA performance criterion for powder/liquid acid-base cements.
-    description: The minimum the three compositional families must meet. Measured values for marketed cements vary widely and rise with time after mixing.
+    description: The minimum the three compositional families must meet. Measured values for marketed cements vary widely with time after mixing.
     evidence:
       - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
         reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
@@ -137,7 +193,7 @@ properties:
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: Diametral tensile strengths ranged widely from 4.4 +/- 0.9 MPa for Ketac Cem to 11.5 +/- 2.2 MPa for Chelon Silver.
-        explanation: Tensile strength is an order of magnitude below compressive strength, which is why the class is confined to compressive-load applications.
+        explanation: The range across the commercial glass ionomer, cermet and zinc phosphate cements tested, which is the value recorded.
       - reference: PMID:11641841
         reference_title: Laboratory strength of glass ionomer and zinc phosphate cements.
         supports: SUPPORT
@@ -150,7 +206,7 @@ properties:
     unit: mm
     test_method: ISO 9917-1
     conditions: FDA performance criteria for powder/liquid acid-base cements.
-    description: Solubility and disintegration in acid is the characteristic weakness of the class. The permitted eroded depth differs by family, glass polyalkenoate being the most resistant and zinc polycarboxylate the least.
+    description: The permitted eroded depth differs by family, glass polyalkenoate being the most resistant and zinc polycarboxylate the least.
     evidence:
       - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
         reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
@@ -169,8 +225,7 @@ properties:
     value: <=25
     unit: µm
     test_method: ISO 9917-1 or ISO 9917-2
-    conditions: Luting cements only. The guidance scopes this criterion by application and not by setting chemistry, and cites both parts of ISO 9917, so the single 25 µm limit covers the resin-modified luting members of the class as well.
-    description: The limit that lets a cast or ceramic restoration seat fully.
+    conditions: FDA performance criterion for luting cements, within the guidance's own scope, which excludes the zinc oxide-eugenol member of the class (EMB). The guidance scopes this criterion by application and not by setting chemistry, and cites both parts of ISO 9917, so the 25 µm limit reaches the resin-modified luting members as well as the powder/liquid ones.
     evidence:
       - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
         reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
@@ -178,9 +233,15 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: 'Performance Criteria: Maximum film thickness of 25 µm'
         explanation: Film thickness criterion, stated for luting cements.
+      - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+        reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+        supports: PARTIAL
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Zinc oxide-eugenol cements under 21 CFR 872.3275 (product code EMB)
+        explanation: Section III lists this among the things outside the scope of the guidance, so the film thickness criterion does not reach the zinc oxide-eugenol member of the class. Recorded as PARTIAL because it limits the row it sits on.
   - name: Fluoride release
     property_type: FLUORIDE_RELEASE
-    description: Not a class-level property. Only the glass polyalkenoate members, whose powder is a fluoroaluminosilicate glass, release fluoride; the zinc-based members have no fluoride source.
+    description: Not recorded as a class-level property. The glass polyalkenoate (glass ionomer) members release fluoride, in a two-step process.
     evidence:
       - reference: PMID:37615013
         reference_title: 'Fluoride exchange by glass-ionomer dental cements and its clinical effects: a review.'
@@ -188,16 +249,22 @@ properties:
         evidence_source: OTHER
         snippet: Fluoride release has been shown to be a two-step process. In neutral solutions, the steps can be divided into early wash-out and long-term diffusion.
         explanation: Establishes the release kinetics for the glass polyalkenoate members only; the review is confined to glass-ionomer cements. Narrative review rather than a systematic review, so the source is recorded as OTHER. The abstract states that papers were selected from an initial PubMed search and that other relevant papers were cited where they added useful and relevant data, with no systematic protocol and no pooling.
+      - reference: PMID:27367737
+        reference_title: A Review of Glass-Ionomer Cements for Clinical Dentistry.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: They release fluoride and are bioactive
+        explanation: Fluoride release by the glass ionomer members.
 clinical_uses:
   - name: Luting of cast and ceramic restorations
     use_context: LUTING
-    description: The principal use of the class. Retention is macromechanical, which is why it depends on a retentive preparation and an accurate fit rather than on adhesion.
+    description: Long-term clinical performance in luting is tied to macroretentive preparation designs and adequate marginal fit.
     indications:
       - Cast metal inlays, onlays and partial crowns
       - Single-unit metal-ceramic crowns
       - Multiple-unit fixed dental prostheses with macroretentive preparation designs
     contraindications:
-      - Non-retentive preparations, which need a polymerising adhesive cement
+      - Non-retentive restorations, for which polymerizing cements are mainly indicated
     evidence:
       - reference: PMID:17594382
         reference_title: 'To what extent does the longevity of fixed dental prostheses depend on the function of the cement? Working Group 4 materials: cementation.'
@@ -205,14 +272,20 @@ clinical_uses:
         evidence_source: OTHER
         snippet: Water-based cements exhibited satisfying long-term clinical performance associated with cast metal (inlays, onlays, partial crowns) as well as single unit metal-ceramic FDPs and multiple unit FDPs with macroretentive preparation designs and adequate marginal fit.
         explanation: Delimits the indications in which the class performs well, and ties that to macroretentive preparation and marginal fit. Consensus working-group narrative review rather than a systematic review, so the source is recorded as OTHER. The abstract describes a PubMed search plus a manual search of non-indexed literature, and states that recommendations had to be based on a lower evidence level in fields lacking randomized prospective studies.
+      - reference: PMID:17594382
+        reference_title: 'To what extent does the longevity of fixed dental prostheses depend on the function of the cement? Working Group 4 materials: cementation.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Current polymerizing cements cover almost all fields of water-based cements and in addition to that they are mainly indicated for non-retentive restorations.
+        explanation: 'Source of the contraindication: non-retentive restorations are the indication of polymerizing cements rather than water-based ones.'
   - name: Base or liner under a restoration
     use_context: LINER_OR_BASE
     anatomical_site:
-      preferred_term: dental pulp
+      preferred_term: dentin
       term:
-        id: UBERON:0001754
-        label: dental pulp
-    description: Placed between the preparation and the definitive restoration to protect the pulp. ISO 9917-1 sets separate base/lining limits from the luting limits.
+        id: UBERON:0001751
+        label: dentine
+    description: Used as a base cement, and applied to a tooth to protect the pulp.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
         reference_title: 21 CFR 872.3275 Dental cement
@@ -220,14 +293,14 @@ clinical_uses:
         evidence_source: REGULATORY_DOCUMENT
         snippet: as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp
         explanation: The base and pulp-protection uses named in the identification paragraph.
-  - name: Restorative and temporary filling
-    use_context: DIRECT_RESTORATION
+  - name: Temporary filling
+    use_context: TEMPORARY
     anatomical_site:
       preferred_term: tooth
       term:
         id: UBERON:0001091
         label: calcareous tooth
-    description: Confined to low-stress sites. Among the class only the glass polyalkenoate members are used as definitive restoratives; the zinc-based members serve as temporary fillings.
+    description: Use as a temporary tooth filling, as both branches of 21 CFR 872.3275 name it. Definitive restorative use by the glass polyalkenoate members is not recorded at class level.
     indications:
       - Temporary tooth filling
     evidence:
@@ -278,7 +351,7 @@ clinical_performance:
 adverse_effects:
   - name: Pulpal irritation from the acidic liquid
     effect_category: PULPAL_RESPONSE
-    description: The recurring class-level concern. The free acid of the freshly mixed cement can reach the pulp through dentinal tubules before the reaction has neutralised it. The effect differs sharply between acids, so it is not uniform across the class. No HP or MONDO term was bound; none matches this material-attributed pulpal response.
+    description: A class-level concern about the acid components. The pulpal response differs sharply between acids, so it is not uniform across the class. No HP or MONDO term was bound; none matches this material-attributed pulpal response.
     evidence:
       - reference: PMID:2269210
         reference_title: '[Pulp toxicity of the acid components of acid-base reaction cements].'
@@ -294,7 +367,7 @@ adverse_effects:
         explanation: The response is acid-specific, so pulpal irritation cannot be asserted uniformly across the class.
   - name: Dissolution and disintegration at exposed margins
     effect_category: MECHANICAL_FAILURE
-    description: Acid erosion of the exposed cement line, which can undermine a luted restoration. Ranking across the class follows the compositional family.
+    description: Acid erosion of the set cement. Ranking across the class follows the compositional family.
     evidence:
       - reference: PMID:11124414
         reference_title: A simple acid erosion test for dental water-based cements.
@@ -331,7 +404,7 @@ regulatory_status:
       - name: Application to a tooth to protect the tooth pulp
         use_context: LINER_OR_BASE
     source_url: https://www.ecfr.gov/current/title-21/section-872.3275
-    notes: Paragraph (b) of the regulation. Covers the zinc phosphate, zinc polycarboxylate and glass polyalkenoate members of the class. The same regulation also carries MZW (dental cement without zinc oxide-eugenol as an ulcer covering for pain relief, class 2) and NEA (cement, ear, nose and throat, class 2); neither is a dental restorative use, so neither is listed here.
+    notes: Paragraph (b) of the regulation. Its device is every dental cement other than zinc oxide-eugenol, so by its wording it covers the zinc phosphate, zinc polycarboxylate, glass polyalkenoate and resin-modified members of the class. A tooth-coloured member, resin-modified ones included, may instead be cleared under 872.3690 (tooth shade resin material, EBF/OFW); that route is recorded on the child entries. The same regulation also carries MZW (dental cement without zinc oxide-eugenol as an ulcer covering for pain relief, class 2) and NEA (cement, ear, nose and throat, class 2); neither is a dental restorative use, so neither is listed here.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
         reference_title: 21 CFR 872.3275 Dental cement
@@ -404,12 +477,9 @@ standards:
     url: https://www.iso.org/standard/69901.html
 notes: |-
   Class-level entry. Composition, properties and uses are stated for the class; subtype specifics belong in the child entries (Glass ionomer cement, Metal modified glass ionomer, Resin-modified glass ionomer, Zinc oxide cement, Zinc phosphate cement, Zinc polycarboxylate cement).
-  Standards. ISO 9917-1 is the standard for the class. FDA recognises the third edition, 2025-05, "Dentistry - Water-based cements - Part 1: Acid-base cements", under recognition number 4-348 (recognised 12/22/2025, extent Complete); the second edition, 2007-10-01, was recognised as 4-153 under the older title "Powder/liquid acid-base cements". ISO 9917-2 (third edition 2017-09, FDA recognition 4-311) covers the resin-modified cements, which sit inside this class rather than outside it: OHD:0001026 resin-modified glass ionomer is a direct is_a child of OHD:0001021. All three recognition numbers were re-verified on 2026-10-10 by POST query to the recognized-standards database, which ignores query-string parameters and silently returns an unfiltered listing; 4-348 (recognised 12/22/2025, extent Complete) carries "9917-1 Third Edition 2025-05", 4-153 (01/30/2014, Complete) carries "9917-1 Second edition 2007-10-01", and 4-311 (12/18/2023, Complete) carries "9917-2 Third edition 2017-09". The two ISO catalogue numbers on the standards rows, 76037 and 69901, were confirmed against reseller listings that quote them, the ISO catalogue itself still returning 403. The two parts therefore divide the class by setting chemistry; they do not bound it, and the FDA guidance cited throughout is explicit that "The performance criteria in this guidance are applicable to dental cements as defined in the FDA-recognized consensus standards" of both parts. Editions and titles were verified against the FDA Recognized Consensus Standards database on 2026-09-05, not against the ISO catalogue, which blocks automated retrieval.
-  Regulatory. Both branches of 21 CFR 872.3275 were re-verified on 2026-10-10 and agree with docs/regulatory.md. The two CFR snippets and both identification fields were checked character for character against the authoritative eCFR versioner XML, title 21 issue of 2026-10-07, rather than against the law.cornell.edu mirror the reference URLs name, and match it exactly, em dashes included. The product classification database was re-queried the same day. EMA remains class 2 and EMB class 1, and the other two codes under this regulation are still MZW (class 2, full device name "dental cement w/out zinc-oxide eugenol as an ulcer covering for pain relief", truncated in the regulation-wide listing and read from the single-code page) and NEA (class 2). Members of the class that are marketed as permanent tooth-coloured restoratives may instead be cleared under 872.3690 (tooth shade resin material, EBF/OFW); that route is recorded on the individual child entries rather than here, because the acid-base cement class as a whole is not a tooth shade resin material.
-  Not filled. No products are listed: this is an abstract class, so branded products and their 510(k) records belong on the child entries. Working time and flexural strength are not recorded: the FDA guidance marks both "(as applicable, resin-modified cements only)" and draws them from ISO 9917-2, so they are criteria for the resin-modified members of the class and not class-wide values. They belong on the Resin-modified glass ionomer entry. For the same reason setting_mechanisms records only ACID_BASE_REACTION, the reaction that defines the class; the polymerisation of the resin-modified members is a property of those members, not of the class.
-  Scope of the FDA criteria, the document first. Every criterion taken from the guidance sits inside the guidance's own section III scope, and that scope is narrower than this class. Section III admits only three class II product codes - EMA under 872.3275, KLE under 872.3200 and DYH under 872.3750 - and then names "Zinc oxide-eugenol cements under 21 CFR 872.3275 (product code EMB)" among the things outside the scope of this guidance. Zinc oxide eugenol cement (OHD:0001007) is inside this class, reaching it through Zinc oxide cement (OHD:0001022), so no property row sourced from this guidance can be stated for every member of the class, however the individual test item is scoped. This is also why the second regulatory_status row, the 510(k)-exempt class I EMB branch of 872.3275, carries no performance criteria. The same exclusion is recorded in docs/regulatory.md.
-  Scope of the FDA criteria, property by property. Within that document scope the guidance scopes each test item separately, and it does not scope them all the same way, so the recorded properties divide. Compressive strength and acid erosion are marked "(as applicable, powder/liquid acid-base cements only)" and are limited accordingly; their criteria name the three powder/liquid families one by one, and zinc oxide-eugenol is not among them. Net setting time carries no "as applicable" restriction at all, and film thickness is scoped by application ("as applicable, luting cements only") rather than by setting chemistry; both name ISO 9917-1 or ISO 9917-2 as methodology, so both reach the resin-modified members rather than the powder/liquid ones alone. The net setting time row therefore quotes all four rows of Table 2, including the resin-modified one, and records that the lower bound binds the powder/liquid families only, the resin-modified members having an upper bound alone. Table 2's four families are the reach of that row, not the class.
-  Provenance. The deep research step of the curate-material skill could not be run: the claude_code provider was unauthenticated in this environment and no other provider key was set, so no research/Acid-base_Cement-deep-research-*.md report accompanies this entry. References were instead found by direct PubMed search, cached with just fetch-reference, and quoted from the cached abstracts.
+  Standards. ISO 9917-1 covers the powder/liquid acid-base cements and ISO 9917-2 the resin-modified cements, which sit inside this class: OHD:0001026 resin-modified glass ionomer is a direct is_a child of OHD:0001021. The two parts divide the class by setting chemistry; they do not bound it. FDA recognises ISO 9917-1 third edition 2025-05 (recognition 4-348) and ISO 9917-2 third edition 2017-09 (4-311).
+  Not filled. No products are listed: this is an abstract class, so branded products and their 510(k) records belong on the child entries. Working time and flexural strength are not recorded: the FDA guidance marks both "(as applicable, resin-modified cements only)", so they belong on the Resin-modified glass ionomer entry. For the same reason setting_mechanisms records only ACID_BASE_REACTION, the reaction that defines the class.
+  Scope of the FDA criteria. Every criterion taken from the guidance sits inside its section III scope (EMA, KLE, DYH), which excludes zinc oxide-eugenol (EMB), a member of this class through Zinc oxide cement (OHD:0001022). No property row sourced from the guidance is therefore stated for every member of the class. Within that scope, compressive strength and acid erosion are limited to the powder/liquid acid-base cements; net setting time and film thickness reach the resin-modified members too.
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
@@ -427,4 +497,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Carried over the curation from branch curate/acid-base-cement (17 commits, 2026-09-05 to 2026-11-07) into the mechmaker layout.
-updated_date: '2026-11-07'
+  - timestamp: '2026-11-08T02:55:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Fixed the PR #4 review findings. Cut claims no quote supported (powder residual core, phosphoric acid buffering, zinc members having no fluoride source, definitive restorative use, water loss or gain, base/lining limits). Added 11 quotes from cached PubMed abstracts to the description, the powder, the acidic liquid, water, fluoride release and luting. Rescoped the filling use to temporary filling (TEMPORARY). Rebound the base/liner site from dental pulp to dentine (UBERON:0001751). Scoped film thickness to the guidance, excluding EMB. Stated that 872.3275(b) covers the resin-modified members. Moved verification provenance out of notes.'
+updated_date: '2026-11-08'
