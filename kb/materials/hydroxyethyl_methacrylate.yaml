@@ -1,6 +1,19 @@
 id: OHD:0001082
 name: Hydroxyethyl methacrylate
-description: A dental restoration material which is a hydrophilic monomer used in dental adhesives and primers. HEMA is the monomethacrylate ester of ethylene glycol. It carries one polymerizable methacrylate group and one free hydroxyl, which makes it miscible with water and with the dimethacrylate resins of an adhesive. It is a component monomer rather than a finished restorative; its clinical uses and regulatory standing are those of the adhesives, primers, resin-modified glass ionomer cements, resin cements, and desensitizers that contain it.
+description: A dental restoration material which is a hydrophilic, low-molecular-weight monomer used in dental adhesives and primers. It is a component monomer rather than a finished restorative; its clinical uses and regulatory standing are those of the adhesives, primers, resin-modified glass ionomer cements, resin cements, and desensitizers that contain it.
+description_evidence:
+  - reference: PMID:18433860
+    reference_title: The role of HEMA in one-step self-etch adhesives.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: In spite of its high allergenic potential, 2-hydroxyethyl methacrylate (HEMA), a low-molecular-weight monomer, is frequently used in adhesives for its positive influence on the bond strength.
+    explanation: Low-molecular-weight monomer used in adhesives.
+  - reference: PMID:39838443
+    reference_title: 'HEMA-free versus HEMA-containing adhesive systems: a systematic review.'
+    supports: SUPPORT
+    evidence_source: SYSTEMATIC_REVIEW
+    snippet: Although the addition of HEMA to dental adhesives improves dentin wettability and resin diffusion into demineralized collagen fibrils, HEMA's high hydrophilicity can lead to hydrolytic degradation of the adhesive interface.
+    explanation: HEMA is highly hydrophilic.
 record_term:
   id: OHD:0001082
   label: hydroxyethyl methacrylate dental restoration material
@@ -31,14 +44,8 @@ composition:
         id: CHEBI:34288
         label: 2-hydroxyethyl methacrylate
     proportion: 0 to 36% in experimental one-step self-etch adhesives; about 10% gave the best bond strength
-    description: The material is a single compound. In an adhesive it copolymerizes with the cross-linking dimethacrylates (bis-GMA, UDMA, TEGDMA) and acidic functional monomers, wets demineralized dentin, and keeps the resin from separating from water as the solvent evaporates. Raising its proportion past about 10% lowers bond strength and degree of conversion.
+    description: The material is a single compound. In an adhesive it is blended with cross-linking dimethacrylates such as bis-GMA, bis-EMA and TEGDMA, improves dentin wettability, and keeps the adhesive monomers from separating from water as the solvent evaporates. In one study of experimental one-step self-etch adhesives, 10% HEMA gave the best bond strength and 36% the lowest. In a separate study of an experimental adhesive resin, 30 and 50 wt% HEMA lowered the degree of conversion.
     evidence:
-      - reference: PMID:17543382
-        reference_title: Systematic review of the chemical composition of contemporary dental adhesives.
-        supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
-        snippet: Irrespective of the number of bottles, an adhesive system typically contains resin monomers, curing initiators, inhibitors or stabilizers, solvents and sometimes inorganic filler.
-        explanation: Places HEMA among the resin monomers of an adhesive formulation.
       - reference: PMID:18433860
         reference_title: The role of HEMA in one-step self-etch adhesives.
         supports: SUPPORT
@@ -57,6 +64,36 @@ composition:
         evidence_source: IN_VITRO
         snippet: The most frequently occurring methacrylates in the bonding materials were 2-hydroxyethyl methacrylate (2-HEMA)
         explanation: Chemical analysis of commercial bonding agents; HEMA is the most common monomer found.
+      - reference: PMID:21594225
+        reference_title: Influence of 2-hydroxyethyl methacrylate concentration on polymer network of adhesive resin.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The effect of HEMA content (0, 15, 30, and 50%wt - control, G15, G30, and G50 groups, respectively) was tested in an experimental comonomer blend of bis-GMA, bis-EMA, TEG-DMA, and HEMA.
+        explanation: HEMA blended with the cross-linking dimethacrylates bis-GMA, bis-EMA and TEGDMA.
+      - reference: PMID:39838443
+        reference_title: 'HEMA-free versus HEMA-containing adhesive systems: a systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Although the addition of HEMA to dental adhesives improves dentin wettability and resin diffusion into demineralized collagen fibrils, HEMA's high hydrophilicity can lead to hydrolytic degradation of the adhesive interface.
+        explanation: Improves dentin wettability.
+      - reference: PMID:15668338
+        reference_title: Monomer-solvent phase separation in one-step self-etch adhesives.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The prompt disappearance of droplets upon application of a small amount of HEMA (2-hydroxyethyl methacrylate) or a HEMA-containing bonding agent, as well as the absence of droplets at the interface of all HEMA-containing adhesives, strongly suggests that the adhesive monomers separate from water upon evaporation of ethanol/acetone.
+        explanation: HEMA prevents the adhesive monomers from separating from water as the solvent evaporates.
+      - reference: PMID:18433860
+        reference_title: The role of HEMA in one-step self-etch adhesives.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Even though Exp-36 was the only adhesive formulation that did not exhibit phase separation on a glass plate, it yielded the lowest bond strength.
+        explanation: 36% HEMA gave the lowest bond strength.
+      - reference: PMID:21594225
+        reference_title: Influence of 2-hydroxyethyl methacrylate concentration on polymer network of adhesive resin.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: At 40 s of light activation time, groups G30 and G50 showed a decrease of 30% and 61%, respectively, in degree of conversion compared to control.
+        explanation: 30 and 50 wt% HEMA lowered degree of conversion in a separate experimental adhesive resin.
 clinical_uses:
   - name: Hydrophilic co-monomer in dentin adhesives and primers for bonding resin composite
     use_context: ADHESIVE
@@ -163,6 +200,12 @@ clinical_uses:
         evidence_source: OTHER
         snippet: The Gluma Desensitizing agent provide the more lasting tubule-occluding effect than the other material tested in this model.
         explanation: Animal study, so not IN_VITRO under this schema. The agents were applied in vivo to the canines of nine dogs for 1 week, 1 month and 3 months (MeSH Animals, Dogs, Disease Models, Animal); dentine discs were then measured ex vivo for hydraulic conductance in a split-chamber. The quoted 3-month durability result comes from the in vivo arm, not from bench testing of the material, and EvidenceSourceEnum has no ANIMAL_STUDY value.
+      - reference: PMID:34013195
+        reference_title: Comparative evaluation of the efficacy of the desensitizing and remineralizing agent in the reduction of dentin hypersensitivity after orthodontic debonding - a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Group-1 subjects were treated with Gluma® desensitizer (5% glutaraldehyde and 35% hydroxyethyl methacrylate (HEMA))
+        explanation: The Gluma formulation, 5% glutaraldehyde and 35% HEMA.
 regulatory_status:
   - agency: FDA
     status: CLEARED
@@ -183,7 +226,7 @@ regulatory_status:
           term:
             id: UBERON:0001091
             label: calcareous tooth
-    source_url: https://www.ecfr.gov/current/title-21/section-872.3200
+    source_url: https://www.law.cornell.edu/cfr/text/21/872.3200
     notes: No FDA regulation names HEMA. The monomer reaches market inside bonding agents and primers classified under this regulation. Paragraph (b) states only the class; no special controls guidance and no 510(k) exemption are stated. The product classification database lists one product code, KLE "agent, tooth bonding, resin", class 2, submission type 510(k). Product-level clearances are recorded under products.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3200
@@ -222,7 +265,7 @@ regulatory_status:
         use_context: TEMPORARY
       - name: Application to a tooth to protect the tooth pulp
         use_context: LINER_OR_BASE
-    source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+    source_url: https://www.law.cornell.edu/cfr/text/21/872.3275
     notes: Applies to HEMA as the resin component of resin-modified glass ionomer cements and resin cements. The identification quoted is paragraph (b)(1), dental cement other than zinc oxide-eugenol; paragraph (b)(2) gives the class. Product code EMA "cement, dental" is class 2. The zinc oxide-eugenol paragraph (a) does not apply to HEMA.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3275
@@ -294,6 +337,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: Dry surfaces enabled obtaining optimal bonding for HEMA-containing adhesives to bur-cut dentin, while wet surfaces enabled optimal bonding for HEMA-free adhesives.
         explanation: Handling factor that differs between HEMA-containing and HEMA-free adhesives.
+      - reference: PMID:34269543
+        reference_title: Effect of Surface Moisture on Bur-cut Dentin on Bonding of HEMA-free and HEMA-containing Universal Adhesives with or without Methacrylamide Monomer.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: HEMA-containing UBQ, UBQexp, and SBU exhibited higher μTBS to dry dentin, while HEMA-free PBU and BBU showed higher μTBS to wet dentin.
+        explanation: SBU is Scotchbond Universal; the study classes it as HEMA-containing.
   - name: Degree of conversion versus HEMA content in an adhesive resin
     property_type: DEGREE_OF_CONVERSION
     value: 30% lower at 30 wt% HEMA and 61% lower at 50 wt% HEMA than a HEMA-free control
@@ -404,6 +453,24 @@ properties:
         evidence_source: IN_VITRO
         snippet: A delay in light-activation caused a significant increase in the cumulative HEMA release.
         explanation: Handling factor that governs HEMA release from RMGIC.
+      - reference: PMID:19826597
+        reference_title: Water Absorption and HEMA Release of Resin-Modified Glass-Ionomers.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Ten specimens were fabricated from each cement in 10 x 1 mm height.
+        explanation: Specimen size.
+      - reference: PMID:19826597
+        reference_title: Water Absorption and HEMA Release of Resin-Modified Glass-Ionomers.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Thirty specimens were immersed in glass containers filled with 20 ml deionized water.
+        explanation: Eluate volume.
+      - reference: PMID:19826597
+        reference_title: Water Absorption and HEMA Release of Resin-Modified Glass-Ionomers.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 1 ml solution was taken from the container at 10 minutes, 1 hour, 24 hour and 7 days intervals from each group and analyzed with high performance liquid chromatography (HPLC) machine and the results are presented in ppm.
+        explanation: Sampling times, method and unit.
   - name: Cytotoxicity and genotoxicity in vitro
     property_type: BIOCOMPATIBILITY
     value: DNA damage, apoptosis, and cell-cycle delay at millimolar concentrations; viability unaffected up to 10 mM over 1 h
@@ -461,6 +528,12 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: (p = 0.13); marginal discoloration RD 0.02
         explanation: Resumes the same sentence after the bracketed interval, carrying the p value the value field reports. Both spaces around the equals sign are U+202F narrow no-break spaces, as in the source abstract; replacing them with ordinary spaces breaks the verbatim match.
+      - reference: PMID:29649505
+        reference_title: Do HEMA-free adhesive systems have better clinical performance than HEMA-containing systems in noncarious cervical lesions? A systematic review and meta-analysis.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Finally, 22 studies were included in the systematic review, totaling to 997 participants.
+        explanation: Trial and participant counts in the population field.
   - name: Retention, HEMA-free versus HEMA-containing adhesives in direct composite restorations, trials with at least 2 years follow-up
     measure_type: RETENTION_RATE
     value: no significant difference in the majority of included trials
@@ -500,6 +573,30 @@ clinical_performance:
         evidence_source: HUMAN_CLINICAL
         snippet: After 14 years, restorations bonded with the HEMA-free 1SEa performed as well as those bonded with the 3E&Ra gold standard.
         explanation: Conclusion.
+      - reference: PMID:37435814
+        reference_title: Fourteen-year Clinical Performance of a HEMA-free One-step Self-etch Adhesive in Non-carious Cervical Lesions.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 267 non-carious cervical lesions in 52 patients were restored with the microhybrid composite Gradia Direct
+        explanation: Lesion and patient counts.
+      - reference: PMID:37435814
+        reference_title: Fourteen-year Clinical Performance of a HEMA-free One-step Self-etch Adhesive in Non-carious Cervical Lesions.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The patient recall rate at 14 years was 63%.
+        explanation: Recall rate.
+      - reference: PMID:37435814
+        reference_title: Fourteen-year Clinical Performance of a HEMA-free One-step Self-etch Adhesive in Non-carious Cervical Lesions.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 'failed because of retention loss (GB: 19.4%, OFL: 19.6%)'
+        explanation: Retention loss in each arm; OFL is the HEMA-containing adhesive.
+      - reference: PMID:37435814
+        reference_title: Fourteen-year Clinical Performance of a HEMA-free One-step Self-etch Adhesive in Non-carious Cervical Lesions.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Unacceptable marginal deterioration was the main reason for failure, followed by loss of retention.
+        explanation: Failure modes.
 adverse_effects:
   - name: Allergic contact dermatitis in patients and dental personnel
     effect_category: ALLERGIC_OR_HYPERSENSITIVITY
@@ -535,6 +632,12 @@ adverse_effects:
         evidence_source: HUMAN_CLINICAL
         snippet: The most common allergen for both groups was 2-hydroxyethyl methacrylate (2-HEMA), followed by ethyleneglycol dimethacrylate (EGDMA), triethyleneglycol dimethacrylate, and methyl methacrylate.
         explanation: HEMA ranks first among dental (meth)acrylate allergens.
+      - reference: PMID:37752620
+        reference_title: '2-Hydroxyethyl methacrylate (HEMA): A clinical review of contact allergy and allergic contact dermatitis-Part 1. Introduction, epidemiology, case series and case reports.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Currently, most cases are caused by nail cosmetics, both in consumers and professional nail stylists.
+        explanation: Most current HEMA allergy arises from nail cosmetics; narrative review.
   - name: Cross-sensitization and atypical manifestations of HEMA allergy
     effect_category: ALLERGIC_OR_HYPERSENSITIVITY
     effect_term:
@@ -603,7 +706,7 @@ adverse_effects:
         explanation: HEMA release from RMGIC as an exposure source.
   - name: Pulpal cytotoxicity and inflammatory signaling after diffusion through dentin
     effect_category: PULPAL_RESPONSE
-    description: HEMA reaches the pulp chamber through dentin. In pulp cells it is cytotoxic at millimolar concentrations, raises IL-6 and IL-8, and blunts the immune response to bacterial products. One diffusion study judged the eluted amounts to be below cytotoxic levels. No clinical frequency of HEMA-attributable pulpitis was found.
+    description: HEMA reaches the pulp chamber through dentin. In pulp cells it is cytotoxic at millimolar concentrations, raises IL-6 and IL-8, and impairs the protective immune response. One diffusion study judged the eluted amounts to be below cytotoxic levels. No clinical frequency of HEMA-attributable pulpitis was found.
     evidence:
       - reference: PMID:21899564
         reference_title: Overexpression of interleukin-6 and -8, cell growth inhibition and morphological changes in 2-hydroxyethyl methacrylate-treated human dental pulp mesenchymal stem cells.
@@ -635,6 +738,12 @@ adverse_effects:
         evidence_source: OTHER
         snippet: HEMA is known to be released from these materials and has a variety of damaging biological properties, ranging from pulpal inflammation to allergic contact dermatitis.
         explanation: Review of HEMA release from RMGIC; narrative review.
+      - reference: PMID:21899564
+        reference_title: Overexpression of interleukin-6 and -8, cell growth inhibition and morphological changes in 2-hydroxyethyl methacrylate-treated human dental pulp mesenchymal stem cells.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Moreover, in treated samples, an up-regulation of soluble mediators of inflammation such as IL-6 and IL-8 cytokines was found.
+        explanation: IL-6 and IL-8 raised in pulp stem cells.
   - name: Genotoxicity via oxidative DNA damage
     effect_category: TOXICITY
     description: In vitro only. Oxidative base damage, apoptosis, and G0/G1 delay at millimolar concentrations; the DNA damage at 10 mM was repaired within 120 minutes.
@@ -651,6 +760,24 @@ adverse_effects:
         evidence_source: OTHER
         snippet: The formation of micronuclei is indicative of chromosomal damage and the induction of DNA strand breaks detected with monomers like TEGDMA and 2-hydroxyethyl methacrylate (HEMA).
         explanation: Review of genotoxicity findings; narrative review.
+      - reference: PMID:20079459
+        reference_title: Genotoxicity and cytotoxicity of 2-hydroxyethyl methacrylate.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The use of DNA repair enzymes, spin traps and vitamin C produced results suggesting that HEMA induced oxidative modifications to DNA bases.
+        explanation: Oxidative base damage.
+      - reference: PMID:20079459
+        reference_title: Genotoxicity and cytotoxicity of 2-hydroxyethyl methacrylate.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: HEMA induced apoptosis in a concentration-dependent manner and caused cell-cycle delay at the G0/G1-checkpoint.
+        explanation: Apoptosis and G0/G1 delay.
+      - reference: PMID:20079459
+        reference_title: Genotoxicity and cytotoxicity of 2-hydroxyethyl methacrylate.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: DNA damage caused by HEMA at 10mM was removed within 120min.
+        explanation: Repair of the DNA damage within 120 minutes.
   - name: Hydrolytic degradation of the adhesive interface
     effect_category: MECHANICAL_FAILURE
     description: HEMA-rich simplified adhesives are permeable to water, take up water over time, and lose strength. This is the argument for HEMA-free formulations. Clinical retention data do not yet show a difference.
@@ -702,9 +829,6 @@ standards:
     title: Dentistry - Polymer-based luting materials containing adhesive components
     organization: ISO
     url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=45032
-  - identifier: ISO/TS 11405
-    title: Dentistry - Testing of adhesion to tooth structure
-    organization: ISO
   - identifier: ISO 4049
     title: Dentistry - Polymer-based restorative materials
     organization: ISO
@@ -712,49 +836,22 @@ standards:
     title: Dentistry - Water-based cements - Part 2 - Resin-modified cements
     organization: ISO
 products:
-  - name: Scotchbond Universal (cleared as ADHESIVE EXL-759)
-    manufacturer: 3M ESPE AG
-    description: One-component universal adhesive containing HEMA. The FDA record names the device ADHESIVE EXL-759; the K192961 510(k) summary states that Scotchbond Universal was cleared under K110302 as ADHESIVE EXL-759.
-    submissions:
-      - agency: FDA
-        submission_number: K110302
-        pathway: PREMARKET_NOTIFICATION_510K
-        decision: CLEARED
-        decision_date: '2011-05-19'
-        product_code: KLE
-        regulation_number: '872.3200'
-        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K110302
-        evidence:
-          - reference: PMID:34269543
-            reference_title: Effect of Surface Moisture on Bur-cut Dentin on Bonding of HEMA-free and HEMA-containing Universal Adhesives with or without Methacrylamide Monomer.
-            supports: SUPPORT
-            evidence_source: IN_VITRO
-            snippet: HEMA-containing UBQ, UBQexp, and SBU exhibited higher μTBS to dry dentin, while HEMA-free PBU and BBU showed higher μTBS to wet dentin.
-            explanation: SBU is Scotchbond Universal; the study classes it as HEMA-containing.
-  - name: Scotchbond Universal Plus (cleared as ADH19)
-    manufacturer: 3M Deutschland GmbH
-    description: Successor to Scotchbond Universal, based on the same chemistry per the 510(k) summary. The FDA record names the device ADH19. The marketing name Scotchbond Universal Plus is not in the FDA record; it comes from the deep research report's web search.
-    submissions:
-      - agency: FDA
-        submission_number: K192961
-        pathway: PREMARKET_NOTIFICATION_510K
-        decision: CLEARED
-        decision_date: '2019-10-31'
-        product_code: KLE
-        regulation_number: '872.3200'
-        indications_for_use: A material primarily intended to be used as a bonding-promoting substance between tooth substance and dental restorations. It may also be used as a dentin sealant and as a bonding agent for repair of restorations.
-        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K192961
+  - name: Scotchbond Universal
+    description: Universal adhesive that a bond-strength study classes as HEMA-containing. That study is quoted under the dentin-moisture bond strength property.
+    see_also:
+      - https://pubmed.ncbi.nlm.nih.gov/34269543/
   - name: Gluma Desensitizer
-    manufacturer: Kulzer
-    description: Aqueous 5% glutaraldehyde and 35% HEMA dentin desensitizer. No 510(k) record was looked up for this product.
+    description: Dentin desensitizer of 5% glutaraldehyde and 35% HEMA. No 510(k) record was looked up for this product.
+    see_also:
+      - https://pubmed.ncbi.nlm.nih.gov/34013195/
   - name: Vitremer
     manufacturer: 3M
     description: Resin-modified glass ionomer restorative; showed the highest HEMA release of three RMGICs tested.
     see_also:
       - https://pubmed.ncbi.nlm.nih.gov/19826597/
 notes: |-
-  HEMA is a component monomer. Values for flexural strength, hardness, wear, shrinkage, radiopacity, and the like belong to the host products and are not reported here. Working and setting times likewise belong to host products. Deep research report by the claude_code provider, 2026-09-04, at research/Hydroxyethyl_Methacrylate-deep-research-claude_code.md. EU MDR, Health Canada, and TGA standing were not verified against primary sources and are not recorded.
-  Standards. This slot records standards this material is tested or specified against, so it is scoped to the monomer and not to a product code. FDA recognises five consensus standards for product code KLE, verified 2026-09-25: ISO 29022 (recognition 4-219), ISO 7405 (4-261), ISO/TS 16506 (4-324), ISO 9917-1 (4-348) and ISO 3990 (4-364). Only the first three are listed here. ISO 9917-1 covers acid-base cements, whose resin-modified counterpart ISO 9917-2 is the part that reaches HEMA, and ISO 3990 is an antibacterial test method spanning restoratives, luting materials, sealants and orthodontic bonding or luting materials; both are recognised against the bonding-agent device type rather than against this monomer, so neither is recorded. Each url points at that standard's own FDA recognition record; the earlier per-product-code query URL was replaced because it implied the list enumerated the KLE set. ISO 29022's title is given in its ISO form; the FDA record renders it "Adhesive - Notched-edge sheer bond strength test".
+  HEMA is a component monomer. Values for flexural strength, hardness, wear, shrinkage, radiopacity, and the like belong to the host products and are not reported here. Working and setting times likewise belong to host products. EU MDR, Health Canada, and TGA standing are not recorded.
+  Standards. This slot records standards this material is tested or specified against, scoped to the monomer and not to a product code. ISO 29022, ISO 7405 and ISO/TS 16506 are among the consensus standards FDA recognises for product code KLE, and each url points at that standard's FDA recognition record. ISO 29022's title is given in its ISO form; the FDA record renders it "Adhesive - Notched-edge sheer bond strength test". ISO 9917-2 covers the resin-modified cements that carry HEMA as their resin component. ISO 4049 is listed because the HEMA-release study of resin-modified glass ionomers (PMID:19826597) ran its water absorption tests to it.
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
@@ -772,4 +869,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Carried over the curation from branch curate/hema (17 commits, 2026-09-04 to 2026-11-07) into the mechmaker layout.
-updated_date: '2026-11-07'
+  - timestamp: '2026-11-08T02:50:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the review of PR #2. Cut the unquoted chemistry from the description and quoted the rest; replaced the composition quote that did not name HEMA; quoted the numbers in the composition, desensitizer, HEMA-release, clinical performance and adverse-effect sections; removed the two FDA 510(k) submissions and the ADH19 product, whose product identities could not be confirmed from an FDA record; pointed source_url at the CFR text quoted; dropped ISO/TS 11405 and gave ISO 4049 a reason; moved verification provenance out of notes.'
+updated_date: '2026-11-08'
