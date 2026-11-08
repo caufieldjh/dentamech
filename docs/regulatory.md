@@ -88,7 +88,7 @@ https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?star
 Two pitfalls:
 
 - Without `-L` you see only the `302` redirect stub, not the page it leads to.
-- Intermittently, and the site answers a ~2 kB queue page reading *"Your request is being processed. Please be patient and wait for this page to refresh in a few seconds"*, served as readily with `400` as with `200`. It carries no record. Read it as *no answer yet*, never as *the value is absent*, and retry.
+- Intermittently, the site answers with a ~2 kB queue page reading *"Your request is being processed. Please be patient and wait for this page to refresh in a few seconds"*, served as readily with `400` as with `200`. It carries no record. Read it as *no answer yet*, never as *the value is absent*, and retry.
 
 So confirm a response actually contains a record before concluding that a product code is absent from the database.
 

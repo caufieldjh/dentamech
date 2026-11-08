@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: record
+  slug: hydroxyethyl_methacrylate
+  path: kb/materials/hydroxyethyl_methacrylate.yaml
+session:
+  id: 2026-11-08T033136Z-claude-code-5bd926
+  timestamp: '2026-11-08T03:31:36Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the third automated review of PR #2.'
+  details: 'Errors: (1) cross-sensitization no longer lists respiratory disease as a rare HEMA form; it
+    now says methacrylate respiratory disease such as asthma is not infrequent, quoted from PMID:37778325,
+    and that the source says this of methacrylates in general. (2) Dropped ''primers'' from the record
+    description, the first clinical use''s name and indications, the HEMA-aldehyde bond strength property
+    and the 872.3200 notes: no quote puts HEMA in a primer (PMID:3926655 and PMID:6430986 call the HEMA-glutaraldehyde
+    mixtures an adhesive and a dentin pretreatment). Warnings: quoted glutathione depletion (PMID:16998124);
+    quoted the 7 studies, 2013-2023 window and 2-year permanent-dentition criteria of PMID:39838443; quoted
+    light activation of the RMGIC (PMID:26916063) and cut the unquoted restorative/liner/luting uses and
+    the ''in the liquid'' detail; unset the luting use''s crown restoration procedure term, since the
+    diffusion study does not mention crowns. Notes: added the PMID:14653938 sentence naming HEMA to the
+    hydrolytic degradation row; reworded the glove claim to ''methacrylates such as HEMA'' and added the
+    PMID:14632691 HEMA breakthrough result; kept only LIGHT_CURED in setting_mechanisms; set updated_date;
+    fixed a garbled sentence in docs/regulatory.md; cut the unquoted Gluma lineage sentence. This record
+    also covers the 2026-11-08T02:54 session (OptiBond FL quote from PMID:18028061, Vitremer''s unsourced
+    manufacturer dropped), which had a curation_history event but no history record. Declined: the [-0.01,
+    0.07] confidence interval stays unquoted because the validator strips bracketed text; the explanation
+    says so. just validate: 97 snippets, 0 issues.'

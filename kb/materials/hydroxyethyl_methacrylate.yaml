@@ -1,6 +1,6 @@
 id: OHD:0001082
 name: Hydroxyethyl methacrylate
-description: A dental restoration material which is a hydrophilic, low-molecular-weight monomer used in dental adhesives and primers. It is a component monomer rather than a finished restorative; its clinical uses and regulatory standing are those of the adhesives, primers, resin-modified glass ionomer cements, resin cements, and desensitizers that contain it.
+description: A dental restoration material which is a hydrophilic, low-molecular-weight monomer used in dental adhesives. It is a component monomer rather than a finished restorative; its clinical uses and regulatory standing are those of the adhesives, resin-modified glass ionomer cements, resin cements, and desensitizers that contain it.
 description_evidence:
   - reference: PMID:18433860
     reference_title: The role of HEMA in one-step self-etch adhesives.
@@ -33,8 +33,6 @@ mappings:
     source: NCI Thesaurus
 setting_mechanisms:
   - LIGHT_CURED
-  - SELF_CURED
-  - DUAL_CURED
 composition:
   - name: 2-hydroxyethyl methacrylate monomer
     role: MATRIX
@@ -95,7 +93,7 @@ composition:
         snippet: At 40 s of light activation time, groups G30 and G50 showed a decrease of 30% and 61%, respectively, in degree of conversion compared to control.
         explanation: 30 and 50 wt% HEMA lowered degree of conversion in a separate experimental adhesive resin.
 clinical_uses:
-  - name: Hydrophilic co-monomer in dentin adhesives and primers for bonding resin composite
+  - name: Hydrophilic co-monomer in dentin adhesives for bonding resin composite
     use_context: ADHESIVE
     procedure:
       preferred_term: resin filling restoration procedure
@@ -107,10 +105,9 @@ clinical_uses:
       term:
         id: UBERON:0001751
         label: dentine
-    description: HEMA is added to etch-and-rinse, self-etch, and universal adhesives to wet dentin, carry resin into demineralized collagen, and prevent phase separation between the hydrophobic monomers and water in one-bottle systems.
+    description: HEMA is added to dental adhesives to wet dentin, carry resin into demineralized collagen, and prevent phase separation between the hydrophobic monomers and water in one-bottle systems.
     indications:
       - Bonding of direct resin composite restorations to enamel and dentin
-      - Priming of dentin in multi-step adhesive systems
     contraindications:
       - Known contact allergy to HEMA or other methacrylates
     evidence:
@@ -139,7 +136,7 @@ clinical_uses:
       term:
         id: UBERON:0001091
         label: calcareous tooth
-    description: HEMA is the polymerizable resin in the liquid of resin-modified glass ionomer cements. Its polymerization runs alongside the acid-base reaction and makes the cement light-curable. These cements are used as restoratives, liners, and luting agents; the OHD entry for resin-modified glass ionomer carries that detail.
+    description: HEMA is the polymerizable resin of resin-modified glass ionomer cements. Its polymerization runs alongside the acid-base reaction, and is started by light activation. The uses of these cements belong to the OHD entry for resin-modified glass ionomer.
     evidence:
       - reference: PMID:26916063
         reference_title: HEMA release and degree of conversion from a resin-modified glass ionomer cement after various delays of light activation.
@@ -153,19 +150,20 @@ clinical_uses:
         evidence_source: IN_VITRO
         snippet: The main methacrylate of the 2 glass ionomers was 2-HEMA or trimethylolpropane trimethacrylate.
         explanation: Chemical analysis of commercial resin-modified glass ionomers.
+      - reference: PMID:26916063
+        reference_title: HEMA release and degree of conversion from a resin-modified glass ionomer cement after various delays of light activation.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: A delay in light-activation caused a significant increase in the cumulative HEMA release.
+        explanation: The HEMA polymerization in the cement is light-activated.
   - name: Hydrophilic monomer in resin luting cements
     use_context: LUTING
-    procedure:
-      preferred_term: crown restoration procedure
-      term:
-        id: OHD:0000033
-        label: crown restoration procedure
     anatomical_site:
       preferred_term: dentine
       term:
         id: UBERON:0001751
         label: dentine
-    description: Resin cements used to lute indirect restorations contain HEMA, which is detectable in the pulp chamber after cementation through remaining dentin.
+    description: HEMA from resin cements diffuses through remaining dentin and is detectable in the pulp chamber.
     evidence:
       - reference: PMID:26714346
         reference_title: Diffusion of HEMA from resin cements through different dentin thicknesses in vitro.
@@ -227,7 +225,7 @@ regulatory_status:
             id: UBERON:0001091
             label: calcareous tooth
     source_url: https://www.law.cornell.edu/cfr/text/21/872.3200
-    notes: No FDA regulation names HEMA. The monomer reaches market inside bonding agents and primers classified under this regulation. Paragraph (b) states only the class; no special controls guidance and no 510(k) exemption are stated. The product classification database lists one product code, KLE "agent, tooth bonding, resin", class 2, submission type 510(k). Product-level clearances are recorded under products.
+    notes: No FDA regulation names HEMA. The monomer reaches market inside bonding agents classified under this regulation. Paragraph (b) states only the class; no special controls guidance and no 510(k) exemption are stated. The product classification database lists one product code, KLE "agent, tooth bonding, resin", class 2, submission type 510(k). Product-level clearances are recorded under products.
     evidence:
       - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3200
         reference_title: 21 CFR 872.3200 Resin tooth bonding agent
@@ -281,13 +279,13 @@ regulatory_status:
         snippet: Class II.
         explanation: Classification paragraph (b)(2) for dental cement other than zinc oxide-eugenol.
 properties:
-  - name: Tensile bond strength to dentine, HEMA and aldehyde primers
+  - name: Tensile bond strength to dentine, HEMA and aldehyde mixtures
     property_type: BOND_STRENGTH
     value: 15 and 18
     unit: MPa
     test_method: Tensile bond test of restorative resin to EDTA-pretreated dentine
     conditions: Aqueous HEMA with propionic aldehyde (15) or glutaraldehyde (18)
-    description: The original 1985 report of HEMA-based dentin bonding, reported as MN/m2 (1 MN/m2 = 1 MPa). The glutaraldehyde/HEMA mixture became the Gluma system.
+    description: The original 1985 report of HEMA-based dentin bonding, reported as MN/m2 (1 MN/m2 = 1 MPa).
     evidence:
       - reference: PMID:3926655
         reference_title: Bonding of restorative resins to dentine promoted by aqueous mixtures of aldehydes and active monomers.
@@ -300,7 +298,7 @@ properties:
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: Statistical analysis of the results from varying mixtures of HEMA and glutaraldehyde revealed that the bond strength was highly dependent on the HEMA concentration, with a maximum at 35%, and nearly independent of the glutaraldehyde concentration when greater than 3%.
-        explanation: Bond strength depends on HEMA concentration in the aldehyde primer.
+        explanation: Bond strength depends on HEMA concentration in the HEMA and glutaraldehyde mixture.
   - name: Microtensile bond strength versus HEMA concentration, experimental one-step self-etch adhesives
     property_type: BOND_STRENGTH
     value: highest at 10% HEMA; lowest at 36% HEMA
@@ -502,6 +500,12 @@ properties:
         evidence_source: OTHER
         snippet: Most of them support the hypothesis that this compound, once released in the oral environment, increases reactive oxygen species (ROS) production and oxidative DNA damage through double-strand breaks evidenced by in vitro presence of micronuclei.
         explanation: Minireview of HEMA cytotoxicity mechanisms; narrative review.
+      - reference: PMID:16998124
+        reference_title: Genetic and cellular toxicology of dental resin monomers.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: It has been demonstrated that monomers reduced the levels of the natural radical scavenger glutathione (GSH), which protects cell structures from damage caused by reactive oxygen species (ROS).
+        explanation: Glutathione depletion by resin monomers; narrative review.
 clinical_performance:
   - name: Retention and other clinical parameters, HEMA-containing versus HEMA-free adhesives in non-carious cervical lesions
     measure_type: RETENTION_RATE
@@ -553,6 +557,24 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: There was some concern about their influence on marginal adaptation and marginal discoloration due to the conflicted results reported by the included trials.
         explanation: The margin outcomes were inconsistent across trials.
+      - reference: PMID:39838443
+        reference_title: 'HEMA-free versus HEMA-containing adhesive systems: a systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: a total of 7 studies were included in this review
+        explanation: Number of included studies.
+      - reference: PMID:39838443
+        reference_title: 'HEMA-free versus HEMA-containing adhesive systems: a systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: clinical studies published between 2013 and 2023
+        explanation: Publication window.
+      - reference: PMID:39838443
+        reference_title: 'HEMA-free versus HEMA-containing adhesive systems: a systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Studies with at least 2-year clinical follow-up done in permanent dentition in any form of cavities were selected.
+        explanation: Follow-up and dentition criteria.
   - name: Clinical success at 14 years, HEMA-containing three-step etch-and-rinse adhesive versus HEMA-free one-step self-etch adhesive
     measure_type: SUCCESS_RATE
     value: 57.9% (HEMA-containing OptiBond FL) versus 58.9% (HEMA-free G-Bond)
@@ -651,7 +673,7 @@ adverse_effects:
       term:
         id: MONDO:0006525
         label: allergic contact dermatitis
-    description: Primary HEMA sensitization cross-reacts with ethylene glycol dimethacrylate and hydroxypropyl methacrylate. Rare forms include lichen planus, systemic contact dermatitis, and respiratory disease.
+    description: Primary HEMA sensitization cross-reacts with ethylene glycol dimethacrylate and hydroxypropyl methacrylate. Rare atypical forms include lichen planus and systemic contact dermatitis. Respiratory disease such as asthma is not infrequent, but the source says so of methacrylates in general, not of HEMA alone.
     evidence:
       - reference: PMID:37778325
         reference_title: '2-Hydroxyethyl methacrylate (HEMA): A clinical review of contact allergy and allergic contact dermatitis. Part 2. Cross- and co-sensitization, other skin reactions to HEMA, position of HEMA among (meth)acrylates, sensitivity as screening agent, presence of HEMA in commercial products and practical information on patch test procedures.'
@@ -671,6 +693,12 @@ adverse_effects:
         evidence_source: OTHER
         snippet: HEMA is the most frequently patch test-positive methacrylate.
         explanation: Position among methacrylate allergens; narrative review.
+      - reference: PMID:37778325
+        reference_title: '2-Hydroxyethyl methacrylate (HEMA): A clinical review of contact allergy and allergic contact dermatitis. Part 2. Cross- and co-sensitization, other skin reactions to HEMA, position of HEMA among (meth)acrylates, sensitivity as screening agent, presence of HEMA in commercial products and practical information on patch test procedures.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: The occurrence of respiratory disease caused by methacrylates such as asthma is not infrequent.
+        explanation: Respiratory disease from methacrylates in general; narrative review.
   - name: Occupational sensitization of dentists, dental nurses, and technicians
     effect_category: OCCUPATIONAL
     effect_term:
@@ -678,7 +706,7 @@ adverse_effects:
       term:
         id: MONDO:0006589
         label: occupational dermatitis
-    description: HEMA penetrates common examination gloves. Safety data sheets of dental products name their methacrylates only about half the time, which hampers risk assessment for staff.
+    description: Methacrylates such as HEMA can penetrate common glove materials. Safety data sheets of dental products name their methacrylates only about half the time, which hampers risk assessment for staff.
     evidence:
       - reference: PMID:17937748
         reference_title: Methacrylate and acrylate allergy in dental personnel.
@@ -710,6 +738,12 @@ adverse_effects:
         evidence_source: IN_VITRO
         snippet: This release may be relevant both to the risk of adverse pulpal responses in patients and to the risk of allergy in patients and dental personnel.
         explanation: HEMA release from RMGIC as an exposure source.
+      - reference: PMID:14632691
+        reference_title: On permeability of methyl methacrylate, 2-hydroxyethyl methacrylate and triethyleneglycol dimethacrylate through protective gloves in dentistry.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: For HEMA and TEGDMA, the lag-BTs were generally longer than for MMA.
+        explanation: HEMA breakthrough through the gloves was measured; it was slower than for MMA.
   - name: Pulpal cytotoxicity and inflammatory signaling after diffusion through dentin
     effect_category: PULPAL_RESPONSE
     description: HEMA reaches the pulp chamber through dentin. In pulp cells it is cytotoxic at millimolar concentrations, raises IL-6 and IL-8, and impairs the protective immune response. One diffusion study judged the eluted amounts to be below cytotoxic levels. No clinical frequency of HEMA-attributable pulpitis was found.
@@ -812,6 +846,12 @@ adverse_effects:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: Only the presence of HEMA does not indicate better clinical performance of adhesive systems.
         explanation: Clinical retention does not reflect the in vitro degradation; the meta-analysis found no difference between HEMA-containing and HEMA-free adhesives.
+      - reference: PMID:14653938
+        reference_title: Have dentin adhesives become too hydrophilic?
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Manufacturers have reformulated dentin adhesives to make them more compatible for bonding to intrinsically moist, acid-etched dentin by adding 2-hydroxyethyl methacrylate and other hydrophilic resin monomers.
+        explanation: Ties the hydrophilicity argument to HEMA.
   - name: Reduced biocompatibility of resin-modified glass ionomer hosts
     effect_category: TOXICITY
     description: The HEMA in resin-modified glass ionomer cements is the reason these cements are held to be less biocompatible than conventional glass ionomers.
@@ -886,4 +926,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Quoted PMID:18028061 for OptiBond FL releasing HEMA, which supports calling it the HEMA-containing arm of the 14-year trial. Dropped the unsourced manufacturer on Vitremer.
-updated_date: '2026-11-07'
+  - timestamp: '2026-11-08T03:30:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the third review of PR #2. Dropped primers from the description, the first use and the regulatory notes, since no quote puts HEMA in a primer. Quoted glutathione depletion (PMID:16998124), the systematic review''s scope (PMID:39838443), light activation of RMGIC (PMID:26916063), methacrylate respiratory disease (PMID:37778325), HEMA in reformulated adhesives (PMID:14653938) and HEMA glove breakthrough (PMID:14632691). Cut the unquoted RMGIC uses and the Gluma lineage sentence. Unset the luting procedure term. Kept only LIGHT_CURED in setting_mechanisms.'
+updated_date: '2026-11-08'
