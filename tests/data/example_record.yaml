@@ -9,6 +9,9 @@ mappings:
   - id: NCIT:C42634
     label: Dental Material
     predicate: BROAD_MATCH
+  - id: MESH:D003722
+    label: Dental Alloys
+    predicate: CLOSE_MATCH
 setting_mechanisms:
   - HYDRATION
 composition:
