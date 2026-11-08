@@ -12,6 +12,9 @@
 # count toward branch protection, either set MECH_REVIEWER_APP_ID and
 # MECH_REVIEWER_PRIVATE_KEY (a GitHub App used only for reviews), or allow
 # GitHub Actions to approve pull requests in Settings > Actions > General.
+# Without either, an approving verdict is posted as a comment; it still
+# dismisses the reviewer's own earlier change requests, so the PR is not left
+# blocked by findings that are fixed.
 # Adapted from DisMech's claude-code-review.
 name: Review
 run-name: "Review PR #${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}"

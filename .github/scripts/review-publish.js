@@ -45,6 +45,35 @@ function body(r, inlineFindings, note) {
   return lines.join('\n');
 }
 
+// An approving verdict clears this reviewer's own earlier blocks. GitHub
+// keeps a reviewer's last CHANGES_REQUESTED in force until that reviewer
+// approves, and a COMMENT review never lifts it. So when an approval is
+// refused (Actions may not approve here, and no reviewer App is set), the
+// PR would stay blocked by a review whose findings are fixed. Dismissing the
+// reviewer's own blocking reviews is what lets it say "no more changes
+// needed" either way. Other reviewers' reviews, people's above all, are never
+// touched.
+async function clearOwnBlocks(github, repo, pr, posted, { log = console.log, warn = console.warn } = {}) {
+  const login = posted?.user?.login;
+  if (!login) { warn('Could not tell who posted the review; earlier blocking reviews left as they are.'); return 0; }
+  const reviews = await github.paginate(github.rest.pulls.listReviews, { ...repo, pull_number: pr, per_page: 100 });
+  let cleared = 0;
+  for (const old of reviews) {
+    if (old.id === posted.id || old.user?.login !== login || old.state !== 'CHANGES_REQUESTED') continue;
+    try {
+      await github.rest.pulls.dismissReview({
+        ...repo, pull_number: pr, review_id: old.id,
+        message: `Superseded by review ${posted.id}, which found nothing blocking.`,
+      });
+      cleared += 1;
+    } catch (err) {
+      warn(`Could not dismiss earlier review ${old.id}: ${err.message}`);
+    }
+  }
+  if (cleared) log(`Dismissed ${cleared} earlier blocking review(s) by ${login} on PR #${pr}.`);
+  return cleared;
+}
+
 async function publish(github, repo, review, { pr, sha, log = console.log, warn = console.warn } = {}) {
   const r = shape(review);
   if (!r) { warn('No review to post: the agent returned nothing usable.'); return { posted: null }; }
@@ -82,12 +111,13 @@ async function publish(github, repo, review, { pr, sha, log = console.log, warn 
   let lastError = null;
   for (const a of comments.length ? attempts : attempts.slice(1)) {
     try {
-      await github.rest.pulls.createReview({
+      const { data: posted } = await github.rest.pulls.createReview({
         ...repo, pull_number: pr, commit_id: sha, event: a.event,
         body: body(r, a.inlineFindings, a.note), comments: a.comments,
       });
       log(`Posted ${a.event} on PR #${pr} with ${a.comments.length} inline comment(s).`);
-      return { posted: a.event, inline: a.comments.length };
+      const cleared = a.event === 'APPROVE' ? await clearOwnBlocks(github, repo, pr, posted, { log, warn }) : 0;
+      return { posted: a.event, inline: a.comments.length, cleared };
     } catch (err) {
       lastError = err;
       warn(`${a.event} with ${a.comments.length} inline comment(s) failed: ${err.message}`);
@@ -96,11 +126,14 @@ async function publish(github, repo, review, { pr, sha, log = console.log, warn 
   // GitHub refused the event itself, e.g. Actions may not approve here. Post
   // the same review as a comment, so the work is not lost, and say why.
   const note = `Posted as a comment: GitHub refused ${event} (${clean(lastError?.message, 300)}).`;
-  await github.rest.pulls.createReview({
+  const { data: posted } = await github.rest.pulls.createReview({
     ...repo, pull_number: pr, commit_id: sha, event: 'COMMENT', body: body(r, [], note), comments: [],
   });
   warn(note);
-  return { posted: 'COMMENT', inline: 0 };
+  // The verdict was an approval that GitHub would not take: still lift the
+  // reviewer's own earlier blocks, so the PR is not left waiting on them.
+  const cleared = event === 'APPROVE' ? await clearOwnBlocks(github, repo, pr, posted, { log, warn }) : 0;
+  return { posted: 'COMMENT', inline: 0, cleared };
 }
 
-module.exports = { publish, shape, MARKER };
+module.exports = { publish, shape, clearOwnBlocks, MARKER };
