@@ -1,0 +1,35 @@
+history_version: 1
+target:
+  kind: record
+  slug: acid_base_cement
+  path: kb/materials/acid_base_cement.yaml
+session:
+  id: 2026-11-08T025034Z-claude-code-75a874
+  timestamp: '2026-11-08T02:50:34Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Fixed the automated review findings on PR #4 for Acid-base cement.'
+  details: 'Review of PR #4 (github-actions, CHANGES_REQUESTED) found claims without supporting quotes,
+    a wrong anatomical site, and provenance in notes. Cut: the powder''s residual core acting as filler,
+    the phosphoric acid being buffered with aluminium and zinc salts, the zinc-based members having no
+    fluoride source and the fluoroaluminosilicate glass, definitive restorative use by glass polyalkenoate
+    members, water loss or gain changing set properties, the base/lining limits sentence, the film thickness
+    seating sentence, the free acid reaching the pulp through tubules, the tensile-versus-compressive
+    inference. Added 11 verbatim quotes from cached PubMed abstracts (PMID:27367737, 11641841, 17594382,
+    10941918, 12628437, 2269210), all checked by add-evidence. Rescoped the ''Restorative and temporary
+    filling'' use to ''Temporary filling'' with use_context TEMPORARY, since only the CFR temporary-filling
+    text supports it. Rebound the base/liner anatomical_site from UBERON:0001754 dental pulp to UBERON:0001751
+    dentine (found with just search-term UBERON dentin). Added the section III EMB exclusion to film thickness.
+    Stated that 872.3275(b) covers the resin-modified members by its wording. Moved verification provenance
+    out of notes; the provenance as recorded there before this edit: ISO 9917 recognition numbers 4-348,
+    4-153 and 4-311 were re-verified 2026-10-10 by POST query to the FDA Recognized Consensus Standards
+    database; ISO catalogue numbers 76037 and 69901 were confirmed against reseller listings, the ISO
+    catalogue returning 403; both branches of 21 CFR 872.3275 were re-verified 2026-10-10, the CFR snippets
+    checked against the eCFR versioner XML of the 2026-10-07 issue; product codes EMA, EMB, MZW and NEA
+    were re-read from the product classification database the same day. No deep research report was produced
+    for this record; references came from direct PubMed search. just validate: 29 snippets checked, 0
+    issues.'
