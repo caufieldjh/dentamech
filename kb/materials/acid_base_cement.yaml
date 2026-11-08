@@ -75,7 +75,7 @@ composition:
         explanation: The study covers zinc phosphate, polycarboxylate and glass ionomer cements; in the zinc-based ones, zinc oxide is the phase that dissolves.
   - name: Acidic liquid
     role: LIQUID
-    description: The acidic half of the pair. Phosphoric acid in zinc phosphate cement, and polyacrylic acid, with tartaric acid in some formulations, in the glass polyalkenoate cements.
+    description: The acidic half of the pair. Polyacrylic acid, with tartaric acid in some formulations, in the glass polyalkenoate cements, and phosphoric acid in at least one other member of the class.
     evidence:
       - reference: PMID:10941918
         reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
@@ -96,7 +96,7 @@ composition:
       term:
         id: CHEBI:26078
         label: phosphoric acid
-    description: The acidic liquid of zinc phosphate cement.
+    description: The acid component of some members of the class. The cited study, of the acid components of acid-base reaction cements, names it as the acid of Tenet. Which families use it is not quoted here.
     evidence:
       - reference: PMID:2269210
         reference_title: '[Pulp toxicity of the acid components of acid-base reaction cements].'
@@ -111,7 +111,7 @@ composition:
       term:
         id: CHEBI:61372
         label: poly(acrylic acid) polymer
-    description: The polymeric acid of the polycarboxylate and glass polyalkenoate members.
+    description: The polymeric acid of the glass polyalkenoate members.
     evidence:
       - reference: PMID:10941918
         reference_title: Use of Raman spectroscopy in the characterisation of the acid-base reaction in glass-ionomer cements.
@@ -494,4 +494,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the third review of PR #4. Removed the Fluoride release property row, which described only the glass ionomer members, and said so in notes. Trimmed the zinc oxide component to the zinc phosphate and polycarboxylate members its source covers. Said in the base/liner explanation that dentine is the curator''s choice. Set the dissolution effect_category to OTHER. Pointed both 872.3275 source_url fields at the Cornell CFR text the evidence quotes.'
+  - timestamp: '2026-11-08T03:49:11+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the fourth review of PR #4. Limited the Poly(acrylic acid) description to the glass polyalkenoate members, and reworded the Phosphoric acid and Acidic liquid descriptions to what PMID:2269210 shows: phosphoric acid is the acid of Tenet, an acid-base reaction cement. No quote names the families that use it.'
 updated_date: '2026-11-08'
