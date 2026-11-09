@@ -1,0 +1,39 @@
+history_version: 1
+target:
+  kind: record
+  slug: hydroxyethyl_methacrylate
+  path: kb/materials/hydroxyethyl_methacrylate.yaml
+session:
+  id: 2026-11-08T025146Z-claude-code-b0dc02
+  timestamp: '2026-11-08T02:51:46Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the automated review of PR #2 on the HEMA record.'
+  details: 'Description: cut the unquoted chemistry (ester of ethylene glycol, methacrylate and hydroxyl
+    groups, miscibility) and quoted what remains with PMID:18433860 and PMID:39838443 as description_evidence.
+    Composition: removed the PMID:17543382 quote, which does not mention HEMA; rewrote the description
+    so the 10% bond-strength optimum (PMID:18433860) and the degree-of-conversion loss at 30 and 50 wt%
+    (PMID:21594225) are kept apart, and quoted the comonomer blend, wettability and phase-separation claims.
+    Added quotes for the Gluma 5% glutaraldehyde/35% HEMA formulation (PMID:34013195), the HEMA-release
+    specimen and sampling conditions (PMID:19826597), the 22 trials and 997 participants (PMID:29649505),
+    the 14-year trial''s lesion count, recall rate, retention loss and failure modes (PMID:37435814),
+    nail cosmetics as the main current cause of HEMA allergy (PMID:37752620), IL-6 and IL-8 up-regulation
+    (PMID:21899564), and oxidative base damage, apoptosis and repair within 120 min (PMID:20079459). Products:
+    the openFDA 510(k) API (api.fda.gov/device/510k.json, read 2026-11-08) confirms K110302 as ADHESIVE
+    EXL-759, 3M Espe AG, KLE, decided 2011-05-19, and K192961 as ADH19, 3M Deutschland GmbH, KLE, decided
+    2019-10-31. It does not say which marketed products these are, and the FDA 510(k) pages and summary
+    PDFs on accessdata.fda.gov refused automated fetches, so the identities EXL-759 = Scotchbond Universal
+    and ADH19 = Scotchbond Universal Plus, and the K192961 indications text, could not be quoted from
+    an FDA source. Removed both submissions and the ADH19 product; Scotchbond Universal stays as a product
+    whose HEMA content PMID:34269543 states, with that quote moved to the dentin-moisture property. Dropped
+    the unsourced Kulzer manufacturer on Gluma. Regulatory rows: source_url now points at the law.cornell.edu
+    CFR text the snippets quote. Standards: removed ISO/TS 11405, which had no rationale; ISO 4049 is
+    kept because PMID:19826597 ran its water absorption tests to it. Notes: removed the stale research
+    report path and the verification dates; the KLE recognition set (ISO 29022 4-219, ISO 7405 4-261,
+    ISO/TS 16506 4-324, ISO 9917-1 4-348, ISO 3990 4-364) was verified on 2026-09-25 in the earlier curation.
+    just validate: 88 snippets checked, 0 issues.'

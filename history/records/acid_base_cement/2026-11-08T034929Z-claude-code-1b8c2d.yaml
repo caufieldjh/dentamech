@@ -1,0 +1,25 @@
+history_version: 1
+target:
+  kind: record
+  slug: acid_base_cement
+  path: kb/materials/acid_base_cement.yaml
+session:
+  id: 2026-11-08T034929Z-claude-code-1b8c2d
+  timestamp: '2026-11-08T03:49:29Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/4
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the fourth automated review of PR #4.'
+  details: 'Two warnings fixed by rewording to what the quotes support. Poly(acrylic acid): limited to
+    the glass polyalkenoate members, since PMID:10941918 is a glass-ionomer study. Phosphoric acid and
+    Acidic liquid: PMID:2269210 shows phosphoric acid as the acid of Tenet, which its title places among
+    acid-base reaction cements, but no cached abstract names zinc phosphate cement''s liquid, so the zinc
+    phosphate attribution is cut. Notes in the review were not acted on this round.'

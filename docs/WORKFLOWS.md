@@ -60,6 +60,11 @@ until `agent_schedules` is turned on.
 - **Reviewer App** (`MECH_REVIEWER_APP_ID`, `MECH_REVIEWER_PRIVATE_KEY`).
   Optional, pull requests write only. A separate identity, so an approval
   counts toward branch protection and the writer never approves itself.
+  Without it, and without Actions allowed to approve pull requests
+  (Settings > Actions > General), GitHub refuses the review's approval and
+  it is posted as a comment. Either way, an approving verdict dismisses the
+  reviewer's own earlier change requests, and never anyone else's, so a PR
+  whose findings are fixed is not left marked "changes requested".
 - **Claude App.** The `claude` workflow acts as the Claude GitHub App
   through OIDC. Install it from https://github.com/apps/claude.
 
