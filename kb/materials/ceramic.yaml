@@ -416,7 +416,7 @@ properties:
     value: <2 (micaceous glass-ceramic, feldspathic porcelain) to 4.9 (zirconia)
     unit: MPa m^1/2
     test_method: Single Edge Precracked Beam (SEPB) and Single Edge V-Notch Beam (SEVNB)
-    description: The widest well-measured span of a mechanical property inside the class, and the reason the three families are not clinically interchangeable.
+    description: The widest well-measured span of a mechanical property inside the class, measured across its inorganic families.
     evidence:
       - reference: PMID:12901984
         reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
@@ -959,6 +959,7 @@ products:
         regulation_number: '872.6660'
         source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K211916
 notes: |-
+  The record description is the OHD definition of OHD:0000135, verbatim. Its processing facts are also quoted in description_evidence.
   Scope. OHD:0000135 is a class with 20 descendants, so every claim here is pitched at the level of ceramic as a restorative device type. Where the only measured values are subtype-specific they are recorded as bounds on the class with the subtype named in the property name or value, and the family-specific numbers are left to the children.
 
   Regulatory. The material-level FDA device type is 872.6660 "Porcelain powder for clinical use" (product code EIH, Class II, 510(k)), and 872.3920 "Porcelain tooth" (ELL) is the downstream prefabricated-component device type that the regulation itself defines as being made of the 872.6660 material. 872.6660 has exactly one product code. The regulation's wording predates CAD/CAM and names only kaolin, felspar and quartz, but EIH is empirically the code modern ceramic blanks carry, which is why the three verified products below are all EIH. Two neighbouring device types are deliberately not recorded as this material's own status: the implant abutment device type, under which ceramic abutments clear but whose identification names no material, and the CAD/CAM system device type, which classifies the system rather than the ceramic. Their regulation numbers and product codes are not recorded because they have not been verified here.
@@ -1015,4 +1016,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the fourth review of PR #13. Quoted PMID:30328190 for the absence of monolithic zirconia implant crown studies, and replaced the toughest-subfamily wording on lithium disilicate and zirconia with what the PMID:12901984 comparison shows.'
-updated_date: '2026-11-08'
+  - timestamp: '2026-11-09T17:58:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Merged main after PRs #2 and #4. Cut the unquoted claim that the toughness span is why the families are not clinically interchangeable, scoping the row to the inorganic families PMID:12901984 measured. Said in notes that the description is the OHD definition.'
+updated_date: '2026-11-09'
