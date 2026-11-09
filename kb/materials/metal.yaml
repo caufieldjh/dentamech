@@ -810,7 +810,7 @@ adverse_effects:
         supports: PARTIAL
         evidence_source: HUMAN_CLINICAL
         snippet: Allergic contact stomatitis to dental materials is rare.
-        explanation: Retrospective multicentre patch-test analysis drawn from 169,834 tested patients. The systematic review above declines to give a prevalence; this is the closest thing to an upper bound on how often the allergy becomes a clinical problem.
+        explanation: Retrospective multicentre patch-test analysis drawn from 169,834 tested patients. The systematic review above declines to give a prevalence; this large patch-test series characterises clinically relevant allergy as rare.
       - reference: PMID:38123140
         reference_title: Contact allergies to dental materials in patients.
         supports: SUPPORT
@@ -1084,4 +1084,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the fourth review of PR #12. Quoted PMID:25935732 for the comparison with all-ceramic FDPs, and cut the unquoted scatter-and-attenuation mechanism from the CBCT artifact row.'
-updated_date: '2026-11-08'
+  - timestamp: '2026-11-09T17:58:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Merged main after PRs #2 and #4, resolving docs/regulatory.md (kept main''s 872.3275 row with MZW and NEA, and this branch''s 872.3330 and 872.3350 rows). Reworded the 872.3330 row so it no longer glosses austenitic as stainless steel. Replaced the upper-bound wording on the patch-test explanation with what the quote says.'
+updated_date: '2026-11-09'

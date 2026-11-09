@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: record
+  slug: metal
+  path: kb/materials/metal.yaml
+session:
+  id: 2026-11-09T180043Z-claude-code-942dfa
+  timestamp: '2026-11-09T18:00:43Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/12
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Merged main after PRs #2 and #4 and answered the fifth review of PR #12.'
+  details: 'The fifth review''s only warning was the merge conflict with main. Merged origin/main. docs/regulatory.md:
+    kept main''s 872.3275 row (EMA, EMB, MZW, NEA) and this branch''s 872.3330 and 872.3350 rows; reworded
+    the 872.3330 note to say stainless steel crowns are listed under ELZ, instead of glossing austenitic
+    as stainless steel, and updated the paragraph that described that gloss. Term caches: resolved as
+    the union of both sides'' rows, keyed by CURIE. Notes: replaced ''the closest thing to an upper bound''
+    on the patch-test explanation with what the quote says. Left for a person: confirming the 872.3350
+    identification paragraph verbatim against law.cornell.edu, since url: quotes are not machine-checked
+    (issue #36).'
