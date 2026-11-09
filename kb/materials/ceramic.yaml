@@ -589,7 +589,7 @@ clinical_performance:
     follow_up_years: 5
     population: 9434 all-ceramic and 4663 metal-ceramic single crowns, 67 studies (search to 2013)
     comparator: Metal-ceramic single crowns, 94.7%
-    description: The range covers only the crown types this review gave figures for. Feldspathic and silica-based crowns are excluded; they were significantly lower (p<0.001) but the abstract gives no figure for them, so the range understates the spread of the class. Retained deliberately alongside the 2026 review to record that the verdict on zirconia has moved. This round advised against zirconia as a primary option on the strength of technical complications; the later round, with monolithic designs in the pool, does not. Every figure in this row is as first published. The review carries a corrigendum (PMID:27726969, doi:10.1016/j.dental.2016.09.032), quoted below. It revises the lower bound of this row. Passia et al., counted in the densely sintered zirconia group, used ZrSiO4 rather than densely sintered zirconia crowns; excluding it raises the 5-year zirconia survival estimate to 93.8% (95% CI 90.3-96.1) and drops the annual failure rate from 1.84% to 1.28%. The gap to metal-ceramic then falls to 1.9% and stops being significant (p=0.174), which is the statistical basis of the zirconia recommendation quoted below. value is left at the figures the review published, because this row exists to record that earlier round as it stood; the corrected lower bound is 93.8, not 92.1. Two of its figures are transposed against the 2015 abstract, with identical confidence intervals on both sides, so they are the same estimates. zirconia 91.2 in the corrigendum against 92.1 in the abstract (both 82.8-95.6), and metal-ceramic 95.7 against 94.7 (both 94.1-96.9). The snippets below quote the abstract, so they keep the abstract's figures.
+    description: The range covers only the crown types this review gave figures for. Feldspathic and silica-based crowns are excluded; they were significantly lower (p<0.001) but the abstract gives no figure for them, so the range understates the spread of the class. Retained deliberately alongside the 2026 review to record that the verdict on zirconia has moved. This round advised against zirconia as a primary option on the strength of technical complications; the later round, with monolithic designs in the pool, does not. Every figure in this row is as first published. The review carries a corrigendum (PMID:27726969, doi:10.1016/j.dental.2016.09.032), quoted below. It revises the lower bound of this row. Excluding one outlier study raises the 5-year zirconia survival estimate to 93.8% (95% CI 90.3-96.1) and drops the annual failure rate from 1.84% to 1.28%. The gap to metal-ceramic then falls to 1.9% and stops being significant (p=0.174), which is the statistical basis of the zirconia recommendation quoted below. value is left at the figures the review published, because this row exists to record that earlier round as it stood; the corrected lower bound is 93.8, not 92.1. Two of its figures are transposed against the 2015 abstract, with identical confidence intervals on both sides, so they are the same estimates. zirconia 91.2 in the corrigendum against 92.1 in the abstract (both 82.8-95.6), and metal-ceramic 95.7 against 94.7 (both 94.1-96.9). The snippets below quote the abstract, so they keep the abstract's figures.
     evidence:
       - reference: PMID:25842099
         reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
@@ -639,6 +639,12 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: 'Comparing this to the 5-year survival rate of metal-ceramic crowns of a 95.7% (95% C.I.: 94.1–96.9%) the difference decreases to 1.9%. This difference does not reach statistical significance (p = 0.174).'
         explanation: Withdraws the significant zirconia deficit that the recommendation above rests on. Both spaces around the equals sign are U+00A0 no-break spaces and the interval uses an en dash, as on the cited page; replacing them would break the verbatim match.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Medline (PubMed), Embase, Cochrane Central Register of Controlled Trials (CENTRAL) searches (2006-2013) were performed for clinical studies focusing on tooth-supported fixed dental prostheses (FDPs) with a mean follow-up of at least 3 years.
+        explanation: Source of the search period in population.
   - name: Five-year survival of implant-supported single crowns
     measure_type: SURVIVAL_RATE
     value: '97.6'
@@ -697,7 +703,7 @@ clinical_performance:
     unit: '%'
     follow_up_years: 10.4
     population: 29 studies of anterior and premolar ceramic laminate veneers
-    description: Feldspathic 96.13%, leucite-reinforced 93.70%, lithium disilicate 96.81%, with no significant difference in survival between materials. Complication rates did differ sharply.
+    description: Feldspathic 96.13%, leucite-reinforced 93.70%, lithium disilicate 96.81%, with no significant difference in survival between materials. Lithium disilicate slightly outperformed the other two with lower long-term complication rates.
     evidence:
       - reference: PMID:39523553
         reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
@@ -723,6 +729,12 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: To analyze survival and complication rates for anterior and premolar laminate-veneers out of different ceramic materials
         explanation: Source of the anterior and premolar scope.
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: LDS slightly outperforms feldspathic and LRGC laminate-veneers with lower long-term complication rates.
+        explanation: Source of the complication-rate comparison.
   - name: Survival of ceramic partial coverage restorations
     measure_type: SURVIVAL_RATE
     value: 93.7 (lithium disilicate); 89.3 (resin-matrix ceramic)
@@ -830,7 +842,7 @@ adverse_effects:
         explanation: The authors' own caution about how this accumulates with time.
   - name: Loss of retention
     effect_category: MECHANICAL_FAILURE
-    description: A cementation-interface rather than a bulk-material failure, reported at higher rates for zirconia crowns than for metal-ceramic.
+    description: Loss of retention, reported at higher rates for zirconia crowns than for metal-ceramic. Read here as a failure at the cementation interface rather than of the bulk material; the source reports the outcome, not its mechanism.
     evidence:
       - reference: PMID:25842099
         reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
@@ -867,7 +879,7 @@ adverse_effects:
         explanation: Identifies which antagonist was worst; the certainty of this evidence was rated moderate.
   - name: Low-temperature degradation of zirconia
     effect_category: OTHER
-    description: An ageing mechanism of the polycrystalline family only, not of the class. The tetragonal-to-monoclinic transformation roughens the surface and lowers fatigue strength, and resistance rises with yttria content. The cited study induced it by accelerated autoclave ageing at 134 degC, not at mouth temperature, so the rate under clinical conditions is not evidenced here.
+    description: An ageing mechanism of the polycrystalline family only, not of the class. Phase transformation roughens the surface and lowers fatigue strength, and resistance rises with yttria content. The cited study induced it by accelerated autoclave ageing at 134 degC, not at mouth temperature, so the rate under clinical conditions is not evidenced here.
     evidence:
       - reference: PMID:38281620
         reference_title: Effect of low-temperature degradation on the fatigue performance of dental strength-gradient multilayered zirconia restorations.
@@ -1022,4 +1034,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Merged main after PRs #2 and #4. Cut the unquoted claim that the toughness span is why the families are not clinically interchangeable, scoping the row to the inorganic families PMID:12901984 measured. Said in notes that the description is the OHD definition.'
+  - timestamp: '2026-11-09T18:45:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the sixth review of PR #13. Cut the unquoted Passia/ZrSiO4 detail to one outlier study, as the corrigendum quotes say. Replaced the unquoted claim that veneer complication rates differed sharply with the PMID:39523553 sentence that lithium disilicate slightly outperforms the others. Said phase transformation, as PMID:38281620 does, instead of naming the phases. Quoted the 2006-2013 search period from PMID:25842099. Marked the cementation-interface reading of loss of retention as interpretation.'
 updated_date: '2026-11-09'
