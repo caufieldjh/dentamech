@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: record
+  slug: acid_base_cement
+  path: kb/materials/acid_base_cement.yaml
+session:
+  id: 2026-11-08T033326Z-claude-code-0fccc1
+  timestamp: '2026-11-08T03:33:26Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the third automated review of PR #4.'
+  details: 'Warning: removed the Fluoride release property row. It had no value, called itself not recorded
+    at class level, and both its quotes (PMID:37615013, PMID:27367737) are about glass ionomers only;
+    notes now say fluoride release belongs to the glass polyalkenoate members and the Glass ionomer cement
+    entry. That entry was not edited here (out of scope for this PR). Notes fixed: zinc oxide component
+    trimmed to the zinc phosphate and zinc polycarboxylate members PMID:12628437 covers, and described
+    as the phase that dissolves under acid attack rather than as the powder of all zinc-based members;
+    base/liner explanation now says the regulation names no site and dentine (UBERON:0001751) is the curator''s
+    choice; base use description now repeats the CFR wording ''base cement to affix a temporary tooth
+    filling''; dissolution adverse effect moved from MECHANICAL_FAILURE to OTHER, since acid erosion is
+    chemical dissolution; both 872.3275 source_url fields now point at the Cornell LII text the evidence
+    quotes; Declined: the cache/chebi/terms.csv note. The file is not a merge artifact: main has no rows
+    for CHEBI:15377 water or CHEBI:26078 phosphoric acid, and the PR adds both because the record binds
+    them; the validator writes them back if they are removed. just validate: 27 snippets, 0 issues (two
+    fewer: the fluoride row''s quotes).'
