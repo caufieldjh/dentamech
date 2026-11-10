@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-08T033316Z-claude-code-9209a6
+  timestamp: '2026-11-08T03:33:16Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the third review of PR #13: quoted the processing facts in the description, added
+    the MeSH mapping, and fixed two notes.'
+  details: 'Review warning: the description (the OHD definition) stated processing at high temperature,
+    pressing, polishing and milling with no description_evidence. Added five PARTIAL quotes: the 21 CFR
+    872.6660 identification sentence on heating the powder in an oven (fetched from law.cornell.edu on
+    2026-11-08, url: so not machine-checked), PMID:29721230 sintering at 1350 C, PMID:25489158 pressable
+    ceramics, PMID:33581910 surface polish, and PMID:31943720 milling units (newly fetched abstract, found
+    by PubMed search for milled ceramic CAD/CAM restorations). Notes: PMID:40245384 evidence_source made
+    OTHER everywhere; MESH:D003776 Dental Porcelain added as CLOSE_MATCH after confirming the id through
+    the NLM MeSH lookup service, and the Gaps paragraph updated; the ISO 6872 note reworded because the
+    Standard class has no edition field. Declined: re-citing the corrigendum by PMID or DOI, because PMID:27726969
+    has no abstract to validate against; a person should confirm the two url: corrigendum quotes, as the
+    review asks. Validation: just validate 81 snippets, 0 issues.'

@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-09T184545Z-claude-code-a0c8d5
+  timestamp: '2026-11-09T18:45:45Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/13
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the sixth automated review of PR #13.'
+  details: 'Three warnings fixed. Earlier-evidence-round single-crown row: the corrigendum quotes call
+    the excluded study only ''this outlier study'', so ''Passia et al. ... used ZrSiO4'' is cut to ''one
+    outlier study''. Veneer survival row: ''Complication rates did differ sharply'' had no quote and the
+    abstract says ''slightly''; replaced with its LDS sentence, now quoted. Low-temperature degradation:
+    ''tetragonal-to-monoclinic transformation'' replaced by ''phase transformation'', the source''s wording.
+    Notes: quoted the PMID:25842099 METHODS sentence for the 2006-2013 search (Part I of that review covers
+    single crowns); marked the cementation-interface reading of loss of retention as the curator''s interpretation.
+    Still for a person: the corrigendum url: quotes, and the 92.1 versus 93.8 value choice.'
