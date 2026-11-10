@@ -1,0 +1,33 @@
+history_version: 1
+target:
+  kind: record
+  slug: metal
+  path: kb/materials/metal.yaml
+session:
+  id: 2026-11-08T034042Z-claude-code-b6d184
+  timestamp: '2026-11-08T03:40:42Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the third review of PR #12: sourced the stainless steel crown use, quoted or cut
+    the remaining unquoted claims, restored the MeSH mapping, and moved the record to PROPOSED.'
+  details: 'Review warning: the preformed-crown use bound OHD:0000163 stainless steel crown restoration
+    procedure on the 872.3330 sentence alone, which never names stainless steel. Found and fetched two
+    abstracts by PubMed search (preformed metal crowns primary molars systematic review): PMID:26718872
+    (Cochrane, preformed crowns made wholly of stainless steel are the preformed metal crowns) and PMID:36151937
+    (PMCs restore carious primary molars). Both now support the use, so the binding stays. Cut the unquoted
+    claim that a preformed crown on a primary molar is often definitive. Notes fixed: implant-supported
+    single-crown use now quotes the PMID:30328190 survival sentence, not its aim; corrosion row quotes
+    PMID:10668036 on local exposure as the higher risk; nickel row quotes PMID:23895079 and no longer
+    names stainless steel, which no cited source states; corrosion row no longer calls itself the one
+    class-level property; fabrication row says the routes significantly influence several mechanical properties,
+    matching PMID:39741083; typo fixed; MESH:D003722 Dental Alloys restored as CLOSE_MATCH now that main
+    declares MESH (#34), id confirmed through the NLM MeSH lookup service. The earlier history record
+    now points to research/metal-curation-notes.md, and that file is retitled as hand-written curation
+    notes, not provider output. Verified on 2026-11-08 against law.cornell.edu: all 20 CFR snippets in
+    the record and the five identification paragraphs (872.3060, 872.3070, 872.3330, 872.3350, 872.3710)
+    are verbatim, including ''or stainless steel'' at the end of the 872.3350 alloy list. Status moved
+    to PROPOSED, as the review suggested: complete and valid. just validate: 61 snippets, 0 issues.'

@@ -1,0 +1,25 @@
+history_version: 1
+target:
+  kind: record
+  slug: metal
+  path: kb/materials/metal.yaml
+session:
+  id: 2026-11-08T034925Z-claude-code-68b42d
+  timestamp: '2026-11-08T03:49:25Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/12
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the fourth automated review of PR #12.'
+  details: 'Two errors fixed. clinical_performance[0]: added the PMID:25935732 abstract sentence comparing
+    all-ceramic with metal-ceramic FDP survival, which the description stated unquoted. CBCT artifact
+    adverse effect: cut ''scatter and attenuate the beam, producing streak and shadow artifacts'', which
+    neither PMID:42203681 nor PMID:42267249 says, and kept what they quote (severe artifacts compromising
+    diagnostic accuracy; metal composition as a driver). Notes in the review were not acted on this round.'

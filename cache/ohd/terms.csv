@@ -1,7 +1,8 @@
 curie,label,retrieved_at
 OHD:0000000,dental restoration material,2026-09-04T16:38:30.318549
 OHD:0000001,amalgam dental restoration material,2026-09-04T16:18:10.777646
-OHD:0000033,crown restoration procedure,2026-11-07T15:23:04.526403
+OHD:0000022,metallic inlay restoration procedure,2026-11-07T15:21:54.097949
+OHD:0000033,crown restoration procedure,2026-11-07T15:21:54.092648
 OHD:0000034,gold foil dental restoration material,2026-09-04T16:18:10.831270
 OHD:0000036,resin-based composite dental restoration material,2026-09-04T16:18:10.911070
 OHD:0000041,amalgam filling restoration procedure,2026-09-04T16:38:26.055883
@@ -15,6 +16,7 @@ OHD:00001025,mineral trioxide aggregate cement dental restoration material,2026-
 OHD:0000135,ceramic dental restoration material,2026-09-04T16:18:10.790805
 OHD:0000136,titanium dental restoration material,2026-09-04T16:18:10.946912
 OHD:0000137,stainless steel dental restoration material,2026-09-04T16:18:10.939179
+OHD:0000138,metallic onlay restoration procedure,2026-11-07T15:21:54.101844
 OHD:0000140,titanium crown restoration procedure,2026-09-04T16:38:42.502739
 OHD:0000142,noble metal crown restoration procedure,2026-09-04T16:38:32.975101
 OHD:0000146,noble metal dental restoration material,2026-09-04T16:18:10.891469
@@ -24,12 +26,16 @@ OHD:0000156,predominantly base metal dental restoration material,2026-09-04T16:1
 OHD:0000160,porcelain fused to noble metal crown restoration procedure,2026-09-04T16:38:32.978179
 OHD:0000161,porcelain fused to predominantly base metal crown restoration procedure,2026-09-04T16:38:35.619277
 OHD:0000162,predominantly base metal crown restoration procedure,2026-09-04T16:38:35.616079
+OHD:0000163,stainless steel crown restoration procedure,2026-11-07T15:21:54.113038
 OHD:0000167,noble metal inlay restoration procedure,2026-09-04T16:38:32.980926
 OHD:0000241,apicoectomy procedure,2026-09-04T16:38:31.200248
+OHD:0000247,removable prosthodontics procedure,2026-11-07T15:21:54.109057
 OHD:0000248,dental implant procedure,2026-09-04T16:38:41.567160
 OHD:0000286,pulp capping procedure,2026-09-04T16:38:30.226914
 OHD:0000297,ceramic dental implant crown attachement procedure,2026-11-07T15:22:25.711555
+OHD:0000298,porcelain fused to metal dental implant crown attachement procedure,2026-11-07T15:21:54.106002
 OHD:0000299,dental implant abutment attachement procedure,2026-09-04T16:38:42.498573
+OHD:0000303,direct restoration procedure,2026-11-07T15:21:54.083587
 OHD:0000313,fixed partial denture restoration procedure,2026-09-04T16:38:46.371630
 OHD:0001005,resin-based cement dental restoration material,2026-09-04T16:18:10.907267
 OHD:0001006,glass ionomer cement dental restoration material,2026-09-04T16:18:10.823789
