@@ -1,5 +1,7 @@
 """The record browser's layout rules: labels, links, tables, cards, escaping."""
 
+import hashlib
+
 import pytest
 
 from dentamech import render
@@ -86,3 +88,13 @@ def test_a_box_the_validator_rejects_is_left_off_and_json_cannot_end_the_script(
     assert render.map_boxes({"area": {"bounding_box": bad}}) == []
     box = {"name": "</script><script>alert(1)</script>", "west": 0, "south": 0, "east": 1, "north": 1}
     assert "</" not in render.map_data({"area": box})
+
+
+def test_pages_ask_for_the_stylesheet_they_were_built_with():
+    # A browser holding an older style.css must not pair it with a newer page.
+    out = render.build()
+    css = next(text for path, text in out.items() if path.name == "style.css")
+    version = hashlib.sha256(css.encode()).hexdigest()[:10]
+    pages = [text for path, text in out.items() if path.suffix == ".html"]
+    assert pages
+    assert all(f'style.css?v={version}"' in text for text in pages)

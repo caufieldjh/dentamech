@@ -33,6 +33,7 @@ CURIEs are links.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -423,14 +424,18 @@ def build() -> dict[Path, str]:
         s = str(r["data"].get("status") or "")
         if s:
             statuses[s] = statuses.get(s, 0) + 1
-    ctx = {"mech_name": MECH_NAME, "record_noun": RECORD_NOUN, "repo_url": REPO_URL, "site": settings}
+    css = env.get_template("style.css").render(theme=settings["theme"], **site.colors(settings))
+    # Pages ask for style.css?v=<hash of its text>, so a browser holding an
+    # older copy (GitHub Pages lets it keep one ten minutes) fetches the new one.
+    css_version = hashlib.sha256(css.encode()).hexdigest()[:10]
+    ctx = {"mech_name": MECH_NAME, "record_noun": RECORD_NOUN, "repo_url": REPO_URL, "site": settings,
+           "css_version": css_version}
     out = {PAGES_DIR / "index.html": env.get_template("index.html").render(
         records=records, statuses=sorted(statuses.items()), **ctx)}
     tmpl = env.get_template("record.html")
     for r in records:
         body = record_body(r["data"], settings["hidden_sections"], settings["map"])
         out[PAGES_DIR / "records" / f"{r['stem']}.html"] = tmpl.render(record=r, body=body, **ctx)
-    css = env.get_template("style.css").render(theme=settings["theme"], **site.colors(settings))
     out[PAGES_DIR / "style.css"] = css
     return out
 
