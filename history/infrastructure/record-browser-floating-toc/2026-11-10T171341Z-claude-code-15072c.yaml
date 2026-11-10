@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: record-browser-floating-toc
+  path: src/dentamech/templates/record.html
+session:
+  id: 2026-11-10T171341Z-claude-code-15072c
+  timestamp: '2026-11-10T17:13:41Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/39
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/40
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answer the review of PR #40: drop an unused CSS rule, skip menu marking when the side menu
+    is hidden'
+  details: 'Removed .toc a[aria-current] from style.css; the script only marks .toc-side links. The scroll
+    script now returns early while .toc-side has no layout (offsetParent is null), so phones do no work.
+    Checked in headless Chromium on pages/records/metal.html: 1440 and 1100 px still mark Composition
+    after scrolling; 390 px marks nothing; widening a scrolled 390 px window to 1280 px marks Composition;
+    clicking Standards, Parents and Mappings marks each; Back to top returns to scrollY 0. just qc passed
+    (8 gates).'

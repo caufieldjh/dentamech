@@ -90,7 +90,7 @@ The page frames are Jinja templates in `src/dentamech/templates/`:
 | File | Page |
 |---|---|
 | `index.html` | the front page table: sortable, filterable |
-| `record.html` | one record: header, overview, section menu, sections |
+| `record.html` | one record: header, overview, section menu (a row of links; on screens 64rem and wider, a sticky column on the left marking the section in view), sections |
 | `style.css` | the stylesheet; colors arrive as variables from `conf/site.yaml` |
 
 To change how a kind of value is drawn (say, show a list as cards rather

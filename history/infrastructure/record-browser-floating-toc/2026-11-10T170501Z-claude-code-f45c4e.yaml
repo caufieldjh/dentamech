@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: record-browser-floating-toc
+  path: src/dentamech/templates/record.html
+session:
+  id: 2026-11-10T170501Z-claude-code-f45c4e
+  timestamp: '2026-11-10T17:05:01Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/39
+events:
+- type: EDIT
+  outcome: changed
+  summary: Record browser pages get a sticky section menu on the left on wide screens
+  details: 'Edited src/dentamech/templates/record.html and style.css. On screens 64rem and wider, record
+    pages with more than two sections show a sticky left column listing every section (and Map when present)
+    with counts, marking the section in view and a Back to top link; the page column shifts right and
+    the header and footer align with it. Narrower screens keep the inline row of section links. Colors
+    use the existing CSS variables only. Checked with headless Chromium on pages/records/metal.html at
+    1440, 1100 (dark) and 390 px: no horizontal scroll, menu hidden on phone, clicking Standards, Parents
+    and Mappings marks each. A short section jumped to from the menu stays marked while its heading is
+    near the top. Not done: no automated browser test was added; the 2-section threshold was kept.'
