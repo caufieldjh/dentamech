@@ -121,8 +121,11 @@
   const links = [...document.querySelectorAll(".toc-side a[href^='#']:not(.toc-top)")];
   const targets = links.map(a => document.getElementById(a.getAttribute("href").slice(1)));
   let queued = false, chosen = -1;
+  const menu = document.querySelector(".toc-side");
   const mark = () => {
     queued = false;
+    // The menu is hidden on a narrow screen; nothing to mark there.
+    if (!menu.offsetParent) return;
     const line = window.innerHeight / 4;
     let current = -1;
     targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top <= line) current = i; });
@@ -140,7 +143,7 @@
     // Keep the marked link visible when the menu itself scrolls.
     const on = links[current];
     if (on) {
-      const menu = on.closest(".toc-side"), r = on.getBoundingClientRect(), m = menu.getBoundingClientRect();
+      const r = on.getBoundingClientRect(), m = menu.getBoundingClientRect();
       if (r.top < m.top || r.bottom > m.bottom) menu.scrollTop += r.top - m.top - m.height / 2;
     }
   };

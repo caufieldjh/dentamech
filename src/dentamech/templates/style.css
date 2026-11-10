@@ -59,7 +59,6 @@ header .badge { background: rgba(255, 255, 255, .85); color: #1d1d1f; }
 .toc { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 .5rem; }
 .toc a { padding: .2rem .65rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none;
   background: var(--card); font-size: .9rem; }
-.toc a[aria-current] { border-color: var(--accent); }
 /* The side menu: hidden until the screen is wide enough to hold it. */
 .toc-side { display: none; }
 .toc-side nav { display: flex; flex-direction: column; gap: .1rem; }
