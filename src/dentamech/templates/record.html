@@ -10,7 +10,11 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 {%- endif %}
 </head>
-<body>
+{#- A long page gets a section menu: a row of links above the sections, and,
+    on a wide screen, a column on the left that stays in view. -#}
+{%- set toc = body.sections | length > 2 %}
+{%- macro toc_links() %}{% if body.map %}<a href="#map">Map</a>{% endif %}{% for s in body.sections %}<a href="#{{ s.key }}">{{ s.label }}{% if s.count %} <span class="count">{{ s.count }}</span>{% endif %}</a>{% endfor %}{% endmacro %}
+<body{% if toc %} class="has-toc"{% endif %}>
 <header>
 <nav><a href="../index.html">{{ site.title }}</a></nav>
 <h1>{{ record.data.name }}</h1>
@@ -21,6 +25,16 @@
 {%- if record.data.record_term %} <span class="grounded">{{ record.data.record_term | term }}</span>{% endif %}
 </p>
 </header>
+<div class="layout">
+{%- if toc %}
+<aside class="toc-side">
+<nav aria-label="Sections">
+<p class="toc-title">On this page</p>
+{{ toc_links() }}
+<a class="toc-top" href="#">Back to top</a>
+</nav>
+</aside>
+{%- endif %}
 <main>
 {%- if record.data.description %}
 <p class="lead">{{ record.data.description }}</p>
@@ -85,8 +99,8 @@
 </script>
 </section>
 {%- endif %}
-{%- if body.sections | length > 2 %}
-<nav class="toc">{% if body.map %}<a href="#map">Map</a>{% endif %}{% for s in body.sections %}<a href="#{{ s.key }}">{{ s.label }}{% if s.count %} <span class="count">{{ s.count }}</span>{% endif %}</a>{% endfor %}</nav>
+{%- if toc %}
+<nav class="toc" aria-label="Sections">{{ toc_links() }}</nav>
 {%- endif %}
 {%- for s in body.sections %}
 <section id="{{ s.key }}">
@@ -98,6 +112,46 @@
 </section>
 {%- endfor %}
 </main>
+</div>
+{%- if toc %}
+<script>
+(() => {
+  // Mark the section being read in the side menu: the last one whose top
+  // has passed a line a quarter of the way down the window.
+  const links = [...document.querySelectorAll(".toc-side a[href^='#']:not(.toc-top)")];
+  const targets = links.map(a => document.getElementById(a.getAttribute("href").slice(1)));
+  let queued = false, chosen = -1;
+  const mark = () => {
+    queued = false;
+    const line = window.innerHeight / 4;
+    let current = -1;
+    targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top <= line) current = i; });
+    // At the very bottom, the last section is the one in view.
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = targets.length - 1;
+    // A section jumped to from the menu stays marked while its heading is
+    // near the top, even when it is short and the next one is in view too.
+    if (chosen >= 0) {
+      const top = targets[chosen].getBoundingClientRect().top;
+      if (top > -2 && top <= line) current = chosen; else chosen = -1;
+    }
+    links.forEach((a, i) => {
+      if (i === current) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    // Keep the marked link visible when the menu itself scrolls.
+    const on = links[current];
+    if (on) {
+      const menu = on.closest(".toc-side"), r = on.getBoundingClientRect(), m = menu.getBoundingClientRect();
+      if (r.top < m.top || r.bottom > m.bottom) menu.scrollTop += r.top - m.top - m.height / 2;
+    }
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(mark); } };
+  links.forEach((a, i) => a.addEventListener("click", () => { chosen = i; queue(); }));
+  addEventListener("scroll", queue, {passive: true});
+  addEventListener("resize", queue);
+  mark();
+})();
+</script>
+{%- endif %}
 <footer><p>{{ site.footer }}</p><p><a href="{{ repo_url }}">Repository</a></p></footer>
 </body>
 </html>
