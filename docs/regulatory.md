@@ -106,7 +106,8 @@ Regulations verified against the CFR text and the FDA product classification dat
 | 872.3640 | Endosseous dental implant | II (special controls) | DZE, NRQ, OAT | Root-form and blade-form |
 | 872.3690 | Tooth shade resin material | II | EBF, OFW | |
 | 872.3710 | Base metal alloy | II (special controls) | EJH | 510(k)-exempt subject to 872.9 |
-| 872.3920 | Porcelain tooth | II | ELL | |
+| 872.3920 | Porcelain tooth | II | ELL | Prefabricated device the regulation defines as made of the 872.6660 material. Re-verified 2026-10-28 |
+| 872.6660 | Porcelain powder for clinical use | II | EIH | Subpart G. The material-level device type for dental ceramics; modern lithium disilicate and zirconia blanks clear under EIH. Re-verified 2026-10-28 |
 
 ## FDA performance criteria for dental cements
 

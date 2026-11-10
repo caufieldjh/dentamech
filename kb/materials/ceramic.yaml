@@ -1,10 +1,992 @@
 id: OHD:0000135
 name: Ceramic
 description: A dental restoration material that has a nonmetallic inorganic structure consisting primarily of compounds containing oxygen combined with one or more metallic or semi-metallic elements that are processed at high temperatures, pressed, and polished or milled.
+description_evidence:
+  - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+    reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+    supports: PARTIAL
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: The device is used in prosthetic dentistry by heating the powder mixture to a high temperature in an oven to produce a hard prosthesis with a glass-like finish.
+    explanation: High-temperature processing, stated for porcelain powder, the 872.6660 device type.
+  - reference: PMID:29721230
+    reference_title: Role of coefficient of thermal expansion on bond strength of ceramic veneered yttrium-stabilized zirconia.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: sintered at 1350°C for 6 hours
+    explanation: High-temperature sintering of a polycrystalline (Y-TZP) ceramic.
+  - reference: PMID:25489158
+    reference_title: 'Evaluating the fracture toughness and flexural strength of pressable dental ceramics: an in vitro study.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: three commonly used pressable all ceramic core materials
+    explanation: Pressing, for leucite-based glass ceramics.
+  - reference: PMID:33581910
+    reference_title: 'Flexural strength and translucency characterization of aesthetic monolithic zirconia and relevance to clinical indications: A systematic review.'
+    supports: PARTIAL
+    evidence_source: SYSTEMATIC_REVIEW
+    snippet: Smooth surface polish was found to significantly enhance strength while coarse grinding and mechanical fatigue was found to do the reverse.
+    explanation: Polishing, for monolithic zirconia.
+  - reference: PMID:31943720
+    reference_title: Materials in digital dentistry-A review.
+    supports: PARTIAL
+    evidence_source: OTHER
+    snippet: laboratory/chairside milling units to manufacture dental restorations and appliances from multiple materials including wax, metals, composite resins, and ceramics
+    explanation: Milling of ceramics with CAD/CAM units.
 record_term:
   id: OHD:0000135
   label: ceramic dental restoration material
 category: CERAMIC
+synonyms:
+  - dental ceramic
+  - all-ceramic material
+  - ceramic restorative material
+  - dental porcelain
+mappings:
+  - id: NCIT:C42634
+    label: Dental Material
+    predicate: BROAD_MATCH
+    source: NCI Thesaurus via OLS
+  - id: MESH:D003776
+    label: Dental Porcelain
+    predicate: CLOSE_MATCH
+    source: MeSH
+setting_mechanisms:
+  - SINTERING
+  - HEAT_PRESSING
+  - MILLING
+composition:
+  - name: Glass-matrix phase
+    role: MATRIX
+    description: An amorphous silicate glass phase. Its presence or absence is the criterion that separates the two inorganic families of the class, and so separates this entry's children Glass matrix ceramic and Polycrystalline ceramic.
+    evidence:
+      - reference: PMID:25965634
+        reference_title: A new classification system for all-ceramic and ceramic-like restorative materials.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: an all-ceramic material is classified according to whether a glass-matrix phase is present (glass-matrix ceramics) or absent (polycrystalline ceramics) or whether the material contains an organic matrix highly filled with ceramic particles (resin-matrix ceramics)
+        explanation: States the compositional criterion that defines the three families of the class.
+  - name: Feldspar
+    role: MATRIX
+    chemical:
+      preferred_term: feldspar
+      term:
+        id: CHEBI:48733
+        label: feldspar
+    description: The traditional glass former of dental porcelain, named in the FDA identification of the device type (spelled "felspar" there).
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+        reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Porcelain powder for clinical use is a device consisting of a mixture of kaolin, felspar, quartz, or other substances intended for use in the production of artificial teeth in fixed or removable dentures, of jacket crowns, facings, and veneers.
+        explanation: The regulation names the constituents of the device type by name.
+  - name: Quartz
+    role: FILLER
+    chemical:
+      preferred_term: quartz
+      term:
+        id: CHEBI:46727
+        label: quartz
+    description: Crystalline silica, one of the three constituents named in the FDA identification.
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+        reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Porcelain powder for clinical use is a device consisting of a mixture of kaolin, felspar, quartz, or other substances intended for use in the production of artificial teeth in fixed or removable dentures, of jacket crowns, facings, and veneers.
+        explanation: The regulation names the constituents of the device type by name.
+  - name: Kaolin
+    role: OTHER
+    chemical:
+      preferred_term: kaolin
+      term:
+        id: CHEBI:140503
+        label: kaolin
+    description: Clay component of traditional dental porcelain, named in the FDA identification.
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+        reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Porcelain powder for clinical use is a device consisting of a mixture of kaolin, felspar, quartz, or other substances intended for use in the production of artificial teeth in fixed or removable dentures, of jacket crowns, facings, and veneers.
+        explanation: The regulation names the constituents of the device type by name.
+  - name: Leucite
+    role: CRYSTALLINE_PHASE
+    description: Reinforcing crystalline phase of leucite-reinforced glass-ceramics. No ChEBI term exists for leucite, so no chemical term is bound.
+    evidence:
+      - reference: PMID:41990584
+        reference_title: A state-of-the-art review on chairside CAD/CAM ceramic materials in restorative dentistry.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: The main classifications of chairside CAD/CAM materials include feldspathic ceramics, leucite-reinforced ceramics, lithium disilicate ceramics, zirconia-reinforced lithium silicates, resin nanoceramics, polymer-infiltrated ceramic-network and zirconia.
+        explanation: Names leucite reinforcement as one of the subfamilies of the class.
+  - name: Lithium disilicate
+    role: CRYSTALLINE_PHASE
+    description: Crystalline phase of the lithium disilicate glass-ceramics. In the cited comparison their fracture toughness is below that of glass-infused alumina and zirconia. No ChEBI term exists, so no chemical term is bound.
+    evidence:
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The third group KIc values were 2.8 MPa m(1/2) for a lithium disilicate glass-ceramic, 3.1 MPa m(1/2) for a glass-infused alumina, and 4.9 MPa m(1/2) for zirconia.
+        explanation: Names lithium disilicate as a crystalline phase of the class and gives its toughness beside two others.
+  - name: Aluminium oxide
+    role: CRYSTALLINE_PHASE
+    chemical:
+      preferred_term: alumina
+      term:
+        id: CHEBI:30187
+        label: aluminium oxide
+    description: Crystalline phase of glass-infiltrated and densely sintered alumina ceramics.
+    evidence:
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The third group KIc values were 2.8 MPa m(1/2) for a lithium disilicate glass-ceramic, 3.1 MPa m(1/2) for a glass-infused alumina, and 4.9 MPa m(1/2) for zirconia.
+        explanation: Names glass-infused alumina as a member of the class and places its toughness.
+  - name: Zirconium dioxide
+    role: CRYSTALLINE_PHASE
+    chemical:
+      preferred_term: zirconia
+      term:
+        id: CHEBI:747200
+        label: zirconium dioxide
+    description: The polycrystalline phase of zirconia, the toughest of the three ceramics in the cited comparison.
+    evidence:
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The third group KIc values were 2.8 MPa m(1/2) for a lithium disilicate glass-ceramic, 3.1 MPa m(1/2) for a glass-infused alumina, and 4.9 MPa m(1/2) for zirconia.
+        explanation: Places zirconia at the top of the class's toughness range.
+  - name: Yttrium oxide
+    role: STABILIZER
+    description: Stabiliser of the zirconia materials, whose yttria content indexes the zirconia grades (3Y, 4Y, 5Y). Raising it buys translucency and costs strength. No ChEBI term exists for yttrium oxide.
+    evidence:
+      - reference: PMID:40738693
+        reference_title: Flexural strength of translucent zirconia for single crowns and fixed dental prostheses-A systematic review.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The overall flexural strength values were significantly higher for 4Y-PSZ (803± 233 MPa) than for 5Y-PSZ materials (570 ± 116 MPa) (P = 0.005).
+        explanation: Shows yttria content indexing the grades and setting their strength.
+      - reference: PMID:38443872
+        reference_title: 'Translucency of recent zirconia materials and material-related variables affecting their translucency: a systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: They reported that changing yttria content had a significant impact on translucency.
+        explanation: The other half of the yttria trade-off.
+      - reference: PMID:38443872
+        reference_title: 'Translucency of recent zirconia materials and material-related variables affecting their translucency: a systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The present review studied in-vitro studies that evaluated the optical characteristics of different yttria content of yttria stabilized materials.
+        explanation: Names yttria as the stabiliser of the zirconia materials, graded by yttria content.
+  - name: Organic resin matrix
+    role: MATRIX
+    description: Present only in the resin-matrix family, which is why that family is a child of this entry rather than of the resin composite branch.
+    evidence:
+      - reference: PMID:25965634
+        reference_title: A new classification system for all-ceramic and ceramic-like restorative materials.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: an all-ceramic material is classified according to whether a glass-matrix phase is present (glass-matrix ceramics) or absent (polycrystalline ceramics) or whether the material contains an organic matrix highly filled with ceramic particles (resin-matrix ceramics)
+        explanation: Defines the resin-matrix family by the presence of an organic matrix.
+clinical_uses:
+  - name: Ceramic inlay restoration
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: ceramic inlay
+      term:
+        id: OHD:0000094
+        label: ceramic inlay restoration procedure
+    anatomical_site:
+      preferred_term: tooth crown
+      term:
+        id: UBERON:0003675
+        label: tooth crown
+    evidence:
+      - reference: PMID:27287305
+        reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Ceramic inlays, onlays, and overlays showed high survival rates at 5 y and 10 y, and fractures were the most frequent cause of failure.
+        explanation: Establishes the indication and its outcome at class level.
+  - name: Ceramic onlay and partial coverage restoration
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: ceramic onlay
+      term:
+        id: OHD:0000095
+        label: ceramic onlay restoration procedure
+    anatomical_site:
+      preferred_term: tooth crown
+      term:
+        id: UBERON:0003675
+        label: tooth crown
+    evidence:
+      - reference: PMID:40245384
+        reference_title: Survival and Complication Rates of Ceramic Partial Coverage Restorations (PCRs) and Ceramic Laminate Veneers Made of Different Types of Ceramics. Consensus Statement From SSRD, SEPES, and PROSEC Conference on Minimally Invasive Restorations.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Both PCRs and ceramic laminate veneers are reliable treatment options, offering high survival rates and manageable complication profiles.
+        explanation: Consensus statement supporting partial coverage as an indication for the class.
+  - name: Ceramic crown restoration
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: ceramic crown
+      term:
+        id: OHD:0000155
+        label: ceramic crown restoration procedure
+    anatomical_site:
+      preferred_term: tooth crown
+      term:
+        id: UBERON:0003675
+        label: tooth crown
+    evidence:
+      - reference: PMID:41489982
+        reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Lithium-disilicate and zirconia-based all-ceramic SCs achieve five-year survival rates comparable to metal-ceramic crowns.
+        explanation: The single crown is the principal indication of the class.
+  - name: Porcelain laminate veneer
+    use_context: INDIRECT_RESTORATION
+    procedure:
+      preferred_term: porcelain laminate veneer
+      term:
+        id: OHD:0000046
+        label: porcelain laminate veneer restoration procedure
+    anatomical_site:
+      preferred_term: tooth crown
+      term:
+        id: UBERON:0003675
+        label: tooth crown
+    evidence:
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Feldspathic, LRGC and LDS laminate-veneers showed high survival-rates at long-term observation.
+        explanation: Establishes the veneer indication across three of the glass-matrix subfamilies.
+  - name: Fixed partial denture
+    use_context: PROSTHODONTIC
+    description: Evidenced here only for zirconia frameworks.
+    procedure:
+      preferred_term: fixed partial denture
+      term:
+        id: OHD:0000313
+        label: fixed partial denture restoration procedure
+    evidence:
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: PARTIAL
+        evidence_source: HUMAN_CLINICAL
+        snippet: FDPs made from CAD/CAM-fabricated HIP zirconia ceramic frameworks have a favorable survival rate.
+        explanation: Establishes multi-unit fixed prosthodontics as an indication, for zirconia frameworks only.
+  - name: Implant-supported crown
+    use_context: IMPLANT
+    description: Evidenced here for zirconia only; no study of monolithic zirconia implant crowns met the cited review's inclusion criteria, and no glass-matrix ceramic is covered.
+    procedure:
+      preferred_term: ceramic dental implant crown attachment
+      term:
+        id: OHD:0000297
+        label: ceramic dental implant crown attachement procedure
+    evidence:
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Zirconia-ceramic implant-supported SCs are a valid treatment alternative to metal-ceramic SCs, with similar incidence of biological complications and less aesthetic problems.
+        explanation: Establishes the implant-supported indication, for zirconia rather than for the whole class.
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: No studies on newer types of monolithic zirconia SCs fulfilled the simple inclusion criteria of 3 years follow-up time and clinical examination of the present systematic review.
+        explanation: Source of the statement that no monolithic zirconia implant crown study met the review's criteria.
+  - name: Implant abutment
+    use_context: IMPLANT
+    description: Evidenced here for zirconia only, and in vitro only. Ceramic abutments reach market under the abutment device type, not under the material's own regulation; see notes.
+    evidence:
+      - reference: PMID:40551320
+        reference_title: Surface Properties, Biocompatibility, and Bacterial Adherence of Four Zirconia Variants for Aesthetic Zone Abutments.
+        supports: PARTIAL
+        evidence_source: IN_VITRO
+        snippet: Within the limitations of this in vitro study, ultra-translucent zirconia appears to be a suitable alternative to conventional zirconia for aesthetic zone implant abutments.
+        explanation: Supports the abutment use for zirconia, at in-vitro strength only.
+regulatory_status:
+  - agency: FDA
+    status: CLEARED
+    regulation_number: '872.6660'
+    regulation_title: Porcelain powder for clinical use
+    device_class: CLASS_II
+    product_codes:
+      - EIH
+    pathways:
+      - PREMARKET_NOTIFICATION_510K
+    special_controls: []
+    identification: Porcelain powder for clinical use is a device consisting of a mixture of kaolin, felspar, quartz, or other substances intended for use in the production of artificial teeth in fixed or removable dentures, of jacket crowns, facings, and veneers. The device is used in prosthetic dentistry by heating the powder mixture to a high temperature in an oven to produce a hard prosthesis with a glass-like finish.
+    approved_uses:
+      - name: Production of artificial teeth in fixed or removable dentures, of jacket crowns, facings, and veneers
+        use_context: INDIRECT_RESTORATION
+    restrictions: []
+    source_url: https://www.ecfr.gov/current/title-21/section-872.6660
+    notes: 'This is the material-level device type for dental ceramics. Paragraph (b) assigns Class II and states no 510(k) exemption, so the pathway is premarket notification. The regulation''s wording is pre-CAD/CAM, but EIH is empirically what modern ceramic blanks clear under: see products below for lithium disilicate and zirconia clearances carrying this code.'
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+        reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: (b) Classification. Class II.
+        explanation: Classification paragraph, quoted in full; it contains no exemption sentence.
+  - agency: FDA
+    status: CLEARED
+    regulation_number: '872.3920'
+    regulation_title: Porcelain tooth
+    device_class: CLASS_II
+    product_codes:
+      - ELL
+    pathways:
+      - PREMARKET_NOTIFICATION_510K
+    special_controls: []
+    identification: A porcelain tooth is a prefabricated device made of porcelain powder for clinical use (§ 872.6660) intended for use in construction of fixed or removable prostheses, such as crowns and partial dentures.
+    approved_uses:
+      - name: Construction of fixed or removable prostheses, such as crowns and partial dentures
+        use_context: PROSTHODONTIC
+    restrictions: []
+    source_url: https://www.ecfr.gov/current/title-21/section-872.3920
+    notes: Recorded because the regulation defines this device type as made of the material above, so it is the downstream device type for the same material rather than a different material. It is the prefabricated component, so it is a narrower device type than 872.6660 and not a substitute for it. A self-review argued for moving this section to notes instead, on the grounds that a porcelain tooth is a finished component rather than a classification of the material and that no ELL product is recorded here. It is kept because the regulation itself defines the device type as made of the 872.6660 material, and because FDA lists ELL beside EIH on the recognition page of every ceramic-material standard cited below.
+    evidence:
+      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3920
+        reference_title: 21 CFR 872.3920 Porcelain tooth
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: (b) Classification. Class II.
+        explanation: Classification paragraph, quoted in full.
+properties:
+  - name: Flexural strength, leucite-reinforced glass-ceramic
+    property_type: FLEXURAL_STRENGTH
+    value: 124.89-163.95
+    unit: MPa
+    test_method: Biaxial flexure
+    conditions: Three commercial pressable leucite-based core ceramics, as-fired
+    description: The low end of the class's strength range. After 9% hydrofluoric acid etching the same three materials fell to 98.37-143.74 MPa.
+    evidence:
+      - reference: PMID:25489158
+        reference_title: 'Evaluating the fracture toughness and flexural strength of pressable dental ceramics: an in vitro study.'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Core material Performance Plus had the lowest biaxial strength of 124.89 MPa, Cergo had strength of 152.22 MPa and the highest value of 163.95 was reported for Esthetic Empress.
+        explanation: Gives the three values the range is taken from.
+      - reference: PMID:25489158
+        reference_title: 'Evaluating the fracture toughness and flexural strength of pressable dental ceramics: an in vitro study.'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: For samples treated 9 % HF, Performance Plus had the lowest biaxial strength of 98.37 MPa, Cergo had strength of 117.42 MPa and the highest value of 143.74 was reported for Esthetic Empress.
+        explanation: Supports the etched values in the description.
+  - name: Flexural strength, translucent zirconia
+    property_type: FLEXURAL_STRENGTH
+    value: 803 +/- 233 (4Y-PSZ); 570 +/- 116 (5Y-PSZ)
+    unit: MPa
+    test_method: Pooled across laboratory studies; ISO 6872 adherence recommended by the authors
+    conditions: 78 in vitro studies of commercially available translucent zirconia
+    description: The upper part of the class's strength range, and the clearest illustration that strength inside the class is set by stabiliser content rather than by the class itself.
+    evidence:
+      - reference: PMID:40738693
+        reference_title: Flexural strength of translucent zirconia for single crowns and fixed dental prostheses-A systematic review.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The overall flexural strength values were significantly higher for 4Y-PSZ (803± 233 MPa) than for 5Y-PSZ materials (570 ± 116 MPa) (P = 0.005).
+        explanation: Source of both values.
+      - reference: PMID:40738693
+        reference_title: Flexural strength of translucent zirconia for single crowns and fixed dental prostheses-A systematic review.
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: This systematic review highlights the challenges in comparing the flexural strength values of translucent zirconia owing to differences in processing parameters.
+        explanation: The authors' own caution against reading these numbers as material constants.
+      - reference: PMID:40738693
+        reference_title: Flexural strength of translucent zirconia for single crowns and fixed dental prostheses-A systematic review.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: A total of 78 laboratory studies met the inclusion criteria.
+        explanation: Source of the study count.
+  - name: Fracture toughness across the class
+    property_type: FRACTURE_TOUGHNESS
+    value: <2 (micaceous glass-ceramic, feldspathic porcelain) to 4.9 (zirconia)
+    unit: MPa m^1/2
+    test_method: Single Edge Precracked Beam (SEPB) and Single Edge V-Notch Beam (SEVNB)
+    description: The widest well-measured span of a mechanical property inside the class, measured across its inorganic families.
+    evidence:
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Upper toughness limits for the micaceous glass-ceramics and feldspathic porcelains were significantly raised compared to the base glasses, but remained under 2 MPa m(1/2).
+        explanation: Caps the weakest families of the class. This is their ceiling, so the class floor lies below it.
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The third group KIc values were 2.8 MPa m(1/2) for a lithium disilicate glass-ceramic, 3.1 MPa m(1/2) for a glass-infused alumina, and 4.9 MPa m(1/2) for zirconia.
+        explanation: Establishes the upper bound and the two intermediate steps.
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: the chemistry apparently defined a band of achievable property values.
+        explanation: Why the span is a property of the family and not of processing.
+      - reference: PMID:12901984
+        reference_title: Influence of microstructure and chemistry on the fracture toughness of dental ceramics.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Fracture toughness (KIc) values were obtained using Single Edge Precracked Beam (SEPB) and Single Edge V-Notch Beam (SEVNB) methods.
+        explanation: Source of the test methods.
+  - name: Fracture toughness, leucite-reinforced glass-ceramic
+    property_type: FRACTURE_TOUGHNESS
+    value: 1.063-1.225
+    unit: MPa m^1/2
+    conditions: Three commercial pressable leucite-based core ceramics
+    description: Consistent with the sub-2 bound above. The source's abstract gives these values in "MPa"; the quantity is a stress intensity factor, so the unit recorded here is MPa m^1/2 and the discrepancy is the source's, not a transcription error.
+    evidence:
+      - reference: PMID:25489158
+        reference_title: 'Evaluating the fracture toughness and flexural strength of pressable dental ceramics: an in vitro study.'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Core material Performance Plus had the lowest fracture toughness of 1.063 MPa, Cergo had strength of 1.112 MPa and the highest value of 1.225 was reported for Esthetic Empress.
+        explanation: Source of the range, and of the unit discrepancy noted in the description.
+  - name: Translucency relative to glass-ceramics
+    property_type: TRANSLUCENCY
+    description: The optical ceiling of polycrystalline ceramics. Higher-yttria zirconia has closed part of the gap to glass-ceramics but has not closed it, and buying translucency costs mechanical performance.
+    evidence:
+      - reference: PMID:33581910
+        reference_title: 'Flexural strength and translucency characterization of aesthetic monolithic zirconia and relevance to clinical indications: A systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Although significant improvement has occurred with recent monolithic zirconia types with higher yttria content having higher cubic/tetragonal ratio, they are still inferior to glass-ceramics' unique translucency.
+        explanation: Places the two inorganic families against each other optically.
+      - reference: PMID:33581910
+        reference_title: 'Flexural strength and translucency characterization of aesthetic monolithic zirconia and relevance to clinical indications: A systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: With improving zirconia aesthetically, some of mechanical performance was sacrificed.
+        explanation: States the trade-off.
+  - name: Determinants of translucency
+    property_type: TRANSLUCENCY
+    description: What actually moves translucency within a subfamily, from a meta-analysis of 53 in vitro studies.
+    evidence:
+      - reference: PMID:38443872
+        reference_title: 'Translucency of recent zirconia materials and material-related variables affecting their translucency: a systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Achieving optimum aesthetics with monolithic zirconia is challenging due to factors related to material aspects such as the presence of additives, point defects, microstructure, thickness, phase distribution, and sintering conditions.
+        explanation: Enumerates the material-side determinants.
+      - reference: PMID:38443872
+        reference_title: 'Translucency of recent zirconia materials and material-related variables affecting their translucency: a systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The data obtained from fifty-three studies addressed the optical characteristics of various zirconia generations.
+        explanation: Source of the study count.
+  - name: Translucency stability under hydrothermal aging
+    property_type: TRANSLUCENCY
+    description: Aging changes translucency, but in most studies by less than the clinical acceptability threshold over the expected service life.
+    evidence:
+      - reference: PMID:32275345
+        reference_title: 'Translucency of Monolithic Zirconia after Hydrothermal Aging: A Review of In Vitro Studies.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: There is a controversy regarding how aging affects the translucency of monolithic zirconia ceramics; however, this may not be clinically important, as in most cases, changes (either decrease or increase) in translucency were within the acceptability thresholds.
+        explanation: The finding, with the authors' own hedge retained.
+      - reference: PMID:32275345
+        reference_title: 'Translucency of Monolithic Zirconia after Hydrothermal Aging: A Review of In Vitro Studies.'
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: For longer aging times, beyond the perspective clinical life of the restorations, the change in translucency is higher than the acceptability threshold.
+        explanation: Bounds the conclusion in time.
+  - name: Chemical solubility
+    property_type: SOLUBILITY
+    test_method: ISO 6872:2015 chemical solubility
+    description: Recorded as a caution about the standard rather than as a value. The ISO 6872:2015 method fixes only total specimen surface area, not geometry, and the result moves with geometry, so solubility figures from different laboratories are not comparable.
+    evidence:
+      - reference: PMID:31759562
+        reference_title: Evaluation of reproducibility of the chemical solubility of dental ceramics using ISO 6872:2015.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The results of the original chemical solubility method of ISO 6872:2015 showed significantly variable findings for each tested material, with a predictable relationship between geometry and chemical solubility.
+        explanation: Establishes the geometry dependence.
+      - reference: PMID:31759562
+        reference_title: Evaluation of reproducibility of the chemical solubility of dental ceramics using ISO 6872:2015.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The results of the current chemical solubility standard method can be manipulated while still complying with the ISO 6872:2015 standard.
+        explanation: The authors' conclusion, which is why no single value is recorded here.
+  - name: Coefficient of thermal expansion
+    property_type: THERMAL_EXPANSION
+    value: 10.80 (zirconia); 7.83-12.95 (veneering ceramics)
+    unit: 10^-6 /degC
+    description: Matters as a difference rather than as a level, because bilayered ceramic restorations fail at the interface when the veneering ceramic and the substructure expand differently.
+    evidence:
+      - reference: PMID:29721230
+        reference_title: Role of coefficient of thermal expansion on bond strength of ceramic veneered yttrium-stabilized zirconia.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The CTE (×10-6/°C) were 10.80, 7.83, 7.87, 9.86, 9.93, 10.03, and 12.95 for Z, VDα, VM7, IeC, VM9, CCK, and IdS.
+        explanation: Source of both figures; Z is the zirconia substructure, the rest are veneering ceramics.
+      - reference: PMID:29721230
+        reference_title: Role of coefficient of thermal expansion on bond strength of ceramic veneered yttrium-stabilized zirconia.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: CTE's compatibility of veneering ceramic to zirconia is crucial for enhancing the bond strength.
+        explanation: Why the difference rather than the value is the property of interest.
+  - name: Biocompatibility and biofilm formation
+    property_type: BIOCOMPATIBILITY
+    description: In vitro only. Glazing raised surface roughness and worsened both fibroblast viability and Streptococcus mutans adhesion relative to unglazed zirconia, which makes surface finish rather than bulk composition the biological variable.
+    evidence:
+      - reference: PMID:40551320
+        reference_title: Surface Properties, Biocompatibility, and Bacterial Adherence of Four Zirconia Variants for Aesthetic Zone Abutments.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The GL-zirconia group demonstrated lower HGFs viability and higher S. mutans adhesion compared to the other three groups.
+        explanation: The finding. GL is the glazed group.
+      - reference: PMID:40551320
+        reference_title: Surface Properties, Biocompatibility, and Bacterial Adherence of Four Zirconia Variants for Aesthetic Zone Abutments.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: GL-zirconia exhibited significantly higher surface roughness than Tra-, HT-, and UT-zirconia (p < 0.0001)
+        explanation: The roughness result the description states.
+clinical_performance:
+  - name: Five-year survival of tooth-supported single crowns, by ceramic family
+    measure_type: SURVIVAL_RATE
+    value: 90.4-98.5
+    unit: '%'
+    follow_up_years: 5
+    population: 8051 all-ceramic and 3509 metal-ceramic tooth-supported single crowns, 64 studies
+    comparator: Metal-ceramic single crowns (97.1% at 5 years in the same analysis)
+    description: The most useful single piece of evidence for this entry, because it reports by family and so shows the spread within the class. Monolithic lithium disilicate is at the top and feldspathic/silica-based ceramic at the bottom.
+    evidence:
+      - reference: PMID:41489982
+        reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Five-year survival rates were: 98.5% for monolithic lithium-disilicate reinforced glass-ceramic, 97.3% for veneered densely-sintered zirconia, 97.1% for metal-ceramic, 96.8% for monolithic densely-sintered zirconia, 95.7% for veneered leucite/lithium-disilicate reinforced glass-ceramic, 94.5% for densely-sintered alumina, 94.3% for glass-infiltrated alumina, 90.4% for feldspathic/silica-based ceramic.'
+        explanation: Source of the range and of every family-level figure.
+      - reference: PMID:41489982
+        reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Monolithic lithium-disilicate and monolithic zirconia crowns showed significantly fewer ceramic fractures and chipping compared to veneered alternatives.
+        explanation: Identifies design, not only material, as a determinant of survival.
+      - reference: PMID:41489982
+        reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Sixty-four studies met inclusion, reporting on 3,509 metal-ceramic and 8,051 all-ceramic SCs.
+        explanation: Source of the population counts, which no other snippet on this row carries. The study count is spelled out in the abstract, so a numeric search of the snippets does not find it; the same is true of the matching row below.
+  - name: Five-year survival of single crowns, earlier evidence round
+    measure_type: SURVIVAL_RATE
+    value: 92.1-96.6
+    unit: '%'
+    follow_up_years: 5
+    population: 9434 all-ceramic and 4663 metal-ceramic single crowns, 67 studies (search to 2013)
+    comparator: Metal-ceramic single crowns, 94.7%
+    description: The range covers only the crown types this review gave figures for. Feldspathic and silica-based crowns are excluded; they were significantly lower (p<0.001) but the abstract gives no figure for them, so the range understates the spread of the class. Retained deliberately alongside the 2026 review to record that the verdict on zirconia has moved. This round advised against zirconia as a primary option on the strength of technical complications; the later round, with monolithic designs in the pool, does not. Every figure in this row is as first published. The review carries a corrigendum (PMID:27726969, doi:10.1016/j.dental.2016.09.032), quoted below. It revises the lower bound of this row. Excluding one outlier study raises the 5-year zirconia survival estimate to 93.8% (95% CI 90.3-96.1) and drops the annual failure rate from 1.84% to 1.28%. The gap to metal-ceramic then falls to 1.9% and stops being significant (p=0.174), which is the statistical basis of the zirconia recommendation quoted below. value is left at the figures the review published, because this row exists to record that earlier round as it stood; the corrected lower bound is 93.8, not 92.1. Two of its figures are transposed against the 2015 abstract, with identical confidence intervals on both sides, so they are the same estimates. zirconia 91.2 in the corrigendum against 92.1 in the abstract (both 82.8-95.6), and metal-ceramic 95.7 against 94.7 (both 94.1-96.9). The snippets below quote the abstract, so they keep the abstract's figures.
+    evidence:
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'This was similar to the estimated 5-year survival rate of leucit or lithium-disilicate reinforced glass ceramic SCs (96.6%; 95% CI: 94.9-96.7%), of glass infiltrated alumina SCs (94.6%; 95% CI: 92.7-96%) and densely sintered alumina and zirconia SCs (96%; 95% CI: 93.8-97.5%; 92.1%; 95% CI: 82.8-95.6%).'
+        explanation: Source of the value range. The lowest figure the review reports for an all-ceramic crown type is zirconia at 92.1 and the highest is leucite or lithium-disilicate glass ceramic at 96.6, which are the bounds recorded in value. The 92.1 lower bound is superseded by the corrigendum quoted below, which puts the corrected estimate at 93.8.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Meta-analysis of the included studies indicated an estimated survival rate of metal-ceramic SCs of 94.7% (95% CI: 94.1-96.9%) after 5 years.'
+        explanation: Source of the comparator figure.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Sixty-seven studies reporting on 4663 metal-ceramic and 9434 all-ceramic SCs fulfilled the inclusion criteria.
+        explanation: Source of the population counts. The study count is spelled out in the abstract, which is why a numeric search of the snippets does not find it.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Survival rates of most types of all-ceramic SCs were similar to those reported for metal-ceramic SCs, both in anterior and posterior regions.
+        explanation: The headline conclusion at class level.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Weaker feldspathic/silica-based ceramics should be limited to applications in the anterior region.
+        explanation: The site restriction that follows from the strength spread inside the class.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Zirconia-based SCs should not be considered as primary option due to their high incidence of technical problems.
+        explanation: The superseded recommendation, recorded so the change over time is visible. The corrigendum quoted below removes its statistical basis. With the ZrSiO4 outlier excluded, the zirconia deficit against metal-ceramic is 1.9% and does not reach significance.
+      - reference: url:https://iris.landsbokasafn.is/en/publications/corrigendum-to-all-ceramic-or-metal-ceramic-tooth-supported-fixed/
+        reference_title: 'Corrigendum to "All-ceramic or metal-ceramic tooth- supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs)" [Dental Materials 31 (6) (2015) 603-623].'
+        supports: WRONG_STATEMENT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'When this outlier study is excluded from the analysis the annual failure rate of densely sintered zirconia crowns decreases from 1.84% to 1.28% and the estimated 5-year survival rates increases from 91.2% (95% C.I.: 82.8–95.6%) to 93.8% (95% C.I.: 90.3–96.1%).'
+        explanation: The authors' own correction of the figure this row's lower bound rests on. Cited by url because PubMed holds no abstract for the corrigendum (PMID:27726969), so a PMID citation could not be checked; the quote is verbatim from the publisher abstract on the cited page, en dashes included. The 91.2 here and the 92.1 in the abstract carry the same confidence interval and are the same estimate.
+      - reference: url:https://iris.landsbokasafn.is/en/publications/corrigendum-to-all-ceramic-or-metal-ceramic-tooth-supported-fixed/
+        reference_title: 'Corrigendum to "All-ceramic or metal-ceramic tooth- supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs)" [Dental Materials 31 (6) (2015) 603-623].'
+        supports: WRONG_STATEMENT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Comparing this to the 5-year survival rate of metal-ceramic crowns of a 95.7% (95% C.I.: 94.1–96.9%) the difference decreases to 1.9%. This difference does not reach statistical significance (p = 0.174).'
+        explanation: Withdraws the significant zirconia deficit that the recommendation above rests on. Both spaces around the equals sign are U+00A0 no-break spaces and the interval uses an en dash, as on the cited page; replacing them would break the verbatim match.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Medline (PubMed), Embase, Cochrane Central Register of Controlled Trials (CENTRAL) searches (2006-2013) were performed for clinical studies focusing on tooth-supported fixed dental prostheses (FDPs) with a mean follow-up of at least 3 years.
+        explanation: Source of the search period in population.
+  - name: Five-year survival of implant-supported single crowns
+    measure_type: SURVIVAL_RATE
+    value: '97.6'
+    unit: '%'
+    follow_up_years: 5
+    population: 912 zirconia implant-supported single crowns, 35 studies
+    comparator: Metal-ceramic implant-supported single crowns, 98.3%
+    evidence:
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Meta-analysis revealed an estimated 5-year survival rate of 98.3% (95% CI: 96.8-99.1) for metal-ceramic implant supported SCs (n = 4,363) compared to 97.6% (95% CI: 94.3-99.0) for zirconia implant supported SCs (n = 912).'
+        explanation: Source of both figures.
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Significantly (p = 0.001), more zirconia-ceramic implant SCs failed due to material fractures (2.1% vs. 0.2% metal-ceramic implant SCs).
+        explanation: The failure mode that the survival figure alone hides.
+      - reference: PMID:30328190
+        reference_title: A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: resulting in 35 included studies on implant-supported crowns.
+        explanation: Source of the study count.
+  - name: Survival of inlays, onlays and overlays
+    measure_type: SURVIVAL_RATE
+    value: 92-95 at 5 years; 91 at 10 years
+    unit: '%'
+    follow_up_years: 10
+    population: 5811 restorations at 5 years and 2154 at 10 years, 14 studies
+    description: Glass-ceramics and feldspathic porcelain together; the meta-regression found the ceramic type did not affect the survival rate in this indication.
+    evidence:
+      - reference: PMID:27287305
+        reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Estimated survival rates for glass-ceramics and feldspathic porcelain were between 92% and 95% at 5 y (n = 5,811 restorations) and were 91% at 10 y (n = 2,154 restorations).
+        explanation: Source of both figures.
+      - reference: PMID:27287305
+        reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The meta-regression indicated that the type of ceramic material (feldspathic porcelain vs. glass-ceramic), study design (retrospective vs. prospective), follow-up time (5 vs. 10 y), and study setting (university vs. private clinic) did not affect the survival rate.
+        explanation: Supports pooling the two subfamilies in this indication.
+      - reference: PMID:27287305
+        reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Of 1,389 articles, 14 met the inclusion criteria.
+        explanation: Source of the study count.
+  - name: Long-term survival of ceramic laminate veneers
+    measure_type: SURVIVAL_RATE
+    value: 93.70-96.81
+    unit: '%'
+    follow_up_years: 10.4
+    population: 29 studies of anterior and premolar ceramic laminate veneers
+    description: Feldspathic 96.13%, leucite-reinforced 93.70%, lithium disilicate 96.81%, with no significant difference in survival between materials. Lithium disilicate slightly outperformed the other two with lower long-term complication rates.
+    evidence:
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Meta-analysis revealed a pooled survival-rate of 96.13% for feldspathic, 93.70% for LRGC and 96.81% for LDS at 10.4 years. No difference was found between materials.
+        explanation: Source of all three figures and of the no-difference finding.
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Zirconia showed a 100% survival-rate with no complications at 2.6 years. No long-term data was available for zirconia.
+        explanation: Records the gap rather than letting the 100% figure stand unqualified.
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Twenty-nine studies were included.
+        explanation: Source of the study count.
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: To analyze survival and complication rates for anterior and premolar laminate-veneers out of different ceramic materials
+        explanation: Source of the anterior and premolar scope.
+      - reference: PMID:39523553
+        reference_title: 'Survival and Complication Rates of Feldspathic, Leucite-Reinforced, Lithium Disilicate and Zirconia Ceramic Laminate Veneers: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: LDS slightly outperforms feldspathic and LRGC laminate-veneers with lower long-term complication rates.
+        explanation: Source of the complication-rate comparison.
+  - name: Survival of ceramic partial coverage restorations
+    measure_type: SURVIVAL_RATE
+    value: 93.7 (lithium disilicate); 89.3 (resin-matrix ceramic)
+    unit: '%'
+    population: 35 publications reviewed for a consensus conference
+    description: Short-term only, and the one place in this entry where the resin-matrix family has its own class-level clinical figure.
+    evidence:
+      - reference: PMID:40245384
+        reference_title: Survival and Complication Rates of Ceramic Partial Coverage Restorations (PCRs) and Ceramic Laminate Veneers Made of Different Types of Ceramics. Consensus Statement From SSRD, SEPES, and PROSEC Conference on Minimally Invasive Restorations.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: PCRs demonstrated high short-term survival rates, with 93.7% for LDS and 89.3% for RMC.
+        explanation: Source of both figures, with the short-term qualifier in the same sentence.
+      - reference: PMID:40245384
+        reference_title: Survival and Complication Rates of Ceramic Partial Coverage Restorations (PCRs) and Ceramic Laminate Veneers Made of Different Types of Ceramics. Consensus Statement From SSRD, SEPES, and PROSEC Conference on Minimally Invasive Restorations.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: A systematic screening of the literature identified 35 publications, which were critically reviewed based on PRISMA guidelines, resulting in two systematic reviews.
+        explanation: Source of the publication count.
+  - name: Ten-year survival of zirconia-framework fixed dental prostheses
+    measure_type: SURVIVAL_RATE
+    value: '95.0'
+    unit: '%'
+    follow_up_years: 10
+    population: 20 mainly posterior 3- to 6-unit FDPs in 15 patients, prospective
+    description: Paired with a 78.8% chipping-free rate at the same 10 years, which is the more informative number, because the frameworks survive where the veneers do not.
+    evidence:
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The 10-year survival rate and 10-year chipping-free rate were 95.0% (CI 86.0-100%) and 78.8% (CI 62.2-99.7%), respectively.
+        explanation: Source of both rates.
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: the dataset comprised 15 patients with 20 (mainly posterior) FDPs.
+        explanation: Source of the population.
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: To prospectively evaluate the clinical long-term outcome of 3- to 6-unit fixed dental prostheses (FDPs) made of hot isostatic pressed (HIP) zirconia frameworks
+        explanation: Source of the prospective design and the 3- to 6-unit span.
+  - name: Three-year survival of posterior monolithic zirconia crowns
+    measure_type: SURVIVAL_RATE
+    value: '89.8'
+    unit: '%'
+    follow_up_years: 3
+    population: 177 posterior single monolithic zirconia crowns, retrospective
+    description: Lower than the pooled 96.8% five-year figure for monolithic zirconia above, in a single retrospective posterior cohort. Non-vital abutments were the risk factor.
+    evidence:
+      - reference: PMID:36104182
+        reference_title: The 3-year cumulative survival rates of posterior monolithic zirconia crowns and their antagonist teeth, and their influencing factors.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 'The 3-year cumulative survival rate of single MZCs was 89.8% (9 of 177 MZCs, 95% confidence interval (CI): 80.0-95.1%).'
+        explanation: Source of the figure.
+      - reference: PMID:36104182
+        reference_title: The 3-year cumulative survival rates of posterior monolithic zirconia crowns and their antagonist teeth, and their influencing factors.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Although posterior single MZCs were clinically acceptable, non-vital pulpal condition could be a potential risk factor for failures in the abutment and antagonist teeth of MZCs.
+        explanation: The risk factor named in the description.
+adverse_effects:
+  - name: Ceramic fracture and chipping
+    effect_category: MECHANICAL_FAILURE
+    description: The most frequently reported failure mode in the indications evidenced here. Bilayered designs fail by veneer chipping, monolithic designs less so.
+    evidence:
+      - reference: PMID:27287305
+        reference_title: 'Survival Rate of Resin and Ceramic Inlays, Onlays, and Overlays: A Systematic Review and Meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Failures were related to fractures/chipping (4%), followed by endodontic complications (3%), secondary caries (1%), debonding (1%), and severe marginal staining (0%).
+        explanation: Ranks fracture first among failure causes, with the other modes for context.
+      - reference: PMID:41489982
+        reference_title: A Systematic Review and Meta-analysis Evaluating the Survival, Failure, and Complication Rates of Metal-Ceramic, Veneered, and Monolithic All-Ceramic Tooth-Supported Single Crowns-Part 1.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Monolithic designs reduce fracture and chipping risk, improving long-term clinical outcomes.
+        explanation: Identifies the design factor that modifies the risk.
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: In total higher 5 year rates of framework fracture were reported for the all-ceramic SCs than for metal-ceramic SCs.
+        explanation: Frames the risk against the metal-ceramic comparator.
+  - name: Chipping of veneered zirconia frameworks
+    effect_category: MECHANICAL_FAILURE
+    frequency: 21.2% within 10 years, derived as the complement of the 78.8% Kaplan-Meier chipping-free estimate rather than observed in the 20-restoration cohort
+    description: Recorded separately from fracture because the framework survives it; the restoration is damaged rather than lost, which is why survival and chipping rates diverge.
+    evidence:
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The 10-year survival rate and 10-year chipping-free rate were 95.0% (CI 86.0-100%) and 78.8% (CI 62.2-99.7%), respectively.
+        explanation: The 78.8% chipping-free rate is the complement of the frequency recorded here.
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: However, because damage to the surface texture showed a disproportionate increase after long-term usage, additional long-term studies are required.
+        explanation: The authors' own caution about how this accumulates with time.
+  - name: Loss of retention
+    effect_category: MECHANICAL_FAILURE
+    description: Loss of retention, reported at higher rates for zirconia crowns than for metal-ceramic. Read here as a failure at the cementation interface rather than of the bulk material; the source reports the outcome, not its mechanism.
+    evidence:
+      - reference: PMID:25842099
+        reference_title: 'All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs).'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Densely sintered zirconia SCs were more frequently lost due to veneering ceramic fractures than metal-ceramic SCs (p<0.001), and had significantly more loss of retention (p<0.001).
+        explanation: Source for both this effect and the veneer-fracture effect above.
+  - name: Antagonist enamel wear
+    effect_category: ANTAGONIST_WEAR
+    effect_term:
+      preferred_term: antagonist enamel wear
+      term:
+        id: HP:4000181
+        label: Excessive dental attrition
+    description: Real, but not specific to ceramic. The network meta-analysis found enamel wears against natural enamel too, and metal-ceramic antagonists produced the most wear of the restorative materials compared. The bound HP term is broader than the effect recorded here. It covers excessive tooth-to-tooth wear from any cause, and the evidence concerns measured enamel loss against ceramic antagonists, not a clinical threshold of excess.
+    evidence:
+      - reference: PMID:38925985
+        reference_title: 'Dental human enamel wear caused by ceramic antagonists: A systematic review and network meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The wear is larger on surfaces with the ceramic crown antagonists studied (metal-ceramic, glazed zirconia, and polished zirconia).
+        explanation: Establishes the effect and names the materials compared.
+      - reference: PMID:38925985
+        reference_title: 'Dental human enamel wear caused by ceramic antagonists: A systematic review and network meta-analysis.'
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Enamel wear occurs in all teeth, even when the antagonist is a natural tooth.
+        explanation: The baseline that keeps this from being read as ceramic-specific.
+      - reference: PMID:38925985
+        reference_title: 'Dental human enamel wear caused by ceramic antagonists: A systematic review and network meta-analysis.'
+        supports: PARTIAL
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Network meta-analysis showed higher enamel wear was observed in natural dental enamel against metal-ceramic antagonists.
+        explanation: Identifies which antagonist was worst; the certainty of this evidence was rated moderate.
+  - name: Low-temperature degradation of zirconia
+    effect_category: OTHER
+    description: An ageing mechanism of the polycrystalline family only, not of the class. Phase transformation roughens the surface and lowers fatigue strength, and resistance rises with yttria content. The cited study induced it by accelerated autoclave ageing at 134 degC, not at mouth temperature, so the rate under clinical conditions is not evidenced here.
+    evidence:
+      - reference: PMID:38281620
+        reference_title: Effect of low-temperature degradation on the fatigue performance of dental strength-gradient multilayered zirconia restorations.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: After LTD, the phase transformation, surface roughness, depth of transformed zone, and residual stress were increased and inversely associated with the yttria content.
+        explanation: The mechanism and its dependence on composition.
+      - reference: PMID:38281620
+        reference_title: Effect of low-temperature degradation on the fatigue performance of dental strength-gradient multilayered zirconia restorations.
+        supports: PARTIAL
+        evidence_source: IN_VITRO
+        snippet: These results show that although LTD reduces the absolute fatigue strength of strength-gradient multilayered zirconia restorations, it also reduces the effect of cyclic fatigue itself on the strength of zirconia (relative to monotonic strength), which might be due to the increase of residual stress.
+        explanation: The effect is not uniformly deleterious, which the description should not overstate.
+      - reference: PMID:38281620
+        reference_title: Effect of low-temperature degradation on the fatigue performance of dental strength-gradient multilayered zirconia restorations.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: under accelerated aging in an autoclave at 134℃ for 0 h, 32 h, and 64 h.
+        explanation: Source of the ageing conditions.
+  - name: Periodontal response at abutment teeth
+    effect_category: PERIODONTAL_RESPONSE
+    description: Clinically acceptable but measurably worse than contralateral control teeth after ten years, in the one long-term prospective cohort in this entry.
+    evidence:
+      - reference: PMID:29520468
+        reference_title: Ten-year survival and chipping rates and clinical quality grading of zirconia-based fixed dental prostheses.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The periodontal health of tissues adjacent to the study teeth was clinically acceptable, but inferior to the ones of control teeth.
+        explanation: States both halves of the finding.
+standards:
+  - identifier: ISO 6872
+    title: Dentistry - Ceramic materials
+    organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=45644
+  - identifier: ISO 18675
+    title: Dentistry - Machinable ceramic blanks
+    organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=45030
+  - identifier: ISO 9693
+    title: Dentistry - Compatibility testing for metal-ceramic and ceramic-ceramic systems
+    organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=41090
+  - identifier: ISO 7405
+    title: Dentistry - Evaluation of biocompatibility of medical devices used in dentistry
+    organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=40211
+  - identifier: ANSI/ADA Standard No. 131-2015 (R2020)
+    title: Dental CAD/CAM Machinable Zirconia Blanks
+    organization: ANSI/ADA
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=38749
+  - identifier: ANSI/ADA Standard No. 187-2024
+    title: Dentistry - Dental CAD/CAM Machinable Ceramic Blanks
+    organization: ANSI/ADA
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=46037
+products:
+  - name: IPS e.max CAD / IPS e.max ZirCAD
+    manufacturer: Ivoclar Vivadent, Inc.
+    description: Lithium disilicate CAD blocks and zirconia CAD blanks, cleared together under the porcelain powder device type.
+    submissions:
+      - agency: FDA
+        submission_number: K051705
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2005-10-14'
+        product_code: EIH
+        regulation_number: '872.6660'
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K051705
+  - name: KATANA Zirconia
+    manufacturer: Kuraray Noritake Dental, Inc.
+    description: Zirconia blanks for CAD/CAM restorations.
+    submissions:
+      - agency: FDA
+        submission_number: K131534
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2013-10-11'
+        product_code: EIH
+        regulation_number: '872.6660'
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K131534
+  - name: IPS e.max One
+    manufacturer: Ivoclar Vivadent, AG
+    submissions:
+      - agency: FDA
+        submission_number: K211916
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2021-08-20'
+        product_code: EIH
+        regulation_number: '872.6660'
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K211916
+notes: |-
+  The record description is the OHD definition of OHD:0000135, verbatim. Its processing facts are also quoted in description_evidence.
+  Scope. OHD:0000135 is a class with 20 descendants, so every claim here is pitched at the level of ceramic as a restorative device type. Where the only measured values are subtype-specific they are recorded as bounds on the class with the subtype named in the property name or value, and the family-specific numbers are left to the children.
+
+  Regulatory. The material-level FDA device type is 872.6660 "Porcelain powder for clinical use" (product code EIH, Class II, 510(k)), and 872.3920 "Porcelain tooth" (ELL) is the downstream prefabricated-component device type that the regulation itself defines as being made of the 872.6660 material. 872.6660 has exactly one product code. The regulation's wording predates CAD/CAM and names only kaolin, felspar and quartz, but EIH is empirically the code modern ceramic blanks carry, which is why the three verified products below are all EIH. Two neighbouring device types are deliberately not recorded as this material's own status: the implant abutment device type, under which ceramic abutments clear but whose identification names no material, and the CAD/CAM system device type, which classifies the system rather than the ceramic. Their regulation numbers and product codes are not recorded because they have not been verified here.
+
+  Child entry. The FDA status of kb/materials/zirconia_polycrystalline_ceramic.yaml is tracked in https://github.com/caufieldjh/dentamech/issues/35.
+
+  Standards. All six were read from their own FDA recognition detail pages rather than from the per-product-code query, so no row implies that the set is complete; the EIH recognition list is longer and includes furnace, investment and die-material standards that are not properties of the ceramic. One transition is worth knowing: the 45644 page states that recognition of ISO 6872 Fourth edition 2015-06-01 [Rec# 4-251] "will be superseded by recognition of ISO 6872 Fifth edition 2024-08 [Rec# 4-329]", with declarations of conformity to 4-251 accepted until December 20, 2026. The Fifth edition is therefore the one FDA recognises going forward; the standards row names ISO 6872 without an edition, as the schema's Standard class has no edition field.
+
+  Products. Only K211916 filed a 510(k) Summary; K051705 and K131534 filed a Statement, so the database carries no indications-for-use text for them and none is recorded.
+
+  Synonyms. "dental porcelain" is imprecise as a class synonym, since porcelain proper is the feldspathic subtype. It is kept because it is FDA's own term for the device type in both regulations recorded above, so a reader arriving from the regulatory side needs it to find this entry.
+
+  Gaps. No EU MDR, Health Canada, TGA or other non-FDA status is recorded, because none was verified. No hypersensitivity or allergy adverse effect is recorded: no source in this entry's reference set documents one for ceramic, and the absence of evidence is not evidence of absence. Hardness, elastic modulus, radiopacity and wear resistance are not populated, since no cached source gave class-level values for them. NCIT has no dental-ceramic material concept, so its mapping is the broad NCIT:C42634 Dental Material. The MeSH mapping is CLOSE_MATCH, not EXACT_MATCH, because MeSH indexes dental ceramics under "Dental Porcelain", whose name is narrower than this class; the descriptor id was confirmed from the NLM MeSH lookup service.
+
+  Status. The record stays DRAFT: no full texts were read beyond the cached abstracts, and no non-US regulator was verified.
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
@@ -16,4 +998,46 @@ curation_history:
     model: claude-opus-5-5
     action: CREATE
     description: Converted from dentamech at cddf481, entry Ceramic.
-updated_date: '2026-11-07'
+  - timestamp: '2026-11-07T20:21:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Carried over the curation from branch curate/ceramic (10 curation commits, 2026-09-27 to 2026-11-07) into the mechmaker layout. That work curated the record from the stub: composition, seven clinical uses, the 872.6660 (EIH) and 872.3920 (ELL) device types, properties and performance rows, adverse effects, six standards and three products with 510(k)s; applied a self-review; quoted the figures of the five-year single-crown row; replaced full-text cache records with fetched abstracts; made eight snippets byte-exact; recorded the corrigendum to PMID:25842099 and what it revises; and evidenced the population counts of the headline survival row.'
+  - timestamp: '2026-11-08T02:55:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the review of PR #13. Quoted the glazing roughness result from PMID:40551320; cut the unquoted claims that glass-matrix ceramics are not indicated for multi-unit spans and that moisture drives low-temperature degradation; narrowed fracture to the most frequently reported failure mode in the indications evidenced here; removed stale counts, paths and the IN_PROGRESS status from notes, and moved the validation narrative to the session history record.'
+  - timestamp: '2026-11-08T03:14:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the second review of PR #13. Quoted the study counts, test methods, populations, the yttria stabiliser role and the 134 degree autoclave ageing from the cached abstracts (12 quotes). Cut the alumina history claim, the unverified 872.3630/NHA and 872.3661/NOF numbers, and the corrigendum sourcing narrative. Bound HP:4000181 to antagonist enamel wear with a note on breadth. Changed strongest to toughest for lithium disilicate. Replaced the zirconia child-entry paragraph with a pointer to issue #35.'
+  - timestamp: '2026-11-08T03:32:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the third review of PR #13. Added description_evidence for each processing fact in the description: high-temperature processing (21 CFR 872.6660 and PMID:29721230), pressing (PMID:25489158), polishing (PMID:33581910) and milling (PMID:31943720, newly fetched), all PARTIAL because each covers one family. Added the MeSH mapping MESH:D003776 Dental Porcelain (CLOSE_MATCH), now that the schema declares MESH. Made the evidence_source of PMID:40245384 OTHER in every place. Reworded the ISO 6872 edition note, since the standards row records no edition.'
+  - timestamp: '2026-11-08T03:48:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the fourth review of PR #13. Quoted PMID:30328190 for the absence of monolithic zirconia implant crown studies, and replaced the toughest-subfamily wording on lithium disilicate and zirconia with what the PMID:12901984 comparison shows.'
+  - timestamp: '2026-11-09T17:58:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Merged main after PRs #2 and #4. Cut the unquoted claim that the toughness span is why the families are not clinically interchangeable, scoping the row to the inorganic families PMID:12901984 measured. Said in notes that the description is the OHD definition.'
+  - timestamp: '2026-11-09T18:45:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the sixth review of PR #13. Cut the unquoted Passia/ZrSiO4 detail to one outlier study, as the corrigendum quotes say. Replaced the unquoted claim that veneer complication rates differed sharply with the PMID:39523553 sentence that lithium disilicate slightly outperforms the others. Said phase transformation, as PMID:38281620 does, instead of naming the phases. Quoted the 2006-2013 search period from PMID:25842099. Marked the cementation-interface reading of loss of retention as interpretation.'
+updated_date: '2026-11-09'

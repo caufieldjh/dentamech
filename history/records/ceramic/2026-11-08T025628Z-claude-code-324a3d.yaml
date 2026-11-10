@@ -1,0 +1,34 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-08T025628Z-claude-code-324a3d
+  timestamp: '2026-11-08T02:56:28Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the PR #13 review of the Ceramic record, and recorded the migration fix-up.'
+  details: 'Fix-up commit a4fc237 (2026-11-07): the mechmaker migration had replaced main''s CREATE event
+    on kb/materials/ceramic.yaml; it was restored and an EDIT event appended for the curation carried
+    over from curate/ceramic. This session (PR #13 review, 2026-11-08): (1) Biocompatibility property:
+    added the PMID:40551320 quote ''GL-zirconia exhibited significantly higher surface roughness than
+    Tra-, HT-, and UT-zirconia (p < 0.0001)'' for the glazing roughness claim. (2) Fixed partial denture
+    use: cut the unquoted claim that the glass-matrix subfamilies are not indicated for multi-unit spans;
+    the description now says only that the use is evidenced for zirconia frameworks. (3) Low-temperature
+    degradation: cut the clause that a moist environment drives the transformation; no cached abstract
+    (PMID:38281620, PMID:32275345 and the rest of the record''s set were searched) states the mechanism.
+    (4) Fracture and chipping: narrowed ''dominant failure mode in every indication'' to ''most frequently
+    reported failure mode in the indications evidenced here''. (5) Notes: removed the stale snippet counts,
+    the old research/ and kb/ paths, the IN_PROGRESS status (the record is DRAFT) and the regulatory read
+    dates. Validation narrative moved here from notes: the curation branch replaced seven full-text cache
+    records with fetched PubMed abstracts (the full text of PMID:40738693 had been an anti-scraping challenge
+    page, not the article), so every cached record is abstract_only; eight snippets were corrected to
+    carry the no-break and thin spaces PubMed serves (PMID:25489158, PMID:40551320, PMID:30328190, PMID:39523553),
+    since the validator normalizes whitespace; the deep-research step could not run and discovery used
+    Europe PMC, with every cited abstract cached through just fetch-reference. Quote counts come from
+    just validate, not from this text.'

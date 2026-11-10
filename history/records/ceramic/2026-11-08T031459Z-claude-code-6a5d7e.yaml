@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-08T031459Z-claude-code-6a5d7e
+  timestamp: '2026-11-08T03:14:59Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the second review of PR #13 on the Ceramic record.'
+  details: 'Review of 2026-11-08T03:02:46Z. Added 12 verbatim quotes from cached PubMed abstracts with
+    add-evidence: yttria as stabiliser (PMID:38443872, composition Yttrium oxide); fifty-three studies
+    (PMID:38443872); autoclave ageing at 134 C (PMID:38281620); 78 laboratory studies (PMID:40738693);
+    SEPB and SEVNB methods (PMID:12901984); 35 implant-supported crown studies (PMID:30328190); 14 of
+    1,389 articles (PMID:27287305); twenty-nine veneer studies and the anterior/premolar scope (PMID:39523553);
+    35 publications (PMID:40245384); 15 patients with 20 FDPs and the prospective 3- to 6-unit design
+    (PMID:29520468). Cut: the alumina ''first high-strength core materials'' claim; the 872.3630/NHA and
+    872.3661/NOF regulation numbers and product codes from the abutment use and notes, which were never
+    verified; the corrigendum sourcing narrative and the unquoted Table 3 misfiling sentence from the
+    earlier-evidence-round row. Bound HP:4000181 Excessive dental attrition (checked with search-term
+    and term-ancestors: under HP:0000164 Abnormality of the dentition and HP:0000118) to the antagonist
+    enamel wear effect, noted as broader. Lithium disilicate is now the toughest, not strongest, glass-matrix
+    subfamily, matching its fracture toughness quote. Replaced the zirconia child-entry notes paragraph
+    with a pointer to issue 35. Corrigendum: fetched PMID:27726969; PubMed has no abstract (content unavailable),
+    so a PMID citation would not validate; kept the url: citation of the publisher abstract on iris.landsbokasafn.is
+    and did not commit the empty cache entry. Kept the published 92.1 lower bound with the corrected 93.8
+    stated, for a human reviewer to confirm. updated_date set to 2026-11-08.'

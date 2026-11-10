@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: ceramic
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-09T180047Z-claude-code-82c7c7
+  timestamp: '2026-11-09T18:00:47Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/13
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Merged main after PRs #2 and #4 and answered the fifth review of PR #13.'
+  details: 'The fifth review''s only warning was the merge conflict with main. Merged origin/main; docs/regulatory.md
+    merged cleanly and keeps the 872.3920 and 872.6660 rows and main''s regulation_title, product-code
+    and dental-cement sections. Term caches: resolved as the union of both sides'' rows, keyed by CURIE.
+    Notes: scoped the toughness-span row to the inorganic families PMID:12901984 measured, cutting the
+    unquoted ''not clinically interchangeable'' clause; added a notes line that the description is the
+    OHD:0000135 definition, checked verbatim against OHD with runoak. Declined: splitting the 872.6660
+    approved use by use_context, and the 92.1 versus 93.8 value choice, which the review leaves to a person.'
