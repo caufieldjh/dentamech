@@ -193,11 +193,12 @@ log-paper *args:
 validate-paper-log:
     uv run python -m {{slug}}.paper_log validate
 
-# Fail if a paper-log row present at BASE was edited, reordered or removed. CI runs it on PRs.
+# Fail if a paper-log row present at BASE was edited, reordered or removed, or a row new
+# since BASE names a record or history file that does not exist. CI runs it on PRs.
 paper-log-append base:
     uv run python -m {{slug}}.paper_log check-append --base "$1"
 
-# Papers newly cited in FILES (since --base REV) with no paper-log row. Advisory: always exits 0.
+# Papers newly cited in FILES (since --base REV) with no paper-log row. Advisory: exits 0 unless --base is not a known revision.
 # `just paper-log-coverage --base origin/main kb/materials/<stem>.yaml`
 paper-log-coverage *args:
     uv run python -m {{slug}}.paper_log coverage "$@"

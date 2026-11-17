@@ -48,7 +48,8 @@ reason. Fixes belong to `curate-record`, in a separate step, when asked.
     - `ACCEPT` rows name the records that cite the paper, and no cited paper is logged `REJECT`.
     - A `REJECT` or `DEFER` reason is sound, and a `DEFER` names what blocks it.
     - The note is the curator's own words, never text copied from the paper.
-    - No earlier row was edited or removed (`just paper-log-append origin/main`).
+    - No earlier row was edited or removed, and the records and history new rows name exist
+      (`just paper-log-append origin/main`).
 
     A missing row is a `warning`. Copied paper text in a note is an `error`.
 

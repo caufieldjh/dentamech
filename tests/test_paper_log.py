@@ -206,3 +206,31 @@ def test_coverage_warns_only_on_new_unlogged_papers(tmp_path, monkeypatch):
     warnings = paper_log.coverage([record], "BASE", log)
     assert len(warnings) == 1 and "10.1000/new" in warnings[0]
     assert len(paper_log.coverage([record], None, log)) == 2  # no base: every citation counts
+
+
+def test_a_renamed_record_does_not_break_an_old_row(tmp_path):
+    # An ACCEPT row whose record was later renamed or removed still validates:
+    # the row is append-only and can't follow the record.
+    f = _write(tmp_path, "10.1000/a\t2026-11-01\tACCEPT\tUsed.\tno_such_record\thistory/gone.yaml")
+    assert paper_log.validate_log(f, TODAY) == []
+    # ...and it is not rechecked once it is on the base branch.
+    text = f.read_text(encoding="utf-8")
+    assert paper_log.append_errors(text, text + "10.1000/b\t2026-11-02\tREJECT\tNo.\t\t\n") == []
+
+
+def test_a_new_row_must_name_files_that_exist():
+    stem = next(paths.RECORDS_DIR.glob("*.yaml")).stem
+    good = BASE + f"10.1000/c\t2026-11-03\tACCEPT\tUsed.\t{stem}\t\n"
+    assert paper_log.append_errors(BASE, good) == []
+    bad = BASE + "10.1000/c\t2026-11-03\tACCEPT\tUsed.\tno_such_record\thistory/gone.yaml\n"
+    errors = paper_log.append_errors(BASE, bad)
+    assert len(errors) == 2 and all("line 4 (new)" in e for e in errors)
+    # a brand-new log: every row is new
+    assert len(paper_log.append_errors(None, bad)) == 2
+
+
+def test_an_unknown_base_revision_fails_loudly(capsys):
+    assert paper_log.main(["check-append", "--base", "no-such-revision-xyz"]) == 2
+    assert "not found" in capsys.readouterr().out
+    assert paper_log.main(["coverage", "--base", "no-such-revision-xyz", "README.md"]) == 2
+    assert paper_log.rev_exists("HEAD")

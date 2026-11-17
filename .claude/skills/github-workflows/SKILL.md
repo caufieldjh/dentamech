@@ -78,7 +78,9 @@ The last step of every agent run, `Check the agent run`, names the cause:
 
 For `qc.yaml`, run the failing recipe locally: `just qc`, or
 `just validate-changed <files>`. A failing "Paper log is append-only" step
-means a PR edited or removed an earlier row of `curation/paper_log.tsv`:
-restore the row, and add a new one if the verdict changed
-(`just paper-log-append origin/main` reproduces it). A term check that says the service is
+means a PR edited or removed an earlier row of `curation/paper_log.tsv`
+(restore the row, and add a new one if the verdict changed), or a new row names
+a record or history file that does not exist (fix the new row).
+`just paper-log-append origin/main` reproduces it. Older rows' links are never
+rechecked, so renaming or removing a record does not touch the log. A term check that says the service is
 unreachable is an outage, not a data error; re-run later.

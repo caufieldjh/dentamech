@@ -100,6 +100,7 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: just paper-log-append "$BASE_SHA"
+
       - name: Offline gates
         run: just qc
 
@@ -125,6 +126,7 @@ jobs:
         run: |
           # shellcheck disable=SC2086
           just paper-log-coverage --github --base "$BASE_SHA" $FILES
+
       - name: Terms and quotes in changed records
         if: steps.changed.outputs.files != ''
         env:

@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: paper-log
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-17T160333Z-claude-code-f2535b
+  timestamp: '2026-11-17T16:03:33Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/43
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/44
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Address review on PR 44: check paper-log links only on new rows; fail on an unknown base revision'
+  details: 'Review on PR 44 found that validate-paper-log required every row''s records and history files
+    to exist, which conflicts with the append-only rule: a renamed, merged or deleted record would fail
+    qc on an old row that no allowed edit could fix. Now validate_log skips those link checks; they run
+    on rows new since the base (check-append) and when a row is written (add). check-append and coverage
+    now stop with exit 2 when the --base revision is not found, instead of treating it as a new log. curation/README.md
+    notes that GitHub''s merge button may not use the union driver, and how to merge locally. Blank lines
+    restored between qc.yaml steps. Tests cover a renamed record, a new row with missing links, and an
+    unknown revision. Validated with just qc (9 gates, 302 tests), actionlint, and check-append against
+    origin/main. Not checked: GitHub''s actual merge-button behaviour with merge=union.'

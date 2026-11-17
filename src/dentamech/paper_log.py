@@ -3,13 +3,17 @@
     python -m dentamech.paper_log lookup DOI            # every row for a DOI; exit 1 if none
     python -m dentamech.paper_log add DOI VERDICT --note "..." [--record STEM] [--apply]
     python -m dentamech.paper_log validate [FILE]
-    python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged since REV
+    python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged; new rows' links exist
     python -m dentamech.paper_log coverage --base REV FILE...  # new citations with no log row (advisory)
 
 The data model is `schema/paper_log.yaml`. The data is `curation/paper_log.tsv`:
 one `PaperLogEntry` per row, the schema's slot names as the header, `|` between
 values of a multivalued column. The file is append-only; the newest row for a
 DOI is its current verdict.
+
+A row's `records` and `history` must exist when the row is written (`add`, and
+`check-append` for rows new since the base). They are not rechecked later: a
+record can be renamed, merged or removed, and an append-only row cannot follow it.
 """
 
 from __future__ import annotations
@@ -106,8 +110,11 @@ def read(path: Path | None = None) -> tuple[list[tuple[int, dict]], list[str]]:
     return entries, errors
 
 
-def entry_errors(entry: dict, today: dt.date | None = None) -> list[str]:
-    """Schema errors plus the rules the schema cannot express."""
+def entry_errors(entry: dict, today: dt.date | None = None, links: bool = True) -> list[str]:
+    """Schema errors plus the rules the schema cannot express.
+
+    `links=False` skips the checks that the named record and history files exist.
+    """
     errors = schema_errors(entry, ENTRY_CLASS, PAPER_LOG_SCHEMA_PATH)
     today = today or dt.date.today()
 
@@ -126,10 +133,17 @@ def entry_errors(entry: dict, today: dt.date | None = None) -> list[str]:
             if day > today + dt.timedelta(days=1):
                 errors.append(f"considered_on {date} is in the future")
 
+    if links:
+        errors += link_errors(entry)
+    return errors
+
+
+def link_errors(entry: dict) -> list[str]:
+    """The records and history file a row names must exist (checked only on new rows)."""
+    errors = []
     for stem in entry.get("records") or []:
         if not (RECORDS_DIR / f"{stem}.yaml").exists():
             errors.append(f"records: no record {stem!r} in {RECORDS_DIR.name}/")
-
     hist = entry.get("history")
     if isinstance(hist, str) and not (REPO_ROOT / hist).is_file():
         errors.append(f"history: {hist} does not exist")
@@ -137,10 +151,15 @@ def entry_errors(entry: dict, today: dt.date | None = None) -> list[str]:
 
 
 def validate_log(path: Path | None = None, today: dt.date | None = None) -> list[str]:
+    """Every row against the schema and rules, except that linked files exist.
+
+    Those links are checked when a row is new (`add`, `check-append`), because a
+    merged row can't be edited when a record it names is later renamed or removed.
+    """
     entries, errors = read(path)
     seen: dict[str, int] = {}
     for lineno, entry in entries:
-        errors += [f"line {lineno}: {e}" for e in entry_errors(entry, today)]
+        errors += [f"line {lineno}: {e}" for e in entry_errors(entry, today, links=False)]
         key = _to_row(entry)
         if key in seen:
             errors.append(f"line {lineno}: repeats line {seen[key]} exactly")
@@ -183,31 +202,55 @@ def append(entry: dict, path: Path | None = None) -> None:
     path.write_text(text + _to_row(entry) + "\n", encoding="utf-8")
 
 
+def rev_exists(rev: str) -> bool:
+    out = subprocess.run(["git", "rev-parse", "--verify", "--quiet", f"{rev}^{{commit}}"],
+                         cwd=REPO_ROOT, capture_output=True, text=True)
+    return out.returncode == 0
+
+
 def _git_show(rev: str, path: Path) -> str | None:
-    """A file's text at a revision, or None if it did not exist there."""
+    """A file's text at a revision, or None if it did not exist there. Check `rev_exists` first."""
     rel = path.resolve().relative_to(REPO_ROOT).as_posix()
     out = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=REPO_ROOT, capture_output=True, text=True)
     return out.stdout if out.returncode == 0 else None
 
 
-def append_errors(base_text: str | None, head_text: str) -> list[str]:
-    """Every line of the base log must still be in the head log, in the same order.
+def _match_base(base_text: str | None, head_text: str) -> tuple[list[str], list[int]]:
+    """(errors, 0-based indexes of head lines that are new since base).
 
-    New rows may come anywhere after that (a union merge interleaves them), but an
-    earlier row is never edited, reordered or removed.
+    Every line of the base log must still be in the head log, in the same order.
+    New rows may come anywhere (a union merge interleaves them), but an earlier
+    row is never edited, reordered or removed.
     """
-    if base_text is None:
-        return []
     head = head_text.splitlines()
+    if base_text is None:
+        return [], list(range(1, len(head)))  # every data row is new; line 0 is the header
+    matched: set[int] = set()
     i = 0
     for lineno, line in enumerate(base_text.splitlines(), start=1):
         while i < len(head) and head[i] != line:
             i += 1
         if i == len(head):
             return [f"line {lineno} of the base log was edited, reordered or removed: {line[:120]!r}. "
-                    "The paper log is append-only; add a new row instead."]
+                    "The paper log is append-only; add a new row instead."], []
+        matched.add(i)
         i += 1
-    return []
+    return [], [n for n in range(len(head)) if n not in matched]
+
+
+def append_errors(base_text: str | None, head_text: str) -> list[str]:
+    """Earlier rows unchanged, and the records and history named by new rows exist."""
+    errors, new = _match_base(base_text, head_text)
+    if errors:
+        return errors
+    head = head_text.splitlines()
+    for n in new:
+        cells = next(csv.reader([head[n]], delimiter="\t", quoting=csv.QUOTE_NONE), [])
+        if len(cells) != len(columns()):
+            continue  # `validate` reports the row's shape
+        entry = _to_entry(dict(zip(columns(), cells, strict=True)))
+        errors += [f"line {n + 1} (new): {e}" for e in link_errors(entry)]
+    return errors
 
 
 def _references(data: object) -> set[str]:
@@ -298,7 +341,9 @@ def main(argv: list[str] | None = None) -> int:
     val = sub.add_parser("validate", help="check the log against its schema and rules")
     val.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
 
-    app = sub.add_parser("check-append", help="fail if a row present at REV was edited or removed")
+    app = sub.add_parser("check-append",
+                         help="fail if a row present at REV was edited or removed, "
+                              "or a new row names a missing file")
     app.add_argument("--base", required=True, help="git revision to compare with, e.g. origin/main")
     app.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
 
@@ -309,11 +354,17 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
 
+    if getattr(args, "base", None) and not rev_exists(args.base):
+        print(f"ERROR: git revision {args.base!r} not found. Fetch it first (git fetch origin), "
+              "or check the clone is not shallow.")
+        return 2
+
     if args.cmd == "check-append":
         errors = append_errors(_git_show(args.base, args.path), args.path.read_text(encoding="utf-8"))
         for e in errors:
             print(f"ERROR {args.path}: {e}")
-        print("The paper log lost or changed a row." if errors else "The paper log only grew.")
+        print("The paper log has errors since the base." if errors else
+              "The paper log only grew, and its new rows' records and history exist.")
         return 1 if errors else 0
 
     if args.cmd == "coverage":
