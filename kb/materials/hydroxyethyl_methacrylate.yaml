@@ -27,7 +27,7 @@ mappings:
     object_id: CHEBI:34288
     object_label: 2-hydroxyethyl methacrylate
     mapping_justification: semapv:UnspecifiedMatching
-    notes: 'Source: ChEBI'
+    notes: 'closeMatch: ChEBI defines the compound; the OHD class is the compound as a dental restoration material.'
     evidence:
       - reference: url:https://www.ebi.ac.uk/ols4/ontologies/chebi/classes?obo_id=CHEBI:34288
         reference_title: ChEBI CHEBI:34288 2-hydroxyethyl methacrylate (via OLS)
@@ -39,7 +39,7 @@ mappings:
     object_id: NCIT:C47791
     object_label: 2-Hydroxyethyl Methacrylate
     mapping_justification: semapv:UnspecifiedMatching
-    notes: 'Source: NCI Thesaurus'
+    notes: 'closeMatch: NCIt defines the compound, framed by dentin desensitizing; the OHD class is the compound as a dental restoration material.'
     evidence:
       - reference: url:https://www.ebi.ac.uk/ols4/ontologies/ncit/classes?obo_id=NCIT:C47791
         reference_title: NCI Thesaurus C47791 2-Hydroxyethyl Methacrylate (via OLS)
@@ -984,4 +984,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Changed the CHEBI:34288 and NCIT:C47791 mappings from skos:exactMatch to skos:closeMatch: both define the chemical compound, not the dental restoration material.'
+  - timestamp: '2026-11-17T21:50:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Replaced each mapping''s ''Source: ...'' notes with the reason for its predicate (PR #45 review).'
 updated_date: '2026-11-17'
