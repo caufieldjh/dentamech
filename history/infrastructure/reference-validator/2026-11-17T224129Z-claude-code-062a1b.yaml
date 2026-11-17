@@ -1,0 +1,30 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: reference-validator
+  path: pyproject.toml
+session:
+  id: 2026-11-17T224129Z-claude-code-062a1b
+  timestamp: '2026-11-17T22:41:29Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/42
+events:
+- type: EDIT
+  outcome: needs_followup
+  summary: 'Bump linkml-reference-validator to >=0.8.0, which fixes upstream #173 and #174; ignore local
+    paper copies'
+  details: 'Raised the floor from >=0.3.0 to >=0.8.0; uv.lock 0.5.1 -> 0.8.0. 0.8.0 stops caching file:
+    references (#173) and adds local_full_text, local_full_text_dir and excerpts sign (#174). No config
+    change needed: .linkml-reference-validator.yaml uses none of the changed precedence rules, and signed_excerpts_dir
+    and local_full_text stay unset pending the policy decision in issue 42. Added local_full_text/ and
+    root DOI-named folders (/10.*/) to .gitignore. Checks: pytest 302 passed, 4 skipped; just qc passed
+    9 gates; validate-all 57 records, 0 errors; validate-references-all 294 snippets checked, 77 skipped,
+    0 issues; references_cache/ byte-identical before and after; no content_type: local_file entries left
+    over. Follow-up: Titles checked is 0 on both 0.5.1 and 0.8.0 because reference_title has no implements
+    mapping.'
