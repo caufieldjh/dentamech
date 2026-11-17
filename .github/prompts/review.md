@@ -27,6 +27,13 @@ attention where machines cannot:
 - Is the record in scope by `docs/DOMAIN.md`, and not a duplicate?
 - Does the PR touch files outside its purpose, or undo other work?
 - Is the curation history filled in, with real details?
+- Paper log (`pr/curation/paper_log.tsv`): does every paper the PR newly
+  cites have a row, and do the PR's new rows match what it did (`ACCEPT`
+  rows name the records that cite them, and a cited paper is not logged
+  as `REJECT`)? Is each note a reason in the curator's own words, not text
+  copied from the paper? CI warns on missing rows and fails edited or
+  removed rows; judge whether the verdicts and reasons are sound.
+  `just lookup-paper <DOI>` shows what the default branch already logged.
 
 Rate each finding `error` (must fix: wrong data, a quote that does not
 support its claim, a guessed term), `warning` (should fix), or `note`.
@@ -37,7 +44,9 @@ model posts it:
 - `checklist`: true or false, honestly, for `qc` (`just qc` would pass),
   `quotes` (every quote supports its claim), `terms` (terms are correct and
   specific), `scope` (records are in scope and not duplicates) and
-  `history` (history records are present and filled in).
+  `history` (history records are present and filled in) and `paper_log`
+  (papers considered are logged, with sound verdicts and reasons in the
+  curator's own words).
 - `summary`: what the PR does and your judgment of it, for a person.
 - `findings`: one per problem, with `severity` and `body`. Where one line is
   at fault, give `path` as the repository path (`kb/materials/<file>.yaml`,

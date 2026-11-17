@@ -60,3 +60,48 @@ def test_curation_prs_may_update_the_regulatory_table():
     """The curate-record skill adds a row to this table for each regulation it verifies."""
     text = (ROOT / ".github" / "workflows" / "qc.yaml").read_text(encoding="utf-8")
     assert "|docs/regulatory\\.md$)" in text
+
+
+def _review_schema() -> dict:
+    import json
+
+    steps = yaml.safe_load((ROOT / ".github" / "workflows" / "review.yaml").read_text(encoding="utf-8"))
+    run = next(s for s in steps["jobs"]["review"]["steps"] if s.get("id") == "run")
+    return json.loads(re.search(r"--json-schema '(.*)'", run["with"]["claude_args"]).group(1))
+
+
+def test_review_checklist_agrees_everywhere():
+    """The JSON schema, the publisher and the prompt name the same checklist items."""
+    schema_keys = _review_schema()["properties"]["checklist"]["required"]
+    js = (ROOT / ".github" / "scripts" / "review-publish.js").read_text(encoding="utf-8")
+    block = js.split("const CHECKLIST = [", 1)[1].split("];", 1)[0]
+    published = re.findall(r"\['(\w+)',", block)
+    prompt = (ROOT / ".github" / "prompts" / "review.md").read_text(encoding="utf-8")
+    assert schema_keys == published
+    assert "paper_log" in schema_keys
+    for key in schema_keys:
+        assert f"`{key}`" in prompt, key
+
+
+def test_agents_use_the_paper_log():
+    prompts = ROOT / ".github" / "prompts"
+    scanner = (prompts / "curation-scanner.md").read_text(encoding="utf-8")
+    assert "just lookup-paper" in scanner and "just log-paper" in scanner
+    review = (prompts / "review.md").read_text(encoding="utf-8")
+    assert "pr/curation/paper_log.tsv" in review
+    args = next(s for s in yaml.safe_load((ROOT / ".github" / "workflows" / "review.yaml").read_text(
+        encoding="utf-8"))["jobs"]["review"]["steps"] if s.get("id") == "run")["with"]["claude_args"]
+    assert "Bash(just lookup-paper:*)" in args
+    for skill in ("curate-record", "review-record", "evidence-references", "deep-research"):
+        assert "paper log" in (SKILLS / skill / "SKILL.md").read_text(encoding="utf-8").lower(), skill
+
+
+def test_qc_checks_the_paper_log_on_pull_requests():
+    qc = yaml.safe_load((ROOT / ".github" / "workflows" / "qc.yaml").read_text(encoding="utf-8"))
+    steps = qc["jobs"]["qc"]["steps"]
+    assert steps[0]["with"]["fetch-depth"] == 0  # the base commit must be readable
+    append = next(s for s in steps if s.get("name") == "Paper log is append-only")
+    assert append["if"] == "github.event_name == 'pull_request'"
+    assert "just paper-log-append" in append["run"]
+    cover = next(s for s in steps if s.get("name") == "Paper log coverage")
+    assert "just paper-log-coverage" in cover["run"] and "--base" in cover["run"]

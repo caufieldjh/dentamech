@@ -1,0 +1,2 @@
+# Append-only row logs: keep both sides' new rows when branches each append.
+curation/paper_log.tsv merge=union

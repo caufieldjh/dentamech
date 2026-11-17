@@ -10,6 +10,7 @@ const CHECKLIST = [
   ['terms', 'terms are correct and specific'],
   ['scope', 'records are in scope and not duplicates'],
   ['history', 'history records are present and filled in'],
+  ['paper_log', 'papers considered are in the paper log, with sound reasons'],
 ];
 
 function clean(text, max = 6000) {

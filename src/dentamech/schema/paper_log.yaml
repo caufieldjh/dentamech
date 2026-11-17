@@ -1,0 +1,124 @@
+id: https://w3id.org/caufieldjh/dentamech/paper_log
+name: dentamech_paper_log
+title: DentaMech paper log
+description: >-
+  A log of every paper considered as a source for DentaMech curation, with the
+  verdict reached and why. It answers "have we looked at this paper before, and
+  what did we decide?", which neither the source queue (whole sources, not
+  papers) nor the history layer (sessions per target; a rejected paper changes
+  no target) can answer.
+
+  The data lives in `curation/paper_log.tsv`, one entry per row, with the slot
+  names below as column headers. The file is append-only: a paper that is
+  reconsidered gets a new row, and the newest row for a DOI is its current
+  verdict. Multivalued columns separate values with `|`.
+
+  Only identifiers and the curator's own words go in the log. Never text copied
+  from the paper: many papers considered are closed access and must not be
+  redistributed.
+
+  Rules the schema cannot express are checked in `dentamech.paper_log`: a date
+  is a real calendar date and not in the future; DOIs are written in canonical
+  lower case; named records and history files exist; and no row repeats
+  another exactly.
+license: CC-BY-4.0
+see_also:
+  - https://github.com/caufieldjh/dentamech/issues/43
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  dentamech_paper_log: https://w3id.org/caufieldjh/dentamech/paper_log/
+
+default_prefix: dentamech_paper_log
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  PaperVerdictEnum:
+    description: What was decided about a paper as a source.
+    permissible_values:
+      ACCEPT:
+        description: >-
+          The paper is used as evidence in at least one record, or will be in
+          the change that adds this row.
+      REJECT:
+        description: >-
+          The paper is not usable as a source: out of scope, no material
+          content, retracted, or similar. The note says which.
+      DEFER:
+        description: >-
+          The paper may be usable, but something named in the note blocks it
+          for now: a missing tool, a missing ontology term, or no access to
+          the text.
+
+classes:
+
+  PaperLog:
+    tree_root: true
+    description: >-
+      The whole log: every row of `curation/paper_log.tsv`, in file order.
+    attributes:
+      entries:
+        description: One entry per time a paper was considered, oldest first.
+        range: PaperLogEntry
+        multivalued: true
+        inlined_as_list: true
+
+  PaperLogEntry:
+    description: One consideration of one paper, and its verdict.
+    slots:
+      - doi
+      - considered_on
+      - verdict
+      - note
+      - records
+      - history
+
+slots:
+
+  doi:
+    description: >-
+      The paper's DOI, bare (no `doi:` or `https://doi.org/` prefix) and in
+      lower case, which is how DOIs compare.
+    required: true
+    pattern: "^10\\.[0-9]{4,9}/[^\\sA-Z]+$"
+    examples:
+      - value: 10.1016/j.ajodo.2025.11.017
+
+  considered_on:
+    description: The date the verdict was reached, as `YYYY-MM-DD`.
+    range: date
+    required: true
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    examples:
+      - value: "2026-11-16"
+
+  verdict:
+    description: What was decided.
+    range: PaperVerdictEnum
+    required: true
+
+  note:
+    description: >-
+      One or two sentences, in the curator's own words, on why this verdict.
+      For DEFER, name what blocks it. Never text copied from the paper.
+    required: true
+    pattern: "\\S"
+
+  records:
+    description: >-
+      Filename stems of the records in `kb/materials/` that the paper was used
+      for. Usually set for ACCEPT only.
+    multivalued: true
+    pattern: "^[a-z0-9]+(_[a-z0-9]+)*$"
+    examples:
+      - value: zinc_phosphate_cement
+
+  history:
+    description: >-
+      Repository-relative path to the `history/` record of the session in
+      which the paper was considered, when one was written.
+    pattern: "^history/.+\\.yaml$"

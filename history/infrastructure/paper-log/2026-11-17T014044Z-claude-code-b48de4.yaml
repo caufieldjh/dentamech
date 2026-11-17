@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: paper-log
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-17T014044Z-claude-code-b48de4
+  timestamp: '2026-11-17T01:40:44Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/43
+events:
+- type: CREATE
+  outcome: changed
+  summary: 'Add the paper log: a LinkML-modeled, append-only TSV of papers considered as sources'
+  details: 'Added src/dentamech/schema/paper_log.yaml (PaperLog root, PaperLogEntry with doi, considered_on,
+    verdict ACCEPT/REJECT/DEFER, note, optional records and history) and curation/paper_log.tsv, whose
+    header is the entry class''s slots. src/dentamech/paper_log.py reads the TSV, validates each row and
+    the whole file against the schema, and adds the rules the schema cannot express (real and non-future
+    dates, canonical lower-case DOI, named records and history files exist, no exact repeat rows). Recipes:
+    just lookup-paper, just log-paper (dry-run unless --apply), just validate-paper-log, which is now
+    a qc gate; the new schema is linted in just lint. .gitattributes merges the log with the union driver
+    (checked in a scratch repo: two branches appending rows both kept). Docs: curation/README.md, docs/CURATION.md
+    step 3, curate-record skill. First row: 10.1016/j.ajodo.2025.11.017 REJECT, out of scope. Validated
+    with just qc (9 gates) and tests/test_paper_log.py. Not done: scanner and review workflows do not
+    read or write the log yet; the schema is not on the docs site (history.yaml is not either).'

@@ -12,6 +12,10 @@ description: >-
 `curation/source_queue.tsv` ranks the sources that feed curation. The
 columns are explained in `curation/README.md`.
 
+The queue is for whole sources: databases, corpora, other knowledge bases.
+Single papers go in the paper log, `curation/paper_log.tsv`, through
+`just lookup-paper` and `just log-paper` (see the `curate-record` skill).
+
 ## Adding a candidate
 
 For each source, find out and write down:

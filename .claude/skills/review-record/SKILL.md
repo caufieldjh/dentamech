@@ -42,6 +42,16 @@ reason. Fixes belong to `curate-record`, in a separate step, when asked.
 
    Check against `https://www.law.cornell.edu/cfr/text/21/872.NNNN`, the FDA search in `curate-record`, and `docs/regulatory.md`. These `url:` quotes are not machine-checked, so this check is the only one they get. A wrong regulatory fact is an `error`.
 9. **Science.** Do composition, properties and uses match the literature for this material at this level of the OHD tree? Do values carry units and a method?
+10. **Paper log.** Every paper the record newly cites should have a row in
+    `curation/paper_log.tsv` (`just paper-log-coverage --base origin/main kb/materials/<stem>.yaml`
+    lists the missing ones). For each new row, check:
+    - `ACCEPT` rows name the records that cite the paper, and no cited paper is logged `REJECT`.
+    - A `REJECT` or `DEFER` reason is sound, and a `DEFER` names what blocks it.
+    - The note is the curator's own words, never text copied from the paper.
+    - No earlier row was edited or removed, and the records and history new rows name exist
+      (`just paper-log-append origin/main`).
+
+    A missing row is a `warning`. Copied paper text in a note is an `error`.
 
 ## Output
 

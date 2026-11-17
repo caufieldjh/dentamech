@@ -16,7 +16,9 @@ snippet to appear in it verbatim.
 ## Writing an item
 
 1. Find a primary source that states the claim. Prefer the paper that
-   showed it over a review that repeats it.
+   showed it over a review that repeats it. Check whether it was considered
+   before: `just lookup-paper <DOI>`. A paper logged `REJECT` is not cited
+   unless you have a new reason, recorded in a new row.
 2. Fetch it and read it:
 
    ```bash
@@ -80,6 +82,11 @@ snippet to appear in it verbatim.
   title. Never adjust digits until something resolves.
 - **Unknown prefix.** The reference type is not supported by the validator.
   Use a PMID or DOI for the same work.
+
+Every paper you read for a claim gets a row in the paper log, cited or not:
+`just log-paper <DOI> ACCEPT|REJECT|DEFER --note "..." [--record <stem>] --apply`.
+The note is your reason, never text from the paper. For a `PMID:`, the DOI is
+in the `doi:` line of its `references_cache/` file.
 
 ## When no source exists
 

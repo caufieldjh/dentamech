@@ -19,6 +19,7 @@ OFFLINE = [
     ("lint", ["just", "lint"]),
     ("records: closed schema", ["just", "validate-all"]),
     ("history", ["just", "validate-history"]),
+    ("paper log", ["just", "validate-paper-log"]),
     ("tests", ["just", "test", "-q"]),
 ]
 NETWORK = [

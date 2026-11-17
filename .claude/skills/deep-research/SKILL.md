@@ -77,11 +77,17 @@ The report is never cited. For each claim worth keeping:
 
 1. Check the report's validation sections. Skip anything that rests on a
    citation marked not found.
-2. `just fetch-reference PMID:NNN` for the primary source, and read it.
+2. `just lookup-paper <DOI>` first: a lead already logged `REJECT` is
+   skipped. Otherwise `just fetch-reference PMID:NNN` for the primary
+   source, and read it.
 3. Write the claim with the `curate-record` and `evidence-references`
    skills: a verbatim quote from the source, not from the report.
 4. A claim the source does not support is dropped, or becomes a
    `KNOWLEDGE_GAP` discussion.
+
+Log every lead you read in the paper log, including the ones that did not
+become evidence: `just log-paper <DOI> REJECT --note "..." --apply`. Name the
+report in the note, so the next run knows where the lead came from.
 
 In the history record, name the report, its provider and model (from its
 frontmatter), and which of its leads became evidence.
