@@ -26,4 +26,5 @@ formats:
   - sqlite
   - sql
   - csv
+  - sssom
 tabular_layout: per_class

@@ -219,10 +219,73 @@ def test_parquet_columns_take_their_declared_types():
 SSSOM_ONLY = {"formats": ["sssom"], "tabular_layout": "per_class"}
 
 
-def test_sssom_needs_the_mappings_slot(tmp_path):
-    # This Mech did not choose SSSOM, so its schema has no `mappings` for the export to read.
+def example_with(*items: dict) -> dict:
+    import yaml as _yaml
+
+    record = _yaml.safe_load(EXAMPLE.read_text(encoding="utf-8"))
+    record["mappings"] = list(items)
+    return record
+
+
+MAPPING = {"predicate_id": "skos:exactMatch", "object_id": "schema:Thing", "object_label": "Thing",
+           "mapping_justification": "semapv:ManualMappingCuration"}
+
+
+def test_sssom_without_sssom_says_what_to_install(tmp_path, monkeypatch):
+    # oaklib brings sssom to every Mech, so make it look absent to test the message.
+    import importlib.util
+
+    real = importlib.util.find_spec
+
+    def find_spec(name, *args):
+        return None if name == "sssom" else real(name, *args)
+
+    monkeypatch.setattr(importlib.util, "find_spec", find_spec)
     written, problems = export.export(SSSOM_ONLY, [EXAMPLE], tmp_path)
-    assert problems == [mappings.NO_SLOT] and written == []
+    assert problems == [mappings.MISSING]
+    assert (tmp_path / mappings.FILE).exists()
+
+
+@pytest.mark.skipif(not HAS_SSSOM, reason="sssom is not installed")
+def test_sssom_reads_back_every_mapping(tmp_path):
+    from sssom.parsers import parse_sssom_table
+
+    written, problems = export.export(SSSOM_ONLY, [EXAMPLE], tmp_path)
+    assert problems == []
+    msdf = parse_sssom_table(tmp_path / mappings.FILE)
+    assert len(msdf.df) == 1
+    assert msdf.metadata["mapping_set_id"].endswith(mappings.FILE)
+    assert {"schema", "skos", "semapv", "dentamech"} <= set(msdf.converter.prefix_map)
+
+
+@pytest.mark.skipif(not HAS_SSSOM, reason="sssom is not installed")
+def test_sssom_check_catches_a_lost_row(tmp_path):
+    export.export(SSSOM_ONLY, [EXAMPLE], tmp_path)
+    assert any("expected 2" in p for p in mappings.check(tmp_path / mappings.FILE, 2))
+
+
+def test_mapping_evidence_becomes_see_also():
+    sv = export.schemaview()
+    cited = {**MAPPING, "evidence": [{"reference": "PMID:123", "supports": "SUPPORT"},
+                                     {"reference": "PMID:123", "supports": "SUPPORT"}]}
+    rows, problems = mappings.rows(sv, [example_with(cited)])
+    assert problems == []
+    assert rows[0]["see_also"] == "http://www.ncbi.nlm.nih.gov/pubmed/123"
+
+
+@pytest.mark.parametrize("item,problem", [
+    ({**MAPPING, "object_id": "NOPE:1"}, "NOPE"),
+    ({**MAPPING, "object_id": "dentamech:example"}, "to itself"),
+    ({k: v for k, v in MAPPING.items() if k != "mapping_justification"}, "no mapping_justification"),
+])
+def test_bad_mappings_are_reported(item, problem):
+    rows, problems = mappings.rows(export.schemaview(), [example_with(item)])
+    assert rows == [] and len(problems) == 1 and problem in problems[0]
+
+
+def test_a_repeated_mapping_is_reported():
+    rows, problems = mappings.rows(export.schemaview(), [example_with(MAPPING, MAPPING)])
+    assert len(rows) == 1 and "repeats" in problems[0]
 
 
 def test_croissant_alone_is_refused(tmp_path, monkeypatch):

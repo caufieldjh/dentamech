@@ -51,6 +51,7 @@ output_formats:
 - sqlite
 - sql
 - csv
+- sssom
 python_min: '3.11'
 record_class: DentalMaterial
 record_noun: dental material

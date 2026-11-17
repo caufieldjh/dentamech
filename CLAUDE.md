@@ -120,6 +120,7 @@ Project skills live in `.claude/skills/`. Use them.
 | `github-workflows` | turn on, configure, adapt or debug the GitHub workflows |
 | `site-design` | change how the documentation site and record browser look |
 | `deep-research` | run deep research on a record, and turn its leads into evidence |
+| `curate-mappings` | map a record to identifiers elsewhere, with evidence, for the SSSOM export |
 
 
 ## Workflows

@@ -576,6 +576,7 @@ dependencies = [
     { name = "pyyaml" },
     { name = "ruamel-yaml" },
     { name = "setuptools" },
+    { name = "sssom" },
 ]
 
 [package.optional-dependencies]
@@ -601,6 +602,7 @@ requires-dist = [
     { name = "ruamel-yaml", specifier = ">=0.18" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "setuptools", specifier = "<82" },
+    { name = "sssom", specifier = ">=0.4.17" },
 ]
 provides-extras = ["dev"]
 

@@ -23,14 +23,16 @@ synonyms:
   - HEMA
   - 2-HEMA
 mappings:
-  - id: CHEBI:34288
-    label: 2-hydroxyethyl methacrylate
-    predicate: EXACT_MATCH
-    source: ChEBI
-  - id: NCIT:C47791
-    label: 2-Hydroxyethyl Methacrylate
-    predicate: EXACT_MATCH
-    source: NCI Thesaurus
+  - predicate_id: skos:exactMatch
+    object_id: CHEBI:34288
+    object_label: 2-hydroxyethyl methacrylate
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: 'Source: ChEBI'
+  - predicate_id: skos:exactMatch
+    object_id: NCIT:C47791
+    object_label: 2-Hydroxyethyl Methacrylate
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: 'Source: NCI Thesaurus'
 setting_mechanisms:
   - LIGHT_CURED
 composition:
@@ -944,4 +946,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the fourth review of PR #2. Quoted PMID:18539324 naming HEMA as the most damaging substance released by resin-modified glass ionomers, and reworded that row to what the quotes say. Recorded the deep-research report''s provenance in the session history record.'
-updated_date: '2026-11-08'
+  - timestamp: '2026-11-17T20:00:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Schema migration: mappings moved to SSSOM fields (predicate_id, object_id, object_label, mapping_justification); old source kept in notes.'
+updated_date: '2026-11-17'
