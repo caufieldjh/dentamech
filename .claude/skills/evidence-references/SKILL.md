@@ -77,12 +77,22 @@ snippet to appear in it verbatim.
 
 - **Snippet not found.** Your quote differs from the source. Fetch again and
   copy. If the text is in the full paper but only the abstract is cached,
-  quote the abstract, find an open-access copy, or, if Harry has a local copy
-  of a closed paper, use a signed excerpt (below). Do not paraphrase.
+  quote the abstract, find an open-access copy, or, if a curator holds a
+  copy of the closed paper, use a signed excerpt (see Closed papers below).
+  Do not paraphrase.
 - **Snippet not found, signed excerpt.** The quote is not in the bundle in
   `reference_excerpts/`, or the bundle entry has no `verification` record.
   Re-run `just sign-excerpts` with the paper in `local_full_text/`. Never
   write or edit a bundle by hand.
+- **Reference not found.** The identifier is wrong. Search PubMed for the
+  title. Never adjust digits until something resolves.
+- **Unknown prefix.** The reference type is not supported by the validator.
+  Use a PMID or DOI for the same work.
+
+Every paper you read for a claim gets a row in the paper log, cited or not:
+`just log-paper <DOI> ACCEPT|REJECT|DEFER --note "..." [--record <stem>] --apply`.
+The note is your reason, never text from the paper. For a `PMID:`, the DOI is
+in the `doi:` line of its `references_cache/` file.
 
 ## Closed papers: signed excerpts
 
@@ -99,15 +109,6 @@ Quotes from a closed paper's full text are allowed when a local copy exists.
 
 Without the local copy (in CI, or on another machine), the same quote passes
 only through the signed bundle.
-- **Reference not found.** The identifier is wrong. Search PubMed for the
-  title. Never adjust digits until something resolves.
-- **Unknown prefix.** The reference type is not supported by the validator.
-  Use a PMID or DOI for the same work.
-
-Every paper you read for a claim gets a row in the paper log, cited or not:
-`just log-paper <DOI> ACCEPT|REJECT|DEFER --note "..." [--record <stem>] --apply`.
-The note is your reason, never text from the paper. For a `PMID:`, the DOI is
-in the `doi:` line of its `references_cache/` file.
 
 ## When no source exists
 

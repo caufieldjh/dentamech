@@ -14,6 +14,8 @@ session:
 links:
   issues:
   - https://github.com/caufieldjh/dentamech/issues/42
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/46
 events:
 - type: EDIT
   outcome: needs_followup
