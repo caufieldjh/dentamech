@@ -65,7 +65,9 @@ just fetch-reference PMID:<n>
 ```
 
 Read what came back. If only the abstract is cached, you may quote only the
-abstract. A claim you cannot tie to fetched text is not written. It becomes a
+abstract, unless a local copy of the paper is in `local_full_text/`; then
+quote the full text and sign the quotes (see the `evidence-references`
+skill). A claim you cannot tie to fetched text is not written. It becomes a
 `KNOWLEDGE_GAP` discussion.
 
 ## 3. Write

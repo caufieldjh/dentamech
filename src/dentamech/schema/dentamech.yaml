@@ -967,9 +967,14 @@ slots:
       - value: PMID:24560216
       - value: url:https://www.ecfr.gov/current/title-21/section-872.3690
   reference_title:
-    description: Title of the referenced source
+    description: >-
+      Title of the referenced source. Checked against the fetched source's
+      title by linkml-reference-validator, which this slot's implements
+      mapping turns on.
     range: string
     recommended: true
+    implements:
+      - dcterms:title
   supports:
     description: How the source relates to the claim
     range: EvidenceItemSupportEnum
