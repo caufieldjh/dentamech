@@ -2,14 +2,21 @@
 # attach. `just qc` runs the export, so a format that stops working fails QC.
 # The formats and their files are listed in src/dentamech/export.py.
 #
-# formats: yaml, json, jsonld, ttl, sqlite, duckdb, sql, csv, tsv
+# formats: yaml, json, jsonld, ttl, sqlite, duckdb, parquet, sql, csv, tsv, sssom
 #   jsonld and ttl are RDF. Every CURIE in the records becomes an IRI through
 #   the schema's `prefixes`, so declare each prefix with its full URI. The
 #   export fails on an IRI that does not expand.
 # tabular_layout: per_class (one table per class, as in the SQL export) or
-#   flat (one row per record, nested values as JSON). Used by csv and tsv.
+#   flat (one row per record, nested values as JSON). Used by csv and tsv;
+#   parquet is always one table per class. It needs the pyarrow package.
 # kgx, kgx_maximal: a knowledge graph as KGX nodes and edges, mapped onto
 #   Biolink in conf/kgx.yaml. They need the biolink-model package.
+# croissant: Croissant metadata about the other files, the records field by
+#   field, and where the data came from. Needs csv, tsv, parquet or json
+#   beside it, and the mlcroissant package to check it.
+# sssom: an SSSOM mapping set, one row per item in each record's `mappings`,
+#   as dentamech-mappings.sssom.tsv. Each object_id's prefix must be declared in
+#   the schema's `prefixes`. Needs the sssom package to check it.
 
 formats:
   - yaml

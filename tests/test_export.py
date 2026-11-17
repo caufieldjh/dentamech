@@ -7,13 +7,14 @@ does not know.
 
 import csv
 import io
+import json
 import sqlite3
 import zipfile
 from pathlib import Path
 
 import pytest
 
-from dentamech import export, kgx
+from dentamech import croissant, export, kgx, mappings
 from dentamech.paths import RECORD_CLASS, REPO_ROOT, SLUG
 
 EXAMPLE = Path(__file__).parent / "data" / "example_record.yaml"
@@ -24,15 +25,36 @@ try:
 except ImportError:
     HAS_DUCKDB = False
 try:
+    import pyarrow  # noqa: F401  only installed when this Mech exports Parquet
+
+    HAS_PYARROW = True
+except ImportError:
+    HAS_PYARROW = False
+try:
+    import mlcroissant  # noqa: F401  only installed when this Mech exports Croissant
+
+    HAS_MLCROISSANT = True
+except ImportError:
+    HAS_MLCROISSANT = False
+try:
+    import sssom  # noqa: F401  only installed when this Mech exports SSSOM
+
+    HAS_SSSOM = True
+except ImportError:
+    HAS_SSSOM = False
+try:
     import biolink_model  # noqa: F401  only installed when this Mech exports KGX
 
     HAS_BIOLINK = True
 except ImportError:
     HAS_BIOLINK = False
-# Every format this Mech can write as installed.
+# Every format this Mech can write as installed: SSSOM also needs the schema's `mappings`.
+SSSOM_READY = HAS_SSSOM and mappings.has_slot(export.schemaview())
 KGX_READY = HAS_BIOLINK or not kgx.settings()["biolink"]
 INSTALLED = [f for f in export.FORMATS
-             if (f != "duckdb" or HAS_DUCKDB) and (not f.startswith("kgx") or KGX_READY)]
+             if (f != "duckdb" or HAS_DUCKDB) and (f != "parquet" or HAS_PYARROW)
+             and (f != "croissant" or HAS_MLCROISSANT) and (f != "sssom" or SSSOM_READY)
+             and (not f.startswith("kgx") or KGX_READY)]
 
 
 @pytest.mark.parametrize("layout", ["per_class", "flat"])
@@ -48,6 +70,9 @@ def test_every_format_reads_back(tmp_path, layout):
     else:
         with zipfile.ZipFile(tmp_path / f"{SLUG}-tables-csv.zip") as zf:
             assert f"{RECORD_CLASS}.csv" in zf.namelist()
+    if HAS_PYARROW:  # one table per class, whatever the layout
+        with zipfile.ZipFile(tmp_path / f"{SLUG}-tables-parquet.zip") as zf:
+            assert f"{RECORD_CLASS}.parquet" in zf.namelist()
 
 
 def test_nested_rows_name_their_field(tmp_path):
@@ -106,7 +131,7 @@ def test_registry_entry_lists_the_export():
 
 def test_settings_are_checked(tmp_path, monkeypatch):
     bad = tmp_path / "export.yaml"
-    bad.write_text("formats: [parquet]\n", encoding="utf-8")
+    bad.write_text("formats: [xlsx]\n", encoding="utf-8")
     monkeypatch.setattr(export, "SETTINGS", bad)
     with pytest.raises(SystemExit):
         export.settings()
@@ -151,6 +176,139 @@ def test_a_broken_linkml_store_is_not_called_missing(tmp_path, monkeypatch):
     monkeypatch.setattr(export, "write_duckdb", broken)
     with pytest.raises(ModuleNotFoundError):
         export.export({"formats": ["duckdb"], "tabular_layout": "per_class"}, [EXAMPLE], tmp_path)
+
+
+@pytest.mark.skipif(HAS_PYARROW, reason="pyarrow is installed")
+def test_parquet_without_pyarrow_says_what_to_install(tmp_path):
+    cfg = {"formats": ["parquet"], "tabular_layout": "per_class"}
+    written, problems = export.export(cfg, [EXAMPLE], tmp_path)
+    assert problems == [export.PARQUET_MISSING]
+    assert written == []
+
+
+@pytest.mark.skipif(not HAS_PYARROW, reason="pyarrow is not installed")
+def test_parquet_holds_the_sqlite_tables(tmp_path):
+    import pyarrow.parquet as pq
+
+    cfg = {"formats": ["sqlite", "parquet"], "tabular_layout": "per_class"}
+    written, problems = export.export(cfg, [EXAMPLE], tmp_path)
+    assert problems == []
+    con = sqlite3.connect(tmp_path / f"{SLUG}-records.sqlite")
+    tables = [t for (t,) in con.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+    with zipfile.ZipFile(tmp_path / f"{SLUG}-tables-parquet.zip") as zf:
+        assert sorted(zf.namelist()) == sorted(f"{t}.parquet" for t in tables)
+        record = pq.read_table(io.BytesIO(zf.read(f"{RECORD_CLASS}.parquet")))
+    assert record.num_rows == 1
+    assert record.column("id").to_pylist() == [con.execute(f'SELECT id FROM "{RECORD_CLASS}"').fetchone()[0]]
+
+
+@pytest.mark.skipif(not HAS_PYARROW, reason="pyarrow is not installed")
+def test_parquet_columns_take_their_declared_types():
+    import pyarrow as pa
+
+    assert export.arrow_column([1, None], export.arrow_type("INTEGER")).type == pa.int64()
+    assert export.arrow_column([1, 0, None], export.arrow_type("BOOLEAN")).to_pylist() == [True, False, None]
+    # Only 0 and 1 are booleans: anything else is not read as true.
+    assert export.arrow_column(["no", 1], export.arrow_type("BOOLEAN")).to_pylist() == ["no", "1"]
+    assert export.arrow_column([1.5], export.arrow_type("FLOAT")).type == pa.float64()
+    assert export.arrow_column(["2024-01-02"], export.arrow_type("DATE")).type == pa.string()
+    # A value that does not fit its declared type keeps the column, as text.
+    assert export.arrow_column(["n/a", 3], export.arrow_type("INTEGER")).to_pylist() == ["n/a", "3"]
+
+
+SSSOM_ONLY = {"formats": ["sssom"], "tabular_layout": "per_class"}
+
+
+def test_sssom_needs_the_mappings_slot(tmp_path):
+    # This Mech did not choose SSSOM, so its schema has no `mappings` for the export to read.
+    written, problems = export.export(SSSOM_ONLY, [EXAMPLE], tmp_path)
+    assert problems == [mappings.NO_SLOT] and written == []
+
+
+def test_croissant_alone_is_refused(tmp_path, monkeypatch):
+    bad = tmp_path / "export.yaml"
+    bad.write_text("formats: [croissant, ttl]\n", encoding="utf-8")
+    monkeypatch.setattr(export, "SETTINGS", bad)
+    with pytest.raises(SystemExit, match="croissant describes the other files"):
+        export.settings()
+
+
+@pytest.mark.skipif(HAS_MLCROISSANT, reason="mlcroissant is installed")
+def test_croissant_without_mlcroissant_says_what_to_install(tmp_path):
+    cfg = {"formats": ["json", "croissant"], "tabular_layout": "per_class"}
+    written, problems = export.export(cfg, [EXAMPLE], tmp_path)
+    assert problems == [croissant.MISSING]
+    assert (tmp_path / f"{SLUG}-croissant.json").exists()
+
+
+@pytest.mark.skipif(not HAS_MLCROISSANT, reason="mlcroissant is not installed")
+@pytest.mark.parametrize("formats,layout,first", [
+    (["csv", "croissant"], "per_class", RECORD_CLASS),
+    (["tsv", "croissant"], "flat", RECORD_CLASS),
+    (["json", "croissant"], "per_class", RECORD_CLASS),
+])
+def test_croissant_validates_and_loads(tmp_path, formats, layout, first):
+    written, problems = export.export({"formats": formats, "tabular_layout": layout}, [EXAMPLE], tmp_path)
+    assert problems == []
+    doc = json.loads((tmp_path / f"{SLUG}-croissant.json").read_text(encoding="utf-8"))
+    assert doc["conformsTo"] == croissant.CONFORMS_TO
+    assert first in [r["@id"] for r in doc["recordSet"]]
+    files = {d["@id"]: d for d in doc["distribution"] if "containedIn" not in d}
+    assert set(files) == {p.name for p in written if p.name != f"{SLUG}-croissant.json"}
+    assert all(len(d["sha256"]) == 64 for d in files.values())
+
+
+@pytest.mark.skipif(not HAS_MLCROISSANT, reason="mlcroissant is not installed")
+def test_croissant_check_catches_a_changed_file(tmp_path):
+    written, _ = export.export({"formats": ["csv", "croissant"], "tabular_layout": "per_class"},
+                               [EXAMPLE], tmp_path)
+    tables = tmp_path / f"{SLUG}-tables-csv.zip"
+    with zipfile.ZipFile(tables, "a") as zf:
+        zf.writestr("extra.csv", "x\n1\n")  # the zip's sha256 no longer matches
+    problems, _ = croissant.check(tmp_path / f"{SLUG}-croissant.json", {RECORD_CLASS: 1})
+    assert problems
+
+
+def test_croissant_names_the_sources(tmp_path, monkeypatch):
+    lock = tmp_path / "ingests.lock.yaml"
+    lock.write_text(
+        "ingests:\n"
+        "  demo:\n"
+        "    kind: release\n"
+        "    repo: example/demo-ingest\n"
+        "    release: v1\n"
+        "    build_version: '2026-10-01'\n"
+        "    sources: [{id: 'infores:demo', version: '1', retrieved_at: '2026-10-01'}]\n"
+        "    files: {demo_edges.tsv: {sha256: abc, bytes: 3}}\n", encoding="utf-8")
+    monkeypatch.setattr(croissant, "INGEST_LOCK", lock)
+    sv = export.schemaview()
+    records = [export.load(EXAMPLE)]
+    doc, _ = croissant.build(sv, records, [], None)
+    derived = doc["prov:wasDerivedFrom"]
+    ingest = next(e for e in derived if e["prov:label"].startswith("demo ingest"))
+    assert ingest["@id"] == "https://github.com/example/demo-ingest/releases/tag/v1"
+    assert ingest["prov:hadMember"][0]["sha256"] == "abc"
+    assert ingest["prov:wasDerivedFrom"][0]["@id"] == croissant.INFORES + "demo"
+    import yaml as _yaml
+
+    adapters = _yaml.safe_load(croissant.OAK_CONFIG.read_text(encoding="utf-8"))["ontology_adapters"]
+    bound = sorted(p for p, a in adapters.items() if a and p != SLUG)
+    assert [e["prov:label"] for e in derived if e["prov:label"].endswith(" ontology")] == [
+        f"{p} ontology" for p in bound]
+    refs = croissant.references(records)
+    assert [c["identifier"] for c in doc.get("citation", [])] == refs
+    assert "Software Collection" in doc["rai:dataCollectionType"]
+
+
+def test_croissant_license_falls_back_to_the_schema(tmp_path, monkeypatch):
+    monkeypatch.setattr(croissant, "REGISTRY", tmp_path / "none.md")  # no registry entry
+    sv = export.schemaview()
+    if sv.schema.license:
+        doc, _ = croissant.build(sv, [], [], None)
+        assert doc["license"].startswith("https://")
+    sv.schema.license = None
+    doc, _ = croissant.build(sv, [], [], None)
+    assert "license" not in doc  # not a made-up URL
 
 
 def reference_schema(tmp_path):
