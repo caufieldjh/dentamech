@@ -3,6 +3,8 @@
     python -m dentamech.paper_log lookup DOI            # every row for a DOI; exit 1 if none
     python -m dentamech.paper_log add DOI VERDICT --note "..." [--record STEM] [--apply]
     python -m dentamech.paper_log validate [FILE]
+    python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged since REV
+    python -m dentamech.paper_log coverage --base REV FILE...  # new citations with no log row (advisory)
 
 The data model is `schema/paper_log.yaml`. The data is `curation/paper_log.tsv`:
 one `PaperLogEntry` per row, the schema's slot names as the header, `|` between
@@ -16,6 +18,7 @@ import argparse
 import csv
 import datetime as dt
 import re
+import subprocess
 import sys
 from functools import cache
 from pathlib import Path
@@ -23,7 +26,7 @@ from pathlib import Path
 from linkml_runtime.utils.schemaview import SchemaView
 
 from .paths import PAPER_LOG_PATH, PAPER_LOG_SCHEMA_PATH, RECORDS_DIR, REPO_ROOT
-from .validate import schema_errors
+from .validate import load, loads, schema_errors
 
 ENTRY_CLASS = "PaperLogEntry"
 LOG_CLASS = "PaperLog"
@@ -180,6 +183,93 @@ def append(entry: dict, path: Path | None = None) -> None:
     path.write_text(text + _to_row(entry) + "\n", encoding="utf-8")
 
 
+def _git_show(rev: str, path: Path) -> str | None:
+    """A file's text at a revision, or None if it did not exist there."""
+    rel = path.resolve().relative_to(REPO_ROOT).as_posix()
+    out = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=REPO_ROOT, capture_output=True, text=True)
+    return out.stdout if out.returncode == 0 else None
+
+
+def append_errors(base_text: str | None, head_text: str) -> list[str]:
+    """Every line of the base log must still be in the head log, in the same order.
+
+    New rows may come anywhere after that (a union merge interleaves them), but an
+    earlier row is never edited, reordered or removed.
+    """
+    if base_text is None:
+        return []
+    head = head_text.splitlines()
+    i = 0
+    for lineno, line in enumerate(base_text.splitlines(), start=1):
+        while i < len(head) and head[i] != line:
+            i += 1
+        if i == len(head):
+            return [f"line {lineno} of the base log was edited, reordered or removed: {line[:120]!r}. "
+                    "The paper log is append-only; add a new row instead."]
+        i += 1
+    return []
+
+
+def _references(data: object) -> set[str]:
+    """Every `reference:` value anywhere in a record."""
+    found: set[str] = set()
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if key == "reference" and isinstance(value, str):
+                found.add(value.strip())
+            else:
+                found |= _references(value)
+    elif isinstance(data, list):
+        for item in data:
+            found |= _references(item)
+    return found
+
+
+def doi_for(reference: str) -> str | None:
+    """The DOI behind a reference: itself for `DOI:`, from the reference cache for `PMID:`."""
+    prefix, _, local = reference.partition(":")
+    if prefix.upper() == "DOI":
+        return normalize_doi(local)
+    if prefix.upper() != "PMID":
+        return None
+    from .validate import _fetcher  # the validator's own cache naming
+
+    try:
+        cached = _fetcher().get_cache_path(reference)
+        text = cached.read_text(encoding="utf-8")
+    except (OSError, ValueError):
+        return None
+    match = re.search(r"^doi:\s*['\"]?([^'\"\s]+)", text.split("\n---", 1)[0], re.MULTILINE)
+    return normalize_doi(match.group(1)) if match else None
+
+
+def coverage(files: list[Path], base: str | None, log: Path | None = None) -> list[str]:
+    """References newly cited in these records whose paper has no row in the log.
+
+    Only literature counts (`DOI:` and `PMID:`); regulatory `url:` pages are not papers.
+    Advisory: a missing row is a reminder, not an error.
+    """
+    logged = {normalize_doi(e.get("doi", "")) for _, e in read(log)[0]}
+    warnings = []
+    for f in files:
+        head = _references(load(f))
+        old = _git_show(base, f) if base else None
+        if old is not None:
+            head -= _references(loads(old))
+        for ref in sorted(head):
+            if ref.partition(":")[0].upper() not in ("DOI", "PMID"):
+                continue
+            doi = doi_for(ref)
+            if doi is None:
+                warnings.append(f"{f}: {ref} is newly cited, but its DOI is not known (fetch it with "
+                                "just fetch-reference), so the paper log cannot be checked")
+            elif doi not in logged:
+                fix = f'just log-paper {doi} ACCEPT --note "..." --record {f.stem} --apply'
+                warnings.append(f"{f}: {ref} (doi {doi}) is newly cited but has no row in the paper log. "
+                                f"Add one: {fix}")
+    return warnings
+
+
 def _show(entry: dict) -> str:
     extra = ""
     if entry.get("records"):
@@ -208,7 +298,34 @@ def main(argv: list[str] | None = None) -> int:
     val = sub.add_parser("validate", help="check the log against its schema and rules")
     val.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
 
+    app = sub.add_parser("check-append", help="fail if a row present at REV was edited or removed")
+    app.add_argument("--base", required=True, help="git revision to compare with, e.g. origin/main")
+    app.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
+
+    cov = sub.add_parser("coverage", help="newly cited papers with no log row (advisory; exit 0)")
+    cov.add_argument("--base", help="git revision to compare the records with; omit to check every citation")
+    cov.add_argument("--github", action="store_true", help="print GitHub Actions ::warning annotations")
+    cov.add_argument("files", nargs="+", type=Path)
+
     args = parser.parse_args(argv)
+
+    if args.cmd == "check-append":
+        errors = append_errors(_git_show(args.base, args.path), args.path.read_text(encoding="utf-8"))
+        for e in errors:
+            print(f"ERROR {args.path}: {e}")
+        print("The paper log lost or changed a row." if errors else "The paper log only grew.")
+        return 1 if errors else 0
+
+    if args.cmd == "coverage":
+        warnings = coverage(args.files, args.base)
+        for w in warnings:
+            if args.github:
+                path, _, msg = w.partition(": ")
+                print(f"::warning file={path}::{msg}")
+            else:
+                print(f"WARNING {w}")
+        print(f"{len(warnings)} newly cited paper(s) missing from the paper log.")
+        return 0
 
     if args.cmd == "validate":
         errors = validate_log(args.path)

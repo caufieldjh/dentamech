@@ -193,6 +193,15 @@ log-paper *args:
 validate-paper-log:
     uv run python -m {{slug}}.paper_log validate
 
+# Fail if a paper-log row present at BASE was edited, reordered or removed. CI runs it on PRs.
+paper-log-append base:
+    uv run python -m {{slug}}.paper_log check-append --base "$1"
+
+# Papers newly cited in FILES (since --base REV) with no paper-log row. Advisory: always exits 0.
+# `just paper-log-coverage --base origin/main kb/materials/<stem>.yaml`
+paper-log-coverage *args:
+    uv run python -m {{slug}}.paper_log coverage "$@"
+
 # Corpus statistics.
 report *args:
     uv run python -m {{slug}}.report "$@"

@@ -48,6 +48,25 @@ Address clear review comments from the queue file with small commits. Ask on the
 unsure. Refresh a stale branch by merging its base in (`git fetch`, then
 `git merge origin/<base>`) and pushing; never rebase or force-push.
 
+## Papers
+
+`curation/paper_log.tsv` lists every paper already considered as a source,
+with a verdict (`ACCEPT`, `REJECT` or `DEFER`) and the reason.
+
+- Before reading a paper, run `just lookup-paper <DOI>`. If its newest
+  verdict is `REJECT`, skip it. If it is `DEFER`, skip it unless the blocker
+  named in the note is gone, and say so in the new row.
+- Log every paper you considered in this run, whatever the verdict:
+  `just log-paper <DOI> <VERDICT> --note "..." [--record <stem>] --apply`.
+  For `ACCEPT`, name the records it fed with `--record`.
+- The note is your reason in your own words. Never copy text from the paper
+  into it; many papers are closed access.
+- Commit the new rows in the pull request you open. If you open no pull
+  request, list each DOI, verdict and reason in your comment, so a person
+  can log them.
+- Never edit or delete an earlier row. CI fails a PR that does. To change a
+  verdict, add a new row.
+
 ## Rules
 
 - Every record change goes through `just validate`, and gets a curation

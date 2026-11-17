@@ -41,5 +41,11 @@ just log-paper 10.1016/j.ajodo.2025.11.017 REJECT --note "Why." --apply
 just validate-paper-log                           # also part of `just qc`
 ```
 
+On a pull request, CI fails if a row already on the base branch was edited
+or removed (`just paper-log-append origin/main`), and warns for each paper a
+changed record newly cites that has no row (`just paper-log-coverage --base
+origin/main <files>`). The curation scanner and the review agent both read
+the log.
+
 `.gitattributes` merges this file with git's `union` driver, so two branches
 that each append a row keep both rows instead of conflicting.

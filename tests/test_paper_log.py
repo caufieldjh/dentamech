@@ -153,3 +153,56 @@ def test_add_refuses_an_invalid_row(tmp_path, monkeypatch):
     assert paper_log.main(["add", "10.1000/x", "ACCEPT", "--note", "x", "--record", "no_such_record",
                            "--apply"]) == 1
     assert f.read_text(encoding="utf-8") == HEADER
+
+
+BASE = HEADER + "10.1000/a\t2026-11-01\tREJECT\tOne.\t\t\n10.1000/b\t2026-11-02\tDEFER\tTwo.\t\t\n"
+
+
+@pytest.mark.parametrize(
+    "head, ok",
+    [
+        (BASE, True),
+        (BASE + "10.1000/c\t2026-11-03\tACCEPT\tThree.\t\t\n", True),
+        # a union merge puts the other branch's rows between ours
+        (HEADER + "10.1000/a\t2026-11-01\tREJECT\tOne.\t\t\n10.1000/z\t2026-11-03\tREJECT\tZ.\t\t\n"
+         "10.1000/b\t2026-11-02\tDEFER\tTwo.\t\t\n", True),
+        (BASE.replace("Two.", "Two, edited."), False),
+        (HEADER + "10.1000/a\t2026-11-01\tREJECT\tOne.\t\t\n", False),
+        (HEADER + "10.1000/b\t2026-11-02\tDEFER\tTwo.\t\t\n10.1000/a\t2026-11-01\tREJECT\tOne.\t\t\n", False),
+    ],
+)
+def test_append_only(head, ok):
+    assert (paper_log.append_errors(BASE, head) == []) is ok
+
+
+def test_append_only_passes_when_the_log_is_new():
+    assert paper_log.append_errors(None, BASE) == []
+
+
+def test_doi_for_reads_the_reference_cache():
+    cached = next(p for p in sorted(paths.REFERENCES_DIR.glob("PMID_*.md"))
+                  if "\ndoi:" in p.read_text(encoding="utf-8"))
+    pmid = "PMID:" + cached.stem.split("_", 1)[1]
+    doi = paper_log.doi_for(pmid)
+    assert doi and doi.startswith("10.") and doi == doi.lower()
+    assert paper_log.doi_for("DOI:10.1000/XYZ") == "10.1000/xyz"
+    assert paper_log.doi_for("url:https://www.law.cornell.edu/cfr/text/21/872.3275") is None
+    assert paper_log.doi_for("PMID:1") is None  # not cached
+
+
+def test_coverage_warns_only_on_new_unlogged_papers(tmp_path, monkeypatch):
+    record = tmp_path / "some_cement.yaml"
+    record.write_text(
+        "name: some cement\nevidence:\n"
+        "  - reference: DOI:10.1000/old\n"
+        "  - reference: DOI:10.1000/logged\n"
+        "  - reference: DOI:10.1000/new\n"
+        "  - reference: url:https://example.org/x\n",
+        encoding="utf-8",
+    )
+    log = _write(tmp_path, "10.1000/logged\t2026-11-01\tACCEPT\tUsed.\t\t")
+    monkeypatch.setattr(paper_log, "_git_show",
+                        lambda rev, path: "evidence:\n  - reference: DOI:10.1000/old\n")
+    warnings = paper_log.coverage([record], "BASE", log)
+    assert len(warnings) == 1 and "10.1000/new" in warnings[0]
+    assert len(paper_log.coverage([record], None, log)) == 2  # no base: every citation counts

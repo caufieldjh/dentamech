@@ -13,7 +13,7 @@ its secrets, and adapting its prompt.
 
 | Workflow | What it does |
 |---|---|
-| `qc.yaml` | The required check. Runs `just qc`. On a pull request, also checks terms and quotes for the records it changes, fails a curation PR that touches other files (the `scope-override` label allows it), and warns when a changed record has no new history record. |
+| `qc.yaml` | The required check. Runs `just qc`. On a pull request, also checks terms and quotes for the records it changes, fails a curation PR that touches other files (the `scope-override` label allows it), and warns when a changed record has no new history record. Also fails a PR that edits or removes an earlier row of `curation/paper_log.tsv`, and warns when a newly cited paper has no row there. |
 
 ## No agent
 
@@ -40,11 +40,11 @@ until `agent_schedules` is turned on.
 | Key | State | File | What it does | Writes | Needs |
 |---|---|---|---|---|---|
 | `claude` | **on** | `claude.yaml` | Answers `@claude` from people with write access, in issues and PRs. | branches, PRs, comments | Claude GitHub App installed |
-| `review` | **on** | `review.yaml` | Reviews each same-repo PR with the `review-record` skill. The agent reads the PR as data with a read-only token; a step with no model approves or requests changes. `/review` re-runs it. Refuses PRs from forks, however started. | reviews | reviewer App, or Actions allowed to approve PRs |
+| `review` | **on** | `review.yaml` | Reviews each same-repo PR with the `review-record` skill, including its paper-log rows. The agent reads the PR as data with a read-only token; a step with no model approves or requests changes. `/review` re-runs it. Refuses PRs from forks, however started. | reviews | reviewer App, or Actions allowed to approve PRs |
 | `triage` | **on** | `triage.yaml` | Labels new issues. The agent only reads; a step with no model applies labels from a fixed list. `curation` goes on only when the author can write to the repository. | labels | `just labels` run once |
 | `dedupe` | off | `dedupe.yaml`, `auto-close-duplicates.yaml` | Flags likely duplicates; closes them after three days unless a person objects. | one comment, a label, closure | nothing more |
 | `pr-shepherd` | off | `pr-shepherd.yaml` | Comments on the most stuck PR, saying why and what would unstick it. The agent only reads; a step with no model posts. Never pushes or approves. | one comment | nothing more |
-| `curation-scanner` | **on** | `curation-scanner.yaml` | Picks one unassigned `curation` issue or PR per effort tier and advances it. | branches, PRs, comments | agent App |
+| `curation-scanner` | **on** | `curation-scanner.yaml` | Picks one unassigned `curation` issue or PR per effort tier and advances it. Checks the paper log before reading a paper and logs every paper it considers. | branches, PRs, comments | agent App |
 | `literature-scan` | off | `literature-scan.yaml` | Finds recent papers (PubMed or preprints) that match records and files a few `literature` issues. The agent only reads; a step with no model files them. A person adds `curation` after reading one. Tune `conf/literature_scan.yaml`. | issues | nothing more |
 | `compliance` | off | `compliance.yaml` | Improves the least complete records by `just compliance`, one PR each. | branches, PRs | agent App |
 | `post-review` | off | `post-review.yaml` | Proposes a suggestion, reply or `Editorial:` issue for each unanswered human review comment; a step with no model posts them. | suggestions, replies, issues | nothing more |

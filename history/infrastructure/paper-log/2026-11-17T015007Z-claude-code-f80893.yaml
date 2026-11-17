@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: paper-log
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-17T015007Z-claude-code-f80893
+  timestamp: '2026-11-17T01:50:07Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/43
+events:
+- type: EDIT
+  outcome: changed
+  summary: Wire the paper log into CI, the scanner, the review agent and the skills
+  details: 'Added paper_log check-append (hard: rows on the base branch must survive in order; a union
+    merge may interleave new rows) and coverage (advisory: papers newly cited in changed records, PMIDs
+    mapped to DOIs through references_cache, with no log row), as just paper-log-append and just paper-log-coverage.
+    qc.yaml runs both on PRs and now checks out full history so the base commit is readable. Scanner prompt:
+    look a paper up before reading it, skip REJECT, log every paper considered, never copy paper text
+    into a note, carry rows in the PR or list them in the comment. Review: new paper_log checklist item
+    in the prompt, the review.yaml JSON schema and review-publish.js, plus just lookup-paper in its allowed
+    tools; a contract test keeps the three lists equal. Skills updated: review-record (check 10), evidence-references,
+    deep-research, source-queue, github-workflows; docs/WORKFLOWS.md and curation/README.md. Validated
+    with just qc (9 gates, 299 tests). Not checked: a live CI run of the new qc.yaml steps; the 101 papers
+    already cited before the log existed have no rows (coverage without --base lists them).'
