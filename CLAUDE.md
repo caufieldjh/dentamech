@@ -31,6 +31,7 @@ just install           # uv sync
 just qc                # the offline gate CI blocks on
 just qc-full           # qc plus terms and quotes for every record (network)
 just validate FILE     # closed schema, ontology terms, verbatim quotes
+just sign-excerpts FILE --reference DOI:...   # sign quotes from a local closed paper into reference_excerpts/
 just new-record ...    # scaffold a record (dry-run unless --apply); an id with the OHD prefix needs --term-label
 just import-schema SRC --record-class C   # start the schema from an existing one (dry-run unless --apply)
 just new-history ...   # scaffold a history record (dry-run unless --apply)
@@ -166,7 +167,7 @@ so two sessions never share one set of files.
 
 - **One OHD term per record.** `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
 - **`parents` are record ids.** They mirror OHD's `is_a` links. Tests fail on a dangling parent.
-- **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are checked against PubMed abstracts.
+- **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are checked against PubMed abstracts, or, for a closed paper held locally, against the local copy and then committed as a signed excerpt in `reference_excerpts/` (`just sign-excerpts`). Local copies live in gitignored `local_full_text/` and are never committed.
 - **Regulatory text is quoted from the regulation.** Cite as `url:` to the CFR section or FDA database record. Verified regulation numbers, classes and product codes are in `docs/regulatory.md`. Do not guess a product code or a regulation number from memory. Look it up:
   - CFR text: `https://www.law.cornell.edu/cfr/text/21/872.NNNN` (eCFR itself blocks automated fetches)
   - Product codes: `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN`

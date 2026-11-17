@@ -63,11 +63,18 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 - `pages/` is no longer committed, and the faceted `app/` browser is replaced by the filterable table on the site's Records page.
 - `.copier-answers.yml` names mechmaker, so `sync-mech` works from here on.
 
-## 9. Abstract-only quote checks
+## 9. Quote checks: abstracts, plus signed excerpts from closed papers
 
-**Decision.** `linkml-reference-validator` runs with full-text fetching off and with cached entries trusted.
+**Decision.** `linkml-reference-validator` runs with full-text fetching off and with cached entries trusted, so fetched sources are checked against their abstracts. Quotes from the full text of a closed paper are allowed when a curator holds a copy: the quote is checked against that local copy, and the quotes that match are written as signed excerpts to `reference_excerpts/`, which is committed. The paper itself never is.
 
-**Rationale.** Evidence quotes are checked against abstracts. By default the validator fetches publisher full text and rewrites the committed cache, so a quote from outside the abstract could pass.
+**Rationale.** By default the validator fetches publisher full text and rewrites the committed cache, so a quote from outside the abstract could pass with nothing a reviewer can see. Many dental materials papers are closed, and their abstracts leave out the composition and setting details records need. Signed excerpts keep those quotes checkable in CI without redistributing the paper.
+
+**Consequences.**
+
+- Local copies go in `local_full_text/`, named by cache stem (e.g. `DOI_10.1016_j.x.2025.11.017.md`). It is gitignored, as are DOI-named folders at the repo root. Since linkml-reference-validator 0.8.0, a local file's text is never written to `references_cache/`.
+- `just sign-excerpts` writes a bundle per reference. Each excerpt carries a `verification` record with the SHA-256 of the text it matched. `signed_excerpts_require_verification: true` makes validation ignore entries without one, so a hand-typed excerpt fails.
+- The record is an attestation, not a cryptographic signature. Anyone who can edit a bundle can edit its record. Review is the safeguard: a bundle change should add only quotes that appear as snippets in the same pull request.
+- A quote from a local copy is limited by the validator's fair-use caps.
 
 ## 10. Open questions
 

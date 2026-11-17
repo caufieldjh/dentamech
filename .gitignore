@@ -21,3 +21,8 @@ docs/records/
 docs/structure.md
 docs/corpus.md
 docs/downloads.md
+# Local copies of papers we may not redistribute. Never commit them.
+# Keep them under local_full_text/ (named by cache stem, e.g.
+# DOI_10.1016_j.example.md), or in a DOI-named folder at the repo root.
+local_full_text/
+/10.*/

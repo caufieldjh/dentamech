@@ -77,7 +77,13 @@ snippet to appear in it verbatim.
 
 - **Snippet not found.** Your quote differs from the source. Fetch again and
   copy. If the text is in the full paper but only the abstract is cached,
-  quote the abstract or find an open-access copy. Do not paraphrase.
+  quote the abstract, find an open-access copy, or, if a curator holds a
+  copy of the closed paper, use a signed excerpt (see Closed papers below).
+  Do not paraphrase.
+- **Snippet not found, signed excerpt.** The quote is not in the bundle in
+  `reference_excerpts/`, or the bundle entry has no `verification` record.
+  Re-run `just sign-excerpts` with the paper in `local_full_text/`. Never
+  write or edit a bundle by hand.
 - **Reference not found.** The identifier is wrong. Search PubMed for the
   title. Never adjust digits until something resolves.
 - **Unknown prefix.** The reference type is not supported by the validator.
@@ -87,6 +93,22 @@ Every paper you read for a claim gets a row in the paper log, cited or not:
 `just log-paper <DOI> ACCEPT|REJECT|DEFER --note "..." [--record <stem>] --apply`.
 The note is your reason, never text from the paper. For a `PMID:`, the DOI is
 in the `doi:` line of its `references_cache/` file.
+
+## Closed papers: signed excerpts
+
+Quotes from a closed paper's full text are allowed when a local copy exists.
+
+1. The text goes in `local_full_text/<cache stem>.md` (gitignored), e.g.
+   `DOI_10.1016_j.x.2025.11.017.md`. Never copy it anywhere tracked.
+2. Cite `DOI:`, quote verbatim, and `just validate` the record. Matching uses
+   the local copy.
+3. `just sign-excerpts kb/materials/<stem>.yaml --reference DOI:...` writes
+   the matching quotes, and only those, to `reference_excerpts/`.
+4. Commit the record and the bundle. Check `git status` first: no paper text
+   may be staged, in `references_cache/` or anywhere else.
+
+Without the local copy (in CI, or on another machine), the same quote passes
+only through the signed bundle.
 
 ## When no source exists
 

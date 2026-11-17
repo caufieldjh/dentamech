@@ -5,9 +5,20 @@ validation:
   cache_dir: references_cache
   # An unrecognized reference prefix is an error, not a silent pass.
   unknown_prefix_severity: ERROR
-  # Abstracts only: snippets are checked against PubMed abstracts, and a fetch of
-  # publisher full text would rewrite the committed cache and weaken that check.
+  # Never fetch publisher full text: it would rewrite the committed cache.
+  # Fetched sources are checked against their abstracts.
   fetch_full_text: false
+  # Closed papers: a curator who holds a copy puts its text in local_full_text/
+  # (gitignored), named by cache stem, e.g. DOI_10.1016_j.x.2025.11.017.md.
+  # Quotes citing that reference are matched against it, and its text is never
+  # cached. `just sign-excerpts` writes the quotes that match, and only those,
+  # to reference_excerpts/, which is committed so CI can check them without
+  # the paper.
+  local_full_text_dir: local_full_text
+  signed_excerpts_dir: reference_excerpts
+  # Accept only excerpts written by `excerpts sign`, which records the SHA-256
+  # of the text matched. A hand-typed entry has none and is ignored.
+  signed_excerpts_require_verification: true
   # The committed cache is reviewed; never re-fetch an entry to migrate it.
   trust_cached_entries: true
   # Keep all-caps abbreviations and anything with a percent sign as source text.

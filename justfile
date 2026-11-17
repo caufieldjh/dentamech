@@ -72,6 +72,12 @@ validate-terms-offline *files:
 validate-references *files:
     uv run linkml-reference-validator validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
 
+# Pass record files; --reference ID signs one source, --check reports bundles
+# that are out of date without writing. Commit bundles, never the papers.
+# Sign quotes from closed papers in local_full_text/ into reference_excerpts/.
+sign-excerpts *args:
+    uv run linkml-reference-validator excerpts sign "$@" --config {{ref_config}}
+
 # Closed-schema validation of every record.
 validate-all:
     uv run python -m {{slug}}.validate

@@ -1,0 +1,30 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: reference-validator
+  path: .claude/skills/evidence-references/SKILL.md
+session:
+  id: 2026-11-17T230701Z-claude-code-50698d
+  timestamp: '2026-11-17T23:07:01Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/42
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/46
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Address PR 46 review: rejoin the troubleshooting list, neutral wording, PR links, confirm
+    the real recipes'
+  details: 'Moved the Closed papers section of the evidence-references skill out of the When validation
+    fails list, to after the paper-log paragraph. Replaced ''if Harry has a local copy'' with ''if a curator
+    holds a copy''. Added PR 46 under links.prs in both earlier history records. Confirmed against the
+    real recipes, with the ajodo paper copied into local_full_text/: just validate-references (with --no-full-text)
+    passed a quote present only in the local copy and failed a made-up one with ''Text part not found
+    as substring''; just sign-excerpts --check reported 1 would be written, exited 1, wrote nothing. The
+    DOI cache entry it created held metadata only; it and the local copy were deleted afterwards.'
