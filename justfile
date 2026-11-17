@@ -179,6 +179,20 @@ new-history *args:
 validate-history target="history":
     uv run python -m {{slug}}.history validate "$1"
 
+# Every time a paper was considered as a source, and the verdict. Exit 1 if never.
+# `just lookup-paper 10.1016/j.ajodo.2025.11.017`
+lookup-paper doi:
+    uv run python -m {{slug}}.paper_log lookup "$1"
+
+# Append a row to curation/paper_log.tsv. Dry-run unless --apply. VERDICT is ACCEPT, REJECT or DEFER.
+# `just log-paper 10.1000/xyz REJECT --note "Why, in your words." [--record <stem>] [--history <path>] --apply`
+log-paper *args:
+    uv run python -m {{slug}}.paper_log add "$@"
+
+# Validate curation/paper_log.tsv against src/{{slug}}/schema/paper_log.yaml and its rules.
+validate-paper-log:
+    uv run python -m {{slug}}.paper_log validate
+
 # Corpus statistics.
 report *args:
     uv run python -m {{slug}}.report "$@"
@@ -255,6 +269,7 @@ test *args:
 lint:
     uv run ruff check .
     uv run linkml-lint --config .linkmllint.yaml --ignore-warnings {{schema}}
+    uv run linkml-lint --config .linkmllint.yaml --ignore-warnings src/{{slug}}/schema/paper_log.yaml
 
 # Auto-fix lint findings
 lint-fix:

@@ -50,7 +50,15 @@ Check for duplicates by id and by synonym before creating anything.
 
 ## 2. Research
 
-Gather sources before writing. For each source you intend to cite:
+Gather sources before writing. Before reading a paper, check the paper log
+(`curation/paper_log.tsv`); a paper already rejected or deferred is skipped
+unless what blocked it has changed:
+
+```bash
+just lookup-paper <DOI>        # exit 1: never considered
+```
+
+For each source you intend to cite:
 
 ```bash
 just fetch-reference PMID:<n>
@@ -109,6 +117,16 @@ Append one event to the record's `curation_history`:
     model: <model-id>
     action: EDIT
     description: <what changed, one or two sentences>
+```
+
+Log every paper you considered this session in the paper log, including the
+ones you rejected or deferred. The note is your reason in your own words,
+never text from the paper:
+
+```bash
+just log-paper <DOI> ACCEPT --note "..." --record <stem> --apply
+just log-paper <DOI> REJECT --note "Out of scope: ..." --apply
+just log-paper <DOI> DEFER  --note "Blocked by ..." --apply
 ```
 
 Then one history record for the session:
