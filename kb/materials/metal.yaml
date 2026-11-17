@@ -8,10 +8,18 @@ category: METAL
 synonyms:
   - metallic restorative material
 mappings:
-  - id: MESH:D003722
-    label: Dental Alloys
-    predicate: CLOSE_MATCH
-    source: MeSH
+  - predicate_id: skos:narrowMatch
+    object_id: MESH:D003722
+    object_label: Dental Alloys
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: 'narrowMatch: MeSH limits Dental Alloys to alloys; OHD''s metal also takes in unalloyed metals.'
+    evidence:
+      - reference: url:https://id.nlm.nih.gov/mesh/M0005841
+        reference_title: MeSH concept M0005841 Dental Alloys, scope note
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: A mixture of metallic elements or compounds with other metallic or metalloid elements in varying proportions for use in restorative or prosthetic dentistry.
+        explanation: 'MeSH''s Dental Alloys covers alloys used in restorative and prosthetic dentistry. OHD''s metal dental restoration material consists mostly of metal and metal alloys, so it also takes in unalloyed metals and the MeSH term is narrower: narrowMatch, as for ceramic and Dental Porcelain.'
 setting_mechanisms:
   - CASTING
   - MILLING
@@ -1090,4 +1098,22 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Merged main after PRs #2 and #4, resolving docs/regulatory.md (kept main''s 872.3275 row with MZW and NEA, and this branch''s 872.3330 and 872.3350 rows). Reworded the 872.3330 row so it no longer glosses austenitic as stainless steel. Replaced the upper-bound wording on the patch-test explanation with what the quote says.'
-updated_date: '2026-11-09'
+  - timestamp: '2026-11-17T20:00:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Schema migration: mappings moved to SSSOM fields (predicate_id, object_id, object_label, mapping_justification); old source kept in notes.'
+  - timestamp: '2026-11-17T21:09:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://id.nlm.nih.gov/mesh/M0005841 to mappings[0].
+  - timestamp: '2026-11-17T21:50:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Changed the MESH:D003722 Dental Alloys mapping from skos:closeMatch to skos:narrowMatch, matching its explanation (OHD''s metal also takes in unalloyed metals), and replaced its notes with the reason for the predicate (PR #45 review).'
+updated_date: '2026-11-17'

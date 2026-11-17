@@ -1,0 +1,21 @@
+history_version: 1
+target:
+  kind: mapping
+  slug: metal-mappings
+  path: kb/materials/metal.yaml
+session:
+  id: 2026-11-17T215107Z-claude-code-3d568e
+  timestamp: '2026-11-17T21:51:07Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Quoted evidence for the Dental Alloys mapping; it is now narrowMatch
+  details: 'Evidence: MESH:D003722 Dental Alloys (MeSH concept M0005841 scope note). Changed from skos:closeMatch
+    to skos:narrowMatch after PR #45 review: the explanation already said OHD''s metal also takes in unalloyed
+    metals, so the MeSH term is narrower, as for ceramic and Dental Porcelain. Notes now give the reason
+    for the predicate.'

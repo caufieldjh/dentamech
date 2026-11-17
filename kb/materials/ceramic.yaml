@@ -42,14 +42,30 @@ synonyms:
   - ceramic restorative material
   - dental porcelain
 mappings:
-  - id: NCIT:C42634
-    label: Dental Material
-    predicate: BROAD_MATCH
-    source: NCI Thesaurus via OLS
-  - id: MESH:D003776
-    label: Dental Porcelain
-    predicate: CLOSE_MATCH
-    source: MeSH
+  - predicate_id: skos:broadMatch
+    object_id: NCIT:C42634
+    object_label: Dental Material
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: 'broadMatch: NCIt''s Dental Material covers every dental substance; ceramic is one kind.'
+    evidence:
+      - reference: url:https://www.ebi.ac.uk/ols4/ontologies/ncit/classes?obo_id=NCIT:C42634
+        reference_title: NCI Thesaurus C42634 Dental Material (via OLS)
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Substances that are used in the clinical practice of dentistry for the production of fillings, restorations, impressions, and prostheses.
+        explanation: NCIt's Dental Material takes in every substance used in dentistry for fillings, restorations, impressions and prostheses. OHD's ceramic dental restoration material is one kind of these, so the NCIt term is broader.
+  - predicate_id: skos:narrowMatch
+    object_id: MESH:D003776
+    object_label: Dental Porcelain
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: 'narrowMatch: MeSH limits Dental Porcelain to feldspathic porcelain; OHD''s ceramic also covers other ceramics.'
+    evidence:
+      - reference: url:https://id.nlm.nih.gov/mesh/M0005915
+        reference_title: MeSH concept M0005915 Dental Porcelain, scope note
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: A type of porcelain used in dental restorations, either jacket crowns or inlays, artificial teeth, or metal-ceramic crowns. It is essentially a mixture of particles of feldspar and quartz, the feldspar melting first and providing a glass matrix for the quartz.
+        explanation: 'MeSH''s scope note limits Dental Porcelain to feldspathic porcelain. OHD defines ceramic dental restoration material as any nonmetallic inorganic restorative material of oxygen compounds processed at high temperature, so the MeSH term is narrower: narrowMatch, not closeMatch.'
 setting_mechanisms:
   - SINTERING
   - HEAT_PRESSING
@@ -1040,4 +1056,34 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Answered the sixth review of PR #13. Cut the unquoted Passia/ZrSiO4 detail to one outlier study, as the corrigendum quotes say. Replaced the unquoted claim that veneer complication rates differed sharply with the PMID:39523553 sentence that lithium disilicate slightly outperforms the others. Said phase transformation, as PMID:38281620 does, instead of naming the phases. Quoted the 2006-2013 search period from PMID:25842099. Marked the cementation-interface reading of loss of retention as interpretation.'
-updated_date: '2026-11-09'
+  - timestamp: '2026-11-17T20:00:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Schema migration: mappings moved to SSSOM fields (predicate_id, object_id, object_label, mapping_justification); old source kept in notes.'
+  - timestamp: '2026-11-17T21:09:31+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.ebi.ac.uk/ols4/ontologies/ncit/classes?obo_id=NCIT:C42634 to mappings[0].
+  - timestamp: '2026-11-17T21:09:34+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://id.nlm.nih.gov/mesh/M0005915 to mappings[1].
+  - timestamp: '2026-11-17T21:09:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Changed the MESH:D003776 Dental Porcelain mapping from skos:closeMatch to skos:narrowMatch: MeSH''s scope note limits it to feldspathic porcelain, narrower than OHD''s ceramic.'
+  - timestamp: '2026-11-17T21:50:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Replaced each mapping''s ''Source: ...'' notes with the reason for its predicate (PR #45 review).'
+updated_date: '2026-11-17'

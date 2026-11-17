@@ -6,12 +6,12 @@ description: A placeholder that exercises the record structure.
 status: DRAFT
 category: OTHER
 mappings:
-  - id: NCIT:C42634
-    label: Dental Material
-    predicate: BROAD_MATCH
-  - id: MESH:D003722
-    label: Dental Alloys
-    predicate: CLOSE_MATCH
+  - predicate_id: skos:broadMatch
+    object_id: schema:Thing
+    object_label: Thing
+    mapping_justification: semapv:UnspecifiedMatching
+    confidence: 0.5
+    notes: A placeholder mapping, to a class broader than anything.
 setting_mechanisms:
   - HYDRATION
 composition:

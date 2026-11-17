@@ -1,0 +1,22 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: mechmaker-sync
+  path: .copier-answers.yml
+session:
+  id: 2026-11-17T200440Z-claude-code-eb990f
+  timestamp: '2026-11-17T20:04:40Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Synced with mechmaker 0.2.1-37-gff8e02d
+  details: 'Took #104, #106, #107, #108, #109, #110, #112. Declined #103 (map shapes): DentaMech records
+    hold no places. Notes acted on: worktrees (paths.py now uses repo_root(); no checkout paths from __file__
+    left). CLAUDE.md conflict resolved keeping the dental rules. curation_queue.py and curation-scanner.yaml
+    untouched, so the comment limit holds. Turned on sssom output (see the mappings-to-sssom schema history
+    record).'

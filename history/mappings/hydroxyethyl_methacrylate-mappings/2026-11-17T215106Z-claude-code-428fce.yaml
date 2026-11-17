@@ -1,0 +1,21 @@
+history_version: 1
+target:
+  kind: mapping
+  slug: hydroxyethyl_methacrylate-mappings
+  path: kb/materials/hydroxyethyl_methacrylate.yaml
+session:
+  id: 2026-11-17T215106Z-claude-code-428fce
+  timestamp: '2026-11-17T21:51:06Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Quoted evidence for both mappings; both are now closeMatch
+  details: 'Evidence: CHEBI:34288 (ChEBI definition via OLS) and NCIT:C47791 (NCIt definition via OLS).
+    Changed both from skos:exactMatch to skos:closeMatch: they define the compound, while the OHD class
+    is the compound as a dental restoration material, and the record lists CHEBI:34288 as its MATRIX component.
+    Notes now give the reason for each predicate.'

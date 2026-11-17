@@ -3,6 +3,8 @@
 This file is the design record for what DentaMech knows. mechmaker
 wrote the skeleton. mechmaker's `design-mech-schema` skill fills it in, and every
 later schema change updates it. Sections marked TODO are not done.
+Where DentaMech adapts mechmaker's
+[design decisions](https://monarch-initiative.github.io/mechmaker/design/), this file says how, and why.
 
 ## What a record is
 
@@ -51,7 +53,7 @@ class at the level of its term, naming subtypes without describing them in full.
 | `regulatory_status` | none | Classification of the device type, FDA first. See `docs/regulatory.md` |
 | `products` | none | Specific brands and their 510(k) or PMA submissions |
 | `standards` | none | Standards it is tested or specified against. Example: ISO 4049 |
-| `mappings` | NCIT and others | Terms in other vocabularies |
+| `mappings` | NCIT, MeSH, ChEBI and others; each prefix declared in the schema | Terms in other vocabularies, in SSSOM's fields (`predicate_id`, `object_id`, `mapping_justification`). `just export` writes them as one SSSOM mapping set. An agent's mapping is `semapv:UnspecifiedMatching`. See the `curate-mappings` skill |
 | `evidence` | PMID, DOI, url | Record-level citations |
 | `discussions` | none | Open questions and knowledge gaps (mech_shared) |
 | `datasets` | accessions | Public datasets (mech_shared) |

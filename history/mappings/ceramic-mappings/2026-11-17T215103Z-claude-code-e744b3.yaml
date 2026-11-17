@@ -1,0 +1,22 @@
+history_version: 1
+target:
+  kind: mapping
+  slug: ceramic-mappings
+  path: kb/materials/ceramic.yaml
+session:
+  id: 2026-11-17T215103Z-claude-code-e744b3
+  timestamp: '2026-11-17T21:51:03Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Quoted evidence for both mappings; Dental Porcelain is now narrowMatch
+  details: 'Evidence: NCIT:C42634 Dental Material (NCIt definition via OLS) and MESH:D003776 Dental Porcelain
+    (MeSH concept M0005915 scope note). Changed MESH:D003776 from skos:closeMatch to skos:narrowMatch:
+    MeSH limits it to feldspathic porcelain, narrower than OHD''s ceramic. NCIT:C42634 stays skos:broadMatch.
+    Notes now give the reason for each predicate. Not changed: the synonym ''dental porcelain'' (review
+    note on PR #45), left for the curator.'
