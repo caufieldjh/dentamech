@@ -23,16 +23,30 @@ synonyms:
   - HEMA
   - 2-HEMA
 mappings:
-  - predicate_id: skos:exactMatch
+  - predicate_id: skos:closeMatch
     object_id: CHEBI:34288
     object_label: 2-hydroxyethyl methacrylate
     mapping_justification: semapv:UnspecifiedMatching
     notes: 'Source: ChEBI'
-  - predicate_id: skos:exactMatch
+    evidence:
+      - reference: url:https://www.ebi.ac.uk/ols4/ontologies/chebi/classes?obo_id=CHEBI:34288
+        reference_title: ChEBI CHEBI:34288 2-hydroxyethyl methacrylate (via OLS)
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: An enoate ester that is the monomethacryloyl derivative of ethylene glycol.
+        explanation: 'ChEBI defines the chemical compound itself, wherever it is used. The OHD class is that monomer as a dental restoration material, and this record lists CHEBI:34288 as its MATRIX component, so the two are close but not interchangeable: closeMatch, not exactMatch.'
+  - predicate_id: skos:closeMatch
     object_id: NCIT:C47791
     object_label: 2-Hydroxyethyl Methacrylate
     mapping_justification: semapv:UnspecifiedMatching
     notes: 'Source: NCI Thesaurus'
+    evidence:
+      - reference: url:https://www.ebi.ac.uk/ols4/ontologies/ncit/classes?obo_id=NCIT:C47791
+        reference_title: NCI Thesaurus C47791 2-Hydroxyethyl Methacrylate (via OLS)
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: A hydroxyester compound and a resin monomer used in desensitizing dentin.
+        explanation: 'NCIt defines the same monomer as a compound, framed by a different dental use (dentin desensitizing) from OHD''s adhesives and primers. It is the same substance but not the same class: closeMatch, not exactMatch.'
 setting_mechanisms:
   - LIGHT_CURED
 composition:
@@ -952,4 +966,22 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Schema migration: mappings moved to SSSOM fields (predicate_id, object_id, object_label, mapping_justification); old source kept in notes.'
+  - timestamp: '2026-11-17T21:09:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.ebi.ac.uk/ols4/ontologies/chebi/classes?obo_id=CHEBI:34288 to mappings[0].
+  - timestamp: '2026-11-17T21:09:39+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.ebi.ac.uk/ols4/ontologies/ncit/classes?obo_id=NCIT:C47791 to mappings[1].
+  - timestamp: '2026-11-17T21:09:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Changed the CHEBI:34288 and NCIT:C47791 mappings from skos:exactMatch to skos:closeMatch: both define the chemical compound, not the dental restoration material.'
 updated_date: '2026-11-17'
