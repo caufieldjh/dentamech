@@ -22,7 +22,7 @@ composition:
       description: A dimethacrylate monomer; CHEBI has no exact term, so the chemical is left unbound.
     description: Archetypal base monomer of the polymer matrix.
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3690
+      - reference: CFR:872.3690
         reference_title: 21 CFR 872.3690 Tooth shade resin material
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -295,7 +295,7 @@ regulatory_status:
             label: resin filling restoration procedure
     source_url: https://www.ecfr.gov/current/title-21/section-872.3690
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3690
+      - reference: CFR:872.3690
         reference_title: 21 CFR 872.3690 Tooth shade resin material
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -467,4 +467,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Added a description to properties[2] saying the source does not name the strength test, so FLEXURAL_STRENGTH is the nearest type.'
+  - timestamp: '2026-11-18T18:04:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Cited 2 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.'
 updated_date: '2026-11-18'
