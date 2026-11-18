@@ -1,0 +1,70 @@
+reference_id: DOI:10.1016/j.jdent.2026.106626
+title: How durable are 3D-printed dental resin-based composites? An umbrella review
+source_char_count: 92465
+excerpts:
+- text: 3D-printed resins are viable options for provisional and selected indirect restorations, showing acceptable short-term performance. However, their long-term durability remains uncertain, and CAD/CAM-milled materials continue to offer superior mechanical and optical stability.
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Across reviews, 3D-printed resins generally exhibited lower flexural strength, elastic modulus, fatigue resistance, and color stability, as well as higher sorption/solubility, than milled CAD/CAM materials.
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Dimensional accuracy and marginal/internal fit were typically within clinically acceptable limits but showed strong dependence on washing procedures, curing protocols, and printing orientation.
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Documented failures were primarily related to material fractures, excessive occlusal wear, marginal discrepancies, and perceptible color changes.
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Inadequate post-curing is associated with lower flexural strength, hardness, and elastic modulus, as well as increased cytotoxicity due to monomer leaching, whereas extended curing time and higher irradiance improve degree of conversion and surface hardness
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: 'Intrinsic anisotropy remained an ubiquitous finding: load application perpendicular to the build layers markedly reduced strength and fatigue resistance'
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Reviews assessing sorption and solubility consistently report higher values for 3D-printed resins compared with CAD/CAM materials, often two to three times greater
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: Two reviews identified clinical studies with follow-up periods ranging from 6 to 24 months, reporting success rates between 87% and 100% for 3D-printed inlays, onlays, overlays, laminate veneers, and occlusal restorations
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: mechanical differences were often attributed to the lower filler content, higher organic matrix proportion, and reduced initial degree of conversion typically observed in printed composites
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: the absence of randomized clinical trials, the small number of available studies, and the heterogeneity of materials and protocols preclude robust conclusions regarding the long-term performance of definitive 3D-printed restorations
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: there is clear agreement that CAD/ CAM materials demonstrate superior color stability, lower water sorption, and better preservation of translucency and gloss over time
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
