@@ -70,13 +70,13 @@ validate-terms-offline *files:
 
 # Every snippet appears verbatim in its cited source.
 validate-references *files:
-    uv run linkml-reference-validator validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
+    uv run python -m {{slug}}.lrv validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
 
 # Pass record files; --reference ID signs one source, --check reports bundles
 # that are out of date without writing. Commit bundles, never the papers.
 # Sign quotes from closed papers in local_full_text/ into reference_excerpts/.
 sign-excerpts *args:
-    uv run linkml-reference-validator excerpts sign "$@" --config {{ref_config}}
+    uv run python -m {{slug}}.lrv excerpts sign "$@" --config {{ref_config}}
 
 # Closed-schema validation of every record.
 validate-all:
@@ -106,7 +106,7 @@ validate-references-all:
     files=()
     while IFS= read -r f; do files+=("$f"); done < <(find {{records}} -name '*.yaml' | sort)
     if [ ${#files[@]} -eq 0 ]; then echo "No records under {{records}}."; exit 0; fi
-    uv run linkml-reference-validator validate data "${files[@]}" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
+    uv run python -m {{slug}}.lrv validate data "${files[@]}" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}}
 
 # Terms and quotes for some records, for CI on the records a PR changed.
 # Cache-first; does not download full text. If the ontology service does not
@@ -132,11 +132,11 @@ validate-changed *files:
     elif [ "$rc" -ne 0 ]; then
         exit "$rc"
     fi
-    uv run linkml-reference-validator validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}} --no-full-text
+    uv run python -m {{slug}}.lrv validate data "$@" --schema {{schema}} --target-class {{record_class}} --no-full-text --config {{ref_config}} --no-full-text
 
 # Fetch a reference into references_cache/ and print it. Read it before quoting it.
 fetch-reference ref:
-    uv run linkml-reference-validator lookup "$1" --config {{ref_config}}
+    uv run python -m {{slug}}.lrv lookup "$1" --config {{ref_config}}
 
 # Search an ontology. Give an OAK adapter, or a prefix to use the one
 # conf/oak_config.yaml gives it: `just search-term GO "cell wall organization"`

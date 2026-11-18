@@ -80,6 +80,9 @@ def fetch_and_check(reference: str, snippet: str) -> tuple[bool, str, str | None
     from linkml_reference_validator.cli.shared import load_validation_config
     from linkml_reference_validator.validation.supporting_text_validator import SupportingTextValidator
 
+    from dentamech.refsources import register
+
+    register()  # CFR: references
     config = load_validation_config(CONFIG if CONFIG.exists() else None)
     validator = SupportingTextValidator(config)
     content = validator.fetcher.fetch(reference)
