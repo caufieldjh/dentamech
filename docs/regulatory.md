@@ -66,9 +66,27 @@ classification database on each curation run. The sources:
 
 | Source | Where |
 |---|---|
-| CFR text | `https://www.law.cornell.edu/cfr/text/21/872.NNNN` |
+| CFR text | `just fetch-reference CFR:872.NNNN` (eCFR renderer API; cite as `CFR:872.NNNN`) |
 | Product classification, human-readable record | `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN` |
 | Product classification, JSON | `https://api.fda.gov/device/classification.json?search=regulation_number:"872.NNNN"&limit=50` (openFDA) |
+
+Quotes from a `CFR:` reference are machine-checked: `src/dentamech/refsources.py` fetches the
+section from eCFR's renderer API, the validator flattens it to text, and the cache entry under
+`references_cache/CFR_872.NNNN.md` is committed. The title it records is `21 CFR 872.NNNN
+<heading>`, which is what `reference_title` should say. eCFR's XML API is not used, because the
+validator does not flatten XML (linkml/linkml-reference-validator#179).
+
+Each fetch reads title 21 as of its latest issue date, from eCFR's titles API, and the cache entry
+records that date as `source_revision`. Checks read the committed cache, so a quote stays checked
+against the issue it was taken from. When FDA amends a section, refresh it on purpose: delete
+`references_cache/CFR_872.NNNN.md`, run `just fetch-reference CFR:872.NNNN`, then
+`just validate-references` on every record citing the section, and fix any quote the new text no
+longer contains. If the titles API cannot be reached, the fetch fails rather than reading undated
+text.
+
+Quotes from the FDA databases below are cited as `url:` and are still checked by people: the
+validator skips `url:`, and openFDA cannot yet be configured to expose more than one field per
+record (also #179).
 
 Cite the `classification.cfm` URL: it is the human-readable record, and it renders device names in
 lower case, which is what a `snippet` quoting it has to match.

@@ -7,7 +7,7 @@ import pytest
 from dentamech import validate
 
 RECORDS = {path.stem: validate.load(path) for path in validate.iter_records()}
-ALLOWED_REFERENCE_PREFIXES = ("PMID:", "PMC:", "DOI:", "PPR:", "url:", "URL:")
+ALLOWED_REFERENCE_PREFIXES = ("PMID:", "PMC:", "DOI:", "PPR:", "CFR:", "url:", "URL:")
 
 
 def walk_evidence(node, path="root"):

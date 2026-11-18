@@ -71,6 +71,6 @@ for provenance.
 - `parents` are the ids of other records, mirroring OHD's `is_a` links.
 - Literature goes in as `PMID:` where a PMID exists, else `DOI:` or `PMC:`. Quotes are checked against abstracts. `.linkml-reference-validator.yaml` turns full-text fetching off so the check stays against abstracts.
 - A quote from the full text of a closed paper is allowed when you hold a copy. Cite it as `DOI:`, put the text in `local_full_text/` (gitignored) named by cache stem, validate, then `just sign-excerpts FILE --reference DOI:...` and commit the bundle in `reference_excerpts/`. Never commit the paper. See `reference_excerpts/README.md`.
-- Regulatory text goes in as `url:` pointing at the CFR section, the FDA product classification record, or the 510(k) or PMA record. Those pages block automated fetches, so `url:` quotes are skipped by the validator and checked by people.
+- Regulatory text goes in as `CFR:872.NNNN` for a 21 CFR section; its quotes are checked against the eCFR text. The FDA product classification record and the 510(k) or PMA record go in as `url:`; the validator skips `url:`, so those quotes are checked by people (see `docs/regulatory.md`).
 - Standards are cited as `url:` to the ISO or ADA catalog entry. Their text is paywalled, so keep the quote to what the catalog shows.
 - Verified regulation numbers, classes and product codes are in `docs/regulatory.md`.

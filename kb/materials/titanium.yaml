@@ -88,7 +88,7 @@ regulatory_status:
     source_url: https://www.ecfr.gov/current/title-21/section-872.3640
     notes: This regulation governs the implant as a device, of which titanium is the named material. Product codes are DZE (root-form), NRQ (blade-form), and OAT (orthodontic endosseous implant). Titanium crowns and frameworks fall under other regulations not yet recorded.
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3640
+      - reference: CFR:872.3640
         reference_title: 21 CFR 872.3640 Endosseous dental implant
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -118,4 +118,10 @@ curation_history:
     model: claude-opus-5-5
     action: CREATE
     description: Converted from dentamech at cddf481, entry Titanium.
+  - timestamp: '2026-11-18T18:04:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Cited 1 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.'
 updated_date: '2026-11-07'

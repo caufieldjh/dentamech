@@ -2,7 +2,7 @@ id: OHD:0000135
 name: Ceramic
 description: A dental restoration material that has a nonmetallic inorganic structure consisting primarily of compounds containing oxygen combined with one or more metallic or semi-metallic elements that are processed at high temperatures, pressed, and polished or milled.
 description_evidence:
-  - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+  - reference: CFR:872.6660
     reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
     supports: PARTIAL
     evidence_source: REGULATORY_DOCUMENT
@@ -90,7 +90,7 @@ composition:
         label: feldspar
     description: The traditional glass former of dental porcelain, named in the FDA identification of the device type (spelled "felspar" there).
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+      - reference: CFR:872.6660
         reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -105,7 +105,7 @@ composition:
         label: quartz
     description: Crystalline silica, one of the three constituents named in the FDA identification.
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+      - reference: CFR:872.6660
         reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -120,7 +120,7 @@ composition:
         label: kaolin
     description: Clay component of traditional dental porcelain, named in the FDA identification.
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+      - reference: CFR:872.6660
         reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -350,7 +350,7 @@ regulatory_status:
     source_url: https://www.ecfr.gov/current/title-21/section-872.6660
     notes: 'This is the material-level device type for dental ceramics. Paragraph (b) assigns Class II and states no 510(k) exemption, so the pathway is premarket notification. The regulation''s wording is pre-CAD/CAM, but EIH is empirically what modern ceramic blanks clear under: see products below for lithium disilicate and zirconia clearances carrying this code.'
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.6660
+      - reference: CFR:872.6660
         reference_title: 21 CFR 872.6660 Porcelain powder for clinical use
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -374,7 +374,7 @@ regulatory_status:
     source_url: https://www.ecfr.gov/current/title-21/section-872.3920
     notes: Recorded because the regulation defines this device type as made of the material above, so it is the downstream device type for the same material rather than a different material. It is the prefabricated component, so it is a narrower device type than 872.6660 and not a substitute for it. A self-review argued for moving this section to notes instead, on the grounds that a porcelain tooth is a finished component rather than a classification of the material and that no ELL product is recorded here. It is kept because the regulation itself defines the device type as made of the 872.6660 material, and because FDA lists ELL beside EIH on the recognition page of every ceramic-material standard cited below.
     evidence:
-      - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3920
+      - reference: CFR:872.3920
         reference_title: 21 CFR 872.3920 Porcelain tooth
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
@@ -1086,4 +1086,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Replaced each mapping''s ''Source: ...'' notes with the reason for its predicate (PR #45 review).'
+  - timestamp: '2026-11-18T18:04:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Cited 6 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.'
 updated_date: '2026-11-17'

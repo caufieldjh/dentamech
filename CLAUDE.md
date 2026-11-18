@@ -168,8 +168,8 @@ so two sessions never share one set of files.
 - **One OHD term per record.** `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
 - **`parents` are record ids.** They mirror OHD's `is_a` links. Tests fail on a dangling parent.
 - **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are checked against PubMed abstracts, or, for a closed paper held locally, against the local copy and then committed as a signed excerpt in `reference_excerpts/` (`just sign-excerpts`). Local copies live in gitignored `local_full_text/` and are never committed.
-- **Regulatory text is quoted from the regulation.** Cite as `url:` to the CFR section or FDA database record. Verified regulation numbers, classes and product codes are in `docs/regulatory.md`. Do not guess a product code or a regulation number from memory. Look it up:
-  - CFR text: `https://www.law.cornell.edu/cfr/text/21/872.NNNN` (eCFR itself blocks automated fetches)
+- **Regulatory text is quoted from the regulation.** Cite a 21 CFR section as `CFR:872.NNNN`; its quotes are machine-checked against the eCFR text (`src/dentamech/refsources.py`). Cite an FDA database record as `url:`; those quotes are still checked by people, until linkml/linkml-reference-validator#179. Verified regulation numbers, classes and product codes are in `docs/regulatory.md`. Do not guess a product code or a regulation number from memory. Look it up:
+  - CFR text: `just fetch-reference CFR:872.NNNN`, then read `references_cache/CFR_872.NNNN.md`
   - Product codes: `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN`
 - **Device type vs product.** Classification of the material as a device type goes in `regulatory_status`. A specific brand's 510(k) goes in `products[].submissions`.
 - `just seed` stubs each OHD material term that has no record. `/curate <file_stem>` runs the `curate-record` skill end to end.

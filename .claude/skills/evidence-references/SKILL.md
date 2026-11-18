@@ -13,6 +13,11 @@ Every evidence item is checked by `linkml-reference-validator`. It fetches
 the cited source, caches it under `references_cache/`, and requires the
 snippet to appear in it verbatim.
 
+Regulation text is cited as `CFR:872.NNNN` and checked the same way, against
+the section as eCFR serves it (`src/dentamech/refsources.py`). The validator
+skips `url:`, `ISO` and `FDA_PRODUCT_CODE`, so quotes from FDA database pages
+and standards are still checked by people.
+
 ## Writing an item
 
 1. Find a primary source that states the claim. Prefer the paper that

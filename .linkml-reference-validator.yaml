@@ -25,11 +25,13 @@ validation:
   literal_bracket_patterns:
     - "^[A-Z]{2,}$"
     - "%"
-  # Regulatory and standards pages block automated fetches, so a url: quote is
-  # checked by people, not here. See docs/regulatory.md.
+  # CFR: is checked: src/dentamech/refsources.py fetches the section from the
+  # eCFR renderer API. Other regulatory and standards pages are still checked
+  # by people, not here: url: (FDA databases among them, pending
+  # linkml/linkml-reference-validator#179), ISO and FDA_PRODUCT_CODE.
+  # See docs/regulatory.md.
   skip_prefixes:
     - url
     - URL
     - ISO
-    - CFR
     - FDA_PRODUCT_CODE
