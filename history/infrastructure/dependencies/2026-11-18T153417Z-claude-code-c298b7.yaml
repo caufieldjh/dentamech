@@ -20,7 +20,7 @@ events:
     pytz, ratelimit, regex, jsonlines, appdirs and greenlet. oaklib 0.7.5 no longer depends on eutils,
     the only reason for the setuptools<82 cap, so the cap is removed; the remaining pkg_resources imports
     in the environment are guarded fallbacks. linkml-reference-validator was already locked at 0.8.0,
-    the latest on PyPI; its floor in pyproject.toml is raised from >=0.3.0 to >=0.8.0. just qc passed
+    the latest on PyPI; its floor in pyproject.toml is raised from >=0.3.0 to >=0.8.0. The oaklib floor is raised from >=0.7.3 to >=0.7.5, so no resolve outside the lock can pair an eutils-bearing oaklib with setuptools 82 or later (review of PR #47). just qc passed
     9 of 9 gates before and after; runoak search against sqlite:obo:ohd still returns OHD terms. GitHub
     Actions versions not changed: the workflows come from the mechmaker template. just qc-full (network)
     not run.'
