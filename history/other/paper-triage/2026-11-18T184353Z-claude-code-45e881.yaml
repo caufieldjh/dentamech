@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-18T184353Z-claude-code-45e881
+  timestamp: '2026-11-18T18:43:53Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: AUDIT
+  outcome: no_change
+  summary: Triaged five Journal of Dentistry 2026 papers held locally; none gave evidence a record could use, 
+    and two are deferred for missing OHD terms
+  details: 'Read five papers supplied as zip archives in local_full_text/ (only each archive''s .md and .ris were
+    extracted, into the scratchpad). 106629: a 24-month split-mouth trial of diode-laser dentin pretreatment under
+    composite restorations in cervical lesions; the composite and adhesive are constant across arms, the only plain-composite
+    figure is a 9-restoration control arm with esthetic-driven failures, and the paper calls Filtek Z250 nano-hybrid,
+    a class not confirmed from the manufacturer, so it was rejected. 106633: an in vitro and animal study of an
+    experimental chlorhexidine-loaded bioactive glass, POSS-modified composite; read in full and deferred, since
+    OHD has no term for an antibacterial or bioactive resin-based composite (the children of OHD:0000036 are by
+    filler size and handling), to raise with OHD curators. 106635: heat-polymerized and 3D-printed denture base
+    resins; deferred, as OHD has no denture base term. 106631 (AI implant-space detection on CBCT) and 106637 (single-
+    versus multiple-visit root canal pain) name no restoration material; rejected. No records changed.'
