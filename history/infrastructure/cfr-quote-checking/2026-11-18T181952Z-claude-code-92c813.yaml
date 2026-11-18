@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: cfr-quote-checking
+  path: src/dentamech/refsources.py
+session:
+  id: 2026-11-18T181952Z-claude-code-92c813
+  timestamp: '2026-11-18T18:19:52Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/36
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/49
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Addressed review of PR #49: CFR fetches are pinned to an eCFR issue date, recorded in the
+    cache, with a refresh procedure'
+  details: 'The CFR source now asks eCFR''s versioner titles API for title 21''s latest issue date, fetches
+    the section as of that date instead of ''current'', and records the date as source_revision in the
+    cache entry. Without a date the fetch fails, so the cached copy is served rather than undated text.
+    Re-fetched the 12 cached sections through just fetch-reference (one retried after a network failure);
+    all record issue 2026-11-12 and their text is unchanged. docs/regulatory.md says how to refresh a
+    section when FDA amends it. Tests cover the date lookup, the dated URL, and the no-date path. The
+    reviewer''s other note, on wording in the generated curation_history events, needs no change: those
+    came from a one-off script, not repository code, and the reviewer asked that the entries stay.'
