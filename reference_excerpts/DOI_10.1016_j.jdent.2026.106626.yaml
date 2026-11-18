@@ -68,3 +68,21 @@ excerpts:
     source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
     validator_version: 0.8.0
     verified_at: '2026-11-18'
+- text: Short-term clinical evidence (6-24 months) demonstrated encouraging performance for inlays, onlays, overlays, crowns, and veneers, but remains insufficient to support conclusions about true long-term behavior.
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: The mechanical disadvantage of printed materials was frequently attributed, within the included reviews, to formulation-related constraints inherent to vat-photopolymerization systems, including reduced filler fraction, higher organic matrix content, and the layer-by-layer polymerization process
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
+- text: photopolymerization-based systems such as stereolithography (SLA), digital light processing (DLP), and liquid-crystal display (LCD) have become predominant for polymer applications, enabling the fabrication of provisional and definitive restorations
+  verification:
+    method: local_full_text
+    source_sha256: 80340a08eaf9d69a255f35910c6106f8f3d28a9f9e33e9a76e89288b826daa84
+    validator_version: 0.8.0
+    verified_at: '2026-11-18'
