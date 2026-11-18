@@ -162,10 +162,9 @@ Fill sections in this order: `composition`, `setting_mechanisms`,
 seeded `id`, `record_term`, `category` and `parents`.
 
 **Verify regulatory facts (required for FDA records).** The research report's
-regulatory section is a lead, not a source. The eCFR site blocks automated
-fetches, so use these:
+regulatory section is a lead, not a source. Use these:
 
-- Regulation text: `https://www.law.cornell.edu/cfr/text/21/872.NNNN`. Quote paragraph (a) into `identification`, and read paragraph (b) for class, special controls and 510(k) exemption.
+- Regulation text: `just fetch-reference CFR:872.NNNN`, then read `references_cache/CFR_872.NNNN.md`. Cite it as `CFR:872.NNNN`; its quotes are machine-checked. Quote paragraph (a) into `identification`, and read paragraph (b) for class, special controls and 510(k) exemption.
 - Product codes: `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.NNNN`.
 - 510(k) records: `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=Kxxxxxx`.
 
@@ -187,7 +186,7 @@ regulatory_status:
     use_context: DIRECT_RESTORATION
   source_url: https://www.ecfr.gov/current/title-21/section-872.3690
   evidence:
-  - reference: url:https://www.law.cornell.edu/cfr/text/21/872.3690
+  - reference: CFR:872.3690
     reference_title: 21 CFR 872.3690 Tooth shade resin material
     supports: SUPPORT
     evidence_source: REGULATORY_DOCUMENT

@@ -40,7 +40,7 @@ reason. Fixes belong to `curate-record`, in a separate step, when asked.
    - `approved_uses` restate what the identification paragraph permits and nothing more.
    - `status` fits the pathway: `EXEMPT` with a 510(k) exemption, `CLEARED` with a 510(k).
 
-   Check against `https://www.law.cornell.edu/cfr/text/21/872.NNNN`, the FDA search in `curate-record`, and `docs/regulatory.md`. These `url:` quotes are not machine-checked, so this check is the only one they get. A wrong regulatory fact is an `error`.
+   Check against the cached section (`references_cache/CFR_872.NNNN.md`), the FDA search in `curate-record`, and `docs/regulatory.md`. Quotes cited as `CFR:` are machine-checked, but whether they support the claim is not. Quotes from FDA database pages are cited as `url:` and are not machine-checked, so this check is the only one they get. A wrong regulatory fact is an `error`.
 9. **Science.** Do composition, properties and uses match the literature for this material at this level of the OHD tree? Do values carry units and a method?
 10. **Paper log.** Every paper the record newly cites should have a row in
     `curation/paper_log.tsv` (`just paper-log-coverage --base origin/main kb/materials/<stem>.yaml`
