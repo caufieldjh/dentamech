@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: resin_based_composite
+  path: kb/materials/resin_based_composite.yaml
+session:
+  id: 2026-11-18T185901Z-claude-code-8048f7
+  timestamp: '2026-11-18T18:59:01Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/50
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - composition
+  summary: Bound the Bis-GMA component to CHEBI:34580
+  details: The composition entry for Bis-GMA was left unbound with a note that ChEBI had no exact term.
+    A ChEBI search found CHEBI:34580, labelled 'Bisphenol A glycidylmethacrylate'; term-info and term-ancestors
+    confirmed it as a molecular entity. Bound it with ChEBI's label, kept the friendlier name in preferred_term,
+    and removed the wrong note. Found while reading DOI:10.1016/j.jdent.2026.106633, which names Bis-GMA
+    in its matrix but is not cited.
