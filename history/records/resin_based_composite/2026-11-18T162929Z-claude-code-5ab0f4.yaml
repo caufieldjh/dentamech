@@ -1,0 +1,34 @@
+history_version: 1
+target:
+  kind: record
+  slug: resin_based_composite
+  path: kb/materials/resin_based_composite.yaml
+session:
+  id: 2026-11-18T162929Z-claude-code-5ab0f4
+  timestamp: '2026-11-18T16:29:29Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/48
+events:
+- type: EDIT
+  outcome: needs_followup
+  sections:
+  - clinical_uses
+  - properties
+  - clinical_performance
+  - discussions
+  summary: 'Addressed review of PR #48: quoted or cut unquoted 3D-printing detail, dropped a misleading
+    follow_up_years, logged the notes line, opened a CURATION_TODO for an OHD term'
+  details: 'Review on PR #48 raised two warnings and two notes. (1) Unquoted detail: quoted three more
+    passages from DOI:10.1016/j.jdent.2026.106626 (printing technologies SLA, DLP, LCD; indirect restorations
+    with clinical evidence, crowns among them; vat-photopolymerization as the cause of the strength gap),
+    signed them, and cut provisional crowns and fixed dental prostheses, which the paper names only in
+    its inclusion criteria. (2) Removed follow_up_years: 2 from the 6 to 24 month success range. (3) Added
+    the missing curation_history event for the notes line. (4) Scope: added an OPEN CURATION_TODO discussion
+    proposing an OHD term for 3D-printed resin-based composite. The reviewer''s other option, folding
+    the nine entries into fewer, is left for a human to choose; no request has been filed with OHD.'
