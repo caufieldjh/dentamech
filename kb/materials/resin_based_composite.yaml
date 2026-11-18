@@ -19,7 +19,9 @@ composition:
     role: MATRIX
     chemical:
       preferred_term: bisphenol A glycidyl methacrylate (Bis-GMA)
-      description: A dimethacrylate monomer; CHEBI has no exact term, so the chemical is left unbound.
+      term:
+        id: CHEBI:34580
+        label: Bisphenol A glycidylmethacrylate
     description: Archetypal base monomer of the polymer matrix.
     evidence:
       - reference: CFR:872.3690
@@ -473,4 +475,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Cited 2 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.'
+  - timestamp: '2026-11-18T18:57:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Bound the Bis-GMA component to CHEBI:34580 (Bisphenol A glycidylmethacrylate); the earlier note that ChEBI had no exact term was wrong.'
 updated_date: '2026-11-18'
