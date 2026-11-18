@@ -11,9 +11,6 @@ session:
     name: claude-code
     model: claude-opus-5-5
     agent_tool: claude-code
-links:
-  issues:
-  - https://github.com/caufieldjh/dentamech/issues/50
 events:
 - type: EDIT
   outcome: changed
