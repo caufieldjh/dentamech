@@ -81,7 +81,7 @@ clinical_uses:
         id: OHD:0000096
         label: resin inlay restoration procedure
   - name: 3D-printed provisional and selected indirect restorations
-    description: Resin-based composites printed by photopolymerization (SLA, DLP, LCD) are used for provisional restorations and for selected indirect restorations such as inlays, onlays, overlays, crowns and veneers. Inferior mechanical and optical stability relative to CAD/CAM-milled materials limits them for long-term definitive restorations.
+    description: Resin-based composites printed by photopolymerization (SLA, DLP, LCD) are used for provisional restorations and for selected indirect restorations such as inlays, onlays, overlays, crowns and veneers. Their long-term durability remains uncertain, and CAD/CAM-milled materials offer better mechanical and optical stability, so evidence does not yet support them for long-term definitive restorations.
     use_context: INDIRECT_RESTORATION
     anatomical_site:
       preferred_term: tooth
@@ -91,8 +91,6 @@ clinical_uses:
     indications:
       - Provisional restorations
       - Selected indirect restorations (inlays, onlays, overlays, crowns, veneers)
-    contraindications:
-      - Long-term definitive restorations, for which evidence of durability is lacking
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106626
         reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
@@ -456,4 +454,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Reworded the explanation on the clinical_uses[2] quote naming SLA, DLP and LCD: it is cited for the technologies, not as support for long-term definitive use.'
+  - timestamp: '2026-11-18T16:37:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Removed the contraindication on long-term definitive restorations from clinical_uses[2]; the review calls durability uncertain, not contraindicated, so the limit is now stated in the description.'
 updated_date: '2026-11-18'
