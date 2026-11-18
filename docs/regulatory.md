@@ -76,6 +76,14 @@ section from eCFR's renderer API, the validator flattens it to text, and the cac
 <heading>`, which is what `reference_title` should say. eCFR's XML API is not used, because the
 validator does not flatten XML (linkml/linkml-reference-validator#179).
 
+Each fetch reads title 21 as of its latest issue date, from eCFR's titles API, and the cache entry
+records that date as `source_revision`. Checks read the committed cache, so a quote stays checked
+against the issue it was taken from. When FDA amends a section, refresh it on purpose: delete
+`references_cache/CFR_872.NNNN.md`, run `just fetch-reference CFR:872.NNNN`, then
+`just validate-references` on every record citing the section, and fix any quote the new text no
+longer contains. If the titles API cannot be reached, the fetch fails rather than reading undated
+text.
+
 Quotes from the FDA databases below are cited as `url:` and are still checked by people: the
 validator skips `url:`, and openFDA cannot yet be configured to expose more than one field per
 record (also #179).
