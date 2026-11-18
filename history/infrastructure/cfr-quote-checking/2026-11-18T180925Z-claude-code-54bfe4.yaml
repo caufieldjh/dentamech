@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: cfr-quote-checking
+  path: src/dentamech/refsources.py
+session:
+  id: 2026-11-18T180925Z-claude-code-54bfe4
+  timestamp: '2026-11-18T18:09:25Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/36
+events:
+- type: EDIT
+  outcome: changed
+  summary: '21 CFR quotes are machine-checked: cited as CFR:872.NNNN and fetched from the eCFR renderer
+    API (issue #36)'
+  details: 'Tested five routes with linkml-reference-validator 0.8.0. eCFR versioner XML through url:
+    is cached unflattened, so a quote across an italic tag fails; the eCFR renderer API (HTML) passes;
+    Cornell passes; openFDA as a JSON API source can expose one field only; accessdata HTML passes. Opened
+    linkml/linkml-reference-validator#179 for XML flattening, several fields per JSON source, and a URL-template
+    source for HTML. Added src/dentamech/refsources.py: a CFR source that fetches the section from the
+    eCFR renderer API and titles it ''21 CFR <section> <heading>'', registered through python -m dentamech.lrv
+    (all justfile validator calls) and in evidence.py (add-evidence). CFR left skip_prefixes. Migrated
+    46 quotes in 12 records from url:law.cornell.edu to CFR:872.NNNN and four source_url fields to eCFR;
+    all 46 pass verbatim and their titles match. Cached 12 sections. Updated CLAUDE.md, docs/CURATION.md,
+    docs/regulatory.md and the curate-record, evidence-references and review-record skills. FDA database
+    url: quotes stay skipped by the maintainer''s decision until #179.'
