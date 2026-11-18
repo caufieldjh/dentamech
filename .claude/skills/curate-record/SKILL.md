@@ -28,9 +28,14 @@ The id is the OHD CURIE when a term exists. Look it up;
 never guess it:
 
 ```bash
-just search-term sqlite:obo:ohd "<name>"
-just term-info sqlite:obo:ohd <CURIE>
+just search-term OHD "l~<part of the name>"
+just term-info OHD <CURIE>
 ```
+
+OHD's adapter matches whole labels only, so a plain search for a word
+that is only part of a label (`"composite"`) finds nothing and still
+exits 0. The `l~` prefix makes it a partial match. Search with `l~` before
+concluding that no term exists.
 
 A record keyed by a term names it again in `record_term`, with the
 ontology's label. `new-record` writes it from `--term-label`, and

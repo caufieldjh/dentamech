@@ -80,6 +80,36 @@ clinical_uses:
       term:
         id: OHD:0000096
         label: resin inlay restoration procedure
+  - name: 3D-printed provisional and selected indirect restorations
+    description: Resin-based composites printed by photopolymerization (SLA, DLP, LCD) are used for provisional restorations and for selected indirect restorations such as inlays, onlays, overlays, crowns and veneers. Their long-term durability remains uncertain, and CAD/CAM-milled materials offer better mechanical and optical stability, so evidence does not yet support them for long-term definitive restorations.
+    use_context: INDIRECT_RESTORATION
+    anatomical_site:
+      preferred_term: tooth
+      term:
+        id: UBERON:0001091
+        label: calcareous tooth
+    indications:
+      - Provisional restorations
+      - Selected indirect restorations (inlays, onlays, overlays, crowns, veneers)
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 3D-printed resins are viable options for provisional and selected indirect restorations, showing acceptable short-term performance. However, their long-term durability remains uncertain, and CAD/CAM-milled materials continue to offer superior mechanical and optical stability.
+        explanation: The review's conclusion on indications and the long-term limit.
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: photopolymerization-based systems such as stereolithography (SLA), digital light processing (DLP), and liquid-crystal display (LCD) have become predominant for polymer applications, enabling the fabrication of provisional and definitive restorations
+        explanation: Cited for the printing technologies it names. It says printing can make definitive restorations, not that their long-term use is supported; the review's conclusion, quoted above, says that durability remains uncertain.
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Short-term clinical evidence (6-24 months) demonstrated encouraging performance for inlays, onlays, overlays, crowns, and veneers, but remains insufficient to support conclusions about true long-term behavior.
+        explanation: Lists the indirect restorations with clinical evidence, crowns among them.
 properties:
   - name: Polymerization shrinkage and shrinkage stress
     property_type: POLYMERIZATION_SHRINKAGE
@@ -91,6 +121,86 @@ properties:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: The more recent research and development efforts have addressed the issue of polymerization shrinkage and its accompanying stress, which may have a deleterious effect on the composite/tooth interfacial bond.
         explanation: Names shrinkage stress as the issue and its consequence at the bond.
+  - name: Flexural strength and elastic modulus of 3D-printed composites
+    property_type: FLEXURAL_STRENGTH
+    value: lower than CAD/CAM-milled materials
+    conditions: 3D-printed (vat photopolymerization) resin-based composites compared with CAD/CAM-milled materials, across systematic reviews
+    description: Attributed to lower filler content, a larger organic matrix fraction and a lower initial degree of conversion in printed composites.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Across reviews, 3D-printed resins generally exhibited lower flexural strength, elastic modulus, fatigue resistance, and color stability, as well as higher sorption/solubility, than milled CAD/CAM materials.
+        explanation: Pooled direction of the comparison with milled materials.
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: mechanical differences were often attributed to the lower filler content, higher organic matrix proportion, and reduced initial degree of conversion typically observed in printed composites
+        explanation: The reviews' explanation for the strength gap.
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The mechanical disadvantage of printed materials was frequently attributed, within the included reviews, to formulation-related constraints inherent to vat-photopolymerization systems, including reduced filler fraction, higher organic matrix content, and the layer-by-layer polymerization process
+        explanation: Ties the strength gap to vat-photopolymerization.
+  - name: Anisotropy with build orientation, 3D-printed composites
+    property_type: FLEXURAL_STRENGTH
+    value: reduced when loaded perpendicular to the build layers
+    conditions: 3D-printed resin-based composites; effect of load direction relative to the printed layers
+    description: The source reports reduced strength and fatigue resistance without naming the strength test; FLEXURAL_STRENGTH is the nearest property type, not the measure reported.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'Intrinsic anisotropy remained an ubiquitous finding: load application perpendicular to the build layers markedly reduced strength and fatigue resistance'
+        explanation: Strength depends on load direction relative to the printed layers.
+  - name: Water sorption and solubility of 3D-printed composites
+    property_type: WATER_SORPTION
+    value: higher than CAD/CAM-milled materials, often two to three times
+    conditions: 3D-printed resin-based composites compared with CAD/CAM-milled materials
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Reviews assessing sorption and solubility consistently report higher values for 3D-printed resins compared with CAD/CAM materials, often two to three times greater
+        explanation: Gives the size of the sorption and solubility difference.
+  - name: Color stability of 3D-printed composites
+    property_type: COLOR_STABILITY
+    value: lower than CAD/CAM-milled materials
+    conditions: 3D-printed resin-based composites compared with CAD/CAM-milled materials, after aging or exposure to staining solutions
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: there is clear agreement that CAD/ CAM materials demonstrate superior color stability, lower water sorption, and better preservation of translucency and gloss over time
+        explanation: Milled materials keep color better than printed ones.
+  - name: Effect of post-curing on 3D-printed composites
+    property_type: DEGREE_OF_CONVERSION
+    conditions: 3D-printed resin-based composites; post-curing time and irradiance
+    description: Longer post-curing and higher irradiance raise degree of conversion and surface hardness; inadequate post-curing lowers strength and raises monomer leaching.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Inadequate post-curing is associated with lower flexural strength, hardness, and elastic modulus, as well as increased cytotoxicity due to monomer leaching, whereas extended curing time and higher irradiance improve degree of conversion and surface hardness
+        explanation: Post-curing drives conversion, hardness and monomer leaching.
+  - name: Dimensional accuracy and marginal fit of 3D-printed restorations
+    property_type: OTHER
+    value: typically within clinically acceptable limits
+    conditions: 3D-printed restorations; depends on washing, curing protocol and printing orientation
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Dimensional accuracy and marginal/internal fit were typically within clinically acceptable limits but showed strong dependence on washing procedures, curing protocols, and printing orientation.
+        explanation: Fit is acceptable but sensitive to post-processing and orientation.
 clinical_performance:
   - name: Main reasons for failure, posterior restorations
     measure_type: COMPLICATION_RATE
@@ -118,6 +228,35 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: increased risk of secondary caries (RR 2.14, 95% CI 1.67 to 2.74, P value < 0.001 (low-quality evidence)) but no evidence of an increased risk of restoration fracture (RR 0.87, 95% CI 0.46 to 1.64, P value = 0.66 (moderate-quality evidence))
         explanation: Cochrane estimates for secondary caries and fracture versus amalgam.
+  - name: Short-term success of 3D-printed indirect restorations
+    measure_type: SUCCESS_RATE
+    value: 87% to 100%
+    population: Clinical studies of 3D-printed inlays, onlays, overlays, laminate veneers and occlusal restorations with 6 to 24 months of follow-up, from two systematic reviews
+    description: Too few and too short studies, with no randomized trials, to judge long-term survival.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Two reviews identified clinical studies with follow-up periods ranging from 6 to 24 months, reporting success rates between 87% and 100% for 3D-printed inlays, onlays, overlays, laminate veneers, and occlusal restorations
+        explanation: Range of short-term success rates across the clinical studies.
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: the absence of randomized clinical trials, the small number of available studies, and the heterogeneity of materials and protocols preclude robust conclusions regarding the long-term performance of definitive 3D-printed restorations
+        explanation: Why the success rates do not establish long-term survival.
+  - name: Failure modes of 3D-printed indirect restorations
+    measure_type: COMPLICATION_RATE
+    value: fracture, occlusal wear, marginal discrepancy and color change
+    population: Clinical studies of 3D-printed indirect restorations with 6 to 24 months of follow-up
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106626
+        reference_title: How durable are 3D-printed dental resin-based composites? An umbrella review
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Documented failures were primarily related to material fractures, excessive occlusal wear, marginal discrepancies, and perceptible color changes.
+        explanation: The failure modes reported.
 adverse_effects:
   - name: Secondary caries at the margin
     effect_category: SECONDARY_CARIES
@@ -172,6 +311,25 @@ standards:
   - identifier: ISO 4049:2019
     title: Dentistry - Polymer-based restorative materials
     organization: ISO
+discussions:
+  - discussion_id: ohd-term-3d-printed-resin-based-composite
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: OHD has no term for 3D-printed (additively manufactured) resin-based composite. Propose one to OHD, under resin-based composite dental restoration material (OHD:0000036).
+    attaches_to:
+      - clinical_uses#3D-printed provisional and selected indirect restorations
+      - properties#Flexural strength and elastic modulus of 3D-printed composites
+      - properties#Anisotropy with build orientation, 3D-printed composites
+      - properties#Water sorption and solubility of 3D-printed composites
+      - properties#Color stability of 3D-printed composites
+      - properties#Effect of post-curing on 3D-printed composites
+      - properties#Dimensional accuracy and marginal fit of 3D-printed restorations
+      - clinical_performance#Short-term success of 3D-printed indirect restorations
+      - clinical_performance#Failure modes of 3D-printed indirect restorations
+    rationale: docs/DOMAIN.md asks that a class be reported at the level of its term, naming subtypes without describing them in full. These nine entries describe a subtype in detail on the parent record. With a term, they move to a record of their own; without one, they may be folded into fewer entries here.
+    posed_by: claude-code
+    posed_date: '2026-11-18'
+notes: OHD has no term for 3D-printed (additively manufactured) resin-based composite, so the 3D-printed entries in clinical_uses, properties and clinical_performance sit on this broader record; each names 3D printing in its name and conditions or population.
 parents:
   - OHD:0000000
 creation_date: '2026-09-04'
@@ -183,4 +341,130 @@ curation_history:
     model: claude-opus-5-5
     action: CREATE
     description: Converted from dentamech at cddf481, entry Resin-based_Composite.
-updated_date: '2026-11-07'
+  - timestamp: '2026-11-18T15:55:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_uses[2].
+  - timestamp: '2026-11-18T15:55:30+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[1].
+  - timestamp: '2026-11-18T15:55:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[1].
+  - timestamp: '2026-11-18T15:55:39+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[2].
+  - timestamp: '2026-11-18T15:55:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[3].
+  - timestamp: '2026-11-18T15:55:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[4].
+  - timestamp: '2026-11-18T15:55:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[5].
+  - timestamp: '2026-11-18T15:55:54+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[6].
+  - timestamp: '2026-11-18T15:55:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_performance[2].
+  - timestamp: '2026-11-18T15:55:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_performance[2].
+  - timestamp: '2026-11-18T15:55:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_performance[3].
+  - timestamp: '2026-11-18T16:26:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_uses[2].
+  - timestamp: '2026-11-18T16:27:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to clinical_uses[2].
+  - timestamp: '2026-11-18T16:27:05+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106626 to properties[1].
+  - timestamp: '2026-11-18T16:27:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Cut unquoted detail from clinical_uses[2], dropping provisional crowns and fixed dental prostheses, which no quote states as a use, and named crowns among the indirect restorations as the abstract does.
+  - timestamp: '2026-11-18T16:28:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Removed follow_up_years from clinical_performance[2]; the success range spans 6 to 24 months of follow-up, which population states, and a single value read as a 2-year rate.'
+  - timestamp: '2026-11-18T16:28:27+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Records the notes line added earlier in this pull request without its own event; it says OHD has no 3D-printed composite term, so the 3D-printed entries sit on this record.'
+  - timestamp: '2026-11-18T16:28:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Added a CURATION_TODO discussion proposing an OHD term for 3D-printed resin-based composite, attached to the nine 3D-printed entries.'
+  - timestamp: '2026-11-18T16:36:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Reworded the explanation on the clinical_uses[2] quote naming SLA, DLP and LCD: it is cited for the technologies, not as support for long-term definitive use.'
+  - timestamp: '2026-11-18T16:37:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Removed the contraindication on long-term definitive restorations from clinical_uses[2]; the review calls durability uncertain, not contraindicated, so the limit is now stated in the description.'
+  - timestamp: '2026-11-18T16:37:26+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Added a description to properties[2] saying the source does not name the strength test, so FLEXURAL_STRENGTH is the nearest type.'
+updated_date: '2026-11-18'

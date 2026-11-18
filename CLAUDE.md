@@ -39,7 +39,7 @@ just add-evidence FILE --at PLACE --ref REF --snippet "..."   # checked evidence
 just convert scripts/convert_X.py --limit 5   # convert an existing knowledge base (dry-run unless --apply)
 just fetch-reference PMID:NNN   # fetch and cache a source; read it before quoting it
 just fill-titles [FILE...]      # fill missing reference_title from the cache (dry-run unless --apply)
-just search-term PREFIX "text"  # search an ontology through its configured adapter, e.g. GO
+just search-term PREFIX "text"  # search an ontology through its configured adapter; "l~text" for a partial label match
 just term-ancestors CURIE       # where a term sits; use when an enum root rejects it
 just term-parents CURIE         # direct is-a parents
 just check-identity [FILE...]   # record ids follow the identity enum's rule (network, in qc-full)

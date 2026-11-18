@@ -29,8 +29,12 @@ description: >-
    just search-term <PREFIX> "<text>"
    ```
 
-   Over a local file (`simpleobo:`, `pronto:`) search matches whole labels
-   only. Put `l~` in front for a partial match: `just search-term <PREFIX> "l~<part of a label>"`.
+   Over a prebuilt SQLite (`sqlite:obo:`, which OHD uses) or a local file
+   (`simpleobo:`, `pronto:`), search matches whole labels only: a word
+   that is only part of a label finds nothing, and the recipe still exits 0.
+   Put `l~` in front for a partial match:
+   `just search-term <PREFIX> "l~<part of a label>"`. An empty result
+   without `l~` is not evidence that no term exists.
 
 3. Inspect each candidate before choosing. Definition, then ancestors:
 

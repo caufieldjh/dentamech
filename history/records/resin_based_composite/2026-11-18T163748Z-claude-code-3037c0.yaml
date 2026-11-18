@@ -1,0 +1,30 @@
+history_version: 1
+target:
+  kind: record
+  slug: resin_based_composite
+  path: kb/materials/resin_based_composite.yaml
+session:
+  id: 2026-11-18T163748Z-claude-code-3037c0
+  timestamp: '2026-11-18T16:37:48Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/48
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - clinical_uses
+  - properties
+  summary: 'Addressed the second review of PR #48: three wording notes on the 3D-printed entries'
+  details: '(1) The quote naming SLA, DLP and LCD now explains it is cited for the technologies, not as
+    support for long-term definitive use. (2) Removed the contraindication on long-term definitive restorations;
+    the review calls durability uncertain, so the limit is stated in the description. (3) The anisotropy
+    entry now says the source names no strength test and FLEXURAL_STRENGTH is the nearest type. No quotes
+    changed. The scope warning is left as is: the maintainer accepts the nine 3D-printed entries on the
+    parent record for now, pending a discussion of OHD''s scope with its curators, and the CURATION_TODO
+    stays open.'
