@@ -8,19 +8,28 @@ session:
   timestamp: '2026-11-18T15:34:17Z'
   actors:
   - type: ai_agent
-    name: caufieldjh
+    name: claude-code
     model: claude-opus-5-5
     agent_tool: claude-code
+  - type: human
+    name: caufieldjh
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/47
 events:
 - type: EDIT
   outcome: changed
-  summary: Upgrade every locked Python dependency; drop the setuptools<82 cap; require linkml-reference-validator>=0.8.0
+  summary: Upgrade every locked Python dependency; drop the setuptools<82 cap; raise the oaklib floor
+    to >=0.7.5
   details: 'uv lock --upgrade moved 30 packages (oaklib 0.7.4->0.7.5, kgcl-schema 0.7.0->0.8.0, typer
     0.28.0->0.29.2, ruff 0.17.4->0.17.5, setuptools 81.0.0->84.2.1, among others) and removed eutils,
     pytz, ratelimit, regex, jsonlines, appdirs and greenlet. oaklib 0.7.5 no longer depends on eutils,
     the only reason for the setuptools<82 cap, so the cap is removed; the remaining pkg_resources imports
-    in the environment are guarded fallbacks. linkml-reference-validator was already locked at 0.8.0,
-    the latest on PyPI; its floor in pyproject.toml is raised from >=0.3.0 to >=0.8.0. The oaklib floor is raised from >=0.7.3 to >=0.7.5, so no resolve outside the lock can pair an eutils-bearing oaklib with setuptools 82 or later (review of PR #47). just qc passed
-    9 of 9 gates before and after; runoak search against sqlite:obo:ohd still returns OHD terms. GitHub
-    Actions versions not changed: the workflows come from the mechmaker template. just qc-full (network)
-    not run.'
+    in the environment are guarded fallbacks. The oaklib floor is raised from >=0.7.3 to >=0.7.5, so
+    no resolve outside the lock can pair an eutils-bearing oaklib with setuptools 82 or later (review
+    of PR #47). linkml-reference-validator stays at 0.8.0, the latest on PyPI; its >=0.8.0 floor was
+    already on main from PR #46 and is unchanged here. just qc passed 9 of 9 gates before and after;
+    just qc-full passed 12 of 12 (57 records; 294 snippets checked, 82 skipped, 0 issues; ontology
+    terms and record identity clean) with oaklib 0.7.5 and kgcl-schema 0.8.0, and left the caches unchanged;
+    runoak search against sqlite:obo:ohd still returns OHD terms. GitHub Actions versions not changed:
+    the workflows come from the mechmaker template.'
