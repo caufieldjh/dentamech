@@ -312,6 +312,24 @@ standards:
   - identifier: ISO 4049:2019
     title: Dentistry - Polymer-based restorative materials
     organization: ISO
+discussions:
+  - discussion_id: ohd-term-3d-printed-resin-based-composite
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: OHD has no term for 3D-printed (additively manufactured) resin-based composite. Propose one to OHD, under resin-based composite dental restoration material (OHD:0000036).
+    attaches_to:
+      - clinical_uses#3D-printed provisional and selected indirect restorations
+      - properties#Flexural strength and elastic modulus of 3D-printed composites
+      - properties#Anisotropy with build orientation, 3D-printed composites
+      - properties#Water sorption and solubility of 3D-printed composites
+      - properties#Color stability of 3D-printed composites
+      - properties#Effect of post-curing on 3D-printed composites
+      - properties#Dimensional accuracy and marginal fit of 3D-printed restorations
+      - clinical_performance#Short-term success of 3D-printed indirect restorations
+      - clinical_performance#Failure modes of 3D-printed indirect restorations
+    rationale: docs/DOMAIN.md asks that a class be reported at the level of its term, naming subtypes without describing them in full. These nine entries describe a subtype in detail on the parent record. With a term, they move to a record of their own; without one, they may be folded into fewer entries here.
+    posed_by: claude-code
+    posed_date: '2026-11-18'
 notes: OHD has no term for 3D-printed (additively manufactured) resin-based composite, so the 3D-printed entries in clinical_uses, properties and clinical_performance sit on this broader record; each names 3D printing in its name and conditions or population.
 parents:
   - OHD:0000000
@@ -426,4 +444,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Records the notes line added earlier in this pull request without its own event; it says OHD has no 3D-printed composite term, so the 3D-printed entries sit on this record.'
+  - timestamp: '2026-11-18T16:28:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Added a CURATION_TODO discussion proposing an OHD term for 3D-printed resin-based composite, attached to the nine 3D-printed entries.'
 updated_date: '2026-11-18'
