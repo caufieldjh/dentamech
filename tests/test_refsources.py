@@ -18,16 +18,32 @@ SECTION_TEXT = """Editorial Note on Part 872
 """
 
 
+TITLES = {"titles": [{"number": 20, "latest_issue_date": "2026-01-01"},
+                      {"number": 21, "latest_issue_date": "2026-11-12"}]}
+
+
 def test_section_url():
-    assert refsources.section_url("872.3275") == (
-        "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=872&section=872.3275"
+    assert refsources.section_url("872.3275", "2026-11-12") == (
+        "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-11-12/title-21?part=872&section=872.3275"
     )
 
 
 @pytest.mark.parametrize("bad", ["872", "21 CFR 872.3275", "872.3275(a)", ""])
 def test_section_url_refuses_anything_but_a_section(bad):
     with pytest.raises(ValueError):
-        refsources.section_url(bad)
+        refsources.section_url(bad, "2026-11-12")
+
+
+@pytest.mark.parametrize("bad", ["current", "2026-11", ""])
+def test_section_url_refuses_anything_but_an_issue_date(bad):
+    with pytest.raises(ValueError):
+        refsources.section_url("872.3275", bad)
+
+
+def test_latest_issue_date_is_title_21s():
+    assert refsources.latest_issue_date(TITLES) == "2026-11-12"
+    assert refsources.latest_issue_date({"titles": [{"number": 21, "latest_issue_date": "soon"}]}) is None
+    assert refsources.latest_issue_date(None) is None
 
 
 def test_section_title_takes_the_cited_sections_heading():
@@ -35,8 +51,9 @@ def test_section_title_takes_the_cited_sections_heading():
     assert refsources.section_title(SECTION_TEXT, "872.3690") is None
 
 
-def test_fetch_rewrites_id_title_and_source(monkeypatch):
+def test_fetch_rewrites_id_title_source_and_revision(monkeypatch):
     seen = {}
+    monkeypatch.setattr(refsources, "get_json", lambda url, label: TITLES)
 
     def fake_fetch(self, identifier, config):
         seen["url"] = identifier
@@ -46,14 +63,27 @@ def test_fetch_rewrites_id_title_and_source(monkeypatch):
 
     monkeypatch.setattr(URLSource, "fetch", fake_fetch)
     content = refsources.CFRSource().fetch("872.3275", ReferenceValidationConfig())
-    assert seen["url"] == refsources.section_url("872.3275")
+    assert seen["url"] == refsources.section_url("872.3275", "2026-11-12")
     assert content.reference_id == "CFR:872.3275"
     assert content.title == "21 CFR 872.3275 Dental cement"
     assert content.source_url == seen["url"]
+    assert content.source_revision == "2026-11-12"
 
 
 def test_fetch_failure_is_none(monkeypatch):
+    monkeypatch.setattr(refsources, "get_json", lambda url, label: TITLES)
     monkeypatch.setattr(URLSource, "fetch", lambda self, identifier, config: None)
+    assert refsources.CFRSource().fetch("872.3275", ReferenceValidationConfig()) is None
+
+
+def test_no_issue_date_fetches_nothing(monkeypatch):
+    """Without an issue date the fetch fails, so the cached copy is served instead of undated text."""
+    monkeypatch.setattr(refsources, "get_json", lambda url, label: None)
+
+    def must_not_fetch(self, identifier, config):
+        raise AssertionError("fetched without an issue date")
+
+    monkeypatch.setattr(URLSource, "fetch", must_not_fetch)
     assert refsources.CFRSource().fetch("872.3275", ReferenceValidationConfig()) is None
 
 
