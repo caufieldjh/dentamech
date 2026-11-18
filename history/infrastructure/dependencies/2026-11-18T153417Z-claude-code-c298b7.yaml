@@ -1,0 +1,26 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: dependencies
+  path: uv.lock
+session:
+  id: 2026-11-18T153417Z-claude-code-c298b7
+  timestamp: '2026-11-18T15:34:17Z'
+  actors:
+  - type: ai_agent
+    name: caufieldjh
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Upgrade every locked Python dependency; drop the setuptools<82 cap; require linkml-reference-validator>=0.8.0
+  details: 'uv lock --upgrade moved 30 packages (oaklib 0.7.4->0.7.5, kgcl-schema 0.7.0->0.8.0, typer
+    0.28.0->0.29.2, ruff 0.17.4->0.17.5, setuptools 81.0.0->84.2.1, among others) and removed eutils,
+    pytz, ratelimit, regex, jsonlines, appdirs and greenlet. oaklib 0.7.5 no longer depends on eutils,
+    the only reason for the setuptools<82 cap, so the cap is removed; the remaining pkg_resources imports
+    in the environment are guarded fallbacks. linkml-reference-validator was already locked at 0.8.0,
+    the latest on PyPI; its floor in pyproject.toml is raised from >=0.3.0 to >=0.8.0. just qc passed
+    9 of 9 gates before and after; runoak search against sqlite:obo:ohd still returns OHD terms. GitHub
+    Actions versions not changed: the workflows come from the mechmaker template. just qc-full (network)
+    not run.'

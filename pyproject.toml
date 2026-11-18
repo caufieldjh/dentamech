@@ -18,8 +18,6 @@ dependencies = [
     # Checks that every snippet appears verbatim in its cited source.
     "linkml-reference-validator>=0.8.0",
     "oaklib>=0.7.3",
-    # oaklib imports eutils, which still imports pkg_resources.
-    "setuptools<82",
     "pyyaml>=6.0",
     # Edits records in place with their layout kept (just add-evidence).
     "ruamel.yaml>=0.18",
