@@ -210,11 +210,15 @@ def test_fair_use_caps_are_set():
                          ids=lambda p: p.stem)
 def test_every_signed_bundle_is_within_the_caps(bundle):
     caps = _caps()
-    count = SupportingTextValidator(caps).count_quoted_characters
+    validator = SupportingTextValidator(caps)
     data = yaml.safe_load(bundle.read_text())
-    lengths = [count(item["text"]) for item in data.get("excerpts") or []]
-    assert lengths, f"{bundle.name} holds no excerpts"
+    texts = [item["text"] for item in data.get("excerpts") or []]
+    assert texts, f"{bundle.name} holds no excerpts"
+    lengths = [validator.count_quoted_characters(text) for text in texts]
     assert max(lengths) <= caps.max_excerpt_length
+    # Parts as the validator splits and counts them (supporting_text_validator.py).
+    parts = [len(re.sub(r"\s", "", part)) for text in texts for part in validator._split_query(text)]
+    assert max(parts) <= caps.max_excerpt_part_length
     assert sum(lengths) <= caps.max_total_chars_per_reference
     source = data.get("source_char_count")
     assert isinstance(source, int) and source > 0, "a bundle must record its source's length"
@@ -255,7 +259,14 @@ def _snippets(node):
 
 
 def test_no_source_is_quoted_past_the_total_cap():
-    """The corpus-wide total, offline: a pull request's reference check sees only its changed records."""
+    """The corpus-wide total, offline: a pull request's reference check sees only its changed records.
+
+    An early warning, not the final word; `just validate-references-all` is. Like the validator,
+    this counts each distinct quote once per source, after collapsing whitespace. Unlike it, this
+    does not normalize reference ids, so a source cited under two spellings (``doi:`` and ``DOI:``)
+    is summed apart here and together there. It also counts quotes the validator skips or fails,
+    which only makes it stricter.
+    """
     caps = _caps()
     count = SupportingTextValidator(caps).count_quoted_characters
     quoted: dict[str, dict[str, int]] = {}

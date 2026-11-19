@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: fair-use-caps
+  path: tests/test_refsources.py
+session:
+  id: 2026-11-19T183601Z-claude-code-3a5e73
+  timestamp: '2026-11-19T18:36:01Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/55
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/57
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Address review of #57: test the part cap, state what the corpus-total test misses'
+  details: The bundle test now checks max_excerpt_part_length, splitting and counting parts as the validator
+    does (_split_query, non-whitespace length); it passes at 600 and failed at 100. The reviewer suggested
+    the validator might count a quote repeated across records more than once; read in supporting_text_validator.py
+    (_check_and_record_reference_budget), it keys quotes by collapsed whitespace and counts each once,
+    as the offline test does. The real difference is reference id normalization, which the validator does
+    and the test does not; the docstring now says so, and that validate-references-all is the final word.
