@@ -11,7 +11,10 @@ Where DentaMech adapts mechmaker's
 One record is one dental material.
 
 A dental material is one class of restoration material as OHD defines it, under
-`OHD:0000000` *dental restoration material*. A record says what the material is
+`OHD:0000000` *dental restoration material*, or a dental material OHD does not
+yet have: a recognized class with a defining standard or literature of its own
+(denture base resins, specified by ISO 20795-1), or an experimental formulation
+reported in research. A record says what the material is
 made of, how it sets, what it is used for, how it performs, what can go wrong,
 and how regulators classify it.
 
@@ -32,17 +35,47 @@ An id never changes when a record is renamed, and no two records share one.
 The filename stem is derived from `name`: lowercase, runs of non-alphanumerics
 become one underscore.
 
-One OHD term is one record, so OHD's granularity is this Mech's. A subtype gets
-its own record exactly when OHD gives it a term, and `parents` mirrors OHD's
-`is_a` links as record ids. `just seed` writes a stub for each term. A material
-with no OHD term is not given a record: propose the term to OHD first. Report a
-class at the level of its term, naming subtypes without describing them in full.
+One OHD term is one record, so OHD's granularity is this Mech's where OHD has
+the material. A subtype gets its own record exactly when OHD gives it a term, and
+`parents` mirrors OHD's `is_a` links as record ids. `just seed` writes a stub for
+each term. Report a class at the level of its term, naming subtypes without
+describing them in full.
+
+A material with no OHD term can still have a record, under a minted id. Search
+OHD first (`just search-term OHD "l~..."`); if a term fits, bind it instead. A
+minted record leaves `record_term` unset, names its closest OHD-keyed record in
+`parents` where one fits (an experimental composite under resin-based composite,
+`OHD:0000036`), and carries a `CURATION_TODO` discussion proposing the term to
+OHD. When OHD adds the term, the record is re-grounded to it.
+
+## Classification by purpose
+
+Alongside `category`, a record can carry the two-level classification proposed
+by the project's dental materials expert (issue #50):
+
+1. `purpose`: `PREVENTIVE`, `AUXILIARY` or `RESTORATIVE`.
+2. `restorative_class`, for a `RESTORATIVE` material only: `CERAMIC`,
+   `COMPOSITE`, `POLYMER` or `METAL`.
+
+`experimental: true` marks a formulation made in a laboratory and reported in
+research, with no commercial product behind it. Set it only when the source
+describes the material that way. An experimental record must give `purpose`,
+and `restorative_class` too when it is restorative; `just validate` enforces
+both, and refuses `restorative_class` under any other purpose. For other
+records the classification is optional, and existing records were not
+reclassified.
+
+This classification is separate from `category` on purpose. `category` says what
+a material is made of and has places for cements, adhesives and hybrids;
+`purpose` says what it is for. Whether the classification should cover every
+record is an open question (`docs/explanation/design-decisions.md`, section 10).
 
 ## Sections
 
 | Section | Ontology | Purpose |
 |---|---|---|
 | `category` | none | Broad material class, set without needing an ontology. Example: `METAL` |
+| `experimental`, `purpose`, `restorative_class` | none | Experimental marker and the two-level classification by purpose. Example: `RESTORATIVE`, `COMPOSITE` |
 | `parents` | OHD | Parent records, mirroring `is_a`. Example: `OHD:0000048` |
 | `setting_mechanisms` | none | How it hardens or is formed. Example: `AMALGAMATION` |
 | `composition` | CHEBI under `CHEBI:24431`, checked with `ols:chebi` | Components, roles and proportions. Example: mercury, `LIQUID` |

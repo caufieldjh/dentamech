@@ -6,7 +6,7 @@ Operational guidance for Claude Code and other agents in this repository.
 ## What this is
 
 DentaMech (Dental Materials Knowledge Base) is a Mech: an AI agent-curated,
-ontology-grounded, evidence-backed knowledge base. DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source.
+ontology-grounded, evidence-backed knowledge base. DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per material, grounded to OHD where it has a term, with every claim quoted from its source.
 
 One record is one dental material. One record is one YAML file under
 `kb/materials/`, validated against the `DentalMaterial` class in
@@ -165,7 +165,9 @@ so two sessions never share one set of files.
 
 ## Dental rules
 
-- **One OHD term per record.** `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
+- **One OHD term per record, where OHD has the material.** `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
+- **No OHD term is not a dead end.** A material OHD lacks (e.g. denture base resin) or an experimental formulation gets a minted id (`just new-record` without `--id`), no `record_term`, and a `CURATION_TODO` discussion proposing the term. See `docs/DOMAIN.md`, Identity.
+- **Experimental materials are classified.** `experimental: true` needs `purpose` (`PREVENTIVE`, `AUXILIARY`, `RESTORATIVE`), and a restorative one needs `restorative_class` (`CERAMIC`, `COMPOSITE`, `POLYMER`, `METAL`). This is separate from `category`.
 - **`parents` are record ids.** They mirror OHD's `is_a` links. Tests fail on a dangling parent.
 - **Snippets are verbatim quotes.** Never paraphrase. Literature snippets are checked against PubMed abstracts, or, for a closed paper held locally, against the local copy and then committed as a signed excerpt in `reference_excerpts/` (`just sign-excerpts`). Local copies live in gitignored `local_full_text/` and are never committed.
 - **Regulatory text is quoted from the regulation.** Cite a 21 CFR section as `CFR:872.NNNN`; its quotes are machine-checked against the eCFR text (`src/dentamech/refsources.py`). Cite an FDA database record as `url:`; those quotes are still checked by people, until linkml/linkml-reference-validator#179. Verified regulation numbers, classes and product codes are in `docs/regulatory.md`. Do not guess a product code or a regulation number from memory. Look it up:

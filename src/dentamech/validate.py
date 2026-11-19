@@ -86,6 +86,7 @@ def rule_errors(data: dict, path: Path | None = None) -> list[str]:
             if target not in known:
                 errors.append(f"edge {node.get('name')!r} -> {target!r}: no node has that name")
 
+    errors.extend(classification_errors(data))
     errors.extend(box_errors(data))
 
     if data.get("status") == "REVIEWED":
@@ -93,6 +94,24 @@ def rule_errors(data: dict, path: Path | None = None) -> list[str]:
         if not any(isinstance(e, dict) and e.get("action") == "REVIEW" and not e.get("llm_assisted")
                    for e in events):
             errors.append("status is REVIEWED but no human REVIEW event is in curation_history")
+    return errors
+
+
+def classification_errors(data: dict) -> list[str]:
+    """The two-level classification (purpose, then restorative_class) holds together.
+
+    restorative_class is allowed only under purpose RESTORATIVE. An experimental
+    record gives purpose, and restorative_class too when it is RESTORATIVE.
+    """
+    errors = []
+    purpose = data.get("purpose")
+    if data.get("restorative_class") is not None and purpose != "RESTORATIVE":
+        errors.append(f"restorative_class is set but purpose is {purpose}, not RESTORATIVE")
+    if data.get("experimental") is True:
+        if purpose is None:
+            errors.append("an experimental record must give purpose")
+        elif purpose == "RESTORATIVE" and data.get("restorative_class") is None:
+            errors.append("an experimental RESTORATIVE record must give restorative_class")
     return errors
 
 

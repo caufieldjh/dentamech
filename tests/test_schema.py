@@ -157,3 +157,23 @@ def test_history_schema_loads():
 def test_bounding_boxes_are_checked_wherever_they_are(box, ok):
     errors = rule_errors({"name": "X", "places": [{"name": "p", "bounding_box": box}]})
     assert (not any("bounding box" in e or "must lie" in e for e in errors)) == ok, errors
+
+
+@pytest.mark.parametrize("fields, problem", [
+    ({"purpose": "PREVENTIVE", "restorative_class": "METAL"}, "not RESTORATIVE"),
+    ({"restorative_class": "CERAMIC"}, "not RESTORATIVE"),
+    ({"experimental": True}, "must give purpose"),
+    ({"experimental": True, "purpose": "RESTORATIVE"}, "must give restorative_class"),
+    ({"experimental": True, "purpose": "AUXILIARY"}, None),
+    ({"experimental": True, "purpose": "RESTORATIVE", "restorative_class": "COMPOSITE"}, None),
+    ({"purpose": "RESTORATIVE"}, None),  # a commercial material may stop at the first level
+])
+def test_the_classification_holds_together(example, fields, problem):
+    record = {k: v for k, v in example.items()
+              if k not in ("experimental", "purpose", "restorative_class")} | fields
+    assert schema_errors(record) == []
+    errors = rule_errors(record)
+    if problem is None:
+        assert errors == []
+    else:
+        assert any(problem in e for e in errors), errors

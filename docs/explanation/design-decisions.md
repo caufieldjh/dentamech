@@ -4,17 +4,19 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 
 ## 1. Scope
 
-**Decision.** One entry per dental restoration material as OHD defines it. The knowledge base covers composition, setting, clinical use, performance, safety, regulatory status, standards, and commercial products.
+**Decision.** One entry per dental restoration material as OHD defines it, plus dental materials OHD does not yet have. The knowledge base covers composition, setting, clinical use, performance, safety, regulatory status, standards, and commercial products.
 
-**In scope.** Any material under `OHD:0000000`. Product-level records are in scope when they carry a regulatory decision worth recording.
+**In scope.** Any material under `OHD:0000000`. A material class with no OHD term but with a defining standard or a literature of its own, such as denture base materials (ISO 20795-1; issue #51). An experimental formulation reported in research, marked `experimental` (issue #50). Product-level records are in scope when they carry a regulatory decision worth recording.
+
+**Rationale for the widening.** The project's dental materials expert answered issues #50 and #51: denture base materials are a class of materials specified by their own ISO standard, and experimental materials should be recorded, labelled as experimental and placed in a classification by purpose (section 11). Deferring every paper about a material OHD lacks left real literature unusable.
 
 **Out of scope.** Equipment (curing lights, handpieces), procedures as such, and clinical guidance. The knowledge base describes materials; it does not tell anyone what to put in a tooth.
 
 ## 2. Anchor ontology
 
-**Decision.** OHD is the anchor. Every entry binds exactly one OHD term, and the parent links mirror OHD's subclass hierarchy.
+**Decision.** OHD is the anchor. Every entry whose material OHD has binds exactly one OHD term, and the parent links mirror OHD's subclass hierarchy. An entry whose material OHD lacks gets a minted `dentamech:<uuid>` id, leaves `record_term` unset, and is re-grounded when OHD adds the term.
 
-**Rationale.** OHD is the OBO Foundry ontology for oral health, its materials branch already has definitions for the classes clinicians recognize, and it is small enough to validate locally. Where OHD lacks a material, the right move is to request the term upstream, not to mint one here.
+**Rationale.** OHD is the OBO Foundry ontology for oral health, its materials branch already has definitions for the classes clinicians recognize, and it is small enough to validate locally. Where OHD lacks a material, request the term upstream, and meanwhile record the material under a minted id rather than leave its literature unused. A minted id is a placeholder for a term, never a term: nothing outside this knowledge base should treat it as an ontology class.
 
 **Consequence.** The seeder derives the whole tree from OHD, and a new OHD release can add entries without touching curated files.
 
@@ -78,6 +80,18 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 
 ## 10. Open questions
 
+- Whether the classification by purpose (section 11) should be set on every record, and how it relates to `category` once it is.
+- What evidence an experimental record needs: whether one in vitro or animal study is enough, or whether there is a minimum. Until this is settled, an experimental record cites at least one primary study and says in `notes` how far the evidence goes.
+- Whether an experimental formulation gets a record of its own or is described under the record of the class it belongs to.
+
 - Whether product records should live in their own files once there are many.
 - Whether to model *material systems* (a bonding agent plus its composite) as a separate class.
 - How to represent regional restrictions such as amalgam phase-down commitments under the Minamata Convention. For now they go in `restrictions` and `notes`.
+
+## 11. Classification by purpose, beside category
+
+**Decision.** Three optional slots: `experimental` (boolean), `purpose` (`PREVENTIVE`, `AUXILIARY`, `RESTORATIVE`) and `restorative_class` (`CERAMIC`, `COMPOSITE`, `POLYMER`, `METAL`, for a restorative material only). An experimental record must give `purpose`, and `restorative_class` when it is restorative. `just validate` enforces this.
+
+**Rationale.** This is the hierarchy the project's dental materials expert proposed for experimental materials (issue #50): first what the material is for, then, for a restorative material, what class of material it is. It is kept separate from `category` (section 7) because the two answer different questions, and because `category` has places for cements, adhesives and hybrids that the restorative classes do not. Folding one into the other would have meant re-sorting every record on a scheme proposed for experimental materials.
+
+**Consequence.** No existing record changed. A record outside the experimental set may carry the classification; none is required to.

@@ -146,9 +146,17 @@ just new-history --kind record --slug <stem> --event EDIT --outcome changed \
 
 ## Dental rules
 
-Materials are seeded from OHD, so the record almost always exists. If it doesn't,
-the material isn't in OHD's `dental restoration material` branch. Don't invent a
-term. Open an issue proposing the OHD term and stop.
+Materials are seeded from OHD, so the record usually exists. If it doesn't,
+search OHD (`just search-term OHD "l~..."`) before deciding OHD lacks it. Don't
+invent a term. A material OHD lacks is still in scope when it is a recognized
+class with a defining standard or literature of its own (denture base resins),
+or an experimental formulation reported in research: scaffold it with a minted
+id (`just new-record --name "..."`, no `--id`), leave `record_term` unset, put
+its closest OHD-keyed record in `parents` where one fits, and add a
+`CURATION_TODO` discussion proposing the OHD term. An experimental record sets
+`experimental: true`, `purpose`, and `restorative_class` when it is
+restorative; see `docs/DOMAIN.md`, Classification by purpose. Set
+`experimental` only when the source describes the material that way.
 
 Check that nobody else is on it, and continue on an open PR that covers it:
 

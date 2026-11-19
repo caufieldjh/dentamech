@@ -10,7 +10,7 @@ name: DentaMech
 synonyms:
   - Dental Materials Knowledge Base
 description: >-
-  DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source.
+  DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per material, grounded to OHD where it has a term, with every claim quoted from its source.
 activity_status: active
 maturity: seeded
 homepage_url: https://caufieldjh.github.io/dentamech/
