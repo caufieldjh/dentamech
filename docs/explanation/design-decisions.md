@@ -4,17 +4,17 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 
 ## 1. Scope
 
-**Decision.** One entry per dental restoration material as OHD defines it, plus dental materials OHD does not yet have. The knowledge base covers composition, setting, clinical use, performance, safety, regulatory status, standards, and commercial products.
+**Decision.** One entry per dental material, whatever its purpose (restorative, preventive or auxiliary), keyed by its OHD term where OHD has one and by a minted id where it does not. The knowledge base covers composition, setting, clinical use, performance, safety, regulatory status, standards, and commercial products.
 
-**In scope.** Any material under `OHD:0000000`. A material class with no OHD term but with a defining standard or a literature of its own, such as denture base materials (ISO 20795-1; issue #51). An experimental formulation reported in research, marked `experimental` (issue #50). Product-level records are in scope when they carry a regulatory decision worth recording.
+**In scope.** Any material under `OHD:0000000`. Any other dental material, restorative or not, commercial or experimental, with or without an OHD term: denture base materials (ISO 20795-1; issue #51), impression materials, sealants, an experimental formulation reported in research, marked `experimental` (issue #50). Product-level records are in scope when they carry a regulatory decision worth recording.
 
-**Rationale for the widening.** The project's dental materials expert answered issues #50 and #51: denture base materials are a class of materials specified by their own ISO standard, and experimental materials should be recorded, labelled as experimental and placed in a classification by purpose (section 11). Deferring every paper about a material OHD lacks left real literature unusable.
+**Rationale for the widening.** The project's dental materials expert answered issues #50 and #51: denture base materials are a class of materials specified by their own ISO standard, and experimental materials should be recorded, labelled as experimental and placed in a classification by purpose (section 11). Deferring every paper about a material OHD lacks left real literature unusable. The maintainer then widened the scope deliberately, in review of #53: the project is still in development, OHD is not comprehensive, and curating materials OHD lacks is how DentaMech will find the terms to request from OHD or elsewhere. The scope is broad on purpose; narrowing it later is a decision to record here.
 
-**Out of scope.** Equipment (curing lights, handpieces), procedures as such, and clinical guidance. The knowledge base describes materials; it does not tell anyone what to put in a tooth.
+**Out of scope.** Equipment, instruments and devices that are not materials (curing lights, handpieces), procedures as such, and clinical guidance. Purpose is not a boundary. The knowledge base describes materials; it does not tell anyone what to put in a tooth.
 
 ## 2. Anchor ontology
 
-**Decision.** OHD is the anchor. Every entry whose material OHD has binds exactly one OHD term, and the parent links mirror OHD's subclass hierarchy. An entry whose material OHD lacks gets a minted `dentamech:<uuid>` id, leaves `record_term` unset, and is re-grounded when OHD adds the term.
+**Decision.** OHD is the anchor. Every entry whose material OHD has binds exactly one OHD term, and the parent links mirror OHD's subclass hierarchy. An entry whose material OHD lacks gets a minted `dentamech:<uuid>` id, leaves `record_term` unset, and is re-grounded when OHD adds the term. Its parent links are the curator's choice of the closest record, not OHD links. The seeder and the identity root (`OHD:0000000`) still cover the restoration branch only; an OHD term for a non-restorative material elsewhere in OHD needs the identity root widened first.
 
 **Rationale.** OHD is the OBO Foundry ontology for oral health, its materials branch already has definitions for the classes clinicians recognize, and it is small enough to validate locally. Where OHD lacks a material, request the term upstream, and meanwhile record the material under a minted id rather than leave its literature unused. A minted id is a placeholder for a term, never a term: nothing outside this knowledge base should treat it as an ontology class.
 

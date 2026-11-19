@@ -3,8 +3,10 @@ name: dentamech
 title: Dental Materials Knowledge Base Schema
 description: >-
   Schema for the Dental Materials Knowledge Base (dentamech). One YAML file
-  per material, anchored to the Oral Health and Disease Ontology (OHD) branch
-  under OHD:0000000 "dental restoration material". Each entry records what
+  per dental material, restorative or not, anchored to the Oral Health and
+  Disease Ontology (OHD) branch under OHD:0000000 "dental restoration
+  material" where OHD has the material, and under a minted id where it does
+  not. Each entry records what
   the material is made of, how it sets, what it is used for clinically, how
   it performs, what can go wrong, and how regulators (FDA first) classify it
   and what they permit it to be used for. Every claim can carry literature or
@@ -755,7 +757,9 @@ slots:
       True when the material is an experimental formulation: made in a
       laboratory and reported in research, with no commercial product behind
       it. Set it only from the source's own description of the material
-      (e.g. "experimental", "novel", "was formulated"). An experimental record
+      (e.g. "an experimental composite", "was formulated in the laboratory").
+      "Novel" alone is not enough: papers call commercial products novel too.
+      An experimental record
       must also give `purpose`.
     range: boolean
   purpose:

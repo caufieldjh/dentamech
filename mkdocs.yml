@@ -6,7 +6,7 @@
 # LinkML's gen-doc on every build; do not edit them. Edit the other pages in
 # docs/ directly.
 site_name: "DentaMech"
-site_description: "DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per material, grounded to OHD where it has a term, with every claim quoted from its source."
+site_description: "DentaMech records dental materials, restorative and otherwise: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per material, grounded to OHD where it has a term, with every claim quoted from its source."
 site_url: https://caufieldjh.github.io/dentamech/
 repo_url: https://github.com/caufieldjh/dentamech
 edit_uri: edit/main/docs/
