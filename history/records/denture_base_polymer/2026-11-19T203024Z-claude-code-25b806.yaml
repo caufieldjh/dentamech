@@ -1,0 +1,38 @@
+history_version: 1
+target:
+  kind: record
+  slug: denture_base_polymer
+  path: kb/materials/denture_base_polymer.yaml
+session:
+  id: 2026-11-19T203024Z-claude-code-25b806
+  timestamp: '2026-11-19T20:30:24Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/51
+events:
+- type: CREATE
+  outcome: changed
+  summary: Create the denture base polymer record under a minted id (#51)
+  details: 'OHD has no denture base material term (l~denture base, searched again 2026-11-19), so the
+    record has a minted id, record_term unset, and a CURATION_TODO proposing the term. Scope is per #53.
+    Category POLYMER; purpose and restorative_class left unset, as that question is open with the project''s
+    dental materials expert; parents left unset, since the placement is what OHD is asked. setting_mechanisms
+    left unset: SettingMechanismEnum has no value for heat or microwave polymerization or thermoplastic
+    moulding, and a partial list would misdescribe the class (a CURATION_TODO says so). Evidence: 12 quotes
+    from ISO 20795-1:2013 second edition (definitions, classification, requirements 5.2.8 to 5.2.15) signed
+    from a local copy whose per-page licence stamps were stripped first; 21 CFR 872.3760 (class II, intended
+    to form a new denture base) and FDA''s product classification database (EBI, 510(k)); quotes signed
+    from DOI:10.1016/j.jdent.2026.106635, an in vitro study of gastric acid and cleaning on heat-polymerized
+    and 3D-printed denture base resins. Methyl methacrylate is its own component, bound to CHEBI:34840
+    (search-term and term-info), and the liquid is left unbound, since FDA names it only as an example.
+    5 quotes signed from the paper, after review added the roughness, hydrophilicity and Candida findings.
+    Not done: the ISO catalogue link the expert gave (91143) is not the copy held (62277), so the edition
+    it names is unconfirmed and standards[].url is unset; FDA''s denture base resin performance criteria
+    guidance was not reachable and is a lead; DOI:10.1016/j.jdent.2026.106622 stays deferred: its findings
+    are on an experimental nanozeolite-filled resin, and an experimental record needs purpose, which is
+    the open question.'

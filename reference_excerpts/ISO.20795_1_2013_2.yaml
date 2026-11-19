@@ -1,0 +1,70 @@
+reference_id: ISO.20795:1_2013_2
+title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+source_char_count: 65982
+excerpts:
+- text: The upper limit (maximum) for residual methyl methacrylate is 2,2 % mass fraction for denture base polymers of Type 1, Type 3, Type 4, and Type 5. ... The upper limit (maximum) for residual methyl methacrylate is 4,5 % mass fraction for denture base polymers of Type 2.
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: This part of ISO 20795 classifies denture base polymers and copolymers and specifies their requirements.
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: monomeric liquid to be mixed with polymeric particles to form a mouldable dough or fluid resin mixture used for forming denture bases
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: polymeric particles to be mixed with monomeric liquid to form a mouldable dough or fluid resin mixture used for forming denture bases
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: that part of a denture which rests on soft tissue foundations and to which artificial teeth are added
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: the flexural modulus of the processed polymer shall be at least 2 000 MPa for Type 1, Type 3, Type 4, and Type 5 polymers and at least 1 500 MPa for Type 2 polymers
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: the increase in mass per volume (water sorption) shall not exceed 32 µg/mm3
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: the loss in mass (soluble matter) per volume shall not exceed 1,6 µg/mm3 for Type 1, Type 3, Type 4, and Type 5 polymers and shall not exceed 8,0 µg/mm3 for Type 2 polymers
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: the ultimate flexural strength shall be not less than 65 MPa for Type 1, Type 3, Type 4, and Type 5 polymers and not less than 60 MPa for Type 2 polymers
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: 'Type 1: Heat-polymerizable materials — Class 1: Powder and liquid — Class 2: Plastic cake — Type 2: Autopolymerizable materials — Class 1: Powder and liquid — Class 2: Powder and liquid for pour-type resins — Type 3: Thermoplastic blank or powder — Type 4: Light-activated materials — Type 5: Microwave cured materials'
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
