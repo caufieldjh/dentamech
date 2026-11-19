@@ -14,12 +14,6 @@ excerpts:
     source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
     validator_version: 0.8.0
     verified_at: '2026-11-19'
-- text: 'Type 1: Heat-polymerizable materials ... Type 2: Autopolymerizable materials ... Type 3: Thermoplastic blank or powder ... Type 4: Light-activated materials ... Type 5: Microwave cured materials'
-  verification:
-    method: local_full_text
-    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
-    validator_version: 0.8.0
-    verified_at: '2026-11-19'
 - text: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
   verification:
     method: local_full_text
@@ -69,6 +63,12 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-19'
 - text: the ultimate flexural strength shall be not less than 65 MPa for Type 1, Type 3, Type 4, and Type 5 polymers and not less than 60 MPa for Type 2 polymers
+  verification:
+    method: local_full_text
+    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
+    validator_version: 0.8.0
+    verified_at: '2026-11-19'
+- text: 'Type 1: Heat-polymerizable materials — Class 1: Powder and liquid — Class 2: Plastic cake — Type 2: Autopolymerizable materials — Class 1: Powder and liquid — Class 2: Powder and liquid for pour-type resins — Type 3: Thermoplastic blank or powder — Type 4: Light-activated materials — Type 5: Microwave cured materials'
   verification:
     method: local_full_text
     source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94

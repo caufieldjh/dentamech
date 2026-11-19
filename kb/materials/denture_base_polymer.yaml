@@ -32,7 +32,7 @@ composition:
         explanation: Definition 3.8, powder.
   - name: Liquid
     role: LIQUID
-    description: Monomeric liquid, mixed with the powder. A Type 3 thermoplastic is supplied as a blank or powder with no liquid.
+    description: Monomeric liquid, mixed with the powder, for materials supplied as powder and liquid.
     evidence:
       - reference: ISO.20795:1_2013_2
         reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
@@ -147,17 +147,64 @@ properties:
         evidence_source: STANDARD
         snippet: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
         explanation: Requirement 5.2.11, quoted with 5.2.10; J/m2 is J/m² flattened by text extraction.
-  - name: Surface and colour after gastric acid and cleaning
-    property_type: COLOR_STABILITY
+  - name: Surface roughness and wettability after gastric acid and cleaning
+    property_type: OTHER
     conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
-    description: Roughness and hydrophilicity rose in all three resins, colour changed perceptibly and Candida albicans colonization increased, while water sorption, solubility and chemical structure did not change.
+    description: 'Roughness and hydrophilicity rose in every resin tested. OTHER: the enum has no type for roughness or wettability.'
     evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Erosive cycling followed by cleaning increased surface roughness ... and hydrophilicity ... in all resins.
+        explanation: Abstract, results; the p-values are omitted.
       - reference: DOI:10.1016/j.jdent.2026.106635
         reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: Despite stable chemical structure and bulk properties, gastric acid exposure combined with routine cleaning impaired surface integrity, color stability, and resistance to microbial colonization of denture base resins.
         explanation: Abstract, conclusions.
+      - &id001
+        reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: fabricated from one heat-polymerized resin (HT) and two 3D-printed resins
+        explanation: 'Abstract, methods: the materials the finding covers.'
+  - name: Colour stability after gastric acid and cleaning
+    property_type: COLOR_STABILITY
+    conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
+    description: Colour changed perceptibly in every resin tested.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: all resins exhibited clinically perceptible color changes ... and increased Candida albicans colonization
+        explanation: Abstract, results; the p-values are omitted.
+      - *id001
+  - name: Candida albicans colonization after gastric acid and cleaning
+    property_type: OTHER
+    conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
+    description: 'Colonization by Candida albicans increased in every resin tested. OTHER: the enum has no type for microbial colonization; ANTIBACTERIAL_ACTIVITY is a material''s own effect on bacteria.'
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: all resins exhibited clinically perceptible color changes ... and increased Candida albicans colonization
+        explanation: Abstract, results; the p-values are omitted.
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: fabricated from one heat-polymerized resin (HT) and two 3D-printed resins
+        explanation: 'Abstract, methods: the materials the finding covers.'
+  - name: Water sorption, solubility and chemical structure after gastric acid and cleaning
+    property_type: WATER_SORPTION
+    conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
+    description: Water sorption and solubility stayed low and unchanged, and infrared spectroscopy showed no chemical degradation. Typed WATER_SORPTION; solubility and structure are part of the same finding.
+    evidence:
       - reference: DOI:10.1016/j.jdent.2026.106635
         reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
         supports: SUPPORT
@@ -170,18 +217,6 @@ properties:
         evidence_source: IN_VITRO
         snippet: fabricated from one heat-polymerized resin (HT) and two 3D-printed resins
         explanation: 'Abstract, methods: the materials the finding covers.'
-      - reference: DOI:10.1016/j.jdent.2026.106635
-        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
-        supports: SUPPORT
-        evidence_source: IN_VITRO
-        snippet: Erosive cycling followed by cleaning increased surface roughness ... and hydrophilicity ... in all resins.
-        explanation: Abstract, results; the p-values are omitted.
-      - reference: DOI:10.1016/j.jdent.2026.106635
-        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
-        supports: SUPPORT
-        evidence_source: IN_VITRO
-        snippet: all resins exhibited clinically perceptible color changes ... and increased Candida albicans colonization
-        explanation: Abstract, results; the p-values are omitted.
 clinical_uses:
   - name: Denture base
     use_context: PROSTHODONTIC
@@ -240,8 +275,8 @@ discussions:
   - discussion_id: setting-mechanisms-denture-base-polymer
     kind: CURATION_TODO
     status: OPEN
-    prompt: setting_mechanisms is unset. ISO 20795-1 types are heat-polymerizable, autopolymerizable, thermoplastic, light-activated and microwave cured, and SettingMechanismEnum has values for only some of these (SELF_CURED, LIGHT_CURED; ADDITIVE_MANUFACTURING for printed resins). Listing only those would misdescribe the class; the enum needs values for heat and microwave polymerization and thermoplastic moulding first.
-notes: Every requirement here is from ISO 20795-1:2013, the second edition (FDA recognition 4-232). The ISO catalogue link the project's expert gave (iso.org/standard/91143) is a different catalogue entry from the copy curated here (62277); which edition it names has not been checked. ISO 20795-1:2013 sorts denture base polymers into Type 1 heat-polymerizable (Class 1 powder and liquid, Class 2 plastic cake), Type 2 autopolymerizable (Class 1 powder and liquid, Class 2 powder and liquid for pour-type resins), Type 3 thermoplastic blank or powder, Type 4 light-activated and Type 5 microwave cured. 3D-printed denture base resins fall in none of these, so the 2013 limits are not applied to them here. FDA's guidance Denture Base Resins - Performance Criteria for Safety and Performance Based Pathway is a lead not yet read.
+    prompt: 'setting_mechanisms is unset. ISO 20795-1 types are heat-polymerizable, autopolymerizable, thermoplastic, light-activated and microwave cured, and SettingMechanismEnum has values for only some of these (SELF_CURED, LIGHT_CURED; ADDITIVE_MANUFACTURING for printed resins). Listing only those would misdescribe the class; the enum needs values for heat and microwave polymerization and thermoplastic moulding first. Tracked in #59.'
+notes: Every requirement here is from ISO 20795-1:2013, the second edition, which FDA recognizes as consensus standard 4-232. The ISO catalogue link the project's expert gave (iso.org/standard/91143) is a different catalogue entry from the copy curated here (62277); which edition it names has not been checked. ISO 20795-1:2013 sorts denture base polymers into Type 1 heat-polymerizable (Class 1 powder and liquid, Class 2 plastic cake), Type 2 autopolymerizable (Class 1 powder and liquid, Class 2 powder and liquid for pour-type resins), Type 3 thermoplastic blank or powder, Type 4 light-activated and Type 5 microwave cured. 3D-printed denture base resins fall in none of these, so the 2013 limits are not applied to them here. FDA's guidance Denture Base Resins - Performance Criteria for Safety and Performance Based Pathway is a lead not yet read.
 creation_date: '2026-11-19'
 curation_history:
   - timestamp: '2026-11-19T20:28:12+00:00'
@@ -382,11 +417,35 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[7].
+  - timestamp: '2026-11-19T20:44:49+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #58: split the gastric acid finding into four properties by type; quoted the classes under ISO Types 1 and 2 and FDA''s recognition of the 2013 edition, which notes state; dropped an inferred clause from the liquid; linked the setting mechanism TODO to #59.'
+  - timestamp: '2026-11-19T20:44:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to record.
+  - timestamp: '2026-11-19T20:45:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3760 to record.
 updated_date: '2026-11-19'
 evidence:
   - reference: ISO.20795:1_2013_2
     reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
     supports: SUPPORT
     evidence_source: STANDARD
-    snippet: 'Type 1: Heat-polymerizable materials ... Type 2: Autopolymerizable materials ... Type 3: Thermoplastic blank or powder ... Type 4: Light-activated materials ... Type 5: Microwave cured materials'
-    explanation: 'Clause 4, Classification: the five types named in notes. The classes under Types 1 and 2 are omitted here.'
+    snippet: 'Type 1: Heat-polymerizable materials — Class 1: Powder and liquid — Class 2: Plastic cake — Type 2: Autopolymerizable materials — Class 1: Powder and liquid — Class 2: Powder and liquid for pour-type resins — Type 3: Thermoplastic blank or powder — Type 4: Light-activated materials — Type 5: Microwave cured materials'
+    explanation: 'Clause 4, Classification, complete: the types and classes named in notes.'
+  - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3760
+    reference_title: FDA Product Classification Database, regulation 872.3760
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: '4-232 ISO 20795-1 Second edition 2013-03-01 Dentistry - Base polymers - Part 1: Denture base polymers'
+    explanation: 'FDA Product Classification Database, regulation 872.3760, Recognized Consensus Standards: the edition curated here and its recognition number. Read 2026-11-19.'

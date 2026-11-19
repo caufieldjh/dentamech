@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: record
+  slug: denture_base_polymer
+  path: kb/materials/denture_base_polymer.yaml
+session:
+  id: 2026-11-19T204529Z-claude-code-2d5aef
+  timestamp: '2026-11-19T20:45:29Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/51
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/58
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Address review of #58'
+  details: 'Split the gastric acid property into four by property type (roughness and wettability OTHER,
+    colour COLOR_STABILITY, Candida colonization OTHER, sorption/solubility/structure WATER_SORPTION),
+    each with the quotes that support it. Replaced the clause 4 quote with the complete classification,
+    classes included, since notes name them; pruned the old quote from the ISO bundle only. Quoted FDA''s
+    product classification page for recognition 4-232 of the 2013 edition. Dropped the inferred no-liquid
+    clause for Type 3. Linked the setting mechanism TODO to #59. Added 872.3760 to docs/regulatory.md.
+    Opened #59 (setting mechanism values) and #60 (new-record cannot set category). Parents stay unset,
+    as the reviewer accepted. A first prune run without --reference stripped another record''s bundle
+    (DOI 106626); it was restored from git before commit.'
