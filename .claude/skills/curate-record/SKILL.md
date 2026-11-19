@@ -17,12 +17,16 @@ not this session. It says what counts as a record and what does not.
 
 ```bash
 ls kb/materials/ | grep -i <word>
-just new-record [--id <CURIE>] --name "<name>"            # dry run
-just new-record [--id <CURIE>] --name "<name>" --model <model-id> --apply
+just new-record [--id <CURIE>] --name "<name>" --category <CATEGORY>            # dry run
+just new-record [--id <CURIE>] --name "<name>" --category <CATEGORY> --model <model-id> --apply
 ```
 
 Find the id first, below. An id with the OHD prefix also
 takes `--term-label "<its label>"`; `new-record` refuses it without one.
+`--category` is required, one of `MaterialCategoryEnum` (what the material
+is made of). For an experimental material add `--experimental` and
+`--purpose`, and `--restorative-class` when the purpose is RESTORATIVE;
+`new-record` refuses an experimental record without them.
 
 The id is the OHD CURIE when a term exists. Look it up;
 never guess it:
@@ -44,7 +48,7 @@ check reaches `OHD:0000000` through `record_term`, so this is what
 holds the id to the root:
 
 ```bash
-just new-record --id <CURIE> --name "<name>" --term-label "<label from term-info>" --apply
+just new-record --id <CURIE> --name "<name>" --term-label "<label from term-info>" --category <CATEGORY> --apply
 ```
 
 If no term fits, leave out `--id`: the record gets a minted
@@ -150,7 +154,7 @@ Materials are seeded from OHD, so the record usually exists. If it doesn't,
 search OHD (`just search-term OHD "l~..."`) before deciding OHD lacks it. Don't
 invent a term. Every dental material is in scope, whatever its purpose and
 whether it is commercial or experimental. A material OHD lacks gets a minted
-id (`just new-record --name "..."`, no `--id`), at the grain you would propose
+id (`just new-record --name "..." --category ...`, no `--id`), at the grain you would propose
 as a term: leave `record_term` unset, put the closest record in `parents`
 (OHD-keyed where one fits), and add a `CURATION_TODO` discussion proposing the
 term to OHD or another ontology. An experimental record sets

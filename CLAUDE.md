@@ -32,7 +32,7 @@ just qc                # the offline gate CI blocks on
 just qc-full           # qc plus terms and quotes for every record (network)
 just validate FILE     # closed schema, ontology terms, verbatim quotes
 just sign-excerpts FILE --reference DOI:...   # sign quotes from a local closed paper into reference_excerpts/
-just new-record ...    # scaffold a record (dry-run unless --apply); an id with the OHD prefix needs --term-label
+just new-record ...    # scaffold a record (dry-run unless --apply); needs --category; an id with the OHD prefix needs --term-label
 just import-schema SRC --record-class C   # start the schema from an existing one (dry-run unless --apply)
 just new-history ...   # scaffold a history record (dry-run unless --apply)
 just add-evidence FILE --at PLACE --ref REF --snippet "..."   # checked evidence (dry-run unless --apply)

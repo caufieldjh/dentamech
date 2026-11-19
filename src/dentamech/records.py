@@ -1,8 +1,13 @@
 """Writing records. Every write goes through validation first.
 
-    python -m <slug>.records new --name "..." [--description "..."] [--apply]
-    python -m <slug>.records new --id <CURIE> --name "..." [--apply]
-    python -m <slug>.records new --id <TERM> --name "..." --term-label "<the ontology's label>" [--apply]
+    python -m <slug>.records new --name "..." --category <C> [--description "..."] [--apply]
+    python -m <slug>.records new --id <CURIE> --name "..." --category <C> [--apply]
+    python -m <slug>.records new --id <TERM> --name "..." --term-label "<label>" --category <C> [--apply]
+
+--category is required; its values come from MaterialCategoryEnum in the
+schema. --experimental, --purpose and --restorative-class set the
+classification. An experimental record must give --purpose, and
+--restorative-class too when the purpose is RESTORATIVE; validation says so.
 
 Without --id, the record gets a minted id, `<slug>:<uuid>`: unique, and
 unchanged when the record is renamed. Pass --id when something better keys
@@ -23,7 +28,7 @@ from pathlib import Path
 
 import yaml
 
-from .paths import IDENTITY_PREFIX, RECORD_NOUN, RECORDS_DIR, REPO_ROOT, SLUG
+from .paths import IDENTITY_PREFIX, RECORD_NOUN, RECORDS_DIR, REPO_ROOT, SCHEMA_PATH, SLUG
 from .validate import evidence_errors, record_ids, rule_errors, schema_errors, slugify
 
 
@@ -54,6 +59,12 @@ def dump(data: dict) -> str:
 def mint_id() -> str:
     """A new id in the Mech's own namespace, for a record nothing else keys."""
     return f"{SLUG}:{uuid.uuid4()}"
+
+
+def enum_values(enum: str) -> list[str]:
+    """The permissible values of ENUM in the schema, in schema order."""
+    schema = yaml.safe_load(SCHEMA_PATH.read_text(encoding="utf-8"))
+    return list(schema["enums"][enum]["permissible_values"])
 
 
 def record_path(data: dict) -> Path:
@@ -104,6 +115,14 @@ def main(argv: list[str] | None = None) -> int:
     new.add_argument("--description")
     new.add_argument("--term-label", help="the ontology's label for --id, from `just term-info`; "
                      "required when --id is an ontology term")
+    new.add_argument("--category", required=True, choices=enum_values("MaterialCategoryEnum"),
+                     help="what the material is made of")
+    new.add_argument("--experimental", action="store_true",
+                     help="an experimental formulation, per the source; needs --purpose")
+    new.add_argument("--purpose", choices=enum_values("MaterialPurposeEnum"),
+                     help="what the material is for")
+    new.add_argument("--restorative-class", choices=enum_values("RestorativeClassEnum"),
+                     help="the class of a RESTORATIVE material")
     new.add_argument("--curator", default="claude-code")
     new.add_argument("--model", help="model id when an agent drafts the record")
     new.add_argument("--human", action="store_true", help="a person, not a model, wrote it")
@@ -122,6 +141,13 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         data["record_term"] = {"id": rid, "label": args.term_label}
     data["status"] = "DRAFT"
+    data["category"] = args.category
+    if args.experimental:
+        data["experimental"] = True
+    if args.purpose:
+        data["purpose"] = args.purpose
+    if args.restorative_class:
+        data["restorative_class"] = args.restorative_class
     data["creation_date"] = today
     data["updated_date"] = today
     append_curation_event(

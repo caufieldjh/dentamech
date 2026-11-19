@@ -3,9 +3,12 @@
 ## The loop
 
 1. Pick a target. From the source queue, an issue, or a gap in `just report`.
-2. Scaffold or open the record. `just new-record [--id ...] --name ... --apply`.
+2. Scaffold or open the record.
+   `just new-record [--id ...] --name ... --category ... --apply`.
    An id with the OHD prefix also goes in `record_term`, with
-   the ontology's label: add `--term-label "<label>"`.
+   the ontology's label: add `--term-label "<label>"`. An experimental
+   material adds `--experimental --purpose ...`, and `--restorative-class ...`
+   when the purpose is RESTORATIVE.
 3. Research. Before reading a paper, check whether it was considered
    already: `just lookup-paper <DOI>`. Fetch every source you cite:
    `just fetch-reference PMID:NNN`. Read what came back. Log every paper

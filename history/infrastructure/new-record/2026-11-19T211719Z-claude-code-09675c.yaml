@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: new-record
+  path: src/dentamech/records.py
+session:
+  id: 2026-11-19T211719Z-claude-code-09675c
+  timestamp: '2026-11-19T21:17:19Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/60
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'just new-record takes --category, --experimental, --purpose and --restorative-class, so it
+    scaffolds a valid record again (issue #60)'
+  details: 'DentalMaterial.category is required and new-record had no way to set it, so every scaffold
+    failed validation. Added --category (required) and --purpose and --restorative-class, with choices
+    read from MaterialCategoryEnum, MaterialPurposeEnum and RestorativeClassEnum in the schema, and an
+    --experimental flag. Keys are written in schema slot order after status. The cross-field rules are
+    left to classification_errors through write_validated_record, which already refuses an experimental
+    record without purpose, or without restorative_class when RESTORATIVE. Tests run the real validator:
+    a minted id, an OHD id with --term-label, the experimental cases and a contradictory class. Updated
+    the justfile comment, CLAUDE.md, docs/CURATION.md and the curate-record skill. Fixed here rather than
+    upstream: sync-mech will show records.py as a local change against the mechmaker template. A generic
+    version that reads the record class''s required slots from the schema belongs in mechmaker and is
+    not done.'
