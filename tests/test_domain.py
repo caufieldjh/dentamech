@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 import pytest
 
 from dentamech import validate
@@ -26,8 +28,13 @@ def test_kb_not_empty():
     assert RECORDS
 
 
-def test_records_are_keyed_by_ohd():
-    assert not [stem for stem, data in RECORDS.items() if not data["id"].startswith("OHD:")]
+MINTED_ID = re.compile(r"^dentamech:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
+
+
+def test_records_are_keyed_by_ohd_or_minted():
+    """An OHD id where OHD has the material, otherwise a minted dentamech:<uuid> (docs/DOMAIN.md)."""
+    assert not [stem for stem, data in RECORDS.items()
+                if not (data["id"].startswith("OHD:") or MINTED_ID.match(data["id"]))]
 
 
 def test_parent_links_resolve():

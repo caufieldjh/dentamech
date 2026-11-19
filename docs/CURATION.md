@@ -67,7 +67,7 @@ for provenance.
 
 ## Dental rules
 
-- `record_term.label` must match OHD exactly. Put friendlier names in `name` and `synonyms`.
+- `record_term.label`, when the record has one, must match OHD exactly. Put friendlier names in `name` and `synonyms`.
 - `parents` are the ids of other records, mirroring OHD's `is_a` links.
 - Literature goes in as `PMID:` where a PMID exists, else `DOI:` or `PMC:`. Quotes are checked against abstracts. `.linkml-reference-validator.yaml` turns full-text fetching off so the check stays against abstracts.
 - A quote from the full text of a closed paper is allowed when you hold a copy. Cite it as `DOI:`, put the text in `local_full_text/` (gitignored) named by cache stem, validate, then `just sign-excerpts FILE --reference DOI:...` and commit the bundle in `reference_excerpts/`. Never commit the paper. See `reference_excerpts/README.md`.

@@ -3,8 +3,10 @@ name: dentamech
 title: Dental Materials Knowledge Base Schema
 description: >-
   Schema for the Dental Materials Knowledge Base (dentamech). One YAML file
-  per material, anchored to the Oral Health and Disease Ontology (OHD) branch
-  under OHD:0000000 "dental restoration material". Each entry records what
+  per dental material, restorative or not, anchored to the Oral Health and
+  Disease Ontology (OHD) branch under OHD:0000000 "dental restoration
+  material" where OHD has the material, and under a minted id where it does
+  not. Each entry records what
   the material is made of, how it sets, what it is used for clinically, how
   it performs, what can go wrong, and how regulators (FDA first) classify it
   and what they permit it to be used for. Every claim can carry literature or
@@ -126,9 +128,10 @@ enums:
   # ---- material identity --------------------------------------------------
   MaterialCategoryEnum:
     description: >-
-      Broad material class. Derived from the OHD ancestry of the bound term
-      when seeding, and kept as an explicit slot so the browser can facet on
-      it without walking the ontology.
+      Broad material class: what a material is made of, not what it is for.
+      Derived from the OHD ancestry of the bound term when seeding, and kept
+      as an explicit slot so the browser can facet on it without walking the
+      ontology.
     permissible_values:
       METAL:
         description: Metals and alloys (amalgam, noble and base metal alloys, titanium, stainless steel)
@@ -149,6 +152,41 @@ enums:
         description: Materials that deliberately combine two categories (e.g. compomers, resin-modified glass ionomers)
       OTHER:
         description: Does not fit the other categories
+
+  MaterialPurposeEnum:
+    description: >-
+      What a material is for, the first level of the classification proposed
+      by the project's dental materials expert (issue #50). Distinct from
+      `category`, which says what a material is made of.
+    permissible_values:
+      PREVENTIVE:
+        description: >-
+          Prevents disease or damage rather than replacing tooth structure
+          (e.g. pit and fissure sealants, fluoride varnishes).
+      AUXILIARY:
+        description: >-
+          Used in making a restoration or appliance without becoming part of
+          it (e.g. impression materials, gypsum, waxes, investments).
+      RESTORATIVE:
+        description: >-
+          Replaces or restores tooth structure or missing teeth. Give the
+          material class in `restorative_class`.
+
+  RestorativeClassEnum:
+    description: >-
+      The second level of the classification, for a RESTORATIVE material
+      only: the class of material it is. Four of `MaterialCategoryEnum`'s
+      values name the same classes, and a record's two values must agree
+      where they do.
+    permissible_values:
+      CERAMIC:
+        description: Ceramics, glass-matrix or polycrystalline
+      COMPOSITE:
+        description: Resin-based composites, a polymer matrix reinforced with filler
+      POLYMER:
+        description: Polymers without a reinforcing filler
+      METAL:
+        description: Metals and alloys
 
   SettingMechanismEnum:
     description: How the material hardens or is formed into its final state
@@ -714,9 +752,44 @@ slots:
         range: IdentityTerm
         obligation_level: REQUIRED
   category:
-    description: Broad material class
+    description: >-
+      What the material is made of, as a broad class. Required on every
+      record, whatever its purpose, and the facet the browser uses. It says
+      nothing about what the material is for; that is `purpose`. Where it
+      names the same class as `restorative_class`, the two must agree (see
+      `restorative_class`).
     range: MaterialCategoryEnum
     required: true
+  experimental:
+    description: >-
+      True when the material is an experimental formulation: made in a
+      laboratory and reported in research, with no commercial product behind
+      it. Set it only from the source's own description of the material
+      (e.g. "an experimental composite", "was formulated in the laboratory").
+      "Novel" alone is not enough: papers call commercial products novel too.
+      An experimental record
+      must also give `purpose`.
+    range: boolean
+  purpose:
+    description: >-
+      What the material is for: PREVENTIVE, AUXILIARY or RESTORATIVE. The
+      first level of the expert classification from issue #50. Set it from
+      the clinical use the source describes. Required when `experimental`
+      is true, optional otherwise.
+    range: MaterialPurposeEnum
+  restorative_class:
+    description: >-
+      For a RESTORATIVE material, the class of material in the expert's
+      four-way scheme: CERAMIC, COMPOSITE, POLYMER or METAL. The second level
+      of the classification. Allowed only when `purpose` is RESTORATIVE, and
+      required for an experimental restorative material. It overlaps
+      `category`, which is finer and covers every purpose, and must not
+      contradict it: category METAL, CERAMIC, RESIN_COMPOSITE or POLYMER
+      allows only restorative_class METAL, CERAMIC, COMPOSITE or POLYMER
+      respectively. Category CEMENT, ADHESIVE, HYBRID or OTHER allows any
+      value (a resin cement or a compomer may be COMPOSITE). `just validate`
+      enforces this.
+    range: RestorativeClassEnum
   parents:
     description: >-
       Ids of the parent records in this knowledge base. Mirrors the OHD
@@ -1323,6 +1396,9 @@ classes:
       - record_term
       - status
       - category
+      - experimental
+      - purpose
+      - restorative_class
       - parents
       - synonyms
       - mappings

@@ -1,6 +1,6 @@
 # DentaMech
 
-DentaMech records dental restoration materials: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per OHD term, with every claim quoted from its source.
+DentaMech records dental materials, restorative and otherwise: composition, setting, clinical use, performance, adverse effects, regulatory status and standards, one record per material, grounded to OHD where it has a term, with every claim quoted from its source.
 
 DentaMech is a **Mech**: a knowledge base where AI agents do most of
 the curation and people review their work. It keeps one record per

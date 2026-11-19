@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: schema
+  slug: dentamech
+  path: src/dentamech/schema/dentamech.yaml
+session:
+  id: 2026-11-19T154712Z-claude-code-41fb03
+  timestamp: '2026-11-19T15:47:12Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/50
+  - https://github.com/caufieldjh/dentamech/issues/51
+events:
+- type: EDIT
+  outcome: changed
+  summary: Widen scope to materials with no OHD term and add the experimental classification by purpose
+  details: 'Following the dental materials expert''s answers on issues #50 and #51 (relayed by the maintainer):
+    materials OHD lacks (denture base resins, ISO 20795-1) and experimental formulations are now in scope
+    under minted dentamech ids. Added optional slots experimental (boolean), purpose (MaterialPurposeEnum:
+    PREVENTIVE, AUXILIARY, RESTORATIVE) and restorative_class (RestorativeClassEnum: CERAMIC, COMPOSITE,
+    POLYMER, METAL), kept separate from category. validate.classification_errors enforces: restorative_class
+    only under RESTORATIVE; experimental needs purpose, and restorative_class when restorative. No existing
+    record changed; no migration. Updated DOMAIN.md, design-decisions sections 1, 2, 10 and a new 11,
+    CLAUDE.md dental rules, the curate-record skill, and the project tagline (not .copier-answers.yml,
+    which Copier owns). Relaxed tests/test_domain.py to accept minted dentamech:<uuid> ids; checked with a throwaway minted record through just qc and just validate, then deleted it. Left for later PRs: ISO standard excerpts, the denture base and chlorhexidine
+    composite records, and the deferred paper-log rows. The descriptions of PREVENTIVE and AUXILIARY are
+    the curator''s reading and await the expert''s confirmation.'

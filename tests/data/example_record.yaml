@@ -5,6 +5,9 @@ name: Example dental material
 description: A placeholder that exercises the record structure.
 status: DRAFT
 category: OTHER
+experimental: true
+purpose: RESTORATIVE
+restorative_class: COMPOSITE
 mappings:
   - predicate_id: skos:broadMatch
     object_id: schema:Thing
