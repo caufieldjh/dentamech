@@ -9,7 +9,7 @@ import pytest
 from dentamech import validate
 
 RECORDS = {path.stem: validate.load(path) for path in validate.iter_records()}
-ALLOWED_REFERENCE_PREFIXES = ("PMID:", "PMC:", "DOI:", "PPR:", "CFR:", "url:", "URL:")
+ALLOWED_REFERENCE_PREFIXES = ("PMID:", "PMC:", "DOI:", "PPR:", "CFR:", "ISO.", "url:", "URL:")
 
 
 def walk_evidence(node, path="root"):
@@ -62,8 +62,8 @@ def test_evidence_references_well_formed():
             ref = item.get("reference", "")
             if not ref.startswith(ALLOWED_REFERENCE_PREFIXES):
                 bad.append((stem, where, ref))
-            if ref.startswith(("PMID:", "PMC:", "DOI:")) and not (item.get("snippet") or "").strip():
-                bad.append((stem, where, "literature reference without a snippet"))
+            if ref.startswith(("PMID:", "PMC:", "DOI:", "ISO.")) and not (item.get("snippet") or "").strip():
+                bad.append((stem, where, "literature or standard reference without a snippet"))
     assert not bad, bad
 
 

@@ -129,7 +129,9 @@ for this and the other decisions.
 PubMed for literature, with quotes checked against abstracts, or against a local copy of a closed paper through signed excerpts. The Code of Federal
 Regulations and FDA's product classification and 510(k) databases for regulatory
 facts, cited as `url:` and verified by a person or agent, because those sites
-block automated checks. ISO and ADA catalogs for standards. OHD for the record
+block automated checks. ISO and ADA catalogs for standards, and the text of an
+ISO standard itself, cited as `ISO.<number>:<part>_<year>_<edition>` and quoted
+from a local copy through signed excerpts. OHD for the record
 set. Each source goes in `curation/source_queue.tsv` with its license.
 
 ## Out of scope
