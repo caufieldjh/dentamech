@@ -167,6 +167,12 @@ def test_bounding_boxes_are_checked_wherever_they_are(box, ok):
     ({"experimental": True, "purpose": "AUXILIARY"}, None),
     ({"experimental": True, "purpose": "RESTORATIVE", "restorative_class": "COMPOSITE"}, None),
     ({"purpose": "RESTORATIVE"}, None),  # a commercial material may stop at the first level
+    ({"category": "METAL", "purpose": "RESTORATIVE", "restorative_class": "CERAMIC"}, "contradicts category"),
+    ({"category": "RESIN_COMPOSITE", "purpose": "RESTORATIVE", "restorative_class": "POLYMER"},
+     "contradicts category"),
+    ({"category": "RESIN_COMPOSITE", "purpose": "RESTORATIVE", "restorative_class": "COMPOSITE"}, None),
+    ({"category": "CEMENT", "purpose": "RESTORATIVE", "restorative_class": "COMPOSITE"}, None),
+    ({"category": "HYBRID", "purpose": "RESTORATIVE", "restorative_class": "COMPOSITE"}, None),
 ])
 def test_the_classification_holds_together(example, fields, problem):
     record = {k: v for k, v in example.items()

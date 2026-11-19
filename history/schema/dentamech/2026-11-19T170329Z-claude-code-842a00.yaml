@@ -1,0 +1,30 @@
+history_version: 1
+target:
+  kind: schema
+  slug: dentamech
+  path: src/dentamech/schema/dentamech.yaml
+session:
+  id: 2026-11-19T170329Z-claude-code-842a00
+  timestamp: '2026-11-19T17:03:29Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/56
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/53
+events:
+- type: EDIT
+  outcome: changed
+  summary: category and restorative_class must agree where they name the same class
+  details: 'At the maintainer''s request in review of #53: the category and restorative_class descriptions
+    now say what each means (category: what a material is made of, on every record; restorative_class:
+    the expert''s coarser four-way class for a restorative material) and how they overlap. validate.classification_errors
+    enforces CATEGORY_RESTORATIVE_CLASS: category METAL, CERAMIC, RESIN_COMPOSITE or POLYMER allows only
+    restorative_class METAL, CERAMIC, COMPOSITE or POLYMER; CEMENT, ADHESIVE, HYBRID and OTHER allow any.
+    Five new parametrized test cases. No record carries restorative_class yet, so none changed. The table
+    is in DOMAIN.md, design decision 11 and CLAUDE.md. Opened #56 for the fuller question of each classification
+    slot''s meaning, including whether category mixes composition and role.'

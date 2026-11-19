@@ -128,9 +128,10 @@ enums:
   # ---- material identity --------------------------------------------------
   MaterialCategoryEnum:
     description: >-
-      Broad material class. Derived from the OHD ancestry of the bound term
-      when seeding, and kept as an explicit slot so the browser can facet on
-      it without walking the ontology.
+      Broad material class: what a material is made of, not what it is for.
+      Derived from the OHD ancestry of the bound term when seeding, and kept
+      as an explicit slot so the browser can facet on it without walking the
+      ontology.
     permissible_values:
       METAL:
         description: Metals and alloys (amalgam, noble and base metal alloys, titanium, stainless steel)
@@ -174,7 +175,9 @@ enums:
   RestorativeClassEnum:
     description: >-
       The second level of the classification, for a RESTORATIVE material
-      only: the class of material it is.
+      only: the class of material it is. Four of `MaterialCategoryEnum`'s
+      values name the same classes, and a record's two values must agree
+      where they do.
     permissible_values:
       CERAMIC:
         description: Ceramics, glass-matrix or polycrystalline
@@ -749,7 +752,12 @@ slots:
         range: IdentityTerm
         obligation_level: REQUIRED
   category:
-    description: Broad material class
+    description: >-
+      What the material is made of, as a broad class. Required on every
+      record, whatever its purpose, and the facet the browser uses. It says
+      nothing about what the material is for; that is `purpose`. Where it
+      names the same class as `restorative_class`, the two must agree (see
+      `restorative_class`).
     range: MaterialCategoryEnum
     required: true
   experimental:
@@ -771,10 +779,16 @@ slots:
     range: MaterialPurposeEnum
   restorative_class:
     description: >-
-      For a RESTORATIVE material, the class of material: CERAMIC, COMPOSITE,
-      POLYMER or METAL. The second level of the classification. Allowed only
-      when `purpose` is RESTORATIVE, and required for an experimental
-      restorative material.
+      For a RESTORATIVE material, the class of material in the expert's
+      four-way scheme: CERAMIC, COMPOSITE, POLYMER or METAL. The second level
+      of the classification. Allowed only when `purpose` is RESTORATIVE, and
+      required for an experimental restorative material. It overlaps
+      `category`, which is finer and covers every purpose, and must not
+      contradict it: category METAL, CERAMIC, RESIN_COMPOSITE or POLYMER
+      allows only restorative_class METAL, CERAMIC, COMPOSITE or POLYMER
+      respectively. Category CEMENT, ADHESIVE, HYBRID or OTHER allows any
+      value (a resin cement or a compomer may be COMPOSITE). `just validate`
+      enforces this.
     range: RestorativeClassEnum
   parents:
     description: >-

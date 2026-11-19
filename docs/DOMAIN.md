@@ -81,8 +81,21 @@ records the classification is optional, and existing records were not
 reclassified.
 
 This classification is separate from `category` on purpose. `category` says what
-a material is made of and has places for cements, adhesives and hybrids;
-`purpose` says what it is for. Whether the classification should cover every
+a material is made of, on every record, and has places for cements, adhesives
+and hybrids. `purpose` says what it is for. `restorative_class` is a second,
+coarser answer to what a restorative material is made of, so it overlaps
+`category`, and the two must agree where they name the same class:
+
+| `category` | allows `restorative_class` |
+|---|---|
+| `METAL` | `METAL` only |
+| `CERAMIC` | `CERAMIC` only |
+| `RESIN_COMPOSITE` | `COMPOSITE` only |
+| `POLYMER` | `POLYMER` only |
+| `CEMENT`, `ADHESIVE`, `HYBRID`, `OTHER` | any (a resin cement or a compomer may be `COMPOSITE`) |
+
+`just validate` enforces the table. How far the two slots should overlap at all,
+and what each means exactly, is issue #56. Whether the classification should cover every
 record is an open question (`docs/explanation/design-decisions.md`, section 10).
 
 ## Sections
