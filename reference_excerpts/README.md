@@ -27,6 +27,21 @@ Workflow:
    the bundle here.
 5. Commit the record and the bundle. Never commit the paper.
 
+How much may be quoted, in non-whitespace characters (design decision 9):
+
+| Cap | Limit |
+|---|---|
+| one quote | 1,000 |
+| one unbroken part between `...` | 600 |
+| all quotes from one source | 6,000 |
+| all quotes in one bundle, against the local copy's length | 10% |
+
+The first three are set in `.linkml-reference-validator.yaml`, and
+`just sign-excerpts` refuses any quote over them, or that would take the
+bundle over the total, writes the rest, and exits with an error. The fourth is held
+by `tests/test_refsources.py`. Quote what a claim needs, not the passage
+around it.
+
 ## ISO standards
 
 A standard goes the same way, cited as `ISO.<number>:<part>_<year>_<edition>`

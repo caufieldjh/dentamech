@@ -7,6 +7,7 @@ import yaml
 from linkml_reference_validator.etl.sources.base import ReferenceSourceRegistry
 from linkml_reference_validator.etl.sources.url import URLSource
 from linkml_reference_validator.models import ReferenceContent, ReferenceValidationConfig
+from linkml_reference_validator.validation.supporting_text_validator import SupportingTextValidator
 
 from dentamech import refsources
 from dentamech.paths import REPO_ROOT, SCHEMA_PATH
@@ -185,3 +186,83 @@ def test_every_cited_iso_standard_has_its_prefix():
     for path in (REPO_ROOT / "kb" / "materials").glob("*.yaml"):
         cited |= set(re.findall(r"reference: (ISO\.\d+):", path.read_text(encoding="utf-8")))
     assert not cited - declared, f"declare these in the schema's prefixes: {sorted(cited - declared)}"
+
+
+# The validator's max_reference_fraction is taken of the fetched text, an
+# abstract or a CFR section, so it is left at 0 in the config. A signed bundle
+# records the length of the local copy it came from; this is checked against that.
+BUNDLE_MAX_FRACTION = 0.10
+
+
+def _caps():
+    raw = yaml.safe_load((REPO_ROOT / ".linkml-reference-validator.yaml").read_text())
+    return ReferenceValidationConfig(**raw["validation"])
+
+
+def test_fair_use_caps_are_set():
+    caps = _caps()
+    assert caps.max_excerpt_length > 0
+    assert 0 < caps.max_excerpt_part_length <= caps.max_excerpt_length
+    assert caps.max_total_chars_per_reference > 0
+
+
+@pytest.mark.parametrize("bundle", sorted((REPO_ROOT / "reference_excerpts").glob("*.yaml")),
+                         ids=lambda p: p.stem)
+def test_every_signed_bundle_is_within_the_caps(bundle):
+    caps = _caps()
+    count = SupportingTextValidator(caps).count_quoted_characters
+    data = yaml.safe_load(bundle.read_text())
+    lengths = [count(item["text"]) for item in data.get("excerpts") or []]
+    assert lengths, f"{bundle.name} holds no excerpts"
+    assert max(lengths) <= caps.max_excerpt_length
+    assert sum(lengths) <= caps.max_total_chars_per_reference
+    source = data.get("source_char_count")
+    assert isinstance(source, int) and source > 0, "a bundle must record its source's length"
+    assert sum(lengths) <= BUNDLE_MAX_FRACTION * source, (
+        f"{data['reference_id']}: {sum(lengths)} of {source} characters quoted"
+    )
+
+
+def test_signing_refuses_a_quote_over_the_cap(tmp_path):
+    """With the repository's caps, an over-long quote from a local copy is not signed."""
+    caps = _caps()
+    (tmp_path / "lrv.yaml").write_text(yaml.safe_dump({"validation": {
+        "cache_dir": "cache", "unknown_prefix_severity": "ERROR", "fetch_full_text": False,
+        "local_full_text_dir": "local_full_text", "signed_excerpts_dir": "reference_excerpts",
+        "signed_excerpts_require_verification": True, "trust_cached_entries": True,
+        "max_excerpt_length": caps.max_excerpt_length,
+        "max_excerpt_part_length": caps.max_excerpt_part_length,
+        "max_total_chars_per_reference": caps.max_total_chars_per_reference}}), encoding="utf-8")
+    words = " ".join(f"clause{n} of the imaginary material" for n in range(caps.max_excerpt_length // 20))
+    (tmp_path / "local_full_text").mkdir()
+    (tmp_path / "local_full_text" / "ISO.99999_1_2099_1.md").write_text(
+        f"# Made-up standard\n\n{words}.\n", encoding="utf-8")
+    _iso_record(tmp_path, words)
+    signed = _lrv(tmp_path, "excerpts", "sign", "record.yaml")
+    assert "max_excerpt" in signed.stdout + signed.stderr, signed.stdout + signed.stderr
+    assert not (tmp_path / "reference_excerpts" / "ISO.99999_1_2099_1.yaml").exists()
+
+
+def _snippets(node):
+    if isinstance(node, dict):
+        if "reference" in node and "snippet" in node:
+            yield node["reference"], node["snippet"]
+        for value in node.values():
+            yield from _snippets(value)
+    elif isinstance(node, list):
+        for value in node:
+            yield from _snippets(value)
+
+
+def test_no_source_is_quoted_past_the_total_cap():
+    """The corpus-wide total, offline: a pull request's reference check sees only its changed records."""
+    caps = _caps()
+    count = SupportingTextValidator(caps).count_quoted_characters
+    quoted: dict[str, dict[str, int]] = {}
+    for path in sorted((REPO_ROOT / "kb" / "materials").glob("*.yaml")):
+        for reference, snippet in _snippets(yaml.safe_load(path.read_text(encoding="utf-8"))):
+            quoted.setdefault(reference, {})[" ".join(snippet.split())] = count(snippet)
+    assert quoted
+    over = {ref: sum(q.values()) for ref, q in quoted.items()
+            if sum(q.values()) > caps.max_total_chars_per_reference}
+    assert not over, over
