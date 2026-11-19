@@ -162,9 +162,8 @@ enums:
           (e.g. pit and fissure sealants, fluoride varnishes).
       AUXILIARY:
         description: >-
-          Used in making or placing a restoration but not part of it as the
-          replacement of tooth structure (e.g. impression materials, bonding
-          agents, luting cements).
+          Used in making a restoration or appliance without becoming part of
+          it (e.g. impression materials, gypsum, waxes, investments).
       RESTORATIVE:
         description: >-
           Replaces or restores tooth structure or missing teeth. Give the
@@ -180,7 +179,7 @@ enums:
       COMPOSITE:
         description: Resin-based composites, a polymer matrix reinforced with filler
       POLYMER:
-        description: Polymers without a reinforcing filler (e.g. PMMA denture base resin)
+        description: Polymers without a reinforcing filler
       METAL:
         description: Metals and alloys
 

@@ -27,6 +27,6 @@ events:
     only under RESTORATIVE; experimental needs purpose, and restorative_class when restorative. No existing
     record changed; no migration. Updated DOMAIN.md, design-decisions sections 1, 2, 10 and a new 11,
     CLAUDE.md dental rules, the curate-record skill, and the project tagline (not .copier-answers.yml,
-    which Copier owns). Left for later PRs: ISO standard excerpts, the denture base and chlorhexidine
+    which Copier owns). Relaxed tests/test_domain.py to accept minted dentamech:<uuid> ids; checked with a throwaway minted record through just qc and just validate, then deleted it. Left for later PRs: ISO standard excerpts, the denture base and chlorhexidine
     composite records, and the deferred paper-log rows. The descriptions of PREVENTIVE and AUXILIARY are
     the curator''s reading and await the expert''s confirmation.'

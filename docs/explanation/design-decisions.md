@@ -81,8 +81,8 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 ## 10. Open questions
 
 - Whether the classification by purpose (section 11) should be set on every record, and how it relates to `category` once it is.
-- What evidence an experimental record needs: whether one in vitro or animal study is enough, or whether there is a minimum. Until this is settled, an experimental record cites at least one primary study and says in `notes` how far the evidence goes.
-- Whether an experimental formulation gets a record of its own or is described under the record of the class it belongs to.
+- What evidence an experimental record needs: whether one in vitro or animal study is enough, or whether there is a minimum.
+- Whether `purpose` should allow more than one value, for a material that is, say, both restorative and preventive.
 
 - Whether product records should live in their own files once there are many.
 - Whether to model *material systems* (a bonding agent plus its composite) as a separate class.
