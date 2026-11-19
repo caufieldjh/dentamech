@@ -1,0 +1,37 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: fair-use-caps
+  path: .linkml-reference-validator.yaml
+session:
+  id: 2026-11-19T182035Z-claude-code-20baa4
+  timestamp: '2026-11-19T18:20:35Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/55
+events:
+- type: EDIT
+  outcome: changed
+  summary: Set the reference validator's fair-use caps
+  details: 'Set max_excerpt_length 1000, max_excerpt_part_length 600 and max_total_chars_per_reference
+    6000 (non-whitespace characters), generous by the maintainer''s choice: quote what a claim needs,
+    not a source. Measured first: across 390 quotes on main at 61ffcf4 the longest was 364 and the most
+    from one source 2,601 (the signed DOI bundle, 2.8% of its paper). The validator has no per-source
+    caps, so these bind abstracts and CFR sections too; max_reference_fraction stays 0 because it is taken
+    of the fetched text, and abstracts are quoted at up to half their length and short CFR sections at
+    more. Instead tests/test_refsources.py holds each signed bundle to 10% of its source_char_count and
+    to the caps, in qc on every PR. Proven by running: the full corpus passes with the caps (354 checked,
+    0 issues); with tighter test values the caps failed the 364- and 328-character quotes and the DOI
+    total; a source quoted in four records (CFR:872.3275, at most 970 in one, 1,448 in all) passed each
+    record alone and failed together, so the total is per run; signing refused a 1,700-character quote
+    (new test) and signed a 104-character quote from ISO 20795-1:2013 in a scratch folder, since deleted.
+    Docs: design decision 9, reference_excerpts/README.md, the evidence-references skill, CLAUDE.md. Also
+    run: with a tight total, signing refused the quote that would take a bundle over it, wrote the rest
+    and exited 1. Added an offline test summing each source''s distinct quotes across kb/materials/, so
+    qc catches the corpus total on a PR (it failed at 2,000, as it should). Not done: per-source caps
+    would need the validator to support them.'

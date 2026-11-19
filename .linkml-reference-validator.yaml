@@ -19,6 +19,23 @@ validation:
   # Accept only excerpts written by `excerpts sign`, which records the SHA-256
   # of the text matched. A hand-typed entry has none and is ignored.
   signed_excerpts_require_verification: true
+  # Fair-use caps, counted in non-whitespace characters of quoted text. They
+  # bind every source, not only local copies: the validator has no per-source
+  # caps. Set with headroom over the corpus on 2026-11-19 (longest quote 364,
+  # most from one source 2,601), and low enough that no source is reproduced:
+  # 6,000 is under 10% of ISO 20795-1:2013. See design decision 9 and #55.
+  max_excerpt_length: 1000
+  max_excerpt_part_length: 600
+  # Counted across every record checked in one run, and across each signed
+  # bundle when it is written, so `just validate-references-all` enforces it
+  # for the corpus. A single-record check sees only that record's quotes;
+  # tests/test_refsources.py sums the corpus offline, so `just qc` does too.
+  max_total_chars_per_reference: 6000
+  # Left at 0. The fraction is taken of the fetched text, which is an
+  # abstract, quoted at up to half its length, a short CFR section, quoted at
+  # more, or a stub for a local copy. Instead, tests/test_refsources.py holds each
+  # signed bundle to 10% of the local copy it was signed from, on every PR.
+  max_reference_fraction: 0.0
   # The committed cache is reviewed; never re-fetch an entry to migrate it.
   trust_cached_entries: true
   # Keep all-caps abbreviations and anything with a percent sign as source text.

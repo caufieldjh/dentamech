@@ -132,6 +132,14 @@ Quotes from a closed paper's full text are allowed when a local copy exists.
 Without the local copy (in CI, or on another machine), the same quote passes
 only through the signed bundle.
 
+Fair-use caps bound what is quoted: 1,000 characters a quote, 600 an unbroken
+part, 6,000 from one source across the corpus, and 10% of a local copy per
+bundle (counts exclude whitespace; `reference_excerpts/README.md`). They bind
+every source, abstracts and CFR included. On "too long for fair use", cut the
+quote to what the claim needs, or split it with `...`. On "Cumulative quoted
+text ... exceeds", the source is quoted enough already: reuse a quote that is
+there, or cite a different source.
+
 ## When no source exists
 
 Do not reach. Write the claim as a `KNOWLEDGE_GAP` discussion with
