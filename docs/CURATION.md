@@ -72,5 +72,6 @@ for provenance.
 - Literature goes in as `PMID:` where a PMID exists, else `DOI:` or `PMC:`. Quotes are checked against abstracts. `.linkml-reference-validator.yaml` turns full-text fetching off so the check stays against abstracts.
 - A quote from the full text of a closed paper is allowed when you hold a copy. Cite it as `DOI:`, put the text in `local_full_text/` (gitignored) named by cache stem, validate, then `just sign-excerpts FILE --reference DOI:...` and commit the bundle in `reference_excerpts/`. Never commit the paper. See `reference_excerpts/README.md`.
 - Regulatory text goes in as `CFR:872.NNNN` for a 21 CFR section; its quotes are checked against the eCFR text. The FDA product classification record and the 510(k) or PMA record go in as `url:`; the validator skips `url:`, so those quotes are checked by people (see `docs/regulatory.md`).
+- An ISO standard goes in as `ISO.<number>:<part>_<year>_<edition>`. Its quotes are checked against a local copy and signed into `reference_excerpts/`, as for a closed paper; see the `evidence-references` skill.
 - Standards are cited as `url:` to the ISO or ADA catalog entry. Their text is paywalled, so keep the quote to what the catalog shows.
 - Verified regulation numbers, classes and product codes are in `docs/regulatory.md`.
