@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import re
 
-from linkml_reference_validator.etl.sources.base import ReferenceSourceRegistry
+from linkml_reference_validator.etl.sources.base import ReferenceSource, ReferenceSourceRegistry
 from linkml_reference_validator.etl.sources.url import URLSource
 from linkml_reference_validator.etl.sources.utils import get_json
+
+#: An ISO standard reference: ISO.<number>:[<part>_]<year>_<edition>.
+ISO_REFERENCE = re.compile(r"^ISO\.\d+:(?:\d+_)?\d{4}_\d+$")
 
 #: eCFR renderer API for one section of title 21, as of one issue date.
 ECFR_SECTION_URL = (
@@ -114,6 +117,38 @@ class CFRSource(URLSource):
         return content
 
 
+class ISOSource(ReferenceSource):
+    """An ISO standard: one prefix per standard, ``ISO.<number>``, and a local id of
+    ``<part>_<year>_<edition>``. ``ISO.20795:1_2013_2`` is ISO 20795-1:2013, second
+    edition. This follows bioregistry's ``iso.3166`` and ``iso.639-3`` prefixes. A
+    standard without parts drops the part: ``ISO.4049:2019_5``.
+
+    ISO standards are sold, not published, so nothing is fetched. A curator
+    who holds a copy puts its text in ``local_full_text/`` under the cache stem
+    (``ISO.20795_1_2013_2.md``, first line ``# <title from the cover page>``);
+    quotes are matched against it and signed into ``reference_excerpts/`` by
+    ``just sign-excerpts``, the same path as a closed paper. Without the copy,
+    only signed excerpts pass.
+
+    >>> ISOSource.can_handle("ISO.20795:1_2013_2"), ISOSource.can_handle("ISO:20795")
+    (True, False)
+    >>> ISOSource().fetch("1_2013_2", None) is None
+    True
+    """
+
+    @classmethod
+    def prefix(cls) -> str:
+        return "ISO"
+
+    @classmethod
+    def can_handle(cls, reference_id: str) -> bool:
+        return ISO_REFERENCE.match(reference_id) is not None
+
+    def fetch(self, identifier, config):
+        return None
+
+
 def register() -> None:
-    """Make ``CFR:`` fetchable by the validator in this process. Safe to call twice."""
+    """Make ``CFR:`` and ``ISO:`` known to the validator in this process. Safe to call twice."""
     ReferenceSourceRegistry.register(CFRSource)
+    ReferenceSourceRegistry.register(ISOSource)

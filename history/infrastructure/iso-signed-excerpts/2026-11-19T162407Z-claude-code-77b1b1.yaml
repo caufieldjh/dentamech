@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: iso-signed-excerpts
+  path: src/dentamech/refsources.py
+session:
+  id: 2026-11-19T162407Z-claude-code-77b1b1
+  timestamp: '2026-11-19T16:24:07Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/51
+events:
+- type: EDIT
+  outcome: changed
+  summary: Check ISO standard quotes against local copies through signed excerpts
+  details: 'Added ISOSource (src/dentamech/refsources.py): ISO standards are cited as ISO.<number>:<part>_<year>_<edition>
+    (maintainer''s choice, after bioregistry''s iso.3166), are never fetched, and are checked against
+    a local copy in local_full_text/ then signed into reference_excerpts/, the closed-paper path. Removed
+    ISO from skip_prefixes. Declared ISO.20795 (https://standards.iso.org/iso/20795/, the pattern bioregistry
+    records for ISO 15926; a namespace that does not resolve). Tests: source form, an end-to-end sign-then-check
+    over made-up text, and that every cited ISO prefix is declared. Proven with ISO 20795-1:2013 ed. 2
+    and a scratch record: matched with the copy, passed from the bundle alone, an altered quote failed
+    with and without the copy, add-evidence found and refused quotes correctly, nothing reached references_cache/;
+    the scratch record and bundle were deleted. Edition confirmed from the cover page and FDA''s recognized
+    standards database (recognition 4-232, second edition 2013-03-01). Not done: which edition ISO catalogue
+    id 91143 is (iso.org blocks automated requests); fair-use caps remain unset (all 0).'

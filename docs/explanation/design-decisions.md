@@ -75,6 +75,7 @@ The decision register, in the style of [DisMech's](https://github.com/monarch-in
 - `just sign-excerpts` writes a bundle per reference. Each excerpt carries a `verification` record with the SHA-256 of the text it matched. `signed_excerpts_require_verification: true` makes validation ignore entries without one, so a hand-typed excerpt fails.
 - The record is an attestation, not a cryptographic signature. Anyone who can edit a bundle can edit its record. Review is the safeguard: a bundle change should add only quotes that appear as snippets in the same pull request.
 - A quote from a local copy is limited by the validator's fair-use caps.
+- ISO standards take the same path. They are sold, not published, so an `ISO.` reference is never fetched: it is checked against the curator's local copy and signed, and without the copy only signed excerpts pass (`ISOSource` in `src/dentamech/refsources.py`). The citation is `ISO.<number>:<part>_<year>_<edition>`, one prefix per standard, after bioregistry's `iso.3166` and `iso.639-3`. Readable, and specific to one edition, unlike ISO's catalogue numbers, which name an edition without saying which. Each prefix expands to `https://standards.iso.org/iso/<number>/`, the pattern bioregistry records for ISO 15926; it is a namespace, and an expanded IRI does not resolve to a page.
 
 ## 10. Open questions
 

@@ -26,12 +26,12 @@ validation:
     - "^[A-Z]{2,}$"
     - "%"
   # CFR: is checked: src/dentamech/refsources.py fetches the section from the
-  # eCFR renderer API. Other regulatory and standards pages are still checked
-  # by people, not here: url: (FDA databases among them, pending
-  # linkml/linkml-reference-validator#179), ISO and FDA_PRODUCT_CODE.
+  # eCFR renderer API. ISO.<number>: standards are checked against a local
+  # copy and signed, like closed papers; nothing is fetched (ISOSource in
+  # refsources.py). FDA database pages are still checked by people, not here:
+  # url: (pending linkml/linkml-reference-validator#179) and FDA_PRODUCT_CODE.
   # See docs/regulatory.md.
   skip_prefixes:
     - url
     - URL
-    - ISO
     - FDA_PRODUCT_CODE

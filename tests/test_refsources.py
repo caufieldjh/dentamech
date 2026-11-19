@@ -3,12 +3,13 @@
 import re
 
 import pytest
+import yaml
 from linkml_reference_validator.etl.sources.base import ReferenceSourceRegistry
 from linkml_reference_validator.etl.sources.url import URLSource
 from linkml_reference_validator.models import ReferenceContent, ReferenceValidationConfig
 
 from dentamech import refsources
-from dentamech.paths import REPO_ROOT
+from dentamech.paths import REPO_ROOT, SCHEMA_PATH
 
 SECTION_TEXT = """Editorial Note on Part 872
 § 872.3275 Dental cement.
@@ -108,3 +109,79 @@ def test_every_cited_section_is_cached():
     assert cited, "no record cites CFR:"
     missing = sorted(s for s in cited if not (REPO_ROOT / "references_cache" / f"CFR_{s}.md").is_file())
     assert not missing, f"not cached; run just fetch-reference CFR:<section>: {missing}"
+
+
+def test_iso_fetches_nothing():
+    assert refsources.ISOSource().fetch("1_2013_2", ReferenceValidationConfig()) is None
+    refsources.register()
+    assert ReferenceSourceRegistry.get_source("ISO.20795:1_2013_2") is refsources.ISOSource
+
+
+@pytest.mark.parametrize("ref, ok", [
+    ("ISO.20795:1_2013_2", True), ("ISO.4049:2019_5", True),
+    ("ISO:20795-1:2013", False), ("ISO.20795:1-2013", False), ("ISO.20795:1_2013", False),
+])
+def test_iso_reference_form(ref, ok):
+    assert refsources.ISOSource.can_handle(ref) is ok
+
+
+def test_iso_is_not_skipped():
+    config = (REPO_ROOT / ".linkml-reference-validator.yaml").read_text(encoding="utf-8")
+    skipped = re.search(r"skip_prefixes:\n((?:\s+- .+\n)+)", config).group(1)
+    assert "ISO" not in [line.strip()[2:] for line in skipped.splitlines()]
+
+
+ISO_TEXT = ("# Made-up standard\n\n"
+            "This part of ISO 99999 specifies the requirements for an imaginary material.\n")
+
+
+def _lrv(tmp_path, *args):
+    import subprocess
+    import sys
+
+    return subprocess.run([sys.executable, "-m", "dentamech.lrv", *args, "--config", "lrv.yaml"],
+                          cwd=tmp_path, capture_output=True, text=True)
+
+
+def _iso_record(tmp_path, snippet):
+    (tmp_path / "record.yaml").write_text(
+        "id: dentamech:00000000-0000-4000-8000-000000000009\nname: Imaginary material\n"
+        "status: DRAFT\ncategory: OTHER\nevidence:\n  - reference: ISO.99999:1_2099_1\n"
+        "    reference_title: Made-up standard\n    supports: SUPPORT\n    evidence_source: STANDARD\n"
+        f"    snippet: {snippet}\n", encoding="utf-8")
+
+
+def test_an_iso_quote_is_signed_then_checked_without_the_standard(tmp_path):
+    """The ISO path end to end: matched against the local copy, signed, then checked from the bundle alone."""
+    (tmp_path / "lrv.yaml").write_text(
+        "validation:\n  cache_dir: cache\n  unknown_prefix_severity: ERROR\n  fetch_full_text: false\n"
+        "  local_full_text_dir: local_full_text\n  signed_excerpts_dir: reference_excerpts\n"
+        "  signed_excerpts_require_verification: true\n  trust_cached_entries: true\n", encoding="utf-8")
+    (tmp_path / "local_full_text").mkdir()
+    copy = tmp_path / "local_full_text" / "ISO.99999_1_2099_1.md"
+    copy.write_text(ISO_TEXT, encoding="utf-8")
+    schema = str(SCHEMA_PATH)
+    check = ("validate", "data", "record.yaml", "--schema", schema, "--target-class", "DentalMaterial",
+             "--no-full-text")
+    _iso_record(tmp_path, "the requirements for an imaginary material")
+    signed = _lrv(tmp_path, "excerpts", "sign", "record.yaml")
+    assert signed.returncode == 0, signed.stdout + signed.stderr
+    assert (tmp_path / "reference_excerpts" / "ISO.99999_1_2099_1.yaml").is_file()
+
+    copy.unlink()
+    assert _lrv(tmp_path, *check).returncode == 0  # the bundle alone suffices
+    cached = [p.read_text(encoding="utf-8") for p in (tmp_path / "cache").glob("**/*") if p.is_file()]
+    assert not any("imaginary" in text for text in cached)  # the standard's text is never cached
+
+    _iso_record(tmp_path, "the requirements for every imaginary material")
+    assert _lrv(tmp_path, *check).returncode != 0  # an altered quote fails
+
+
+def test_every_cited_iso_standard_has_its_prefix():
+    """One prefix per ISO standard, so each one cited must be declared, or the RDF exports fail."""
+    schema = yaml.safe_load(SCHEMA_PATH.read_text(encoding="utf-8"))
+    declared = set(schema["prefixes"])
+    cited = set()
+    for path in (REPO_ROOT / "kb" / "materials").glob("*.yaml"):
+        cited |= set(re.findall(r"reference: (ISO\.\d+):", path.read_text(encoding="utf-8")))
+    assert not cited - declared, f"declare these in the schema's prefixes: {sorted(cited - declared)}"

@@ -44,6 +44,10 @@ prefixes:
   # number is a section of 21 CFR part 872 (e.g. 872.3690).
   FDA_PRODUCT_CODE: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPCD/classification.cfm?start_search=1&productcode=
   CFR: https://www.ecfr.gov/current/title-21/section-
+  # One prefix per ISO standard (src/dentamech/refsources.py, ISOSource). The
+  # pattern follows bioregistry's record for ISO 15926; it names a namespace,
+  # not a page: an expanded IRI does not resolve.
+  ISO.20795: https://standards.iso.org/iso/20795/
 
 default_prefix: dentamech
 default_range: string

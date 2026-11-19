@@ -15,8 +15,18 @@ snippet to appear in it verbatim.
 
 Regulation text is cited as `CFR:872.NNNN` and checked the same way, against
 the section as eCFR serves it (`src/dentamech/refsources.py`). The validator
-skips `url:`, `ISO` and `FDA_PRODUCT_CODE`, so quotes from FDA database pages
-and standards are still checked by people.
+skips `url:` and `FDA_PRODUCT_CODE`, so quotes from FDA database pages are
+still checked by people.
+
+An ISO standard is cited as `ISO.<number>:<part>_<year>_<edition>`:
+`ISO.20795:1_2013_2` is ISO 20795-1:2013, second edition, and a standard
+without parts drops the part (`ISO.4049:2019_5`). Each standard is its own
+prefix, so declare `ISO.<number>` in the schema's `prefixes` before citing it
+(a test checks). Standards are sold, not published: nothing is fetched, and a
+quote is checked against a local copy and signed, as for a closed paper (see
+`reference_excerpts/README.md`). Take the part, year and edition from the
+document's cover page, never from a catalogue URL, and set `evidence_source:
+STANDARD`. `reference_title` is the title on the cover page.
 
 ## Writing an item
 
