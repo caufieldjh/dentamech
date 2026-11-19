@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: record
+  slug: denture_base_polymer
+  path: kb/materials/denture_base_polymer.yaml
+session:
+  id: 2026-11-19T205517Z-claude-code-eeb46a
+  timestamp: '2026-11-19T20:55:17Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/51
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/58
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Address the second review of #58'
+  details: 'Dropped the ISO 3.3 denture definition from the denture base clinical use, which it did not
+    support (the CFR quote carries the use), and pruned it from the ISO bundle with --reference, leaving
+    other bundles alone. Dropped ''for all types'' from the water sorption conditions, since the quoted
+    clause does not name types. Typed total fracture work OTHER with a description: it is an energy per
+    area, and FRACTURE_TOUGHNESS is defined as a stress intensity. Not done, at the maintainer''s direction:
+    confirming the two url: quotes from FDA''s product classification page, which have no validator procedure
+    yet.'

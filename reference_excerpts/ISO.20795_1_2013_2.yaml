@@ -20,12 +20,6 @@ excerpts:
     source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
     validator_version: 0.8.0
     verified_at: '2026-11-19'
-- text: artificial substitute for missing natural teeth and adjacent tissues, to also include any additions needed for optimum function
-  verification:
-    method: local_full_text
-    source_sha256: 9286ad2425b73e01440ba9c4d6b33293a90c594944054a63870057d12c0d0f94
-    validator_version: 0.8.0
-    verified_at: '2026-11-19'
 - text: monomeric liquid to be mixed with polymeric particles to form a mouldable dough or fluid resin mixture used for forming denture bases
   verification:
     method: local_full_text

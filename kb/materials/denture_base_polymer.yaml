@@ -100,7 +100,7 @@ properties:
     value: <=32
     unit: µg/mm³
     test_method: ISO 20795-1:2013, 8.9
-    conditions: Requirement of ISO 20795-1:2013, second edition, for all types.
+    conditions: Requirement of ISO 20795-1:2013, second edition.
     evidence:
       - reference: ISO.20795:1_2013_2
         reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
@@ -135,7 +135,7 @@ properties:
         snippet: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
         explanation: Requirement 5.2.10, quoted with 5.2.11; m1/2 is m^1/2 flattened by text extraction.
   - name: Total fracture work, improved impact resistance
-    property_type: FRACTURE_TOUGHNESS
+    property_type: OTHER
     value: '>=900'
     unit: J/m²
     test_method: ISO 20795-1:2013, 8.6
@@ -147,6 +147,7 @@ properties:
         evidence_source: STANDARD
         snippet: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
         explanation: Requirement 5.2.11, quoted with 5.2.10; J/m2 is J/m² flattened by text extraction.
+    description: Work of fracture, an energy per area, not a stress intensity, so not typed FRACTURE_TOUGHNESS. The companion requirement on the maximum stress intensity factor is.
   - name: Surface roughness and wettability after gastric acid and cleaning
     property_type: OTHER
     conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
@@ -228,12 +229,6 @@ clinical_uses:
         evidence_source: REGULATORY_DOCUMENT
         snippet: intended to reline a denture surface that contacts tissue, to repair a fractured denture, or to form a new denture base
         explanation: The intended uses in the FDA identification.
-      - reference: ISO.20795:1_2013_2
-        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
-        supports: SUPPORT
-        evidence_source: STANDARD
-        snippet: artificial substitute for missing natural teeth and adjacent tissues, to also include any additions needed for optimum function
-        explanation: 'Definition 3.3, denture: what the base belongs to.'
 regulatory_status:
   - agency: FDA
     status: CLEARED
@@ -435,6 +430,12 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Added evidence from url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3760 to record.
+  - timestamp: '2026-11-19T20:54:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Second review of #58: dropped the ISO denture definition from the denture base use, which it did not support; dropped an unquoted ''for all types'' from the water sorption limit; typed total fracture work OTHER, since FRACTURE_TOUGHNESS is a stress intensity.'
 updated_date: '2026-11-19'
 evidence:
   - reference: ISO.20795:1_2013_2
