@@ -170,7 +170,9 @@ term-under curie root:
 # ---------------------------------------------------------------- curation
 
 # Scaffold a record. Dry-run by default; --apply writes it. Without --id the
-# id is minted, {{slug}}:<uuid>. `just new-record --name "Example" --apply`
+# id is minted, {{slug}}:<uuid>. --category is required (MaterialCategoryEnum);
+# --experimental, --purpose and --restorative-class set the classification.
+# `just new-record --name "Example" --category POLYMER --apply`
 new-record *args:
     uv run python -m {{slug}}.records new "$@"
 
