@@ -1,0 +1,392 @@
+id: dentamech:644a236e-c751-4a06-bb50-1172a61590c0
+name: Denture base polymer
+description: 'A polymer or copolymer processed into the denture base: the part of a denture that rests on the soft tissues and carries the artificial teeth. ISO 20795-1 classifies these materials by how they are processed and sets their requirements; FDA regulates them as class II devices.'
+description_evidence:
+  - reference: ISO.20795:1_2013_2
+    reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+    supports: SUPPORT
+    evidence_source: STANDARD
+    snippet: that part of a denture which rests on soft tissue foundations and to which artificial teeth are added
+    explanation: Definition 3.4, denture base.
+  - reference: ISO.20795:1_2013_2
+    reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+    supports: SUPPORT
+    evidence_source: STANDARD
+    snippet: This part of ISO 20795 classifies denture base polymers and copolymers and specifies their requirements.
+    explanation: Scope, 1.1.
+status: PROPOSED
+category: POLYMER
+synonyms:
+  - denture base resin
+  - denture base material
+composition:
+  - name: Powder
+    role: POWDER
+    description: Polymeric particles, mixed with the liquid into a mouldable dough or fluid resin, for materials supplied as powder and liquid.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: polymeric particles to be mixed with monomeric liquid to form a mouldable dough or fluid resin mixture used for forming denture bases
+        explanation: Definition 3.8, powder.
+  - name: Liquid
+    role: LIQUID
+    description: Monomeric liquid, mixed with the powder. A Type 3 thermoplastic is supplied as a blank or powder with no liquid.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: monomeric liquid to be mixed with polymeric particles to form a mouldable dough or fluid resin mixture used for forming denture bases
+        explanation: Definition 3.7, liquid.
+  - name: Methyl methacrylate
+    role: OTHER
+    description: The monomer FDA names as an example material, and the one whose residue ISO 20795-1 limits in every type. Not every denture base polymer is made from it.
+    chemical:
+      preferred_term: methyl methacrylate
+      term:
+        id: CHEBI:34840
+        label: methyl methacrylate
+    evidence:
+      - reference: CFR:872.3760
+        reference_title: 21 CFR 872.3760 Denture relining, repairing, or rebasing resin
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: a device composed of materials such as methylmethacrylate
+        explanation: FDA names methyl methacrylate as an example of what the device is composed of, not the only material.
+properties:
+  - name: Ultimate flexural strength
+    property_type: FLEXURAL_STRENGTH
+    value: '>=65 (Types 1, 3, 4, 5); >=60 (Type 2)'
+    unit: MPa
+    test_method: ISO 20795-1:2013, 8.5.3.5
+    conditions: Requirement of ISO 20795-1:2013, second edition.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: the ultimate flexural strength shall be not less than 65 MPa for Type 1, Type 3, Type 4, and Type 5 polymers and not less than 60 MPa for Type 2 polymers
+        explanation: Requirement 5.2.8.
+  - name: Flexural modulus
+    property_type: ELASTIC_MODULUS
+    value: '>=2000 (Types 1, 3, 4, 5); >=1500 (Type 2)'
+    unit: MPa
+    test_method: ISO 20795-1:2013, 8.5.3.5
+    conditions: Requirement of ISO 20795-1:2013, second edition.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: the flexural modulus of the processed polymer shall be at least 2 000 MPa for Type 1, Type 3, Type 4, and Type 5 polymers and at least 1 500 MPa for Type 2 polymers
+        explanation: Requirement 5.2.9.
+  - name: Residual methyl methacrylate monomer
+    property_type: OTHER
+    value: <=2.2 (Types 1, 3, 4, 5); <=4.5 (Type 2)
+    unit: '% mass fraction'
+    test_method: ISO 20795-1:2013, 8.8
+    conditions: Requirement of ISO 20795-1:2013, second edition.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: The upper limit (maximum) for residual methyl methacrylate is 2,2 % mass fraction for denture base polymers of Type 1, Type 3, Type 4, and Type 5. ... The upper limit (maximum) for residual methyl methacrylate is 4,5 % mass fraction for denture base polymers of Type 2.
+        explanation: Requirement 5.2.13. ISO writes decimal commas.
+  - name: Water sorption
+    property_type: WATER_SORPTION
+    value: <=32
+    unit: µg/mm³
+    test_method: ISO 20795-1:2013, 8.9
+    conditions: Requirement of ISO 20795-1:2013, second edition, for all types.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: the increase in mass per volume (water sorption) shall not exceed 32 µg/mm3
+        explanation: Requirement 5.2.14; the text extraction flattens mm³ to mm3.
+  - name: Solubility
+    property_type: SOLUBILITY
+    value: <=1.6 (Types 1, 3, 4, 5); <=8.0 (Type 2)
+    unit: µg/mm³
+    test_method: ISO 20795-1:2013, 8.9
+    conditions: Requirement of ISO 20795-1:2013, second edition.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: the loss in mass (soluble matter) per volume shall not exceed 1,6 µg/mm3 for Type 1, Type 3, Type 4, and Type 5 polymers and shall not exceed 8,0 µg/mm3 for Type 2 polymers
+        explanation: Requirement 5.2.15.
+  - name: Maximum stress intensity factor, improved impact resistance
+    property_type: FRACTURE_TOUGHNESS
+    value: '>=1.9'
+    unit: MPa·m^1/2
+    test_method: ISO 20795-1:2013, 8.6
+    conditions: Applies only where the manufacturer claims improved impact resistance.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
+        explanation: Requirement 5.2.10, quoted with 5.2.11; m1/2 is m^1/2 flattened by text extraction.
+  - name: Total fracture work, improved impact resistance
+    property_type: FRACTURE_TOUGHNESS
+    value: '>=900'
+    unit: J/m²
+    test_method: ISO 20795-1:2013, 8.6
+    conditions: Applies only where the manufacturer claims improved impact resistance.
+    evidence:
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: Where a manufacturer claims a material with improved impact resistance, the maximum stress intensity factor shall be at least 1,9 MPa m1/2 ... the total fracture work shall be at least 900 J/m2
+        explanation: Requirement 5.2.11, quoted with 5.2.10; J/m2 is J/m² flattened by text extraction.
+  - name: Surface and colour after gastric acid and cleaning
+    property_type: COLOR_STABILITY
+    conditions: 'In vitro: one heat-polymerized and two 3D-printed denture base resins, erosive cycling with gastric acid, then four routine cleaning protocols.'
+    description: Roughness and hydrophilicity rose in all three resins, colour changed perceptibly and Candida albicans colonization increased, while water sorption, solubility and chemical structure did not change.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Despite stable chemical structure and bulk properties, gastric acid exposure combined with routine cleaning impaired surface integrity, color stability, and resistance to microbial colonization of denture base resins.
+        explanation: Abstract, conclusions.
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Water sorption and solubility remained low and unchanged ... and FTIR analysis revealed no chemical degradation. However, all resins exhibited clinically perceptible color changes
+        explanation: Abstract, results; the p-values are omitted.
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: fabricated from one heat-polymerized resin (HT) and two 3D-printed resins
+        explanation: 'Abstract, methods: the materials the finding covers.'
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Erosive cycling followed by cleaning increased surface roughness ... and hydrophilicity ... in all resins.
+        explanation: Abstract, results; the p-values are omitted.
+      - reference: DOI:10.1016/j.jdent.2026.106635
+        reference_title: Impact of cleaning protocols on surface integrity and biofilm formation of heat-polymerized and 3D-printed denture base resins after gastric acid exposure
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: all resins exhibited clinically perceptible color changes ... and increased Candida albicans colonization
+        explanation: Abstract, results; the p-values are omitted.
+clinical_uses:
+  - name: Denture base
+    use_context: PROSTHODONTIC
+    description: Forming a new denture base, relining the tissue surface of a denture, and repairing a fractured denture.
+    evidence:
+      - reference: CFR:872.3760
+        reference_title: 21 CFR 872.3760 Denture relining, repairing, or rebasing resin
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: intended to reline a denture surface that contacts tissue, to repair a fractured denture, or to form a new denture base
+        explanation: The intended uses in the FDA identification.
+      - reference: ISO.20795:1_2013_2
+        reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+        supports: SUPPORT
+        evidence_source: STANDARD
+        snippet: artificial substitute for missing natural teeth and adjacent tissues, to also include any additions needed for optimum function
+        explanation: 'Definition 3.3, denture: what the base belongs to.'
+regulatory_status:
+  - agency: FDA
+    status: CLEARED
+    regulation_number: '872.3760'
+    regulation_title: Denture relining, repairing, or rebasing resin
+    device_class: CLASS_II
+    product_codes:
+      - EBI
+    pathways:
+      - PREMARKET_NOTIFICATION_510K
+    identification: A denture relining, repairing, or rebasing resin is a device composed of materials such as methylmethacrylate, intended to reline a denture surface that contacts tissue, to repair a fractured denture, or to form a new denture base. This device is not available for over-the-counter (OTC) use.
+    source_url: https://www.ecfr.gov/current/title-21/section-872.3760
+    evidence:
+      - reference: CFR:872.3760
+        reference_title: 21 CFR 872.3760 Denture relining, repairing, or rebasing resin
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: (b) Classification. Class II.
+        explanation: The device type is class II.
+      - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3760
+        reference_title: FDA Product Classification Database, regulation 872.3760
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Product Code EBI
+        explanation: 'FDA Product Classification Database, regulation 872.3760: device resin, denture, relining, repairing, rebasing; submission type 510(k); device class 2. Read 2026-11-19.'
+standards:
+  - identifier: ISO 20795-1:2013
+    title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+    organization: ISO
+discussions:
+  - discussion_id: ohd-term-denture-base-polymer
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: 'OHD has no term for denture base polymer (l~denture base finds no material, searched 2026-11-18 and 2026-11-19). Propose one, at this grain, named as in ISO 20795-1. Where it belongs, under dental restoration material (OHD:0000000) or in a prosthodontic material branch, is for OHD to decide; that answer would also give this record its parents. Subtypes would follow ISO''s types (heat-polymerizable, autopolymerizable, thermoplastic, light-activated, microwave cured), with additively manufactured resins, which the 2013 edition does not classify. See issue #51.'
+  - discussion_id: classification-denture-base-polymer
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: 'purpose and restorative_class are unset. Is a denture base polymer RESTORATIVE with restorative_class POLYMER? Asked of the project''s dental materials expert in #51.'
+  - discussion_id: setting-mechanisms-denture-base-polymer
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: setting_mechanisms is unset. ISO 20795-1 types are heat-polymerizable, autopolymerizable, thermoplastic, light-activated and microwave cured, and SettingMechanismEnum has values for only some of these (SELF_CURED, LIGHT_CURED; ADDITIVE_MANUFACTURING for printed resins). Listing only those would misdescribe the class; the enum needs values for heat and microwave polymerization and thermoplastic moulding first.
+notes: Every requirement here is from ISO 20795-1:2013, the second edition (FDA recognition 4-232). The ISO catalogue link the project's expert gave (iso.org/standard/91143) is a different catalogue entry from the copy curated here (62277); which edition it names has not been checked. ISO 20795-1:2013 sorts denture base polymers into Type 1 heat-polymerizable (Class 1 powder and liquid, Class 2 plastic cake), Type 2 autopolymerizable (Class 1 powder and liquid, Class 2 powder and liquid for pour-type resins), Type 3 thermoplastic blank or powder, Type 4 light-activated and Type 5 microwave cured. 3D-printed denture base resins fall in none of these, so the 2013 limits are not applied to them here. FDA's guidance Denture Base Resins - Performance Criteria for Safety and Performance Based Pathway is a lead not yet read.
+creation_date: '2026-11-19'
+curation_history:
+  - timestamp: '2026-11-19T20:28:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: 'Created for #51 under a minted id: OHD has no denture base material term. Requirements quoted from ISO 20795-1:2013 through signed excerpts; regulation from 21 CFR 872.3760 and FDA''s product classification database; in vitro findings from DOI:10.1016/j.jdent.2026.106635.'
+  - timestamp: '2026-11-19T20:28:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to description.
+  - timestamp: '2026-11-19T20:28:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to description.
+  - timestamp: '2026-11-19T20:28:50+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to record.
+  - timestamp: '2026-11-19T20:28:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to composition[0].
+  - timestamp: '2026-11-19T20:28:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to composition[1].
+  - timestamp: '2026-11-19T20:28:54+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3760 to composition[1].
+  - timestamp: '2026-11-19T20:28:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[0].
+  - timestamp: '2026-11-19T20:28:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[1].
+  - timestamp: '2026-11-19T20:28:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[2].
+  - timestamp: '2026-11-19T20:29:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[3].
+  - timestamp: '2026-11-19T20:29:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[4].
+  - timestamp: '2026-11-19T20:29:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to properties[5].
+  - timestamp: '2026-11-19T20:29:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[6].
+  - timestamp: '2026-11-19T20:29:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[6].
+  - timestamp: '2026-11-19T20:29:19+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[6].
+  - timestamp: '2026-11-19T20:29:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3760 to clinical_uses[0].
+  - timestamp: '2026-11-19T20:29:23+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from ISO.20795:1_2013_2 to clinical_uses[0].
+  - timestamp: '2026-11-19T20:29:24+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3760 to regulatory_status[0].
+  - timestamp: '2026-11-19T20:29:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3760 to regulatory_status[0].
+  - timestamp: '2026-11-19T20:35:40+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Before review: set status PROPOSED; left the liquid unbound and gave methyl methacrylate its own component, since FDA names it only as an example; split the improved impact resistance requirement into two properties; dropped an unsourced synonym; quoted the roughness, hydrophilicity and Candida findings the gastric acid property states.'
+  - timestamp: '2026-11-19T20:35:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[7].
+  - timestamp: '2026-11-19T20:35:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106635 to properties[7].
+updated_date: '2026-11-19'
+evidence:
+  - reference: ISO.20795:1_2013_2
+    reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
+    supports: SUPPORT
+    evidence_source: STANDARD
+    snippet: 'Type 1: Heat-polymerizable materials ... Type 2: Autopolymerizable materials ... Type 3: Thermoplastic blank or powder ... Type 4: Light-activated materials ... Type 5: Microwave cured materials'
+    explanation: 'Clause 4, Classification: the five types named in notes. The classes under Types 1 and 2 are omitted here.'
