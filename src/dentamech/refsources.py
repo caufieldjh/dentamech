@@ -149,6 +149,6 @@ class ISOSource(ReferenceSource):
 
 
 def register() -> None:
-    """Make ``CFR:`` and ``ISO:`` known to the validator in this process. Safe to call twice."""
+    """Make ``CFR:`` and ``ISO.<number>:`` known to the validator in this process. Safe to call twice."""
     ReferenceSourceRegistry.register(CFRSource)
     ReferenceSourceRegistry.register(ISOSource)

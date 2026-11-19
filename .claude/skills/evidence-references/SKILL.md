@@ -28,6 +28,13 @@ quote is checked against a local copy and signed, as for a closed paper (see
 document's cover page, never from a catalogue URL, and set `evidence_source:
 STANDARD`. `reference_title` is the title on the cover page.
 
+The form holds one numeric part and nothing else. An ISO/TS or ISO/TR
+document (e.g. ISO/TS 11405), an amendment, or a multi-level part cannot be
+cited this way yet. Never squeeze one in, say by putting `Amd 1` into the
+edition field. Cite its catalogue entry as `url:`, and open an issue to extend
+`ISO_REFERENCE` in `src/dentamech/refsources.py`: the form is a schema and
+policy decision, since it fixes reference ids and bundle filenames.
+
 ## Writing an item
 
 1. Find a primary source that states the claim. Prefer the paper that

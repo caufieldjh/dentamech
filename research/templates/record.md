@@ -161,7 +161,7 @@ This section is the reason the knowledge base exists. Be exact.
 - Include **direct quotes from abstracts** to support key statements. Quotes must be exact. Do not paraphrase inside quotation marks.
 - Distinguish evidence source types: human clinical, in vitro / laboratory, computational, systematic review, regulatory document, technical standard, manufacturer document, textbook.
 - For regulatory claims, cite the regulation section or database record by URL and quote it verbatim.
-- For standards, cite the ISO or ADA catalog entry by URL.
+- For standards, cite the ISO or ADA catalog entry by URL. (Curators quote an ISO standard's own text separately, from a local copy.)
 - Never fabricate an identifier. If you cannot find a PMID, say so and give the title and authors instead.
 
 ## Output Format
