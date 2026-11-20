@@ -5,15 +5,15 @@ description_evidence:
   - reference: DOI:10.1016/j.jdent.2026.106633
     reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
     supports: SUPPORT
-    evidence_source: IN_VITRO
+    evidence_source: OTHER
     snippet: Antibacterial composite resins incorporate antimicrobial agents to inhibit or eliminate bacteria within dental plaque biofilms, thereby contributing to caries prevention.
-    explanation: 'Introduction, background citing a review: what the class is and what it is for.'
+    explanation: 'Introduction, background citing a review: what the class is and what it is for. OTHER: background the paper cites from other work, not its own results.'
   - reference: DOI:10.1016/j.jdent.2026.106633
     reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
     supports: SUPPORT
-    evidence_source: IN_VITRO
+    evidence_source: OTHER
     snippet: bacterial adhesion to restorative surfaces and subsequently leading to secondary caries, a primary cause of restoration failure
-    explanation: 'Introduction, background: why an antibacterial agent is added.'
+    explanation: 'Introduction, background: why an antibacterial agent is added. OTHER: background the paper cites from other work, not its own results.'
 status: DRAFT
 category: RESIN_COMPOSITE
 purpose: RESTORATIVE
@@ -31,21 +31,21 @@ composition:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: 'Antimicrobial agents can be broadly categorized into three types: non-releasing, releasing, and hybrid systems'
-        explanation: 'Introduction, background: the three kinds of agent.'
+        explanation: 'Introduction, background: the three kinds of agent. OTHER: background the paper cites from other work, not its own results.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Non-releasing agents, such as the quaternary ammonium compound 12-methacryloyloxydodecylpyridinium bromide (MDPB), are widely used as antimicrobial monomers in commercial resin systems
-        explanation: 'Introduction, background: a non-releasing agent, MDPB.'
+        explanation: 'Introduction, background: a non-releasing agent, MDPB. OTHER: background the paper cites from other work, not its own results.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Releasing agents, such as zinc oxide (ZnO) nanoparticles and chlorhexidine (CHX), release antimicrobial components gradually, thereby inhibiting bacterial growth
-        explanation: 'Introduction, background: releasing agents.'
+        explanation: 'Introduction, background: releasing agents. OTHER: background the paper cites from other work, not its own results.'
 properties:
   - name: Antibacterial activity
     property_type: ANTIBACTERIAL_ACTIVITY
@@ -54,9 +54,9 @@ properties:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Conventional composite resins have been reported to lack antimicrobial activity and are therefore unable to effectively inhibit the formation of dental plaque biofilms
-        explanation: 'Introduction, background: the property that distinguishes the class from conventional composites.'
+        explanation: 'Introduction, background: the property that distinguishes the class from conventional composites. OTHER: background the paper cites from other work, not its own results.'
 discussions:
   - discussion_id: ohd-term-antibacterial-resin-based-composite
     kind: CURATION_TODO
@@ -134,3 +134,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Self-review: returned to DRAFT, since every quote is background from one paper's introduction and the evidence rules prefer the paper that showed a claim; dropped the clinical use, whose direct-restoration context no quote stated."
+  - timestamp: '2026-11-20T17:45:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Third review of #62: tagged the introduction quotes OTHER, since they are background the paper cites, not its own results."

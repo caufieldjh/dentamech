@@ -198,6 +198,10 @@ discussions:
     kind: CURATION_TODO
     status: OPEN
     prompt: 'OHD has no term for a dental adhesive or bonding agent (l~adhesive, l~bonding, l~bond and l~primer find no material, searched 2026-11-20). OHD has hydroxyethyl methacrylate (OHD:0001082), an adhesive monomer, under dental restoration material. Propose a term for dental adhesive (resin tooth bonding agent, as FDA names it), with universal adhesive as a child defined by use in more than one etching mode. Its parent here is dental restoration material (OHD:0000000), the curator''s choice until a term exists.'
+  - discussion_id: placement-restoration-success-universal-adhesive
+    kind: OPEN_QUESTION
+    status: OPEN
+    prompt: 'The 33.3% 24-month success item is success of adhesive and Filtek Z250 together, its failures esthetic, and is here at the maintainer''s request. Read alone, a success rate on this record may be taken as adhesive performance. When a source with universal-adhesive retention rates is curated, consider moving the item to the resin-based composite record and recording retention here instead.'
   - discussion_id: composition-universal-adhesive
     kind: KNOWLEDGE_GAP
     status: OPEN
@@ -372,3 +376,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Review of #62: named the 24-month success item as restoration success with the composite, stating its failures were esthetic and not bond failures; said in the evidence discussion that a defining source must replace the definition quotes before the record leaves DRAFT."
+  - timestamp: '2026-11-20T17:45:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Third review of #62: opened a discussion on moving the 24-month restoration success figure to the composite record once a universal-adhesive retention source is curated."
