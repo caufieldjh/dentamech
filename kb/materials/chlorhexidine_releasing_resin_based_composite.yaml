@@ -245,7 +245,7 @@ properties:
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: was used in the absorption mode
+        snippet: the Fourier transform infrared spectrometer (FTIR, Nicolet iS5, Thermo, United States) was used in the absorption mode
         explanation: 'Methods 2.2: conversion was measured by FTIR.'
   - name: Chlorhexidine release
     property_type: OTHER
@@ -632,3 +632,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Self-review: split the initiator into camphorquinone and DMAEMA, and the loaded filler into chlorhexidine digluconate and bioactive glass 45S5, so no chemical binds only part of a component; dropped unquoted temperatures and times; quoted specimen counts, assays and animal species; set the proposed use's context to OTHER."
+  - timestamp: '2026-11-20T17:07:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Review of #62: lengthened the conversion-method quote to name the FTIR instrument."

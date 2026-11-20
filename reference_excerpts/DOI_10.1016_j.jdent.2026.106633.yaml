@@ -254,7 +254,7 @@ excerpts:
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: was used in the absorption mode
+- text: the Fourier transform infrared spectrometer (FTIR, Nicolet iS5, Thermo, United States) was used in the absorption mode
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4

@@ -80,12 +80,6 @@ excerpts:
     source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: The discs with residual adherent bacteria were stained with
-  verification:
-    method: local_full_text
-    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
-    validator_version: 0.8.0
-    verified_at: '2026-11-20'
 - text: Their highly ordered structure enables ion exchange with the surrounding environment
   verification:
     method: local_full_text
@@ -141,6 +135,12 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-20'
 - text: color differences were determined using the CIEDE2000 Eq.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The discs with residual adherent bacteria were stained with ... of crystal violet solution
   verification:
     method: local_full_text
     source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e

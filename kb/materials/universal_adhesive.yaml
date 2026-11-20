@@ -89,14 +89,14 @@ clinical_uses:
         snippet: intended to be painted on the interior of a prepared cavity of a tooth to improve retention of a restoration, such as a filling
         explanation: The intended use FDA names for resin tooth bonding agents.
 clinical_performance:
-  - name: Success of cervical composite restorations without pretreatment, 24 months
+  - name: Restoration success with Filtek Z250, no pretreatment, 24 months (esthetic failures, not bond failures)
     measure_type: SUCCESS_RATE
     value: '33.3'
     unit: '%'
     follow_up_years: 2.0
     population: The untreated control arm of a split-mouth randomized trial, nine non-carious cervical lesions restored with Single Bond Universal in self-etch mode and Filtek Z250.
     comparator: 88.9% in each of the three diode laser pretreatment arms (nine lesions each).
-    description: 'All restorations succeeded at 6 and 12 months. By 24 months six of the nine control restorations had failed, any FDI score of 4 or 5 counting as failure. The failures were driven by esthetic deterioration (surface luster and staining), while fracture and retention stayed excellent in every arm, so the figure says more about the restoration''s surface than about the adhesive bond.'
+    description: 'Success of the whole restoration, adhesive and Filtek Z250 composite together, not of the adhesive alone. All restorations succeeded at 6 and 12 months. By 24 months six of the nine control restorations had failed, any FDI score of 4 or 5 counting as failure. The failures were esthetic (surface luster and staining), while fracture and retention stayed excellent in every arm, so this is not a 66.7% failure rate of the bond; it says more about the composite surface. Kept at the maintainer''s request for the control arm''s clinical data.'
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106629
         reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
@@ -205,7 +205,7 @@ discussions:
   - discussion_id: evidence-universal-adhesive
     kind: KNOWLEDGE_GAP
     status: OPEN
-    prompt: 'The only source is a trial of diode laser pretreatment, in which the adhesive is the same in every arm; it says how this adhesive performed, not how universal adhesives compare with other adhesives. The trial cites clinical studies of universal adhesives in cervical lesions (for example Peumans 2023, Haak 2023, Tepe 2024), which are leads to fetch.'
+    prompt: 'The definition (use in more than one etching mode) rests on a sample-size sentence and a methods sentence of one trial; a source that defines the class must replace them before this record goes beyond DRAFT. The only source is a trial of diode laser pretreatment, in which the adhesive is the same in every arm; it says how this adhesive performed, not how universal adhesives compare with other adhesives. The trial cites clinical studies of universal adhesives in cervical lesions (for example Peumans 2023, Haak 2023, Tepe 2024), which are leads to fetch.'
 notes: 'Evidence is from one split-mouth trial with an in vitro arm (DOI:10.1016/j.jdent.2026.106629). Its control group fell to 33.3% success at 24 months, from loss of surface luster and staining, which reflect the composite surface more than the adhesive; the figure is recorded with that caveat. Classification by purpose is left unset: an adhesive may be AUXILIARY or part of the restoration, which is question 1 for the project''s expert on #50.'
 creation_date: '2026-11-20'
 updated_date: '2026-11-20'
@@ -366,3 +366,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Self-review: added the untreated control's bond strength and its 24-month success rate (33.3%, failures esthetic), as the maintainer asked for the control arm; corrected where the etching-mode quote sits. Returned to DRAFT: composition is not recorded, so the record is not complete."
+  - timestamp: '2026-11-20T17:07:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Review of #62: named the 24-month success item as restoration success with the composite, stating its failures were esthetic and not bond failures; said in the evidence discussion that a defining source must replace the definition quotes before the record leaves DRAFT."
