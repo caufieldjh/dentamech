@@ -32,12 +32,6 @@ excerpts:
     source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: However, after aging, the 0.5% NZ group exhibited a significantly higher
-  verification:
-    method: local_full_text
-    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
-    validator_version: 0.8.0
-    verified_at: '2026-11-20'
 - text: Limitations of this study include the use of a single type of 3D-printed resin and only two NZ concentrations.
   verification:
     method: local_full_text
@@ -141,6 +135,18 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-20'
 - text: The discs with residual adherent bacteria were stained with ... of crystal violet solution
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: However, after aging, the 0.5% NZ group exhibited a significantly higher ... value (1.78) than the 0.25% NZ group (0.64)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Regarding the effect of NZ addition on resin color, the Mann-Whitney U test (Table 1) showed no significant difference between the 0.25% and 0.5% NZ groups before thermocycling.
   verification:
     method: local_full_text
     source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e

@@ -147,9 +147,9 @@ composition:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: OTHER
+        evidence_source: IN_VITRO
         snippet: This pre-loading strategy aimed to reduce the free CHX content within the resin matrix, thereby minimizing its negative impact on mechanical properties.
-        explanation: 'Introduction: why a carrier is used. OTHER: background the paper cites from other work, not its own results.'
+        explanation: 'Introduction, last paragraphs: the authors'' rationale for their own design, so tagged with the study, not as cited background.'
   - name: Silanized silica
     role: FILLER
     description: Silicon dioxide surface-treated with KH-570 silane, the second inorganic filler, in the formulation curated. Its proportion is not recorded; the text extraction garbles it.
@@ -178,8 +178,8 @@ properties:
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: 185.500±3.271 ... 176.333±2.875
-        explanation: 'Table 1, compressive strength: C0 (no chlorhexidine) then C2 (2% loading).'
+        snippet: The compressive strength of C_0 was 185.500 ± 3.271 ... and that of C_2 was reduced to 176.333 ± 2.875
+        explanation: 'Results 3.2.1, with the group labels: C0 has no chlorhexidine, C2 the 2% loading.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
@@ -286,7 +286,7 @@ properties:
   - name: Antibacterial activity
     property_type: ANTIBACTERIAL_ACTIVITY
     conditions: In vitro, 2% chlorhexidine group against the chlorhexidine-free composite, Staphylococcus aureus and Escherichia coli only, short incubation.
-    description: The 2% chlorhexidine composite inhibited both species significantly, by optical density, plate counts and inhibition zones. The study called these tests preliminary, chose the two strains as representative Gram-positive and Gram-negative bacteria, and left more specific pathogens for later work.
+    description: Against both species, the 2% chlorhexidine composite gave significantly lower optical density than the chlorhexidine-free composite and the blank control, fewer colonies on plate counts, and inhibition zones on agar. The study called these tests preliminary, chose the two strains as representative Gram-positive and Gram-negative bacteria, and left more specific pathogens for later work.
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
@@ -312,6 +312,24 @@ properties:
         evidence_source: IN_VITRO
         snippet: This test was intended to conduct an initial evaluation of the system's antimicrobial properties before further investigation with more specific pathogenic bacteria.
         explanation: 'Methods 2.6: the strains were a first screen, not oral pathogens chosen for relevance.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: were significantly lower than those of the blank control groups and
+        explanation: Results 3.5, optical density of C2 against the blank control and C0.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: a decrease in the number of colonies on the plates was observed in the
+        explanation: Results 3.5, plate counts for C2 against C0.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: plate diffusion experiments revealed that ... exhibited distinct inhibition zones against both bacterial strains
+        explanation: Results 3.5, inhibition zones of C2.
   - name: Cytocompatibility and in vivo safety
     property_type: BIOCOMPATIBILITY
     conditions: CCK-8 assay with mouse bone marrow mesenchymal stem cells at 24, 48 and 72 h; acute oral toxicity in rats; oral mucosal irritation in golden hamsters.
@@ -321,8 +339,8 @@ properties:
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: CCK-8 assays showed that ... maintained comparable cell viability to ... at 24, 48, and
-        explanation: 'Abstract, results: C2 against C0.'
+        snippet: the cell viability in the low concentration group ... showed no statistically significant difference compared to the control group
+        explanation: 'Discussion, CCK-8 results: the low concentration group is C2 (2%), the control C0.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
@@ -674,3 +692,27 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Third review of #62: tagged the introduction quotes OTHER, since they are background the paper cites, not its own results."
+  - timestamp: '2026-11-20T18:01:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Fourth review of #62: kept group labels in the compressive strength and cell viability quotes; quoted the three antibacterial methods and stated significance only for optical density; retagged the carrier rationale as the study's own."
+  - timestamp: '2026-11-20T18:01:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:02:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:02:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].

@@ -91,7 +91,7 @@ properties:
   - name: Colour stability after aging
     property_type: COLOR_STABILITY
     conditions: In vitro, CIEDE2000 colour difference after thermocycling (600 cycles).
-    description: Both nanozeolite groups changed colour less with aging than the unmodified resin, which changed most, but these differences were not statistically significant. Between the two nanozeolite groups, 0.5% differed significantly more than 0.25% after aging.
+    description: 'Two measures. Colour shift with aging: the unmodified resin shifted most (1.61) and the 0.25% group least (0.97), and the abstract says both nanozeolite groups shifted less than the unmodified resin; these differences were not statistically significant. Effect of nanozeolite on colour: after aging, the 0.5% group''s colour difference (ΔE 1.78) was significantly larger than the 0.25% group''s (0.64), with no difference before aging. The paper does not state what that ΔE is measured against; presumably the unmodified resin, so it says how far each loading moved the colour from the base resin, not how stable it was.'
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106622
         reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
@@ -103,8 +103,8 @@ properties:
         reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: However, after aging, the 0.5% NZ group exhibited a significantly higher
-        explanation: 'Results 3.2: 0.5% against 0.25% after aging; the values are 1.78 and 0.64.'
+        snippet: However, after aging, the 0.5% NZ group exhibited a significantly higher ... value (1.78) than the 0.25% NZ group (0.64)
+        explanation: 'Results 3.2: the effect of nanozeolite on colour, ΔE compared between the two loadings after aging (the extraction garbles the symbol ΔE). A different measure from the aging shifts, 1.61 and 0.97.'
       - reference: DOI:10.1016/j.jdent.2026.106622
         reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
         supports: SUPPORT
@@ -117,6 +117,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: color differences were determined using the CIEDE2000 Eq.
         explanation: Methods 2.4.
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Regarding the effect of NZ addition on resin color, the Mann-Whitney U test (Table 1) showed no significant difference between the 0.25% and 0.5% NZ groups before thermocycling.
+        explanation: 'Results 3.2: the effect of nanozeolite on colour, before aging.'
   - name: Degree of conversion
     property_type: DEGREE_OF_CONVERSION
     value: 91.9 ± 0.4 (before aging); 92.1 ± 0.7 (after aging)
@@ -396,6 +402,18 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Third review of #62: tagged the introduction quotes OTHER, since they are background the paper cites, not its own results."
+  - timestamp: '2026-11-20T18:01:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Fourth review of #62: completed the truncated colour quote, separated the two colour measures (shift with aging, and the effect of nanozeolite on colour), and stated what each value is."
+  - timestamp: '2026-11-20T18:02:11+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[1].
 evidence:
   - reference: DOI:10.1016/j.jdent.2026.106622
     reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin

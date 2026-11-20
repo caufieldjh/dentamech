@@ -2,12 +2,6 @@ reference_id: DOI:10.1016/j.jdent.2026.106633
 title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
 source_char_count: 56995
 excerpts:
-- text: 185.500±3.271 ... 176.333±2.875
-  verification:
-    method: local_full_text
-    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
-    validator_version: 0.8.0
-    verified_at: '2026-11-20'
 - text: 88.717±3.012 ... 86.167±1.428
   verification:
     method: local_full_text
@@ -39,12 +33,6 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-20'
 - text: Bisphenol A-glycidyl methacrylate (Bis-GMA, Sigma Aldrich Chemical Co., Shanghai, China) and triethylene glycol dimethacrylate (TEGDMA, Sigma Aldrich Chemical Co.) were mixed at a mass ratio of 7:3 (w/w)
-  verification:
-    method: local_full_text
-    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
-    validator_version: 0.8.0
-    verified_at: '2026-11-20'
-- text: CCK-8 assays showed that ... maintained comparable cell viability to ... at 24, 48, and
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
@@ -255,6 +243,36 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-20'
 - text: the Fourier transform infrared spectrometer (FTIR, Nicolet iS5, Thermo, United States) was used in the absorption mode
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The compressive strength of C_0 was 185.500 ± 3.271 ... and that of C_2 was reduced to 176.333 ± 2.875
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: a decrease in the number of colonies on the plates was observed in the
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: plate diffusion experiments revealed that ... exhibited distinct inhibition zones against both bacterial strains
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: the cell viability in the low concentration group ... showed no statistically significant difference compared to the control group
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: were significantly lower than those of the blank control groups and
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
