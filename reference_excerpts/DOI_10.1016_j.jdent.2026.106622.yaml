@@ -110,3 +110,39 @@ excerpts:
     source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
     validator_version: 0.8.0
     verified_at: '2026-11-20'
+- text: After 7, 15, 30, and 60 days
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Color stability and material release (NZ and monomer) were measured using UV-Vis spectrophotometry.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: DC was analyzed by Fourier Transform Infrared Spectroscopy (FTIR)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Thermal behavior was assessed using thermogravimetric analysis (TGA) and differential scanning calorimetry (DSC)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: With respect to the influence of thermal aging on color change, the control group showed the greatest color shift (1.61), while the 0.25% NZ group showed the least (0.97). However, these differences were not statistically significant.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: color differences were determined using the CIEDE2000 Eq.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'

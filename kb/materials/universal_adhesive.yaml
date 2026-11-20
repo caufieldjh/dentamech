@@ -7,14 +7,14 @@ description_evidence:
     supports: SUPPORT
     evidence_source: HUMAN_CLINICAL
     snippet: for universal adhesives applied in selective-etch and etch-and-rinse modes
-    explanation: 'Introduction, citing a randomized trial: universal adhesives are applied in more than one etching mode.'
+    explanation: 'Methods, sample size calculation, citing Haak et al. 2023: universal adhesives applied in more than one etching mode. A thin basis for a definition; see the evidence discussion.'
   - reference: DOI:10.1016/j.jdent.2026.106629
     reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
     supports: SUPPORT
     evidence_source: HUMAN_CLINICAL
     snippet: using a self-etch protocol with Single Bond Universal (3 M ESPE)
     explanation: 'Methods: the same adhesive used in self-etch mode.'
-status: PROPOSED
+status: DRAFT
 category: ADHESIVE
 parents:
   - OHD:0000000
@@ -23,10 +23,10 @@ synonyms:
 properties:
   - name: Micro-shear bond strength to dentin
     property_type: BOND_STRENGTH
-    value: 48.75 ± 10.27 to 65.83 ± 25.87 (group means)
+    value: 54.88 ± 13.81 (untreated control); 48.75 ± 10.27 to 65.83 ± 25.87 (range of group means)
     unit: MPa
     test_method: Micro-shear bond strength, composite micro-rods on dentin discs
-    conditions: 'In vitro: Single Bond Universal with Filtek Z250 XT on human third molar dentin, with or without diode laser pretreatment, ten specimens per group. Group means did not differ significantly.'
+    conditions: 'In vitro: Single Bond Universal with Filtek Z250 XT on human third molar dentin, ten specimens per group; the control had no pretreatment, the other three groups a diode laser pretreatment. Group means did not differ significantly.'
     description: Mixed failures were the most common in every group, and pure adhesive failures were rare.
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106629
@@ -59,6 +59,18 @@ properties:
         evidence_source: IN_VITRO
         snippet: Pure adhesive failures were rare, observed in only one specimen each in Groups I, II, and III
         explanation: Results 3.1.2.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Group IV control ... 54.88 ... (13.81)
+        explanation: "Table 2: the untreated control's mean and standard deviation."
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Forty freshly extracted, non-carious, impacted human third molars
+        explanation: 'Methods 2.1: the dentin source.'
 clinical_uses:
   - name: Bonding composite restorations to dentin
     use_context: ADHESIVE
@@ -77,6 +89,51 @@ clinical_uses:
         snippet: intended to be painted on the interior of a prepared cavity of a tooth to improve retention of a restoration, such as a filling
         explanation: The intended use FDA names for resin tooth bonding agents.
 clinical_performance:
+  - name: Success of cervical composite restorations without pretreatment, 24 months
+    measure_type: SUCCESS_RATE
+    value: '33.3'
+    unit: '%'
+    follow_up_years: 2.0
+    population: The untreated control arm of a split-mouth randomized trial, nine non-carious cervical lesions restored with Single Bond Universal in self-etch mode and Filtek Z250.
+    comparator: 88.9% in each of the three diode laser pretreatment arms (nine lesions each).
+    description: 'All restorations succeeded at 6 and 12 months. By 24 months six of the nine control restorations had failed, any FDI score of 4 or 5 counting as failure. The failures were driven by esthetic deterioration (surface luster and staining), while fracture and retention stayed excellent in every arm, so the figure says more about the restoration''s surface than about the adhesive bond.'
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: In contrast, the control group exhibited a substantial decline, with success decreasing to 33.3% and failure increasing to 66.7%.
+        explanation: Results 3.2.4, at 24 months.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: maintained high and identical success rates (88.9%)
+        explanation: 'Results 3.2.4: the three laser arms, the comparator.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Restoration outcomes were determined based on the highest score assigned within the esthetic, functional, or biological categories, with any score of 4 or 5 classified as a failure.
+        explanation: 'Results 3.2.4: how failure was defined.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: At both the 6- and 12-month evaluations, all groups demonstrated 100% success, with no recorded failures.
+        explanation: Results 3.2.4.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: whereas the control group showed significant esthetic deterioration over time
+        explanation: 'Results 3.2.1: the failures were esthetic.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Fracture and retention outcomes were excellent across all groups
+        explanation: 'Results 3.2.2: the bond held in every arm.'
   - name: Fracture and retention of cervical composite restorations, 24 months
     measure_type: OTHER
     follow_up_years: 2.0
@@ -101,6 +158,12 @@ clinical_performance:
         evidence_source: HUMAN_CLINICAL
         snippet: Overall, all restorations performed well functionally, and no statistically significant differences were detected between the laser-treated groups and the control group.
         explanation: Results 3.2.2.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: A 2 mm layer of nano-hybrid composite (Filtek Z-250) was applied and cured
+        explanation: 'Methods: the composite used with the adhesive.'
 regulatory_status:
   - agency: FDA
     status: CLEARED
@@ -143,7 +206,7 @@ discussions:
     kind: KNOWLEDGE_GAP
     status: OPEN
     prompt: 'The only source is a trial of diode laser pretreatment, in which the adhesive is the same in every arm; it says how this adhesive performed, not how universal adhesives compare with other adhesives. The trial cites clinical studies of universal adhesives in cervical lesions (for example Peumans 2023, Haak 2023, Tepe 2024), which are leads to fetch.'
-notes: 'Evidence is from one split-mouth trial with an in vitro arm (DOI:10.1016/j.jdent.2026.106629). Its control group fell to 33.3% success at 24 months, mostly from loss of surface luster and staining, which reflect the composite surface more than the adhesive, so that figure is not recorded here. Classification by purpose is left unset: an adhesive may be AUXILIARY or part of the restoration, which is question 1 for the project''s expert on #50.'
+notes: 'Evidence is from one split-mouth trial with an in vitro arm (DOI:10.1016/j.jdent.2026.106629). Its control group fell to 33.3% success at 24 months, from loss of surface luster and staining, which reflect the composite surface more than the adhesive; the figure is recorded with that caveat. Classification by purpose is left unset: an adhesive may be AUXILIARY or part of the restoration, which is question 1 for the project''s expert on #50.'
 creation_date: '2026-11-20'
 updated_date: '2026-11-20'
 curation_history:
@@ -243,3 +306,63 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Created from DOI:10.1016/j.jdent.2026.106629, whose adhesive is in scope since #53: bond strength, cervical restoration retention, the product used, and FDA's resin tooth bonding agent regulation (21 CFR 872.3200); set PROPOSED."
+  - timestamp: '2026-11-20T16:35:34+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:35:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:35:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:35:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:35:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:35:50+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:35:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:36:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:36:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[1].
+  - timestamp: '2026-11-20T16:36:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Self-review: added the untreated control's bond strength and its 24-month success rate (33.3%, failures esthetic), as the maintainer asked for the control arm; corrected where the etching-mode quote sits. Returned to DRAFT: composition is not recorded, so the record is not complete."

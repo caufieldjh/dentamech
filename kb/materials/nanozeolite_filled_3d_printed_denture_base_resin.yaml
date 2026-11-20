@@ -1,6 +1,6 @@
 id: dentamech:9ad5d6b0-4187-42ef-87f0-7f00a6f69d0f
 name: Nanozeolite-filled 3D-printed denture base resin
-description: An experimental denture base material made by adding nanozeolite, a crystalline aluminosilicate nanoclay, to a methacrylate 3D-printing denture base resin. In the one study curated, 0.25% and 0.5% nanozeolite raised thermal stability and degree of conversion, improved colour stability after aging, reduced monomer release, and reduced Streptococcus mutans biofilm compared with the unmodified resin.
+description: An experimental denture base material made by adding nanozeolite, a crystalline aluminosilicate nanoclay, to a methacrylate 3D-printing denture base resin. In the one study curated, 0.25% and 0.5% nanozeolite raised thermal stability and degree of conversion, changed colour less after aging (not a significant difference from the unmodified resin), reduced monomer release, and reduced Streptococcus mutans biofilm compared with the unmodified resin.
 description_evidence:
   - reference: DOI:10.1016/j.jdent.2026.106622
     reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
@@ -67,7 +67,7 @@ composition:
 properties:
   - name: Thermal stability
     property_type: OTHER
-    conditions: In vitro, TGA and DSC, before and after thermocycling (600 cycles, 5 to 55 °C).
+    conditions: In vitro, TGA and DSC, before and after thermocycling (600 cycles).
     description: 'The 0.5% group had the highest thermal stability, with raised glass transition and melting temperatures. OTHER: PropertyTypeEnum has no type for thermal stability.'
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106622
@@ -82,23 +82,41 @@ properties:
         evidence_source: IN_VITRO
         snippet: half of the specimens from each group underwent thermocycling (600 cycles between
         explanation: 'Methods 2.2: aging; the extraction garbles the temperatures, 5 and 55 °C.'
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Thermal behavior was assessed using thermogravimetric analysis (TGA) and differential scanning calorimetry (DSC)
+        explanation: Abstract, methods.
   - name: Colour stability after aging
     property_type: COLOR_STABILITY
-    conditions: In vitro, CIEDE2000 colour difference after thermocycling (600 cycles, 5 to 55 °C).
-    description: Both nanozeolite groups changed colour less after aging than the unmodified resin, which changed most. Between the two nanozeolite groups, 0.5% changed significantly more than 0.25% after aging.
+    conditions: In vitro, CIEDE2000 colour difference after thermocycling (600 cycles).
+    description: Both nanozeolite groups changed colour less with aging than the unmodified resin, which changed most, but these differences were not statistically significant. Between the two nanozeolite groups, 0.5% differed significantly more than 0.25% after aging.
     evidence:
       - reference: DOI:10.1016/j.jdent.2026.106622
         reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: Both NZ-modified groups showed improved color stability after aging, whereas the control group exhibited the greatest change (1.61%).
-        explanation: Abstract, results.
+        explanation: 'Abstract, results. The abstract calls this an improvement; Results 3.2 says the differences against the control were not significant.'
       - reference: DOI:10.1016/j.jdent.2026.106622
         reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: However, after aging, the 0.5% NZ group exhibited a significantly higher
         explanation: 'Results 3.2: 0.5% against 0.25% after aging; the values are 1.78 and 0.64.'
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: With respect to the influence of thermal aging on color change, the control group showed the greatest color shift (1.61), while the 0.25% NZ group showed the least (0.97). However, these differences were not statistically significant.
+        explanation: 'Results 3.2: the aging differences against the control were not significant, which the abstract does not say.'
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: color differences were determined using the CIEDE2000 Eq.
+        explanation: Methods 2.4.
   - name: Degree of conversion
     property_type: DEGREE_OF_CONVERSION
     value: 91.9 ± 0.4 (before aging); 92.1 ± 0.7 (after aging)
@@ -119,9 +137,15 @@ properties:
         evidence_source: IN_VITRO
         snippet: DC values were significantly higher in the 0.5% NZ group before and after aging.
         explanation: Abstract, results.
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: DC was analyzed by Fourier Transform Infrared Spectroscopy (FTIR)
+        explanation: Abstract, methods.
   - name: Monomer release
     property_type: OTHER
-    test_method: UV-Vis spectrophotometry of 70% ethanol at 37 °C, 7 to 60 days
+    test_method: UV-Vis spectrophotometry of 70% ethanol, 7 to 60 days
     conditions: In vitro.
     description: 'Monomer release was highest from the unmodified resin at every time point and lower from the nanozeolite resins. OTHER: PropertyTypeEnum has no type for monomer elution.'
     evidence:
@@ -137,6 +161,18 @@ properties:
         evidence_source: IN_VITRO
         snippet: Disc specimens were placed in glass vials containing ... of 70% ethanol
         explanation: 'Methods 2.6: elution medium, at 37 °C, sampled at 7, 15, 30 and 60 days.'
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Color stability and material release (NZ and monomer) were measured using UV-Vis spectrophotometry.
+        explanation: Abstract, methods.
+      - reference: DOI:10.1016/j.jdent.2026.106622
+        reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: After 7, 15, 30, and 60 days
+        explanation: 'Methods 2.6: sampling times.'
   - name: Antibacterial activity against Streptococcus mutans biofilm
     property_type: ANTIBACTERIAL_ACTIVITY
     value: 0.04 ± 0.01 (0.25% nanozeolite); 0.24 ± 0.07 (unmodified)
@@ -300,6 +336,48 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Curated the experimental resin of DOI:10.1016/j.jdent.2026.106622 under denture base polymer, through signed excerpts. purpose RESTORATIVE and restorative_class POLYMER are tentative, set at the maintainer's direction while #51 is open; set PROPOSED."
+  - timestamp: '2026-11-20T16:35:13+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[0].
+  - timestamp: '2026-11-20T16:35:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[1].
+  - timestamp: '2026-11-20T16:35:24+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[1].
+  - timestamp: '2026-11-20T16:35:27+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[2].
+  - timestamp: '2026-11-20T16:35:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[3].
+  - timestamp: '2026-11-20T16:35:31+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106622 to properties[3].
+  - timestamp: '2026-11-20T16:36:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Self-review: said that the colour differences against the unmodified resin after aging were not significant, in the property and the description; dropped unquoted temperatures; quoted the methods behind each property."
 evidence:
   - reference: DOI:10.1016/j.jdent.2026.106622
     reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin

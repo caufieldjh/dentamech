@@ -68,3 +68,51 @@ excerpts:
     source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
     validator_version: 0.8.0
     verified_at: '2026-11-20'
+- text: A 2 mm layer of nano-hybrid composite (Filtek Z-250) was applied and cured
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: At both the 6- and 12-month evaluations, all groups demonstrated 100% success, with no recorded failures.
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Forty freshly extracted, non-carious, impacted human third molars
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Group IV control ... 54.88 ... (13.81)
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: In contrast, the control group exhibited a substantial decline, with success decreasing to 33.3% and failure increasing to 66.7%.
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Restoration outcomes were determined based on the highest score assigned within the esthetic, functional, or biological categories, with any score of 4 or 5 classified as a failure.
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: maintained high and identical success rates (88.9%)
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: whereas the control group showed significant esthetic deterioration over time
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'

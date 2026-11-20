@@ -200,13 +200,61 @@ excerpts:
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: the development of composite resins with antimicrobial functionality is essential for extending restoration longevity and preserving the remaining tooth structure
+- text: were added to the mixture, each accounting for 20% of the total resin mass
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: were added to the mixture, each accounting for 20% of the total resin mass
+- text: At a chlorhexidine loading concentration of 2%, the composite resin demonstrated acceptable mechanical properties.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Cylindrical specimens with dimensions of ... were prepared for each experimental group (n = 6)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Eight male golden hamsters
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: High Performance Liquid Chromatography
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Rectangular specimens with dimensions of ... were prepared for each group (n = 6)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: This test was intended to conduct an initial evaluation of the system's antimicrobial properties before further investigation with more specific pathogenic bacteria.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Twelve 6-week-old female Sprague-Dawley (SD) rats
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: mouse bone marrow mesenchymal stem cells (BMSCs)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: was used in the absorption mode
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
