@@ -152,7 +152,8 @@ composition:
         explanation: 'Introduction, last paragraphs: the authors'' rationale for their own design, so tagged with the study, not as cited background.'
   - name: Silanized silica
     role: FILLER
-    description: Silicon dioxide surface-treated with KH-570 silane, the second inorganic filler, in the formulation curated. Its proportion is not recorded; the text extraction garbles it.
+    description: Silicon dioxide surface-treated with KH-570 silane, the second inorganic filler, 40 wt%, in the formulation curated.
+    proportion: 40 wt%
     chemical:
       preferred_term: silicon dioxide
       term:
@@ -163,8 +164,8 @@ composition:
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: surface-treated with KH-570 silane was added
-        explanation: 'Methods 2.1: the silica filler (the extraction garbles SiO2 and its proportion, so they are not quoted).'
+        snippet: 40\mathrm{wt}% \mathrm{SiO}_2 surface-treated with KH-570 silane was added
+        explanation: 'Methods 2.1: the silica filler and its proportion, quoted as the local copy renders them; the paper prints 40 wt% SiO2.'
 properties:
   - name: Compressive strength
     property_type: COMPRESSIVE_STRENGTH
@@ -330,6 +331,18 @@ properties:
         evidence_source: IN_VITRO
         snippet: plate diffusion experiments revealed that ... exhibited distinct inhibition zones against both bacterial strains
         explanation: Results 3.5, inhibition zones of C2.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: indicating that the composite resin without CHX addition exhibited no substantial antimicrobial activity against S. aureus and E. coli
+        explanation: 'Results 3.5: C0, the chlorhexidine-free comparator, had no activity.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: These findings suggest that the incorporation of CHX into the modified composite resin exhibited a substantial inhibitory effect on both the tested strains.
+        explanation: 'Results 3.5: the optical density finding for the chlorhexidine composite.'
   - name: Cytocompatibility and in vivo safety
     property_type: BIOCOMPATIBILITY
     conditions: CCK-8 assay with mouse bone marrow mesenchymal stem cells at 24, 48 and 72 h; acute oral toxicity in rats; oral mucosal irritation in golden hamsters.
@@ -711,6 +724,24 @@ curation_history:
     action: EDIT
     description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
   - timestamp: '2026-11-20T18:02:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:47:13+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Final review of #62: quoted the silica filler by name, with its 40 wt% proportion; quoted the optical-density finding's comparison with the chlorhexidine-free composite."
+  - timestamp: '2026-11-20T18:47:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:47:21+00:00'
     curator: claude-code
     llm_assisted: true
     model: claude-opus-5-5

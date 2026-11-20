@@ -176,12 +176,6 @@ excerpts:
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
     validator_version: 0.8.0
     verified_at: '2026-11-20'
-- text: surface-treated with KH-570 silane was added
-  verification:
-    method: local_full_text
-    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
-    validator_version: 0.8.0
-    verified_at: '2026-11-20'
 - text: the 20% chlorhexidine digluconate solution (supplied by Aladdin, Shanghai, China) was diluted to concentrations of 2%, 6% and 10%
   verification:
     method: local_full_text
@@ -273,6 +267,24 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-20'
 - text: were significantly lower than those of the blank control groups and
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: 40\mathrm{wt}% \mathrm{SiO}_2 surface-treated with KH-570 silane was added
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: These findings suggest that the incorporation of CHX into the modified composite resin exhibited a substantial inhibitory effect on both the tested strains.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: indicating that the composite resin without CHX addition exhibited no substantial antimicrobial activity against S. aureus and E. coli
   verification:
     method: local_full_text
     source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4

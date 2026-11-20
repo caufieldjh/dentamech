@@ -116,3 +116,15 @@ excerpts:
     source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
     validator_version: 0.8.0
     verified_at: '2026-11-20'
+- text: A separate set of 10 dentin specimens per group was mounted in self-cure acrylic resin
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Composite micro-rods were constructed using polyethylene tubes
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
