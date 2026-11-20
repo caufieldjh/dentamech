@@ -198,6 +198,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: Cylindrical specimens with dimensions of ... were prepared for each experimental group (n = 6)
         explanation: 'Methods 2.3.1: specimens.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: 'Abstract, results: strength fell as loading rose.'
   - name: Flexural strength
     property_type: FLEXURAL_STRENGTH
     value: 86.167 ± 1.428 (2% chlorhexidine); 88.717 ± 3.012 (no chlorhexidine)
@@ -230,6 +236,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: Rectangular specimens with dimensions of ... were prepared for each group (n = 6)
         explanation: 'Methods 2.3.2: specimens.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: 'Abstract, results: strength fell as loading rose.'
   - name: Degree of conversion
     property_type: DEGREE_OF_CONVERSION
     conditions: In vitro, FTIR.
@@ -314,9 +326,9 @@ properties:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: In vivo evaluations revealed no significant systemic toxicity or oral mucosal irritation.
-        explanation: 'Abstract, results: acute oral toxicity in rats and mucosal irritation in hamsters.'
+        explanation: 'Abstract, results: acute oral toxicity in rats and mucosal irritation in hamsters. OTHER: an animal study, for which EvidenceSourceEnum has no value.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
@@ -326,15 +338,15 @@ properties:
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Twelve 6-week-old female Sprague-Dawley (SD) rats
-        explanation: 'Methods 2.5.2: acute oral toxicity.'
+        explanation: 'Methods 2.5.2: acute oral toxicity. OTHER: an animal study, for which EvidenceSourceEnum has no value.'
       - reference: DOI:10.1016/j.jdent.2026.106633
         reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Eight male golden hamsters
-        explanation: 'Methods 2.5.3: oral mucosal irritation.'
+        explanation: 'Methods 2.5.3: oral mucosal irritation. OTHER: an animal study, for which EvidenceSourceEnum has no value.'
 clinical_uses:
   - name: Proposed bioactive restorative material
     use_context: OTHER
@@ -638,3 +650,21 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Review of #62: lengthened the conversion-method quote to name the FTIR instrument."
+  - timestamp: '2026-11-20T17:25:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Second review of #62: tagged the rat and hamster findings OTHER, not IN_VITRO, since they are animal studies and EvidenceSourceEnum has no animal value; quoted the loading-dependent strength loss on both strength properties."
+  - timestamp: '2026-11-20T17:25:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T17:25:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].

@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T172922Z-claude-code-6b19c0
+  timestamp: '2026-11-20T17:29:22Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/62
+events:
+- type: REVIEW
+  outcome: changed
+  summary: 'Second review round on PR #62'
+  details: 'nanozeolite_filled_3d_printed_denture_base_resin: description now credits the thermal stability
+    and conversion gains to the 0.5% loading only, as the quotes state. chlorhexidine_releasing_resin_based_composite:
+    the abstract''s loading-dependent strength loss quoted on both strength properties; the rat and hamster
+    findings tagged OTHER instead of IN_VITRO, since EvidenceSourceEnum has no value for animal studies
+    (a schema gap, not changed here). Notes on the universal adhesive definition and the antibacterial
+    parent''s background quotes need no change: both records stay DRAFT, with discussions saying what
+    must replace those quotes.'

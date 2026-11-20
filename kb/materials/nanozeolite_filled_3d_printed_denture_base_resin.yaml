@@ -1,6 +1,6 @@
 id: dentamech:9ad5d6b0-4187-42ef-87f0-7f00a6f69d0f
 name: Nanozeolite-filled 3D-printed denture base resin
-description: An experimental denture base material made by adding nanozeolite, a crystalline aluminosilicate nanoclay, to a methacrylate 3D-printing denture base resin. In the one study curated, 0.25% and 0.5% nanozeolite raised thermal stability and degree of conversion, changed colour less after aging (not a significant difference from the unmodified resin), reduced monomer release, and reduced Streptococcus mutans biofilm compared with the unmodified resin.
+description: An experimental denture base material made by adding nanozeolite, a crystalline aluminosilicate nanoclay, to a methacrylate 3D-printing denture base resin. In the one study curated, 0.5% nanozeolite gave the highest thermal stability and degree of conversion; both 0.25% and 0.5% nanozeolite changed colour less after aging (not a significant difference from the unmodified resin), reduced monomer release, and reduced Streptococcus mutans biofilm compared with the unmodified resin.
 description_evidence:
   - reference: DOI:10.1016/j.jdent.2026.106622
     reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
@@ -384,6 +384,12 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Review of #62: lengthened the biofilm-method quote to name crystal violet; explained the broad zeolite binding."
+  - timestamp: '2026-11-20T17:25:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Second review of #62: credited the thermal stability and conversion gains to the 0.5% loading only, as the quotes state."
 evidence:
   - reference: DOI:10.1016/j.jdent.2026.106622
     reference_title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
