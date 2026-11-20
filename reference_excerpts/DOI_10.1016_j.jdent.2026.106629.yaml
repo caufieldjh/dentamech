@@ -1,0 +1,70 @@
+reference_id: DOI:10.1016/j.jdent.2026.106629
+title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+source_char_count: 79146
+excerpts:
+- text: A universal adhesive (Single Bond Universal; 3 M ESPE, Neuss, Germany) was applied with a micro-brush using a rubbing motion for
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Clinically, a split-mouth randomized controlled trial was performed on 36 NCCLs, equally allocated into four groups, restored with composite resin and assessed at 6, 12, and 24 months using FDI esthetic, functional, and biological criteria
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Composite restorations were performed after a 3-minute waiting period using a self-etch protocol with Single Bond Universal (3 M ESPE)
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Failure mode analysis revealed that mixed failures were the most prevalent pattern in all groups
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Fracture and retention outcomes were excellent across all groups
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Overall, all restorations performed well functionally, and no statistically significant differences were detected between the laser-treated groups and the control group.
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Pure adhesive failures were rare, observed in only one specimen each in Groups I, II, and III
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: SBS values ranged from 48.75 ± 10.27 MPa in Group II to 65.83 ± 25.87 MPa in Group III, with no statistically significant differences among the groups
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: filled with Filtek Z250 XT composite (3 M ESPE, St. Paul, MN, USA)
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: for universal adhesives applied in selective-etch and etch-and-rinse modes
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: using a self-etch protocol with Single Bond Universal (3 M ESPE)
+  verification:
+    method: local_full_text
+    source_sha256: 55601a80c31bd2e81d0602a3a367d170e15eb24d2f6f900c6f617d1dc233ea27
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'

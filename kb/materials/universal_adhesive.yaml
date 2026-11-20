@@ -1,0 +1,245 @@
+id: dentamech:ce8e977d-8e94-4316-9566-d772b60ee547
+name: Universal adhesive
+description: A resin bonding agent that can be applied in more than one etching mode, self-etch, selective-etch or etch-and-rinse, to bond a resin-based restoration to tooth structure. FDA regulates resin tooth bonding agents as class II devices.
+description_evidence:
+  - reference: DOI:10.1016/j.jdent.2026.106629
+    reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: for universal adhesives applied in selective-etch and etch-and-rinse modes
+    explanation: 'Introduction, citing a randomized trial: universal adhesives are applied in more than one etching mode.'
+  - reference: DOI:10.1016/j.jdent.2026.106629
+    reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: using a self-etch protocol with Single Bond Universal (3 M ESPE)
+    explanation: 'Methods: the same adhesive used in self-etch mode.'
+status: PROPOSED
+category: ADHESIVE
+parents:
+  - OHD:0000000
+synonyms:
+  - multi-mode adhesive
+properties:
+  - name: Micro-shear bond strength to dentin
+    property_type: BOND_STRENGTH
+    value: 48.75 ± 10.27 to 65.83 ± 25.87 (group means)
+    unit: MPa
+    test_method: Micro-shear bond strength, composite micro-rods on dentin discs
+    conditions: 'In vitro: Single Bond Universal with Filtek Z250 XT on human third molar dentin, with or without diode laser pretreatment, ten specimens per group. Group means did not differ significantly.'
+    description: Mixed failures were the most common in every group, and pure adhesive failures were rare.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: SBS values ranged from 48.75 ± 10.27 MPa in Group II to 65.83 ± 25.87 MPa in Group III, with no statistically significant differences among the groups
+        explanation: 'Results 3.1.2: every group used this adhesive; the untreated control (Group IV) had 54.88 ± 13.81 MPa in Table 2.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: A universal adhesive (Single Bond Universal; 3 M ESPE, Neuss, Germany) was applied with a micro-brush using a rubbing motion for
+        explanation: 'Methods 2.1: the adhesive tested.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: filled with Filtek Z250 XT composite (3 M ESPE, St. Paul, MN, USA)
+        explanation: 'Methods 2.1: the composite bonded.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Failure mode analysis revealed that mixed failures were the most prevalent pattern in all groups
+        explanation: Results 3.1.2.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Pure adhesive failures were rare, observed in only one specimen each in Groups I, II, and III
+        explanation: Results 3.1.2.
+clinical_uses:
+  - name: Bonding composite restorations to dentin
+    use_context: ADHESIVE
+    description: Applied to a prepared tooth surface before a resin-based composite, to retain the restoration; in the trial curated, in self-etch mode for non-carious cervical lesions.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Composite restorations were performed after a 3-minute waiting period using a self-etch protocol with Single Bond Universal (3 M ESPE)
+        explanation: "Methods: the adhesive's use in the trial."
+      - reference: CFR:872.3200
+        reference_title: 21 CFR 872.3200 Resin tooth bonding agent
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: intended to be painted on the interior of a prepared cavity of a tooth to improve retention of a restoration, such as a filling
+        explanation: The intended use FDA names for resin tooth bonding agents.
+clinical_performance:
+  - name: Fracture and retention of cervical composite restorations, 24 months
+    measure_type: OTHER
+    follow_up_years: 2.0
+    population: 36 non-carious cervical lesions in a split-mouth randomized trial, restored with Single Bond Universal in self-etch mode and Filtek Z250, in four groups of nine (three diode laser pretreatments and an untreated control).
+    description: 'Fracture and retention, scored by FDI functional criteria, were excellent in every group, with no significant difference between groups. OTHER: the outcome is an FDI score, not a retention rate.'
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Fracture and retention outcomes were excellent across all groups
+        explanation: Results 3.2.2, FDI functional criteria.
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Clinically, a split-mouth randomized controlled trial was performed on 36 NCCLs, equally allocated into four groups, restored with composite resin and assessed at 6, 12, and 24 months using FDI esthetic, functional, and biological criteria
+        explanation: 'Abstract, methods: the population.'
+      - reference: DOI:10.1016/j.jdent.2026.106629
+        reference_title: 'Effect of diode laser on dentin surface properties, adhesive performance, and clinical outcomes of non-carious cervical lesion restorations: A 24-month split-mouth randomized controlled trial'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Overall, all restorations performed well functionally, and no statistically significant differences were detected between the laser-treated groups and the control group.
+        explanation: Results 3.2.2.
+regulatory_status:
+  - agency: FDA
+    status: CLEARED
+    regulation_number: '872.3200'
+    regulation_title: Resin tooth bonding agent
+    device_class: CLASS_II
+    product_codes:
+      - KLE
+    pathways:
+      - PREMARKET_NOTIFICATION_510K
+    identification: A resin tooth bonding agent is a device material, such as methylmethacrylate, intended to be painted on the interior of a prepared cavity of a tooth to improve retention of a restoration, such as a filling.
+    source_url: https://www.ecfr.gov/current/title-21/section-872.3200
+    evidence:
+      - reference: CFR:872.3200
+        reference_title: 21 CFR 872.3200 Resin tooth bonding agent
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Class II.
+        explanation: Classification paragraph (b).
+      - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3200
+        reference_title: Product Classification
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: agent, tooth bonding, resin
+        explanation: 'FDA Product Classification Database, regulation 872.3200: device agent, tooth bonding, resin; product code KLE; submission type 510(k); device class 2. Read 2026-11-20.'
+products:
+  - name: Single Bond Universal
+    manufacturer: 3M ESPE
+    description: Universal adhesive used in every arm of the diode laser trial curated here (DOI:10.1016/j.jdent.2026.106629). No 510(k) record was looked up.
+discussions:
+  - discussion_id: ohd-term-universal-adhesive
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: 'OHD has no term for a dental adhesive or bonding agent (l~adhesive, l~bonding, l~bond and l~primer find no material, searched 2026-11-20). OHD has hydroxyethyl methacrylate (OHD:0001082), an adhesive monomer, under dental restoration material. Propose a term for dental adhesive (resin tooth bonding agent, as FDA names it), with universal adhesive as a child defined by use in more than one etching mode. Its parent here is dental restoration material (OHD:0000000), the curator''s choice until a term exists.'
+  - discussion_id: composition-universal-adhesive
+    kind: KNOWLEDGE_GAP
+    status: OPEN
+    prompt: 'Composition is not recorded: the trial curated names the product but not its ingredients. A source on universal adhesive chemistry (functional monomers such as 10-MDP, HEMA, solvents, silane) should be fetched and quoted.'
+  - discussion_id: evidence-universal-adhesive
+    kind: KNOWLEDGE_GAP
+    status: OPEN
+    prompt: 'The only source is a trial of diode laser pretreatment, in which the adhesive is the same in every arm; it says how this adhesive performed, not how universal adhesives compare with other adhesives. The trial cites clinical studies of universal adhesives in cervical lesions (for example Peumans 2023, Haak 2023, Tepe 2024), which are leads to fetch.'
+notes: 'Evidence is from one split-mouth trial with an in vitro arm (DOI:10.1016/j.jdent.2026.106629). Its control group fell to 33.3% success at 24 months, mostly from loss of surface luster and staining, which reflect the composite surface more than the adhesive, so that figure is not recorded here. Classification by purpose is left unset: an adhesive may be AUXILIARY or part of the restoration, which is question 1 for the project''s expert on #50.'
+creation_date: '2026-11-20'
+updated_date: '2026-11-20'
+curation_history:
+  - timestamp: '2026-11-20T15:56:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Scaffolded with `just new-record`.
+  - timestamp: '2026-11-20T16:11:27+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to description.
+  - timestamp: '2026-11-20T16:11:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to description.
+  - timestamp: '2026-11-20T16:11:39+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:11:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:11:45+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:11:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:11:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to properties[0].
+  - timestamp: '2026-11-20T16:11:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_uses[0].
+  - timestamp: '2026-11-20T16:12:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3200 to clinical_uses[0].
+  - timestamp: '2026-11-20T16:12:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:12:13+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:12:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106629 to clinical_performance[0].
+  - timestamp: '2026-11-20T16:12:19+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3200 to regulatory_status[0].
+  - timestamp: '2026-11-20T16:12:28+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3200 to regulatory_status[0].
+  - timestamp: '2026-11-20T16:14:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Created from DOI:10.1016/j.jdent.2026.106629, whose adhesive is in scope since #53: bond strength, cervical restoration retention, the product used, and FDA's resin tooth bonding agent regulation (21 CFR 872.3200); set PROPOSED."
