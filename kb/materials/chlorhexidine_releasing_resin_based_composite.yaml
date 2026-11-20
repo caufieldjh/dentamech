@@ -1,0 +1,749 @@
+id: dentamech:2eb66071-5a0a-400c-aea8-55803cab65c8
+name: Chlorhexidine-releasing resin-based composite
+description: An experimental antibacterial resin-based composite that releases chlorhexidine. In the one study curated, chlorhexidine was loaded onto bioactive glass 45S5, which went as filler into a Bis-GMA and TEGDMA resin modified with POSS nanomonomer. At 2% chlorhexidine loading the composite kept acceptable mechanical properties, released chlorhexidine in a sustained way, showed no toxicity in cell and animal tests, and inhibited bacteria in vitro.
+description_evidence:
+  - reference: DOI:10.1016/j.jdent.2026.106633
+    reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The aim of this study was to develop a novel antibacterial dental composite resin by loading chlorhexidine (CHX) onto bioactive glass (BG 45S5) and incorporating it into a resin matrix containing cage-type polyhedral oligomeric silsesquioxane (POSS) nanomonomers.
+    explanation: 'Abstract, introduction: the material and that it is new, made in the laboratory.'
+  - reference: DOI:10.1016/j.jdent.2026.106633
+    reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Incorporation of 2% CHX-loaded bioactive glass 45S5 into a POSS-modified composite resin maintained acceptable mechanical performance and provided sustained drug release, biocompatibility, and significant antibacterial activity.
+    explanation: Abstract, conclusions.
+status: PROPOSED
+category: RESIN_COMPOSITE
+experimental: true
+purpose: RESTORATIVE
+restorative_class: COMPOSITE
+parents:
+  - dentamech:96685d61-4656-43b6-ad89-c622451301b9
+synonyms:
+  - chlorhexidine-loaded composite resin
+setting_mechanisms:
+  - LIGHT_CURED
+composition:
+  - name: Bis-GMA
+    role: MATRIX
+    description: Base monomer, mixed 7:3 by mass with TEGDMA, in the formulation curated.
+    proportion: 7:3 Bis-GMA to TEGDMA by mass
+    chemical:
+      preferred_term: bisphenol A-glycidyl methacrylate
+      term:
+        id: CHEBI:34580
+        label: Bisphenol A glycidylmethacrylate
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Bisphenol A-glycidyl methacrylate (Bis-GMA, Sigma Aldrich Chemical Co., Shanghai, China) and triethylene glycol dimethacrylate (TEGDMA, Sigma Aldrich Chemical Co.) were mixed at a mass ratio of 7:3 (w/w)
+        explanation: 'Methods 2.1: the base monomers and their ratio.'
+  - name: TEGDMA
+    role: MATRIX
+    description: Diluent monomer, mixed 3:7 by mass with Bis-GMA, in the formulation curated. Unbound; no ChEBI term was found for triethylene glycol dimethacrylate.
+    proportion: 7:3 Bis-GMA to TEGDMA by mass
+    chemical:
+      preferred_term: triethylene glycol dimethacrylate
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Bisphenol A-glycidyl methacrylate (Bis-GMA, Sigma Aldrich Chemical Co., Shanghai, China) and triethylene glycol dimethacrylate (TEGDMA, Sigma Aldrich Chemical Co.) were mixed at a mass ratio of 7:3 (w/w)
+        explanation: 'Methods 2.1: the base monomers and their ratio.'
+  - name: Polyhedral oligomeric silsesquioxane (POSS)
+    role: MATRIX
+    description: Cage-type inorganic-organic nanomonomer added to the resin matrix, 4 wt%, in the formulation curated.
+    proportion: 4 wt%
+    chemical:
+      preferred_term: polyhedral oligomeric silsesquioxane
+      term:
+        id: CHEBI:59828
+        label: polyhedral oligomeric silsesquioxane
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Subsequently, 4 wt % POSS was added
+        explanation: Methods 2.1.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Polyhedral Oligomeric Silsesquioxanes (POSS) are inorganic-organic hybrid cage-like nanomaterials
+        explanation: 'Introduction: what POSS is. OTHER: background the paper cites from other work, not its own results.'
+  - name: Camphorquinone
+    role: INITIATOR
+    description: Photoinitiator, in the formulation curated.
+    chemical:
+      preferred_term: camphorquinone
+      term:
+        id: CHEBI:34607
+        label: bornane-2,3-dione
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: camphorquinone (CQ, Sigma Aldrich Chemical Co.) and ... 2-(dimethylamino) ethyl methacrylate (DMAEMA, Sigma Aldrich Chemical Co.) were incorporated
+        explanation: 'Methods 2.1: the initiator system.'
+  - name: DMAEMA
+    role: ACTIVATOR
+    description: 2-(dimethylamino)ethyl methacrylate, the amine added with camphorquinone, in the formulation curated. Unbound; ChEBI has only its polymer, not the monomer.
+    chemical:
+      preferred_term: 2-(dimethylamino)ethyl methacrylate
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: camphorquinone (CQ, Sigma Aldrich Chemical Co.) and ... 2-(dimethylamino) ethyl methacrylate (DMAEMA, Sigma Aldrich Chemical Co.) were incorporated
+        explanation: 'Methods 2.1: the initiator system.'
+  - name: Chlorhexidine digluconate
+    role: OTHER
+    description: 'The antimicrobial agent, loaded onto the bioactive glass from solutions of 2%, 6% or 10%; the 2% loading is the one the study found acceptable. OTHER: ComponentRoleEnum has no role for an antimicrobial agent.'
+    chemical:
+      preferred_term: chlorhexidine digluconate
+      term:
+        id: CHEBI:28312
+        label: chlorhexidine gluconate
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: the 20% chlorhexidine digluconate solution (supplied by Aladdin, Shanghai, China) was diluted to concentrations of 2%, 6% and 10%
+        explanation: 'Methods 2.1: the chlorhexidine salt and loading concentrations.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: At a chlorhexidine loading concentration of 2%, the composite resin demonstrated acceptable mechanical properties.
+        explanation: Abstract, results.
+  - name: Bioactive glass 45S5
+    role: FILLER
+    description: Bioactive glass 45S5 powder, soaked in the chlorhexidine solution as a carrier, then dried, and added at 20% of the total resin mass. Loading chlorhexidine onto a carrier is meant to limit how much free chlorhexidine interferes with polymerization. Unbound; ChEBI has no term for bioactive glass.
+    proportion: 20% of total resin mass, with its chlorhexidine
+    chemical:
+      preferred_term: bioactive glass 45S5
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Bioactive glass 45S5 (BG 45S5) powder was then suspended in the respective CHX solutions at a ratio of 1:10 (w/v).
+        explanation: 'Methods 2.1: loading the carrier.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: were added to the mixture, each accounting for 20% of the total resin mass
+        explanation: "Methods 2.1: the loaded glass's proportion."
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: This pre-loading strategy aimed to reduce the free CHX content within the resin matrix, thereby minimizing its negative impact on mechanical properties.
+        explanation: 'Introduction, last paragraphs: the authors'' rationale for their own design, so tagged with the study, not as cited background.'
+  - name: Silanized silica
+    role: FILLER
+    description: Silicon dioxide surface-treated with KH-570 silane, the second inorganic filler, 40 wt%, in the formulation curated.
+    proportion: 40 wt%
+    chemical:
+      preferred_term: silicon dioxide
+      term:
+        id: CHEBI:30563
+        label: silicon dioxide
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 40\mathrm{wt}% \mathrm{SiO}_2 surface-treated with KH-570 silane was added
+        explanation: 'Methods 2.1: the silica filler and its proportion, quoted as the local copy renders them; the paper prints 40 wt% SiO2.'
+properties:
+  - name: Compressive strength
+    property_type: COMPRESSIVE_STRENGTH
+    value: 176.333 ± 2.875 (2% chlorhexidine); 185.500 ± 3.271 (no chlorhexidine)
+    unit: MPa
+    test_method: ISO 604
+    conditions: In vitro, cylindrical specimens, n = 6 per group.
+    description: Compressive strength fell as chlorhexidine loading rose; at 2% it was 4.94% lower than without chlorhexidine, a significant difference.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The compressive strength of C_0 was 185.500 ± 3.271 ... and that of C_2 was reduced to 176.333 ± 2.875
+        explanation: 'Results 3.2.1, with the group labels: C0 has no chlorhexidine, C2 the 2% loading.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The compressive strength of ... was reduced by 4.94% compared to ... and this difference was statistically significant.
+        explanation: 'Results 3.2.1: C2 against C0.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: In accordance with ISO 604 standards
+        explanation: 'Methods 2.3.1: test method.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Cylindrical specimens with dimensions of ... were prepared for each experimental group (n = 6)
+        explanation: 'Methods 2.3.1: specimens.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: 'Abstract, results: strength fell as loading rose.'
+  - name: Flexural strength
+    property_type: FLEXURAL_STRENGTH
+    value: 86.167 ± 1.428 (2% chlorhexidine); 88.717 ± 3.012 (no chlorhexidine)
+    unit: MPa
+    test_method: ISO 4049:2000, three-point bending
+    conditions: In vitro, n = 6 per group.
+    description: At 2% chlorhexidine flexural strength was 2.55% lower than without it, not a significant difference. It fell further at higher loadings.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 88.717±3.012 ... 86.167±1.428
+        explanation: 'Table 1, flexural strength: C0 (no chlorhexidine) then C2 (2% loading).'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: representing a 2.55% reduction. However, statistical analysis revealed that the difference between the two groups was not statistically significant.
+        explanation: 'Results 3.2.2: C2 against C0.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: In accordance with ISO 4049:2000 standards ... the flexural strength (FS) of the composite resin specimens was determined using the three-point bending method.
+        explanation: 'Methods 2.3.2: test method.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Rectangular specimens with dimensions of ... were prepared for each group (n = 6)
+        explanation: 'Methods 2.3.2: specimens.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: 'Abstract, results: strength fell as loading rose.'
+  - name: Degree of conversion
+    property_type: DEGREE_OF_CONVERSION
+    conditions: In vitro, FTIR.
+    description: Double-bond conversion fell as chlorhexidine loading rose. No value is recorded, because the paper's text and table give different values for the 2% group.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: Abstract, results.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: the Fourier transform infrared spectrometer (FTIR, Nicolet iS5, Thermo, United States) was used in the absorption mode
+        explanation: 'Methods 2.2: conversion was measured by FTIR.'
+  - name: Chlorhexidine release
+    property_type: OTHER
+    test_method: HPLC of distilled water
+    conditions: In vitro.
+    description: 'Chlorhexidine was released quickly at first, then slowly and steadily. OTHER: PropertyTypeEnum has no type for drug release.'
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: In vitro drug release demonstrated an initial rapid release phase followed by a sustained and slower release.
+        explanation: Abstract, results.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: immersed in ... distilled water
+        explanation: 'Methods 2.4: release medium.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: High Performance Liquid Chromatography
+        explanation: 'Methods 2.4: assay.'
+  - name: Antibacterial activity
+    property_type: ANTIBACTERIAL_ACTIVITY
+    conditions: In vitro, 2% chlorhexidine group against the chlorhexidine-free composite, Staphylococcus aureus and Escherichia coli only, short incubation.
+    description: Against both species, the 2% chlorhexidine composite gave significantly lower optical density than the chlorhexidine-free composite and the blank control, fewer colonies on plate counts, and inhibition zones on agar. The study called these tests preliminary, chose the two strains as representative Gram-positive and Gram-negative bacteria, and left more specific pathogens for later work.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: These results provide preliminary validation of its effective bactericidal activity against both ... bacteria under short incubation conditions.
+        explanation: 'Results 3.5: the C2 group against both species.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: As a preliminary exploratory investigation, strains of
+        explanation: 'Methods 2.6: the tests were preliminary.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Staphylococcus aureus (S. aureus; ATCC6538) was chosen as the representative
+        explanation: 'Methods 2.6: the Gram-positive strain; the Gram-negative was Escherichia coli.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: This test was intended to conduct an initial evaluation of the system's antimicrobial properties before further investigation with more specific pathogenic bacteria.
+        explanation: 'Methods 2.6: the strains were a first screen, not oral pathogens chosen for relevance.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: were significantly lower than those of the blank control groups and
+        explanation: Results 3.5, optical density of C2 against the blank control and C0.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: a decrease in the number of colonies on the plates was observed in the
+        explanation: Results 3.5, plate counts for C2 against C0.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: plate diffusion experiments revealed that ... exhibited distinct inhibition zones against both bacterial strains
+        explanation: Results 3.5, inhibition zones of C2.
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: indicating that the composite resin without CHX addition exhibited no substantial antimicrobial activity against S. aureus and E. coli
+        explanation: 'Results 3.5: C0, the chlorhexidine-free comparator, had no activity.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: These findings suggest that the incorporation of CHX into the modified composite resin exhibited a substantial inhibitory effect on both the tested strains.
+        explanation: 'Results 3.5: the optical density finding for the chlorhexidine composite.'
+  - name: Cytocompatibility and in vivo safety
+    property_type: BIOCOMPATIBILITY
+    conditions: CCK-8 assay with mouse bone marrow mesenchymal stem cells at 24, 48 and 72 h; acute oral toxicity in rats; oral mucosal irritation in golden hamsters.
+    description: At 2% chlorhexidine, cell viability matched the chlorhexidine-free composite, and the animal tests found no systemic toxicity or mucosal irritation. At 6% and 10%, cell activity fell over time.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: the cell viability in the low concentration group ... showed no statistically significant difference compared to the control group
+        explanation: 'Discussion, CCK-8 results: the low concentration group is C2 (2%), the control C0.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: In vivo evaluations revealed no significant systemic toxicity or oral mucosal irritation.
+        explanation: 'Abstract, results: acute oral toxicity in rats and mucosal irritation in hamsters. OTHER: an animal study, for which EvidenceSourceEnum has no value (#63).'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: mouse bone marrow mesenchymal stem cells (BMSCs)
+        explanation: 'Methods 2.5.1: cells of the CCK-8 assay.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Twelve 6-week-old female Sprague-Dawley (SD) rats
+        explanation: 'Methods 2.5.2: acute oral toxicity. OTHER: an animal study, for which EvidenceSourceEnum has no value (#63).'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Eight male golden hamsters
+        explanation: 'Methods 2.5.3: oral mucosal irritation. OTHER: an animal study, for which EvidenceSourceEnum has no value (#63).'
+clinical_uses:
+  - name: Proposed bioactive restorative material
+    use_context: OTHER
+    description: 'Proposed by its developers as a bioactive restorative material; no clinical use is reported. OTHER: the source does not say whether for direct or indirect restoration.'
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: suggesting its potential application as a bioactive restorative material
+        explanation: 'Abstract, clinical significance: a proposed use, not a clinical result.'
+adverse_effects:
+  - name: Reduced polymerization and strength at higher chlorhexidine loading
+    effect_category: MECHANICAL_FAILURE
+    description: Chlorhexidine can interfere with polymerization. Higher loadings agglomerated the filler, lowered conversion and lowered strength.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: However, direct incorporation of chlorhexidine into a resin matrix may adversely affect the process of polymerisation
+        explanation: 'Introduction, background. OTHER: background the paper cites from other work, not its own results.'
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+        explanation: Abstract, results.
+  - name: Cytotoxicity at higher chlorhexidine loading
+    effect_category: TOXICITY
+    description: At 6% and 10% chlorhexidine loading, cell activity fell over time in vitro.
+    evidence:
+      - reference: DOI:10.1016/j.jdent.2026.106633
+        reference_title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: resulted in a sustained decrease in cell activity, reflecting the potential risk of this system at high loading concentrations.
+        explanation: 'Discussion: the C6 and C10 groups.'
+discussions:
+  - discussion_id: ohd-term-chlorhexidine-releasing-resin-based-composite
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: 'OHD has no term for a chlorhexidine-releasing resin-based composite (l~chlorhexidine, l~antibacterial and l~antimicrobial find nothing, searched 2026-11-20). Propose one at this grain, as a child of the proposed antibacterial resin-based composite: a resin-based composite that releases chlorhexidine as its antimicrobial agent, whatever the carrier.'
+  - discussion_id: evidence-threshold-chlorhexidine-releasing-resin-based-composite
+    kind: OPEN_QUESTION
+    status: OPEN
+    prompt: 'This record rests on one in vitro and animal study of one formulation. Whether that is enough evidence for an experimental record is question 3 for the project''s dental materials expert on #50. Until other formulations are curated, the composition and values here are those of that study only.'
+notes: 'The composition is the single formulation of DOI:10.1016/j.jdent.2026.106633; other chlorhexidine-releasing composites may use other resins and carriers. The paper is internally inconsistent in places that are not quoted: the 2% group''s double-bond conversion is 50.1% in the text and 48.44% in the table, one sentence calls a flexural value compressive, and one optical density for the control group reads 11.969. Antibacterial tests used Staphylococcus aureus and Escherichia coli, not cariogenic species such as Streptococcus mutans. Parent is the proposed antibacterial resin-based composite, the curator''s choice.'
+creation_date: '2026-11-20'
+updated_date: '2026-11-20'
+curation_history:
+  - timestamp: '2026-11-20T15:56:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Scaffolded with `just new-record`.
+  - timestamp: '2026-11-20T16:07:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to description.
+  - timestamp: '2026-11-20T16:07:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to description.
+  - timestamp: '2026-11-20T16:07:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[0].
+  - timestamp: '2026-11-20T16:07:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[1].
+  - timestamp: '2026-11-20T16:07:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[2].
+  - timestamp: '2026-11-20T16:07:26+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[2].
+  - timestamp: '2026-11-20T16:07:28+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[3].
+  - timestamp: '2026-11-20T16:07:31+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[4].
+  - timestamp: '2026-11-20T16:07:41+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[4].
+  - timestamp: '2026-11-20T16:07:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[4].
+  - timestamp: '2026-11-20T16:07:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[4].
+  - timestamp: '2026-11-20T16:07:50+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to composition[5].
+  - timestamp: '2026-11-20T16:07:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T16:08:05+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T16:08:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T16:08:19+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].
+  - timestamp: '2026-11-20T16:08:22+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].
+  - timestamp: '2026-11-20T16:08:24+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].
+  - timestamp: '2026-11-20T16:08:28+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[2].
+  - timestamp: '2026-11-20T16:08:35+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[3].
+  - timestamp: '2026-11-20T16:08:38+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[3].
+  - timestamp: '2026-11-20T16:08:40+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T16:08:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T16:08:52+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T16:08:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[5].
+  - timestamp: '2026-11-20T16:08:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[5].
+  - timestamp: '2026-11-20T16:09:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to clinical_uses[0].
+  - timestamp: '2026-11-20T16:09:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to adverse_effects[0].
+  - timestamp: '2026-11-20T16:09:15+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to adverse_effects[0].
+  - timestamp: '2026-11-20T16:09:19+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to adverse_effects[1].
+  - timestamp: '2026-11-20T16:14:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Curated the experimental composite of DOI:10.1016/j.jdent.2026.106633 (deferred 2026-11-18 for want of an OHD term, unblocked by #53) under the proposed antibacterial resin-based composite: composition, strength, conversion, release, antibacterial and safety findings, quoted through signed excerpts; set PROPOSED."
+  - timestamp: '2026-11-20T16:34:49+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T16:34:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].
+  - timestamp: '2026-11-20T16:34:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[2].
+  - timestamp: '2026-11-20T16:34:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[3].
+  - timestamp: '2026-11-20T16:34:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T16:35:07+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[5].
+  - timestamp: '2026-11-20T16:35:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[5].
+  - timestamp: '2026-11-20T16:35:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[5].
+  - timestamp: '2026-11-20T16:36:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Self-review: split the initiator into camphorquinone and DMAEMA, and the loaded filler into chlorhexidine digluconate and bioactive glass 45S5, so no chemical binds only part of a component; dropped unquoted temperatures and times; quoted specimen counts, assays and animal species; set the proposed use's context to OTHER."
+  - timestamp: '2026-11-20T17:07:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Review of #62: lengthened the conversion-method quote to name the FTIR instrument."
+  - timestamp: '2026-11-20T17:25:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Second review of #62: tagged the rat and hamster findings OTHER, not IN_VITRO, since they are animal studies and EvidenceSourceEnum has no animal value; quoted the loading-dependent strength loss on both strength properties."
+  - timestamp: '2026-11-20T17:25:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[0].
+  - timestamp: '2026-11-20T17:25:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[1].
+  - timestamp: '2026-11-20T17:45:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Third review of #62: tagged the introduction quotes OTHER, since they are background the paper cites, not its own results."
+  - timestamp: '2026-11-20T18:01:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Fourth review of #62: kept group labels in the compressive strength and cell viability quotes; quoted the three antibacterial methods and stated significance only for optical density; retagged the carrier rationale as the study's own."
+  - timestamp: '2026-11-20T18:01:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:02:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:02:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:47:13+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Final review of #62: quoted the silica filler by name, with its 40 wt% proportion; quoted the optical-density finding's comparison with the chlorhexidine-free composite."
+  - timestamp: '2026-11-20T18:47:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].
+  - timestamp: '2026-11-20T18:47:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1016/j.jdent.2026.106633 to properties[4].

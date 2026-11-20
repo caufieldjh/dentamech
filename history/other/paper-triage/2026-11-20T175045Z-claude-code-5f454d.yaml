@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T175045Z-claude-code-5f454d
+  timestamp: '2026-11-20T17:50:45Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/63
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/62
+events:
+- type: REVIEW
+  outcome: changed
+  summary: 'Third review round on PR #62 (approved, notes only)'
+  details: 'Tagged introduction quotes OTHER instead of IN_VITRO on the antibacterial (6), chlorhexidine
+    (3) and nanozeolite (2) records, since they are background the paper cites, not its own results. Added
+    an OPEN_QUESTION on universal_adhesive about moving the 24-month restoration success figure to the
+    composite record once a universal-adhesive retention source is curated. Opened #63 for an animal-study
+    value in EvidenceSourceEnum and linked it from the animal-study explanations. The tentative purpose
+    on the nanozeolite record and the approximate CREATE timestamp on the antibacterial record were already
+    disclosed; no change.'

@@ -1,0 +1,25 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T185013Z-claude-code-bb1268
+  timestamp: '2026-11-20T18:50:13Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/62
+events:
+- type: REVIEW
+  outcome: changed
+  summary: 'Fifth review round on PR #62 (approved, notes only)'
+  details: 'chlorhexidine record: the silica filler now quoted by name with its 40 wt% proportion, as
+    the local copy renders them in LaTeX notation; the optical-density finding now quotes the comparison
+    with the chlorhexidine-free composite. universal_adhesive: quoted the ten-specimens-per-group and
+    composite micro-rod sentences behind the bond strength method. The approximate CREATE timestamp needs
+    no change; it is disclosed.'

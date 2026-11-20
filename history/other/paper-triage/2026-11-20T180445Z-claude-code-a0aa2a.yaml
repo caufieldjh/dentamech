@@ -1,0 +1,28 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T180445Z-claude-code-a0aa2a
+  timestamp: '2026-11-20T18:04:45Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/62
+events:
+- type: REVIEW
+  outcome: changed
+  summary: 'Fourth review round on PR #62'
+  details: 'nanozeolite record: completed the truncated colour quote and separated the paper''s two colour
+    measures, the shift with aging (control 1.61, 0.25% 0.97, not significant) and the effect of nanozeolite
+    on colour (0.5% 1.78 against 0.25% 0.64 after aging, significant; reference of that delta E not stated
+    by the paper). chlorhexidine record: group labels kept in the compressive strength and cell viability
+    quotes; the three antibacterial methods quoted, significance stated for optical density only; carrier
+    rationale retagged IN_VITRO as the authors'' own design. universal_adhesive: the sample-size quote
+    tagged OTHER as cited background. The 33.3% placement note needs no change; an open question already
+    covers it.'

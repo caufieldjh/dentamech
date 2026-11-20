@@ -1,0 +1,292 @@
+reference_id: DOI:10.1016/j.jdent.2026.106633
+title: Enhanced antimicrobial properties of POSS-modified composite resin with chlorhexidine-loaded bioactive glass
+source_char_count: 56995
+excerpts:
+- text: 88.717±3.012 ... 86.167±1.428
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Antibacterial composite resins incorporate antimicrobial agents to inhibit or eliminate bacteria within dental plaque biofilms, thereby contributing to caries prevention.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: 'Antimicrobial agents can be broadly categorized into three types: non-releasing, releasing, and hybrid systems'
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: As a preliminary exploratory investigation, strains of
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Bioactive glass 45S5 (BG 45S5) powder was then suspended in the respective CHX solutions at a ratio of 1:10 (w/v).
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Bisphenol A-glycidyl methacrylate (Bis-GMA, Sigma Aldrich Chemical Co., Shanghai, China) and triethylene glycol dimethacrylate (TEGDMA, Sigma Aldrich Chemical Co.) were mixed at a mass ratio of 7:3 (w/w)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Conventional composite resins have been reported to lack antimicrobial activity and are therefore unable to effectively inhibit the formation of dental plaque biofilms
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: However, direct incorporation of chlorhexidine into a resin matrix may adversely affect the process of polymerisation
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: In accordance with ISO 4049:2000 standards ... the flexural strength (FS) of the composite resin specimens was determined using the three-point bending method.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: In accordance with ISO 604 standards
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: In vitro drug release demonstrated an initial rapid release phase followed by a sustained and slower release.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: In vivo evaluations revealed no significant systemic toxicity or oral mucosal irritation.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Incorporation of 2% CHX-loaded bioactive glass 45S5 into a POSS-modified composite resin maintained acceptable mechanical performance and provided sustained drug release, biocompatibility, and significant antibacterial activity.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Increasing chlorhexidine concentration resulted in particle agglomeration, reduced double-bond conversion rate, and decreased mechanical strength.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Non-releasing agents, such as the quaternary ammonium compound 12-methacryloyloxydodecylpyridinium bromide (MDPB), are widely used as antimicrobial monomers in commercial resin systems
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Polyhedral Oligomeric Silsesquioxanes (POSS) are inorganic-organic hybrid cage-like nanomaterials
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Releasing agents, such as zinc oxide (ZnO) nanoparticles and chlorhexidine (CHX), release antimicrobial components gradually, thereby inhibiting bacterial growth
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Staphylococcus aureus (S. aureus; ATCC6538) was chosen as the representative
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Subsequently, 4 wt % POSS was added
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The aim of this study was to develop a novel antibacterial dental composite resin by loading chlorhexidine (CHX) onto bioactive glass (BG 45S5) and incorporating it into a resin matrix containing cage-type polyhedral oligomeric silsesquioxane (POSS) nanomonomers.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The compressive strength of ... was reduced by 4.94% compared to ... and this difference was statistically significant.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: These results provide preliminary validation of its effective bactericidal activity against both ... bacteria under short incubation conditions.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: This pre-loading strategy aimed to reduce the free CHX content within the resin matrix, thereby minimizing its negative impact on mechanical properties.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: bacterial adhesion to restorative surfaces and subsequently leading to secondary caries, a primary cause of restoration failure
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: camphorquinone (CQ, Sigma Aldrich Chemical Co.) and ... 2-(dimethylamino) ethyl methacrylate (DMAEMA, Sigma Aldrich Chemical Co.) were incorporated
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: immersed in ... distilled water
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: representing a 2.55% reduction. However, statistical analysis revealed that the difference between the two groups was not statistically significant.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: resulted in a sustained decrease in cell activity, reflecting the potential risk of this system at high loading concentrations.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: suggesting its potential application as a bioactive restorative material
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: the 20% chlorhexidine digluconate solution (supplied by Aladdin, Shanghai, China) was diluted to concentrations of 2%, 6% and 10%
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: were added to the mixture, each accounting for 20% of the total resin mass
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: At a chlorhexidine loading concentration of 2%, the composite resin demonstrated acceptable mechanical properties.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Cylindrical specimens with dimensions of ... were prepared for each experimental group (n = 6)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Eight male golden hamsters
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: High Performance Liquid Chromatography
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Rectangular specimens with dimensions of ... were prepared for each group (n = 6)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: This test was intended to conduct an initial evaluation of the system's antimicrobial properties before further investigation with more specific pathogenic bacteria.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Twelve 6-week-old female Sprague-Dawley (SD) rats
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: mouse bone marrow mesenchymal stem cells (BMSCs)
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: the Fourier transform infrared spectrometer (FTIR, Nicolet iS5, Thermo, United States) was used in the absorption mode
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The compressive strength of C_0 was 185.500 ± 3.271 ... and that of C_2 was reduced to 176.333 ± 2.875
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: a decrease in the number of colonies on the plates was observed in the
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: plate diffusion experiments revealed that ... exhibited distinct inhibition zones against both bacterial strains
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: the cell viability in the low concentration group ... showed no statistically significant difference compared to the control group
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: were significantly lower than those of the blank control groups and
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: 40\mathrm{wt}% \mathrm{SiO}_2 surface-treated with KH-570 silane was added
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: These findings suggest that the incorporation of CHX into the modified composite resin exhibited a substantial inhibitory effect on both the tested strains.
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: indicating that the composite resin without CHX addition exhibited no substantial antimicrobial activity against S. aureus and E. coli
+  verification:
+    method: local_full_text
+    source_sha256: 725d20d94d797494eae4426ee2f73cc8febaea7267be1c7d16f2677b30a957d4
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'

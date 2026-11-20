@@ -1,0 +1,31 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T170855Z-claude-code-1941d0
+  timestamp: '2026-11-20T17:08:55Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/62
+events:
+- type: REVIEW
+  outcome: changed
+  summary: 'Self-review and review round on PR #62 for the four records from the re-triage'
+  details: 'Self-review (second commit): nanozeolite colour differences against the unmodified resin stated
+    as not significant; chlorhexidine composite components split so no chemical binds only part of one
+    (camphorquinone and DMAEMA; chlorhexidine digluconate and bioactive glass 45S5), with specimen counts,
+    assays and animal species quoted and unquoted temperatures and times dropped; universal_adhesive given
+    the untreated control''s bond strength (54.88 ± 13.81 MPa) and 24-month success (33.3%), and returned
+    to DRAFT for lack of composition; antibacterial_resin_based_composite returned to DRAFT and its unquoted
+    clinical use dropped. Review round on #62: the 33.3% item kept, as the maintainer asked for the control
+    arm, but named as restoration success with the composite and stated as esthetic, not bond, failures;
+    the new 106629 paper-log row reworded to match; FTIR and crystal violet method quotes lengthened to
+    name the technique; the broad zeolite binding explained; the evidence discussion on universal_adhesive
+    now says a defining source must replace the definition quotes before it leaves DRAFT.'

@@ -1,0 +1,38 @@
+history_version: 1
+target:
+  kind: other
+  slug: paper-triage
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-20T161736Z-claude-code-fadc7b
+  timestamp: '2026-11-20T16:17:36Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/caufieldjh/dentamech/issues/50
+  - https://github.com/caufieldjh/dentamech/issues/51
+events:
+- type: CREATE
+  outcome: changed
+  summary: 'Re-triaged the ten Journal of Dentistry 2026 papers held locally under the scope widened in
+    #53, and created four records from three of them'
+  details: 'Re-read all ten papers in local_full_text/ except the ISO standard. Still out of scope, with
+    no material studied: 106620 (deep learning for bone loss on radiographs), 106621 (navigated coronectomy),
+    106624 (implant scan metrology), 106631 (deep learning for implant space on CBCT); 106637 compares
+    visit strategies for root canal treatment and mentions calcium hydroxide dressing only as part of
+    a protocol. No new use: 106626 excludes dentures and its 3D-printed provisional findings are already
+    on resin_based_composite; 106635 is already quoted on denture_base_polymer. New records, all minted
+    ids (OHD has no term; searched l~antibacterial, l~antimicrobial, l~bioactive, l~chlorhexidine, l~adhesive,
+    l~bonding, l~bond, l~primer, l~zeolite, l~denture): antibacterial_resin_based_composite (parent OHD:0000036;
+    from the introduction of 106633) and chlorhexidine_releasing_resin_based_composite (experimental,
+    RESTORATIVE/COMPOSITE) from 106633, as the maintainer chose; nanozeolite_filled_3d_printed_denture_base_resin
+    (experimental, under denture_base_polymer) from 106622, with purpose RESTORATIVE and restorative_class
+    POLYMER set tentatively at the maintainer''s direction while #51 is open; universal_adhesive (parent
+    OHD:0000000, FDA 21 CFR 872.3200) from 106629, as the maintainer chose. Quotes signed from local copies;
+    106633 used 6.4% of its text. Not done: universal adhesive composition, any 510(k) lookup, regulatory
+    status for the antibacterial class; internal inconsistencies in 106633 (conversion of the 2% group,
+    a mislabelled strength, one optical density) are noted, not quoted.'

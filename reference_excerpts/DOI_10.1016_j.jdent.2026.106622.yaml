@@ -1,0 +1,154 @@
+reference_id: DOI:10.1016/j.jdent.2026.106622
+title: In-vitro assessment of thermal stability, color stability, degree of conversion, nanozeolite and monomer release, and antibacterial effect in nanozeolite-filled 3D printed denture base resin
+source_char_count: 47185
+excerpts:
+- text: A 3D printed denture base resin was modified with NZ at concentrations of 0.25% and 0.5%, alongside an unmodified control.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Both NZ-modified groups showed improved color stability after aging, whereas the control group exhibited the greatest change (1.61%).
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: DC values were significantly higher in the 0.5% NZ group before and after aging.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Despite having the smoothest surface among the three study groups, the 0.5% NZ group exhibited higher OD and S. mutans biofilm formation than the 0.25% NZ group.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Disc specimens were placed in glass vials containing ... of 70% ethanol
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Limitations of this study include the use of a single type of 3D-printed resin and only two NZ concentrations.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Monomer release was highest in the control group and reduced in NZ-reinforced resins.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: NZ reinforcement improved the thermal, optical, and biological performance of 3D printed denture base resins
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Nanozeolites (NZ) are crystalline nanoclay based biomaterials composed of aluminosilicate frameworks with voids measuring
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The 0.25% NZ group exhibited the lowest OD value (0.04 ± 0.01), whereas the control group showed the highest (0.24 ± 0.07)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The 0.5% NZ group demonstrated the highest DC values both before (91.9 ± 0.4%) and after aging (92.1 ± 0.7%)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The 0.5% NZ group demonstrated the highest thermal stability, reflected by increased glass transition (Tg) and melting (Tm) temperatures.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Their highly ordered structure enables ion exchange with the surrounding environment
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: This study evaluated the effect of incorporating nanozeolite (NZ) into three-dimensionally (3D) printed denture base resins to address limitations in thermal stability, optical properties, degree of conversion (DC), monomer release, and antibacterial activity.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: half of the specimens from each group underwent thermocycling (600 cycles between
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: 'were incorporated into a methacrylate-based 3D printed denture base resin (Denture Base LP, Formlabs, USA) to produce three groups: an unmodified control'
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: After 7, 15, 30, and 60 days
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Color stability and material release (NZ and monomer) were measured using UV-Vis spectrophotometry.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: DC was analyzed by Fourier Transform Infrared Spectroscopy (FTIR)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Thermal behavior was assessed using thermogravimetric analysis (TGA) and differential scanning calorimetry (DSC)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: With respect to the influence of thermal aging on color change, the control group showed the greatest color shift (1.61), while the 0.25% NZ group showed the least (0.97). However, these differences were not statistically significant.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: color differences were determined using the CIEDE2000 Eq.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: The discs with residual adherent bacteria were stained with ... of crystal violet solution
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: However, after aging, the 0.5% NZ group exhibited a significantly higher ... value (1.78) than the 0.25% NZ group (0.64)
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
+- text: Regarding the effect of NZ addition on resin color, the Mann-Whitney U test (Table 1) showed no significant difference between the 0.25% and 0.5% NZ groups before thermocycling.
+  verification:
+    method: local_full_text
+    source_sha256: 5046f6b6b62223e585ca5926bb66975695635cd25c2b3799e4ffd64a43885b5e
+    validator_version: 0.8.0
+    verified_at: '2026-11-20'
