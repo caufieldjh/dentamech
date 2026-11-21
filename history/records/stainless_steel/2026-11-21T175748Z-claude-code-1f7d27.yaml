@@ -1,0 +1,29 @@
+history_version: 1
+target:
+  kind: record
+  slug: stainless_steel
+  path: kb/materials/stainless_steel.yaml
+session:
+  id: 2026-11-21T175748Z-claude-code-1f7d27
+  timestamp: '2026-11-21T17:57:48Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/64
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - clinical_performance
+  - adverse_effects
+  - notes
+  summary: 'Answered the review of PR #64 on Stainless steel.'
+  details: Added the PMID:35086644 sentence that states the 12-month follow-up on the zirconia-versus-SSC
+    row (add-evidence, machine-checked). Added a sentence to the ion-release adverse effect saying TOXICITY
+    records the concern, not an observed harm. Kept property_type OTHER for crown retention rather than
+    BOND_STRENGTH and gave the reason in notes. Corrected the paper-log count in the PR body (17 ACCEPT,
+    1 REJECT).

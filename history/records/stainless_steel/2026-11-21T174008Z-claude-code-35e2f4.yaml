@@ -1,0 +1,41 @@
+history_version: 1
+target:
+  kind: record
+  slug: stainless_steel
+  path: kb/materials/stainless_steel.yaml
+session:
+  id: 2026-11-21T174008Z-claude-code-35e2f4
+  timestamp: '2026-11-21T17:40:08Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - composition
+  - setting_mechanisms
+  - clinical_uses
+  - regulatory_status
+  - properties
+  - clinical_performance
+  - adverse_effects
+  - mappings
+  - discussions
+  - notes
+  - description
+  summary: Curated Stainless steel (OHD:0000137) from a seeded stub to PROPOSED.
+  details: 'Filled composition (iron, chromium, nickel, with no proportions because no fetched source
+    gives them for crowns), setting NONE (prefabricated), three clinical uses (preformed crowns on primary
+    molars, the Hall Technique, the prefabricated cusp of 872.3350), FDA entries for 872.3330 (ELZ) and
+    872.3350 (ELO). Both were re-verified on 2026-11-21 against the cached eCFR text and openFDA classification,
+    and the ELZ listings still name stainless steel crowns from NuSmile, Hu-Friedy and Cargus. Also filled
+    ion release and luting-cement retention properties, six clinical performance rows from five systematic
+    reviews, four adverse effects (metal allergy, ion release, gingival inflammation, appearance), and
+    a MeSH D013193 broadMatch. 69 evidence items were added with add-evidence; 63 quotes are machine-checked
+    and 6 url: quotes (MeSH, openFDA) were read by the agent. Left undone, as KNOWLEDGE_GAP discussions:
+    alloy grade and proportions, permanent-molar and pre-veneered crown uses. Standards and products are
+    left out, with reasons in notes. Orthodontic and space-maintainer uses are out of scope for this restoration-material
+    term.'
