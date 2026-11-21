@@ -472,6 +472,12 @@ clinical_performance:
         evidence_source: SYSTEMATIC_REVIEW
         snippet: A total of 6 studies were included from the initial 641 results.
         explanation: Six included trials.
+      - reference: PMID:35086644
+        reference_title: 'Effectiveness of zirconia crowns compared with stainless steel crowns in primary posterior teeth rehabilitation: A systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Primary posterior teeth rehabilitated with ZCs may have less risk of experiencing clinical failure and probably better gingival health after 12 months than SSCs.
+        explanation: The 12-month follow-up recorded in follow_up_years.
   - name: Reported failure rates of preformed metal crowns on primary molars
     measure_type: OTHER
     value: 1.9-30.3
@@ -536,7 +542,7 @@ adverse_effects:
   - name: Nickel and chromium release into saliva and tooth tissue
     effect_category: TOXICITY
     frequency: Release occurs from every crown tested in the cited studies. Where they compare the amounts with a threshold, the amounts are below toxic levels or below dietary intake.
-    description: After stainless steel crowns are placed, salivary nickel and chromium rise. Teeth that carried a crown have several times more nickel, chromium and iron in the root cementum below the crown than intact teeth. The systematic review on biological responses records concern about ion leaching in children at high caries risk. No study cited here reports harm from it.
+    description: After stainless steel crowns are placed, salivary nickel and chromium rise. Teeth that carried a crown have several times more nickel, chromium and iron in the root cementum below the crown than intact teeth. The systematic review on biological responses records concern about ion leaching in children at high caries risk. No study cited here reports harm from it. The TOXICITY category records the concern the sources raise, not an observed toxic effect.
     evidence:
       - reference: PMID:29796983
         reference_title: "Effects of Restoring the Primary Dentition with Stainless-Steel Crowns on Children's Salivary Nickel and Chromium Levels, and the Associations with Saliva pH: a Preliminary Before-After Clinical Trial."
@@ -635,6 +641,7 @@ discussions:
 notes: |-
   Scope. The OHD term is a restoration material, so this record covers the restorative and prosthetic uses that 21 CFR 872 subpart D names: preformed crowns (872.3330) and the prefabricated cusp (872.3350). Stainless steel is also used for orthodontic wires, brackets and bands and for space maintainer bands. Those auxiliary uses are not curated here, their regulatory status was not looked up, and OHD has no material term for them (l~orthodontic, wire, bracket, space maint and band found none, 2026-11-21).
   Setting. NONE because the crowns and cusps are prefabricated: the regulations call both a prefabricated device. Trimming a crown to fit is shaping, not setting, and SettingMechanismEnum has no value for it.
+  Properties. Retention with luting cements is property_type OTHER rather than BOND_STRENGTH. A retentive strength test measures the force to dislodge a cemented crown, which depends on the crown's fit to the prepared tooth as well as on the cement's bond, so it is not bond strength to a substrate.
   Terms. The allergy row is bound to MONDO:0006525 allergic contact dermatitis, a broad term, as on the Metal record. MONDO:0005481 contact dermatitis due to nickel names the allergen but is not under allergic contact dermatitis in MONDO, and neither term names the oral presentation.
   Left out. Standards: the FDA-recognized standards recorded for Metal (ISO 22674, ISO 10271 and the others) are tied in FDA's database to the cast-alloy and amalgam regulations, not to 872.3330 or 872.3350, and no standard specific to preformed crowns was verified. Products: the crowns are 510(k)-exempt, so there are no submissions to record. Brands under ELZ (NuSmile, Hu-Friedy, Cargus) are cited on the 872.3330 entry as listings. Regulators other than FDA, because none were verified against a primary source.
 parents:
@@ -1074,4 +1081,16 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: "Self-review. Tagged background-sentence quotes OTHER, per the #62 review rule. Tagged PMID:21274429 HUMAN_CLINICAL, since its crowns served in the mouth. Marked the MeSH quote PARTIAL for chromium. Narrowed the 872.3350 note, the scope note on orthodontic uses, the description's 'mainly', and the threshold claims on ion release to what the sources say. The regulatory re-check in the previous event read the cached eCFR text (issue 2026-11-12) and live openFDA."
+  - timestamp: '2026-11-21T17:56:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:35086644 to clinical_performance[4].
+  - timestamp: '2026-11-21T19:10:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Answered the review of PR #64. Quoted the PMID:35086644 12-month sentence for follow_up_years on the zirconia row. Said that the TOXICITY category on ion release records a concern, not an observed effect. Kept property_type OTHER for crown retention and gave the reason in notes.'
 updated_date: '2026-11-21'
