@@ -1,6 +1,6 @@
 id: OHD:0000137
 name: Stainless steel
-description: A metal dental restoration material in which the principal ingredient is stainless steel, a steel containing nickel, chromium or both. In dentistry it is used mainly as preformed crowns for primary molars with extensive caries, fitted either conventionally or by the Hall Technique, and also as a prefabricated cusp that gives a proper bite against a removable denture.
+description: A metal dental restoration material in which the principal ingredient is stainless steel, a steel containing nickel, chromium or both. In dentistry it is commonly used as preformed crowns for primary molars with extensive caries, fitted either conventionally or by the Hall Technique, and also as a prefabricated cusp that gives a proper bite against a removable denture.
 description_evidence:
   - reference: url:https://id.nlm.nih.gov/mesh/M0020409
     reference_title: MeSH concept M0020409 Stainless Steel, scope note
@@ -11,15 +11,15 @@ description_evidence:
   - reference: PMID:32174622
     reference_title: 'Retentive strength of luting cements for stainless steel crowns: A systematic review.'
     supports: SUPPORT
-    evidence_source: SYSTEMATIC_REVIEW
+    evidence_source: OTHER
     snippet: Stainless steel crowns (SSCs) are unique coronal restorative materials used commonly in the management of primary teeth with extensive caries.
-    explanation: Stainless steel crowns as a restorative for primary teeth with extensive caries.
+    explanation: Stainless steel crowns as a restorative for primary teeth with extensive caries. Background sentence, so tagged OTHER.
   - reference: PMID:26718872
     reference_title: Preformed crowns for decayed primary molar teeth.
     supports: SUPPORT
-    evidence_source: SYSTEMATIC_REVIEW
+    evidence_source: OTHER
     snippet: However, in the case of the Hall Technique, PMCs are pushed over the tooth with no local anaesthetic, carious tissue removal or tooth preparation.
-    explanation: The Hall Technique as the alternative to conventional fitting.
+    explanation: The Hall Technique as the alternative to conventional fitting. Background sentence, so tagged OTHER.
   - reference: CFR:872.3350
     reference_title: 21 CFR 872.3350 Gold or stainless steel cusp
     supports: SUPPORT
@@ -58,7 +58,7 @@ composition:
       - reference: PMID:21274429
         reference_title: Absorption of nickel, chromium, and iron by the root surface of primary molars covered with stainless steel crowns.
         supports: PARTIAL
-        evidence_source: IN_VITRO
+        evidence_source: HUMAN_CLINICAL
         snippet: Stainless-steel crowns release nickel, chromium, and iron in oral environment, and the ions are absorbed by the primary molars roots.
         explanation: Iron released from the crowns shows it is a constituent. PARTIAL because the quote is about release, not composition.
       - reference: PMID:33107458
@@ -79,15 +79,15 @@ composition:
       - reference: PMID:29796983
         reference_title: "Effects of Restoring the Primary Dentition with Stainless-Steel Crowns on Children's Salivary Nickel and Chromium Levels, and the Associations with Saliva pH: a Preliminary Before-After Clinical Trial."
         supports: SUPPORT
-        evidence_source: HUMAN_CLINICAL
+        evidence_source: OTHER
         snippet: Nickel and chromium existing in stainless-steel crowns (SSCs, used in pediatric dentistry) might be cytotoxic and allergenic.
-        explanation: States that chromium is present in stainless steel crowns.
+        explanation: States that chromium is present in stainless steel crowns. Background sentence, so tagged OTHER.
       - reference: url:https://id.nlm.nih.gov/mesh/M0020409
         reference_title: MeSH concept M0020409 Stainless Steel, scope note
-        supports: SUPPORT
+        supports: PARTIAL
         evidence_source: OTHER
         snippet: A steel containing Ni, Cr, or both.
-        explanation: Chromium as an alloying element of stainless steel in general.
+        explanation: MeSH says Ni, Cr, or both, so it does not by itself establish chromium; PARTIAL.
   - name: Nickel
     role: ALLOYING_ELEMENT
     description: An alloying element of the steel, present in stainless steel crowns. It is the constituent the allergy concern is about.
@@ -100,15 +100,15 @@ composition:
       - reference: PMID:41509958
         reference_title: 'Comparative Evaluation of Nickel Release from Three Commercially Available Stainless Steel Crowns: An In Vitro Study.'
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Nickel is considered an essential trace element and a constituent of stainless steel crowns.
-        explanation: States that nickel is a constituent of the crowns.
+        explanation: States that nickel is a constituent of the crowns. Background sentence, so tagged OTHER.
       - reference: PMID:29796983
         reference_title: "Effects of Restoring the Primary Dentition with Stainless-Steel Crowns on Children's Salivary Nickel and Chromium Levels, and the Associations with Saliva pH: a Preliminary Before-After Clinical Trial."
         supports: SUPPORT
-        evidence_source: HUMAN_CLINICAL
+        evidence_source: OTHER
         snippet: Nickel and chromium existing in stainless-steel crowns (SSCs, used in pediatric dentistry) might be cytotoxic and allergenic.
-        explanation: States that nickel is present in stainless steel crowns, and why it matters.
+        explanation: States that nickel is present in stainless steel crowns, and why it matters. Background sentence, so tagged OTHER.
 clinical_uses:
   - name: Preformed crowns for primary molars
     use_context: TEMPORARY
@@ -143,33 +143,33 @@ clinical_uses:
       - reference: PMID:26718872
         reference_title: Preformed crowns for decayed primary molar teeth.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: They can be made completely of stainless steel (know as 'preformed metal crowns' or PMCs), or to give better aesthetics, may be made of stainless steel with a white veneer cover or made wholly of a white ceramic material.
-        explanation: Crowns made wholly of stainless steel are the preformed metal crowns this use describes.
+        explanation: Crowns made wholly of stainless steel are the preformed metal crowns this use describes. Background sentence, so tagged OTHER.
       - reference: PMID:26718872
         reference_title: Preformed crowns for decayed primary molar teeth.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: Crowns are recommended for restoring primary molar teeth that have had a pulp treatment, are very decayed or are badly broken down.
-        explanation: Source of the three indications.
+        explanation: Source of the three indications. Background sentence, so tagged OTHER.
       - reference: PMID:26718872
         reference_title: Preformed crowns for decayed primary molar teeth.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: In most cases, teeth are trimmed for the crowns to be fitted conventionally using a local anaesthetic.
-        explanation: Conventional fitting.
+        explanation: Conventional fitting. Background sentence, so tagged OTHER.
       - reference: PMID:32174622
         reference_title: 'Retentive strength of luting cements for stainless steel crowns: A systematic review.'
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: Stainless steel crowns (SSCs) are unique coronal restorative materials used commonly in the management of primary teeth with extensive caries.
-        explanation: The use on primary teeth with extensive caries; the review is about the cements that lute the crowns.
+        explanation: The use on primary teeth with extensive caries; the review is about the cements that lute the crowns. Background sentence, so tagged OTHER.
       - reference: PMID:36151937
         reference_title: 'Outcomes of preformed metal crowns placed with the conventional and Hall techniques: A systematic review and meta-analysis.'
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: Preformed metal crowns (PMCs) have been used to restore carious primary molars and have a high success and survival rate.
-        explanation: The use on carious primary molars.
+        explanation: The use on carious primary molars. Background sentence, so tagged OTHER.
       - reference: PMID:25905656
         reference_title: 'The use of stainless steel crowns: a systematic literature review.'
         supports: SUPPORT
@@ -199,15 +199,15 @@ clinical_uses:
       - reference: PMID:26718872
         reference_title: Preformed crowns for decayed primary molar teeth.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: However, in the case of the Hall Technique, PMCs are pushed over the tooth with no local anaesthetic, carious tissue removal or tooth preparation.
-        explanation: What the Hall Technique is, and that it uses preformed metal crowns.
+        explanation: What the Hall Technique is, and that it uses preformed metal crowns. Background sentence, so tagged OTHER.
       - reference: PMID:36151937
         reference_title: 'Outcomes of preformed metal crowns placed with the conventional and Hall techniques: A systematic review and meta-analysis.'
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: There are two methods currently employed for PMC placement - the conventional technique (CT) and Hall technique (HT).
-        explanation: The Hall Technique as one of the two ways of placing the crown.
+        explanation: The Hall Technique as one of the two ways of placing the crown. Background sentence, so tagged OTHER.
   - name: Prefabricated cusp against a removable denture
     use_context: PROSTHODONTIC
     description: A prefabricated stainless steel cusp that gives a permanent chewing projection, so that the teeth meet a removable denture in a proper bite. Named in the regulation; no clinical literature on it was curated.
@@ -271,7 +271,7 @@ regulatory_status:
       - name: Provision of a permanent cusp to achieve occlusal harmony between the teeth and a removable denture
         use_context: PROSTHODONTIC
     source_url: https://www.ecfr.gov/current/title-21/section-872.3350
-    notes: The only regulation in 21 CFR 872 subpart D whose identification names stainless steel. Prosthodontic, not restorative, and a permanent cusp where the preformed crown is temporary. ELO is the only product code under the regulation.
+    notes: Its identification names stainless steel, which 872.3330's does not, and lists austenitic alloys and stainless steel as separate materials. Prosthodontic, not restorative, and a permanent cusp where the preformed crown is temporary. ELO is the only product code under the regulation.
     evidence:
       - reference: CFR:872.3350
         reference_title: 21 CFR 872.3350 Gold or stainless steel cusp
@@ -290,7 +290,7 @@ properties:
     property_type: CORROSION_RESISTANCE
     test_method: Immersion of crowns in artificial saliva at 37 °C, ions measured by atomic absorption or ICP spectrometry
     conditions: In vitro, over days to months; the studies vary pH, temperature, trimming and sterilization
-    description: Every crown tested releases measurable nickel and chromium. The cited studies judge the amounts to be below toxic levels and below dietary intake. They disagree on whether pH matters. Several find more release at lower pH, and one finds no pH effect. Autoclave sterilization raised nickel release in one study. No value is recorded because each study reports release per crown, per brand and per day differently.
+    description: Every crown tested releases measurable nickel and chromium. Three of the cited studies judge the amounts below toxic levels or below dietary intake. They disagree on whether pH matters. Several find more release at lower pH, and one finds no pH effect. Autoclave sterilization raised nickel release in one study. No value is recorded because each study reports release per crown, per brand and per day differently.
     evidence:
       - reference: PMID:30804305
         reference_title: An in vitro evaluation of nickel and chromium release from different commercially available stainless steel crowns.
@@ -518,9 +518,9 @@ adverse_effects:
       - reference: PMID:36110694
         reference_title: 'Effects of pH and Time on Nickel Ion Release from Pediatric Stainless-Steel Crowns: An In-Vitro Comparative Study.'
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: OTHER
         snippet: Of these constituents, nickel is known to be a common cause of hypersensitivity reactions.
-        explanation: Nickel as the allergen of concern.
+        explanation: Nickel as the allergen of concern. Background sentence, so tagged OTHER.
       - reference: PMID:36110694
         reference_title: 'Effects of pH and Time on Nickel Ion Release from Pediatric Stainless-Steel Crowns: An In-Vitro Comparative Study.'
         supports: PARTIAL
@@ -535,7 +535,7 @@ adverse_effects:
         explanation: In vitro; the authors decline to rule allergy out.
   - name: Nickel and chromium release into saliva and tooth tissue
     effect_category: TOXICITY
-    frequency: Release occurs from every crown tested; measured amounts are below toxic levels and below dietary intake in the cited studies.
+    frequency: Release occurs from every crown tested in the cited studies. Where they compare the amounts with a threshold, the amounts are below toxic levels or below dietary intake.
     description: After stainless steel crowns are placed, salivary nickel and chromium rise. Teeth that carried a crown have several times more nickel, chromium and iron in the root cementum below the crown than intact teeth. The systematic review on biological responses records concern about ion leaching in children at high caries risk. No study cited here reports harm from it.
     evidence:
       - reference: PMID:29796983
@@ -553,9 +553,9 @@ adverse_effects:
       - reference: PMID:21274429
         reference_title: Absorption of nickel, chromium, and iron by the root surface of primary molars covered with stainless steel crowns.
         supports: SUPPORT
-        evidence_source: IN_VITRO
+        evidence_source: HUMAN_CLINICAL
         snippet: Higher amounts of nickel, chromium, and iron (5-6 times) were found in the cementum of molars covered with stainless-steel crowns compared to intact molars.
-        explanation: Laboratory analysis of 17 crowned and 17 intact exfoliated or extracted primary molars.
+        explanation: Analysis of 17 primary molars that carried crowns in the mouth for more than two years, against 17 intact molars, after exfoliation or extraction.
       - reference: PMID:32522913
         reference_title: Biological responses to pediatric stainless steel crowns.
         supports: SUPPORT
@@ -614,15 +614,15 @@ adverse_effects:
       - reference: PMID:36180321
         reference_title: 'Comparison of periodontal health of primary teeth restored with zirconia and stainless steel crowns: A systemic review and meta-analysis.'
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: However, due to the unnatural color of stainless steel crowns, it still needs to modify crown types.
-        explanation: The colour of the crowns as a reason for other crown types.
+        explanation: The colour of the crowns as a reason for other crown types. Background sentence, so tagged OTHER.
       - reference: PMID:26718872
         reference_title: Preformed crowns for decayed primary molar teeth.
         supports: SUPPORT
-        evidence_source: SYSTEMATIC_REVIEW
+        evidence_source: OTHER
         snippet: They can be made completely of stainless steel (know as 'preformed metal crowns' or PMCs), or to give better aesthetics, may be made of stainless steel with a white veneer cover or made wholly of a white ceramic material.
-        explanation: Veneered and ceramic crowns exist to give better aesthetics.
+        explanation: Veneered and ceramic crowns exist to give better aesthetics. Background sentence, so tagged OTHER.
 discussions:
   - discussion_id: composition-stainless-steel
     kind: KNOWLEDGE_GAP
@@ -633,7 +633,7 @@ discussions:
     status: OPEN
     prompt: 'Not curated: preformed stainless steel crowns on permanent first molars, for example those affected by molar-incisor hypomineralisation (leads PMID:34115431, PMID:37924021, PMID:37381120), and veneered (pre-veneered) stainless steel crowns (PMID:24960395). Read and quote them before adding uses or performance rows.'
 notes: |-
-  Scope. The OHD term is a restoration material, so this record covers the restorative and prosthetic uses that 21 CFR 872 subpart D names: preformed crowns (872.3330) and the prefabricated cusp (872.3350). Stainless steel is also used for orthodontic wires, brackets and bands and for space maintainer bands. Those auxiliary uses fall under other regulations, are not curated here, and have no OHD material term of their own.
+  Scope. The OHD term is a restoration material, so this record covers the restorative and prosthetic uses that 21 CFR 872 subpart D names: preformed crowns (872.3330) and the prefabricated cusp (872.3350). Stainless steel is also used for orthodontic wires, brackets and bands and for space maintainer bands. Those auxiliary uses are not curated here, their regulatory status was not looked up, and OHD has no material term for them (l~orthodontic, wire, bracket, space maint and band found none, 2026-11-21).
   Setting. NONE because the crowns and cusps are prefabricated: the regulations call both a prefabricated device. Trimming a crown to fit is shaping, not setting, and SettingMechanismEnum has no value for it.
   Terms. The allergy row is bound to MONDO:0006525 allergic contact dermatitis, a broad term, as on the Metal record. MONDO:0005481 contact dermatitis due to nickel names the allergen but is not under allergic contact dermatitis in MONDO, and neither term names the oral presentation.
   Left out. Standards: the FDA-recognized standards recorded for Metal (ISO 22674, ISO 10271 and the others) are tied in FDA's database to the cast-alloy and amalgam regulations, not to 872.3330 or 872.3350, and no standard specific to preformed crowns was verified. Products: the crowns are 510(k)-exempt, so there are no submissions to record. Brands under ELZ (NuSmile, Hu-Friedy, Cargus) are cited on the 872.3330 entry as listings. Regulators other than FDA, because none were verified against a primary source.
@@ -1068,4 +1068,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Curated the seeded stub. Added composition (iron, chromium, nickel; no proportions), the preformed crown, Hall Technique and prefabricated cusp uses, FDA entries for 872.3330 and 872.3350 re-verified against eCFR and openFDA, ion release and luting properties, six performance rows, four adverse effects, a MeSH broadMatch, two KNOWLEDGE_GAP discussions and scope notes. Moved status to PROPOSED: complete and valid.'
+  - timestamp: '2026-11-21T18:05:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: "Self-review. Tagged background-sentence quotes OTHER, per the #62 review rule. Tagged PMID:21274429 HUMAN_CLINICAL, since its crowns served in the mouth. Marked the MeSH quote PARTIAL for chromium. Narrowed the 872.3350 note, the scope note on orthodontic uses, the description's 'mainly', and the threshold claims on ion release to what the sources say. The regulatory re-check in the previous event read the cached eCFR text (issue 2026-11-12) and live openFDA."
 updated_date: '2026-11-21'
