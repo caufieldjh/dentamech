@@ -23,5 +23,5 @@ events:
     before gh issue create, and records the issue on the record''s CURATION_TODO discussion as url: evidence
     with supports NO_EVIDENCE and status UNDER_DISCUSSION (tested: just validate and validate-references
     pass, no cache rows written; OTHER is refused). Title format NTR: <label> follows OHD #187 and #190.
-    Pointers added in CLAUDE.md, docs/DOMAIN.md, curate-record and ontology-terms. A dry-run draft for denture base polymer was written to the scratchpad and not filed; it showed the label and parent rules needed a case for materials outside OHD''s restoration branch, now added. No issue was filed on OHD. Re-grounding
+    Pointers added in CLAUDE.md, docs/DOMAIN.md, curate-record and ontology-terms. A dry-run draft for denture base polymer was written to the scratchpad and not filed; it showed the label and parent rules needed a case for materials outside OHD''s restoration branch, now added. No issue was filed on OHD in this session. Re-grounding
     a minted record onto a new OHD id has no recipe yet; the skill says to ask.'
