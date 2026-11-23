@@ -1,0 +1,76 @@
+reference_id: DOI:10.1007/s12663-024-02311-4
+title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+source_char_count: 27276
+excerpts:
+- text: As a limitation of this study, the low number of teeth involved (pilot study)
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Cell proliferation and viability were negatively affected by the presence of periodontal ligament
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Dentin and bone are known to have similar organic and inorganic structures
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Dentin collagen forms a compact and crosslinked scaffold in which mineral crystals deposit
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Extracted teeth are usually discarded, though they could be useful as autologous graft material for the extraction socket.
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Less bone resorption is observed when alveolar preservation procedures are performed using fresh alveolus
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Pre-osteoblastic cells were incubated with protein extracted from this substrate to verify their osteoinductive potential.
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: The mouse's pre-osteoblastic cell line (MC3T3-E1) used in this study
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: dentinal tissues can be considered alternative graft materials to autologous bone
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: in all the preparations reported herein, the cementum was presented, even in the group where the periodontal ligament was removed
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: regardless of time, all groups showed greater mineral content than the control group
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: there was an increased gene expression of all genes studied in the WEPL group and a greater formation of phosphate nodules
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
