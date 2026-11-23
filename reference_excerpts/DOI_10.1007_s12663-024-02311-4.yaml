@@ -14,6 +14,12 @@ excerpts:
     source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
     validator_version: 0.8.0
     verified_at: '2026-11-23'
+- text: Cell proliferation, viability assays, mRNA expression of type I Collagen (COL-I), RUNX-2, BMP-2, and mineral nodules were assessed to achieve the main outcome.
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
 - text: Dentin and bone are known to have similar organic and inorganic structures
   verification:
     method: local_full_text
@@ -32,12 +38,6 @@ excerpts:
     source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
     validator_version: 0.8.0
     verified_at: '2026-11-23'
-- text: Less bone resorption is observed when alveolar preservation procedures are performed using fresh alveolus
-  verification:
-    method: local_full_text
-    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
-    validator_version: 0.8.0
-    verified_at: '2026-11-23'
 - text: Pre-osteoblastic cells were incubated with protein extracted from this substrate to verify their osteoinductive potential.
   verification:
     method: local_full_text
@@ -45,6 +45,12 @@ excerpts:
     validator_version: 0.8.0
     verified_at: '2026-11-23'
 - text: The mouse's pre-osteoblastic cell line (MC3T3-E1) used in this study
+  verification:
+    method: local_full_text
+    source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389
+    validator_version: 0.8.0
+    verified_at: '2026-11-23'
+- text: Tooth loss and surgical wound healing lead to alveolar atrophy secondary to losing local stimulus from masticatory forces.
   verification:
     method: local_full_text
     source_sha256: 980eac9cc6fc25a132affe5e59f85596eec3f0b62145e8629a3bbfab9e031389

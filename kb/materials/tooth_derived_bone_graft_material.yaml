@@ -32,11 +32,8 @@ description_evidence:
     evidence_source: IN_VITRO
     snippet: dentinal tissues can be considered alternative graft materials to autologous bone
     explanation: "Discussion: the authors' conclusion from the in vitro results, that dentin could replace autologous bone."
-status: PROPOSED
+status: DRAFT
 category: OTHER
-synonyms:
-  - ground tooth graft material
-  - autologous tooth graft material
 composition:
   - name: Dentin
     role: OTHER
@@ -67,8 +64,8 @@ composition:
 properties:
   - name: Osteogenic potential in vitro
     property_type: OTHER
-    test_method: Protein extracted from the ground teeth was added at 10 and 100 ng/µL to cultures of a mouse pre-osteoblastic cell line (MC3T3-E1); proliferation, viability, expression of COL-I, RUNX-2 and BMP-2, and mineral nodule formation were measured against untreated cells.
-    description: Extracts of teeth with the enamel and periodontal ligament removed gave the highest osteogenic gene expression and the most phosphate nodules. The periodontal ligament lowered cell proliferation and viability. At 100 ng/µL, extracts of every preparation gave more mineral than the control. These are cell-culture results with extracts; the graft particles themselves were not tested. OTHER, because PropertyTypeEnum has no value for osteogenic potential.
+    test_method: Protein extracted from the ground teeth was added at two concentrations to cultures of a mouse pre-osteoblastic cell line (MC3T3-E1); proliferation, viability, expression of COL-I, RUNX-2 and BMP-2, and mineral nodules were measured against untreated cells.
+    description: Extracts of teeth with the enamel and periodontal ligament removed gave the highest osteogenic gene expression and the most phosphate nodules. The periodontal ligament lowered cell proliferation and viability. At the higher concentration, extracts of every preparation gave more mineral than the control. These are cell-culture results with extracts; the graft particles themselves were not tested. OTHER, because PropertyTypeEnum has no value for osteogenic potential.
     evidence:
       - reference: DOI:10.1007/s12663-024-02311-4
         reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
@@ -99,7 +96,13 @@ properties:
         supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: regardless of time, all groups showed greater mineral content than the control group
-        explanation: Results, mineral nodule formation, at 100 ng/µL.
+        explanation: Results, mineral nodule formation, at the higher concentration.
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Cell proliferation, viability assays, mRNA expression of type I Collagen (COL-I), RUNX-2, BMP-2, and mineral nodules were assessed to achieve the main outcome.
+        explanation: 'Abstract, methods: the assays.'
 clinical_uses:
   - name: Extraction socket grafting
     use_context: SURGICAL
@@ -120,13 +123,13 @@ clinical_uses:
         reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
         supports: SUPPORT
         evidence_source: OTHER
-        snippet: Less bone resorption is observed when alveolar preservation procedures are performed using fresh alveolus
-        explanation: "Introduction, background citing other work: why the socket is grafted. OTHER: background, not the study's own results."
+        snippet: Tooth loss and surgical wound healing lead to alveolar atrophy secondary to losing local stimulus from masticatory forces.
+        explanation: "Introduction, background citing other work: the bone loss that grafting the socket is meant to limit. OTHER: background, not the study's own results."
 discussions:
   - discussion_id: ohd-term-tooth-derived-bone-graft-material
     kind: CURATION_TODO
     status: OPEN
-    prompt: 'OHD has no term for a tooth-derived bone graft material, nor for bone grafting material at all (l~graft, l~dentin, l~bone substitute and l~socket find no material in the release, and no label in dental_material.owl or ohd-edit.owl on OHD main contains graft, searched 2026-11-23). Propose one at this grain, a graft material made from extracted human teeth, with a parent for dental bone grafting materials, which 21 CFR 872.3930 defines. Where a bone graft belongs in OHD, outside dental restoration material, is for OHD to decide.'
+    prompt: 'OHD has no term for a tooth-derived bone graft material, nor for bone grafting material at all (l~graft, l~dentin, l~bone substitute and l~socket find no material in the release, and no label in dental_material.owl or ohd-edit.owl on OHD main contains graft, searched 2026-11-23). Propose one at this grain, a graft material made from extracted human teeth, with a parent for dental bone grafting materials (FDA regulates bone grafting material under 21 CFR 872.3930). Where a bone graft belongs in OHD, outside dental restoration material, is for OHD to decide.'
   - discussion_id: purpose-tooth-derived-bone-graft-material
     kind: OPEN_QUESTION
     status: OPEN
@@ -136,7 +139,7 @@ discussions:
     status: OPEN
     prompt: 'The only source is one in vitro pilot study of protein extracts on a mouse cell line. No clinical performance, adverse effects, preparation protocol beyond hand grinding, or regulatory status is recorded. Whether FDA treats a tooth-derived graft as bone grafting material under 21 CFR 872.3930, or regulates only the devices that prepare it, has not been read. Clinical studies of autologous tooth grafts in socket preservation, and the regulation, would fill this.'
     rationale: A record resting on cell-culture results with extracts says little about the graft as used in a patient.
-notes: 'Built from one open-access in vitro pilot study (DOI:10.1007/s12663-024-02311-4), quoted from its full text. Its counts are inconsistent where not quoted: the methods take one third molar from each of six patients but twelve teeth in all, and the results say two per patient; the methods name four test groups of three teeth and a control with no tooth material, but the results list teeth in Group 1 (control). The best preparation is written both WEPL and WELP. The extracts tested contained pulp, which the study did not test separately. experimental is unset: the paper does not describe a laboratory formulation, and tooth grafts are prepared from the patient''s own tooth rather than manufactured. No parent record: no record yet covers bone grafting materials.'
+notes: 'Built from one open-access in vitro pilot study (DOI:10.1007/s12663-024-02311-4), quoted from its full text. Its counts are inconsistent where not quoted: the methods take one third molar from each of six patients but twelve teeth in all, and the results say two per patient; the methods name four test groups of three teeth and a control with no tooth material, but the results list teeth in Group 1 (control). The best preparation is written both WEPL and WELP. The extract concentrations are given as ng/nL in the methods and ng/µL elsewhere, so no value is recorded. The extracts tested contained pulp, which the study did not test separately. experimental is unset: the paper does not describe a laboratory formulation, and tooth grafts are prepared from the patient''s own tooth rather than manufactured. No parent record: no record yet covers bone grafting materials.'
 creation_date: '2026-11-23'
 updated_date: '2026-11-23'
 curation_history:
@@ -241,4 +244,16 @@ curation_history:
     llm_assisted: true
     model: claude-opus-5-5
     action: EDIT
-    description: 'Curated from DOI:10.1007/s12663-024-02311-4, the one dental material paper among ten from the Journal of Maxillofacial and Oral Surgery: description, dentin and cementum, in vitro osteogenic potential of extracts, the proposed extraction socket use, and discussions for the missing OHD term, purpose and clinical evidence. Full-text quotes signed in reference_excerpts/. Set PROPOSED.'
+    description: 'Curated from DOI:10.1007/s12663-024-02311-4, the one dental material paper among ten from the Journal of Maxillofacial and Oral Surgery: description, dentin and cementum, in vitro osteogenic potential of extracts, the proposed extraction socket use, and discussions for the missing OHD term, purpose and clinical evidence. Full-text quotes signed in reference_excerpts/.'
+  - timestamp: '2026-11-23T22:58:20+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to clinical_uses[0].
+  - timestamp: '2026-11-23T22:58:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
