@@ -55,7 +55,9 @@ record is made at the grain you would propose as a term. It leaves
 term to OHD, or to another ontology where it fits better. Its `parents` are
 the curator's choice of the closest record, OHD-keyed where one fits (an
 experimental composite under resin-based composite, `OHD:0000036`), not an
-OHD `is_a` link. When the term exists, the record is re-grounded to it.
+OHD `is_a` link. The `ohd-term-request` skill turns the proposal into a New
+Term Request on OHD's issue tracker. When the term exists, the record is
+re-grounded to it.
 
 The identity rule accepts an OHD term only under `OHD:0000000`. OHD has no
 material terms for impressions, gypsum, sealants, varnishes or waxes (searched

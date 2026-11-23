@@ -53,7 +53,7 @@ just new-record --id <CURIE> --name "<name>" --term-label "<label from term-info
 
 If no term fits, leave out `--id`: the record gets a minted
 `dentamech:<uuid>`. Open a `CURATION_TODO` discussion that says a term
-is missing.
+is missing. The `ohd-term-request` skill turns it into a request to OHD.
 
 Check for duplicates by id and by synonym before creating anything.
 
@@ -157,7 +157,7 @@ whether it is commercial or experimental. A material OHD lacks gets a minted
 id (`just new-record --name "..." --category ...`, no `--id`), at the grain you would propose
 as a term: leave `record_term` unset, put the closest record in `parents`
 (OHD-keyed where one fits), and add a `CURATION_TODO` discussion proposing the
-term to OHD or another ontology. An experimental record sets
+term to OHD or another ontology (the `ohd-term-request` skill files it with OHD). An experimental record sets
 `experimental: true`, `purpose`, and `restorative_class` when it is
 restorative; see `docs/DOMAIN.md`, Classification by purpose. Set
 `experimental` only when the source describes the material that way.

@@ -261,8 +261,13 @@ standards:
 discussions:
   - discussion_id: ohd-term-denture-base-polymer
     kind: CURATION_TODO
-    status: OPEN
-    prompt: 'OHD has no term for denture base polymer (l~denture base finds no material, searched 2026-11-18 and 2026-11-19). Propose one, at this grain, named as in ISO 20795-1. Where it belongs, under dental restoration material (OHD:0000000) or in a prosthodontic material branch, is for OHD to decide; that answer would also give this record its parents. Subtypes would follow ISO''s types (heat-polymerizable, autopolymerizable, thermoplastic, light-activated, microwave cured), with additively manufactured resins, which the 2013 edition does not classify. See issue #51.'
+    status: UNDER_DISCUSSION
+    evidence:
+      - reference: url:https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues/206
+        reference_title: 'NTR: denture base polymer'
+        supports: NO_EVIDENCE
+        explanation: The new term request filed on OHD for this record's term.
+    prompt: 'OHD has no term for denture base polymer (l~denture base finds no material, searched 2026-11-18 and 2026-11-19). Propose one, at this grain, named as in ISO 20795-1. Where it belongs, under dental restoration material (OHD:0000000) or in a prosthodontic material branch, is for OHD to decide; that answer would also give this record its parents. Subtypes would follow ISO''s types (heat-polymerizable, autopolymerizable, thermoplastic, light-activated, microwave cured), with additively manufactured resins, which the 2013 edition does not classify. See issue #51. Proposed to OHD as oral-health-and-disease-ontologies/ohd-ontology#206 on 2026-11-23.'
   - discussion_id: classification-denture-base-polymer
     kind: CURATION_TODO
     status: OPEN
@@ -436,7 +441,19 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Second review of #58: dropped the ISO denture definition from the denture base use, which it did not support; dropped an unquoted ''for all types'' from the water sorption limit; typed total fracture work OTHER, since FRACTURE_TOUGHNESS is a stress intensity.'
-updated_date: '2026-11-19'
+  - timestamp: '2026-11-23T22:35:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Filed the new term request for this record on OHD (oral-health-and-disease-ontologies/ohd-ontology#206), with the ohd-term-request skill, and linked it from the ohd-term-denture-base-polymer discussion, now UNDER_DISCUSSION.'
+  - timestamp: '2026-11-23T22:40:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #68: the ohd-term-denture-base-polymer prompt now ends by naming OHD #206 and its filing date.'
+updated_date: '2026-11-23'
 evidence:
   - reference: ISO.20795:1_2013_2
     reference_title: 'Dentistry — Base polymers — Part 1: Denture base polymers'
