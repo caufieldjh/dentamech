@@ -56,6 +56,9 @@ description: >-
 "Nothing more specific exists" is a claim someone can check. Name the
 queries you ran in `notes` so they can.
 
+When OHD has no term for a material at all, the `ohd-term-request` skill
+proposes one to OHD.
+
 ## Validating
 
 ```bash
