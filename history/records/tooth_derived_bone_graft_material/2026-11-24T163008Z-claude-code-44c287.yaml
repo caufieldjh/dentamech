@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: tooth_derived_bone_graft_material
+  path: kb/materials/tooth_derived_bone_graft_material.yaml
+session:
+  id: 2026-11-24T163008Z-claude-code-44c287
+  timestamp: '2026-11-24T16:30:08Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/69
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - properties
+  summary: 'Addressed the review notes on #69'
+  details: 'Property description matched to its quotes (increased, not highest or most). The mineral content
+    quote now includes its concentration; the local copy''s converted math in that one sentence was restored
+    to the PDF''s wording, and the bundle was rebuilt. Scope: design-decisions.md cites #69 for the maintainer''s
+    confirmation, given in the curation session, and docs/DOMAIN.md names bone grafting materials in both
+    scope passages.'

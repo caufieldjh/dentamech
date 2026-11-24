@@ -1,0 +1,37 @@
+history_version: 1
+target:
+  kind: record
+  slug: tooth_derived_bone_graft_material
+  path: kb/materials/tooth_derived_bone_graft_material.yaml
+session:
+  id: 2026-11-23T225342Z-claude-code-6cda51
+  timestamp: '2026-11-23T22:53:42Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: CREATE
+  outcome: changed
+  sections:
+  - description
+  - composition
+  - properties
+  - clinical_uses
+  - discussions
+  summary: Created a minted record for tooth-derived bone graft material from the one in-scope paper of
+    ten JMOS papers
+  details: 'Triaged ten Journal of Maxillofacial and Oral Surgery papers from local_full_text; nine name
+    no dental material and were rejected (oral cancer survival and panendoscopy, auriculotherapy, a generative
+    AI face study, a nerve landmark cadaver study, autologous mandibular angle grafts, topical hemocoagulase,
+    nasal fat grafts, patient-specific condylar fixation devices of unstated material). From DOI:10.1007/s12663-024-02311-4
+    (open access, CC BY 4.0; only the abstract is cached, so full-text quotes were checked against a local
+    copy, cross-checked against the PDF, and signed into reference_excerpts/): description, composition
+    (dentin, cementum), in vitro osteogenic potential of protein extracts on MC3T3-E1 cells, and the proposed
+    extraction socket use (UBERON:0003686), all scoped to in vitro. OHD has no graft term (release searched
+    with l~graft, l~dentin, l~bone substitute, l~socket; OHD main source files have no graft label). purpose
+    and experimental left unset with an OPEN_QUESTION, since no MaterialPurposeEnum value fits a bone
+    graft. No regulatory status: 21 CFR 872.3930 covers bone grafting material, but no source ties tooth-derived
+    grafts to it; left as a KNOWLEDGE_GAP. The paper''s inconsistent tooth counts and group labels are
+    in notes. An OHD new term request is drafted, not filed.'

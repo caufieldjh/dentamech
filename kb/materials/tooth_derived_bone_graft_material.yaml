@@ -1,0 +1,307 @@
+id: dentamech:48000254-9fdc-43f9-942f-f218340669dd
+name: Tooth-derived bone graft material
+description: Extracted human teeth ground into particles and proposed as a graft material for the extraction socket, in place of autologous bone, so that a tooth otherwise discarded is reused. Dentin is the tissue it is valued for, being similar to bone in its organic and inorganic structure. The evidence so far recorded here is one in vitro pilot study, which tested protein extracts of the ground teeth on cultured cells, not the graft itself.
+description_evidence:
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: Extracted teeth are usually discarded, though they could be useful as autologous graft material for the extraction socket.
+    explanation: "Discussion: the authors' proposed use. OTHER: the authors' reasoning, not a result of the study."
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: Dentin and bone are known to have similar organic and inorganic structures
+    explanation: "Discussion, background citing other work: why dentin is valued. OTHER: background, not the study's own results."
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Pre-osteoblastic cells were incubated with protein extracted from this substrate to verify their osteoinductive potential.
+    explanation: 'Abstract, methods: the study tested protein extracts on cells, not the graft particles.'
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: As a limitation of this study, the low number of teeth involved (pilot study)
+    explanation: 'Discussion: the authors call the study a pilot. OTHER: a statement about the study, not a result.'
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: dentinal tissues can be considered alternative graft materials to autologous bone
+    explanation: "Discussion: the authors' conclusion from the in vitro results, that dentin could replace autologous bone."
+  - reference: DOI:10.1007/s12663-024-02311-4
+    reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The teeth were ground to macroscopically homogeneous particles.
+    explanation: 'Abstract, methods: how the material is made.'
+status: DRAFT
+category: OTHER
+composition:
+  - name: Dentin
+    role: OTHER
+    description: The tissue the graft is valued for. Its collagen forms a crosslinked scaffold in which mineral is deposited, and its organic and inorganic structure resembles bone's. OTHER, because ComponentRoleEnum has no role for a tissue.
+    evidence:
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Dentin collagen forms a compact and crosslinked scaffold in which mineral crystals deposit
+        explanation: "Introduction, background citing other work: dentin's structure. OTHER: background, not the study's own results."
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Dentin and bone are known to have similar organic and inorganic structures
+        explanation: "Discussion, background citing other work. OTHER: background, not the study's own results."
+  - name: Cementum
+    role: OTHER
+    description: Root cementum stays on the particles even when the periodontal ligament is removed with curettes, so every preparation in the source study contained it. OTHER, because ComponentRoleEnum has no role for a tissue.
+    evidence:
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: in all the preparations reported herein, the cementum was presented, even in the group where the periodontal ligament was removed
+        explanation: 'Discussion: cementum in every preparation, because curettes cannot be relied on to remove it.'
+properties:
+  - name: Osteogenic potential in vitro
+    property_type: OTHER
+    test_method: Protein extracted from the ground teeth was added at 10 and 100 ng/µL to cultures of a mouse pre-osteoblastic cell line (MC3T3-E1); proliferation, viability, expression of COL-I, RUNX-2 and BMP-2, and mineral nodules were measured against untreated cells.
+    description: Extracts of teeth with the enamel and periodontal ligament removed increased the expression of the osteogenic genes studied and formed more phosphate nodules. The periodontal ligament lowered cell proliferation and viability. At 100 ng/µL, the higher of the two concentrations, extracts of every preparation gave more mineral than the control. These are cell-culture results with extracts; the graft particles themselves were not tested. OTHER, because PropertyTypeEnum has no value for osteogenic potential.
+    evidence:
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Pre-osteoblastic cells were incubated with protein extracted from this substrate to verify their osteoinductive potential.
+        explanation: 'Abstract, methods: what was tested.'
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The mouse's pre-osteoblastic cell line (MC3T3-E1) used in this study
+        explanation: 'Methods, cell cultures: the cells were a mouse line.'
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: there was an increased gene expression of all genes studied in the WEPL group and a greater formation of phosphate nodules
+        explanation: 'Abstract, results: WEPL is the preparation without enamel and periodontal ligament.'
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Cell proliferation and viability were negatively affected by the presence of periodontal ligament
+        explanation: Discussion, summarizing the proliferation and MTT results.
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: At 100 ng/µL and regardless of time, all groups showed greater mineral content than the control group
+        explanation: Results, mineral nodule formation, at the higher of the two concentrations.
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Cell proliferation, viability assays, mRNA expression of type I Collagen (COL-I), RUNX-2, BMP-2, and mineral nodules were assessed to achieve the main outcome.
+        explanation: 'Abstract, methods: the assays.'
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: the lowest and highest concentrations (10 and 100 ng/µL) were selected for the present study
+        explanation: 'Discussion: the two extract concentrations tested.'
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: WE, without enamel; WPL, without periodontal ligament; and WEPL, without enamel and periodontal ligament
+        explanation: 'Abstract, methods: what the group names mean.'
+clinical_uses:
+  - name: Extraction socket grafting
+    use_context: SURGICAL
+    anatomical_site:
+      preferred_term: extraction socket
+      term:
+        id: UBERON:0003686
+        label: tooth socket
+    description: Proposed, not yet tested in people in the source study, as an autologous filling for the socket left by an extraction, to limit the bone loss that follows.
+    evidence:
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Extracted teeth are usually discarded, though they could be useful as autologous graft material for the extraction socket.
+        explanation: "Discussion: the proposed use. OTHER: the authors' reasoning; the study did not test it in people."
+      - reference: DOI:10.1007/s12663-024-02311-4
+        reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Tooth loss and surgical wound healing lead to alveolar atrophy secondary to losing local stimulus from masticatory forces.
+        explanation: "Introduction, background citing other work: the bone loss that grafting the socket is meant to limit. OTHER: background, not the study's own results."
+discussions:
+  - discussion_id: ohd-term-tooth-derived-bone-graft-material
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: 'OHD has no term for a tooth-derived bone graft material, nor for bone grafting material at all (l~graft, l~dentin, l~bone substitute and l~socket find no material in the release, and no label in dental_material.owl or ohd-edit.owl on OHD main contains graft, searched 2026-11-23). Propose one at this grain, a graft material made from extracted human teeth, with a parent for dental bone grafting materials (FDA regulates bone grafting material under 21 CFR 872.3930). Where a bone graft belongs in OHD, outside dental restoration material, is for OHD to decide.'
+  - discussion_id: purpose-tooth-derived-bone-graft-material
+    kind: OPEN_QUESTION
+    status: OPEN
+    prompt: 'purpose is unset. A bone graft restores bone, not tooth structure, so RESTORATIVE does not fit as defined; it becomes part of the patient, so AUXILIARY does not fit; and it is not PREVENTIVE, though it is placed to prevent bone loss after an extraction. Does MaterialPurposeEnum need a value for grafting or regenerative materials? For the project''s dental materials expert, as in #50.'
+  - discussion_id: evidence-tooth-derived-bone-graft-material
+    kind: KNOWLEDGE_GAP
+    status: OPEN
+    prompt: 'The only source is one in vitro pilot study of protein extracts on a mouse cell line. No clinical performance, adverse effects, preparation protocol beyond hand grinding, or regulatory status is recorded. Whether FDA treats a tooth-derived graft as bone grafting material under 21 CFR 872.3930, or regulates only the devices that prepare it, has not been established; product code NUN, bone grafting material, human source, under that regulation (docs/regulatory.md) is a lead. Clinical studies of autologous tooth grafts in socket preservation, and the regulation, would fill this.'
+    rationale: A record resting on cell-culture results with extracts says little about the graft as used in a patient.
+notes: 'Built from one open-access in vitro pilot study (DOI:10.1007/s12663-024-02311-4), quoted from its full text. Its teeth and counts are inconsistent where not quoted: the abstract says twelve maxillary third molars, but the results list upper and lower molars; the methods take one third molar from each of six patients but twelve teeth in all, and the results say two per patient; the methods name four test groups of three teeth and a control with no tooth material, but the results list teeth in Group 1 (control). The best preparation is written both WEPL and WELP. The extract concentrations are given as ng/nL in the methods and ng/µL elsewhere; ng/µL, the unit of the results, is used here. The extracts tested contained pulp, which the study did not test separately. experimental is unset: the paper does not describe a laboratory formulation, and tooth grafts are prepared from the patient''s own tooth rather than manufactured. No parent record: no record yet covers bone grafting materials.'
+creation_date: '2026-11-23'
+updated_date: '2026-11-24'
+curation_history:
+  - timestamp: '2026-11-23T22:51:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: CREATE
+    description: Scaffolded with `just new-record`.
+  - timestamp: '2026-11-23T22:51:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-23T22:51:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-23T22:51:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-23T22:51:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-23T22:52:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to composition[0].
+  - timestamp: '2026-11-23T22:52:01+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to composition[0].
+  - timestamp: '2026-11-23T22:52:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to composition[1].
+  - timestamp: '2026-11-23T22:52:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-23T22:52:05+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-23T22:52:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-23T22:52:07+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-23T22:52:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-23T22:52:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to clinical_uses[0].
+  - timestamp: '2026-11-23T22:52:10+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to clinical_uses[0].
+  - timestamp: '2026-11-23T22:52:25+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-23T22:53:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Curated from DOI:10.1007/s12663-024-02311-4, the one dental material paper among ten from the Journal of Maxillofacial and Oral Surgery: description, dentin and cementum, in vitro osteogenic potential of extracts, the proposed extraction socket use, and discussions for the missing OHD term, purpose and clinical evidence. Full-text quotes signed in reference_excerpts/.'
+  - timestamp: '2026-11-23T22:58:20+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to clinical_uses[0].
+  - timestamp: '2026-11-23T22:58:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-24T16:30:05+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #69: gene expression and nodules worded as increased, as quoted; the mineral content quote now carries its concentration, 100 ng/µL.'
+  - timestamp: '2026-11-24T16:53:34+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to description.
+  - timestamp: '2026-11-24T16:53:35+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-24T16:53:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-24T16:53:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Second review of #69: quoted the grinding, the two concentrations and the WEPL definition; noted the maxillary and lower molar discrepancy; named product code NUN as a lead in the regulatory gap.'

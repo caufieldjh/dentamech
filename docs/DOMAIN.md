@@ -15,8 +15,8 @@ restorative, preventive or auxiliary (see Classification by purpose). Where OHD
 has a term for the material, the record is keyed by it; so far those terms all
 sit under `OHD:0000000` *dental restoration material*. Where OHD has none, the
 record gets a minted id, whether the material is commercial or experimental:
-denture base resins (ISO 20795-1), impression materials, or an antibacterial
-composite reported in one study. OHD is not comprehensive, and curating a
+denture base resins (ISO 20795-1), impression materials, bone grafting materials
+(21 CFR 872.3930), or an antibacterial composite reported in one study. OHD is not comprehensive, and curating a
 material it lacks is how this knowledge base finds the terms to request from
 OHD or another ontology. A record says what the material is
 made of, how it sets, what it is used for, how it performs, what can go wrong,
@@ -138,7 +138,7 @@ set. Each source goes in `curation/source_queue.tsv` with its license.
 
 ## Out of scope
 
-Equipment, instruments and devices that are not materials (curing lights, handpieces), procedures as such, and clinical guidance, because the knowledge base describes materials. Brand-level detail beyond a regulatory decision worth recording. Purpose is not a boundary: preventive and auxiliary materials are in scope, as restorative ones are.
+Equipment, instruments and devices that are not materials (curing lights, handpieces), procedures as such, and clinical guidance, because the knowledge base describes materials. Brand-level detail beyond a regulatory decision worth recording. Purpose is not a boundary: preventive and auxiliary materials are in scope, as restorative ones are, and so are bone grafting materials.
 
 ## Related Mechs
 
