@@ -13,7 +13,7 @@ description_evidence:
     supports: SUPPORT
     evidence_source: OTHER
     snippet: Dentin and bone are known to have similar organic and inorganic structures
-    explanation: "Discussion, background citing other work: why dentin is the active tissue. OTHER: background, not the study's own results."
+    explanation: "Discussion, background citing other work: why dentin is valued. OTHER: background, not the study's own results."
   - reference: DOI:10.1007/s12663-024-02311-4
     reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
     supports: SUPPORT
@@ -65,7 +65,7 @@ properties:
   - name: Osteogenic potential in vitro
     property_type: OTHER
     test_method: Protein extracted from the ground teeth was added at two concentrations to cultures of a mouse pre-osteoblastic cell line (MC3T3-E1); proliferation, viability, expression of COL-I, RUNX-2 and BMP-2, and mineral nodules were measured against untreated cells.
-    description: Extracts of teeth with the enamel and periodontal ligament removed gave the highest osteogenic gene expression and the most phosphate nodules. The periodontal ligament lowered cell proliferation and viability. At the higher concentration, extracts of every preparation gave more mineral than the control. These are cell-culture results with extracts; the graft particles themselves were not tested. OTHER, because PropertyTypeEnum has no value for osteogenic potential.
+    description: Extracts of teeth with the enamel and periodontal ligament removed increased the expression of the osteogenic genes studied and formed more phosphate nodules. The periodontal ligament lowered cell proliferation and viability. At the higher of the two concentrations, 100 ng/µL, extracts of every preparation gave more mineral than the control. These are cell-culture results with extracts; the graft particles themselves were not tested. OTHER, because PropertyTypeEnum has no value for osteogenic potential.
     evidence:
       - reference: DOI:10.1007/s12663-024-02311-4
         reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
@@ -95,8 +95,8 @@ properties:
         reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
         supports: SUPPORT
         evidence_source: IN_VITRO
-        snippet: regardless of time, all groups showed greater mineral content than the control group
-        explanation: Results, mineral nodule formation, at the higher concentration.
+        snippet: At 100 ng/µL and regardless of time, all groups showed greater mineral content than the control group
+        explanation: Results, mineral nodule formation, at the higher of the two concentrations.
       - reference: DOI:10.1007/s12663-024-02311-4
         reference_title: 'Evaluation of the Osteogenic Potential of Periodontal Ligament and Tooth-Derived Substrates Effect on Osteogenesis: An In Vitro Pilot Study'
         supports: SUPPORT
@@ -139,9 +139,9 @@ discussions:
     status: OPEN
     prompt: 'The only source is one in vitro pilot study of protein extracts on a mouse cell line. No clinical performance, adverse effects, preparation protocol beyond hand grinding, or regulatory status is recorded. Whether FDA treats a tooth-derived graft as bone grafting material under 21 CFR 872.3930, or regulates only the devices that prepare it, has not been read. Clinical studies of autologous tooth grafts in socket preservation, and the regulation, would fill this.'
     rationale: A record resting on cell-culture results with extracts says little about the graft as used in a patient.
-notes: 'Built from one open-access in vitro pilot study (DOI:10.1007/s12663-024-02311-4), quoted from its full text. Its counts are inconsistent where not quoted: the methods take one third molar from each of six patients but twelve teeth in all, and the results say two per patient; the methods name four test groups of three teeth and a control with no tooth material, but the results list teeth in Group 1 (control). The best preparation is written both WEPL and WELP. The extract concentrations are given as ng/nL in the methods and ng/µL elsewhere, so no value is recorded. The extracts tested contained pulp, which the study did not test separately. experimental is unset: the paper does not describe a laboratory formulation, and tooth grafts are prepared from the patient''s own tooth rather than manufactured. No parent record: no record yet covers bone grafting materials.'
+notes: 'Built from one open-access in vitro pilot study (DOI:10.1007/s12663-024-02311-4), quoted from its full text. Its counts are inconsistent where not quoted: the methods take one third molar from each of six patients but twelve teeth in all, and the results say two per patient; the methods name four test groups of three teeth and a control with no tooth material, but the results list teeth in Group 1 (control). The best preparation is written both WEPL and WELP. The extract concentrations are given as ng/nL in the methods and ng/µL elsewhere; ng/µL, the unit of the results, is used here. The extracts tested contained pulp, which the study did not test separately. experimental is unset: the paper does not describe a laboratory formulation, and tooth grafts are prepared from the patient''s own tooth rather than manufactured. No parent record: no record yet covers bone grafting materials.'
 creation_date: '2026-11-23'
-updated_date: '2026-11-23'
+updated_date: '2026-11-24'
 curation_history:
   - timestamp: '2026-11-23T22:51:02+00:00'
     curator: claude-code
@@ -257,3 +257,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Added evidence from DOI:10.1007/s12663-024-02311-4 to properties[0].
+  - timestamp: '2026-11-24T16:30:05+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #69: gene expression and nodules worded as increased, as quoted; the mineral content quote now carries its concentration, 100 ng/µL.'
