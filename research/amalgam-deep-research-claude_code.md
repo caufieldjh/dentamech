@@ -286,6 +286,16 @@ This report will be used to populate a knowledge base entry with:
 
 ## Output
 
+Screwdriver out, Harry. Case comes off amalgam now; the repo, eCFR and PubMed go on the bench first.
+
+Two shell commands got refused for how they were written, so I'm using small scripts instead. The report stays inline, no separate doc.
+
+Scripts and direct network calls need approval that I don't have, so I won't push it. Web search works, and so does the page reader, which I'm using to fetch the PubMed abstracts and FDA records.
+
+Every screw goes back. The first pass left a few holes, so I'm running a targeted second one.
+
+Some 510(k) PDFs came down as raw files. I'm opening them myself.
+
 # Amalgam (OHD:0000001) as a dental restoration material: research report
 
 Prepared 2026-11-24.

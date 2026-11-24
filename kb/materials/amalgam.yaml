@@ -207,6 +207,18 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: Compressive strength @ 1hr > 100 171 MPa
         explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
   - name: Compressive strength, 24 h
     property_type: COMPRESSIVE_STRENGTH
     value: '443'
@@ -220,6 +232,18 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: Compressive strength @ 24hr > 350 443 MPa
         explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
   - name: Creep
     property_type: OTHER
     value: '0.5'
@@ -234,6 +258,18 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: Creep Max. 2% 0.5%
         explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
   - name: Dimensional change on setting
     property_type: OTHER
     value: '0.1'
@@ -248,6 +284,18 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: Dimensional change −0,10 to ... 0.1 ... +0,15
         explanation: 'Subject value 0.1; the limit, −0,10 to +0,15, wraps over two lines of its table cell. The unit is inferred: the row prints % only for the predicate device. Read 2026-11-24.'
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
   - name: Working time, condensation
     property_type: WORKING_TIME
     value: 2.5 to 5
@@ -260,6 +308,12 @@ properties:
         evidence_source: REGULATORY_DOCUMENT
         snippet: 'Working times (minutes) Condense: 2.5 - 5'
         explanation: Time to condense, reported for the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
   - name: Corrosion
     property_type: CORROSION_RESISTANCE
     description: All amalgams corrode to some extent in the mouth, and deposited corrosion products partly seal the margins. High-copper amalgams generally perform better clinically, one reason given being that the corrosion-prone gamma-2 phase is nearly eliminated.
@@ -293,6 +347,12 @@ properties:
         evidence_source: IN_VITRO
         snippet: The effects of crevice corrosion on the major structural phases of a high copper dental amalgam were studied in vitro.
         explanation: The test and the material.
+      - reference: PMID:739017
+        reference_title: Corrosion behavior of structural phases in high copper dental amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 'Three kinds of samples were used: (1) amalgam prepared from a high copper, single composition alloy, (2) annealed ingots of the Ag3Sn and Cu3Sn phases, and (3) high copper, single composition alloy tablets electroplated with mercury.'
+        explanation: Samples.
   - name: Fracture toughness by copper content and particle form
     property_type: FRACTURE_TOUGHNESS
     conditions: Sixteen amalgam products, measured at 1 week.
@@ -451,7 +511,7 @@ clinical_performance:
         reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
         supports: SUPPORT
         evidence_source: SYSTEMATIC_REVIEW
-        snippet: assessed restoration failure or survival at follow-up of at least three years
+        snippet: comparing dental composite resin with amalgam restorations in permanent posterior teeth that assessed restoration failure or survival at follow-up of at least three years
         explanation: Follow-up required by the review.
   - name: Failure risk of composite and amalgam, wider set of study designs
     measure_type: OTHER
@@ -639,19 +699,19 @@ clinical_performance:
     comparator: Composite
     evidence:
       - reference: PMID:17545265
-        reference_title: "The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children's Amalgam Trial."
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: In permanent teeth, the replacement rate was 14.9 percent of composites versus 10.8 percent of amalgams (P=.45)
         explanation: Result.
       - reference: PMID:17545265
-        reference_title: "The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children's Amalgam Trial."
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: The authors randomized children aged 6 to 10 years
         explanation: Population.
       - reference: PMID:17545265
-        reference_title: "The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children's Amalgam Trial."
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: 3.4+/-1.9 years for permanent tooth restorations
@@ -761,13 +821,13 @@ adverse_effects:
         snippet: children aged 6 to 10 years at baseline with no prior amalgam restorations
         explanation: Population, New England trial.
       - reference: PMID:18335109
-        reference_title: "Renal effects of dental amalgam in children: the New England children's amalgam trial."
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: There were no significant differences between treatment groups in average levels of renal biomarkers
         explanation: 'Renal analysis: average markers.'
       - reference: PMID:18335109
-        reference_title: "Renal effects of dental amalgam in children: the New England children's amalgam trial."
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: There were no differences in the occurrence of high levels of renal tubular markers (A1M, gamma-GT, or NAG).
@@ -1017,7 +1077,7 @@ regulatory_status:
             id: OHD:0000041
             label: amalgam filling restoration procedure
     source_url: https://www.ecfr.gov/current/title-21/section-872.3070
-    notes: EJJ (alloy, amalgam), ELY (mercury) and OIV (dental amalgam) are the only codes under this regulation; all are class 2 with submission type 510(k), checked in the classification database and openFDA on 2026-11-24. The regulation grants no 510(k) exemption.
+    notes: EJJ (alloy, amalgam), ELY (mercury) and OIV (dental amalgam) are the only codes under this regulation; all are class 2 with submission type 510(k), checked in the classification database and openFDA on 2026-11-24. The regulation grants no 510(k) exemption. status is CLEARED, the marketing pathway; FDA's advice for high-risk groups is under restrictions and does not prohibit use.
     evidence:
       - reference: CFR:872.3070
         reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
@@ -1051,12 +1111,26 @@ regulatory_status:
     status: RESTRICTED
     regulation_title: Regulation (EU) 2017/852 on mercury
     restrictions:
+      - From 1 January 2019, only in pre-dosed encapsulated form
+      - From 1 July 2018, not to be used for deciduous teeth, children under 15 years, or pregnant or breastfeeding women, except when strictly necessary for the specific medical needs of the patient
       - From 1 January 2025, not to be used for dental treatment in the Union, except when strictly necessary for the specific medical needs of the patient
       - Export prohibited from 1 January 2025; import and manufacturing prohibited from 1 July 2026, except for those specific medical needs
     effective_date: '2025-01-01'
     source_url: https://eur-lex.europa.eu/eli/reg/2024/1849/oj/eng
-    notes: Article 10(2a) and (7), as amended by Regulation (EU) 2024/1849. An environmental regulation on mercury, not device law, so agency is OTHER rather than EU_MDR, and device_class is unset. Member States meeting its conditions could allow use until 30 June 2026.
+    notes: Article 10(1) and (2), and Article 10(2a) and (7) as added by Regulation (EU) 2024/1849. An environmental regulation on mercury, not device law, so agency is OTHER rather than EU_MDR, and device_class is unset. Member States meeting its conditions could allow use until 30 June 2026. effective_date is that of the general restriction in Article 10(2a).
     evidence:
+      - reference: url:http://publications.europa.eu/resource/celex/32017R0852
+        reference_title: Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 January 2019, dental amalgam shall only be used in pre-dosed encapsulated form.
+        explanation: Article 10(1). Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32017R0852
+        reference_title: Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 July 2018, dental amalgam shall not be used for dental treatment of deciduous teeth, of children under 15 years and of pregnant or breastfeeding women, except when deemed strictly necessary by the dental practitioner based on the specific medical needs of the patient.
+        explanation: Article 10(2). Read 2026-11-24.
       - reference: url:http://publications.europa.eu/resource/celex/32024R1849
         reference_title: Regulation (EU) 2024/1849 amending Regulation (EU) 2017/852 on mercury
         supports: SUPPORT
@@ -1161,7 +1235,7 @@ discussions:
   - discussion_id: longevity-amalgam
     kind: CONTROVERSY
     status: OPEN
-    prompt: 'Does amalgam outlast resin composite in posterior teeth? Favoring amalgam: the 2021 Cochrane update (two older randomized trials in children, low certainty) and a 2015 meta-analysis. No significant difference: a 2025 meta-analysis of 13 studies and permanent-tooth replacement in the New England trial. Favoring composite: a health-record study whose authors doubt such records. Cochrane notes that composites have improved since its trials.'
+    prompt: 'Does amalgam outlast resin composite in posterior teeth? Favoring amalgam: the 2021 Cochrane update (two older randomized trials in children, low certainty) and a 2015 meta-analysis. No significant difference: a 2025 meta-analysis of 13 studies and permanent-tooth replacement in the New England trial. Favoring composite: a health-record study whose authors doubt such records. Cochrane notes that composites have improved since its trials. The single-trial rows here may come from the two trials Cochrane pooled, so they may not be independent of its estimate; the abstracts read do not name those trials, so this is unconfirmed.'
     rationale: Reviews with similar designs disagree, so no single estimate should stand alone.
   - discussion_id: copper-mercury-vapor-amalgam
     kind: CONTROVERSY
@@ -1181,7 +1255,7 @@ discussions:
     kind: CURATION_TODO
     status: OPEN
     prompt: PMID:29944087 (mercury release after 7 T MRI) is followed by a 2019 item with the same title, PMID:30998445, apparently an erratum, which has no abstract and has not been read. Check whether it changes the result quoted here.
-notes: FDA discourages the name "silver filling", because it does not say what the material contains; it is kept as a synonym because people use it. OHD and MeSH name zinc as optional; OHD names palladium as optional, and a 2023 study lists a trace of it. Strength, creep and dimensional change come from one brand's 510(k) summary, which cites ISO 24234 without an edition; FDA's listing says the third edition does not apply to pre-capsulated amalgam, the form of that product, which ISO 20749 covers. K140125 also prints strength and composition tables, but their scanned text is not reliable enough to quote. The corrosion value in K223182 (2 µg/cm2) is not recorded, because its test duration is unclear in the table. The EU entry does not cover earlier limits on use in children and in pregnancy under Article 10(2) of Regulation (EU) 2017/852, which was not read.
+notes: FDA discourages the name "silver filling", because it does not say what the material contains; it is kept as a synonym because people use it. OHD and MeSH name zinc as optional; OHD names palladium as optional, and a 2023 study lists a trace of it. Strength, creep and dimensional change come from one brand's 510(k) summary, which cites ISO 24234 without an edition; FDA's listing says the third edition does not apply to pre-capsulated amalgam, the form of that product, which ISO 20749 covers. K140125 also prints strength and composition tables, but their scanned text is not reliable enough to quote. The corrosion value in K223182 (2 µg/cm2) is not recorded, because its test duration is unclear in the table. Mercury is bound to mercury(0), the form the device contains; the Metal record still binds mercury atom.
 creation_date: '2026-09-04'
 status: PROPOSED
 curation_history:
@@ -1833,4 +1907,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Independent review before the pull request: quoted or narrowed every unquoted fact it found; added three longevity rows so the evidence is not one-sided; gave adjusted pregnancy estimates; bound mercury to CHEBI:16170; corrected notes.'
+  - timestamp: '2026-11-24T18:00:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:739017 to properties[6].
 updated_date: '2026-11-24'
