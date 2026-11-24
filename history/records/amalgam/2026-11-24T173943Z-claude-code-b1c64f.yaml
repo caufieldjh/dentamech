@@ -31,12 +31,15 @@ events:
     claude-fable-5-2, claude-haiku-5-5, claude-opus-5-5); a nested session''s conversational preamble
     was removed from the report before commit. Leads that became evidence: PMIDs 40578032, 33273245, 9372797,
     16622140, 18335109, 30532171, 27146796, 29944087, 37079911, 37176331, 28220332, 8940574 and 510(k)
-    K223182; the rest were found by PubMed search. Every PMID and CFR quote was added with add-evidence;
-    every url: quote was compared with the fetched page or PDF on 2026-11-24. Fixed: the Cochrane row
-    said children and adults, but its pooled trials were 921 children, and now cites the 2021 update;
-    the product code quote was not verbatim; the identification paragraph lacked its last sentence; the
-    unsupported frequency of rare on the lichenoid lesion was dropped; PMID:21217947 is a narrative review,
-    retagged from TEXTBOOK to OTHER; mercury bound to CHEBI:35113 elemental mercury. Added FDA''s high-risk
-    groups and the EU restriction (Regulation (EU) 2024/1849). Not done: values for modulus, toughness,
-    thermal and flexural properties; Minamata decision text; ISO 24234 text; K140125 tables (unreliable
-    scan). Papers without a DOI (PMID:18627755, PMID:8940574) cannot be logged (#65).'
+    K223182; the rest were found by PubMed search. Every PMID and CFR quote added this session went through
+    add-evidence; every url: quote was compared with the fetched page or PDF on 2026-11-24. Fixed: the
+    Cochrane row said children and adults, but its pooled trials were 921 children, and now cites the
+    2021 update; the product code quote was not verbatim; the identification paragraph lacked its last
+    sentence; the unsupported frequency of rare on the lichenoid lesion was dropped; PMID:21217947 is
+    a narrative review, retagged from TEXTBOOK to OTHER; mercury bound to CHEBI:16170 mercury(0). Added
+    FDA''s high-risk groups and the EU restriction (Regulation (EU) 2024/1849). Not done: values for modulus,
+    toughness, thermal and flexural properties; Minamata decision text; ISO 24234 text; K140125 tables
+    (unreliable scan). Papers without a DOI (PMID:18627755, PMID:8940574) cannot be logged (#65). An independent
+    review-record pass in a fresh subagent then found 15 errors, mostly unquoted facts, and one-sided
+    longevity evidence; they were fixed before the pull request, and nine paper log rows were revised
+    before merge.'
