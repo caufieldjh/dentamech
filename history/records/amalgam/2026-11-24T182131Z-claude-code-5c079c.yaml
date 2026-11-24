@@ -1,0 +1,32 @@
+history_version: 1
+target:
+  kind: record
+  slug: amalgam
+  path: kb/materials/amalgam.yaml
+session:
+  id: 2026-11-24T182131Z-claude-code-5c079c
+  timestamp: '2026-11-24T18:21:31Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  prs:
+  - https://github.com/caufieldjh/dentamech/pull/70
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - adverse_effects
+  - regulatory_status
+  - standards
+  - products
+  - discussions
+  summary: 'Addressed the review notes on #70'
+  details: 'Quoted FDA''s conditions on its high-risk advice. Adopted one convention: supports is judged
+    against the item''s description, so each side of a reported conflict is SUPPORT; the disagreements
+    are CONTROVERSY discussions (MRI and pregnancy added). Lichenoid: mechanism stated as not established.
+    Standards: editions and FDA recognition records read 2026-11-24 (4-315, 4-318). 510(k) decision dates
+    now quoted; the three database pages were fetched again and matched. Paper log notes on this branch
+    now say where each lead came from.'

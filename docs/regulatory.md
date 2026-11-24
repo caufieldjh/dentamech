@@ -182,7 +182,7 @@ Regulations verified against the CFR text and the FDA product classification dat
 | Regulation | Device name | Class | Product codes | Notes |
 |---|---|---|---|---|
 | 872.3060 | Noble metal alloy | II (special controls) | EJS, EJT | 510(k)-exempt subject to 872.9. The database also returns EIT (applicator, rapid wax, dental) under this regulation; it is a laboratory accessory, not an alloy |
-| 872.3070 | Dental amalgam, mercury, and amalgam alloy | II (special controls) | EJJ, ELY, OIV | Special controls guidance named in the regulation |
+| 872.3070 | Dental amalgam, mercury, and amalgam alloy | II (special controls) | EJJ, ELY, OIV | Special controls guidance named in the regulation. Re-checked 2026-11-24 for Amalgam: cached eCFR text (issue 2026-11-12) re-read; the classification database and openFDA show only these three codes, all 510(k) |
 | 872.3200 | Resin tooth bonding agent | II | KLE | |
 | 872.3250 | Calcium hydroxide cavity liner | II | | |
 | 872.3275 | Dental cement | I (zinc oxide-eugenol, EMB, 510(k)-exempt); II (others, EMA) | EMA, EMB, MZW, NEA | Re-verified 2026-09-05. MZW (dental cement w/out zinc-oxide eugenol as an ulcer covering, class II) and NEA (cement, ear, nose and throat, class II) also sit under this regulation but are not dental restorative uses |

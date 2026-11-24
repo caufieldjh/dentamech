@@ -1,6 +1,37 @@
 id: OHD:0000001
 name: Amalgam
-description: A metal dental restoration material that consists of alloy that is formed by reacting mercury with silver, copper, tin and sometimes palladium, zinc and other elements to improve handling characteristics and clinical performance.
+description: 'A metal dental restoration material formed by combining liquid elemental mercury with a powdered alloy primarily of silver, tin and copper: silver and tin dissolve into the mercury and new solid phases precipitate, hardening the mix. It is used for the direct filling of carious lesions or structural defects in teeth, and its use is being phased down worldwide because of its mercury.'
+description_evidence:
+  - reference: CFR:872.3070
+    reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: Dental amalgam is a device that consists of a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper
+    explanation: What amalgam is.
+  - reference: PMID:8727105
+    reference_title: Setting reactions in dental amalgam. Part 2. The kinetics of amalgamation.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: The setting reaction begins with dissolution of silver and tin into liquid mercury; most of the product phases precipitate in the liquid mercury.
+    explanation: 'Review: how it sets.'
+  - reference: CFR:872.3070
+    reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: for the direct filling of carious lesions or structural defects in teeth
+    explanation: What it is for.
+  - reference: PMID:34387873
+    reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: The global phase-down of dental amalgam via the Minamata Convention on Mercury is an important consideration when deciding between amalgam and composite resin dental materials.
+    explanation: 'Cochrane, conclusions: the phase-down.'
+  - reference: PMID:8727105
+    reference_title: Setting reactions in dental amalgam. Part 2. The kinetics of amalgamation.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: the reactions that convert the mixture of alloy powder and liquid mercury to hardened amalgam
+    explanation: 'Review: hardening.'
 record_term:
   id: OHD:0000001
   label: amalgam dental restoration material
@@ -9,6 +40,19 @@ synonyms:
   - dental amalgam
   - silver filling
   - silver amalgam
+mappings:
+  - predicate_id: skos:exactMatch
+    object_id: MESH:D003723
+    object_label: Dental Amalgam
+    mapping_justification: semapv:UnspecifiedMatching
+    notes: Both are the mercury alloy as a dental restorative; MeSH names the same main elements as OHD.
+    evidence:
+      - reference: url:https://id.nlm.nih.gov/mesh/M0005842
+        reference_title: MeSH concept M0005842 Dental Amalgam, scope note
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: An alloy used in restorative dentistry that contains mercury, silver, tin, copper, and possibly zinc.
+        explanation: 'MeSH''s definition matches OHD''s: an alloy of mercury with silver, copper and tin, used in restorative dentistry. Read 2026-11-24.'
 setting_mechanisms:
   - AMALGAMATION
 composition:
@@ -17,10 +61,10 @@ composition:
     chemical:
       preferred_term: elemental mercury
       term:
-        id: CHEBI:25195
-        label: mercury atom
-    proportion: roughly half by weight of the set material
-    description: Supplied as a liquid in bulk, sachet, or predosed capsule form; reacts with the alloy powder.
+        id: CHEBI:16170
+        label: mercury(0)
+    proportion: approximately half (50%) by weight
+    description: Supplied as a liquid in bulk, sachet, or predosed capsule form. Reacts with the alloy powder and binds its particles together.
     evidence:
       - reference: CFR:872.3070
         reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
@@ -28,6 +72,12 @@ composition:
         evidence_source: REGULATORY_DOCUMENT
         snippet: a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper
         explanation: The FDA identification paragraph names the two components and their forms.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Approximately half (50%) of dental amalgam is elemental mercury by weight. The chemical properties of elemental mercury allow it to react with and bind together the silver/copper/tin alloy particles to form an amalgam.
+        explanation: The mercury fraction and what mercury does. Read 2026-11-24.
   - name: Silver
     role: ALLOYING_ELEMENT
     chemical:
@@ -35,7 +85,21 @@ composition:
       term:
         id: CHEBI:30512
         label: silver atom
-    description: Principal element of the alloy powder.
+    description: A primary element of the alloy powder.
+    proportion: 44.5% or 70% of the alloy powder in one cleared product line (two formulations)
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: a) Ag 44,5% Sn 30% Cu 25,5% ... b) Ag70% Sn18% Cu12%
+        explanation: The two formulations of the Worldwork product line, differing only in composition. Read 2026-11-24.
+      - reference: CFR:872.3070
+        reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form
+        explanation: The FDA identification paragraph names the alloy's primary elements.
   - name: Tin
     role: ALLOYING_ELEMENT
     chemical:
@@ -43,6 +107,21 @@ composition:
       term:
         id: CHEBI:27007
         label: tin atom
+    proportion: 30% or 18% of the alloy powder in the same product line
+    description: A primary element of the alloy powder.
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: a) Ag 44,5% Sn 30% Cu 25,5% ... b) Ag70% Sn18% Cu12%
+        explanation: The two formulations of the Worldwork product line, differing only in composition. Read 2026-11-24.
+      - reference: CFR:872.3070
+        reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form
+        explanation: The FDA identification paragraph names the alloy's primary elements.
   - name: Copper
     role: ALLOYING_ELEMENT
     chemical:
@@ -50,7 +129,314 @@ composition:
       term:
         id: CHEBI:28694
         label: copper atom
-    description: High-copper alloys suppress the corrosion-prone tin-mercury (gamma-2) phase.
+    description: A primary element of the alloy powder. Amalgams are grouped by it as low-copper (traditional) or high-copper; in high-copper amalgams the corrosion-prone gamma-2 phase is nearly eliminated.
+    proportion: 25.5% or 12% of the alloy powder in the same product line
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: a) Ag 44,5% Sn 30% Cu 25,5% ... b) Ag70% Sn18% Cu12%
+        explanation: The two formulations of the Worldwork product line, differing only in composition. Read 2026-11-24.
+      - reference: CFR:872.3070
+        reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form
+        explanation: The FDA identification paragraph names the alloy's primary elements.
+      - reference: PMID:1292469
+        reference_title: 'Dental amalgam: the materials.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: 'Amalgams can be divided roughly into two groups by their copper content: low Cu (traditional) and high Cu.'
+        explanation: 'Narrative review: the copper grouping.'
+      - reference: PMID:1292469
+        reference_title: 'Dental amalgam: the materials.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: the corrosion-prone phase, gamma 2, is nearly eliminated in high-Cu amalgams
+        explanation: 'Narrative review: what high copper does to gamma-2.'
+  - name: Zinc
+    role: ALLOYING_ELEMENT
+    chemical:
+      preferred_term: zinc
+      term:
+        id: CHEBI:27363
+        label: zinc atom
+    description: Optional. Alloys are classed as zinc-containing or zinc-free.
+    evidence:
+      - reference: PMID:9372797
+        reference_title: 'The influence of the amalgam alloy on the survival of amalgam restorations: a secondary analysis of multiple controlled clinical trials.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The alloys were divided into four groups according to their zinc content (zinc-containing and zinc-free) and their copper content (conventional and high-copper).
+        explanation: 'Methods: alloys both with and without zinc were in clinical use.'
+      - reference: PMID:37176331
+        reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Dental amalgam is an alloy consisting of a mixture of fine metallic powder of silver, tin, zinc, copper, and a trace amount of palladium in combination with about fifty percent elemental mercury that forms a matrix phase.
+        explanation: 'Abstract, background: the elements. OTHER: background, not the study''s own results.'
+  - name: Palladium
+    role: ALLOYING_ELEMENT
+    chemical:
+      preferred_term: palladium
+      term:
+        id: CHEBI:33363
+        label: palladium atom
+    proportion: trace
+    description: Minor element, present in trace amounts.
+    evidence:
+      - reference: PMID:37176331
+        reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Dental amalgam is an alloy consisting of a mixture of fine metallic powder of silver, tin, zinc, copper, and a trace amount of palladium in combination with about fifty percent elemental mercury that forms a matrix phase.
+        explanation: 'Abstract, background: the elements. OTHER: background, not the study''s own results.'
+properties:
+  - name: Compressive strength, 1 h
+    property_type: COMPRESSIVE_STRENGTH
+    value: '171'
+    unit: MPa
+    test_method: ISO 24234, as reported in the 510(k) summary
+    conditions: 'Worldwork product line (K223182), admixed spherical and lathe-cut powder; manufacturer data. Acceptance limit as the submission prints it from ISO 24234 (edition not stated): > 100 MPa. One value is printed for nine trade names and both formulations; which was tested is not stated.'
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Compressive strength @ 1hr > 100 171 MPa
+        explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
+  - name: Compressive strength, 24 h
+    property_type: COMPRESSIVE_STRENGTH
+    value: '443'
+    unit: MPa
+    test_method: ISO 24234, as reported in the 510(k) summary
+    conditions: 'Worldwork product line (K223182), admixed spherical and lathe-cut powder; manufacturer data. Acceptance limit as the submission prints it from ISO 24234 (edition not stated): > 350 MPa. One value is printed for nine trade names and both formulations; which was tested is not stated.'
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Compressive strength @ 24hr > 350 443 MPa
+        explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
+  - name: Creep
+    property_type: OTHER
+    value: '0.5'
+    unit: '%'
+    test_method: ISO 24234, as reported in the 510(k) summary
+    conditions: 'Worldwork product line (K223182), admixed spherical and lathe-cut powder; manufacturer data. Acceptance limit as the submission prints it from ISO 24234 (edition not stated): Max. 2%. One value is printed for nine trade names and both formulations; which was tested is not stated.'
+    description: 'OTHER: PropertyTypeEnum has no value for creep.'
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Creep Max. 2% 0.5%
+        explanation: Reported for the subject devices, next to the ISO 24234 acceptance limit. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
+  - name: Dimensional change on setting
+    property_type: OTHER
+    value: '0.1'
+    unit: '%'
+    test_method: ISO 24234, as reported in the 510(k) summary
+    conditions: 'Worldwork product line (K223182), admixed spherical and lathe-cut powder; manufacturer data. Acceptance limit as the submission prints it from ISO 24234 (edition not stated): −0.10 to +0.15. One value is printed for nine trade names and both formulations; which was tested is not stated.'
+    description: 'OTHER: PropertyTypeEnum has no value for dimensional change.'
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Dimensional change −0,10 to ... 0.1 ... +0,15
+        explanation: 'Subject value 0.1; the limit, −0,10 to +0,15, wraps over two lines of its table cell. The unit is inferred: the row prints % only for the predicate device. Read 2026-11-24.'
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Performance testing was completed in accordance to ISO 24234
+        explanation: Test standard, edition not stated. Read 2026-11-24.
+  - name: Working time, condensation
+    property_type: WORKING_TIME
+    value: 2.5 to 5
+    unit: min
+    conditions: Worldwork product line (K223182); manufacturer data. One value is printed for nine trade names and both formulations; which was tested is not stated.
+    evidence:
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: 'Working times (minutes) Condense: 2.5 - 5'
+        explanation: Time to condense, reported for the subject devices. Read 2026-11-24.
+      - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+        reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Particle shape & size Admix - spherical and lathe cut
+        explanation: Powder form of the subject devices. Read 2026-11-24.
+  - name: Corrosion
+    property_type: CORROSION_RESISTANCE
+    description: All amalgams corrode to some extent in the mouth, and deposited corrosion products partly seal the margins. High-copper amalgams generally perform better clinically, one reason given being that the corrosion-prone gamma-2 phase is nearly eliminated.
+    evidence:
+      - reference: PMID:1292469
+        reference_title: 'Dental amalgam: the materials.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: High-Cu amalgams generally perform better clinically, but all amalgams corrode to some extent in the mouth. Some corrosion is deemed to be a positive factor, because corrosion product deposition reduces leakage at the margins of restorations; that is, the restorations are partly self-sealing.
+        explanation: 'Narrative review: corrosion and self-sealing.'
+      - reference: PMID:1292469
+        reference_title: 'Dental amalgam: the materials.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: One of the reasons cited for the improved clinical performance of high-Cu amalgams over low-Cu amalgams is that the corrosion-prone phase, gamma 2, is nearly eliminated in high-Cu amalgams.
+        explanation: 'Narrative review: the role of gamma-2.'
+  - name: Corrosion of the phases in a high-copper amalgam
+    property_type: CORROSION_RESISTANCE
+    conditions: 'Crevice corrosion, in vitro, on three kinds of sample: amalgam from a high-copper single-composition alloy, annealed ingots of Ag3Sn and Cu3Sn, and alloy tablets electroplated with mercury.'
+    description: Ag3Sn and Cu3Sn were least affected; gamma-1 (Ag-Hg-Sn) slowly deteriorated; Cu6Sn5 resisted corrosion better than gamma-1.
+    evidence:
+      - reference: PMID:739017
+        reference_title: Corrosion behavior of structural phases in high copper dental amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The Ag3Sn and Cu3Sn phases were least affected by corrosion. The Ag-Hg-Sn phase (gamma1) slowly deteriorated, but the attack was nonuniform. The Cu6Sn5 phase exhibited good corrosion resistance, better than that of gamma1 phase.
+        explanation: Results by phase.
+      - reference: PMID:739017
+        reference_title: Corrosion behavior of structural phases in high copper dental amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The effects of crevice corrosion on the major structural phases of a high copper dental amalgam were studied in vitro.
+        explanation: The test and the material.
+      - reference: PMID:739017
+        reference_title: Corrosion behavior of structural phases in high copper dental amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 'Three kinds of samples were used: (1) amalgam prepared from a high copper, single composition alloy, (2) annealed ingots of the Ag3Sn and Cu3Sn phases, and (3) high copper, single composition alloy tablets electroplated with mercury.'
+        explanation: Samples.
+  - name: Fracture toughness by copper content and particle form
+    property_type: FRACTURE_TOUGHNESS
+    conditions: Sixteen amalgam products, measured at 1 week.
+    description: Fell as copper content rose; admixed high-copper products were tougher than single-component ones. The abstract gives no values.
+    evidence:
+      - reference: PMID:3857312
+        reference_title: The fracture toughness (KIC) of amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The results have shown that the fracture toughness decreases progressively as the copper content increases. The admixed high copper products possess superior fracture toughness to those containing a single component powder.
+        explanation: Results.
+      - reference: PMID:3857312
+        reference_title: The fracture toughness (KIC) of amalgam.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The fracture toughness (KIC) has been measured (at 1 week) for a selection of sixteen amalgam products.
+        explanation: Conditions.
+  - name: Hardness by copper content
+    property_type: HARDNESS
+    conditions: Eight commercial brands.
+    description: Rose with copper content. The abstract gives no values.
+    evidence:
+      - reference: PMID:37176331
+        reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: The mechanical hardness of the alloys was found to increase with an increase in copper content in the amalgam.
+        explanation: Result.
+      - reference: PMID:37176331
+        reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: dental amalgam received from eight different commercial brands
+        explanation: Materials tested.
+  - name: Radiopacity relative to other posterior materials
+    property_type: RADIOPACITY
+    conditions: Compared with ten other posterior restorative materials by mean gray value.
+    description: Highest of the materials compared. The abstract gives no aluminum equivalent for amalgam.
+    evidence:
+      - reference: PMID:37079911
+        reference_title: 'Radiopacity of Posterior Restorative Materials: A Comparative In Vitro Study.'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Amalgam had the highest radiopacity.
+        explanation: Result, among eleven materials.
+      - reference: PMID:37079911
+        reference_title: 'Radiopacity of Posterior Restorative Materials: A Comparative In Vitro Study.'
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: investigate the radiopacity of 11 commercial posterior restorative materials by establishing their mean gray values (MGVs)
+        explanation: Method and number of materials.
+  - name: Creep and marginal fracture
+    property_type: OTHER
+    conditions: Five clinical trials, 2068 restorations of six conventional and ten high-copper alloys.
+    description: 'Creep correlated with marginal fracture in conventional low-copper amalgams, but not in high-copper, non-gamma-2 ones. OTHER: PropertyTypeEnum has no value for creep.'
+    evidence:
+      - reference: PMID:3463718
+        reference_title: Creep versus marginal fracture of amalgam restorations.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: In five clinical trials, 2068 amalgam restorations were made of six conventional alloys and ten high copper systems.
+        explanation: Clinical relation of creep to marginal fracture, by alloy type.
+      - reference: PMID:3463718
+        reference_title: Creep versus marginal fracture of amalgam restorations.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The results show a correlation between creep and marginal fracture in the conventional, low copper amalgams. No correlation could be found for the group of high copper, non-gamma-2, amalgams.
+        explanation: Clinical relation of creep to marginal fracture, by alloy type.
+  - name: Mercury vapor emission by copper content
+    property_type: OTHER
+    description: 'Sources conflict on whether high copper lowers or raises emission; see the discussion. OTHER: PropertyTypeEnum has no value for vapor emission.'
+    evidence:
+      - reference: PMID:37176331
+        reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: increasing the copper content of the amalgam counters the release of mercury vapor from posterior teeth
+        explanation: 'One side of the conflict: copper lowers release.'
+      - reference: PMID:28220332
+        reference_title: Increased mercury emissions from modern dental amalgams.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: high copper amalgams emit substantially larger amounts of mercury vapor than the low copper amalgams used before the 1970s
+        explanation: 'The other side: a review reporting higher emission from high-copper amalgams.'
 clinical_uses:
   - name: Direct posterior restoration
     use_context: DIRECT_RESTORATION
@@ -65,53 +451,614 @@ clinical_uses:
         id: UBERON:0001091
         label: calcareous tooth
     indications:
-      - Class I and Class II cavities in posterior teeth where esthetics are not the priority
       - Economic direct restoration of posterior teeth
+      - High risk of tooth decay, large preparations, or where moisture makes resin bonding difficult
     contraindications:
-      - Documented mercury allergy
-      - Situations where esthetics are paramount
+      - Allergy or sensitivity to mercury or another metal in the amalgam
     evidence:
       - reference: PMID:21217947
         reference_title: 'Dental amalgam: An update.'
         supports: SUPPORT
-        evidence_source: TEXTBOOK
+        evidence_source: OTHER
         snippet: For the present, amalgam should remain the material of choice for economic direct restoration of posterior teeth.
-        explanation: Positions amalgam as the economic direct posterior restorative.
+        explanation: 'Narrative review (2010): positions amalgam as the economic direct posterior restorative. It predates the phase-down measures under regulatory_status.'
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Useful in patients that have a high risk of tooth decay, for large tooth preparations, and where moisture makes it difficult for other materials such as resins to establish a bond to tooth.
+        explanation: Situations in which FDA describes amalgam as useful. Read 2026-11-24.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: If you are allergic or otherwise sensitive to any of the metals in dental amalgam, you should not get amalgam fillings.
+        explanation: Allergy as a reason not to place it. Read 2026-11-24.
+      - reference: PMID:21217947
+        reference_title: 'Dental amalgam: An update.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: When esthetic concerns are paramount, tooth-colored materials, placed meticulously, can provide an acceptable alternative.
+        explanation: 'Narrative review: the esthetic limit.'
+    description: Direct filling of carious lesions or structural defects, chiefly in posterior teeth. Where esthetics are paramount, tooth-colored materials can be an acceptable alternative.
 clinical_performance:
-  - name: Failure risk relative to resin composite, posterior permanent teeth
-    measure_type: SURVIVAL_RATE
-    value: resin composite RR 1.89 (95% CI 1.52 to 2.35) for failure vs amalgam
-    follow_up_years: 3
-    population: Children and adults, permanent posterior teeth, randomized trials with at least three years of follow-up
+  - name: Failure risk of composite relative to amalgam, posterior permanent teeth
+    measure_type: OTHER
+    value: RR 1.89 (95% CI 1.52 to 2.35), composite vs amalgam
+    population: 921 children in two parallel-group randomized trials (1645 composite and 1365 amalgam restorations); review eligibility was at least three years of follow-up
     comparator: Direct resin composite
-    description: Amalgam is the reference arm; composite showed a higher failure risk in the parallel-group trials, on low-quality evidence.
+    description: Composite had almost double the risk of failure, on low-certainty evidence; all included trials were at high risk of bias. The measure is a risk ratio, not a rate, so measure_type is OTHER.
     evidence:
-      - reference: PMID:24683067
-        reference_title: Direct composite resin fillings versus amalgam fillings for permanent or adult posterior teeth.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
         supports: SUPPORT
         evidence_source: SYSTEMATIC_REVIEW
-        snippet: The parallel group trials indicated that resin restorations had a significantly higher risk of failure than amalgam restorations (risk ratio (RR) 1.89, 95% confidence interval (CI) 1.52 to 2.35, P value < 0.001 (fixed-effect model) (low-quality evidence))
-        explanation: Cochrane pooled estimate of failure risk with amalgam as the comparator.
+        snippet: We found low-certainty evidence that composite resin restorations had almost double the risk of failure compared to amalgam restorations (risk ratio (RR) 1.89, 95% confidence interval (CI) 1.52 to 2.35; P < 0.001)
+        explanation: Pooled estimate of the two parallel-group trials (Cochrane, 2021 update).
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: we combined data from the two parallel-group trials, which involved 1645 composite restorations and 1365 amalgam restorations in 921 children
+        explanation: Population.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: We judged all of the included studies to be at high risk of bias
+        explanation: Risk of bias.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: comparing dental composite resin with amalgam restorations in permanent posterior teeth that assessed restoration failure or survival at follow-up of at least three years
+        explanation: Follow-up required by the review.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Of note, however, is that composite resin materials have undergone important improvements in the years since the trials informing the primary analyses for this review were conducted.
+        explanation: The authors' caveat on the age of the trials.
+  - name: Failure risk of composite and amalgam, wider set of study designs
+    measure_type: OTHER
+    value: RR 0.96 (95% CI 0.68 to 1.34); no significant difference
+    population: 13 clinical trials and observational studies, permanent posterior teeth, at least 12 months of follow-up
+    comparator: Direct resin composite
+    description: A 2025 meta-analysis that found no significant difference, with varying definitions of failure across its studies. See the longevity discussion.
+    evidence:
+      - reference: PMID:40578032
+        reference_title: 'Failure Risk of Composite Resin and Amalgam Restorations: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 'The meta-analysis did not find any statistically significant difference in failure risk between amalgam and composite resin restorations (RR: 0.96, 95% confidence intervals: 0.68-1.34).'
+        explanation: Pooled estimate.
+      - reference: PMID:40578032
+        reference_title: 'Failure Risk of Composite Resin and Amalgam Restorations: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: clinical trials and observational studies with at least 12 months of follow-up
+        explanation: Designs and follow-up.
+      - reference: PMID:40578032
+        reference_title: 'Failure Risk of Composite Resin and Amalgam Restorations: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The results were derived from 13 studies.
+        explanation: Number of studies.
+      - reference: PMID:40578032
+        reference_title: 'Failure Risk of Composite Resin and Amalgam Restorations: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: the 13 studies used varying definitions of failure
+        explanation: Limitation.
+      - reference: PMID:40578032
+        reference_title: 'Failure Risk of Composite Resin and Amalgam Restorations: A Systematic Review and Meta-Analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: compare the failure risk between amalgam and composite resin materials in permanent posterior teeth
+        explanation: 'Objective: the teeth.'
+  - name: Survival in a randomized trial in children
+    measure_type: SURVIVAL_RATE
+    value: 94.4 (composite 85.5)
+    unit: '%'
+    follow_up_years: 7
+    population: Children aged 8 to 12 at enrollment; 1,748 posterior restorations followed for up to seven years
+    comparator: Resin-based composite
+    evidence:
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Subjects received a total of 1,748 restorations at baseline, which the authors followed for up to seven years.
+        explanation: Restorations and follow-up.
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The authors randomly assigned one-half of the 472 subjects, whose age ranged from 8 through 12 years, to receive amalgam restorations in posterior teeth and the other one-half to receive resin-based composite restorations.
+        explanation: Design and population.
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The survival rate of the amalgam restorations was 94.4 percent; that of composite restorations was 85.5 percent.
+        explanation: Survival.
+  - name: Annual failure rate in a randomized trial in children
+    measure_type: ANNUAL_FAILURE_RATE
+    value: 0.16 to 2.83 (composite 0.94 to 9.43)
+    unit: '%'
+    follow_up_years: 7
+    population: Children aged 8 to 12 at enrollment; posterior restorations followed for up to seven years
+    comparator: Resin-based composite
+    evidence:
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Subjects received a total of 1,748 restorations at baseline, which the authors followed for up to seven years.
+        explanation: Restorations and follow-up.
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The authors randomly assigned one-half of the 472 subjects, whose age ranged from 8 through 12 years, to receive amalgam restorations in posterior teeth and the other one-half to receive resin-based composite restorations.
+        explanation: Design and population.
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Annual failure rates ranged from 0.16 to 2.83 percent for amalgam restorations and from 0.94 to 9.43 percent for composite restorations.
+        explanation: Annual failure.
+  - name: Survival by alloy composition
+    measure_type: SURVIVAL_RATE
+    value: 85 (zinc-containing high-copper); 70 (zinc or high copper); 25 (conventional zinc-free)
+    unit: '%'
+    follow_up_years: 13
+    population: 3119 Class 1 and 2 restorations of 24 alloys in 14 controlled clinical trials, secondary analysis; restoration-related failures only
+    comparator: Alloy groups by zinc and copper content
+    evidence:
+      - reference: PMID:9372797
+        reference_title: 'The influence of the amalgam alloy on the survival of amalgam restorations: a secondary analysis of multiple controlled clinical trials.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 'Restorations of conventional zinc-free alloys had the shortest survival. After 13 years, only 25% survived. Zinc and a high copper content had an equally favorable influence on the survival rate, which was 70% after 13 years when either was present. The highest survival rates were of restorations of zinc-containing high-copper alloys: 85% after 13 years.'
+        explanation: Survival by alloy group.
+      - reference: PMID:9372797
+        reference_title: 'The influence of the amalgam alloy on the survival of amalgam restorations: a secondary analysis of multiple controlled clinical trials.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Data from 14 independent controlled clinical trials on the oral behavior of Classes 1 and 2 amalgam restorations ... 3119 restorations were available, which were made from 24 different alloys
+        explanation: Population.
+      - reference: PMID:9372797
+        reference_title: 'The influence of the amalgam alloy on the survival of amalgam restorations: a secondary analysis of multiple controlled clinical trials.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: With the restoration-related failures, survival functions of the restorations were estimated by alloy and alloy group.
+        explanation: Survival counts restoration-related failures only.
+  - name: Adhesively bonded compared with non-bonded amalgam
+    measure_type: SURVIVAL_RATE
+    value: 50 of 53 non-bonded and 55 of 60 bonded restorations (five unaccounted for)
+    follow_up_years: 2
+    population: 31 patients, 113 restorations, one trial
+    comparator: Adhesively bonded amalgam
+    description: One under-reported trial, which found no significant difference. Cochrane concluded that there is no evidence to claim or refute a difference in survival.
+    evidence:
+      - reference: PMID:26954446
+        reference_title: Adhesively bonded versus non-bonded amalgam restorations for dental caries.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: At two years, 50 out of 53 restorations in the non-bonded group survived, and 55 of 60 bonded restorations survived with five unaccounted for at follow-up.
+        explanation: Survival counts.
+      - reference: PMID:26954446
+        reference_title: Adhesively bonded versus non-bonded amalgam restorations for dental caries.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: One trial with 31 patients who received 113 restorations was included.
+        explanation: Population.
+      - reference: PMID:26954446
+        reference_title: Adhesively bonded versus non-bonded amalgam restorations for dental caries.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: This trial did not find any significant difference in the in-service performance of moderately sized adhesively bonded amalgam restorations, in terms of their survival rate and marginal integrity, in comparison to non-bonded amalgam restorations over a two-year period
+        explanation: Conclusion.
+      - reference: PMID:26954446
+        reference_title: Adhesively bonded versus non-bonded amalgam restorations for dental caries.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: This review only found one under-reported trial.
+        explanation: Quality of the evidence.
+      - reference: PMID:26954446
+        reference_title: Adhesively bonded versus non-bonded amalgam restorations for dental caries.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: There is no evidence to either claim or refute a difference in survival between bonded and non-bonded amalgam restorations.
+        explanation: The review's main conclusion.
+  - name: Failure of composite relative to amalgam, 2015 meta-analysis
+    measure_type: OTHER
+    value: composite less longevity and more secondary caries; no difference in fractures
+    population: 8 studies published between 1992 and 2013; at least 12 months of follow-up
+    comparator: Composite resin
+    description: No pooled value in the abstract.
+    evidence:
+      - reference: PMID:26116767
+        reference_title: 'Amalgam and resin composite longevity of posterior restorations: A systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The results of this review suggest that composite resin restorations in posterior teeth still have less longevity and a higher number of secondary caries when compared to amalgam restorations. In relation to fractures, there was no statistically significant difference between the two restorative materials regarding the time of follow-up.
+        explanation: Result.
+      - reference: PMID:26116767
+        reference_title: 'Amalgam and resin composite longevity of posterior restorations: A systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: 8 studies published between 1992 and 2013 were included in this review
+        explanation: Studies.
+      - reference: PMID:26116767
+        reference_title: 'Amalgam and resin composite longevity of posterior restorations: A systematic review and meta-analysis.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: clinical trials in humans with at least 12 months of follow-up
+        explanation: Follow-up.
+  - name: Replacement rate in the New England trial, permanent teeth
+    measure_type: OTHER
+    value: 10.8 (composite 14.9); P=.45
+    unit: '%'
+    population: Children aged 6 to 10 at enrollment; average follow-up 3.4 years for permanent-tooth restorations
+    comparator: Composite
+    evidence:
+      - reference: PMID:17545265
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: In permanent teeth, the replacement rate was 14.9 percent of composites versus 10.8 percent of amalgams (P=.45)
+        explanation: Result.
+      - reference: PMID:17545265
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The authors randomized children aged 6 to 10 years
+        explanation: Population.
+      - reference: PMID:17545265
+        reference_title: 'The longevity of amalgam versus compomer/composite restorations in posterior primary and permanent teeth: findings From the New England Children''s Amalgam Trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 3.4+/-1.9 years for permanent tooth restorations
+        explanation: Follow-up.
+  - name: Five-year failure in dental health records
+    measure_type: OTHER
+    value: 8.84 (composite 4.36)
+    unit: '%'
+    follow_up_years: 5
+    population: 21,510 posterior restorations in permanent molars, placed 2011 to 2020 at nine universities; failure meant root canal treatment or extraction
+    comparator: Composite
+    description: Observational, and the authors conclude that such records cannot yet support accurate assessment.
+    evidence:
+      - reference: PMID:40482587
+        reference_title: 'Assessing the readiness of dental electronic health records for machine learning prediction of procedure outcomes: Insights from the bigmouth repository on composite and amalgam restoration survival rates.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Classic survival analysis showed a higher failure rate for amalgam (8.84 %) compared to composite (4.36 %).
+        explanation: Result.
+      - reference: PMID:40482587
+        reference_title: 'Assessing the readiness of dental electronic health records for machine learning prediction of procedure outcomes: Insights from the bigmouth repository on composite and amalgam restoration survival rates.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: A total of 21,510 restorations placed between 2011 and 2020 across nine universities were identified.
+        explanation: Population.
+      - reference: PMID:40482587
+        reference_title: 'Assessing the readiness of dental electronic health records for machine learning prediction of procedure outcomes: Insights from the bigmouth repository on composite and amalgam restoration survival rates.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Failure was defined as root canal treatment or extraction within five years.
+        explanation: Definition of failure.
+      - reference: PMID:40482587
+        reference_title: 'Assessing the readiness of dental electronic health records for machine learning prediction of procedure outcomes: Insights from the bigmouth repository on composite and amalgam restoration survival rates.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: focusing on posterior restorations in permanent molars of vital teeth
+        explanation: Teeth.
+      - reference: PMID:40482587
+        reference_title: 'Assessing the readiness of dental electronic health records for machine learning prediction of procedure outcomes: Insights from the bigmouth repository on composite and amalgam restoration survival rates.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: dental EHRs, in their current state, are not yet equipped to support accurate assessment
+        explanation: The authors' conclusion about such records.
 adverse_effects:
-  - name: Mercury release and environmental disposal concerns
-    effect_category: ENVIRONMENTAL
-    description: Concerns over mercury release in the body and environmental impact after disposal have driven a global phase-down under the Minamata Convention.
+  - name: Mercury vapor exposure in patients
+    effect_category: TOXICITY
+    description: Set amalgam releases low levels of mercury vapor, and urinary mercury was higher in children with amalgam than in children with composite. Two randomized trials in children found no significant neuropsychological differences over five and seven years, though one could not rule out very small IQ effects. A renal analysis of one found no difference in average kidney markers or in high tubular markers, but more microalbuminuria with amalgam, which its authors said may be random and should be tested further. The Cochrane review found some differences on certain measures but no consistent or clinically important harms, on very low certainty evidence.
     evidence:
-      - reference: PMID:24683067
-        reference_title: Direct composite resin fillings versus amalgam fillings for permanent or adult posterior teeth.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Releases low levels of mercury in the form of a vapor that can be inhaled and absorbed by the lungs.
+        explanation: Exposure route. Read 2026-11-24.
+      - reference: PMID:16622139
+        reference_title: 'Neuropsychological and renal effects of dental amalgam in children: a randomized clinical trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Assignment to the amalgam group was associated with a significantly higher mean urinary mercury level (0.9 vs 0.6 microg/g of creatinine at year 5, P<.001).
+        explanation: Exposure, New England trial.
+      - reference: PMID:16622139
+        reference_title: 'Neuropsychological and renal effects of dental amalgam in children: a randomized clinical trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: there were no statistically significant differences in adverse neuropsychological or renal effects observed over the 5-year period in children whose caries were restored using dental amalgam or composite materials
+        explanation: Outcome, New England trial.
+      - reference: PMID:16622140
+        reference_title: 'Neurobehavioral effects of dental amalgam in children: a randomized clinical trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: There were no statistically significant differences in measures of memory, attention, visuomotor function, or nerve conduction velocities (average z scores were very similar, near zero) for the amalgam and composite groups over all 7 years of follow-up
+        explanation: Outcome, Lisbon trial.
+      - reference: PMID:18335109
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: There was, however, a significantly increased prevalence of microalbuminuria (MA) among children in the amalgam group in years 3-5 (adjusted odds ratio 1.8; 95% confidence interval, 1.1-2.9).
+        explanation: Further analysis of the New England trial.
+      - reference: PMID:18335109
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The increase in MA may be a random finding, but should be tested further.
+        explanation: The authors' caution.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
         supports: SUPPORT
         evidence_source: SYSTEMATIC_REVIEW
-        snippet: there have been concerns over the use of amalgam restorations (fillings), relating to the mercury release in the body and the environmental impact following its disposal
-        explanation: States the two concerns directly.
-  - name: Oral lichenoid reaction adjacent to amalgam
+        snippet: Some differences between amalgam and composite resin groups were observed on certain measures of renal, neuropsychological, and psychosocial function, physical development, and postoperative sensitivity; however, no consistent or clinically important harms were found.
+        explanation: Cochrane, harms.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The evidence is of very low certainty, with most harms outcomes reported in only one trial.
+        explanation: Cochrane, certainty of the harms evidence.
+      - reference: PMID:16622139
+        reference_title: 'Neuropsychological and renal effects of dental amalgam in children: a randomized clinical trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Although it is possible that very small IQ effects cannot be ruled out
+        explanation: The New England trial's caveat.
+      - reference: PMID:16622139
+        reference_title: 'Neuropsychological and renal effects of dental amalgam in children: a randomized clinical trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: children aged 6 to 10 years at baseline with no prior amalgam restorations
+        explanation: Population, New England trial.
+      - reference: PMID:18335109
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: There were no significant differences between treatment groups in average levels of renal biomarkers
+        explanation: 'Renal analysis: average markers.'
+      - reference: PMID:18335109
+        reference_title: 'Renal effects of dental amalgam in children: the New England children''s amalgam trial.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: There were no differences in the occurrence of high levels of renal tubular markers (A1M, gamma-GT, or NAG).
+        explanation: 'Renal analysis: tubular markers.'
+  - name: Pregnancy outcomes
+    effect_category: TOXICITY
+    description: Two analyses of the Norwegian Mother and Child Cohort Study differ. One (69 474 pregnancies) found no significant association between amalgam fillings and preterm delivery, low birthweight, malformation or stillbirth. The other (72,038 women) found that the odds of perinatal death (stillbirth plus early neonatal death) rose with the number of filled teeth after adjustment; the increase was not significant for 1 to 12 teeth and was significant for 13 or more, and residual confounding was not excluded. The outcomes overlap only in part.
+    evidence:
+      - reference: PMID:27146796
+        reference_title: Prenatal exposure to dental amalgam and pregnancy outcome.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: revealed no significant associations between the number of teeth with amalgam fillings and early preterm delivery, late preterm delivery, low birthweight, malformation or stillbirth
+        explanation: The analysis that found no association.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: However, we cannot exclude that the relatively modest odds ratios could be a result of residual confounding
+        explanation: The authors' caution about confounding.
+      - reference: PMID:27146796
+        reference_title: Prenatal exposure to dental amalgam and pregnancy outcome.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: In the Norwegian Mother and Child Cohort Study (MoBa), a valid information about the number of teeth with amalgam fillings and dental treatment, including new amalgam fillings placed or removed during pregnancy, was available from 69 474 pregnancies.
+        explanation: Cohort and size.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: 72,038 pregnant women with data on the number of teeth filled with dental amalgam
+        explanation: Size.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: The Norwegian Mother and Child Cohort Study, a Norwegian birth cohort of children born in 1999-2008
+        explanation: Cohort.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Data on perinatal death (stillbirth ≥ 22 weeks plus early neonatal death 0-7 days after birth)
+        explanation: Outcome.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: there was still an increased risk for perinatal death associated with increasing number of teeth filled with amalgam (ORadj 1.041, 95% CI 1.008 to 1.076, p = 0.015)
+        explanation: Adjusted trend per filled tooth.
+      - reference: PMID:30532171
+        reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: In groups with 1 to 12 teeth filled with amalgam the adjusted odds ratios were slightly, but not significantly, increased. The group with the highest exposure (participants with 13 or more teeth filled with amalgam) had an adjusted OR of 2.34 (95% CI 1.27 to 4.32; p = 0.007).
+        explanation: Adjusted estimates by group.
+  - name: Oral lichenoid lesion associated with amalgam
     effect_category: ALLERGIC_OR_HYPERSENSITIVITY
     effect_term:
       preferred_term: oral lichenoid lesion
       term:
         id: HP:0031453
         label: Oral lichenoid lesion
-    frequency: rare
-    description: Contact hypersensitivity presenting as a lichenoid lesion of the mucosa in contact with the restoration. Evidence not yet attached.
+    description: 'Lichenoid lesion of the oral mucosa associated with amalgam. Replacing the restoration can resolve or improve it, whatever the patch test result; patch testing is of limited value. No source read gives a population frequency. The mechanism is not established by these sources: improvement after removal did not depend on patch test status. The category is the closest available, since its definition includes lichenoid reactions.'
+    evidence:
+      - reference: PMID:33273245
+        reference_title: Can We Separate Oral Lichen Planus from Allergic Contact Dermatitis and Should We Patch Test? A Systematic Review of Chronic Oral Lichenoid Lesions.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Removal of amalgam restorations led to complete resolution in 54.2% (n = 423/781), partial resolution in 34.8% (n = 272/781), and no resolution in 11.0% (n = 86/781) of the patients with OLLs
+        explanation: Outcome of removal.
+      - reference: PMID:33273245
+        reference_title: Can We Separate Oral Lichen Planus from Allergic Contact Dermatitis and Should We Patch Test? A Systematic Review of Chronic Oral Lichenoid Lesions.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Our results suggest improvement occurs, regardless of patch testing status.
+        explanation: Patch testing.
+      - reference: PMID:15529127
+        reference_title: 'Healing of oral lichenoid lesions after replacing amalgam restorations: a systematic review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: The replacement of amalgam restorations can result in the resolution or improvement of OLLs. Patch testing seems to be of limited value.
+        explanation: Earlier systematic review.
+  - name: Amalgam tattoo
+    effect_category: ESTHETIC
+    description: Blue, grey or black macule of the oral soft tissue, from deposited amalgam metals.
+    evidence:
+      - reference: PMID:18627755
+        reference_title: Amalgam tattoo.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Amalgam tattoos are common, oral pigmented lesions that clinically present as isolated, blue, grey, or black macules on the gingivae, the buccal and alveolar mucosae, the palate, and/or the tongue. They are due to deposition of a mixture of silver, tin, mercury, copper, and zinc
+        explanation: 'Case report, background: what the lesion is. OTHER: background, not the patient''s findings.'
+  - name: Galvanic pain
+    effect_category: OTHER
+    description: Galvanic currents between contacting dissimilar restorations can cause pain, generally short-lived.
+    evidence:
+      - reference: PMID:8940574
+        reference_title: Clinical management of galvanic current between gold and amalgam.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Galvanic currents can occur and cause pain, but this is generally shortlived and should not influence the dentist's choice of an appropriate restorative material.
+        explanation: Clinical review.
+      - reference: PMID:8940574
+        reference_title: Clinical management of galvanic current between gold and amalgam.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Placing a strip of rubber dam or similar insulator between the contacting dissimilar restorations is a diagnostic technique for relieving and evaluating painful galvanic currents.
+        explanation: 'Clinical review: between which restorations.'
+  - name: Secondary caries
+    effect_category: SECONDARY_CARIES
+    description: The main reason for failure of both materials in a randomized trial in children; less frequent with amalgam than with composite.
+    evidence:
+      - reference: PMID:17545266
+        reference_title: Survival and reasons for failure of amalgam versus composite posterior restorations placed in a randomized clinical trial.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Secondary caries was the main reason for failure in both materials. Risk of secondary caries was 3.5 times greater in the composite group.
+        explanation: Randomized trial in children.
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: were at much higher risk of secondary caries (RR 2.14, 95% CI 1.67 to 2.74; P < 0.001)
+        explanation: 'Cochrane: the risk for composite relative to amalgam.'
+  - name: Restoration fracture
+    effect_category: MECHANICAL_FAILURE
+    description: Some form of fracture caused most restoration-related failures in a secondary analysis of controlled trials.
+    evidence:
+      - reference: PMID:9372797
+        reference_title: 'The influence of the amalgam alloy on the survival of amalgam restorations: a secondary analysis of multiple controlled clinical trials.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Eighty percent of the restoration-related failures were due to some form of fracture of the amalgam.
+        explanation: Secondary analysis of 14 trials.
+  - name: Mercury release during MRI
+    effect_category: OTHER
+    description: Laboratory studies differ. One found no significant increase at 1.5, 3 or 7 T; one found an increase at 7 T but not 1.5 T; one found release rising with field strength and radiofrequency power, at 3 T only with high power, and judged the amount unlikely to be clinically meaningful.
+    evidence:
+      - reference: PMID:37755142
+        reference_title: No Increased Mercury Release from Dental Restorations at 1.5T, 3T, or 7T MRI.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: MRI of dental amalgam does not significantly increase mercury excretion at 1.5T, 3T, or 7T compared to unscanned teeth.
+        explanation: The study that found no increase.
+      - reference: PMID:29944087
+        reference_title: Ex Vivo Mercury Release from Dental Amalgam after 7.0-T and 1.5-T MRI.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: mercury was released from amalgam fillings after exposure to 7.0-T MRI but not 1.5-T MRI
+        explanation: An increase at 7 T. A 2019 item with the same title (PMID:30998445), apparently an erratum, has not been read.
+      - reference: PMID:36228805
+        reference_title: The effect of magnetic resonance imaging on mercury release from dental amalgam at 3T and 7T.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Mercury release from amalgam shows a measurable increase following MRI, and the magnitude changes with magnetic field strength and RF power.
+        explanation: The overall finding.
+      - reference: PMID:36228805
+        reference_title: The effect of magnetic resonance imaging on mercury release from dental amalgam at 3T and 7T.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: Amalgam mercury release during MRI is unlikely to be clinically meaningful and highly likely to remain below safe levels.
+        explanation: The authors' judgment of the amount.
+      - reference: PMID:36228805
+        reference_title: The effect of magnetic resonance imaging on mercury release from dental amalgam at 3T and 7T.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: 'Mercury concentration was increased in the 7T groups (high/ low: 15.43/ 11.33 ng mL-1) and 3T high group (3.59) compared to control (2.44).'
+        explanation: Which groups rose.
+  - name: Occupational mercury exposure
+    effect_category: OCCUPATIONAL
+    description: Most studies in low- and middle-income countries found higher mercury in dental workers than in controls, and clinic air may exceed recommended thresholds; the evidence on health effects is inconclusive. A 2020 study found dental exposures below the occupational limit.
+    evidence:
+      - reference: PMID:42160808
+        reference_title: 'Biomonitoring of Occupational Exposure to Mercury Among Dental Health Workers in LMICs: A Systematic Review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: Most studies reported elevated mercury levels in dental workers compared to control groups.
+        explanation: Exposure.
+      - reference: PMID:42160808
+        reference_title: 'Biomonitoring of Occupational Exposure to Mercury Among Dental Health Workers in LMICs: A Systematic Review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: current evidence regarding potential health effects associated with occupational exposure to mercury is inconclusive due to methodological limitations
+        explanation: Health effects.
+      - reference: PMID:42160808
+        reference_title: 'Biomonitoring of Occupational Exposure to Mercury Among Dental Health Workers in LMICs: A Systematic Review.'
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Mercury exposure remains a significant occupational hazard for dental health workers, especially in low- and middle-income countries (LMICs), due to the continued use of dental amalgam.
+        explanation: 'Background: the setting.'
+      - reference: PMID:42160808
+        reference_title: 'Biomonitoring of Occupational Exposure to Mercury Among Dental Health Workers in LMICs: A Systematic Review.'
+        supports: SUPPORT
+        evidence_source: SYSTEMATIC_REVIEW
+        snippet: mercury vapor concentrations in dental clinics may exceed recommended safety thresholds
+        explanation: Clinic air.
+      - reference: PMID:32228815
+        reference_title: 'Exposure to mercury from dental amalgam: actual contribution for risk assessment.'
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: Current dental exposures based on the most recent findings do not exceed acceptable risk levels and are below the biological limit of mercury in urine valid for occupationally exposed persons
+        explanation: A 2020 study of 40 dental personnel and 10 controls, for contrast.
+  - name: Environmental release of mercury
+    effect_category: ENVIRONMENTAL
+    description: Mercury disposal is an environmental concern. The Minamata Convention on Mercury commits its parties to measures that phase down amalgam.
+    evidence:
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: there are concerns over the use of amalgam restorations (fillings) with regard to mercury release in the body and the environmental impact of mercury disposal
+        explanation: 'Cochrane, background. OTHER: background, not the review''s results.'
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: Ratification involves committing to the adoption of at least two of nine proposed measures to phase down the use of mercury, including amalgam in dentistry.
+        explanation: 'Cochrane, background: the Minamata Convention.'
+      - reference: PMID:34387873
+        reference_title: Direct composite resin fillings versus amalgam fillings for permanent posterior teeth.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: The United Nations Environment Programme has established the Minamata Convention on Mercury
+        explanation: 'Cochrane, background: names the Convention the previous quote refers to.'
 regulatory_status:
   - agency: FDA
     status: CLEARED
@@ -126,7 +1073,7 @@ regulatory_status:
       - PREMARKET_NOTIFICATION_510K
     special_controls:
       - 'Class II Special Controls Guidance Document: Dental Amalgam, Mercury, and Amalgam Alloy'
-    identification: Dental amalgam is a device that consists of a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form, for the direct filling of carious lesions or structural defects in teeth.
+    identification: Dental amalgam is a device that consists of a combination of elemental mercury, supplied as a liquid in bulk, sachet, or predosed capsule form, and amalgam alloy composed primarily of silver, tin, and copper, supplied as a powder in bulk, tablet, or predosed capsule form, for the direct filling of carious lesions or structural defects in teeth. This device also includes the individual component devices, mercury and amalgam alloy, when intended to be combined with each other to form dental amalgam.
     approved_uses:
       - name: Direct filling of carious lesions or structural defects in teeth
         use_context: DIRECT_RESTORATION
@@ -136,7 +1083,7 @@ regulatory_status:
             id: OHD:0000041
             label: amalgam filling restoration procedure
     source_url: https://www.ecfr.gov/current/title-21/section-872.3070
-    notes: Product codes EJJ (alloy, amalgam), ELY (mercury), and OIV (dental amalgam) all sit under this regulation. FDA issued updated recommendations in 2020 advising certain high-risk groups to avoid amalgam where appropriate; those are not yet captured here.
+    notes: EJJ (alloy, amalgam), ELY (mercury) and OIV (dental amalgam) are the only codes under this regulation; all are class 2 with submission type 510(k), checked in the classification database and openFDA on 2026-11-24. The regulation grants no 510(k) exemption. status is CLEARED, the marketing pathway; FDA's advice for high-risk groups is under restrictions and does not prohibit use.
     evidence:
       - reference: CFR:872.3070
         reference_title: 21 CFR 872.3070 Dental amalgam, mercury, and amalgam alloy
@@ -148,18 +1095,195 @@ regulatory_status:
         reference_title: FDA Product Classification Database, regulation 872.3070
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
-        snippet: EJJ alloy, amalgam; ELY mercury; OIV dental amalgam
-        explanation: Product codes listed under the regulation on 2026-09-04.
+        snippet: EJJ ... alloy, amalgam ... ELY ... mercury ... OIV ... dental amalgam
+        explanation: Product codes listed under the regulation. Read 2026-11-24.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: 'These high-risk populations include: Pregnant women and their developing fetuses; Women who are planning to become pregnant; Nursing women and their newborns and infants; Children, especially those younger than six years of age; People with pre-existing neurological disease; People with impaired kidney function; People with known heightened sensitivity (allergy) to mercury or other components (silver, copper, tin) of dental amalgam. If you fall into any of the greater risk groups listed above, the FDA strongly encourages the use of non-amalgam restorations (fillings)'
+        explanation: The high-risk groups and the recommendation. Page dated 02/18/2021. Read 2026-11-24.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: if your dentist thinks these materials are appropriate for your affected tooth's structure and location, and if you have no history of allergic reaction or hypersensitivity to these materials
+        explanation: The conditions FDA puts on that advice, continuing the same sentence. Read 2026-11-24.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: Intact amalgam fillings in any individual, including the sensitive groups such as pregnant/nursing mothers and children, should not be removed for the purpose of preventing any disease or health condition, unless considered medically necessary by a health care professional.
+        explanation: Advice on existing fillings. Read 2026-11-24.
+    restrictions:
+      - 'FDA strongly encourages non-amalgam restorations, if the dentist thinks they are appropriate and the patient has no allergy to them, for high-risk groups: pregnant women and their developing fetuses; women planning to become pregnant; nursing women and their newborns and infants; children, especially those younger than six; people with pre-existing neurological disease, impaired kidney function, or known heightened sensitivity (allergy) to mercury or other components.'
+      - FDA advises against removing intact amalgam fillings to prevent disease, unless considered medically necessary.
+  - agency: OTHER
+    jurisdiction: European Union
+    status: RESTRICTED
+    regulation_title: Regulation (EU) 2017/852 on mercury
+    restrictions:
+      - From 1 January 2019, only in pre-dosed encapsulated form
+      - From 1 July 2018, not to be used for deciduous teeth, children under 15 years, or pregnant or breastfeeding women, except when strictly necessary for the specific medical needs of the patient
+      - From 1 January 2025, not to be used for dental treatment in the Union, except when strictly necessary for the specific medical needs of the patient
+      - Export prohibited from 1 January 2025; import and manufacturing prohibited from 1 July 2026, except for those specific medical needs
+    effective_date: '2025-01-01'
+    source_url: https://eur-lex.europa.eu/eli/reg/2024/1849/oj/eng
+    notes: Article 10(1) and (2), and Article 10(2a) and (7) as added by Regulation (EU) 2024/1849. An environmental regulation on mercury, not device law, so agency is OTHER rather than EU_MDR, and device_class is unset. Member States meeting its conditions could allow use until 30 June 2026. effective_date is that of the general restriction in Article 10(2a).
+    evidence:
+      - reference: url:http://publications.europa.eu/resource/celex/32017R0852
+        reference_title: Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 January 2019, dental amalgam shall only be used in pre-dosed encapsulated form.
+        explanation: Article 10(1). Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32017R0852
+        reference_title: Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 July 2018, dental amalgam shall not be used for dental treatment of deciduous teeth, of children under 15 years and of pregnant or breastfeeding women, except when deemed strictly necessary by the dental practitioner based on the specific medical needs of the patient.
+        explanation: Article 10(2). Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32024R1849
+        reference_title: Regulation (EU) 2024/1849 amending Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 January 2025, dental amalgam shall not be used for dental treatment in the Union, except when deemed strictly necessary by the dental practitioner based on the specific medical needs of the patient.
+        explanation: Article 10(2a). Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32024R1849
+        reference_title: Regulation (EU) 2024/1849 amending Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: From 1 January 2025, the export of dental amalgam shall be prohibited. From 1 July 2026, the import and manufacturing of dental amalgam shall be prohibited.
+        explanation: Article 10(7). Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32024R1849
+        reference_title: Regulation (EU) 2024/1849 amending Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: the import and manufacturing of dental amalgam shall be allowed for specific medical needs
+        explanation: Article 10(7), third subparagraph. Read 2026-11-24.
+      - reference: url:http://publications.europa.eu/resource/celex/32024R1849
+        reference_title: Regulation (EU) 2024/1849 amending Regulation (EU) 2017/852 on mercury
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
+        snippet: dental amalgam may be used for dental treatment until 30 June 2026
+        explanation: 'Article 10(2a), second subparagraph: the derogation for Member States meeting its conditions. Read 2026-11-24.'
+products:
+  - name: World Work Dental Amalgam (also Arial Dental, Mistral Dental Amalgam, BMS Non Gamma 2 Alloy, Flexi Alloy, Hi-S Alloy, WW Dental Amalgam, Hi-Mix, Non Gamma 2 Alloy)
+    manufacturer: Worldwork S.R.L.
+    description: Admixed spherical and lathe-cut alloy in two formulations.
+    submissions:
+      - agency: FDA
+        submission_number: K223182
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2023-05-01'
+        product_code: OIV
+        regulation_number: '872.3070'
+        indications_for_use: Filling material as a treatment for dental caries
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K223182
+        evidence:
+          - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K223182
+            reference_title: FDA 510(k) Premarket Notification database, K223182
+            supports: SUPPORT
+            evidence_source: REGULATORY_DOCUMENT
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 05/01/2023 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
+          - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
+            reference_title: 510(k) Summary K223182, Worldwork S.R.L.
+            supports: SUPPORT
+            evidence_source: REGULATORY_DOCUMENT
+            snippet: 'Indications for Use: Filling material as a treatment for dental caries'
+            explanation: Indications for use. Read 2026-11-24.
+  - name: New Stetic Dental Amalgam Alloy
+    manufacturer: New Stetic
+    submissions:
+      - agency: FDA
+        submission_number: K140125
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2014-04-29'
+        product_code: OIV
+        regulation_number: '872.3070'
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K140125
+        evidence:
+          - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K140125
+            reference_title: FDA 510(k) Premarket Notification database, K140125
+            supports: SUPPORT
+            evidence_source: REGULATORY_DOCUMENT
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 04/29/2014 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
+  - name: Ultracaps S
+    manufacturer: SDI, Ltd.
+    submissions:
+      - agency: FDA
+        submission_number: K081273
+        pathway: PREMARKET_NOTIFICATION_510K
+        decision: CLEARED
+        decision_date: '2008-07-10'
+        product_code: OIV
+        regulation_number: '872.3070'
+        source_url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K081273
+        evidence:
+          - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K081273
+            reference_title: FDA 510(k) Premarket Notification database, K081273
+            supports: SUPPORT
+            evidence_source: REGULATORY_DOCUMENT
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 07/10/2008 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
 standards:
-  - identifier: ISO 24234
-    title: Dentistry - Dental amalgam
+  - identifier: ISO 24234:2021
+    title: Dentistry - Dental Amalgam
     organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44911
+  - identifier: ISO 20749:2023
+    title: Dentistry - Pre-capsulated dental amalgam
+    organization: ISO
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44917
 see_also:
   - https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
 parents:
   - OHD:0000048
+discussions:
+  - discussion_id: longevity-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    prompt: 'Does amalgam outlast resin composite in posterior teeth? Favoring amalgam: the 2021 Cochrane update (two older randomized trials in children, low certainty) and a 2015 meta-analysis. No significant difference: a 2025 meta-analysis of 13 studies and permanent-tooth replacement in the New England trial. Favoring composite: a health-record study whose authors doubt such records. Cochrane notes that composites have improved since its trials. The single-trial rows here may come from the two trials Cochrane pooled, so they may not be independent of its estimate; the abstracts read do not name those trials, so this is unconfirmed.'
+    rationale: Reviews with similar designs disagree, so no single estimate should stand alone.
+  - discussion_id: copper-mercury-vapor-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    prompt: Does a high copper content lower or raise mercury vapor emission? A laboratory study of eight brands reports that copper counters release; a review reports that high-copper amalgams emit substantially more than low-copper ones.
+    rationale: The sign of the effect matters for patient exposure.
+  - discussion_id: mri-mercury-release-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    attaches_to:
+      - adverse_effects#Mercury release during MRI
+    prompt: Does MRI raise mercury release from amalgam? One laboratory study found no significant increase at 1.5, 3 or 7 T; another found an increase at 7 T but not 1.5 T; a third found release rising with field strength and radiofrequency power, and judged it unlikely to be clinically meaningful.
+    rationale: The studies used different specimens, ageing times and scan conditions, and one may have an erratum (see mri-erratum-amalgam).
+  - discussion_id: pregnancy-outcomes-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    attaches_to:
+      - adverse_effects#Pregnancy outcomes
+    prompt: 'Are a mother''s amalgam fillings associated with perinatal death? Two analyses of the Norwegian Mother and Child Cohort Study differ: one found no significant association with stillbirth or other outcomes, the other found higher adjusted odds of perinatal death with more filled teeth, significant only at 13 or more.'
+    rationale: The outcomes overlap only in part, both analyses are of the same cohort, and residual confounding was not excluded.
+  - discussion_id: property-values-amalgam
+    kind: KNOWLEDGE_GAP
+    status: OPEN
+    prompt: 'No sourced value was found for elastic modulus, fracture toughness, thermal expansion, thermal conductivity, flexural strength or calibrated radiopacity of amalgam: the abstracts read give comparisons without numbers. Strength, creep and dimensional change come from one manufacturer''s 510(k) summary.'
+    rationale: Full texts, or ISO 24234 from a local copy, would supply values and methods.
+  - discussion_id: minamata-phase-out-amalgam
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: Record the Minamata Convention phase-out. The title of PMID:42714322 refers to a 2034 phase-out; the decision of the parties has not been read (the Convention's site refused automated access on 2026-11-24). Other jurisdictions and the EU device class are also not curated.
+  - discussion_id: mri-erratum-amalgam
+    kind: CURATION_TODO
+    status: OPEN
+    prompt: PMID:29944087 (mercury release after 7 T MRI) is followed by a 2019 item with the same title, PMID:30998445, apparently an erratum, which has no abstract and has not been read. Check whether it changes the result quoted here.
+notes: FDA discourages the name "silver filling", because it does not say what the material contains; it is kept as a synonym because people use it. OHD and MeSH name zinc as optional; OHD names palladium as optional, and a 2023 study lists a trace of it. Strength, creep and dimensional change come from one brand's 510(k) summary, which cites ISO 24234 without an edition; FDA's listing says the third edition does not apply to pre-capsulated amalgam, the form of that product, which ISO 20749 covers. K140125 also prints strength and composition tables, but their scanned text is not reliable enough to quote. The corrosion value in K223182 (2 µg/cm2) is not recorded, because its test duration is unclear in the table. Mercury is bound to mercury(0), the form the device contains; the Metal record still binds mercury atom. Where a description reports findings on both sides, supports is judged against that description, so each side is SUPPORT. FDA recognizes ISO 24234 third edition 2021-08 (recognition number 4-315) and ISO 20749 second edition 2023-06 (4-318); the standards URLs are those recognition records.
 creation_date: '2026-09-04'
-status: DRAFT
+status: PROPOSED
 curation_history:
   - timestamp: '2026-11-07T19:51:25+00:00'
     curator: claude-code
@@ -172,5 +1296,665 @@ curation_history:
     llm_assisted: true
     model: claude-opus-5-5
     action: EDIT
-    description: 'Cited 2 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.'
-updated_date: '2026-11-07'
+    description: Cited 2 21 CFR quotes as CFR:<section> instead of the law.cornell.edu mirror, so they are checked against the eCFR text.
+  - timestamp: '2026-11-24T17:36:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3070 to composition[1].
+  - timestamp: '2026-11-24T17:36:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3070 to composition[2].
+  - timestamp: '2026-11-24T17:36:30+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3070 to composition[3].
+  - timestamp: '2026-11-24T17:36:31+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:1292469 to composition[3].
+  - timestamp: '2026-11-24T17:36:33+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:1292469 to composition[3].
+  - timestamp: '2026-11-24T17:36:34+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:9372797 to composition[4].
+  - timestamp: '2026-11-24T17:36:35+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37176331 to composition[4].
+  - timestamp: '2026-11-24T17:36:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37176331 to composition[5].
+  - timestamp: '2026-11-24T17:36:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:1292469 to properties[5].
+  - timestamp: '2026-11-24T17:36:38+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:1292469 to properties[5].
+  - timestamp: '2026-11-24T17:36:41+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:739017 to properties[6].
+  - timestamp: '2026-11-24T17:36:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:739017 to properties[6].
+  - timestamp: '2026-11-24T17:36:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:3857312 to properties[7].
+  - timestamp: '2026-11-24T17:36:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:3857312 to properties[7].
+  - timestamp: '2026-11-24T17:36:45+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37176331 to properties[8].
+  - timestamp: '2026-11-24T17:36:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37176331 to properties[8].
+  - timestamp: '2026-11-24T17:36:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37079911 to properties[9].
+  - timestamp: '2026-11-24T17:36:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37079911 to properties[9].
+  - timestamp: '2026-11-24T17:36:50+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37176331 to properties[10].
+  - timestamp: '2026-11-24T17:36:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:28220332 to properties[10].
+  - timestamp: '2026-11-24T17:36:52+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to clinical_performance[0].
+  - timestamp: '2026-11-24T17:36:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to clinical_performance[0].
+  - timestamp: '2026-11-24T17:36:54+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to clinical_performance[0].
+  - timestamp: '2026-11-24T17:36:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to clinical_performance[0].
+  - timestamp: '2026-11-24T17:36:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40578032 to clinical_performance[1].
+  - timestamp: '2026-11-24T17:36:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40578032 to clinical_performance[1].
+  - timestamp: '2026-11-24T17:36:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40578032 to clinical_performance[1].
+  - timestamp: '2026-11-24T17:36:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40578032 to clinical_performance[1].
+  - timestamp: '2026-11-24T17:37:31+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[2].
+  - timestamp: '2026-11-24T17:37:33+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[2].
+  - timestamp: '2026-11-24T17:37:34+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[3].
+  - timestamp: '2026-11-24T17:37:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[3].
+  - timestamp: '2026-11-24T17:37:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[2].
+  - timestamp: '2026-11-24T17:37:38+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to clinical_performance[3].
+  - timestamp: '2026-11-24T17:37:39+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:9372797 to clinical_performance[4].
+  - timestamp: '2026-11-24T17:37:41+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:9372797 to clinical_performance[4].
+  - timestamp: '2026-11-24T17:37:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:9372797 to clinical_performance[4].
+  - timestamp: '2026-11-24T17:37:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26954446 to clinical_performance[5].
+  - timestamp: '2026-11-24T17:37:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26954446 to clinical_performance[5].
+  - timestamp: '2026-11-24T17:37:45+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26954446 to clinical_performance[5].
+  - timestamp: '2026-11-24T17:37:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:16622139 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:16622139 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:50+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:16622140 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:51+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:18335109 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:53+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:18335109 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:54+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:37:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:27146796 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:37:57+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:37:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:38:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:33273245 to adverse_effects[2].
+  - timestamp: '2026-11-24T17:38:01+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:33273245 to adverse_effects[2].
+  - timestamp: '2026-11-24T17:38:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:15529127 to adverse_effects[2].
+  - timestamp: '2026-11-24T17:38:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:18627755 to adverse_effects[3].
+  - timestamp: '2026-11-24T17:38:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:8940574 to adverse_effects[4].
+  - timestamp: '2026-11-24T17:38:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545266 to adverse_effects[5].
+  - timestamp: '2026-11-24T17:38:07+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[5].
+  - timestamp: '2026-11-24T17:38:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:9372797 to adverse_effects[6].
+  - timestamp: '2026-11-24T17:38:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:37755142 to adverse_effects[7].
+  - timestamp: '2026-11-24T17:38:10+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:29944087 to adverse_effects[7].
+  - timestamp: '2026-11-24T17:38:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:36228805 to adverse_effects[7].
+  - timestamp: '2026-11-24T17:38:13+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:36228805 to adverse_effects[7].
+  - timestamp: '2026-11-24T17:38:14+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:42160808 to adverse_effects[8].
+  - timestamp: '2026-11-24T17:38:15+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:42160808 to adverse_effects[8].
+  - timestamp: '2026-11-24T17:38:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[9].
+  - timestamp: '2026-11-24T17:38:17+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[9].
+  - timestamp: '2026-11-24T17:38:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3070 to description.
+  - timestamp: '2026-11-24T17:38:20+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:8727105 to description.
+  - timestamp: '2026-11-24T17:38:21+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from CFR:872.3070 to description.
+  - timestamp: '2026-11-24T17:38:24+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to description.
+  - timestamp: '2026-11-24T17:40:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:3463718 to properties[10].
+  - timestamp: '2026-11-24T17:40:17+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:3463718 to properties[10].
+  - timestamp: '2026-11-24T17:40:18+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Full curation: added properties, products, mapping, EU restriction, FDA high-risk advice, five performance rows and seven adverse effects; corrected the Cochrane population, the product code quote, the identification text and the mercury term; dropped an unsupported frequency. Set PROPOSED.'
+  - timestamp: '2026-11-24T17:53:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:21217947 to clinical_uses[0].
+  - timestamp: '2026-11-24T17:53:37+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:16622139 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:53:38+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:16622139 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:53:39+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:18335109 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:53:40+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:18335109 to adverse_effects[0].
+  - timestamp: '2026-11-24T17:53:42+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:27146796 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:43+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:44+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:45+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:46+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:47+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:30532171 to adverse_effects[1].
+  - timestamp: '2026-11-24T17:53:49+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:8940574 to adverse_effects[4].
+  - timestamp: '2026-11-24T17:53:52+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:36228805 to adverse_effects[7].
+  - timestamp: '2026-11-24T17:53:54+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:42160808 to adverse_effects[8].
+  - timestamp: '2026-11-24T17:53:55+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:42160808 to adverse_effects[8].
+  - timestamp: '2026-11-24T17:53:56+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:32228815 to adverse_effects[8].
+  - timestamp: '2026-11-24T17:53:58+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to adverse_effects[9].
+  - timestamp: '2026-11-24T17:53:59+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40578032 to clinical_performance[1].
+  - timestamp: '2026-11-24T17:54:00+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26954446 to clinical_performance[5].
+  - timestamp: '2026-11-24T17:54:01+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26954446 to clinical_performance[5].
+  - timestamp: '2026-11-24T17:54:02+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26116767 to clinical_performance[6].
+  - timestamp: '2026-11-24T17:54:03+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26116767 to clinical_performance[6].
+  - timestamp: '2026-11-24T17:54:04+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:26116767 to clinical_performance[6].
+  - timestamp: '2026-11-24T17:54:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545265 to clinical_performance[7].
+  - timestamp: '2026-11-24T17:54:07+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545265 to clinical_performance[7].
+  - timestamp: '2026-11-24T17:54:08+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:17545265 to clinical_performance[7].
+  - timestamp: '2026-11-24T17:54:09+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40482587 to clinical_performance[8].
+  - timestamp: '2026-11-24T17:54:10+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40482587 to clinical_performance[8].
+  - timestamp: '2026-11-24T17:54:11+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40482587 to clinical_performance[8].
+  - timestamp: '2026-11-24T17:54:12+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40482587 to clinical_performance[8].
+  - timestamp: '2026-11-24T17:54:14+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:40482587 to clinical_performance[8].
+  - timestamp: '2026-11-24T17:54:15+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:8727105 to description.
+  - timestamp: '2026-11-24T17:54:16+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Independent review before the pull request: quoted or narrowed every unquoted fact it found; added three longevity rows so the evidence is not one-sided; gave adjusted pregnancy estimates; bound mercury to CHEBI:16170; corrected notes.'
+  - timestamp: '2026-11-24T18:00:06+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:739017 to properties[6].
+  - timestamp: '2026-11-24T18:21:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #70: quoted the conditions on FDA''s high-risk advice; one supports convention for conflicting findings; CONTROVERSY discussions for MRI release and pregnancy outcomes; lichenoid mechanism not established; standards editions and recognition records; decision dates quoted.'
+  - timestamp: '2026-11-24T18:30:48+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: Added evidence from PMID:34387873 to clinical_performance[0].
+  - timestamp: '2026-11-24T18:30:49+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Second review of #70: quoted the Cochrane caveat on newer composites; corrected the order named in one explanation.'
+updated_date: '2026-11-24'

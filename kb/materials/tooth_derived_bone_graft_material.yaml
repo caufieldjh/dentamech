@@ -146,8 +146,13 @@ clinical_uses:
 discussions:
   - discussion_id: ohd-term-tooth-derived-bone-graft-material
     kind: CURATION_TODO
-    status: OPEN
-    prompt: 'OHD has no term for a tooth-derived bone graft material, nor for bone grafting material at all (l~graft, l~dentin, l~bone substitute and l~socket find no material in the release, and no label in dental_material.owl or ohd-edit.owl on OHD main contains graft, searched 2026-11-23). Propose one at this grain, a graft material made from extracted human teeth, with a parent for dental bone grafting materials (FDA regulates bone grafting material under 21 CFR 872.3930). Where a bone graft belongs in OHD, outside dental restoration material, is for OHD to decide.'
+    status: UNDER_DISCUSSION
+    evidence:
+      - reference: url:https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues/207
+        reference_title: 'NTR: dental bone grafting material and tooth-derived bone grafting material'
+        supports: NO_EVIDENCE
+        explanation: The new term request filed on OHD for this record's term and a parent for it.
+    prompt: 'OHD has no term for a tooth-derived bone graft material, nor for bone grafting material at all (l~graft, l~dentin, l~bone substitute and l~socket find no material in the release, and no label in dental_material.owl or ohd-edit.owl on OHD main contains graft, searched 2026-11-23). Propose one at this grain, a graft material made from extracted human teeth, with a parent for dental bone grafting materials (FDA regulates bone grafting material under 21 CFR 872.3930). Where a bone graft belongs in OHD, outside dental restoration material, is for OHD to decide. Proposed to OHD as oral-health-and-disease-ontologies/ohd-ontology#207 on 2026-11-24.'
   - discussion_id: purpose-tooth-derived-bone-graft-material
     kind: OPEN_QUESTION
     status: OPEN
@@ -305,3 +310,9 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: 'Second review of #69: quoted the grinding, the two concentrations and the WEPL definition; noted the maxillary and lower molar discrepancy; named product code NUN as a lead in the regulatory gap.'
+  - timestamp: '2026-11-24T17:03:36+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Filed the new term request on OHD (oral-health-and-disease-ontologies/ohd-ontology#207) and linked it from the ohd-term-tooth-derived-bone-graft-material discussion, now UNDER_DISCUSSION.'

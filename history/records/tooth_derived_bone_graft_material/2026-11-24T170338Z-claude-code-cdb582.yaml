@@ -1,0 +1,27 @@
+history_version: 1
+target:
+  kind: record
+  slug: tooth_derived_bone_graft_material
+  path: kb/materials/tooth_derived_bone_graft_material.yaml
+session:
+  id: 2026-11-24T170338Z-claude-code-cdb582
+  timestamp: '2026-11-24T17:03:38Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+links:
+  issues:
+  - https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues/207
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - discussions
+  summary: 'Filed OHD new term request #207 and linked it from the record'
+  details: 'Ran the ohd-term-request skill after #69 merged, with Harry''s approval to file. Rechecked
+    OHD''s source files and issues on 2026-11-24: no graft term or prior request. Proposed dental bone
+    grafting material (21 CFR 872.3930) under processed material (OBI:0000047), and tooth-derived bone
+    grafting material (doi:10.1007/s12663-024-02311-4) beneath it; OHD:0000000 is the alternative placement.
+    The parent concept has no DentaMech record.'
