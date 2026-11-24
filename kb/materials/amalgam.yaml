@@ -427,13 +427,13 @@ properties:
     evidence:
       - reference: PMID:37176331
         reference_title: Determination and Calculations of Mercury Vapor Concentration and Energy Released from Freshly Condensed Dental Amalgams Having Various Copper Percentages within the Alloy.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: increasing the copper content of the amalgam counters the release of mercury vapor from posterior teeth
         explanation: 'One side of the conflict: copper lowers release.'
       - reference: PMID:28220332
         reference_title: Increased mercury emissions from modern dental amalgams.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: OTHER
         snippet: high copper amalgams emit substantially larger amounts of mercury vapor than the low copper amalgams used before the 1970s
         explanation: 'The other side: a review reporting higher emission from high-copper amalgams.'
@@ -838,7 +838,7 @@ adverse_effects:
     evidence:
       - reference: PMID:27146796
         reference_title: Prenatal exposure to dental amalgam and pregnancy outcome.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: revealed no significant associations between the number of teeth with amalgam fillings and early preterm delivery, late preterm delivery, low birthweight, malformation or stillbirth
         explanation: The analysis that found no association.
@@ -874,13 +874,13 @@ adverse_effects:
         explanation: Outcome.
       - reference: PMID:30532171
         reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: there was still an increased risk for perinatal death associated with increasing number of teeth filled with amalgam (ORadj 1.041, 95% CI 1.008 to 1.076, p = 0.015)
         explanation: Adjusted trend per filled tooth.
       - reference: PMID:30532171
         reference_title: Perinatal death and exposure to dental amalgam fillings during pregnancy in the population-based MoBa cohort.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
         snippet: In groups with 1 to 12 teeth filled with amalgam the adjusted odds ratios were slightly, but not significantly, increased. The group with the highest exposure (participants with 13 or more teeth filled with amalgam) had an adjusted OR of 2.34 (95% CI 1.27 to 4.32; p = 0.007).
         explanation: Adjusted estimates by group.
@@ -891,7 +891,7 @@ adverse_effects:
       term:
         id: HP:0031453
         label: Oral lichenoid lesion
-    description: Lichenoid lesion of the oral mucosa associated with amalgam. Replacing the restoration can resolve or improve it, whatever the patch test result; patch testing is of limited value. No source read gives a population frequency.
+    description: 'Lichenoid lesion of the oral mucosa associated with amalgam. Replacing the restoration can resolve or improve it, whatever the patch test result; patch testing is of limited value. No source read gives a population frequency. The mechanism is not established by these sources: improvement after removal did not depend on patch test status. The category is the closest available, since its definition includes lichenoid reactions.'
     evidence:
       - reference: PMID:33273245
         reference_title: Can We Separate Oral Lichen Planus from Allergic Contact Dermatitis and Should We Patch Test? A Systematic Review of Chronic Oral Lichenoid Lesions.
@@ -969,19 +969,19 @@ adverse_effects:
     evidence:
       - reference: PMID:37755142
         reference_title: No Increased Mercury Release from Dental Restorations at 1.5T, 3T, or 7T MRI.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: MRI of dental amalgam does not significantly increase mercury excretion at 1.5T, 3T, or 7T compared to unscanned teeth.
         explanation: The study that found no increase.
       - reference: PMID:29944087
         reference_title: Ex Vivo Mercury Release from Dental Amalgam after 7.0-T and 1.5-T MRI.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: mercury was released from amalgam fillings after exposure to 7.0-T MRI but not 1.5-T MRI
         explanation: An increase at 7 T. A 2019 item with the same title (PMID:30998445), apparently an erratum, has not been read.
       - reference: PMID:36228805
         reference_title: The effect of magnetic resonance imaging on mercury release from dental amalgam at 3T and 7T.
-        supports: PARTIAL
+        supports: SUPPORT
         evidence_source: IN_VITRO
         snippet: Mercury release from amalgam shows a measurable increase following MRI, and the magnitude changes with magnetic field strength and RF power.
         explanation: The overall finding.
@@ -1101,10 +1101,16 @@ regulatory_status:
         reference_title: Dental Amalgam Fillings (FDA)
         supports: SUPPORT
         evidence_source: REGULATORY_DOCUMENT
+        snippet: if your dentist thinks these materials are appropriate for your affected tooth's structure and location, and if you have no history of allergic reaction or hypersensitivity to these materials
+        explanation: The conditions FDA puts on that advice, continuing the same sentence. Read 2026-11-24.
+      - reference: url:https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
+        reference_title: Dental Amalgam Fillings (FDA)
+        supports: SUPPORT
+        evidence_source: REGULATORY_DOCUMENT
         snippet: Intact amalgam fillings in any individual, including the sensitive groups such as pregnant/nursing mothers and children, should not be removed for the purpose of preventing any disease or health condition, unless considered medically necessary by a health care professional.
         explanation: Advice on existing fillings. Read 2026-11-24.
     restrictions:
-      - 'FDA strongly encourages non-amalgam restorations, where appropriate, for high-risk groups: pregnant women and their developing fetuses; women planning to become pregnant; nursing women and their newborns and infants; children, especially those younger than six; people with pre-existing neurological disease, impaired kidney function, or known heightened sensitivity (allergy) to mercury or other components.'
+      - 'FDA strongly encourages non-amalgam restorations, if the dentist thinks they are appropriate and the patient has no allergy to them, for high-risk groups: pregnant women and their developing fetuses; women planning to become pregnant; nursing women and their newborns and infants; children, especially those younger than six; people with pre-existing neurological disease, impaired kidney function, or known heightened sensitivity (allergy) to mercury or other components.'
       - FDA advises against removing intact amalgam fillings to prevent disease, unless considered medically necessary.
   - agency: OTHER
     jurisdiction: European Union
@@ -1174,8 +1180,8 @@ products:
             reference_title: FDA 510(k) Premarket Notification database, K223182
             supports: SUPPORT
             evidence_source: REGULATORY_DOCUMENT
-            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Substantially Equivalent (SESE)
-            explanation: Regulation, product code and decision. Read 2026-11-24.
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 05/01/2023 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
           - reference: url:https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223182.pdf
             reference_title: 510(k) Summary K223182, Worldwork S.R.L.
             supports: SUPPORT
@@ -1198,8 +1204,8 @@ products:
             reference_title: FDA 510(k) Premarket Notification database, K140125
             supports: SUPPORT
             evidence_source: REGULATORY_DOCUMENT
-            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Substantially Equivalent (SESE)
-            explanation: Regulation, product code and decision. Read 2026-11-24.
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 04/29/2014 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
   - name: Ultracaps S
     manufacturer: SDI, Ltd.
     submissions:
@@ -1216,17 +1222,17 @@ products:
             reference_title: FDA 510(k) Premarket Notification database, K081273
             supports: SUPPORT
             evidence_source: REGULATORY_DOCUMENT
-            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Substantially Equivalent (SESE)
-            explanation: Regulation, product code and decision. Read 2026-11-24.
+            snippet: Regulation Number 872.3070 Classification Product Code OIV ... Decision Date 07/10/2008 Decision Substantially Equivalent (SESE)
+            explanation: Regulation, product code, decision and its date. Read 2026-11-24.
 standards:
-  - identifier: ISO 24234
+  - identifier: ISO 24234:2021
     title: Dentistry - Dental Amalgam
     organization: ISO
     url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44911
-  - identifier: ISO 20749
+  - identifier: ISO 20749:2023
     title: Dentistry - Pre-capsulated dental amalgam
     organization: ISO
-    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=OIV
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfStandards/detail.cfm?standard__identification_no=44917
 see_also:
   - https://www.fda.gov/medical-devices/dental-devices/dental-amalgam-fillings
 parents:
@@ -1242,6 +1248,20 @@ discussions:
     status: OPEN
     prompt: Does a high copper content lower or raise mercury vapor emission? A laboratory study of eight brands reports that copper counters release; a review reports that high-copper amalgams emit substantially more than low-copper ones.
     rationale: The sign of the effect matters for patient exposure.
+  - discussion_id: mri-mercury-release-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    attaches_to:
+      - adverse_effects#Mercury release during MRI
+    prompt: Does MRI raise mercury release from amalgam? One laboratory study found no significant increase at 1.5, 3 or 7 T; another found an increase at 7 T but not 1.5 T; a third found release rising with field strength and radiofrequency power, and judged it unlikely to be clinically meaningful.
+    rationale: The studies used different specimens, ageing times and scan conditions, and one may have an erratum (see mri-erratum-amalgam).
+  - discussion_id: pregnancy-outcomes-amalgam
+    kind: CONTROVERSY
+    status: OPEN
+    attaches_to:
+      - adverse_effects#Pregnancy outcomes
+    prompt: 'Are a mother''s amalgam fillings associated with perinatal death? Two analyses of the Norwegian Mother and Child Cohort Study differ: one found no significant association with stillbirth or other outcomes, the other found higher adjusted odds of perinatal death with more filled teeth, significant only at 13 or more.'
+    rationale: The outcomes overlap only in part, both analyses are of the same cohort, and residual confounding was not excluded.
   - discussion_id: property-values-amalgam
     kind: KNOWLEDGE_GAP
     status: OPEN
@@ -1255,7 +1275,7 @@ discussions:
     kind: CURATION_TODO
     status: OPEN
     prompt: PMID:29944087 (mercury release after 7 T MRI) is followed by a 2019 item with the same title, PMID:30998445, apparently an erratum, which has no abstract and has not been read. Check whether it changes the result quoted here.
-notes: FDA discourages the name "silver filling", because it does not say what the material contains; it is kept as a synonym because people use it. OHD and MeSH name zinc as optional; OHD names palladium as optional, and a 2023 study lists a trace of it. Strength, creep and dimensional change come from one brand's 510(k) summary, which cites ISO 24234 without an edition; FDA's listing says the third edition does not apply to pre-capsulated amalgam, the form of that product, which ISO 20749 covers. K140125 also prints strength and composition tables, but their scanned text is not reliable enough to quote. The corrosion value in K223182 (2 µg/cm2) is not recorded, because its test duration is unclear in the table. Mercury is bound to mercury(0), the form the device contains; the Metal record still binds mercury atom.
+notes: FDA discourages the name "silver filling", because it does not say what the material contains; it is kept as a synonym because people use it. OHD and MeSH name zinc as optional; OHD names palladium as optional, and a 2023 study lists a trace of it. Strength, creep and dimensional change come from one brand's 510(k) summary, which cites ISO 24234 without an edition; FDA's listing says the third edition does not apply to pre-capsulated amalgam, the form of that product, which ISO 20749 covers. K140125 also prints strength and composition tables, but their scanned text is not reliable enough to quote. The corrosion value in K223182 (2 µg/cm2) is not recorded, because its test duration is unclear in the table. Mercury is bound to mercury(0), the form the device contains; the Metal record still binds mercury atom. Where a description reports findings on both sides, supports is judged against that description, so each side is SUPPORT. FDA recognizes ISO 24234 third edition 2021-08 (recognition number 4-315) and ISO 20749 second edition 2023-06 (4-318); the standards URLs are those recognition records.
 creation_date: '2026-09-04'
 status: PROPOSED
 curation_history:
@@ -1913,4 +1933,10 @@ curation_history:
     model: claude-opus-5-5
     action: EDIT
     description: Added evidence from PMID:739017 to properties[6].
+  - timestamp: '2026-11-24T18:21:29+00:00'
+    curator: claude-code
+    llm_assisted: true
+    model: claude-opus-5-5
+    action: EDIT
+    description: 'Review of #70: quoted the conditions on FDA''s high-risk advice; one supports convention for conflicting findings; CONTROVERSY discussions for MRI release and pregnancy outcomes; lichenoid mechanism not established; standards editions and recognition records; decision dates quoted.'
 updated_date: '2026-11-24'
