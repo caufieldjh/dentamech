@@ -1,0 +1,42 @@
+history_version: 1
+target:
+  kind: record
+  slug: amalgam
+  path: kb/materials/amalgam.yaml
+session:
+  id: 2026-11-24T173943Z-claude-code-b1c64f
+  timestamp: '2026-11-24T17:39:43Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  sections:
+  - composition
+  - properties
+  - clinical_uses
+  - clinical_performance
+  - adverse_effects
+  - regulatory_status
+  - products
+  - standards
+  - mappings
+  - discussions
+  - description
+  summary: Full curation of Amalgam (OHD:0000001) to PROPOSED
+  details: 'Deep research: research/amalgam-deep-research-claude_code.md (provider claude_code; models
+    claude-fable-5-2, claude-haiku-5-5, claude-opus-5-5); a nested session''s conversational preamble
+    was removed from the report before commit. Leads that became evidence: PMIDs 40578032, 33273245, 9372797,
+    16622140, 18335109, 30532171, 27146796, 29944087, 37079911, 37176331, 28220332, 8940574 and 510(k)
+    K223182; the rest were found by PubMed search. Every PMID and CFR quote was added with add-evidence;
+    every url: quote was compared with the fetched page or PDF on 2026-11-24. Fixed: the Cochrane row
+    said children and adults, but its pooled trials were 921 children, and now cites the 2021 update;
+    the product code quote was not verbatim; the identification paragraph lacked its last sentence; the
+    unsupported frequency of rare on the lichenoid lesion was dropped; PMID:21217947 is a narrative review,
+    retagged from TEXTBOOK to OTHER; mercury bound to CHEBI:35113 elemental mercury. Added FDA''s high-risk
+    groups and the EU restriction (Regulation (EU) 2024/1849). Not done: values for modulus, toughness,
+    thermal and flexural properties; Minamata decision text; ISO 24234 text; K140125 tables (unreliable
+    scan). Papers without a DOI (PMID:18627755, PMID:8940574) cannot be logged (#65).'
