@@ -193,6 +193,7 @@ Regulations verified against the CFR text and the FDA product classification dat
 | 872.3710 | Base metal alloy | II (special controls) | EJH | 510(k)-exempt subject to 872.9 |
 | 872.3760 | Denture relining, repairing, or rebasing resin | II | EBI | Verified 2026-11-19. Its identification includes resin used "to form a new denture base", so it is the device type for denture base polymers. FDA recognizes ISO 20795-1:2013 (4-232) for it and has a performance-criteria guidance for denture base resins |
 | 872.3920 | Porcelain tooth | II | ELL | Prefabricated device the regulation defines as made of the 872.6660 material. Re-verified 2026-10-28 |
+| 872.3930 | Bone grafting material | II (special controls); III (with a drug that is a therapeutic biologic: NPZ, NQA) | LYC, NPM, NUN, NPK, NPL, NPZ, NQA | Verified 2026-11-24 against the eCFR text (issue 2026-11-12), the classification database and openFDA, which agree on seven codes in total. LYC (synthetic), NPM (animal source) and NUN (human source) are the class II grafting materials; NPK and NPL are intraoral barriers, not grafts. Whether a graft made from a patient's own tooth falls under NUN has not been established |
 | 872.6660 | Porcelain powder for clinical use | II | EIH | Subpart G. The material-level device type for dental ceramics; modern lithium disilicate and zirconia blanks clear under EIH. Re-verified 2026-10-28 |
 
 ## FDA performance criteria for dental cements
