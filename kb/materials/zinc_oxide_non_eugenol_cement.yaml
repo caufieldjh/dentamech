@@ -307,8 +307,14 @@ adverse_effects:
     reference_title: In Vitro Comparison of the Viability and Proliferation of Human Gingival Fibroblasts and Osteoblast-like MG-63 Cells on Three Different Temporary Cements Used in Dental Implants.
     supports: SUPPORT
     evidence_source: IN_VITRO
+    snippet: 'Materials and Methods: In this in vitro study, zinc oxide-eugenol (ZOE), eugenol-free zinc oxide (ZONE), and resin (R) cements were prepared in cylindrical forms of similar dimensions.'
+    explanation: Names eugenol-free zinc oxide (ZONE) as one of the three cements tested.
+  - reference: PMID:40390827
+    reference_title: In Vitro Comparison of the Viability and Proliferation of Human Gingival Fibroblasts and Osteoblast-like MG-63 Cells on Three Different Temporary Cements Used in Dental Implants.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
     snippet: None of the cements demonstrated cellular viability percentages above the minimum threshold (70%) required for biocompatibility.
-    explanation: Eugenol-free zinc oxide (ZONE) was one of the three cements tested.
+    explanation: Every cement tested fell below the viability threshold, ZONE included.
   - reference: PMID:38826571
     reference_title: Cytotoxicity  of dental cement on soft tissue associated with dental implants at different time intervals.
     supports: SUPPORT
@@ -466,4 +472,10 @@ curation_history:
   model: claude-opus-5-5
   action: EDIT
   description: 'Answered the second review of PR #76. Restated the PMID:39186597 use as provisional cementation of the definitive crown, with its methods quote, and added its finding of no effect on bonded crowns as a REFUTE counterpoint to the bonding-residue effect. Quoted the PMID:39274629 ranking sentence and the PMID:29807736 retrievability sentence. Noted that the retention rows are forces, not bond strengths, marked PMID:27927285 PARTIAL, and noted the setting mechanism is unsourced.'
+- timestamp: '2026-11-28T03:15:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the minor notes of the third review of PR #76: quoted the PMID:40390827 methods sentence naming ZONE, so its cytotoxicity evidence stands on its own.'
 updated_date: '2026-11-28'
