@@ -1,0 +1,24 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_phosphate_cement
+  path: kb/materials/zinc_phosphate_cement.yaml
+session:
+  id: 2026-11-28T001735Z-claude-code-e00106
+  timestamp: '2026-11-28T00:17:35Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Curated Zinc phosphate cement from the stub to PROPOSED.
+  details: 'Filled composition (zinc oxide powder, phosphoric acid liquid, aluminium modifier, zinc phosphate
+    matrix), five properties (FDA cement criteria plus in vitro studies), four clinical uses, four clinical
+    performance rows from clinical trials, two adverse effects, the 21 CFR 872.3275(b) entry reused from
+    Acid-base cement, ISO 9917-1, and three discussions. 40 quotes machine-checked against PubMed abstracts
+    and the eCFR text; 5 url: quotes from the FDA guidance and classification database are substrings
+    of quotes already on Acid-base cement and still need human checking. Magnesium oxide in the powder,
+    per-material measured values and products are not sourced and are recorded as gaps.'

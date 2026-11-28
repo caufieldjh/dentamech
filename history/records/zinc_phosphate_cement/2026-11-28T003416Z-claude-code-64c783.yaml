@@ -1,0 +1,23 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_phosphate_cement
+  path: kb/materials/zinc_phosphate_cement.yaml
+session:
+  id: 2026-11-28T003416Z-claude-code-64c783
+  timestamp: '2026-11-28T00:34:16Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered two automated reviews of PR #72 on Zinc phosphate cement.'
+  details: 'First review: dropped the unsourced ''usual comparator'' clause from the description; replaced
+    the PMID:19581705 zinc oxide quote, which described calcium-nitrate-treated specimens, with a PMID:6948048
+    quote on zinc oxide measured after setting; added a fourth discussion, a KNOWLEDGE_GAP for the base/liner
+    use. Second review: marked the PMID:41440359 compressive strength comparison PARTIAL; corrected the
+    paper-log note for 10.3233/bme-2009-0571; filled the history column of the REJECT and DEFER rows;
+    logged 10.1177/00220345790580030701 (PMID:284040) as REJECT.'

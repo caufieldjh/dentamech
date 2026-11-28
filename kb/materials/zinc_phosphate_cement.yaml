@@ -1,21 +1,501 @@
 id: OHD:0001042
 name: Zinc phosphate cement
-description: An acid-base cement dental restoration material containing zinc-oxide and magnesium oxide as a powder component with phosphoric acid as liquid component to complete the acid-base reaction.
+description: An acid-base dental cement made by mixing a zinc oxide powder with a phosphoric acid liquid, where aluminium dissolved in the liquid controls the setting reaction and keeps the bulk of the set cement from crystallising as hopeite. It holds no chemical bond to tooth or restoration and retains by micro-mechanical interlocking. Its main use is as a luting cement for crowns and fixed partial dentures, where it has a long clinical record.
+description_evidence:
+- reference: PMID:6948048
+  reference_title: '[Studies on the setting reaction of the zinc phosphate dental cement (3)--quantitative analysis for consumed zinc oxide through setting reaction of the cement (author''s transl)].'
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: Zinc oxide powder of zinc phosphate cement for dental use was mixed with various phosphoric acid for cement liquid contained Al3+ and not
+  explanation: 'The two components: zinc oxide powder and a phosphoric acid liquid, with or without aluminium.'
+- reference: PMID:277520
+  reference_title: Infrared spectroscopic studies on the development of crystallinity in dental zinc phosphate cements.
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: Crystallization in the bulk of a cement is prevented only by the incorporation, in the liquid, of aluminum which forms complexes with phosphoric acid.
+  explanation: Aluminium in the liquid prevents bulk crystallisation.
+- reference: PMID:19264424
+  reference_title: Does dental zinc phosphate cement really shrink in clinical applications?
+  supports: SUPPORT
+  evidence_source: OTHER
+  snippet: zinc phosphate cement is a routine permanent luting agent, which is believed to secure crowns to abutments by non-adhesive micro-mechanical interlocking
+  explanation: Retention by micro-mechanical interlocking rather than adhesion. The paper is a hypothesis article; only its statement of the accepted view is used here, not its hypothesis that the cement expands.
+- reference: PMID:19264424
+  reference_title: Does dental zinc phosphate cement really shrink in clinical applications?
+  supports: SUPPORT
+  evidence_source: OTHER
+  snippet: it has been proven, and the public widely accepts, that zinc phosphate cement forms no chemical bonds with either the crown or the tooth tissue
+  explanation: No chemical bond, stated as the accepted view.
+- reference: PMID:19100611
+  reference_title: 'Self-adhesive resin cement versus zinc phosphate luting material: a prospective clinical trial begun 2003.'
+  supports: SUPPORT
+  evidence_source: HUMAN_CLINICAL
+  snippet: The literature demonstrates that conventional luting of metal-based restorations using zinc phosphate cements is clinically successful over 20 years.
+  explanation: The long clinical record in luting.
 record_term:
   id: OHD:0001042
   label: zinc phosphate cement dental restoration material
 category: CEMENT
 setting_mechanisms:
-  - ACID_BASE_REACTION
+- ACID_BASE_REACTION
+composition:
+- name: Zinc oxide powder
+  role: POWDER
+  chemical:
+    preferred_term: zinc oxide
+    term:
+      id: CHEBI:36560
+      label: zinc oxide
+  description: The basic powder. Zinc oxide remains in the cement after setting, so not all of the powder is consumed by the reaction; how much is consumed depends on whether the liquid contains aluminium.
+  evidence:
+  - reference: PMID:6948048
+    reference_title: '[Studies on the setting reaction of the zinc phosphate dental cement (3)--quantitative analysis for consumed zinc oxide through setting reaction of the cement (author''s transl)].'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Zinc oxide powder of zinc phosphate cement for dental use was mixed with various phosphoric acid for cement liquid contained Al3+ and not
+    explanation: Zinc oxide is the powder.
+  - reference: PMID:6948048
+    reference_title: '[Studies on the setting reaction of the zinc phosphate dental cement (3)--quantitative analysis for consumed zinc oxide through setting reaction of the cement (author''s transl)].'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: zinc oxide in each cement after setting was determined quantitatively Then, consumed zinc oxide through setting reaction was calculated
+    explanation: Zinc oxide is measured in the set cement and the consumed fraction calculated from it, so part of the powder is left unreacted. Replaces a quote from PMID:19581705 that described specimens after a calcium nitrate conversion treatment, not ordinary set cement.
+- name: Phosphoric acid liquid
+  role: LIQUID
+  chemical:
+    preferred_term: phosphoric acid
+    term:
+      id: CHEBI:26078
+      label: phosphoric acid
+  description: The acidic liquid. Commercial liquids contain dissolved aluminium; zinc forms simple salts in it.
+  evidence:
+  - reference: PMID:6948048
+    reference_title: '[Studies on the setting reaction of the zinc phosphate dental cement (3)--quantitative analysis for consumed zinc oxide through setting reaction of the cement (author''s transl)].'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Zinc oxide powder of zinc phosphate cement for dental use was mixed with various phosphoric acid for cement liquid contained Al3+ and not
+    explanation: Phosphoric acid is the liquid.
+  - reference: PMID:7056762
+    reference_title: NMR spectroscopy of dental materials. I. 31P studies on phosphate-bonded cement liquids.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Phosphorus-31 nuclear magnetic resonance spectroscopy of phosphoric acid solutions containing zinc and aluminium indicates that zinc forms simple salts in solution, whereas aluminium forms a number of complexes, some of which are polymeric.
+    explanation: The chemistry of the liquid, with zinc and aluminium dissolved in it.
+- name: Aluminium in the liquid
+  role: OTHER
+  chemical:
+    preferred_term: aluminium(3+)
+    term:
+      id: CHEBI:49470
+      label: aluminium(3+)
+  description: A modifier dissolved in the phosphoric acid. It forms aluminophosphate complexes that keep the bulk of the cement from crystallising, and it changes how much zinc oxide the reaction consumes. Recorded as OTHER because ComponentRoleEnum has no value for a reaction modifier.
+  evidence:
+  - reference: PMID:277520
+    reference_title: Infrared spectroscopic studies on the development of crystallinity in dental zinc phosphate cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Crystallization in the bulk of a cement is prevented only by the incorporation, in the liquid, of aluminum which forms complexes with phosphoric acid.
+    explanation: Aluminium's role in the liquid.
+  - reference: PMID:7056762
+    reference_title: NMR spectroscopy of dental materials. I. 31P studies on phosphate-bonded cement liquids.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The formation of the aluminophosphoric acid complexes controls the gelation and strengthening of the dental silicate cement and prevents the formation of crystalline zinc phosphate in the zinc phosphate cement.
+    explanation: The aluminophosphate complexes are what prevent crystalline zinc phosphate.
+  - reference: PMID:6948048
+    reference_title: '[Studies on the setting reaction of the zinc phosphate dental cement (3)--quantitative analysis for consumed zinc oxide through setting reaction of the cement (author''s transl)].'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: When zinc oxide powder was mixed with cement liquid contained Al3+, consumed zinc oxide through setting reaction was approximate half quantity of it mixed with liquid contained no Al3+.
+    explanation: Aluminium halves the zinc oxide the reaction consumes.
+- name: Zinc phosphate matrix
+  role: MATRIX
+  description: 'The binding phase formed by the reaction: neutral orthophosphates, amorphous in the bulk, with hopeite crystals able to form at the surface. Hopeite is named as the final reaction product. No CHEBI term for zinc phosphate or hopeite was found, so no chemical is bound.'
+  evidence:
+  - reference: PMID:277520
+    reference_title: Infrared spectroscopic studies on the development of crystallinity in dental zinc phosphate cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: No acid phosphates are to be found in the matrix which consists solely of neutral orthophosphates.
+    explanation: The matrix is neutral orthophosphate.
+  - reference: PMID:277520
+    reference_title: Infrared spectroscopic studies on the development of crystallinity in dental zinc phosphate cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The development of surface crystallinity is related to the chemical composition of the cement and the speed of the reaction.
+    explanation: Crystallinity develops at the surface.
+  - reference: PMID:19581705
+    reference_title: Development of a novel cement by conversion of hopeite in set zinc phosphate cement into biocompatible apatite.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: hopeite is the final product of the reaction between powders and trituration liquid of the traditional zinc phosphate cement
+    explanation: Hopeite as the reaction product.
+properties:
+- name: Net setting time
+  property_type: SETTING_TIME
+  value: 2.5-8
+  unit: min
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion, zinc phosphate luting cements. For base/lining applications the range is 2-6 min.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: Zinc Phosphate 2.5 min ≤ tsetting ≤ 8 min 2 min ≤ tsetting ≤ 6 min
+    explanation: 'Table 2, zinc phosphate row: luting column then base/lining column. A substring of the quote on Acid-base cement.'
+- name: Compressive strength
+  property_type: COMPRESSIVE_STRENGTH
+  value: '>=50'
+  unit: MPa
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for zinc phosphate cement.
+  description: A commercial zinc phosphate cement used as the control in a 2024 study measured 90 MPa.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: '· Zinc phosphate: ≥50 MPa'
+    explanation: Compressive strength criterion, zinc phosphate bullet.
+  - reference: PMID:39238600
+    reference_title: 'Enhancing Mechanical and Biological Properties of Zinc Phosphate Dental Cement with Akermanite and Hardystonite Nanoparticles: A Synthesis and Characterization Study.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: a notable improvement in compressive strength (from 90 to 120 MPa) compared to the control group
+    explanation: The control was commercially available zinc phosphate cement, at 90 MPa.
+  - reference: PMID:41440359
+    reference_title: 'Mechanical Behaviour of Dental Luting Cements: Static, Dynamic, and Finite Element Studies.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: Static load results indicated that GIC, CaC, and phosphate cements exhibited similar performance and were significantly weaker compared to RMGIC and ReC.
+    explanation: Under static load, two zinc phosphate cements were weaker than resin-modified glass ionomer and resin cements. A comparison with no value, so PARTIAL against the recorded criterion.
+- name: Acid erosion
+  property_type: SOLUBILITY
+  value: <=0.30
+  unit: mm
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for zinc phosphate cement.
+  description: Zinc phosphate erodes more than glass ionomer and less than zinc polycarboxylate. Zinc oxide dissolves first, leaving a porous matrix.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: '· Zinc phosphate: ≤0.30mm'
+    explanation: Acid erosion criterion, zinc phosphate bullet.
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Ranking of eroded depth and weight of residue was polycarboxylate>zinc phosphate>glass ionomers.
+    explanation: Where zinc phosphate ranks among water-based cements.
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
+    explanation: The mechanism of erosion.
+- name: Film thickness
+  property_type: FILM_THICKNESS
+  value: <=25
+  unit: µm
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for luting cements.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: 'Performance Criteria: Maximum film thickness of 25 µm'
+    explanation: Film thickness criterion for luting cements, which reaches zinc phosphate.
+- name: Sensitivity of strength to powder/liquid ratio
+  property_type: TENSILE_STRENGTH
+  test_method: Diametral compression
+  conditions: Hand-dispensed by 34 dental students; manufacturer's recommended powder/liquid ratio 1.718.
+  description: 'Hand dispensing varies the powder/liquid ratio widely, and the extreme ratios give a diametral tensile strength different from the recommended ratio. No value is recorded: the abstract gives no strength numbers.'
+  evidence:
+  - reference: PMID:22190935
+    reference_title: The effect of variability in the powder/liquid ratio on the strength of zinc phosphate cement.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Powder/liquid ratios ranged from 2.386 to 1.018.
+    explanation: The spread in hand-dispensed ratios.
+  - reference: PMID:22190935
+    reference_title: The effect of variability in the powder/liquid ratio on the strength of zinc phosphate cement.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Variability exists in powder/liquid ratio for hand dispensed zinc phosphate cement. This variability can affect the DTS of the set material.
+    explanation: The effect on strength.
+clinical_uses:
+- name: Luting of crowns and fixed partial dentures
+  use_context: LUTING
+  description: The main use. Metal-based and metal-ceramic crowns and fixed partial dentures; also all-ceramic Procera crowns in one trial.
+  indications:
+  - Metal-based fixed partial dentures
+  - Metal-ceramic and Procera single crowns
+  evidence:
+  - reference: PMID:19100611
+    reference_title: 'Self-adhesive resin cement versus zinc phosphate luting material: a prospective clinical trial begun 2003.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Forty-nine patients (mean age 54+/-13 years) received 49 metal-based fixed partial dentures randomly luted using zinc phosphate (Richter & Hoffmann, Berlin, Germany) or self-adhesive resin cement (RelyX Unicem Aplicap, 3M ESPE, Germany) at the University Medical Center Regensburg.
+    explanation: Luting of metal-based fixed partial dentures.
+  - reference: PMID:15382776
+    reference_title: A split-mouth randomized clinical trial of single crowns retained with resin-modified glass-ionomer and zinc phosphate luting cements.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Twenty patients received 39 pairs of metal-ceramic and Procera crowns cemented with zinc phosphate and resin-modified glass-ionomer luting cement (Vitremer) in a split-mouth randomized pattern blinded to the recipient.
+    explanation: Luting of metal-ceramic and Procera single crowns.
+  - reference: PMID:19264424
+    reference_title: Does dental zinc phosphate cement really shrink in clinical applications?
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: zinc phosphate cement is a routine permanent luting agent
+    explanation: Routine definitive luting use.
+- name: Cementation of preformed stainless steel crowns on primary molars
+  use_context: LUTING
+  evidence:
+  - reference: PMID:12435014
+    reference_title: 'Retentive [correction of Preventive] efficacy of glass ionomer, zinc phosphate and zinc polycarboxylate luting cements in preformed stainless steel crowns: a comparative clinical study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Twenty subjects, with an indication for restoration of three primary molars with stainless steel crowns, were selected.
+    explanation: Paediatric use, compared with glass ionomer and zinc polycarboxylate.
+- name: Cementation of orthodontic bands
+  use_context: ORTHODONTIC
+  evidence:
+  - reference: PMID:2025619
+    reference_title: A comparative clinical trial of a glass ionomer and a zinc phosphate cement for securing orthodontic bands.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: This is a report of a clinical trial, comparing an experimental glass ionomer luting cement with a zinc phosphate cement for securing orthodontic bands.
+    explanation: Use for securing orthodontic bands.
+- name: Base or liner, and temporary filling
+  use_context: LINER_OR_BASE
+  description: Uses the device type 872.3275(b) names for every dental cement other than zinc oxide-eugenol. No zinc-phosphate-specific source for them was quoted.
+  evidence:
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp
+    explanation: The base and pulp-protection uses named in the identification paragraph.
+clinical_performance:
+- name: Retention of metal-based fixed partial dentures
+  measure_type: RETENTION_RATE
+  value: '100'
+  unit: '%'
+  follow_up_years: 3.16
+  population: 49 patients with 49 metal-based fixed partial dentures, randomised between zinc phosphate and self-adhesive resin cement
+  comparator: Self-adhesive resin cement (RelyX Unicem)
+  description: No restoration was lost or recemented in either arm. The 100% is derived from that sentence; the authors do not state a percentage.
+  evidence:
+  - reference: PMID:19100611
+    reference_title: 'Self-adhesive resin cement versus zinc phosphate luting material: a prospective clinical trial begun 2003.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: During that time no restoration was lost, no recementation became necessary.
+    explanation: Zero losses across both arms.
+  - reference: PMID:19100611
+    reference_title: 'Self-adhesive resin cement versus zinc phosphate luting material: a prospective clinical trial begun 2003.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: 'The mean observation time was 3.16+/-0.6 years (min: 2.0; max: 4.5 years).'
+    explanation: Follow-up.
+- name: Survival of single crowns, no negative event
+  measure_type: SURVIVAL_RATE
+  value: '85'
+  unit: '%'
+  follow_up_years: 8.5
+  population: 20 patients, 39 pairs of metal-ceramic and Procera crowns, split-mouth, three general practitioners
+  comparator: Resin-modified glass ionomer (Vitremer), 93%; difference not significant
+  description: Estimated survival at 102 months, with survival defined as no negative event. Defined as no recementation or loss of pulp vitality, zinc phosphate survival was 95% (resin-modified glass ionomer 97%).
+  evidence:
+  - reference: PMID:15382776
+    reference_title: A split-mouth randomized clinical trial of single crowns retained with resin-modified glass-ionomer and zinc phosphate luting cements.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Estimated survival, defined as no negative events observed, was 89% at 102 months (85% for crowns cemented with zinc phosphate and 93% for crowns cemented with resin-modified glass-ionomer).
+    explanation: The 85% recorded, at 102 months (8.5 years).
+  - reference: PMID:15382776
+    reference_title: A split-mouth randomized clinical trial of single crowns retained with resin-modified glass-ionomer and zinc phosphate luting cements.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Estimated survival, defined as no recementation or loss of pulp vitality, was 96% at 102 months (95% with zinc phosphate and 97% with resin-modified glass-ionomer).
+    explanation: The second survival definition.
+  - reference: PMID:15382776
+    reference_title: A split-mouth randomized clinical trial of single crowns retained with resin-modified glass-ionomer and zinc phosphate luting cements.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The differences between cements were not statistically significant.
+    explanation: No significant difference.
+- name: Retention of stainless steel crowns on primary molars
+  measure_type: RETENTION_RATE
+  follow_up_years: 0.67
+  population: 20 children, 60 primary molars, 20 crowns per cement
+  comparator: Glass ionomer and zinc polycarboxylate cements
+  description: No significant difference in retention among the three cements at eight months. The abstract gives no rate, so none is recorded.
+  evidence:
+  - reference: PMID:12435014
+    reference_title: 'Retentive [correction of Preventive] efficacy of glass ionomer, zinc phosphate and zinc polycarboxylate luting cements in preformed stainless steel crowns: a comparative clinical study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The results have shown no significant difference in retentivity of stainless steel crowns with the use of either of the three luting agents.
+    explanation: Equivalent retention.
+- name: Survival of orthodontic bands
+  measure_type: SURVIVAL_RATE
+  comparator: Experimental glass ionomer luting cement
+  description: The glass ionomer cement retained bands significantly better. The abstract gives no rate or follow-up.
+  evidence:
+  - reference: PMID:2025619
+    reference_title: A comparative clinical trial of a glass ionomer and a zinc phosphate cement for securing orthodontic bands.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The glass ionomer cement performed significantly better than the zinc phosphate cement.
+    explanation: Zinc phosphate underperformed glass ionomer for bands.
+adverse_effects:
+- name: Postcementation sensitivity
+  effect_category: PULPAL_RESPONSE
+  description: Two randomised split-mouth trials found no more sensitivity after cementation with zinc phosphate than with glass ionomer. No HP or MONDO term was bound.
+  evidence:
+  - reference: PMID:8008822
+    reference_title: Comparison of patient-perceived postcementation sensitivity with glass-ionomer and zinc phosphate cements.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Neither luting agent resulted in greater sensitivity when used according to its manufacturer's instructions.
+    explanation: 45 patients, one restoration with each cement, evaluated at 1 week.
+  - reference: PMID:8667274
+    reference_title: Clinical comparison of postoperative sensitivity for a glass ionomer and a zinc phosphate luting cement.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: During an average observation period of 17.3 months there were no differences between the two types of luting cements in regard to subjective and clinical parameters.
+    explanation: 60 patients, 120 restorations on vital abutments.
+- name: Dissolution under acid attack
+  effect_category: OTHER
+  description: 'Acid dissolves the zinc oxide and leaves a porous matrix. Recorded as OTHER: AdverseEffectCategoryEnum has no value for cement dissolution.'
+  evidence:
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
+    explanation: Mechanism.
+  - reference: PMID:11124414
+    reference_title: A simple acid erosion test for dental water-based cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The depth loss for polycarboxylate was more than that for zinc phosphate, which was more than that for glass ionomer.
+    explanation: Ranking among water-based cements.
+regulatory_status:
+- agency: FDA
+  jurisdiction: US
+  status: CLEARED
+  regulation_number: '872.3275'
+  regulation_title: Dental cement other than zinc oxide-eugenol
+  device_class: CLASS_II
+  product_codes:
+  - EMA
+  pathways:
+  - PREMARKET_NOTIFICATION_510K
+  special_controls: []
+  identification: Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+  approved_uses:
+  - name: Temporary tooth filling
+    use_context: TEMPORARY
+  - name: Base cement to affix a temporary tooth filling
+    use_context: LINER_OR_BASE
+  - name: Affixing dental devices such as crowns or bridges
+    use_context: LUTING
+  - name: Application to a tooth to protect the tooth pulp
+    use_context: LINER_OR_BASE
+  source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+  notes: Paragraph (b) of the regulation, inherited from Acid-base cement. Its device is every dental cement other than zinc oxide-eugenol, which by its wording covers zinc phosphate cement. No regulation names zinc phosphate cement on its own. The same regulation also carries MZW (ulcer covering) and NEA (ear, nose and throat cement); neither is a dental restorative use, so neither is listed.
+  evidence:
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (b) Dental cement other than zinc oxide-eugenol—(1) Identification. Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+    explanation: Identification paragraph (b)(1), quoted in full; it is the text recorded in identification and the source of all four approved_uses on this row. Verified 2026-10-02.
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (2) Classification. Class II.
+    explanation: Classification paragraph (b)(2), verified 2026-09-05.
+  - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3275
+    reference_title: FDA Product Classification Database, regulation 872.3275
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: EMA cement, dental Dental cement 872.3275 2
+    explanation: Product code EMA, device class 2, device name "cement, dental". Retrieved 2026-09-05 and re-verified 2026-10-10, when the listing carried a page-last-updated date of 10/05/2026 — the record was republished after the first retrieval, and the code and the class were unchanged across it.
+standards:
+- identifier: ISO 9917-1:2025
+  title: Dentistry - Water-based cements - Part 1 - Acid-base cements
+  organization: ISO
+  url: https://www.iso.org/standard/76037.html
+discussions:
+- discussion_id: magnesium-oxide-zinc-phosphate-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - composition
+  prompt: OHD's definition says the powder contains magnesium oxide as well as zinc oxide. No abstract read this session states it, so magnesium oxide is not in composition, and no proportions are recorded for any component.
+  rationale: A textbook, a manufacturer's safety data sheet, or ISO 9917-1 from a local copy would supply the powder and liquid composition.
+- discussion_id: property-values-zinc-phosphate-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - properties
+  prompt: Measured values for diametral tensile strength, elastic modulus, film thickness and solubility of zinc phosphate cement alone were not found in the abstracts read. The strength values on Acid-base cement (PMID:11641841) mix zinc phosphate with glass ionomers and are not repeated here.
+  rationale: Full texts would give per-material numbers.
+- discussion_id: dimensional-change-zinc-phosphate-cement
+  kind: OPEN_QUESTION
+  status: OPEN
+  prompt: Does set zinc phosphate cement shrink or expand in clinical use? A 2009 hypothesis paper argues that it expands, against earlier studies reporting shrinkage. No experimental source was read either way, so no dimensional change property is recorded.
+  rationale: A hypothesis paper is not evidence of the property; it marks the question.
+- discussion_id: base-liner-use-zinc-phosphate-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - clinical_uses#Base or liner, and temporary filling
+  prompt: The base, liner and temporary filling use rests only on the 21 CFR 872.3275(b) identification, which covers every dental cement other than zinc oxide-eugenol. No source read names zinc phosphate cement in that use.
+  rationale: A zinc-phosphate-specific clinical or textbook source would make it a claim about the material rather than an inference from the device type.
+notes: 'Products. Harvard Cement (Richter & Hoffmann) and Adhesor appear in the sources as the zinc phosphate cements tested, but no 510(k) was looked up for them, so no products are listed.
+
+  Synonyms. None added: no source read gives an alternative name.
+
+  Setting. setting_mechanisms records ACID_BASE_REACTION as the class does. One study argues the set is an interaction of Al3+ and H2PO4- rather than a simple neutralisation (PMID:6948048); the aluminium component records it.
+
+  Parent evidence. The FDA guidance quotes are substrings of the quotes checked on Acid-base cement; url: references are checked by people, not machines.'
 parents:
-  - OHD:0001021
+- OHD:0001021
 creation_date: '2026-09-04'
-status: DRAFT
+status: PROPOSED
 curation_history:
-  - timestamp: '2026-11-07T19:51:25+00:00'
-    curator: claude-code
-    llm_assisted: true
-    model: claude-opus-5-5
-    action: CREATE
-    description: Converted from dentamech at cddf481, entry Zinc_Phosphate_Cement.
-updated_date: '2026-11-07'
+- timestamp: '2026-11-07T19:51:25+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: CREATE
+  description: Converted from dentamech at cddf481, entry Zinc_Phosphate_Cement.
+- timestamp: '2026-11-28T00:17:16+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Curated from the stub: composition, setting chemistry, properties from the FDA cement criteria, four clinical uses, four clinical performance rows from trials, two adverse effects, the 872.3275(b) entry, ISO 9917-1 and three discussions. Set to PROPOSED.'
+- timestamp: '2026-11-28T00:35:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the first review of PR #72. Dropped the unsourced "usual comparator" clause from the description. Replaced the PMID:19581705 zinc oxide quote, which described treated specimens, with a PMID:6948048 quote on zinc oxide measured after setting, and reworded the component. Added a KNOWLEDGE_GAP for the base/liner use.'
+- timestamp: '2026-11-28T00:40:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the second review of PR #72. Marked the PMID:41440359 compressive strength comparison PARTIAL, since it gives no value against the recorded criterion.'
+updated_date: '2026-11-28'
