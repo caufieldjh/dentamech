@@ -115,8 +115,8 @@ Every paper you read for a claim gets a row in the paper log, cited or not:
 `just log-paper <DOI|PMID:NNN> ACCEPT|REJECT|DEFER --note "..." [--record <stem>] --apply`.
 The note is your reason, never text from the paper. Pass the PMID as cited:
 `log-paper` logs it under the DOI in its `references_cache/` file when there is
-one, and as `PMID:NNN` when there is none. `just qc` fails if a cited paper has
-no `ACCEPT` row naming the record that cites it.
+one, and as `PMID:NNN` when there is none. `just qc` fails unless, for each cited
+paper, the newest row naming the citing record is `ACCEPT`.
 
 ## Closed papers: signed excerpts
 

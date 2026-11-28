@@ -233,7 +233,7 @@ validate-paper-log:
 paper-log-append base:
     uv run python -m {{slug}}.paper_log check-append --base "$1"
 
-# Fail if a paper a record cites (DOI: or PMID:) has no ACCEPT row in the paper log naming that record.
+# Fail unless, for each paper a record cites (DOI: or PMID:), the newest paper-log row naming that record is ACCEPT.
 # Offline: a PMID is resolved to its DOI through references_cache/. Part of `just qc`.
 paper-log-cited:
     uv run python -m {{slug}}.paper_log check-cited

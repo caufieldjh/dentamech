@@ -31,8 +31,8 @@ attention where machines cannot:
   cites have a row, and do the PR's new rows match what it did (`ACCEPT`
   rows name the records that cite them, and a cited paper is not logged
   as `REJECT`)? Is each note a reason in the curator's own words, not text
-  copied from the paper? CI fails a cited paper with no `ACCEPT` row naming
-  its record, and fails edited or removed rows; judge whether the verdicts
+  copied from the paper? CI fails a cited paper whose newest row naming
+  its record is not `ACCEPT`, and fails edited or removed rows; judge whether the verdicts
   and reasons are sound. A paper with no DOI is keyed `PMID:NNN`.
   `just lookup-paper <DOI|PMID:NNN>` shows what the default branch already logged.
 

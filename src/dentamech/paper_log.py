@@ -5,7 +5,7 @@
     python -m dentamech.paper_log validate [FILE]
     python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged; new rows' links exist
     python -m dentamech.paper_log coverage --base REV FILE...  # new citations with no log row (advisory)
-    python -m dentamech.paper_log check-cited                 # every cited paper has an ACCEPT row (QC gate)
+    python -m dentamech.paper_log check-cited                 # each citation's newest row is ACCEPT (QC gate)
     python -m dentamech.paper_log migrate [--apply]           # rewrite a log keyed by a bare `doi` column
 
 PAPER is a DOI (bare, `DOI:`, `doi:` or a doi.org URL) or a PubMed id
@@ -404,28 +404,40 @@ def coverage(files: list[Path], base: str | None, log: Path | None = None) -> li
 
 
 def cited_errors(records_dir: Path | None = None, log: Path | None = None) -> list[str]:
-    """Every paper a record cites has an ACCEPT row that names that record.
+    """Every paper a record cites has, as its newest row naming that record, an ACCEPT.
 
-    The QC gate behind `check-cited`. Offline: a PMID is resolved to its DOI
-    through the committed reference cache. Only literature counts (`DOI:` and
-    `PMID:`); regulations, web pages and standards are not papers.
+    The QC gate behind `check-cited`. The verdict is per (paper, record): the
+    newest row that names the record decides, so a paper accepted for a record
+    and later rejected or deferred for it fails. A row that names no record
+    applies to none, and does not revoke an ACCEPT given for a record.
+
+    Offline: a PMID is resolved to its DOI through the committed reference
+    cache. Only literature counts (`DOI:` and `PMID:`); regulations, web pages
+    and standards are not papers.
     """
     records_dir = records_dir or RECORDS_DIR
-    accepted: dict[str, set[str]] = {}
-    for _, e in read(log)[0]:
-        if e.get("verdict") == "ACCEPT":
-            accepted.setdefault(e.get("reference", ""), set()).update(e.get("records") or [])
+    newest: dict[tuple[str, str], tuple[int, str]] = {}  # (reference, stem) -> (line, verdict)
+    # Line order is time order: the log is append-only, and check-append fails
+    # any edited, reordered or removed row. Don't switch to `considered_on`,
+    # which ties for rows logged on the same day.
+    for lineno, e in read(log)[0]:
+        for stem in e.get("records") or []:
+            newest[(e.get("reference", ""), stem)] = (lineno, e.get("verdict", ""))
     errors = []
     for f in sorted(records_dir.glob("*.yaml")):
         for ref in sorted(_references(load(f))):
             if ref.partition(":")[0].upper() not in LITERATURE:
                 continue
             key = paper_key(ref)
-            named = accepted.get(key, set()) | accepted.get(canonical(ref), set())
-            if f.stem not in named:
-                errors.append(f"{f.relative_to(REPO_ROOT)}: cites {ref} ({key}), but no ACCEPT row in the "
-                              f"paper log names {f.stem}. Add one: "
-                              f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply')
+            found = [newest[(k, f.stem)] for k in {key, canonical(ref)} if (k, f.stem) in newest]
+            verdict = max(found)[1] if found else None
+            if verdict == "ACCEPT":
+                continue
+            where = (f"its newest row for {f.stem} is {verdict}" if verdict
+                     else f"no row in the paper log names {f.stem}")
+            errors.append(f"{f.relative_to(REPO_ROOT)}: cites {ref} ({key}), but {where}. Log it: "
+                          f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply, '
+                          "or stop citing it")
     return errors
 
 
@@ -468,7 +480,8 @@ def main(argv: list[str] | None = None) -> int:
     cov.add_argument("--github", action="store_true", help="print GitHub Actions ::warning annotations")
     cov.add_argument("files", nargs="+", type=Path)
 
-    sub.add_parser("check-cited", help="fail if a paper a record cites has no ACCEPT row naming that record")
+    cited_help = "fail unless each cited paper's newest row for the citing record is ACCEPT"
+    sub.add_parser("check-cited", help=cited_help)
 
     mig = sub.add_parser("migrate", help="rewrite a log keyed by a bare doi column (dry-run unless --apply)")
     mig.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
@@ -504,7 +517,7 @@ def main(argv: list[str] | None = None) -> int:
         errors = cited_errors()
         for e in errors:
             print(f"ERROR {e}")
-        print(f"{len(errors)} cited paper(s) with no ACCEPT row for the record that cites them.")
+        print(f"{len(errors)} cited paper(s) whose newest row for the citing record is not ACCEPT.")
         return 1 if errors else 0
 
     if args.cmd == "migrate":

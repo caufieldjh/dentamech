@@ -140,8 +140,8 @@ just log-paper <DOI|PMID:NNN> REJECT --note "Out of scope: ..." --apply
 just log-paper <DOI|PMID:NNN> DEFER  --note "Blocked by ..." --apply
 ```
 
-Every paper the record cites needs an `ACCEPT` row naming the record, or
-`just qc` fails (`just paper-log-cited`). A paper with no DOI is logged as
+For every paper the record cites, the newest row naming the record must be
+`ACCEPT`, or `just qc` fails (`just paper-log-cited`). A paper with no DOI is logged as
 `PMID:NNN`.
 
 Then one history record for the session:
