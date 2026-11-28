@@ -92,6 +92,29 @@ def canonical(value: str) -> str:
     return text
 
 
+def is_cached(reference: str) -> bool:
+    """Whether a reference has a file in the reference cache."""
+    from .validate import _fetcher  # the validator's own cache naming
+
+    try:
+        return _fetcher().get_cache_path(reference).is_file()
+    except (OSError, ValueError):
+        return False
+
+
+def uncached_pmid_error(paper: str) -> str | None:
+    """Why a PMID can't be logged yet, or None.
+
+    An uncached PMID can't be resolved to its DOI, so logging it would key a
+    paper that has a DOI as `PMID:NNN`, and the paper would have two keys.
+    """
+    key = canonical(paper)
+    if key.startswith("PMID:") and not is_cached(key):
+        return (f"{key} is not in the reference cache, so its DOI (if it has one) is unknown and the "
+                f"paper could end up with two keys. Fetch it first: just fetch-reference {key}")
+    return None
+
+
 def paper_key(value: str) -> str:
     """The key a paper is logged under: its DOI when one is known, else its PMID.
 
@@ -516,6 +539,10 @@ def main(argv: list[str] | None = None) -> int:
             print("  " + _show(entry))
         return 0
 
+    uncached = uncached_pmid_error(args.paper)
+    if uncached:
+        print(f"ERROR: {uncached}")
+        return 1
     entry = build_entry(args.paper, args.verdict, args.note, args.records, args.history, args.date)
     errors = entry_errors(entry)
     previous = lookup(entry["reference"])

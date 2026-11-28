@@ -344,3 +344,26 @@ def test_cited_errors(tmp_path, monkeypatch):
 
 def test_every_cited_paper_in_the_committed_kb_is_logged():
     assert paper_log.cited_errors() == []
+
+
+def test_add_refuses_an_uncached_pmid(tmp_path, monkeypatch, capsys):
+    # An uncached PMID can't be resolved to its DOI; logging it could give a paper two keys.
+    f = _write(tmp_path)
+    monkeypatch.setattr(paper_log, "PAPER_LOG_PATH", f)
+    monkeypatch.setattr(paper_log, "REPO_ROOT", tmp_path)
+    assert paper_log.main(["add", "PMID:1", "REJECT", "--note", "x", "--apply"]) == 1
+    assert "just fetch-reference PMID:1" in capsys.readouterr().out
+    assert f.read_text(encoding="utf-8") == HEADER
+
+
+def test_add_accepts_a_cached_pmid_with_no_doi(tmp_path, monkeypatch):
+    pmid, _ = _cached_pmid(with_doi=False)
+    f = _write(tmp_path)
+    monkeypatch.setattr(paper_log, "PAPER_LOG_PATH", f)
+    monkeypatch.setattr(paper_log, "REPO_ROOT", tmp_path)
+    assert paper_log.main(["add", pmid, "REJECT", "--note", "x", "--date", "2026-11-01", "--apply"]) == 0
+    assert f.read_text(encoding="utf-8").splitlines()[1].startswith(pmid + "\t")
+
+
+def test_a_doi_is_never_refused_for_the_cache():
+    assert paper_log.uncached_pmid_error("10.1000/not.cached") is None
