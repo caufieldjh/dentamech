@@ -1,0 +1,26 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_polycarboxylate_cement
+  path: kb/materials/zinc_polycarboxylate_cement.yaml
+session:
+  id: 2026-11-28T004947Z-claude-code-bdb168
+  timestamp: '2026-11-28T00:49:47Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Curated Zinc polycarboxylate cement from the stub to PROPOSED.
+  details: 'Filled composition (zinc oxide, poly(acrylic acid), water, optional stannous fluoride), ten
+    properties (FDA cement criteria; erosion, strength, bond strength, mixing sensitivity, antibacterial
+    and remineralisation studies), six clinical uses, four clinical performance rows (pulpotomy sub-base
+    RCT, retrograde filling, stainless steel crowns), three adverse effects, the 21 CFR 872.3275(b) entry
+    reused from Acid-base cement, ISO 9917-1 and three discussions. 48 quotes machine-checked; 5 url:
+    quotes from the FDA guidance and classification database are substrings of quotes on Acid-base cement
+    and still need human checking. Two claims that depended on Durelon being a zinc polycarboxylate were
+    dropped, since no abstract read says so. Magnesium oxide, crown-luting outcomes and products are recorded
+    as gaps.'

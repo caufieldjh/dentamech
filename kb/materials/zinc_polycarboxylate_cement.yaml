@@ -1,21 +1,570 @@
 id: OHD:0001043
 name: Zinc polycarboxylate cement
-description: An acid-base cement dental restoration material containing zinc-oxide and magnesium oxide as a powder component with polyacrylic acid and water as liquid component to complete the acid-base reaction.
+description: An acid-base dental cement in which a zinc oxide powder reacts with poly(acrylic acid), the acid being neutralised as the cement sets. It was the first of the polyacrylic acid-based cements invented for adhesion to tooth substance, before the glass ionomers, and adheres to hydroxyapatite. It is used to lute stainless steel crowns and orthodontic bands, and as a sub-base under restorations.
+description_evidence:
+- reference: PMID:17914609
+  reference_title: The kinetics of water loss from zinc phosphate and zinc polycarboxylate dental cements.
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: The water desorption behaviour of three different zinc oxide dental cements (two polycarboxylates, one phosphate) has been studied in detail.
+  explanation: Zinc polycarboxylate is a zinc oxide cement.
+- reference: PMID:15348884
+  reference_title: 'Studies in the setting of polyelectrolyte cements: part VII. The effect of divalent metal chlorides on the properties of zinc polycarboxylate and glass-ionomer dental cements.'
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: These results occur because the rate of the neutralization process is increased by the divalent salts, a consequence of the reduced pH of the poly(acrylic acid) caused by these salts.
+  explanation: Setting is the neutralisation of poly(acrylic acid).
+- reference: PMID:9645552
+  reference_title: Development of glass-ionomer cement systems.
+  supports: SUPPORT
+  evidence_source: OTHER
+  snippet: In the 1960s the idea of positive physico-chemical adhesion with tooth substance resulted in the invention of polyacrylic acid-based cements, first the zinc polycarboxylate and, subsequently, the glass-ionomer cements.
+  explanation: The first polyacrylic acid-based cement, invented for adhesion, before the glass ionomers. A narrative review; recorded as OTHER.
+- reference: PMID:9645552
+  reference_title: Development of glass-ionomer cement systems.
+  supports: SUPPORT
+  evidence_source: OTHER
+  snippet: These materials were shown to undergo specific adhesion with hydroxyapatite and proved to have properties satisfactory for a variety of clinical applications.
+  explanation: Adhesion to hydroxyapatite. The sentence covers both polyacrylic acid-based cements named in the preceding sentence.
+- reference: PMID:12435014
+  reference_title: 'Retentive [correction of Preventive] efficacy of glass ionomer, zinc phosphate and zinc polycarboxylate luting cements in preformed stainless steel crowns: a comparative clinical study.'
+  supports: SUPPORT
+  evidence_source: HUMAN_CLINICAL
+  snippet: This study was undertaken to assess the efficacy of three luting cements, namely, glass ionomer, zinc phosphate and zinc polycarboxylate in retainng the preformed stainless steel crowns in-vivo.
+  explanation: Luting of stainless steel crowns. The misspelling is the abstract's.
+- reference: PMID:22991644
+  reference_title: Comparison of the effect of three cements on prevention of enamel demineralization adjacent to orthodontic bands.
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: This in vitro study was designed to compare enamel demineralization depths adjacent to bands cemented with zinc polycarboxylate, glass ionomer (GI) and resin-modified glass ionomer (RMGI)
+  explanation: Cementation of orthodontic bands.
+- reference: PMID:22524073
+  reference_title: Comparison of electrosurgical pulpotomy with zinc oxide eugenol or zinc polycarboxylate cements sub-base.
+  supports: SUPPORT
+  evidence_source: HUMAN_CLINICAL
+  snippet: Teeth were randomly assigned to two groups according to whether ZOE or ZPC cement was used as a sub-base.
+  explanation: Use as a sub-base, here under pulpotomies in primary molars.
 record_term:
   id: OHD:0001043
   label: zinc polycarboxylate cement dental restoration material
 category: CEMENT
+synonyms:
+- polycarboxylate cement
 setting_mechanisms:
-  - ACID_BASE_REACTION
+- ACID_BASE_REACTION
+composition:
+- name: Zinc oxide powder
+  role: POWDER
+  chemical:
+    preferred_term: zinc oxide
+    term:
+      id: CHEBI:36560
+      label: zinc oxide
+  description: The basic powder, and the phase that dissolves under acid attack.
+  evidence:
+  - reference: PMID:17914609
+    reference_title: The kinetics of water loss from zinc phosphate and zinc polycarboxylate dental cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The water desorption behaviour of three different zinc oxide dental cements (two polycarboxylates, one phosphate) has been studied in detail.
+    explanation: Zinc polycarboxylate cements are zinc oxide cements.
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
+    explanation: Zinc oxide is the dissolving phase in the zinc-based cements tested, polycarboxylate among them.
+- name: Poly(acrylic acid)
+  role: LIQUID
+  chemical:
+    preferred_term: poly(acrylic acid)
+    term:
+      id: CHEBI:61372
+      label: poly(acrylic acid) polymer
+  description: The polymeric acid. Its carboxyl groups are neutralised to carboxylate as the cement sets. It is supplied either as an aqueous solution or dried and mixed with water.
+  evidence:
+  - reference: PMID:9645552
+    reference_title: Development of glass-ionomer cement systems.
+    supports: SUPPORT
+    evidence_source: OTHER
+    snippet: In the 1960s the idea of positive physico-chemical adhesion with tooth substance resulted in the invention of polyacrylic acid-based cements, first the zinc polycarboxylate and, subsequently, the glass-ionomer cements.
+    explanation: Zinc polycarboxylate is a polyacrylic acid-based cement.
+  - reference: PMID:15348884
+    reference_title: 'Studies in the setting of polyelectrolyte cements: part VII. The effect of divalent metal chlorides on the properties of zinc polycarboxylate and glass-ionomer dental cements.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: These results occur because the rate of the neutralization process is increased by the divalent salts, a consequence of the reduced pH of the poly(acrylic acid) caused by these salts.
+    explanation: Poly(acrylic acid) is the acid neutralised in setting.
+  - reference: PMID:8473593
+    reference_title: Change in pH during setting of polyelectrolyte dental cements.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: For anhydrous cements (i.e. those formulated from dried polymer) pH was found to rise quicker than for hydrous cements (i.e. those prepared from aqueous solutions of polymer).
+    explanation: The two ways the polymer is supplied. The sentence covers the glass ionomer and zinc polycarboxylate cements of the study together.
+- name: Water
+  role: SOLVENT
+  chemical:
+    preferred_term: water
+    term:
+      id: CHEBI:15377
+      label: water
+  description: The reaction medium. The set cement holds a large fraction of water and loses it when dried, more than zinc phosphate does.
+  evidence:
+  - reference: PMID:17914609
+    reference_title: The kinetics of water loss from zinc phosphate and zinc polycarboxylate dental cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Equilibration times for desorption were of the order of 8 weeks, and equilibrium water losses ranged from 7.1% for zinc phosphate to 16.9% and 17.4% for the two zinc polycarboxylates.
+    explanation: Water content of the set cement, as equilibrium loss on desiccation.
+- name: Stannous fluoride
+  role: FLUORIDE_SOURCE
+  chemical:
+    preferred_term: stannous fluoride
+    term:
+      id: CHEBI:135933
+      label: stannous fluoride
+  description: An optional additive. Some formulations contain stannous fluoride and can release fluoride. The quotes do not say how common this is, so no proportion is given.
+  evidence:
+  - reference: PMID:20717709
+    reference_title: The effect of ultrasound on the setting reaction of zinc polycarboxylate cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: ZPC with and without SnF(2) addition (+/-S) at luting (L) 2:1 P/L ratio and restorative (R) 4:1 P/L ratio consistencies.
+    explanation: Formulations with and without stannous fluoride.
+  - reference: PMID:20717709
+    reference_title: The effect of ultrasound on the setting reaction of zinc polycarboxylate cements.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: Like GIC, it provides direct adhesion to tooth and can provide F release, but is more radiopaque and biocompatible than GIC.
+    explanation: Fluoride release, from the study's introduction.
+properties:
+- name: Net setting time
+  property_type: SETTING_TIME
+  value: 2.5-8
+  unit: min
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion, zinc polycarboxylate luting cements. For base/lining applications the range is 2-6 min.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: Zinc Polycarboxylate 2.5 min ≤ tsetting ≤ 8 min 2 min ≤ tsetting ≤ 6 min
+    explanation: 'Table 2, zinc polycarboxylate row: luting column then base/lining column. A substring of the quote on Acid-base cement.'
+- name: Compressive strength
+  property_type: COMPRESSIVE_STRENGTH
+  value: '>=50'
+  unit: MPa
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for zinc polycarboxylate cement.
+  description: One zinc polycarboxylate cement prepared with pure water measured 86 MPa at 24 h.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: '· Zinc polycarboxylate: ≥50 MPa'
+    explanation: Compressive strength criterion, zinc polycarboxylate bullet.
+  - reference: PMID:15348884
+    reference_title: 'Studies in the setting of polyelectrolyte cements: part VII. The effect of divalent metal chlorides on the properties of zinc polycarboxylate and glass-ionomer dental cements.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: However, the divalent salts were found to reduce the compressive strength at 24 h (from 86 MPa to about 60 MPa).
+    explanation: 86 MPa is the cement prepared from pure water. The sentence follows one naming the zinc polycarboxylate, but the abstract does not say outright that the 86 MPa belongs to it rather than the glass polyalkenoate, so PARTIAL.
+- name: Acid erosion
+  property_type: SOLUBILITY
+  value: <=0.40
+  unit: mm
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for zinc polycarboxylate cement.
+  description: The least erosion-resistant of the water-based cements, below zinc phosphate and glass ionomer.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: '· Zinc polycarboxylate: ≤0.40mm'
+    explanation: Acid erosion criterion, zinc polycarboxylate bullet. The most permissive of the three.
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Ranking of eroded depth and weight of residue was polycarboxylate>zinc phosphate>glass ionomers.
+    explanation: Erosion ranking.
+  - reference: PMID:11124414
+    reference_title: A simple acid erosion test for dental water-based cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The depth loss for polycarboxylate was more than that for zinc phosphate, which was more than that for glass ionomer.
+    explanation: Same ranking by a second method.
+- name: Film thickness
+  property_type: FILM_THICKNESS
+  value: <=25
+  unit: µm
+  test_method: ISO 9917-1
+  conditions: FDA performance criterion for luting cements.
+  description: Film thickness rises if the liquid is left to evaporate before mixing, more for zinc polycarboxylate and glass ionomer than for the other water-based cements tested.
+  evidence:
+  - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
+    reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: 'Performance Criteria: Maximum film thickness of 25 µm'
+    explanation: Film thickness criterion for luting cements, which reaches zinc polycarboxylate.
+  - reference: PMID:11199594
+    reference_title: Effects of evaporation on the properties of water-based dental luting agents.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: pH decreased over 30 minutes, while viscosity, contact angle, and film thickness all increased, especially for the zinc polycarboxylate and glass ionomer cements.
+    explanation: Effect of evaporation of the liquid, over 10-30 min.
+- name: Strength and stiffness relative to other water-based cements
+  property_type: OTHER
+  description: 'The least hydrated of the cements studied, with the lowest strength and modulus and the greatest deformation at failure. Recorded as OTHER: the row compares strength, modulus and deformation together, with no values.'
+  evidence:
+  - reference: PMID:284040
+    reference_title: The hydration of dental cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The cement with the least "non-evaporable" water, i.e., showing least hydration (the zinc polycarboxylate cement), had the lowest strength and modulus and the greatest deformation at failure.
+    explanation: Ranking across water-based cement types.
+- name: Push-out strength to dentin
+  property_type: BOND_STRENGTH
+  conditions: Sandblasted Ni-Cr inlays luted into conical cavities in coronal dentin disks.
+  description: Lowest of seven luting agents, with zinc phosphate. No value is given in the abstract. Despite its adhesion to hydroxyapatite, retention in this test was no better than the non-adhesive zinc phosphate.
+  evidence:
+  - reference: PMID:12170851
+    reference_title: In vitro push-out strength of seven luting agents to dentin.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The lowest value was attained with zinc phosphate and polycarboxylate cements.
+    explanation: Ranking among seven agents.
+- name: Bond strength of stainless steel molar bands to BioFlx crowns
+  property_type: BOND_STRENGTH
+  value: '1.38'
+  unit: MPa
+  conditions: Stainless steel molar bands cemented on NuSmile BioFlx crowns, 20 per group; failures mostly at the band-cement interface.
+  evidence:
+  - reference: PMID:40946144
+    reference_title: 'The Retention of Stainless Steel Molar Bands on BioFlx(®) Crowns With Different Types of Luting Cements: An In Vitro Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The mean bond strength was highest (2.76±0.07 MPa) and lowest (1.38±0.2 MPa) in the SARC and PXC groups, respectively.
+    explanation: PXC is the zinc polycarboxylate group, lowest of four cements.
+  - reference: PMID:40946144
+    reference_title: 'The Retention of Stainless Steel Molar Bands on BioFlx(®) Crowns With Different Types of Luting Cements: An In Vitro Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Bond failures were observed more frequently at the crown-cement interface in the SARC, RMGIC, and GIC groups and at the band-cement interface in the PXC group.
+    explanation: Failure site.
+- name: Sensitivity to mixing ratio
+  property_type: OTHER
+  description: 'More sensitive to excess liquid than to excess powder. Recorded as OTHER: no PropertyTypeEnum value covers tolerance of mixing errors.'
+  evidence:
+  - reference: PMID:18372038
+    reference_title: 'Changes of cement properties caused by mixing errors: the therapeutic range of different cement types.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The classic glass ionomer and the carboxylate cements reacted more sensible to higher liquid content than higher powder content, while zinc oxide phosphate cement was lower sensitive to higher powder content.
+    explanation: Hardness, flexural strength and abrasion at varied powder/liquid ratios.
+- name: Antibacterial activity against Streptococcus mutans
+  property_type: ANTIBACTERIAL_ACTIVITY
+  test_method: Agar diffusion
+  description: Moderate activity before hardening, weaker once hardened.
+  evidence:
+  - reference: PMID:18493161
+    reference_title: Antibacterial potential of contemporary dental luting cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Non-hardened glass ionomer, resin modified and zinc polycarboxylate cements exhibited moderate antibacterial action.
+    explanation: Before setting.
+  - reference: PMID:18493161
+    reference_title: Antibacterial potential of contemporary dental luting cements.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: Hardened cements showed weaker antibacterial activities, than those ones applied right after mixing.
+    explanation: After setting, across all cements tested.
+- name: Remineralisation of demineralised dentine
+  property_type: OTHER
+  value: '41.64'
+  unit: '%'
+  conditions: Poly Zinc in cavities of artificially demineralised human dentine, 45 days under simulated pulpal pressure, micro-CT.
+  description: 'Increase in dentine mineral density, comparable to MTA and above glass ionomer. Recorded as OTHER: no PropertyTypeEnum value covers remineralisation.'
+  evidence:
+  - reference: PMID:29682752
+    reference_title: Mineral density in carious dentine after treatment with calcium silicates and polyacrylic acid-based cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Significant increases in dentine mineral density were achieved using MTA or Poly Zinc™ (43.56% and 41.64% remineralization), followed by Biodentine™ (36.40%) and Ketac Molar (32.54%), P < 0.05.
+    explanation: 41.64% is Poly Zinc, the zinc polycarboxylate.
+clinical_uses:
+- name: Cementation of stainless steel crowns on primary molars
+  use_context: LUTING
+  evidence:
+  - reference: PMID:12435014
+    reference_title: 'Retentive [correction of Preventive] efficacy of glass ionomer, zinc phosphate and zinc polycarboxylate luting cements in preformed stainless steel crowns: a comparative clinical study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Twenty subjects, with an indication for restoration of three primary molars with stainless steel crowns, were selected.
+    explanation: Clinical use, with glass ionomer and zinc phosphate.
+  - reference: PMID:41040029
+    reference_title: Effects of Blood and Saliva Contamination on Tensile Bond Strength of Two Cements Used for Cementation of Stainless-steel Crowns of Primary Molar Teeth.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Glass ionomer cement and ZPC have various applications in cementing stainless steel crowns.
+    explanation: Stated as clinical significance.
+- name: Cementation of orthodontic bands
+  use_context: ORTHODONTIC
+  evidence:
+  - reference: PMID:22991644
+    reference_title: Comparison of the effect of three cements on prevention of enamel demineralization adjacent to orthodontic bands.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: This in vitro study was designed to compare enamel demineralization depths adjacent to bands cemented with zinc polycarboxylate, glass ionomer (GI) and resin-modified glass ionomer (RMGI)
+    explanation: Band cementation.
+- name: Luting of crowns
+  use_context: LUTING
+  evidence:
+  - reference: PMID:24431735
+    reference_title: Invivo comparative evaluation of tertiary dentin deposit to three different luting cements a histopathological study.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Copings were cemented with three different luting cements zinc oxide eugenol, glass ionomer and zinc polycarboxylate which were classified as Groups A, B and C respectively.
+    explanation: Copings on prepared premolars.
+- name: Sub-base under pulpotomy
+  use_context: PULP_THERAPY
+  evidence:
+  - reference: PMID:22524073
+    reference_title: Comparison of electrosurgical pulpotomy with zinc oxide eugenol or zinc polycarboxylate cements sub-base.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Teeth were randomly assigned to two groups according to whether ZOE or ZPC cement was used as a sub-base.
+    explanation: Electrosurgical pulpotomy of primary molars, restored with stainless steel crowns.
+- name: Retrograde filling in periapical surgery
+  use_context: ENDODONTIC
+  evidence:
+  - reference: PMID:22143701
+    reference_title: A prospective clinical study of polycarboxylate cement in periapical surgery.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: To evaluate the clinical efficacy of polycarboxylate cement as retrograde filling material.
+    explanation: Root-end filling.
+- name: Base or liner, and temporary filling
+  use_context: LINER_OR_BASE
+  description: Uses the device type 872.3275(b) names for every dental cement other than zinc oxide-eugenol. The pulpotomy sub-base row is the material-specific base use.
+  evidence:
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp
+    explanation: The base and pulp-protection uses named in the identification paragraph.
+clinical_performance:
+- name: Clinical success of pulpotomy with a zinc polycarboxylate sub-base
+  measure_type: SUCCESS_RATE
+  value: '96.2'
+  unit: '%'
+  follow_up_years: 1.0
+  population: 120 primary second molars, electrosurgical pulpotomy, randomised between ZOE and zinc polycarboxylate sub-base, restored with stainless steel crowns
+  comparator: Zinc oxide-eugenol sub-base, 98.2%; not significant
+  evidence:
+  - reference: PMID:22524073
+    reference_title: Comparison of electrosurgical pulpotomy with zinc oxide eugenol or zinc polycarboxylate cements sub-base.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: At 12 months, the clinical and radiographic success rates in the ZOE group were 98.2% and 84.2% and in the ZPC group were 96.2% and 75%, respectively (P > 0.05 for all).
+    explanation: Clinical success, ZPC group.
+- name: Radiographic success of pulpotomy with a zinc polycarboxylate sub-base
+  measure_type: SUCCESS_RATE
+  value: '75'
+  unit: '%'
+  follow_up_years: 1.0
+  population: 120 primary second molars, electrosurgical pulpotomy, randomised between ZOE and zinc polycarboxylate sub-base, restored with stainless steel crowns
+  comparator: Zinc oxide-eugenol sub-base, 84.2%; not significant
+  evidence:
+  - reference: PMID:22524073
+    reference_title: Comparison of electrosurgical pulpotomy with zinc oxide eugenol or zinc polycarboxylate cements sub-base.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: At 12 months, the clinical and radiographic success rates in the ZOE group were 98.2% and 84.2% and in the ZPC group were 96.2% and 75%, respectively (P > 0.05 for all).
+    explanation: Radiographic success, ZPC group.
+- name: Success of retrograde filling in periapical surgery
+  measure_type: SUCCESS_RATE
+  value: '54.7'
+  unit: '%'
+  follow_up_years: 1.0
+  population: 23 patients, 31 apicoectomised teeth, no comparator
+  description: Success by the criteria of von Arx and Kurt. Prognosis was poorer in women and with larger lesions or larger retrograde filling areas.
+  evidence:
+  - reference: PMID:22143701
+    reference_title: A prospective clinical study of polycarboxylate cement in periapical surgery.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The success rate after 12 months was 54.7%, according to the criteria of Von Arx and Kurt.
+    explanation: Success rate.
+  - reference: PMID:22143701
+    reference_title: A prospective clinical study of polycarboxylate cement in periapical surgery.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: A total of 23 patients with 31 apicoectomized teeth were studied (2 patients being lost to follow-up).
+    explanation: Population.
+- name: Retention of stainless steel crowns on primary molars
+  measure_type: RETENTION_RATE
+  follow_up_years: 0.67
+  population: 20 children, 60 primary molars, 20 crowns per cement
+  comparator: Glass ionomer and zinc phosphate cements
+  description: No significant difference among the three cements at eight months. The abstract gives no rate, so none is recorded.
+  evidence:
+  - reference: PMID:12435014
+    reference_title: 'Retentive [correction of Preventive] efficacy of glass ionomer, zinc phosphate and zinc polycarboxylate luting cements in preformed stainless steel crowns: a comparative clinical study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The results have shown no significant difference in retentivity of stainless steel crowns with the use of either of the three luting agents.
+    explanation: Equivalent retention.
+adverse_effects:
+- name: Pulpal response
+  effect_category: PULPAL_RESPONSE
+  description: Its acid is neutralised further than that of glass ionomer or zinc phosphate, and less acid diffuses through thin dentine. It demineralises dentine less than zinc phosphate. No HP or MONDO term was bound.
+  evidence:
+  - reference: PMID:12950577
+    reference_title: Acidity of conventional luting cements and their diffusion through bovine dentine.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Neutralization proceeded furthest in zinc polycarboxylate.
+    explanation: Setting pH.
+  - reference: PMID:12950577
+    reference_title: Acidity of conventional luting cements and their diffusion through bovine dentine.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The 0.25-mm-thick disks revealed evidence of acid diffusion on the pulpal side of the cemented dentine and significantly lower pH when cemented with glass-ionomer and zinc phosphate than with zinc polycarboxylates.
+    explanation: Acid diffusion through dentine.
+  - reference: PMID:10635255
+    reference_title: Demineralizing effect of dental cements on human dentin.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The extent of demineralization with restorative glass-ionomer cement or zinc polycarboxylate cement was less discernible.
+    explanation: Demineralisation of dentine, compared with zinc phosphate.
+  - reference: PMID:24431735
+    reference_title: Invivo comparative evaluation of tertiary dentin deposit to three different luting cements a histopathological study.
+    supports: PARTIAL
+    evidence_source: HUMAN_CLINICAL
+    snippet: When the three groups were compared zinc oxide eugenol helps in stimulation of tertiary dentin formation.
+    explanation: Under crown copings, zinc oxide-eugenol stimulated more tertiary dentine than zinc polycarboxylate or glass ionomer.
+- name: Enamel demineralisation next to orthodontic bands
+  effect_category: OTHER
+  description: 'In an in vitro caries model, enamel next to bands cemented with zinc polycarboxylate demineralised deepest of three cements. Recorded as OTHER: this is demineralisation in a model, not secondary caries.'
+  evidence:
+  - reference: PMID:22991644
+    reference_title: Comparison of the effect of three cements on prevention of enamel demineralization adjacent to orthodontic bands.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The highest dye penetration depth was seen in zinc polycarboxylate group, followed by GI, and RMGI groups, respectively, with significant differences among each two groups (P < 0.05).
+    explanation: Deepest demineralisation of the three.
+- name: Dissolution under acid attack
+  effect_category: OTHER
+  description: 'Acid dissolves the zinc oxide and leaves a porous matrix; erosion is greater than for zinc phosphate or glass ionomer. Recorded as OTHER: AdverseEffectCategoryEnum has no value for cement dissolution.'
+  evidence:
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: It appears that zinc oxide is dissolved leaving a spongy matrix which easily collapses under the force applied to the dial gauge during measurement.
+    explanation: Mechanism.
+  - reference: PMID:12628437
+    reference_title: Erosion of water-based cements evaluated by volumetric and gravimetric methods.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Ranking of eroded depth and weight of residue was polycarboxylate>zinc phosphate>glass ionomers.
+    explanation: Ranking.
+regulatory_status:
+- agency: FDA
+  jurisdiction: US
+  status: CLEARED
+  regulation_number: '872.3275'
+  regulation_title: Dental cement other than zinc oxide-eugenol
+  device_class: CLASS_II
+  product_codes:
+  - EMA
+  pathways:
+  - PREMARKET_NOTIFICATION_510K
+  special_controls: []
+  identification: Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+  approved_uses:
+  - name: Temporary tooth filling
+    use_context: TEMPORARY
+  - name: Base cement to affix a temporary tooth filling
+    use_context: LINER_OR_BASE
+  - name: Affixing dental devices such as crowns or bridges
+    use_context: LUTING
+  - name: Application to a tooth to protect the tooth pulp
+    use_context: LINER_OR_BASE
+  source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+  notes: Paragraph (b) of the regulation, inherited from Acid-base cement. Its device is every dental cement other than zinc oxide-eugenol, which by its wording covers zinc polycarboxylate cement. No regulation names zinc polycarboxylate cement on its own. The same regulation also carries MZW (ulcer covering) and NEA (ear, nose and throat cement); neither is a dental restorative use, so neither is listed.
+  evidence:
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (b) Dental cement other than zinc oxide-eugenol—(1) Identification. Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+    explanation: Identification paragraph (b)(1), quoted in full; it is the text recorded in identification and the source of all four approved_uses on this row. Verified 2026-10-02.
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (2) Classification. Class II.
+    explanation: Classification paragraph (b)(2), verified 2026-09-05.
+  - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3275
+    reference_title: FDA Product Classification Database, regulation 872.3275
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: EMA cement, dental Dental cement 872.3275 2
+    explanation: Product code EMA, device class 2, device name "cement, dental". Retrieved 2026-09-05 and re-verified 2026-10-10, when the listing carried a page-last-updated date of 10/05/2026 — the record was republished after the first retrieval, and the code and the class were unchanged across it.
+standards:
+- identifier: ISO 9917-1:2025
+  title: Dentistry - Water-based cements - Part 1 - Acid-base cements
+  organization: ISO
+  url: https://www.iso.org/standard/76037.html
+discussions:
+- discussion_id: magnesium-oxide-zinc-polycarboxylate-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - composition
+  prompt: OHD's definition says the powder contains magnesium oxide as well as zinc oxide. No abstract read states it, so magnesium oxide is not in composition, and no proportions are recorded.
+  rationale: A textbook, a manufacturer's safety data sheet, or ISO 9917-1 from a local copy would supply the composition.
+- discussion_id: adhesion-vs-retention-zinc-polycarboxylate-cement
+  kind: OPEN_QUESTION
+  status: OPEN
+  prompt: The cement adheres to hydroxyapatite (PMID:9645552), yet in the laboratory its push-out strength to dentin was as low as non-adhesive zinc phosphate (PMID:12170851), and it gave the lowest band bond strength of four cements (PMID:40946144). How much its adhesion contributes to clinical retention is not settled by the sources read.
+  rationale: Adhesion is the material's defining claim, so the gap between it and measured retention matters.
+- discussion_id: crown-luting-outcomes-zinc-polycarboxylate-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - clinical_performance
+  prompt: No clinical trial reporting survival or retention of crowns or fixed partial dentures on natural teeth luted with zinc polycarboxylate was found. The performance rows are for pulpotomy, retrograde filling and stainless steel crowns.
+  rationale: Crown luting is a main use, so its clinical record should be sourced.
+notes: 'Products. Poly F Plus, Poly Zinc (Prevest DenPro) and Adhesor Carbofine appear in the sources as the zinc polycarboxylate cements tested, but no 510(k) was looked up for them, so no products are listed.
+
+  Synonyms. "polycarboxylate cement" is the name the sources use (for example PMID:22143701).
+
+  Radiopacity and biocompatibility. PMID:20717709 states in its introduction that the cement is more radiopaque and biocompatible than glass ionomer; no data were read for either, so no property row is recorded.
+
+  Parent evidence. The FDA guidance quotes are substrings of the quotes on Acid-base cement; url: references are checked by people, not machines.'
 parents:
-  - OHD:0001021
+- OHD:0001021
 creation_date: '2026-09-04'
-status: DRAFT
+status: PROPOSED
 curation_history:
-  - timestamp: '2026-11-07T19:51:25+00:00'
-    curator: claude-code
-    llm_assisted: true
-    model: claude-opus-5-5
-    action: CREATE
-    description: Converted from dentamech at cddf481, entry Zinc_Polycarboxylate_Cement.
-updated_date: '2026-11-07'
+- timestamp: '2026-11-07T19:51:25+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: CREATE
+  description: Converted from dentamech at cddf481, entry Zinc_Polycarboxylate_Cement.
+- timestamp: '2026-11-28T00:49:13+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Curated from the stub: composition, ten properties from the FDA cement criteria and in vitro studies, six clinical uses, four clinical performance rows from clinical studies, three adverse effects, the 872.3275(b) entry, ISO 9917-1 and three discussions. Set to PROPOSED.'
+updated_date: '2026-11-28'
