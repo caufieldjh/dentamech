@@ -98,19 +98,25 @@ properties:
   evidence:
   - reference: PMID:30274184
     reference_title: 'Influence of Luting Materials on the Retention of Cemented Implant-Supported Crowns: An In Vitro Study.'
-    supports: SUPPORT
+    supports: PARTIAL
     evidence_source: IN_VITRO
     snippet: After aging (S1), Ketac Cem Plus had the highest retention force median value difference (T3 versus T1) (-773 N), whereas RelyX TempBond NE had the lowest (-146 N).
-    explanation: First regime.
+    explanation: First regime. This abstract calls RelyX TempBond NE only an eugenol-free temporary cement; PMID:31040551 and PMID:42419702, also cited here, identify Temp-Bond NE / TempBond NE as a noneugenol zinc oxide cement, so PARTIAL.
   - reference: PMID:30274184
     reference_title: 'Influence of Luting Materials on the Retention of Cemented Implant-Supported Crowns: An In Vitro Study.'
-    supports: SUPPORT
+    supports: PARTIAL
     evidence_source: IN_VITRO
     snippet: After aging (S2), Meron had the highest retention force median value difference (-783 N), whereas RelyX TempBond NE had the lowest (-168 N).
-    explanation: Second regime.
+    explanation: Second regime. Same identification of the product as above, so PARTIAL.
+  - reference: PMID:31040551
+    reference_title: An in vitro study to compare the influence of newer luting cements on retention of cement-retained implant-supported prosthesis.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: The cements that were compared were a Noneugenol zinc oxide provisional cement (Temp-Bond™ NE), a Noneugenol temporary resin cement (Premier® Implant Cement) and a resin based acrylic urethane cement (Implalute® Implant Cement).
+    explanation: Identifies Temp-Bond NE as a noneugenol zinc oxide cement; supports the product identity behind this row, not its values.
 - name: Bond strength of temporary crowns on titanium abutments
   property_type: BOND_STRENGTH
-  description: Below the resin-based provisional luting materials.
+  description: Below two of the three resin-based provisional luting materials, which were significantly higher than all other materials.
   evidence:
   - reference: PMID:39274629
     reference_title: Influence of the Composition of Provisional Luting Materials on the Bond Strength of Temporary Single-Tooth Crowns on Titanium Abutments.
@@ -120,14 +126,20 @@ properties:
     explanation: Ranking after two of the three resin-based materials.
 - name: Marginal discrepancy of cast copings on implant abutments
   property_type: OTHER
-  description: 'The lowest marginal discrepancy of three luting agents, below glass ionomer and zinc phosphate. The abstract gives no value for it. Recorded as OTHER: no PropertyTypeEnum value covers marginal discrepancy.'
+  description: 'Below zinc phosphate, which had the highest marginal discrepancy of the three luting agents. Whether it was also below glass ionomer is contradicted within the abstract: its Results give glass ionomer the lowest value, and its Conclusions give the eugenol-free zinc oxide the lowest. No value is given for the eugenol-free zinc oxide. Recorded as OTHER: no PropertyTypeEnum value covers marginal discrepancy.'
   evidence:
   - reference: PMID:31565057
     reference_title: Marginal Discrepancy of Cast Copings to Abutments with Three Different Luting Agents.
     supports: SUPPORT
     evidence_source: IN_VITRO
+    snippet: Of the three fixing agents, the ZP was found to have the highest MD (53.59 ± 14.21 μm); however, the lowest MD (41.72 ± 9.10 μm) was found in the GI group.
+    explanation: 'Results: zinc phosphate highest, so the eugenol-free zinc oxide is below it; glass ionomer lowest.'
+  - reference: PMID:31565057
+    reference_title: Marginal Discrepancy of Cast Copings to Abutments with Three Different Luting Agents.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
     snippet: In summary, according to our results, it was found that ZP cement showed the highest MD after cementation, followed by the glass ionomer, while EfZO showed the lowest MD.
-    explanation: EfZO is eugenol-free zinc oxide.
+    explanation: 'Conclusions: EfZO (eugenol-free zinc oxide) lowest. PARTIAL because it contradicts the Results sentence above on glass ionomer.'
 - name: Microleakage
   property_type: OTHER
   description: 'Leaks more than zinc phosphate on implant copings, and more than a urethane methacrylate or a Bis-GMA/TEGDMA resin-based provisional cement under interim crowns; less than zinc oxide-eugenol (Temp Bond). Recorded as OTHER: no PropertyTypeEnum value covers microleakage.'
@@ -321,10 +333,10 @@ adverse_effects:
     explanation: Effect of residue.
   - reference: PMID:36422719
     reference_title: 'Effect of temporary cements and their removal methods on the bond strength of indirect restoration: a systematic review and meta-analysis.'
-    supports: SUPPORT
+    supports: PARTIAL
     evidence_source: SYSTEMATIC_REVIEW
     snippet: Compared with resin-based and non-eugenol zinc oxide cements, polycarboxylate and calcium hydroxide cements performed better on bond strength with no statistical difference from the control group (p > 0.05).
-    explanation: 'Meta-analysis of 14 in vitro trials: bond strength after non-eugenol zinc oxide was below the uncontaminated control, where polycarboxylate and calcium hydroxide were not.'
+    explanation: Meta-analysis of 14 in vitro trials. It does not say directly that non-eugenol zinc oxide lowered bond strength below the control; that is inferred from the contrast with polycarboxylate and calcium hydroxide, which did not differ from the control, so PARTIAL.
 regulatory_status:
 - agency: FDA
   jurisdiction: US
@@ -392,7 +404,7 @@ discussions:
   status: OPEN
   prompt: The usual reason to choose a non-eugenol zinc oxide cement is that eugenol is thought to interfere with resin bonding. The bonding studies found compare eugenol-containing with eugenol-free temporary cements without saying that the eugenol-free one is zinc oxide-based (PMID:21241765, PMID:24837710), so the rationale is not recorded as a claim about this material.
   rationale: A source comparing zinc oxide-eugenol with zinc oxide non-eugenol on later resin bonding would settle it.
-notes: 'Naming. "Non-eugenol" also describes resin-based temporary cements (for example Temp Bond Clear, Premier Implant Cement). Only sources that name a zinc oxide non-eugenol cement, or a product known in the source as one (TempBond NE, Temp-Bond NE, RelyX TempBond NE, Freegenol), are used here.
+notes: 'Naming. "Non-eugenol" also describes resin-based temporary cements (for example Temp Bond Clear, Premier Implant Cement). Only sources that name a zinc oxide non-eugenol cement, or a product that the source or another cited source identifies as one, are used here: TempBond NE and Temp-Bond NE are identified in PMID:42419702, PMID:34249248 and PMID:31040551, Freegenol in PMID:29807736. Evidence that relies on another source''s identification is marked PARTIAL.
 
   Products. TempBond NE, RelyX Temp NE and Freegenol appear in the sources, but no 510(k) was looked up, so no products are listed.
 
@@ -416,4 +428,10 @@ curation_history:
   model: claude-opus-5-5
   action: EDIT
   description: 'Curated from the stub: zinc oxide composition, eight properties, three clinical uses, one clinical retention row, three adverse effects, the 872.3275(b) entry, synonyms and three discussions. Set to PROPOSED.'
+- timestamp: '2026-11-28T03:05:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the first review of PR #76. Restated the marginal discrepancy row to what both halves of its self-contradicting abstract support, with the Results quote added. Marked the TempBond NE ageing evidence PARTIAL and added the source that identifies the product as zinc oxide-based; restated the inclusion rule in notes. Narrowed the titanium-abutment bond strength description to two of three resin materials. Marked the bond-strength meta-analysis quote PARTIAL.'
 updated_date: '2026-11-28'
