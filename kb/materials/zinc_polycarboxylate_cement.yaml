@@ -157,7 +157,7 @@ properties:
   unit: MPa
   test_method: ISO 9917-1
   conditions: FDA performance criterion for zinc polycarboxylate cement.
-  description: One zinc polycarboxylate cement prepared with pure water measured 86 MPa at 24 h.
+  description: One cement prepared with pure water, apparently the zinc polycarboxylate, measured 86 MPa at 24 h.
   evidence:
   - reference: url:https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dental-cements-performance-criteria-safety-and-performance-based-pathway
     reference_title: FDA guidance, Dental Cements - Performance Criteria for Safety and Performance Based Pathway (September 2024)
@@ -213,10 +213,10 @@ properties:
     explanation: Film thickness criterion for luting cements, which reaches zinc polycarboxylate.
   - reference: PMID:11199594
     reference_title: Effects of evaporation on the properties of water-based dental luting agents.
-    supports: PARTIAL
+    supports: SUPPORT
     evidence_source: IN_VITRO
     snippet: pH decreased over 30 minutes, while viscosity, contact angle, and film thickness all increased, especially for the zinc polycarboxylate and glass ionomer cements.
-    explanation: Effect of evaporation of the liquid, over 10-30 min.
+    explanation: Effect of evaporation of the liquid over 10-30 min; the sentence names zinc polycarboxylate directly.
 - name: Strength and stiffness relative to other water-based cements
   property_type: OTHER
   description: 'The least hydrated of the cements studied, with the lowest strength and modulus and the greatest deformation at failure. Recorded as OTHER: the row compares strength, modulus and deformation together, with no values.'
@@ -423,7 +423,7 @@ clinical_performance:
 adverse_effects:
 - name: Pulpal response
   effect_category: PULPAL_RESPONSE
-  description: Its acid is neutralised further than that of glass ionomer or zinc phosphate, and less acid diffuses through thin dentine. It demineralises dentine less than zinc phosphate. No HP or MONDO term was bound.
+  description: Its acid is neutralised further than that of glass ionomer or zinc phosphate, and less acid diffuses through thin dentine. It demineralises dentine less than zinc phosphate. Under crown copings it stimulated less tertiary dentine than zinc oxide-eugenol. No HP or MONDO term was bound.
   evidence:
   - reference: PMID:12950577
     reference_title: Acidity of conventional luting cements and their diffusion through bovine dentine.
@@ -567,4 +567,10 @@ curation_history:
   model: claude-opus-5-5
   action: EDIT
   description: 'Curated from the stub: composition, ten properties from the FDA cement criteria and in vitro studies, six clinical uses, four clinical performance rows from clinical studies, three adverse effects, the 872.3275(b) entry, ISO 9917-1 and three discussions. Set to PROPOSED.'
+- timestamp: '2026-11-28T03:45:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Cleanup from the PR #74 review notes: hedged the 86 MPa description, added the tertiary-dentine comparison to the pulpal response description, and set the PMID:11199594 evaporation quote to SUPPORT.'
 updated_date: '2026-11-28'

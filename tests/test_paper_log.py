@@ -342,6 +342,25 @@ def test_cited_errors(tmp_path, monkeypatch):
     assert flagged == ["DOI:10.1000/missing", "DOI:10.1000/other_record", "DOI:10.1000/rejected"]
 
 
+def test_cited_errors_uses_the_newest_row_per_record(tmp_path, monkeypatch):
+    monkeypatch.setattr(paper_log, "REPO_ROOT", tmp_path)
+    kb = _kb(tmp_path, ["DOI:10.1000/revoked", "DOI:10.1000/reaccepted", "DOI:10.1000/unscoped_reject"])
+    log = _write(
+        tmp_path,
+        # accepted, then rejected for the same record: fails
+        "DOI:10.1000/revoked\t2026-11-01\tACCEPT\tUsed.\tsome_cement\t",
+        "DOI:10.1000/revoked\t2026-11-02\tREJECT\tWithdrawn.\tsome_cement\t",
+        # rejected, then accepted for the record: passes
+        "DOI:10.1000/reaccepted\t2026-11-01\tDEFER\tNo access.\tsome_cement\t",
+        "DOI:10.1000/reaccepted\t2026-11-02\tACCEPT\tRead it.\tsome_cement\t",
+        # a later REJECT naming no record revokes nothing: passes
+        "DOI:10.1000/unscoped_reject\t2026-11-01\tACCEPT\tUsed.\tsome_cement\t",
+        "DOI:10.1000/unscoped_reject\t2026-11-02\tREJECT\tNot for another record.\t\t",
+    )
+    errors = paper_log.cited_errors(kb, log)
+    assert len(errors) == 1 and "DOI:10.1000/revoked" in errors[0] and "is REJECT" in errors[0]
+
+
 def test_every_cited_paper_in_the_committed_kb_is_logged():
     assert paper_log.cited_errors() == []
 
