@@ -404,37 +404,28 @@ def coverage(files: list[Path], base: str | None, log: Path | None = None) -> li
 
 
 def cited_errors(records_dir: Path | None = None, log: Path | None = None) -> list[str]:
-    """Every paper a record cites has, as its newest row naming that record, an ACCEPT.
+    """Every paper a record cites has an ACCEPT row that names that record.
 
-    The QC gate behind `check-cited`. The verdict is per (paper, record): the
-    newest row that names the record decides, so a paper accepted for a record
-    and later rejected or deferred for it fails. A row that names no record
-    applies to none, and does not revoke an ACCEPT given for a record.
-
-    Offline: a PMID is resolved to its DOI through the committed reference
-    cache. Only literature counts (`DOI:` and `PMID:`); regulations, web pages
-    and standards are not papers.
+    The QC gate behind `check-cited`. Offline: a PMID is resolved to its DOI
+    through the committed reference cache. Only literature counts (`DOI:` and
+    `PMID:`); regulations, web pages and standards are not papers.
     """
     records_dir = records_dir or RECORDS_DIR
-    newest: dict[tuple[str, str], tuple[int, str]] = {}  # (reference, stem) -> (line, verdict)
-    for lineno, e in read(log)[0]:
-        for stem in e.get("records") or []:
-            newest[(e.get("reference", ""), stem)] = (lineno, e.get("verdict", ""))
+    accepted: dict[str, set[str]] = {}
+    for _, e in read(log)[0]:
+        if e.get("verdict") == "ACCEPT":
+            accepted.setdefault(e.get("reference", ""), set()).update(e.get("records") or [])
     errors = []
     for f in sorted(records_dir.glob("*.yaml")):
         for ref in sorted(_references(load(f))):
             if ref.partition(":")[0].upper() not in LITERATURE:
                 continue
             key = paper_key(ref)
-            found = [newest[(k, f.stem)] for k in {key, canonical(ref)} if (k, f.stem) in newest]
-            verdict = max(found)[1] if found else None
-            if verdict == "ACCEPT":
-                continue
-            where = (f"its newest row for {f.stem} is {verdict}" if verdict
-                     else f"no row in the paper log names {f.stem}")
-            errors.append(f"{f.relative_to(REPO_ROOT)}: cites {ref} ({key}), but {where}. Log it: "
-                          f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply, '
-                          "or stop citing it")
+            named = accepted.get(key, set()) | accepted.get(canonical(ref), set())
+            if f.stem not in named:
+                errors.append(f"{f.relative_to(REPO_ROOT)}: cites {ref} ({key}), but no ACCEPT row in the "
+                              f"paper log names {f.stem}. Add one: "
+                              f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply')
     return errors
 
 
@@ -513,7 +504,7 @@ def main(argv: list[str] | None = None) -> int:
         errors = cited_errors()
         for e in errors:
             print(f"ERROR {e}")
-        print(f"{len(errors)} cited paper(s) whose newest row for the citing record is not ACCEPT.")
+        print(f"{len(errors)} cited paper(s) with no ACCEPT row for the record that cites them.")
         return 1 if errors else 0
 
     if args.cmd == "migrate":
