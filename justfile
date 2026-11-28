@@ -214,11 +214,12 @@ validate-history target="history":
     uv run python -m {{slug}}.history validate "$1"
 
 # Every time a paper was considered as a source, and the verdict. Exit 1 if never.
-# `just lookup-paper 10.1016/j.ajodo.2025.11.017`
-lookup-paper doi:
+# PAPER is a DOI or PMID:NNN. `just lookup-paper 10.1016/j.ajodo.2025.11.017`, `just lookup-paper PMID:6948048`
+lookup-paper paper:
     uv run python -m {{slug}}.paper_log lookup "$1"
 
 # Append a row to curation/paper_log.tsv. Dry-run unless --apply. VERDICT is ACCEPT, REJECT or DEFER.
+# PAPER is a DOI or PMID:NNN; a PMID whose cached reference has a DOI is logged under that DOI.
 # `just log-paper 10.1000/xyz REJECT --note "Why, in your words." [--record <stem>] [--history <path>] --apply`
 log-paper *args:
     uv run python -m {{slug}}.paper_log add "$@"
@@ -231,6 +232,11 @@ validate-paper-log:
 # since BASE names a record or history file that does not exist. CI runs it on PRs.
 paper-log-append base:
     uv run python -m {{slug}}.paper_log check-append --base "$1"
+
+# Fail if a paper a record cites (DOI: or PMID:) has no ACCEPT row in the paper log naming that record.
+# Offline: a PMID is resolved to its DOI through references_cache/. Part of `just qc`.
+paper-log-cited:
+    uv run python -m {{slug}}.paper_log check-cited
 
 # Papers newly cited in FILES (since --base REV) with no paper-log row. Advisory: exits 0 unless --base is not a known revision.
 # `just paper-log-coverage --base origin/main kb/materials/<stem>.yaml`

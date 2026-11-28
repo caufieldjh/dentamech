@@ -1,0 +1,26 @@
+history_version: 1
+target:
+  kind: infrastructure
+  slug: paper-log
+  path: curation/paper_log.tsv
+session:
+  id: 2026-11-28T010142Z-claude-code-9423cd
+  timestamp: '2026-11-28T01:01:42Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Key the paper log by reference CURIE, so papers with no DOI can be logged; backfill every cited
+    paper; add a QC gate (#73).
+  details: 'Schema: the doi column becomes reference, a CURIE (DOI:<doi> when the paper has a DOI, PMID:<n>
+    only when it has none). Tooling: lookup-paper and log-paper take a DOI or PMID:NNN and resolve a PMID
+    to its DOI through references_cache/, so one paper never has two keys; check-append migrates a base
+    still in the doi form before comparing, so the one-time rewrite is checked as append-only; new migrate
+    and check-cited commands. Migration: all 135 existing rows rewritten from doi to reference, nothing
+    else changed. Backfill: ACCEPT rows for every (paper, record) citation the log lacked, from a fresh
+    scan of kb/materials/; none of the gaps was a paper the log had rejected. QC: new offline gate paper-log-cited,
+    failing when a cited DOI: or PMID: reference has no ACCEPT row naming the citing record.'

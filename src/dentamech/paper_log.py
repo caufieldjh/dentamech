@@ -1,15 +1,21 @@
 """The paper log: every paper considered as a source, with its verdict.
 
-    python -m dentamech.paper_log lookup DOI            # every row for a DOI; exit 1 if none
-    python -m dentamech.paper_log add DOI VERDICT --note "..." [--record STEM] [--apply]
+    python -m dentamech.paper_log lookup PAPER          # every row for a paper; exit 1 if none
+    python -m dentamech.paper_log add PAPER VERDICT --note "..." [--record STEM] [--apply]
     python -m dentamech.paper_log validate [FILE]
     python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged; new rows' links exist
     python -m dentamech.paper_log coverage --base REV FILE...  # new citations with no log row (advisory)
+    python -m dentamech.paper_log check-cited                 # every cited paper has an ACCEPT row (QC gate)
+    python -m dentamech.paper_log migrate [--apply]           # rewrite a log keyed by a bare `doi` column
+
+PAPER is a DOI (bare, `DOI:`, `doi:` or a doi.org URL) or a PubMed id
+(`PMID:NNN`). A PMID whose cached reference has a DOI is keyed by that DOI, so a
+paper never has two keys; a paper with no DOI is keyed `PMID:NNN`.
 
 The data model is `schema/paper_log.yaml`. The data is `curation/paper_log.tsv`:
 one `PaperLogEntry` per row, the schema's slot names as the header, `|` between
 values of a multivalued column. The file is append-only; the newest row for a
-DOI is its current verdict.
+paper is its current verdict.
 
 A row's `records` and `history` must exist when the row is written (`add`, and
 `check-append` for rows new since the base). They are not rechecked later: a
@@ -36,6 +42,10 @@ ENTRY_CLASS = "PaperLogEntry"
 LOG_CLASS = "PaperLog"
 MULTI_SEP = "|"
 _DOI_PREFIX = re.compile(r"^(?:doi:|https?://(?:dx\.)?doi\.org/)", re.IGNORECASE)
+_PMID = re.compile(r"^(?:pmid:\s*)?0*([1-9][0-9]*)$", re.IGNORECASE)
+LITERATURE = ("DOI", "PMID")
+# The header before #73, when rows were keyed by a bare DOI.
+LEGACY_COLUMNS = ("doi", "considered_on", "verdict", "note", "records", "history")
 
 
 @cache
@@ -63,6 +73,38 @@ def verdicts() -> tuple[str, ...]:
 def normalize_doi(value: str) -> str:
     """Bare, lower-case DOI: `DOI:10.1016/J.X` and `https://doi.org/10.1016/j.x` both give `10.1016/j.x`."""
     return _DOI_PREFIX.sub("", value.strip()).strip().lower()
+
+
+def canonical(value: str) -> str:
+    """A paper's key in canonical form, without consulting the cache.
+
+    `10.1016/J.X`, `doi:10.1016/j.x` and `https://doi.org/10.1016/j.x` give
+    `DOI:10.1016/j.x`; `PMID:0123` and `pmid:123` give `PMID:123`. Anything else
+    comes back stripped and unchanged, for the schema to reject.
+    """
+    text = value.strip()
+    pmid = _PMID.match(text)
+    if pmid and text.lower().startswith("pmid:"):
+        return f"PMID:{pmid.group(1)}"
+    bare = normalize_doi(text)
+    if bare.startswith("10."):
+        return f"DOI:{bare}"
+    return text
+
+
+def paper_key(value: str) -> str:
+    """The key a paper is logged under: its DOI when one is known, else its PMID.
+
+    A PMID is resolved through the committed reference cache, so this works
+    offline; a PMID that is not cached, or whose cached record has no DOI,
+    stays `PMID:NNN`.
+    """
+    key = canonical(value)
+    if key.startswith("PMID:"):
+        doi = doi_for(key)
+        if doi:
+            return f"DOI:{doi}"
+    return key
 
 
 def _to_entry(row: dict[str, str]) -> dict:
@@ -118,9 +160,9 @@ def entry_errors(entry: dict, today: dt.date | None = None, links: bool = True) 
     errors = schema_errors(entry, ENTRY_CLASS, PAPER_LOG_SCHEMA_PATH)
     today = today or dt.date.today()
 
-    doi = entry.get("doi")
-    if isinstance(doi, str) and doi != normalize_doi(doi):
-        errors.append(f"doi {doi!r} is not canonical; write {normalize_doi(doi)!r}")
+    ref = entry.get("reference")
+    if isinstance(ref, str) and ref != canonical(ref):
+        errors.append(f"reference {ref!r} is not canonical; write {canonical(ref)!r}")
 
     date = entry.get("considered_on")
     if isinstance(date, str):
@@ -170,17 +212,20 @@ def validate_log(path: Path | None = None, today: dt.date | None = None) -> list
     return errors
 
 
-def lookup(doi: str, path: Path | None = None) -> list[dict]:
-    """Every entry for a DOI, oldest first. The last is the current verdict."""
-    target = normalize_doi(doi)
+def lookup(paper: str, path: Path | None = None) -> list[dict]:
+    """Every entry for a paper, oldest first. The last is the current verdict.
+
+    A PMID also finds rows keyed by the DOI the cache gives it.
+    """
+    targets = {canonical(paper), paper_key(paper)}
     entries, _ = read(path)
-    return [e for _, e in entries if normalize_doi(e.get("doi", "")) == target]
+    return [e for _, e in entries if e.get("reference") in targets]
 
 
-def build_entry(doi: str, verdict: str, note: str, records: list[str] | None = None,
+def build_entry(paper: str, verdict: str, note: str, records: list[str] | None = None,
                 history: str | None = None, date: str | None = None) -> dict:
     entry: dict = {
-        "doi": normalize_doi(doi),
+        "reference": paper_key(paper),
         "considered_on": date or dt.date.today().isoformat(),
         "verdict": verdict.upper(),
         "note": " ".join(note.split()),  # a tab or newline would break the row
@@ -238,8 +283,33 @@ def _match_base(base_text: str | None, head_text: str) -> tuple[list[str], list[
     return [], [n for n in range(len(head)) if n not in matched]
 
 
+def migrate_text(text: str) -> str:
+    """A log keyed by a bare `doi` column, rewritten to the `reference` column.
+
+    Each row's DOI becomes `DOI:<doi>`; nothing else in the row changes. Text
+    already in the current form comes back unchanged.
+    """
+    lines = text.splitlines()
+    if not lines or tuple(lines[0].split("\t")) != LEGACY_COLUMNS:
+        return text
+    out = ["\t".join(columns())]
+    for line in lines[1:]:
+        cells = line.split("\t")
+        if cells and cells[0].strip():
+            cells[0] = canonical(cells[0])
+        out.append("\t".join(cells))
+    return "\n".join(out) + ("\n" if text.endswith("\n") else "")
+
+
 def append_errors(base_text: str | None, head_text: str) -> list[str]:
-    """Earlier rows unchanged, and the records and history named by new rows exist."""
+    """Earlier rows unchanged, and the records and history named by new rows exist.
+
+    A base still in the legacy `doi` form is migrated first, so the one-time
+    rewrite to `reference` is checked like any other change: every earlier row
+    must survive it unchanged apart from its key's form.
+    """
+    if base_text is not None:
+        base_text = migrate_text(base_text)
     errors, new = _match_base(base_text, head_text)
     if errors:
         return errors
@@ -292,7 +362,7 @@ def coverage(files: list[Path], base: str | None, log: Path | None = None) -> li
     Only literature counts (`DOI:` and `PMID:`); regulatory `url:` pages are not papers.
     Advisory: a missing row is a reminder, not an error.
     """
-    logged = {normalize_doi(e.get("doi", "")) for _, e in read(log)[0]}
+    logged = {e.get("reference") for _, e in read(log)[0]}
     warnings = []
     for f in files:
         head = _references(load(f))
@@ -300,17 +370,40 @@ def coverage(files: list[Path], base: str | None, log: Path | None = None) -> li
         if old is not None:
             head -= _references(loads(old))
         for ref in sorted(head):
-            if ref.partition(":")[0].upper() not in ("DOI", "PMID"):
+            if ref.partition(":")[0].upper() not in LITERATURE:
                 continue
-            doi = doi_for(ref)
-            if doi is None:
-                warnings.append(f"{f}: {ref} is newly cited, but its DOI is not known (fetch it with "
-                                "just fetch-reference), so the paper log cannot be checked")
-            elif doi not in logged:
-                fix = f'just log-paper {doi} ACCEPT --note "..." --record {f.stem} --apply'
-                warnings.append(f"{f}: {ref} (doi {doi}) is newly cited but has no row in the paper log. "
+            key = paper_key(ref)
+            if key not in logged and canonical(ref) not in logged:
+                fix = f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply'
+                warnings.append(f"{f}: {ref} ({key}) is newly cited but has no row in the paper log. "
                                 f"Add one: {fix}")
     return warnings
+
+
+def cited_errors(records_dir: Path | None = None, log: Path | None = None) -> list[str]:
+    """Every paper a record cites has an ACCEPT row that names that record.
+
+    The QC gate behind `check-cited`. Offline: a PMID is resolved to its DOI
+    through the committed reference cache. Only literature counts (`DOI:` and
+    `PMID:`); regulations, web pages and standards are not papers.
+    """
+    records_dir = records_dir or RECORDS_DIR
+    accepted: dict[str, set[str]] = {}
+    for _, e in read(log)[0]:
+        if e.get("verdict") == "ACCEPT":
+            accepted.setdefault(e.get("reference", ""), set()).update(e.get("records") or [])
+    errors = []
+    for f in sorted(records_dir.glob("*.yaml")):
+        for ref in sorted(_references(load(f))):
+            if ref.partition(":")[0].upper() not in LITERATURE:
+                continue
+            key = paper_key(ref)
+            named = accepted.get(key, set()) | accepted.get(canonical(ref), set())
+            if f.stem not in named:
+                errors.append(f"{f.relative_to(REPO_ROOT)}: cites {ref} ({key}), but no ACCEPT row in the "
+                              f"paper log names {f.stem}. Add one: "
+                              f'just log-paper {key} ACCEPT --note "..." --record {f.stem} --apply')
+    return errors
 
 
 def _show(entry: dict) -> str:
@@ -326,11 +419,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    look = sub.add_parser("lookup", help="every row for a DOI; exit 1 if it was never considered")
-    look.add_argument("doi")
+    look = sub.add_parser("lookup", help="every row for a paper; exit 1 if it was never considered")
+    look.add_argument("paper", help="DOI or PMID:NNN")
 
     add = sub.add_parser("add", help="append a row (dry-run unless --apply)")
-    add.add_argument("doi")
+    add.add_argument("paper", help="DOI or PMID:NNN; a PMID with a known DOI is logged under the DOI")
     add.add_argument("verdict", type=str.upper, choices=verdicts())
     add.add_argument("--note", required=True, help="why this verdict, in your own words")
     add.add_argument("--record", action="append", dest="records", help="record stem; repeatable")
@@ -351,6 +444,12 @@ def main(argv: list[str] | None = None) -> int:
     cov.add_argument("--base", help="git revision to compare the records with; omit to check every citation")
     cov.add_argument("--github", action="store_true", help="print GitHub Actions ::warning annotations")
     cov.add_argument("files", nargs="+", type=Path)
+
+    sub.add_parser("check-cited", help="fail if a paper a record cites has no ACCEPT row naming that record")
+
+    mig = sub.add_parser("migrate", help="rewrite a log keyed by a bare doi column (dry-run unless --apply)")
+    mig.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)
+    mig.add_argument("--apply", action="store_true", help="write the rewritten log")
 
     args = parser.parse_args(argv)
 
@@ -378,6 +477,27 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{len(warnings)} newly cited paper(s) missing from the paper log.")
         return 0
 
+    if args.cmd == "check-cited":
+        errors = cited_errors()
+        for e in errors:
+            print(f"ERROR {e}")
+        print(f"{len(errors)} cited paper(s) with no ACCEPT row for the record that cites them.")
+        return 1 if errors else 0
+
+    if args.cmd == "migrate":
+        old = args.path.read_text(encoding="utf-8")
+        new = migrate_text(old)
+        if new == old:
+            print(f"{args.path}: already keyed by reference; nothing to do")
+            return 0
+        print(f"{args.path}: {len(old.splitlines()) - 1} row(s) to rewrite from doi to reference")
+        if not args.apply:
+            print("# dry run; pass --apply to write")
+            return 0
+        args.path.write_text(new, encoding="utf-8")
+        print(f"rewrote {args.path}")
+        return 0
+
     if args.cmd == "validate":
         errors = validate_log(args.path)
         for e in errors:
@@ -386,18 +506,19 @@ def main(argv: list[str] | None = None) -> int:
         return 1 if errors else 0
 
     if args.cmd == "lookup":
-        found = lookup(args.doi)
+        found = lookup(args.paper)
+        key = paper_key(args.paper)
         if not found:
-            print(f"{normalize_doi(args.doi)}: not in the paper log")
+            print(f"{key}: not in the paper log")
             return 1
-        print(normalize_doi(args.doi))
+        print(key)
         for entry in found:
             print("  " + _show(entry))
         return 0
 
-    entry = build_entry(args.doi, args.verdict, args.note, args.records, args.history, args.date)
+    entry = build_entry(args.paper, args.verdict, args.note, args.records, args.history, args.date)
     errors = entry_errors(entry)
-    previous = lookup(entry["doi"])
+    previous = lookup(entry["reference"])
     if previous:
         print(f"# already considered {len(previous)} time(s); latest: {_show(previous[-1])}")
     print(_to_row(entry))
