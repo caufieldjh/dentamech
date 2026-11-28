@@ -1,0 +1,26 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_oxide_non_eugenol_cement
+  path: kb/materials/zinc_oxide_non_eugenol_cement.yaml
+session:
+  id: 2026-11-28T023822Z-claude-code-e3d0ba
+  timestamp: '2026-11-28T02:38:22Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: Curated Zinc oxide non-eugenol cement from the stub to PROPOSED.
+  details: Filled composition (zinc oxide), eight properties (implant crown retention and ageing, bond
+    strength on titanium abutments, marginal discrepancy, microleakage, colour change under printed provisionals,
+    antibacterial activity), three clinical uses (provisional cementation, semipermanent cementation of
+    implant crowns, temporary cementation before adhesive bonding), one clinical retention row from a
+    567-crown retrospective study, three adverse effects (loss of implant crown retention, cytotoxicity,
+    residue weakening later resin bonding), the 21 CFR 872.3275(b) entry with a note that it, not the
+    class I zinc oxide-eugenol paragraph, covers this material, ISO 3107, synonyms and three discussions.
+    40 quotes machine-checked. Sources that use non-eugenol for resin-based temporary cements, or do not
+    say the eugenol-free cement is zinc oxide-based, were excluded.
