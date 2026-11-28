@@ -5,7 +5,7 @@
     python -m dentamech.paper_log validate [FILE]
     python -m dentamech.paper_log check-append --base REV     # earlier rows unchanged; new rows' links exist
     python -m dentamech.paper_log coverage --base REV FILE...  # new citations with no log row (advisory)
-    python -m dentamech.paper_log check-cited                 # every cited paper has an ACCEPT row (QC gate)
+    python -m dentamech.paper_log check-cited                 # each citation's newest row is ACCEPT (QC gate)
     python -m dentamech.paper_log migrate [--apply]           # rewrite a log keyed by a bare `doi` column
 
 PAPER is a DOI (bare, `DOI:`, `doi:` or a doi.org URL) or a PubMed id
@@ -417,6 +417,9 @@ def cited_errors(records_dir: Path | None = None, log: Path | None = None) -> li
     """
     records_dir = records_dir or RECORDS_DIR
     newest: dict[tuple[str, str], tuple[int, str]] = {}  # (reference, stem) -> (line, verdict)
+    # Line order is time order: the log is append-only, and check-append fails
+    # any edited, reordered or removed row. Don't switch to `considered_on`,
+    # which ties for rows logged on the same day.
     for lineno, e in read(log)[0]:
         for stem in e.get("records") or []:
             newest[(e.get("reference", ""), stem)] = (lineno, e.get("verdict", ""))
@@ -477,7 +480,8 @@ def main(argv: list[str] | None = None) -> int:
     cov.add_argument("--github", action="store_true", help="print GitHub Actions ::warning annotations")
     cov.add_argument("files", nargs="+", type=Path)
 
-    sub.add_parser("check-cited", help="fail if a paper a record cites has no ACCEPT row naming that record")
+    cited_help = "fail unless each cited paper's newest row for the citing record is ACCEPT"
+    sub.add_parser("check-cited", help=cited_help)
 
     mig = sub.add_parser("migrate", help="rewrite a log keyed by a bare doi column (dry-run unless --apply)")
     mig.add_argument("path", nargs="?", type=Path, default=PAPER_LOG_PATH)

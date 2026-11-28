@@ -52,8 +52,11 @@ changed record newly cites that has no row (`just paper-log-coverage --base
 origin/main <files>`). The curation scanner and the review agent both read
 the log.
 
-`just qc` also fails if any paper a record cites (a `DOI:` or `PMID:`
-reference) has no `ACCEPT` row naming that record (`just paper-log-cited`).
+`just qc` also fails unless, for each paper a record cites (a `DOI:` or
+`PMID:` reference), the newest row naming that record is `ACCEPT`
+(`just paper-log-cited`). A paper accepted for a record and later rejected or
+deferred for it therefore fails. A row that names no record applies to none,
+and does not revoke an `ACCEPT` given for a record.
 It works offline: a PMID is resolved to its DOI through `references_cache/`,
 so fetch a new reference before logging it. Regulations, web pages and
 standards are not papers and are not checked.
