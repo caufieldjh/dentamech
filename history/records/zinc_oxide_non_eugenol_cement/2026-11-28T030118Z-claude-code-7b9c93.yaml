@@ -1,0 +1,24 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_oxide_non_eugenol_cement
+  path: kb/materials/zinc_oxide_non_eugenol_cement.yaml
+session:
+  id: 2026-11-28T030118Z-claude-code-7b9c93
+  timestamp: '2026-11-28T03:01:18Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the first automated review of PR #76 on Zinc oxide non-eugenol cement.'
+  details: Restated the marginal discrepancy row to what both halves of PMID:31565057 support (below zinc
+    phosphate), added its Results quote and marked the Conclusions quote PARTIAL, since the two contradict
+    each other on glass ionomer. Marked the PMID:30274184 ageing evidence PARTIAL, added PMID:31040551
+    for the identification of Temp-Bond NE as zinc oxide-based, and restated the inclusion rule in notes
+    as the source or another cited source. Narrowed the titanium-abutment bond strength description to
+    two of three resin materials. Marked the PMID:36422719 meta-analysis quote PARTIAL. Corrected three
+    paper-log notes new in this PR, including the REJECT reason for DOI:10.1055/s-0044-1782695.

@@ -1,0 +1,24 @@
+history_version: 1
+target:
+  kind: record
+  slug: zinc_oxide_non_eugenol_cement
+  path: kb/materials/zinc_oxide_non_eugenol_cement.yaml
+session:
+  id: 2026-11-28T030607Z-claude-code-95f2cb
+  timestamp: '2026-11-28T03:06:07Z'
+  actors:
+  - type: ai_agent
+    name: claude-code
+    model: claude-opus-5-5
+    agent_tool: claude-code
+events:
+- type: EDIT
+  outcome: changed
+  summary: 'Answered the second automated review of PR #76 on Zinc oxide non-eugenol cement.'
+  details: Restated the PMID:39186597 clinical use as provisional cementation of the definitive crown
+    before adhesive bonding, quoting its methods, and added its finding of no effect on the bonded crowns
+    as a REFUTE counterpoint under the bonding-residue adverse effect. Added the PMID:39274629 sentence
+    ranking two of three resin materials above the rest, and the PMID:29807736 sentence on the importance
+    of retrievability. Noted on the three retention rows that they record forces in newtons, not bond
+    strengths. Marked PMID:27927285 PARTIAL under cytotoxicity. Noted in notes that the acid-base setting
+    mechanism rests on OHD, not a quote.

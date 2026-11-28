@@ -1,21 +1,481 @@
 id: OHD:0001010
 name: Zinc oxide non-eugenol cement
-description: A zinc-oxide cement dental restoration material containing aliphatic acid or butyric acid to substitute the eugenol as a liquid component to complete the acid-base reaction.
+description: 'A zinc oxide cement made without eugenol, used as a provisional cement for interim restorations and as a semipermanent cement for implant-supported crowns. On implant crowns it is retained less well than a permanent cement: in a retrospective study, crowns on it lost retention more often than crowns on glass ionomer.'
+description_evidence:
+- reference: PMID:39274629
+  reference_title: Influence of the Composition of Provisional Luting Materials on the Bond Strength of Temporary Single-Tooth Crowns on Titanium Abutments.
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: The resin-based materials were followed by eugenol-free and eugenol-containing zinc oxide materials.
+  explanation: Eugenol-free zinc oxide materials as a class of provisional luting material.
+- reference: PMID:42419702
+  reference_title: Influence of Provisional Cement Type and Film Thickness on Color Difference and Translucency of DLP-Printed Provisional Restorations.
+  supports: SUPPORT
+  evidence_source: IN_VITRO
+  snippet: Three provisional cements, including polycarboxylate cement, zinc oxide non-eugenol cement (TempBond NE), and translucent resin-based cement (TempBond Clear), were applied at two cement film thicknesses (50 and 100 μm).
+  explanation: Use as a provisional cement (TempBond NE).
+- reference: PMID:38953431
+  reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+  supports: SUPPORT
+  evidence_source: HUMAN_CLINICAL
+  snippet: SCs were cemented with permanent (glass-ionomer cement; n = 376) or semipermanent cement (zinc oxide non-eugenol cement; n = 191) on standardized (n = 446) or customized (n = 121) abutments.
+  explanation: Semipermanent cementation of implant single crowns; the semipermanent cement is zinc oxide non-eugenol.
+- reference: PMID:38953431
+  reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+  supports: SUPPORT
+  evidence_source: HUMAN_CLINICAL
+  snippet: The probability of loss of retention was higher with semipermanent than with permanent cement (p = .001).
+  explanation: More loss of retention than the permanent cement, glass ionomer.
 record_term:
   id: OHD:0001010
   label: zinc oxide non-eugenol cement dental restoration material
 category: CEMENT
+synonyms:
+- ZONE
+- eugenol-free zinc oxide cement
+- noneugenol zinc oxide cement
 setting_mechanisms:
-  - ACID_BASE_REACTION
+- ACID_BASE_REACTION
+composition:
+- name: Zinc oxide
+  role: POWDER
+  chemical:
+    preferred_term: zinc oxide
+    term:
+      id: CHEBI:36560
+      label: zinc oxide
+  description: The base of the material, as for zinc oxide-eugenol. Which component carries it, and in what form, is not stated in the sources read.
+  evidence:
+  - reference: PMID:39274629
+    reference_title: Influence of the Composition of Provisional Luting Materials on the Bond Strength of Temporary Single-Tooth Crowns on Titanium Abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The resin-based materials were followed by eugenol-free and eugenol-containing zinc oxide materials.
+    explanation: Eugenol-free zinc oxide materials.
+  - reference: PMID:40073997
+    reference_title: Effects of Different Dentin Surface Cleaning Protocols on Bond Strength of Dual-Cure Resin Cement Following Temporary Cementation.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: SEM-EDS analysis confirmed incomplete removal of temporary cement with pumice polishing, as evidenced by residual cement and elevated levels of zinc and oxygen ions.
+    explanation: Zinc and oxygen in the residue of a noneugenol zinc oxide temporary cement, consistent with a zinc oxide base.
+properties:
+- name: Retention force of implant-supported zirconia crowns
+  property_type: BOND_STRENGTH
+  value: '235'
+  unit: N
+  conditions: Freegenol, zirconia restorations on zirconia abutments, after 3-day storage; 29 N after thermocycling.
+  description: 'The highest retention force of the five interim or semidefinitive cements tested before thermocycling, falling sharply after it. Recorded as BOND_STRENGTH, the closest PropertyTypeEnum value: this is a retention force in newtons for a whole crown, not a bond strength in MPa.'
+  evidence:
+  - reference: PMID:29807736
+    reference_title: Retrievability of implant-supported zirconia restorations cemented on zirconia abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: 'Five cements for interim or semidefinitive cementation were used: eugenol-free zinc oxide (Freegenol) and acrylurethane (ImProv) and 3 different composite resin cements (X-Pand Implant, Dyna Implant, Telio CS Cem Implant).'
+    explanation: Freegenol is the eugenol-free zinc oxide cement.
+  - reference: PMID:29807736
+    reference_title: Retrievability of implant-supported zirconia restorations cemented on zirconia abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: 'The mean retention force using the UTM after 3-day storage and thermocycling was as follows: Freegenol, 235 ±42 N (thermocycling, 29 ±9 N); Improv, 110 ±50 N (thermocycling, 35 ±38 N); Telio CS, 104 ±17 N (thermocycling, 6 ±10 N); Dyna implant, 61 ±17 N (thermocycling, 1 ±1 N); and X-Pand, 50 ±16 N (thermocycling, 2 ±2 N).'
+    explanation: The values.
+- name: Retention relative to implant cements
+  property_type: BOND_STRENGTH
+  conditions: Cement-retained implant crowns; Temp-Bond NE against two cements formulated for implants.
+  description: 'Below a noneugenol temporary resin cement and above an acrylic urethane cement. Recorded as BOND_STRENGTH, the closest PropertyTypeEnum value: this is a retention force in newtons for a whole crown, not a bond strength in MPa.'
+  evidence:
+  - reference: PMID:31040551
+    reference_title: An in vitro study to compare the influence of newer luting cements on retention of cement-retained implant-supported prosthesis.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Noneugenol temporary resin cement had the highest tensile strength followed by noneugenol zinc oxide cement and the least retentive strength was observed in resin-based acrylic urethane cement.
+    explanation: Ranking of three.
+- name: Loss of retention force with ageing
+  property_type: BOND_STRENGTH
+  value: -146 to -168
+  unit: N
+  conditions: Cobalt-chromium crowns on titanium abutments, RelyX TempBond NE; median difference between the third and first removal under two ageing regimes.
+  description: 'The smallest loss of the eight luting materials under both ageing regimes. Recorded as BOND_STRENGTH, the closest PropertyTypeEnum value: this is a retention force in newtons for a whole crown, not a bond strength in MPa.'
+  evidence:
+  - reference: PMID:30274184
+    reference_title: 'Influence of Luting Materials on the Retention of Cemented Implant-Supported Crowns: An In Vitro Study.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: After aging (S1), Ketac Cem Plus had the highest retention force median value difference (T3 versus T1) (-773 N), whereas RelyX TempBond NE had the lowest (-146 N).
+    explanation: First regime. This abstract calls RelyX TempBond NE only an eugenol-free temporary cement; PMID:31040551 and PMID:42419702, also cited here, identify Temp-Bond NE / TempBond NE as a noneugenol zinc oxide cement, so PARTIAL.
+  - reference: PMID:30274184
+    reference_title: 'Influence of Luting Materials on the Retention of Cemented Implant-Supported Crowns: An In Vitro Study.'
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: After aging (S2), Meron had the highest retention force median value difference (-783 N), whereas RelyX TempBond NE had the lowest (-168 N).
+    explanation: Second regime. Same identification of the product as above, so PARTIAL.
+  - reference: PMID:31040551
+    reference_title: An in vitro study to compare the influence of newer luting cements on retention of cement-retained implant-supported prosthesis.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: The cements that were compared were a Noneugenol zinc oxide provisional cement (Temp-Bond™ NE), a Noneugenol temporary resin cement (Premier® Implant Cement) and a resin based acrylic urethane cement (Implalute® Implant Cement).
+    explanation: Identifies Temp-Bond NE as a noneugenol zinc oxide cement; supports the product identity behind this row, not its values.
+- name: Bond strength of temporary crowns on titanium abutments
+  property_type: BOND_STRENGTH
+  description: Below two of the three resin-based provisional luting materials, which were significantly higher than all other materials.
+  evidence:
+  - reference: PMID:39274629
+    reference_title: Influence of the Composition of Provisional Luting Materials on the Bond Strength of Temporary Single-Tooth Crowns on Titanium Abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Of the three resin-based materials, two showed significantly higher bond strength values compared to all other materials (p < 0.001), regardless of the storage procedure.
+    explanation: Two of the three resin-based materials were significantly higher than everything else, the eugenol-free zinc oxide materials included.
+  - reference: PMID:39274629
+    reference_title: Influence of the Composition of Provisional Luting Materials on the Bond Strength of Temporary Single-Tooth Crowns on Titanium Abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The resin-based materials were followed by eugenol-free and eugenol-containing zinc oxide materials.
+    explanation: Ranking after two of the three resin-based materials.
+- name: Marginal discrepancy of cast copings on implant abutments
+  property_type: OTHER
+  description: 'Below zinc phosphate, which had the highest marginal discrepancy of the three luting agents. Whether it was also below glass ionomer is contradicted within the abstract: its Results give glass ionomer the lowest value, and its Conclusions give the eugenol-free zinc oxide the lowest. No value is given for the eugenol-free zinc oxide. Recorded as OTHER: no PropertyTypeEnum value covers marginal discrepancy.'
+  evidence:
+  - reference: PMID:31565057
+    reference_title: Marginal Discrepancy of Cast Copings to Abutments with Three Different Luting Agents.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Of the three fixing agents, the ZP was found to have the highest MD (53.59 ± 14.21 μm); however, the lowest MD (41.72 ± 9.10 μm) was found in the GI group.
+    explanation: 'Results: zinc phosphate highest, so the eugenol-free zinc oxide is below it; glass ionomer lowest.'
+  - reference: PMID:31565057
+    reference_title: Marginal Discrepancy of Cast Copings to Abutments with Three Different Luting Agents.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: In summary, according to our results, it was found that ZP cement showed the highest MD after cementation, followed by the glass ionomer, while EfZO showed the lowest MD.
+    explanation: 'Conclusions: EfZO (eugenol-free zinc oxide) lowest. PARTIAL because it contradicts the Results sentence above on glass ionomer.'
+- name: Microleakage
+  property_type: OTHER
+  description: 'Leaks more than zinc phosphate on implant copings, and more than a urethane methacrylate or a Bis-GMA/TEGDMA resin-based provisional cement under interim crowns; less than zinc oxide-eugenol (Temp Bond). Recorded as OTHER: no PropertyTypeEnum value covers microleakage.'
+  evidence:
+  - reference: PMID:35018054
+    reference_title: Microleakage at Implant Abutment and Prosthesis Interface in Cemented Implant-Supported Prosthesis.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Minimum microleakage was seen with zinc phosphate cement than zinc oxide noneugenol cement and zinc polycarboxylate cement.
+    explanation: Against zinc phosphate.
+  - reference: PMID:34249248
+    reference_title: Microleakage of different temporary luting agents used for cementing provisional restorations on custom cast posts and cores.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Temp Bond showed the highest microleakage as compared to other luting agents. Furthermore, Temp Bond NE revealed a weaker sealability as compared to Dento temp.
+    explanation: Temp Bond NE leaked less than Temp Bond and more than Dento temp.
+  - reference: PMID:27794149
+    reference_title: 'Microleakage of Glass Ionomer-based Provisional Cement in CAD/CAM-Fabricated Interim Crowns: An in vitro Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The Bis-GMA/TEGDMA resin-based provisional cement exhibited the most effective favorable sealing properties against dye penetration compared with the glass ionomer-based provisional cement and conventional ZONE cement.
+    explanation: Against a resin-based provisional cement.
+- name: Colour change of 3D-printed provisional restorations
+  property_type: OTHER
+  value: 2.06-3.93
+  unit: ΔE00
+  conditions: TempBond NE under DLP-printed provisional restorations at 50 and 100 µm film thickness.
+  description: 'The largest colour change of three provisional cements, increasing with film thickness. Recorded as OTHER: the value is the change in the restoration''s colour, not the cement''s colour stability.'
+  evidence:
+  - reference: PMID:42419702
+    reference_title: Influence of Provisional Cement Type and Film Thickness on Color Difference and Translucency of DLP-Printed Provisional Restorations.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The lowest values (0.45 for 50 μm and 0.53 for 100 μm thickness) were observed for the translucent resin-based cement (TempBond Clear), whereas the highest values (2.06 for 50 μm and 3.93 for 100 μm thickness) were observed for the zinc oxide non-eugenol cement (TempBond NE).
+    explanation: The values, at 50 and 100 µm.
+- name: Antibacterial activity
+  property_type: ANTIBACTERIAL_ACTIVITY
+  description: No effect on Streptococcus mutans by agar diffusion in one study. In another, it inhibited planktonic growth of A. actinomycetemcomitans and P. gingivalis but not F. nucleatum.
+  evidence:
+  - reference: PMID:18493161
+    reference_title: Antibacterial potential of contemporary dental luting cements.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Instantly mixed zinc phosphate cements showed the strongest antibacterial activity in contrast to the non-eugenol, eugenol and resin cements that did not show any antibacterial effects.
+    explanation: '"Non-eugenol" here is the zinc oxide non-eugenol cement the abstract lists among its seven types.'
+  - reference: PMID:24909337
+    reference_title: 'The Interaction of Implant Luting Cements and Oral Bacteria Linked to Peri-Implant Disease: An In Vitro Analysis of Planktonic and Biofilm Growth--A Preliminary Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Five test cements with varying composition (zinc oxide-eugenol [TBO], eugenol-free zinc oxide [TBNE], zinc orthophosphate [FL]
+    explanation: TBNE is the eugenol-free zinc oxide cement.
+  - reference: PMID:24909337
+    reference_title: 'The Interaction of Implant Luting Cements and Oral Bacteria Linked to Peri-Implant Disease: An In Vitro Analysis of Planktonic and Biofilm Growth--A Preliminary Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Planktonic growth for both A. actinomycetemcomitans and P. gingivalis was significantly inhibited (p < .05) when grown in the presence of cement disks consisting of TBNE, PIC, FL, and TBO.
+    explanation: Inhibition of two periodontal pathogens.
+  - reference: PMID:24909337
+    reference_title: 'The Interaction of Implant Luting Cements and Oral Bacteria Linked to Peri-Implant Disease: An In Vitro Analysis of Planktonic and Biofilm Growth--A Preliminary Study.'
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: F. nucleatum growth was also significantly inhibited by PIC, FL. and TBO (p < .05), but not by ML and TBNE cement disks.
+    explanation: No inhibition of F. nucleatum.
+clinical_uses:
+- name: Provisional cementation of interim restorations
+  use_context: TEMPORARY
+  evidence:
+  - reference: PMID:42419702
+    reference_title: Influence of Provisional Cement Type and Film Thickness on Color Difference and Translucency of DLP-Printed Provisional Restorations.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Three provisional cements, including polycarboxylate cement, zinc oxide non-eugenol cement (TempBond NE), and translucent resin-based cement (TempBond Clear), were applied at two cement film thicknesses (50 and 100 μm).
+    explanation: DLP-printed provisional restorations.
+  - reference: PMID:34249248
+    reference_title: Microleakage of different temporary luting agents used for cementing provisional restorations on custom cast posts and cores.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Then, teeth were randomly allocated to four groups for each temporary cement including zinc oxide eugenol (Temp Bond), zinc oxide noneugenol (Temp Bond NE), noneugenol resin-based temporary luting agent (Temp Bond Clear), and noneugenol urethane methacrylate polymer-based temporary luting agent (Dento temp).
+    explanation: Provisional restorations on custom cast posts and cores.
+- name: Semipermanent cementation of implant-supported crowns
+  use_context: IMPLANT
+  description: Used on implant crowns as a semipermanent or semidefinitive cement, where retrievability of the restoration matters.
+  evidence:
+  - reference: PMID:38953431
+    reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: SCs were cemented with permanent (glass-ionomer cement; n = 376) or semipermanent cement (zinc oxide non-eugenol cement; n = 191) on standardized (n = 446) or customized (n = 121) abutments.
+    explanation: Clinical use on implant single crowns.
+  - reference: PMID:29807736
+    reference_title: Retrievability of implant-supported zirconia restorations cemented on zirconia abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: 'Five cements for interim or semidefinitive cementation were used: eugenol-free zinc oxide (Freegenol) and acrylurethane (ImProv) and 3 different composite resin cements (X-Pand Implant, Dyna Implant, Telio CS Cem Implant).'
+    explanation: Interim or semidefinitive cementation, in a study of retrievability.
+  - reference: PMID:29807736
+    reference_title: Retrievability of implant-supported zirconia restorations cemented on zirconia abutments.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Retrievability of implant-supported restorations is important.
+    explanation: The reason a retrievable cement is chosen for implant restorations.
+- name: Provisional cementation of the definitive crown before adhesive bonding
+  use_context: TEMPORARY
+  description: The definitive crown is first cemented provisionally, then removed, and finally bonded with an adhesive or self-adhesive resin system.
+  evidence:
+  - reference: PMID:39186597
+    reference_title: Influence of provisional cementation on the stability of adhesively bonded resin-based composite crowns.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Identical molar crowns (n=48, n=8 per group) were milled from resin-based composites and temporarily cemented and finally bonded to human molars.
+    explanation: The same definitive crowns are temporarily cemented, then bonded.
+  - reference: PMID:39186597
+    reference_title: Influence of provisional cementation on the stability of adhesively bonded resin-based composite crowns.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: To simulate temporary application, crowns were cemented either with zinc-oxide-eugenol-cement (Tempbond) or with eugenol free zinc-oxide-cement (Tempbond NE).
+    explanation: Tempbond NE as the eugenol-free zinc oxide cement.
+clinical_performance:
+- name: Retention of implant-supported single crowns on semipermanent cement
+  measure_type: RETENTION_RATE
+  population: 567 cemented implant-supported zirconia and metal-ceramic single crowns, retrospective; 191 on zinc oxide non-eugenol cement
+  comparator: Glass ionomer cement, 376 crowns
+  description: Loss of retention was more likely with the semipermanent cement, which was the only significant risk factor for crown failure. The abstract gives the 10-year loss-of-retention probabilities by crown material, not by cement, so no rate is recorded.
+  evidence:
+  - reference: PMID:38953431
+    reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: SCs were cemented with permanent (glass-ionomer cement; n = 376) or semipermanent cement (zinc oxide non-eugenol cement; n = 191) on standardized (n = 446) or customized (n = 121) abutments.
+    explanation: Population and comparator.
+  - reference: PMID:38953431
+    reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The probability of loss of retention was higher with semipermanent than with permanent cement (p = .001).
+    explanation: Higher loss of retention.
+  - reference: PMID:38953431
+    reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: Cox-regression analysis revealed semipermanent cement as the only significant risk factor for SC failure (p = .026).
+    explanation: Only significant risk factor for failure.
+adverse_effects:
+- name: Loss of retention of implant crowns
+  effect_category: MECHANICAL_FAILURE
+  description: Crowns on it come loose more often than on a permanent cement.
+  evidence:
+  - reference: PMID:38953431
+    reference_title: 'Long-term retention and survival of cemented implant-supported zirconia and metal-ceramic single crowns: A retrospective study.'
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: The probability of loss of retention was higher with semipermanent than with permanent cement (p = .001).
+    explanation: Clinical, retrospective.
+- name: Cytotoxicity
+  effect_category: TOXICITY
+  description: Cytotoxic to gingival fibroblasts and osteoblast-like cells in vitro, but its rank against other cements differs between studies; see the discussion.
+  evidence:
+  - reference: PMID:40390827
+    reference_title: In Vitro Comparison of the Viability and Proliferation of Human Gingival Fibroblasts and Osteoblast-like MG-63 Cells on Three Different Temporary Cements Used in Dental Implants.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: 'Materials and Methods: In this in vitro study, zinc oxide-eugenol (ZOE), eugenol-free zinc oxide (ZONE), and resin (R) cements were prepared in cylindrical forms of similar dimensions.'
+    explanation: Names eugenol-free zinc oxide (ZONE) as one of the three cements tested.
+  - reference: PMID:40390827
+    reference_title: In Vitro Comparison of the Viability and Proliferation of Human Gingival Fibroblasts and Osteoblast-like MG-63 Cells on Three Different Temporary Cements Used in Dental Implants.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: None of the cements demonstrated cellular viability percentages above the minimum threshold (70%) required for biocompatibility.
+    explanation: Every cement tested fell below the viability threshold, ZONE included.
+  - reference: PMID:38826571
+    reference_title: Cytotoxicity  of dental cement on soft tissue associated with dental implants at different time intervals.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The cement used for this study were zinc phosphate (ZP), zinc oxide non-eugenol (ZOE), RelyX U200 (RU200), and glass ionomer cement (GIC).
+    explanation: This study abbreviates zinc oxide non-eugenol as "ZOE"; in its results, ZOE means the non-eugenol cement.
+  - reference: PMID:38826571
+    reference_title: Cytotoxicity  of dental cement on soft tissue associated with dental implants at different time intervals.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The highest cytotoxicity was observed in ZOE, followed by ZP, GIC, and RU200.
+    explanation: Most cytotoxic of four, to gingival fibroblasts.
+  - reference: PMID:35096067
+    reference_title: Cytotoxicity of Dental Cements on Soft Tissue Associated with Dental Implants.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: The highest cytotoxicity was observed in GIC followed by zinc phosphate, ZOE, and resin cement.
+    explanation: Third of four, after glass ionomer and zinc phosphate. This study also abbreviates zinc oxide noneugenol as ZOE.
+  - reference: PMID:27927285
+    reference_title: In vitro effects of dental cements on hard and soft tissues associated with dental implants.
+    supports: PARTIAL
+    evidence_source: IN_VITRO
+    snippet: Furthermore, the zinc oxide noneugenol dental cement appeared to affect the cell lines significantly less than the other test cements.
+    explanation: 'Least cytotoxic of the cements tested: it points against, not for, a strong cytotoxic effect, so PARTIAL. See the cytotoxicity discussion.'
+- name: Residue that weakens later resin bonding
+  effect_category: OTHER
+  description: 'Residue left on dentine lowers the bond strength of the resin cement used for the definitive restoration unless it is removed thoroughly. Pumice alone leaves it behind. Recorded as OTHER: no AdverseEffectCategoryEnum value covers interference with later bonding. One study of resin-composite crowns that were provisionally cemented and then bonded found no effect on the bonded crowns'' performance or fracture strength.'
+  evidence:
+  - reference: PMID:40073997
+    reference_title: Effects of Different Dentin Surface Cleaning Protocols on Bond Strength of Dual-Cure Resin Cement Following Temporary Cementation.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Groups 2, 3, and 4 were treated with noneugenol zinc oxide temporary cement, followed by their respective cleaning protocols.
+    explanation: The cement in the study.
+  - reference: PMID:40073997
+    reference_title: Effects of Different Dentin Surface Cleaning Protocols on Bond Strength of Dual-Cure Resin Cement Following Temporary Cementation.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Pumice polishing alone was insufficient for removing temporary cement, resulting in reduced bond strength of the subsequently applied resin cement.
+    explanation: Effect of residue.
+  - reference: PMID:36422719
+    reference_title: 'Effect of temporary cements and their removal methods on the bond strength of indirect restoration: a systematic review and meta-analysis.'
+    supports: PARTIAL
+    evidence_source: SYSTEMATIC_REVIEW
+    snippet: Compared with resin-based and non-eugenol zinc oxide cements, polycarboxylate and calcium hydroxide cements performed better on bond strength with no statistical difference from the control group (p > 0.05).
+    explanation: Meta-analysis of 14 in vitro trials. It does not say directly that non-eugenol zinc oxide lowered bond strength below the control; that is inferred from the contrast with polycarboxylate and calcium hydroxide, which did not differ from the control, so PARTIAL.
+  - reference: PMID:39186597
+    reference_title: Influence of provisional cementation on the stability of adhesively bonded resin-based composite crowns.
+    supports: REFUTE
+    evidence_source: IN_VITRO
+    snippet: Regardless of the type of temporary cementation, there was no effect on the in-vitro performance or strength of the final permanently bonded crowns.
+    explanation: 'Counterpoint: provisional cementation with Tempbond NE did not lower the fracture strength of the later-bonded crowns. It measures crown fracture after chewing simulation, not bond strength, so it bears on the claim without settling it.'
+regulatory_status:
+- agency: FDA
+  jurisdiction: US
+  status: CLEARED
+  regulation_number: '872.3275'
+  regulation_title: Dental cement other than zinc oxide-eugenol
+  device_class: CLASS_II
+  product_codes:
+  - EMA
+  pathways:
+  - PREMARKET_NOTIFICATION_510K
+  special_controls: []
+  identification: Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+  approved_uses:
+  - name: Temporary tooth filling
+    use_context: TEMPORARY
+  - name: Base cement to affix a temporary tooth filling
+    use_context: LINER_OR_BASE
+  - name: Affixing dental devices such as crowns or bridges
+    use_context: LUTING
+  - name: Application to a tooth to protect the tooth pulp
+    use_context: LINER_OR_BASE
+  source_url: https://www.ecfr.gov/current/title-21/section-872.3275
+  notes: Paragraph (b) of the regulation. Its device is every dental cement other than zinc oxide-eugenol, so by its wording a zinc oxide cement made without eugenol falls here (class II, EMA), not under paragraph (a), the class I, 510(k)-exempt zinc oxide-eugenol device (EMB). No regulation names zinc oxide non-eugenol cement on its own, and no 510(k) was looked up to confirm the route for a marketed product. The same regulation also carries MZW (ulcer covering) and NEA (ear, nose and throat cement); neither is a dental restorative use.
+  evidence:
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (b) Dental cement other than zinc oxide-eugenol—(1) Identification. Dental cement other than zinc oxide-eugenol is a device composed of various materials other than zinc oxide-eugenol intended to serve as a temporary tooth filling or as a base cement to affix a temporary tooth filling, to affix dental devices such as crowns or bridges, or to be applied to a tooth to protect the tooth pulp.
+    explanation: Identification paragraph (b)(1), quoted in full; it is the text recorded in identification and the source of all four approved_uses on this row. Verified 2026-10-02.
+  - reference: CFR:872.3275
+    reference_title: 21 CFR 872.3275 Dental cement
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: (2) Classification. Class II.
+    explanation: Classification paragraph (b)(2), verified 2026-09-05.
+  - reference: url:https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?start_search=1&regulationnumber=872.3275
+    reference_title: FDA Product Classification Database, regulation 872.3275
+    supports: SUPPORT
+    evidence_source: REGULATORY_DOCUMENT
+    snippet: EMA cement, dental Dental cement 872.3275 2
+    explanation: Product code EMA, device class 2, device name "cement, dental". Retrieved 2026-09-05 and re-verified 2026-10-10, when the listing carried a page-last-updated date of 10/05/2026 — the record was republished after the first retrieval, and the code and the class were unchanged across it.
+standards:
+- identifier: ISO 3107
+  title: Dentistry - Zinc oxide/eugenol cements and zinc oxide/non-eugenol cements
+  organization: ISO
+discussions:
+- discussion_id: liquid-composition-zinc-oxide-non-eugenol-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  attaches_to:
+  - composition
+  prompt: OHD's definition says aliphatic or butyric acid replaces the eugenol. No source read states what replaces it, or in what form the zinc oxide is supplied, so composition lists only zinc oxide and no proportions are recorded.
+  rationale: A manufacturer's safety data sheet or instructions for use (for example for TempBond NE or Freegenol), or a textbook, would supply the composition.
+- discussion_id: cytotoxicity-zinc-oxide-non-eugenol-cement
+  kind: CONTROVERSY
+  status: OPEN
+  attaches_to:
+  - adverse_effects#Cytotoxicity
+  prompt: How cytotoxic is it relative to other cements? To gingival fibroblasts it was the most cytotoxic of four in one study (PMID:38826571), third of four in another (PMID:35096067), and the least cytotoxic of the cements tested in a third (PMID:27927285). A fourth found every cement tested, this one included, below the 70% viability threshold (PMID:40390827). Two of the studies abbreviate the non-eugenol cement as ZOE, which invites misreading.
+  rationale: The studies used different cements, cell lines and exposure times, so no single ranking is supported.
+- discussion_id: eugenol-free-rationale-zinc-oxide-non-eugenol-cement
+  kind: KNOWLEDGE_GAP
+  status: OPEN
+  prompt: The usual reason to choose a non-eugenol zinc oxide cement is that eugenol is thought to interfere with resin bonding. The bonding studies found compare eugenol-containing with eugenol-free temporary cements without saying that the eugenol-free one is zinc oxide-based (PMID:21241765, PMID:24837710), so the rationale is not recorded as a claim about this material.
+  rationale: A source comparing zinc oxide-eugenol with zinc oxide non-eugenol on later resin bonding would settle it.
+notes: 'Naming. "Non-eugenol" also describes resin-based temporary cements (for example Temp Bond Clear, Premier Implant Cement). Only sources that name a zinc oxide non-eugenol cement, or a product that the source or another cited source identifies as one, are used here: TempBond NE and Temp-Bond NE are identified in PMID:42419702, PMID:34249248 and PMID:31040551, Freegenol in PMID:29807736. Evidence that relies on another source''s identification is marked PARTIAL.
+
+  Products. TempBond NE, RelyX Temp NE and Freegenol appear in the sources, but no 510(k) was looked up, so no products are listed.
+
+  Antioxidative activity. PMID:25730995 reports lower antioxidative values for non-eugenol pastes, Temp Bond NE among them, than for eugenol-based ones; the abstract does not separate Temp Bond NE from the other non-eugenol groups, so no property row is recorded.
+
+  Regulatory. The 872.3275(b) entry rests on the regulation''s wording, every cement other than zinc oxide-eugenol.
+
+  Setting mechanism. ACID_BASE_REACTION is kept from the seeded record and OHD''s definition (zinc oxide with an aliphatic or butyric acid). No source read describes the set, since none states the liquid''s composition; see the liquid-composition discussion.'
 parents:
-  - OHD:0001022
+- OHD:0001022
 creation_date: '2026-09-04'
-status: DRAFT
+status: PROPOSED
 curation_history:
-  - timestamp: '2026-11-07T19:51:25+00:00'
-    curator: claude-code
-    llm_assisted: true
-    model: claude-opus-5-5
-    action: CREATE
-    description: Converted from dentamech at cddf481, entry Zinc_Oxide_Non-eugenol_Cement.
-updated_date: '2026-11-07'
+- timestamp: '2026-11-07T19:51:25+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: CREATE
+  description: Converted from dentamech at cddf481, entry Zinc_Oxide_Non-eugenol_Cement.
+- timestamp: '2026-11-28T02:37:48+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Curated from the stub: zinc oxide composition, eight properties, three clinical uses, one clinical retention row, three adverse effects, the 872.3275(b) entry, synonyms and three discussions. Set to PROPOSED.'
+- timestamp: '2026-11-28T03:05:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the first review of PR #76. Restated the marginal discrepancy row to what both halves of its self-contradicting abstract support, with the Results quote added. Marked the TempBond NE ageing evidence PARTIAL and added the source that identifies the product as zinc oxide-based; restated the inclusion rule in notes. Narrowed the titanium-abutment bond strength description to two of three resin materials. Marked the bond-strength meta-analysis quote PARTIAL.'
+- timestamp: '2026-11-28T03:10:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the second review of PR #76. Restated the PMID:39186597 use as provisional cementation of the definitive crown, with its methods quote, and added its finding of no effect on bonded crowns as a REFUTE counterpoint to the bonding-residue effect. Quoted the PMID:39274629 ranking sentence and the PMID:29807736 retrievability sentence. Noted that the retention rows are forces, not bond strengths, marked PMID:27927285 PARTIAL, and noted the setting mechanism is unsourced.'
+- timestamp: '2026-11-28T03:15:00+00:00'
+  curator: claude-code
+  llm_assisted: true
+  model: claude-opus-5-5
+  action: EDIT
+  description: 'Answered the minor notes of the third review of PR #76: quoted the PMID:40390827 methods sentence naming ZONE, so its cytotoxicity evidence stands on its own.'
+updated_date: '2026-11-28'
