@@ -20,6 +20,7 @@ OFFLINE = [
     ("records: closed schema", ["just", "validate-all"]),
     ("history", ["just", "validate-history"]),
     ("paper log", ["just", "validate-paper-log"]),
+    ("paper log: every cited paper", ["just", "paper-log-cited"]),
     ("tests", ["just", "test", "-q"]),
 ]
 NETWORK = [

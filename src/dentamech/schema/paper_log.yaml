@@ -10,8 +10,11 @@ description: >-
 
   The data lives in `curation/paper_log.tsv`, one entry per row, with the slot
   names below as column headers. The file is append-only: a paper that is
-  reconsidered gets a new row, and the newest row for a DOI is its current
+  reconsidered gets a new row, and the newest row for a paper is its current
   verdict. Multivalued columns separate values with `|`.
+
+  A paper is keyed by its DOI when it has one, and by its PubMed id only when
+  it has none, so one paper never has two keys.
 
   Only identifiers and the curator's own words go in the log. Never text copied
   from the paper: many papers considered are closed access and must not be
@@ -19,11 +22,13 @@ description: >-
 
   Rules the schema cannot express are checked in `dentamech.paper_log`: a date
   is a real calendar date and not in the future; DOIs are written in canonical
-  lower case; named records and history files exist; and no row repeats
-  another exactly.
+  lower case; named records and history files exist; no row repeats another
+  exactly; and every paper a record cites has an ACCEPT row naming that
+  record.
 license: CC-BY-4.0
 see_also:
   - https://github.com/caufieldjh/dentamech/issues/43
+  - https://github.com/caufieldjh/dentamech/issues/73
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -70,7 +75,7 @@ classes:
   PaperLogEntry:
     description: One consideration of one paper, and its verdict.
     slots:
-      - doi
+      - reference
       - considered_on
       - verdict
       - note
@@ -79,14 +84,16 @@ classes:
 
 slots:
 
-  doi:
+  reference:
     description: >-
-      The paper's DOI, bare (no `doi:` or `https://doi.org/` prefix) and in
-      lower case, which is how DOIs compare.
+      The paper, as a CURIE in the form records cite it. `DOI:` and the DOI in
+      lower case, which is how DOIs compare, whenever the paper has a DOI;
+      `PMID:` and the PubMed id only for a paper with no DOI.
     required: true
-    pattern: "^10\\.[0-9]{4,9}/[^\\sA-Z]+$"
+    pattern: "^(DOI:10\\.[0-9]{4,9}/[^\\sA-Z]+|PMID:[1-9][0-9]*)$"
     examples:
-      - value: 10.1016/j.ajodo.2025.11.017
+      - value: DOI:10.1016/j.ajodo.2025.11.017
+      - value: PMID:6948048
 
   considered_on:
     description: The date the verdict was reached, as `YYYY-MM-DD`.

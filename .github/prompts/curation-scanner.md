@@ -53,11 +53,11 @@ unsure. Refresh a stale branch by merging its base in (`git fetch`, then
 `curation/paper_log.tsv` lists every paper already considered as a source,
 with a verdict (`ACCEPT`, `REJECT` or `DEFER`) and the reason.
 
-- Before reading a paper, run `just lookup-paper <DOI>`. If its newest
+- Before reading a paper, run `just lookup-paper <DOI|PMID:NNN>`. If its newest
   verdict is `REJECT`, skip it. If it is `DEFER`, skip it unless the blocker
   named in the note is gone, and say so in the new row.
 - Log every paper you considered in this run, whatever the verdict:
-  `just log-paper <DOI> <VERDICT> --note "..." [--record <stem>] --apply`.
+  `just log-paper <DOI|PMID:NNN> <VERDICT> --note "..." [--record <stem>] --apply`.
   For `ACCEPT`, name the records it fed with `--record`.
 - The note is your reason in your own words. Never copy text from the paper
   into it; many papers are closed access.

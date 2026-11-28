@@ -10,10 +10,10 @@
    material adds `--experimental --purpose ...`, and `--restorative-class ...`
    when the purpose is RESTORATIVE.
 3. Research. Before reading a paper, check whether it was considered
-   already: `just lookup-paper <DOI>`. Fetch every source you cite:
+   already: `just lookup-paper <DOI|PMID:NNN>`. Fetch every source you cite:
    `just fetch-reference PMID:NNN`. Read what came back. Log every paper
    you considered, whatever the verdict:
-   `just log-paper <DOI> ACCEPT|REJECT|DEFER --note "..." --apply`. For a thin record in a large literature,
+   `just log-paper <DOI|PMID:NNN> ACCEPT|REJECT|DEFER --note "..." --apply`. For a thin record in a large literature,
    `just research PROVIDER <stem>` writes a deep-research report to
    `research/`: a list of leads to check, never a source to cite.
 4. Write. Terms through `just search-term` and `just term-info`. Quotes

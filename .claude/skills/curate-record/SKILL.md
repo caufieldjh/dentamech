@@ -64,7 +64,7 @@ Gather sources before writing. Before reading a paper, check the paper log
 unless what blocked it has changed:
 
 ```bash
-just lookup-paper <DOI>        # exit 1: never considered
+just lookup-paper <DOI|PMID:NNN>        # exit 1: never considered
 ```
 
 For each source you intend to cite:
@@ -135,10 +135,14 @@ ones you rejected or deferred. The note is your reason in your own words,
 never text from the paper:
 
 ```bash
-just log-paper <DOI> ACCEPT --note "..." --record <stem> --apply
-just log-paper <DOI> REJECT --note "Out of scope: ..." --apply
-just log-paper <DOI> DEFER  --note "Blocked by ..." --apply
+just log-paper <DOI|PMID:NNN> ACCEPT --note "..." --record <stem> --apply
+just log-paper <DOI|PMID:NNN> REJECT --note "Out of scope: ..." --apply
+just log-paper <DOI|PMID:NNN> DEFER  --note "Blocked by ..." --apply
 ```
+
+Every paper the record cites needs an `ACCEPT` row naming the record, or
+`just qc` fails (`just paper-log-cited`). A paper with no DOI is logged as
+`PMID:NNN`.
 
 Then one history record for the session:
 

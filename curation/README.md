@@ -24,7 +24,7 @@ and the header is that class's slots in order.
 
 | Column | Required | Meaning |
 |---|---|---|
-| `doi` | yes | Bare DOI in lower case, e.g. `10.1016/j.ajodo.2025.11.017`. |
+| `reference` | yes | The paper as a CURIE: `DOI:` and the DOI in lower case (`DOI:10.1016/j.ajodo.2025.11.017`) whenever it has one, `PMID:` and the PubMed id (`PMID:6948048`) only when it has none, so a paper never has two keys. |
 | `considered_on` | yes | `YYYY-MM-DD`. |
 | `verdict` | yes | `ACCEPT` (used as evidence), `REJECT` (not usable), `DEFER` (blocked; the note says by what). |
 | `note` | yes | Why, in one or two sentences of your own. Never text from the paper. |
@@ -32,13 +32,16 @@ and the header is that class's slots in order.
 | `history` | no | Path of the session's `history/` record. |
 
 The file is append-only. A paper that is reconsidered gets a new row; the
-newest row for a DOI is its current verdict. Use the recipes rather than
-editing by hand:
+newest row for a paper is its current verdict. Use the recipes rather than
+editing by hand. They take a DOI in any common form or `PMID:NNN`, and log a
+PMID whose cached reference has a DOI under that DOI:
 
 ```bash
 just lookup-paper 10.1016/j.ajodo.2025.11.017     # exit 1 if never considered
+just lookup-paper PMID:6948048                    # a paper with no DOI
 just log-paper 10.1016/j.ajodo.2025.11.017 REJECT --note "Why." --apply
 just validate-paper-log                           # also part of `just qc`
+just paper-log-cited                              # also part of `just qc`
 ```
 
 On a pull request, CI fails if a row already on the base branch was edited
@@ -48,6 +51,16 @@ stops with an error). It warns for each paper a
 changed record newly cites that has no row (`just paper-log-coverage --base
 origin/main <files>`). The curation scanner and the review agent both read
 the log.
+
+`just qc` also fails if any paper a record cites (a `DOI:` or `PMID:`
+reference) has no `ACCEPT` row naming that record (`just paper-log-cited`).
+It works offline: a PMID is resolved to its DOI through `references_cache/`,
+so fetch a new reference before logging it. Regulations, web pages and
+standards are not papers and are not checked.
+
+Until #73 the log was keyed by a bare `doi` column. `check-append` migrates a
+base still in that form before comparing, and `python -m dentamech.paper_log
+migrate --apply` rewrites such a file.
 
 Links are checked only when a row is new. `just validate-paper-log` does not
 check that an older row's records and history still exist. A record may later
